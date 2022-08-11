@@ -7,7 +7,7 @@ import { useAt } from '@/hooks/index'
 import { ContextStaticProps } from '@/context/index'
 import { getClassNames, ruCaseMonth } from '@/helpers/index'
 import { GeneralStickerDiscount } from '@/components/general'
-import { Loan, TrainingPeriod, Until } from '@/components/costs'
+import { Loan, Price, TrainingPeriod, Until } from '@/components/costs'
 import { Wrapper } from '@/components/layout'
 import { PopupForm } from '@/components/popups'
 import { BtnAlpha } from '@/components/btns'
@@ -124,17 +124,25 @@ const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
               сегодня:
             </p>
             <div className={stls.loan}>
-              <Loan
-                discount={isDiscounted}
-                type={program?.category?.type}
-                format={program?.studyFormat}
-                programPrice={
-                  studyFieldIsAccounting
-                    ? 59000
-                    : (at.profession || at.course) && program?.price
-                }
-                variant='SectionStudyCost'
-              />
+              {at.executive ? (
+                <Price
+                  discount={false}
+                  type={'executive'}
+                  renderedByComponent='SectionStudyCost'
+                />
+              ) : (
+                <Loan
+                  discount={isDiscounted}
+                  type={program?.category?.type}
+                  format={program?.studyFormat}
+                  programPrice={
+                    studyFieldIsAccounting
+                      ? 59000
+                      : (at.profession || at.course) && program?.price
+                  }
+                  variant='SectionStudyCost'
+                />
+              )}
             </div>
             <Popup
               trigger={() => (

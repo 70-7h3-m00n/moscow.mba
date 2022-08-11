@@ -5,49 +5,49 @@ const MetaFonts = () => {
         rel='preload'
         href='/assets/fonts/MazzardH-Regular.woff2'
         as='font'
-        crossOrigin="'same-origin'"
+        crossOrigin="'true'"
       />
       <link
         rel='preload'
         href='/assets/fonts/MazzardM-Bold.woff2'
         as='font'
-        crossOrigin="'same-origin'"
+        crossOrigin="'true'"
       />
       <link
         rel='preload'
         href='/assets/fonts/StyreneAWeb-Bold.woff2'
         as='font'
-        crossOrigin="'same-origin'"
+        crossOrigin="'true'"
       />
       <link
         rel='preload'
         href='/assets/fonts/StyreneAWeb-Light.woff2'
         as='font'
-        crossOrigin="'same-origin'"
+        crossOrigin="'true'"
       />
       <link
         rel='preload'
         href='/assets/fonts/StyreneAWeb-Medium.woff2'
         as='font'
-        crossOrigin="'same-origin'"
+        crossOrigin="'true'"
       />
       <link
         rel='preload'
         href='/assets/fonts/StyreneAWeb-Regular.woff2'
         as='font'
-        crossOrigin="'same-origin'"
+        crossOrigin="'true'"
       />
       <link
         rel='preload'
         href='/assets/fonts/VisueltPro-Bold.woff2'
         as='font'
-        crossOrigin="'same-origin'"
+        crossOrigin="'true'"
       />
       <link
         rel='preload'
         href='/assets/fonts/VisueltPro-Medium.woff2'
         as='font'
-        crossOrigin="'same-origin'"
+        crossOrigin="'true'"
       />
     </>
   )

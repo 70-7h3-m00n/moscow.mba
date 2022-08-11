@@ -1,5 +1,6 @@
 import stls from '@/styles/components/costs/Price.module.sass'
 import { useEffect, useState } from 'react'
+import cn from 'classnames'
 import { currencyRates, ui } from '@/config/index'
 import { toNumberWithSpaces } from '@/helpers/index'
 import { useAt, useSSLocale } from '@/hooks/index'
@@ -149,7 +150,10 @@ const Price = ({
 
   if ((!format && at.executive) || (!format && type === 'executive'))
     return (
-      <span className={stls.executive}>
+      <span
+        className={cn(stls.executive, {
+          [stls.SectionStudyCost]: renderedByComponent === 'SectionStudyCost'
+        })}>
         {price[isDiscounted].executive} {currencySymbol}
       </span>
     )
@@ -168,7 +172,10 @@ const Price = ({
           : splitMonths(price?.[isDiscounted]?.[type]?.[format])}
       </i>
       {discount && (
-        <i className={getPriceClass('old', renderedByComponent)}>
+        <i
+          className={cn(getPriceClass('old', renderedByComponent), {
+            [stls.SectionStudyCost]: renderedByComponent === 'SectionStudyCost'
+          })}>
           {programPriceKzUzConsidered
             ? toNumberWithSpaces(
                 Math.ceil(((programPriceKzUzConsidered / 45) * 100) / 1000) *
