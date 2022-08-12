@@ -1,9 +1,15 @@
+@use "sass:math"
 @use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
 
 .container
   margin-bottom: 70px
   position: relative
   z-index: 2
+  &.atExecutive
+    @include m.media(laptop, desktop, widescreen)
+      margin-bottom: f.px(130)
   @include m.media(laptop, tablet, phone)
     margin-bottom: 60px
   @include m.media(tablet, phone)

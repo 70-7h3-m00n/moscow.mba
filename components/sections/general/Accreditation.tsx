@@ -2,6 +2,7 @@ import stls from '@/styles/components/sections/Accreditation.module.sass'
 import Image from 'next/image'
 import { base64pixel } from '@/config/index'
 import { useAt } from '@/hooks/index'
+import cn from 'classnames'
 import { Wrapper } from '@/components/layout'
 import { IconPaperCorner } from '@/components/icons'
 import { ImgLogoEcicel, ImgLogoRabo, ImgLogoMde } from '@/components/images'
@@ -16,7 +17,8 @@ const Accreditation = () => {
   ]
 
   return (
-    <section className={stls.container}>
+    <section
+      className={cn(stls.container, { [stls.atExecutive]: at.executive })}>
       <Wrapper classNames={[stls.wrapper]}>
         <div className={stls.image}>
           <Image
