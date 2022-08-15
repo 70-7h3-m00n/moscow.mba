@@ -2,49 +2,57 @@ import stls from '@/styles/components/sections/ResultsExecutive.module.sass'
 import { Wrapper } from '@/components/layout'
 
 const ResultsExecutive = () => {
+  const translations = {
+    title: (
+      <>
+        Результаты участия в программе{' '}
+        <span className={stls.highlight}>Executive MBA</span>{' '}
+      </>
+    ),
+    subtitleDesktop: 'На практике Вы и ваша команда:',
+    subtitleMobile: 'Результаты участия в программе',
+    card: (
+      <>
+        Благодаря программе <span className={stls.bold}>Executive MBA</span>{' '}
+        вы научитесь проектировать сложные бизнес-конструкции
+      </>
+    ),
+    list: [
+      'Построите авторскую модель глобальной ниши для вашего бизнеса',
+      'Научитесь схватывать сущность проблем, создавать инструменты и решения под текущую управленческую ситуацию на международных рынках',
+      'Сможете понять, как синхронизировать и трансформировать команду для новых рынков',
+      'Разберетесь в особенностях коммерциализации разработок',
+      'Продумаете как изменить ключевой процесс для достижения глобальных целей и кратного роста бизнеса',
+      'Сможете эффективно управлять интеллектуальным капиталом и изменениями в компании'
+    ]
+  } as const
+
   return (
     <section className={stls.container}>
-      <Wrapper classNames={[stls.content]}>
-        <div className={stls.floatLeft}>
-          <h2 className={stls.title}>
-            Результаты участия в программе <span>Executive MBA</span>
-          </h2>
-        </div>
-        <div className={stls.floatRight}>
-          <h4 className={stls.listTitle}>На практике Вы и Ваша команда:</h4>
-          <ul className={stls.list}>
-            <li className={stls.item}>
-              Построите авторскую модель глобальной ниши для Вашего бизнеса
-            </li>
-            <li className={stls.item}>
-              Научитесь схватывать сущность проблем, создавать инструменты
-              и решения под текущую управленческую ситуацию на международных
-              рынках
-            </li>
-            <li className={stls.item}>
-              Сможете понять, как синхронизировать и трансформировать команду
-              для новых рынков
-            </li>
-            <li className={stls.item}>
-              Разберетесь в особенностях коммерциализации разработок
-            </li>
-            <li className={stls.item}>
-              Продумаете как изменить ключевой процесс для достижения глобальных
-              целей и кратного роста бизнеса
-            </li>
-            <li className={stls.item}>
-              Сможете эффективно управлять интеллектуальным капиталом
-              и изменениями в компании
-            </li>
-          </ul>
-        </div>
-        <div className={stls.floatLeft}>
-          <div className={stls.redSticker}>
-            <p>
-              Благодаря программе
-              <strong>Executive MBA</strong> вы научитесь проектировать сложные
-              бизнес-конструкции
-            </p>
+      <Wrapper>
+        <div className={stls.content}>
+          <div className={stls.left}>
+            <h2 className={stls.title}>{translations.title}</h2>
+            <div className={stls.card}>
+              <p className={stls.card__p}>{translations.card}</p>
+            </div>
+          </div>
+          <div className={stls.right}>
+            <h3 className={stls.subtitle}>
+              <span className={stls.laptopDesktopWidescreen}>
+                {translations.subtitleDesktop}
+              </span>
+              <span className={stls.phoneTablet}>
+                {translations.subtitleMobile}
+              </span>
+            </h3>
+            <ul className={stls.ul}>
+              {translations.list.map((item, idx) => (
+                <li key={`${item}-${idx}`} className={stls.li}>
+                  <p className={stls.li__p}>{item}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </Wrapper>
