@@ -101,7 +101,7 @@ function MyApp({ Component, pageProps, router }) {
     }
 
     const handleBeforeUnload = () => {
-      if (window.localStorage.getItem('formFilled') === 'true') {
+      if (window.sessionStorage.getItem('formFilled') === 'true') {
         filledUpFormWithoutSubmission({
           url: `${routesFront.root}${router.asPath}`
         })
