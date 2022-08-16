@@ -1,5 +1,8 @@
 import stls from '@/styles/components/popups/PopupForm.module.sass'
-import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
+import { routesFront } from '@/config/index'
+import { openedMainForm } from '@/helpers/index'
 import { useAt } from '@/hooks/index'
 import { FormAlpha } from '@/components/forms'
 import { LeadLoaderThankyou } from '@/components/general'
@@ -15,6 +18,7 @@ const Form = ({
   formName = null
 }) => {
   const at = useAt()
+  const router = useRouter()
 
   if (!title) title = at.en ? 'Contact us to get help' : 'Поможем в выборе'
 
@@ -25,6 +29,10 @@ const Form = ({
 
   const [open, setOpen] = useState(false)
   const [openLoader, setOpenLoader] = useState(false)
+
+  useEffect(() => {
+    openedMainForm({ url: `${routesFront.root}${router.asPath}` })
+  }, [router])
 
   return (
     <div className='popup-modal'>

@@ -51,13 +51,11 @@ const FormAlpha = ({
 
   const popUpForm = !!setOpenLoader && !!setOpen
 
-  useEffect(() => {
-    return () => {
-      if (popUpForm) {
-        openedMainForm({ url: `${routesFront.root}${asPath}` })
-      }
-    }
-  }, [popUpForm])
+  // useEffect(() => {
+  //   if (popUpForm) {
+  //     openedMainForm({ url: `${routesFront.root}${asPath}` })
+  //   }
+  // }, [popUpForm])
 
   return (
     <form
