@@ -1,11 +1,15 @@
 import stls from '@/styles/components/sections/GetStudyPlan.module.sass'
+import { useContext } from 'react'
+import { useRouter } from 'next/router'
+import { routesFront } from '@/config/index'
+import { clickedGetFullStudyPlan } from '@/helpers/index'
 import Popup from 'reactjs-popup'
 import PopupForm from '@/components/popups/PopupForm'
-import { useContext } from 'react'
 import { ContextStaticProps } from '@/context/index'
 import { Wrapper } from '@/components/layout'
 
 const GetStudyPlan = () => {
+  const router = useRouter()
   const { program } = useContext(ContextStaticProps)
 
   return (
@@ -22,7 +26,12 @@ const GetStudyPlan = () => {
             modal
             lockScroll
             nested
-            closeOnDocumentClick>
+            closeOnDocumentClick
+            onOpen={() => {
+              clickedGetFullStudyPlan({
+                url: `${routesFront.root}${router.asPath}`
+              })
+            }}>
             {/* @ts-expect-error  */}
             {close => (
               <PopupForm

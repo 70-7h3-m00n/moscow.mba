@@ -1,3 +1,10 @@
+// ./dataLayer
+export { default as clickedAskQuestion } from '@/helpers/dataLayer/clickedAskQuestion'
+export { default as clickedGetFullStudyPlan } from '@/helpers/dataLayer/clickedGetFullStudyPlan'
+export { default as clickedGetFullTeachersList } from '@/helpers/dataLayer/clickedGetFullTeachersList'
+export { default as filledUpFormWithoutSubmission } from '@/helpers/dataLayer/filledUpFormWithoutSubmission'
+export { default as openedMainForm } from '@/helpers/dataLayer/openedMainForm'
+
 // ./general
 export { default as createBlended } from '@/helpers/general/createBlended'
 export { default as createLeadBackApi } from '@/helpers/general/createLeadBackApi'

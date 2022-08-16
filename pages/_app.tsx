@@ -10,7 +10,7 @@ import TagManager from 'react-gtm-module'
 import { DefaultSeo, LogoJsonLd } from 'next-seo'
 import SEO from '../seo.config'
 import { usePreserveScroll } from '@/hooks/index'
-import { dev, gtmId } from '@/config/index'
+import { dev, gtmId, routesFront } from '@/config/index'
 import { Header, Main, WrapperPage, Footer } from '@/components/layout'
 // import Script from 'next/script'
 import {
@@ -19,6 +19,7 @@ import {
   ContextJournalState,
   ContextStaticProps
 } from '@/context/index'
+import { filledUpFormWithoutSubmission } from '../helpers'
 
 function MyApp({ Component, pageProps, router }) {
   const [programs, setPrograms] = useState(pageProps.programs || null)
@@ -98,13 +99,27 @@ function MyApp({ Component, pageProps, router }) {
       NProgress.done()
       setLoading(false)
     }
+
+    const handleBeforeUnload = () => {
+      if (window.localStorage.getItem('formFilled') === 'true') {
+        filledUpFormWithoutSubmission({
+          url: `${routesFront.root}${router.asPath}`
+        })
+      }
+    }
+
     Router.events.on('routeChangeStart', start)
     Router.events.on('routeChangeComplete', end)
     Router.events.on('routeChangeError', end)
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+
     return () => {
       Router.events.off('routeChangeStart', start)
       Router.events.off('routeChangeComplete', end)
       Router.events.off('routeChangeError', end)
+
+      window.removeEventListener('beforeunload', handleBeforeUnload)
     }
   }, [router, urlParamLocale])
 

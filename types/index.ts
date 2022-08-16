@@ -14,6 +14,8 @@ export type { default as TypeContextJournalContext } from '@/types/context/journ
 export type { default as TypeContextJournalState } from '@/types/context/journal/TypeContextJournalState'
 
 // general
+export type { default as TGeneralRoute } from '@/types/general/TGeneralRoute'
+export type { default as TGeneralWindowDataLayer } from '@/types/general/TGeneralWindowDataLayer'
 export type { default as TypeCategories } from '@/types/general/TypeCategories'
 export type { default as TypeChildren } from '@/types/general/TypeChildren'
 export type { default as TypeClassNames } from '@/types/general/TypeClassNames'

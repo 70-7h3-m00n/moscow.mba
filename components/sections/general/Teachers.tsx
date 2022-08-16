@@ -7,7 +7,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 import Popup from 'reactjs-popup'
 import { routesFront, base64pixel, contactData } from '@/config/index'
-import { getImageHeight } from '@/helpers/index'
+import { clickedGetFullTeachersList, getImageHeight } from '@/helpers/index'
 import { useAt, useDefaultTeachers } from '@/hooks/index'
 import { ContextStaticProps } from '@/context/index'
 import { Wrapper } from '@/components/layout'
@@ -530,7 +530,12 @@ const Teachers = ({
                   modal
                   lockScroll
                   nested
-                  closeOnDocumentClick>
+                  closeOnDocumentClick
+                  onOpen={() => {
+                    clickedGetFullTeachersList({
+                      url: `${routesFront.root}${router.asPath}`
+                    })
+                  }}>
                   {/* @ts-expect-error  */}
 
                   {close => (
@@ -579,7 +584,12 @@ const Teachers = ({
                   modal
                   lockScroll
                   nested
-                  closeOnDocumentClick>
+                  closeOnDocumentClick
+                  onOpen={() => {
+                    clickedGetFullTeachersList({
+                      url: `${routesFront.root}${router.asPath}`
+                    })
+                  }}>
                   {/* @ts-expect-error  */}
                   {close => (
                     <PopupForm

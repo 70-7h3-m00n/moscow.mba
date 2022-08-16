@@ -1,16 +1,22 @@
 import stls from '@/styles/components/forms/FormAlpha.module.sass'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import cn from 'classnames'
 import { useForm } from 'react-hook-form'
 import { useAt } from '@/hooks/index'
-import { onSubmitForm, getClassNames } from '@/helpers/index'
+import {
+  onSubmitForm,
+  getClassNames,
+  openedMainForm,
+  filledUpFormWithoutSubmission
+} from '@/helpers/index'
 import {
   InputEmail,
   InputName,
   InputPhone,
   InputSubmit
 } from '@/components/inputs'
+import routesFront from '@/config/routesFront'
 
 type TypeFormValues = {
   name: string
@@ -43,16 +49,27 @@ const FormAlpha = ({
 
   const at = useAt()
 
+  const popUpForm = !!setOpenLoader && !!setOpen
+
+  useEffect(() => {
+    if (popUpForm) {
+      openedMainForm({ url: `${routesFront.root}${asPath}` })
+    }
+  }, [popUpForm])
+
   return (
     <form
       method='post'
       className='simple-form'
+      onChange={() => window.sessionStorage.setItem('formFilled', 'true')} // this is a goal for a marketing campaign also used in /pages/_app.tsx
       onSubmit={handleSubmit(values => {
         if (!submitIsDisabled) {
           setSubmitIsDisabled(true)
           setTimeout(() => {
             setSubmitIsDisabled(false)
           }, 5000)
+
+          window.sessionStorage.setItem('formFilled', 'false')
           return onSubmitForm({
             values,
             programTitle,
