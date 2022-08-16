@@ -623,7 +623,7 @@ const Teachers = ({
                   </a>
                 </Link>
               ) : (
-                UITeachers.length > 8 &&
+                UITeachers.length >= 8 &&
                 !searchTerm && (
                   <button
                     className={cn('button', stls.btnShowMore, {
