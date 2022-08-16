@@ -1,12 +1,16 @@
 import stls from '@/styles/components/sections/Qna.module.sass'
-import { useAt } from '@/hooks/index'
+import { useRouter } from 'next/router'
 import Popup from 'reactjs-popup'
+import { routesFront } from '@/config/index'
+import { useAt } from '@/hooks/index'
 import PopupForm from '@/components/popups/PopupForm'
 import { AccordionsContainer } from '@/components/general'
 import { Wrapper } from '@/components/layout'
+import { clickedAskQuestion } from '@/helpers/index'
 
 const Qna = ({ programId, programTitle }) => {
   const at = useAt()
+  const router = useRouter()
   const qna = at.profession
     ? [
         {
@@ -125,7 +129,12 @@ const Qna = ({ programId, programTitle }) => {
               modal
               lockScroll
               nested
-              closeOnDocumentClick>
+              closeOnDocumentClick
+              onOpen={() => {
+                clickedAskQuestion({
+                  url: `${routesFront.root}${router.asPath}`
+                })
+              }}>
               {/* @ts-expect-error  */}
               {close => (
                 <PopupForm
