@@ -33,8 +33,7 @@ const CardJournalArticle = ({
     article
 
   return (
-    <Link
-      href={`${routesFront.journal}/${journal_category.slug}/${journal_tag.slug}/${slug}`}>
+    <Link href={`${routesFront.journal}/${slug}`}>
       <a
         className={
           cn(

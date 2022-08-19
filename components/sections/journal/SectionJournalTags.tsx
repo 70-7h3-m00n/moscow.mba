@@ -34,18 +34,7 @@ const SectionJournalTags = ({ classNames }: TypeSectionJournalTagsProps) => {
                   [stls.isActive]:
                     tag.slug === gspContextParamsJournalCategoryTag
                 })}>
-                <Link
-                  href={
-                    tag.slug === gspContextParamsJournalCategoryTag
-                      ? `${routesFront.journal}/${
-                          gspContextParamsJournalCategory === 'categories'
-                            ? ''
-                            : gspContextParamsJournalCategory
-                        }`
-                      : `${routesFront.journal}/${
-                          gspContextParamsJournalCategory || 'categories'
-                        }/${tag.slug}`
-                  }>
+                <Link href={routesFront.journal}>
                   <a className={stls.tag}>#{tag.title}</a>
                 </Link>
               </li>

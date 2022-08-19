@@ -33,8 +33,7 @@ const SectionJournalMoreTags = ({
             ?.filter(tag => tag.title && tag.slug)
             .map(tag => (
               <li key={tag.slug} className={stls.tagItem}>
-                <Link
-                  href={`${routesFront.journal}/${gspContextParamsJournalCategory}/${tag.slug}`}>
+                <Link href={routesFront.journal}>
                   <a className={stls.tag}>#{tag.title}</a>
                 </Link>
               </li>

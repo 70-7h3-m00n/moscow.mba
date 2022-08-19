@@ -33,12 +33,7 @@ const SectionJournalCategories = ({
                 Все&nbsp;форматы
               </div>
             ) : (
-              <Link
-                href={
-                  gspContextParamsJournalCategoryTag
-                    ? `${routesFront.journal}/categories/${gspContextParamsJournalCategoryTag}`
-                    : routesFront.journal
-                }>
+              <Link href={routesFront.journal}>
                 <a className={cn(stls.category)}>Все&nbsp;форматы</a>
               </Link>
             )}
@@ -47,18 +42,7 @@ const SectionJournalCategories = ({
             ?.filter(category => category.title && category.slug)
             .map(category => (
               <li key={category.slug} className={stls.categoryItem}>
-                <Link
-                  href={
-                    category.slug === gspContextParamsJournalCategory
-                      ? `${routesFront.journal}${
-                          gspContextParamsJournalCategoryTag
-                            ? `/categories/${gspContextParamsJournalCategoryTag}`
-                            : ''
-                        }`
-                      : `${routesFront.journal}/${category.slug}/${
-                          gspContextParamsJournalCategoryTag || ''
-                        }`
-                  }>
+                <Link href={routesFront.journal}>
                   <a
                     className={cn(stls.category, {
                       [stls.isActive]:
