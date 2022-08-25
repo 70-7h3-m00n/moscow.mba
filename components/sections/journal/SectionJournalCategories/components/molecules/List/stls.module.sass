@@ -1,0 +1,11 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+.categories
+  display: flex
+  overflow-x: auto
+.listItem
+  @include m.media(phone, tablet)
+    margin-left: f.px(20)
+  @include m.media(laptop, desktop, widescreen)
+    & + .listItem
+      margin-left: f.px(34)

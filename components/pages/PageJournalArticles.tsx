@@ -14,23 +14,23 @@ import { ContextJournalContext } from '@/context/index'
 //   SectionJournalTagedArticles,
 //   SectionJournalMoreTags
 // } from '@/components/sections'
-import SectionJournalTags from '@/components/sections/journal/SectionJournalTags'
-import SectionJournalCategories from '@/components/sections/journal/SectionJournalCategories'
-import SectionJournalHeroArticle from '@/components/sections/journal/SectionJournalHeroArticle'
-import SectionJournalAllArticles from '@/components/sections/journal/SectionJournalAllArticles'
-import SectionJournalNews from '@/components/sections/journal/SectionJournalNews'
-import SectionJournalTagsWithPictures from '@/components/sections/journal/SectionJournalTagsWithPictures'
-import SectionJournalTagedArticles from '@/components/sections/journal/SectionJournalTagedArticles'
-import SectionJournalMoreTags from '@/components/sections/journal/SectionJournalMoreTags'
+import { SectionJournalCategories } from '@/components/sections'
+// import SectionJournalTags from '@/components/sections/journal/SectionJournalTags'
+// import SectionJournalCategories from '@/components/sections/journal/SectionJournalCategories'
+// import SectionJournalHeroArticle from '@/components/sections/journal/SectionJournalHeroArticle'
+// import SectionJournalAllArticles from '@/components/sections/journal/SectionJournalAllArticles'
+// import SectionJournalNews from '@/components/sections/journal/SectionJournalNews'
+// import SectionJournalTagsWithPictures from '@/components/sections/journal/SectionJournalTagsWithPictures'
+// import SectionJournalTagedArticles from '@/components/sections/journal/SectionJournalTagedArticles'
+// import SectionJournalMoreTags from '@/components/sections/journal/SectionJournalMoreTags'
 
 // type TypePageJournalArticlesProps = {}
 
 const PageJournalArticles = () => {
-  const { journalTags } = useContext(ContextJournalContext)
-
   return (
     <>
-      <SectionJournalTags />
+      <SectionJournalCategories classNames={[stls.sectionJournalCategories]}/>
+      {/* <SectionJournalTags />
       <SectionJournalCategories />
       <SectionJournalHeroArticle />
       <SectionJournalAllArticles />
@@ -40,7 +40,7 @@ const PageJournalArticles = () => {
       {journalTags?.map(tag => (
         <SectionJournalTagedArticles key={tag?.slug} tag={tag} />
       ))}
-      <SectionJournalMoreTags />
+      <SectionJournalMoreTags /> */}
     </>
   )
 }

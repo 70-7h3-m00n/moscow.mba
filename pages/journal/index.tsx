@@ -11,22 +11,13 @@ import { SeoOrganizationJsonLd } from '@/components/seo'
 const PageJournal: NextPage<TypePageJournalArticlesProps> = ({
   programs,
   journalCategories,
-  journalTags,
   journalArticles,
-  gspContextParamsJournalCategory,
-  gspContextParamsJournalCategoryTag,
-  gspContextParamsJournalCategoryTagArticle
 }) => {
   usePageHandleContext({
     programs,
     journalCategories,
-    journalTags,
     journalArticles,
-    gspContextParamsJournalCategory,
-    gspContextParamsJournalCategoryTag,
-    gspContextParamsJournalCategoryTagArticle
   })
-
   return (
     <>
       <PageJournalArticles />

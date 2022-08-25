@@ -15,8 +15,6 @@ const SectionJournalCategories = ({
 }: TypeSectionJournalCategoriesProps) => {
   const {
     journalCategories,
-    gspContextParamsJournalCategoryTag,
-    gspContextParamsJournalCategory
   } = useContext(ContextJournalContext)
 
   return (
