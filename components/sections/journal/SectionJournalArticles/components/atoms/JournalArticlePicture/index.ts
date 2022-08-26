@@ -1,0 +1,1 @@
+export { JournalArticlePicture } from './component'

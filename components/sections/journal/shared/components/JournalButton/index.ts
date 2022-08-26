@@ -1,0 +1,1 @@
+export { JournalButton } from './component'

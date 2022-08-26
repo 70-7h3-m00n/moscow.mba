@@ -26,8 +26,8 @@ type TypeLibJournalArticle = {
     slug: string | null
   }
   picture: TypeLibPicture | null
-  shortDescription: string | null
-  createdAt: string | null
+  shortDescription?: string | null
+  createdAt?: string | null
   articleBody?:
     | {
         __typename: TypeLibTypename

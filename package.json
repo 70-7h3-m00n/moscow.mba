@@ -16,7 +16,7 @@
     "@maxmind/geoip2-node": "^3.4.0",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
-    "date-fns": "^2.28.0",
+    "date-fns": "^2.29.2",
     "graphql": "^16.5.0",
     "html-react-parser": "^2.0.0",
     "marked": "^4.0.17",
