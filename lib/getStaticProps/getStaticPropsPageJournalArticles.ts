@@ -22,56 +22,6 @@ const getStaticPropsPageJournalArticles = async ({
   const urlJournal = `${routesBack.root}${routesBack.journal}`
   const res = await fetch(urlJournal)
   const data = await res.json()
-  // const res = await apolloClient.query<TypePageJournalArticlesPropsQuery>({
-  //   query: gql`
-  //     query GetStaticPropsPageJournalArticles {
-  //       programs: products {
-  //         _id
-  //         id
-  //         title
-  //         slug
-  //         studyFormat
-  //         category {
-  //           type
-  //           slug
-  //         }
-  //         study_field {
-  //           id
-  //           name
-  //           slug
-  //           description
-  //         }
-  //       }
-  //       journalCategories {
-  //         title
-  //         slug
-  //       }
-  //       journalTags {
-  //         title
-  //         slug
-  //       }
-  //       journalArticles {
-  //         title
-  //         slug
-  //         journal_tag {
-  //           title
-  //           slug
-  //         }
-  //         journal_category {
-  //           title
-  //           slug
-  //         }
-  //         picture {
-  //           url
-  //           width
-  //           height
-  //         }
-  //         shortDescription
-  //         createdAt
-  //       }
-  //     }
-  //   `
-  // })
   return {
     props: {
       ...data,

@@ -1,0 +1,1 @@
+export { JournalCategoriesList } from './component'

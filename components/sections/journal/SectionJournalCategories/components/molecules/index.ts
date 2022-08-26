@@ -1,1 +1,1 @@
-export { List } from './List'
+export { JournalCategoriesList } from './JournalCategoriesList'

@@ -11,25 +11,8 @@ export { default as SectionCorporateClientsWhyUs } from '@/components/sections/c
 
 // ./journal
 export { SectionJournalCategories } from '@/components/sections/journal/SectionJournalCategories'
-// export { default as SectionJournalAllArticles } from '@/components/sections/journal/SectionJournalAllArticles'
-// export { default as SectionJournalBottom } from '@/components/sections/journal/SectionJournalBottom'
-// export { default as SectionJournalCategories } from '@/components/sections/journal/SectionJournalCategories'
-// export { default as SectionJournalConclusion } from '@/components/sections/journal/SectionJournalConclusion'
-// export { default as SectionJournalEmphasis } from '@/components/sections/journal/SectionJournalEmphasis'
-// export { default as SectionJournalHeroArticle } from '@/components/sections/journal/SectionJournalHeroArticle'
-// export { default as SectionJournalHeroTag } from '@/components/sections/journal/SectionJournalHeroTag'
-// export { default as SectionJournalHighlightedArticle } from '@/components/sections/journal/SectionJournalHighlightedArticle'
-// export { default as SectionJournalList } from '@/components/sections/journal/SectionJournalList'
-// export { default as SectionJournalMoreTags } from '@/components/sections/journal/SectionJournalMoreTags'
-// export { default as SectionJournalNews } from '@/components/sections/journal/SectionJournalNews'
-// export { default as SectionJournalParagraph } from '@/components/sections/journal/SectionJournalParagraph'
-// export { default as SectionJournalPicture } from '@/components/sections/journal/SectionJournalPicture'
-// export { default as SectionJournalQuote } from '@/components/sections/journal/SectionJournalQuote'
-// export { default as SectionJournalRecommendedProgram } from '@/components/sections/journal/SectionJournalRecommendedProgram'
-// export { default as SectionJournalTagedArticles } from '@/components/sections/journal/SectionJournalTagedArticles'
-// export { default as SectionJournalTags } from '@/components/sections/journal/SectionJournalTags'
-// export { default as SectionJournalTagsWithPictures } from '@/components/sections/journal/SectionJournalTagsWithPictures'
-// export { default as SectionJournalTitle } from '@/components/sections/journal/SectionJournalTitle'
+export { SectionJournalArticles } from '@/components/sections/journal/SectionJournalArticles'
+
 // ./
 export { default as About } from '@/components/sections/general/About'
 export { default as AboutExecutive } from '@/components/sections/general/AboutExecutive'

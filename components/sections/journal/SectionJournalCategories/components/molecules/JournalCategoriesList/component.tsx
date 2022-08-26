@@ -1,20 +1,20 @@
 import { useContext } from 'react'
 import { ContextJournalContext } from '@/context/index'
 
-import { ListButton } from '../../atoms'
+import { JournalCategoriesListButton } from '../../atoms'
 import stls from './stls.module.sass'
 
-export const List = () => {
+export const JournalCategoriesList = () => {
     const { journalCategories } = useContext(ContextJournalContext)
-
-    console.log(journalCategories)
+    // Статьи
+    // console.log(journalArticles)
     return (
         <ul className={stls.categories}>
             {journalCategories
             ?.filter(category => category.title && category.slug)
             .map(category => (
-                <li className={stls.listItem}>
-                    <ListButton key={category.slug} title={category.title}/>
+                <li className={stls.listItem} key={category.slug}>
+                    <JournalCategoriesListButton title={category.title}/>
                 </li>
             ))}
         </ul>

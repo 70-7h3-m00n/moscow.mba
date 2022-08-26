@@ -1,1 +1,1 @@
-export { ListButton } from './ListButton'
+export { JournalCategoriesListButton } from './JournalCategoriesListButton'
