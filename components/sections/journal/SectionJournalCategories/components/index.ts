@@ -1,1 +1,0 @@
-export { JournalCategoriesList } from './molecules'

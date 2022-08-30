@@ -5,20 +5,24 @@
 
 .container
   @include m.media(phone, tablet)
-    padding-bottom: f.px(40)
+    padding-top: f.px(60)
+    padding-bottom: f.px(60)
   @include m.media(laptop, desktop, widescreen)
+    padding-top: f.px(65)
     padding-bottom: f.px(130)
 
 .categories
   display: flex
-  overflow-x: auto
+  flex-wrap: wrap
+  row-gap: f.px(15)
+  @include m.media(phone, tablet)
+    overflow-x: auto
 
 .categoryItem
-  & + .categoryItem
     @include m.media(phone, tablet)
-      margin-left: f.px(20)
+      margin-right: f.px(20)
     @include m.media(laptop, desktop, widescreen)
-      margin-left: f.px(34)
+      margin-right: f.px(34)
 
 .isActive
   @include m.dye(c, c.$alpha)
@@ -27,9 +31,10 @@
 .category
   display: inline-block
   padding: f.px(6) f.px(18)
-  border: 1px solid
+  border: 1px solid c.$chi
   @include m.dye(border, c.$chi)
   border-radius: f.px(15)
   font-size: f.px(14)
-  font-weight: 500
+  font-weight: 400
   line-height: 120%
+  color: c.$chi

@@ -5,7 +5,36 @@
 @use '@/styles/shared/journal' as j
 
 .container
-  @include m.media(phone, tablet)
-    padding-bottom: f.px(60)
-  @include m.media(laptop, desktop, widescreen)
-    padding-bottom: f.px(130)
+    @include m.media(phone, tablet)
+        @include m.dye(bgc, c.$chi)
+        margin-bottom: f.px(60)
+    @include m.media(laptop, desktop, widescreen)
+        margin-bottom: f.px(87)
+    .column
+        .title
+            font-weight: 500
+            line-height: 120%
+            @include m.media(phone, tablet)
+                font-size: f.px(24)
+                @include m.dye(c, c.$psi)
+            @include m.media(laptop, desktop, widescreen)
+                width: f.px(630)
+                margin-bottom: f.px(35)
+                font-size: f.px(36)
+                @include m.dye(c, c.$chi)
+
+        .decription
+            @include m.media(phone, tablet)
+                font-size: f.px(15)
+                @include m.dye(c, c.$psi)
+            @include m.media(laptop, desktop, widescreen)
+                width: f.px(630)
+                margin-bottom: f.px(66)
+                font-size: f.px(20)
+                @include m.dye(c, c.$chi)
+            font-weight: 400
+            line-height: 120%
+
+        .items
+            display: flex
+            justify-content: space-between

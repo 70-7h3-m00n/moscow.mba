@@ -1,1 +1,0 @@
-export { JournalCategoriesListButton } from './component'

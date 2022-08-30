@@ -1,1 +1,0 @@
-export { JournalArticlesTitle } from './component'

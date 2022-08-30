@@ -1,1 +1,0 @@
-export { JournalButton } from './JournalButton'

@@ -1,31 +1,27 @@
 import stls from '@/styles/components/general/GeneralJournalArticleCreatedAt.module.sass'
+
 import { TypeClassNames } from '@/types/index'
-import cn from 'classnames'
+
 import { format } from 'date-fns'
 import { ru } from 'date-fns/locale'
-import { getClassNames } from '@/helpers/index'
 
 type TypeGeneralJournalArticleCreatedAtProps = TypeClassNames & {
-  createdAt: string | null
+  time: string | Date
   formatString?: string
 }
 
 const GeneralJournalArticleCreatedAt = ({
-  classNames,
-  createdAt,
+  time,
   formatString
-}: TypeGeneralJournalArticleCreatedAtProps) => {
-  if (!createdAt) return <></>
-  return (
-    <div
-      className={
-        cn([stls.container], getClassNames({ classNames })) || undefined
-      }>
-      {format(new Date(createdAt), formatString || 'dd LLL', {
+}: TypeGeneralJournalArticleCreatedAtProps) => (
+  time ? <div className={stls.date}>
+    {
+      format(new Date(time), formatString || 'dd LLL', {
         locale: ru
-      })}
-    </div>
-  )
-}
+      })
+    }
+  </div>
+    : <></>
+)
 
 export default GeneralJournalArticleCreatedAt

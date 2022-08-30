@@ -10,8 +10,9 @@ export { default as SectionCorporateClientsWeAre } from '@/components/sections/c
 export { default as SectionCorporateClientsWhyUs } from '@/components/sections/corporateClients/SectionCorporateClientsWhyUs'
 
 // ./journal
-export { SectionJournalCategories } from '@/components/sections/journal/SectionJournalCategories'
-export { SectionJournalArticles } from '@/components/sections/journal/SectionJournalArticles'
+export { default as SectionJournalCategories } from '@/components/sections/journal/SectionJournalCategories'
+export { default as SectionJournalArticles } from '@/components/sections/journal/SectionJournalArticles'
+export { default as SectionJournalHeroArticle } from '@/components/sections/journal/SectionJournalHeroArticle'
 
 // ./
 export { default as About } from '@/components/sections/general/About'

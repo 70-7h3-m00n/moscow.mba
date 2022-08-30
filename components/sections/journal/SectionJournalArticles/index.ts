@@ -1,1 +1,0 @@
-export { SectionJournalArticles } from './component'
