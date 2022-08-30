@@ -12,6 +12,7 @@
   position: relative
   display: flex
   flex-direction: column
+  @include m.dye(bgc, c.$phi)
 
 .tagLabel
   position: absolute
@@ -45,31 +46,40 @@
 
 .title
   @include m.media(phone, tablet)
+    margin-top: f.px(25)
     margin-bottom: f.px(24)
-    font-size: f.px(18)
-  @include m.media(laptop, desktop, widescreen)
-    margin-bottom: f.px(34)
     font-size: f.px(15)
+  @include m.media(laptop, desktop, widescreen)
+    margin-top: f.px(15)
+    margin-bottom: f.px(25)
+    font-size: f.px(18)
   font-weight: 500
   line-height: 120%
   @include m.dye(c, c.$chi)
-  
+
 .bottomBottom
   display: flex
   justify-content: space-between
   align-items: flex-end
-
+.top
+  margin-bottom: f.px(25)
 .category
+  align-self: flex-start
+  margin-bottom: f.px(15)
   padding: f.px(6) f.px(18)
   border: f.px(1) solid
   @include m.dye(border, c.$chi)
   border-radius: f.px(15)
-  font-size: f.px(14)
+  font-size: f.px(13)
   font-weight: 400
   line-height: 120%
   @include m.dye(c, c.$chi)
 
 .date
+  @include m.media(phone, tablet)
+    align-self: flex-end
+  @include m.media(laptop, desktop, widescreen)
+    align-self: flex-start
   font-size: f.px(14)
   line-height: 120%
   @include m.dye(c, c.$upsilon)
