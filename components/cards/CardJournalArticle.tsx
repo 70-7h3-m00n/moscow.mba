@@ -103,7 +103,7 @@ const CardJournalArticle = ({ classNames, article }: TypeCardJournalArticleProps
                 heightInitial: picture.height
               })
             }
-            alt={title}
+            alt={picture.alt}
             title={title} />
         </div>
         <div className={stls.bottom}>
