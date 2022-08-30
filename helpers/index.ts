@@ -18,6 +18,7 @@ export { default as hitContactRoute } from '@/helpers/general/hitContactRoute'
 export { default as getBackJWTToken } from '@/helpers/general/getBackJWTToken'
 export { default as onSubmitForm } from '@/helpers/general/onSubmitForm'
 export { default as toNumberWithSpaces } from '@/helpers/general/toNumberWithSpaces'
+export { default as getRenderTime } from '@/helpers/general/getRenderTime'
 
 // ./ruCases
 export { default as ruCaseMonth } from '@/helpers/ruCases/ruCaseMonth'

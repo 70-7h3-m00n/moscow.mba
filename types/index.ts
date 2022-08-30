@@ -48,6 +48,11 @@ export type { default as TypeLibJournalArticleBody } from '@/types/lib/journal/a
 export type { default as TypeLibJournalArticleEmphasisBody } from '@/types/lib/journal/article/TypeLibJournalArticleEmphasisBody'
 export type { default as TypeLibJournalArticleListItem } from '@/types/lib/journal/article/TypeLibJournalArticleListItem'
 
+//Lib/journal/renderTime
+export type { default as TypeLessThanLiniar } from '@/types/lib/journal/renderTime/TypeLessThanLiniar'
+export type { default as TypeLessThanNonLiniar } from '@/types/lib/journal/renderTime/TypeLessThanNonLiniar'
+export type { default as TypeLessThan } from '@/types/lib/journal/renderTime/TypeLessThan'
+export type { default as TypeRenederTimeProps } from '@/types/lib/journal/renderTime/TypeRenederTimeProps'
 // Lib/journal
 export type { default as TypeLibJournalArticle } from '@/types/lib/journal/TypeLibJournalArticle'
 export type { default as TypeLibJournalArticles } from '@/types/lib/journal/TypeLibJournalArticles'
@@ -63,6 +68,7 @@ export type { default as TypeLibPrograms } from '@/types/lib/programs/TypeLibPro
 // Lib/teachers
 export type { default as TypeLibTeacher } from '@/types/lib/teachers/TypeLibTeacher'
 export type { default as TypeLibTeachers } from '@/types/lib/teachers/TypeLibTeachers'
+
 
 // Page/default/props
 export type { default as TypePageDefaultProps } from '@/types/page/default/props/TypePageDefaultProps'
