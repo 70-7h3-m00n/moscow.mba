@@ -9,10 +9,6 @@ export type { default as TypeBtnTag } from '@/types/btn/TypeBtnTag'
 export type { default as TypeBtnTagWithLink } from '@/types/btn/TypeBtnTagWithLink'
 export type { default as TypeBtnType } from '@/types/btn/TypeBtnType'
 
-// context/journal
-export type { default as TypeContextJournalContext } from '@/types/context/journal/TypeContextJournalContext'
-export type { default as TypeContextJournalState } from '@/types/context/journal/TypeContextJournalState'
-
 // general
 export type { default as TGeneralRoute } from '@/types/general/TGeneralRoute'
 export type { default as TGeneralWindowDataLayer } from '@/types/general/TGeneralWindowDataLayer'

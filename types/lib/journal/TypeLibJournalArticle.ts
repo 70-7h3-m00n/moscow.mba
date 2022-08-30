@@ -17,11 +17,7 @@ import {
 type TypeLibJournalArticle = {
   title: string | null
   slug: string | null
-  journal_category: {
-    title: string | null
-    slug: string | null
-  }
-  journal_tag: {
+  journalCategory: {
     title: string | null
     slug: string | null
   }
