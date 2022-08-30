@@ -1,5 +1,14 @@
-$breakpointsMin: (phone: null, tablet: 480px, laptop: 768px, desktop: 1020px, widescreen: 1330px)
-$breakpointsMax: (phone: 481px, tablet: 769px, laptop: 1021px, desktop: 1331px, widescreen: null)
+@use '@/styles/config/Breakpoints.module.sass' as bp
+@use "sass:list"
+@use "sass:map"
+
+$phone: bp.$phone
+$tablet: bp.$tablet
+$laptop: bp.$laptop
+$widescreen: bp.$widescreen
+
+$breakpointsMin: (phone: null, tablet: $phone+1, laptop: $tablet+1, desktop: $laptop+1, widescreen: $widescreen+1)
+$breakpointsMax: (phone: $phone, tablet: $tablet, laptop: $laptop, desktop: $widescreen, widescreen: null)
 
 @mixin media($keys...)
   @each $key in $keys
