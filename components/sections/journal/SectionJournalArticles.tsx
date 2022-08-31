@@ -2,11 +2,13 @@ import {
     useContext,
     useState
 } from 'react'
+
 import cn from 'classnames'
 
 import stls from '@/styles/components/sections/journal/SectionJournalAllArticles.module.sass'
 
 import { TypeClassNames } from '@/types/index'
+import { TypeContextJournalArticles, TypeContextJournalFilterButtons } from '@/types/context/journal/TypeContextJournal'
 
 import { getClassNames } from '@/helpers/index'
 
@@ -18,15 +20,24 @@ import { CardJournalArticle } from '@/components/cards'
 import { BtnArticlesShowMore } from '@/components/btns'
 
 
-type TypeSectionJournalAllArticlesProps = TypeClassNames
+type TypeSectionJournalAllArticlesProps = {
+    filterCategoriesButton: TypeContextJournalFilterButtons
+} & TypeClassNames
 
-const SectionJournalAllArticles = ({ classNames }: TypeSectionJournalAllArticlesProps) => {
+const defaultSizeShowArticles = 2
+const defaultSizeShowMore = 1
+
+const SectionJournalAllArticles = ({ classNames, filterCategoriesButton }: TypeSectionJournalAllArticlesProps) => {
     const { articles } = useContext(ContextStaticPropsJournal)
-    const [numberShowArticles, setNumberShowArticles] = useState(1)
-    const numberTotalArticles = articles.length
+    const [sizeShowArticles, setSizeShowArticles] = useState(defaultSizeShowArticles)
 
+    
+    const appliedCategories = filterCategoriesButton.filter(category => category.state === true)
+    const filteredArticles = articles.filter(article => appliedCategories.some(appliedCategory => appliedCategory.title === article.journalCategory.title))
+    const sizeArticles = filteredArticles.length
+    
     const changeShowMore = () => {
-        setNumberShowArticles(countShowArticles => countShowArticles + 1)
+        setSizeShowArticles(sizeShowArticles => sizeShowArticles + defaultSizeShowMore)
     }
 
     return (
@@ -38,17 +49,17 @@ const SectionJournalAllArticles = ({ classNames }: TypeSectionJournalAllArticles
                 <GeneralJournalSectionTitle>Все статьи</GeneralJournalSectionTitle>
                 <ul className={stls.articles}>
                     {
-                        articles
-                            ?.filter((article, idx) => idx < numberShowArticles)
-                            .map(article => (
-                                <li key={article.slug} className={stls.articleItem}>
+                        filteredArticles
+                            ?.filter((_, idx) => idx < sizeShowArticles)
+                            ?.map(article => (
+                                <li key={article?.slug} className={stls.articleItem}>
                                     <CardJournalArticle article={article} />
                                 </li>
                             ))
                     }
                 </ul>
                 {
-                    numberTotalArticles > numberShowArticles
+                    sizeArticles > sizeShowArticles
                         ? <div className={stls.buttonWrapper}>
                             <BtnArticlesShowMore onClick={changeShowMore} />
                         </div>

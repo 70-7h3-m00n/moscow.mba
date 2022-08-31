@@ -25,6 +25,14 @@ type TypeContextJournalCategory = {
     slug?: string | null
 } | null
 
+type TypeContextJournalFilterButtons = Array<TypeContextJournalFilterButton>
+
+type TypeContextJournalFilterButton = {
+    title?: string | null
+    slug?: string | null
+    state?: boolean | null
+} | null
+
 
 type TypeContextJournal = {
     categories: TypeContextJournalCategories
@@ -38,5 +46,7 @@ export type {
     TypeContextJournalArticles,
     TypeContextJournalCategory,
     TypeContextJournalCategories,
-    TypeContextJournal
+    TypeContextJournal,
+    TypeContextJournalFilterButton,
+    TypeContextJournalFilterButtons
 }
