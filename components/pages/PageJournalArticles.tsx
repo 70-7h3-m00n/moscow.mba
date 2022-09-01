@@ -1,18 +1,9 @@
 import {
   useContext,
-  useEffect,
   useState
 } from 'react'
 
-import cn from 'classnames'
-
-import { TypeClassNames } from '@/types/index'
-
-import { getClassNames } from '@/helpers/index'
-
 import { ContextStaticPropsJournal } from '@/context/index'
-
-import stls from '@/styles/components/pages/PageJournalArticles.module.sass'
 
 import {
   SectionJournalCategories,
@@ -21,33 +12,35 @@ import {
 } from '@/components/sections'
 
 const PageJournalArticles = () => {
+  const { categories, articles } = useContext(ContextStaticPropsJournal)
+  const existenceCategory = categories
+        .filter(category => articles
+            .some(article => article.journalCategory.title === category.title))
 
-  const { categories } = useContext(ContextStaticPropsJournal)
-
-  let [filterAllCategoriesButton, setFilterAllCategoriesButton] = useState(true)
-  let [filterCategoriesButton, setFilterCategoriesButton] = useState(categories.map(item => ({ ...item, state: true })))
-
-  const handleFilterAllCategoriesButton = ({ title }) => {
-    setFilterCategoriesButton(
-      filterCategoriesButton.map(item =>
+  let [filterAllCategoriesButtons, setfilterAllCategoriesButtons] = useState(true)
+  let [filterCategoriesButtons, setfilterCategoriesButtons] = useState(existenceCategory.map(item => ({ ...item, state: true })))
+  
+  const handlefilterAllCategoriesButtons = () => {
+    setfilterCategoriesButtons(
+      filterCategoriesButtons.map(item =>
         ({ ...item, state: true })
       )
     )
-    setFilterAllCategoriesButton(filterAllCategoriesButton = true)
+    setfilterAllCategoriesButtons(filterAllCategoriesButtons = true)
   }
 
   const handleFilterButtons = ({ title }) => {
-    if (!filterAllCategoriesButton) {
-      setFilterCategoriesButton(
-        filterCategoriesButton.map(
+    if (!filterAllCategoriesButtons) {
+      setfilterCategoriesButtons(
+        filterCategoriesButtons.map(
           item => (item.title === title)
             ? { ...item, state: !item.state }
             : { ...item, state: item.state }
         )
       )
-    } else if (filterAllCategoriesButton) {
-      setFilterCategoriesButton(
-        filterCategoriesButton
+    } else if (filterAllCategoriesButtons) {
+      setfilterCategoriesButtons(
+        filterCategoriesButtons
           .map(item =>
             ({ ...item, state: false })
           )
@@ -56,15 +49,21 @@ const PageJournalArticles = () => {
             : { ...item, state: item.state }
           )
       )
-      setFilterAllCategoriesButton(filterAllCategoriesButton = false)
+      setfilterAllCategoriesButtons(filterAllCategoriesButtons = false)
     }
   }
 
   return (
     <>
-      <SectionJournalCategories handleFilterButtons={handleFilterButtons} handleFilterAllCategoriesButton={handleFilterAllCategoriesButton} />
+      <SectionJournalCategories
+        filterCategoriesButtons={filterCategoriesButtons}
+        filterAllCategoriesButtons={filterAllCategoriesButtons}
+        handleFilterButtons={handleFilterButtons}
+        handlefilterAllCategoriesButtons={handlefilterAllCategoriesButtons}
+
+      />
       <SectionJournalHeroArticle />
-      <SectionJournalArticles filterCategoriesButton={filterCategoriesButton} />
+      <SectionJournalArticles filterCategoriesButtons={filterCategoriesButtons} />
     </>
   )
 }

@@ -21,25 +21,25 @@ import { BtnArticlesShowMore } from '@/components/btns'
 
 
 type TypeSectionJournalAllArticlesProps = {
-    filterCategoriesButton: TypeContextJournalFilterButtons
+    filterCategoriesButtons: TypeContextJournalFilterButtons
 } & TypeClassNames
 
 const defaultSizeShowArticles = 2
 const defaultSizeShowMore = 1
 
-const SectionJournalAllArticles = ({ classNames, filterCategoriesButton }: TypeSectionJournalAllArticlesProps) => {
+const SectionJournalAllArticles = ({
+    classNames,
+    filterCategoriesButtons
+}: TypeSectionJournalAllArticlesProps) => {
     const { articles } = useContext(ContextStaticPropsJournal)
     const [sizeShowArticles, setSizeShowArticles] = useState(defaultSizeShowArticles)
 
-    
-    const appliedCategories = filterCategoriesButton.filter(category => category.state === true)
+    const appliedCategories = filterCategoriesButtons.filter(category => category.state === true)
     const filteredArticles = articles.filter(article => appliedCategories.some(appliedCategory => appliedCategory.title === article.journalCategory.title))
     const sizeArticles = filteredArticles.length
-    
     const changeShowMore = () => {
         setSizeShowArticles(sizeShowArticles => sizeShowArticles + defaultSizeShowMore)
     }
-
     return (
         <section
             className={
