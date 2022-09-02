@@ -10,30 +10,60 @@
         margin-bottom: f.px(60)
     @include m.media(laptop, desktop, widescreen)
         margin-bottom: f.px(87)
+    @include m.media(phone, tablet)
+            padding-top: f.px(60) 
+            padding-bottom: f.px(60) 
+
+    .wrapper
+        display: flex
+        justify-content: space-between
+        align-items: center
+        @include m.media(phone, tablet, laptop)
+            flex-wrap: wrap
+
     .column
+        &:nth-of-type(1)
+            @include m.media(desktop)
+                width: f.px(500)
+            @include m.media(phone, tablet, laptop)
+                margin-bottom: f.px(40)
         .title
             font-weight: 500
             line-height: 120%
-            @include m.media(phone, tablet)
-                font-size: f.px(24)
-                @include m.dye(c, c.$psi)
+            
             @include m.media(laptop, desktop, widescreen)
                 width: f.px(630)
                 margin-bottom: f.px(35)
                 font-size: f.px(36)
                 @include m.dye(c, c.$chi)
+            @include m.media(desktop)
+                width: f.px(530)
+                font-size: f.px(28)
+            @include m.media(phone, tablet)
+                font-size: f.px(24)
+                margin-bottom: f.px(25)
+                font-size: f.px(24)
+                @include m.dye(c, c.$psi)
 
         .decription
+            font-weight: 400
+            @include m.dye(c, c.$psi)
+            @include m.media(desktop)
+                line-height: f.px(22)
+                width: f.px(530)
+                font-size: f.px(16)
+            @include m.media(widescreen)
+                width: f.px(630)
             @include m.media(phone, tablet)
                 font-size: f.px(15)
-                @include m.dye(c, c.$psi)
-            @include m.media(laptop, desktop, widescreen)
-                width: f.px(630)
-                margin-bottom: f.px(66)
+                margin-bottom: f.px(60)
+                line-height: f.px(18)
+            @include m.media(laptop, widescreen)
                 font-size: f.px(20)
+                line-height: f.px(26)
+            @include m.media(laptop, desktop, widescreen)
+                margin-bottom: f.px(66)
                 @include m.dye(c, c.$chi)
-                font-weight: 400
-                line-height: 120%
 
         .items
             display: flex
@@ -50,3 +80,7 @@
                 line-height: 120%
                 @include m.dye(c, c.$chi)
                 @include m.dye(bgc, c.$psi)
+                @include m.media(phone, tablet)
+                    @include m.dye(c, c.$psi)
+                    @include m.dye(bgc, c.$chi)
+

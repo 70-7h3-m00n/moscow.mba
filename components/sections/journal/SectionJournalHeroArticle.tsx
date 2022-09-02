@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { useContext } from 'react'
 import cn from 'classnames'
 
 import stls from '@/styles/components/sections/journal/SectionJournalHeroArticle.module.sass'
@@ -24,7 +23,6 @@ import {
     TypeContextJournalFilterButtons
 } from '@/types/context/journal/TypeContextJournal'
 
-import { ContextStaticPropsJournal } from '@/context/index'
 
 import { Wrapper } from 'components/layout'
 import { ImgJournalArticle } from '@/components/images'
@@ -85,6 +83,7 @@ const lessThan: TypeLessThan = [
 ]
 
 const pageOptions = lessThan.filter(item => item.type === 'nonLiniar') as Array<TypeLessThanNonLiniar>
+const sizeImage = 630
 
 const SectionJournalHeroArticle = ({
     classNames,
@@ -92,7 +91,6 @@ const SectionJournalHeroArticle = ({
     filterCategoriesButtons,
     handleFilterActiclesButtons
 }: TypeSectionJournalArticleProps) => {
-    const { articles } = useContext(ContextStaticPropsJournal)
     const articleNew = filteredArticles[0]
     const time = getRenderTime({ timestamp: articleNew?.createdAt, options: pageOptions })
     return (
@@ -103,14 +101,14 @@ const SectionJournalHeroArticle = ({
             || articleNew?.journalCategory?.slug
             || articleNew?.createdAt
             ? <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-                <Wrapper>
+                <Wrapper classNames={[stls.wrapper]}>
                     <div className={stls.column}>
                         <ImgJournalArticle
                             src={articleNew.picture.url || undefined}
-                            width={articleNew.picture.width && bp.tablet}
+                            width={articleNew.picture.width && sizeImage}
                             height={articleNew.picture.height &&
                                 getImageHeight({
-                                    width: bp.tablet,
+                                    width: sizeImage,
                                     widthInitial: articleNew.picture.width,
                                     heightInitial: articleNew.picture.height
                                 })
@@ -133,6 +131,7 @@ const SectionJournalHeroArticle = ({
                                     .filter(category => category.title === articleNew.journalCategory.title)
                                     .map(category =>
                                         <button
+                                            key={category.slug}
                                             className={stls.category}
                                             onClick={() => handleFilterActiclesButtons(category)}
                                         >{category.title}</button>)

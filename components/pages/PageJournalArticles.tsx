@@ -31,7 +31,6 @@ const PageJournalArticles = () => {
   const appliedCategories = filterCategoriesButtons.filter(category => category.state === true)
   const filteredArticles = articles.filter(article => appliedCategories.some(appliedCategory => appliedCategory.title === article.journalCategory.title))
   const sizeArticles = filteredArticles.length
-  console.log(filteredArticles)
 
   // Output of all existing articles by clicking on the "all articles" button
   // Вывод всех существующих статей, при клике на кнопку "все статьи"
