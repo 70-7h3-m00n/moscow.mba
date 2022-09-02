@@ -18,6 +18,7 @@ import {
     TypeLessThan,
     TypeLessThanNonLiniar
 } from '@/types/index'
+import { TypeContextJournalArticles } from '@/types/context/journal/TypeContextJournal'
 
 import { ContextStaticPropsJournal } from '@/context/index'
 
@@ -26,7 +27,9 @@ import { ImgJournalArticle } from '@/components/images'
 import { BtnCategory } from '@/components/btns'
 import { GeneralJournalArticleCreatedAt } from '@/components/general'
 
-type TypeSectionJournalCategoriesProps = TypeClassNames
+type TypeSectionJournalArticleProps = {
+    filteredArticles: TypeContextJournalArticles
+} & TypeClassNames
 
 const lessThan: TypeLessThan = [
     {
@@ -78,10 +81,13 @@ const lessThan: TypeLessThan = [
 
 const pageOptions = lessThan.filter(item => item.type === 'nonLiniar') as Array<TypeLessThanNonLiniar>
 
-const SectionJournalHeroArticle = ({ classNames }: TypeSectionJournalCategoriesProps) => {
+const SectionJournalHeroArticle = ({
+    classNames,
+    filteredArticles
+}: TypeSectionJournalArticleProps) => {
     const { articles } = useContext(ContextStaticPropsJournal)
-    const articleNew = articles[0]
-    const time = getRenderTime({ timestamp: articleNew.createdAt, options: pageOptions })
+    const articleNew = filteredArticles[0]
+    const time = getRenderTime({ timestamp: articleNew?.createdAt, options: pageOptions })
 
     return (
         articleNew?.slug

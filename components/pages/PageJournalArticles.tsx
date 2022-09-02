@@ -85,7 +85,7 @@ const PageJournalArticles = () => {
         handlefilterAllCategoriesButtons={handlefilterAllCategoriesButtons}
 
       />
-      <SectionJournalHeroArticle />
+      <SectionJournalHeroArticle filteredArticles={filteredArticles}/>
       {
         sizeArticles > 2
           ? <SectionJournalArticles
