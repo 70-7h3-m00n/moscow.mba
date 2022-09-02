@@ -27,7 +27,7 @@ const SectionJournalCategories = ({
     filterAllCategoriesButtons,
 }: TypeSectionJournalCategoriesProps) => {
     const buttonAllArticles = {
-        title: 'Все статьи',
+        title: `Все статьи`,
         slug: 'vse_stati',
     }
     return (
@@ -40,7 +40,7 @@ const SectionJournalCategories = ({
                         onClick={() => handlefilterAllCategoriesButtons()}>
                         <button className={
                             filterAllCategoriesButtons
-                                ? stls.categoryItemIsActive
+                                ? `${stls.categoryItemIsActive} ${stls.categoryAllItemIsActive}`
                                 : stls.categoryItem
                         }>{buttonAllArticles.title}</button>
                     </li>

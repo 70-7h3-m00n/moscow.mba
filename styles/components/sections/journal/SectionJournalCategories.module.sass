@@ -13,10 +13,11 @@
 
 .categories
   display: flex
-  flex-wrap: wrap
+  align-items: center
   row-gap: f.px(15)
+  overflow-x: auto
   @include m.media(phone, tablet)
-    overflow-x: auto
+    
 
 .categoryItem
   padding: f.px(6) f.px(18)
@@ -26,6 +27,7 @@
   font-weight: 400
   line-height: 120%
   border: 1px solid c.$chi
+  white-space: nowrap
   @include m.dye(bgc, c.$psi)
   @include m.media(phone, tablet)
     margin-right: f.px(20)
@@ -40,13 +42,15 @@
   font-weight: 400
   line-height: 120%
   border: 1px solid c.$alpha
+  white-space: nowrap
   @include m.dye(c, c.$alpha)
   @include m.dye(bgc, c.$psi)
   @include m.media(phone, tablet)
     margin-right: f.px(20)
   @include m.media(laptop, desktop, widescreen)
     margin-right: f.px(34)
-
+.categoryAllItemIsActive
+  cursor: default
 .category
   display: inline-block
   padding: f.px(6) f.px(18)
