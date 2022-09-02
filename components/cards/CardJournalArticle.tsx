@@ -10,6 +10,11 @@ import {
   TypeLessThanLiniar
 } from '@/types/index'
 
+import {
+  TypeContextJournalCategory,
+  TypeContextJournalFilterButtons
+} from '@/types/context/journal/TypeContextJournal'
+
 import bp from '@/config/breakpoints'
 import { routesFront } from '@/config/index'
 
@@ -21,12 +26,12 @@ import {
 
 import { GeneralJournalArticleCreatedAt } from '@/components/general'
 import { ImgJournalArticle } from '@/components/images'
-import { BtnCategory } from '@/components/btns'
-
 
 type TypeCardJournalArticleProps = TypeClassNames & {
   article: TypeLibJournalArticle | null
   tag?: boolean
+  filterCategoriesButtons: TypeContextJournalFilterButtons
+  handleFilterActiclesButtons: (category: TypeContextJournalCategory) => void
 }
 
 const lessThan: TypeLessThan = [
@@ -79,18 +84,18 @@ const lessThan: TypeLessThan = [
 
 const cardOptions = lessThan.filter(item => item.type === 'liniar') as Array<TypeLessThanLiniar>
 
-const CardJournalArticle = ({ classNames, article }: TypeCardJournalArticleProps) => {
+const CardJournalArticle = ({
+  classNames,
+  article,
+  filterCategoriesButtons,
+  handleFilterActiclesButtons
+}: TypeCardJournalArticleProps) => {
   const time = getRenderTime({ timestamp: article.createdAt, options: cardOptions })
 
   const { slug, picture, title, journalCategory, createdAt } = article
 
   return (
-    (slug
-      || picture
-      || title
-      || journalCategory.title
-      || journalCategory.slug
-      || createdAt)
+    (slug && picture && title && journalCategory.title && journalCategory.slug && createdAt)
       ? <article className={stls.article}>
         <div className={stls.top}>
           <ImgJournalArticle
@@ -107,7 +112,15 @@ const CardJournalArticle = ({ classNames, article }: TypeCardJournalArticleProps
             title={title} />
         </div>
         <div className={stls.bottom}>
-          <BtnCategory>{journalCategory.title}</BtnCategory>
+          {
+            filterCategoriesButtons
+              .filter(category => category.title === journalCategory.title)
+              .map(category =>
+                <button
+                  className={stls.category}
+                  onClick={() => handleFilterActiclesButtons(category)}
+                >{category.title}</button>)
+          }
           <Link href={`${routesFront.journal}/${slug}`}>
             <a className={cn(stls.container, getClassNames({ classNames })) || undefined}>
               <h3 className={stls.title}>{title}</h3>

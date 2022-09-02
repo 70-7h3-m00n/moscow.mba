@@ -18,17 +18,22 @@ import {
     TypeLessThan,
     TypeLessThanNonLiniar
 } from '@/types/index'
-import { TypeContextJournalArticles } from '@/types/context/journal/TypeContextJournal'
+import {
+    TypeContextJournalArticles,
+    TypeContextJournalCategory,
+    TypeContextJournalFilterButtons
+} from '@/types/context/journal/TypeContextJournal'
 
 import { ContextStaticPropsJournal } from '@/context/index'
 
 import { Wrapper } from 'components/layout'
 import { ImgJournalArticle } from '@/components/images'
-import { BtnCategory } from '@/components/btns'
 import { GeneralJournalArticleCreatedAt } from '@/components/general'
 
 type TypeSectionJournalArticleProps = {
     filteredArticles: TypeContextJournalArticles
+    handleFilterActiclesButtons: (category: TypeContextJournalCategory) => void
+    filterCategoriesButtons: TypeContextJournalFilterButtons
 } & TypeClassNames
 
 const lessThan: TypeLessThan = [
@@ -83,12 +88,13 @@ const pageOptions = lessThan.filter(item => item.type === 'nonLiniar') as Array<
 
 const SectionJournalHeroArticle = ({
     classNames,
-    filteredArticles
+    filteredArticles,
+    filterCategoriesButtons,
+    handleFilterActiclesButtons
 }: TypeSectionJournalArticleProps) => {
     const { articles } = useContext(ContextStaticPropsJournal)
     const articleNew = filteredArticles[0]
     const time = getRenderTime({ timestamp: articleNew?.createdAt, options: pageOptions })
-
     return (
         articleNew?.slug
             || articleNew?.picture
@@ -120,7 +126,17 @@ const SectionJournalHeroArticle = ({
                         </Link>
                         <p className={stls.decription}>{articleNew.shortDescription}</p>
                         <div className={stls.items}>
-                            <BtnCategory>{articleNew.journalCategory.title}</BtnCategory>
+                            {/* <BtnCategory>{articleNew.journalCategory.title}</BtnCategory>
+                             */}
+                            {
+                                filterCategoriesButtons
+                                    .filter(category => category.title === articleNew.journalCategory.title)
+                                    .map(category =>
+                                        <button
+                                            className={stls.category}
+                                            onClick={() => handleFilterActiclesButtons(category)}
+                                        >{category.title}</button>)
+                            }
                             <GeneralJournalArticleCreatedAt time={time} />
                         </div>
                     </div>

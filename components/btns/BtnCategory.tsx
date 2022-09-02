@@ -1,14 +1,21 @@
-import stls from '@/styles/components/btns/BtnCategory.module.sass'
+import cn from 'classnames'
 
 import { TypeClassNames } from '@/types/index'
 
+import { getClassNames } from '@/helpers/index'
+
+import stls from '@/styles/components/btns/BtnCategory.module.sass'
+
 type TypeBtnCategory = {
     children: string
-}
+    onClick: () => void
+} & TypeClassNames
 
-const BtnCategory:React.FC<TypeBtnCategory> = ({ children }) => {
+const BtnCategory: React.FC<TypeBtnCategory> = ({ children, classNames }) => {
     return (
-        <button className={stls.category}>{children}</button>
+        <button className={
+            cn(stls.category, getClassNames({ classNames })) || undefined
+        }>{children}</button>
     )
 }
 

@@ -12,9 +12,11 @@ import {
   SectionJournalHeroArticle
 } from '@/components/sections'
 
+const defaultSizeArticlesShowSectionArticles = 2
+
 const PageJournalArticles = () => {
   const { categories, articles } = useContext(ContextStaticPropsJournal)
-  
+
   // Saving those categories that have articles.
   // Сохранение тех категорий, которые имеют статьи.
   const existenceCategory = categories
@@ -23,12 +25,13 @@ const PageJournalArticles = () => {
 
   const [filterAllCategoriesButtons, setfilterAllCategoriesButtons] = useState(true)
   const [filterCategoriesButtons, setfilterCategoriesButtons] = useState(existenceCategory.map(item => ({ ...item, state: true })))
-  
+
   // Output of articles by filtered categories
   // Вывод статей по фильтрованным категориям
   const appliedCategories = filterCategoriesButtons.filter(category => category.state === true)
   const filteredArticles = articles.filter(article => appliedCategories.some(appliedCategory => appliedCategory.title === article.journalCategory.title))
   const sizeArticles = filteredArticles.length
+  console.log(filteredArticles)
 
   // Output of all existing articles by clicking on the "all articles" button
   // Вывод всех существующих статей, при клике на кнопку "все статьи"
@@ -67,6 +70,19 @@ const PageJournalArticles = () => {
       setfilterAllCategoriesButtons(false)
     }
   }
+  // Вывод тех статей, которые соотстветствуют выбранной (нажатой) категогии в компоненте "Статья"
+  const handleFilterActiclesButtons = ({ title }) => {
+    setfilterCategoriesButtons(filterCategoriesButtons =>
+      filterCategoriesButtons.map(
+        item =>
+          (item.title === title)
+            ? { ...item, state: true }
+            : (item.title !== title)
+              ? { ...item, state: false }
+              : { ...item }
+      ))
+    setfilterAllCategoriesButtons(false)
+  }
 
   // Output of all articles if no category is selected (the "All articles" button is pressed)
   // Вывод всех статей, если не выбрана ни одна категория (нажата кнопка "Все статьи")
@@ -83,13 +99,18 @@ const PageJournalArticles = () => {
         filterAllCategoriesButtons={filterAllCategoriesButtons}
         handleFilterButtons={handleFilterButtons}
         handlefilterAllCategoriesButtons={handlefilterAllCategoriesButtons}
-
       />
-      <SectionJournalHeroArticle filteredArticles={filteredArticles}/>
+      <SectionJournalHeroArticle
+        filteredArticles={filteredArticles}
+        filterCategoriesButtons={filterCategoriesButtons}
+        handleFilterActiclesButtons={handleFilterActiclesButtons}
+      />
       {
-        sizeArticles > 2
+        sizeArticles > defaultSizeArticlesShowSectionArticles
           ? <SectionJournalArticles
             filteredArticles={filteredArticles}
+            filterCategoriesButtons={filterCategoriesButtons}
+            handleFilterActiclesButtons={handleFilterActiclesButtons}
             sizeArticles={sizeArticles}
           />
           : ''

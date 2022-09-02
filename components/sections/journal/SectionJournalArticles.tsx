@@ -1,13 +1,15 @@
-import {
-    useState
-} from 'react'
+import { useState } from 'react'
 
 import cn from 'classnames'
 
 import stls from '@/styles/components/sections/journal/SectionJournalAllArticles.module.sass'
 
 import { TypeClassNames } from '@/types/index'
-import { TypeContextJournalArticles } from '@/types/context/journal/TypeContextJournal'
+import {
+    TypeContextJournalArticles,
+    TypeContextJournalCategory,
+    TypeContextJournalFilterButtons
+} from '@/types/context/journal/TypeContextJournal'
 
 import { getClassNames } from '@/helpers/index'
 
@@ -20,6 +22,8 @@ import { BtnArticlesShowMore } from '@/components/btns'
 type TypeSectionJournalAllArticlesProps = {
     filteredArticles: TypeContextJournalArticles
     sizeArticles: number
+    handleFilterActiclesButtons: (category: TypeContextJournalCategory) => void
+    filterCategoriesButtons: TypeContextJournalFilterButtons
 } & TypeClassNames
 
 const defaultSizeShowArticles = 2
@@ -28,14 +32,16 @@ const defaultSizeShowMore = 1
 const SectionJournalAllArticles = ({
     classNames,
     filteredArticles,
-    sizeArticles
+    sizeArticles,
+    handleFilterActiclesButtons,
+    filterCategoriesButtons
 }: TypeSectionJournalAllArticlesProps) => {
     const [sizeShowArticles, setSizeShowArticles] = useState(defaultSizeShowArticles)
 
     const changeShowMore = () => {
         setSizeShowArticles(sizeShowArticles => sizeShowArticles + defaultSizeShowMore)
     }
-    
+
     return (
         <section
             className={
@@ -49,7 +55,10 @@ const SectionJournalAllArticles = ({
                             ?.filter((_, idx) => idx < sizeShowArticles)
                             ?.map(article => (
                                 <li key={article?.slug} className={stls.articleItem}>
-                                    <CardJournalArticle article={article} />
+                                    <CardJournalArticle
+                                        handleFilterActiclesButtons={handleFilterActiclesButtons}
+                                        filterCategoriesButtons={filterCategoriesButtons}
+                                        article={article} />
                                 </li>
                             ))
                     }
