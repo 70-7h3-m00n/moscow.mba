@@ -102,13 +102,13 @@ const Footer = () => {
                     </a>
                   </Link>
                 </li>
-                <li className={stls.linkItem}>
+                {/* <li className={stls.linkItem}>
                   <Link
                     href='/journal'
                     {...(at.en ? { locale: 'ru' } : undefined)}>
                     <a className={stls.link}>{at.en ? 'Journal' : 'Журнал'}</a>
                   </Link>
-                </li>
+                </li> */}
                 <li className={stls.linkItem}>
                   <Link
                     href='/payment'
