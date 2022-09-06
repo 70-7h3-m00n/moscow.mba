@@ -83,7 +83,7 @@ const lessThan: TypeLessThan = [
 ]
 
 const pageOptions = lessThan.filter(item => item.type === 'nonLiniar') as Array<TypeLessThanNonLiniar>
-const sizeImage = 630
+const sizeImage = 748
 
 const SectionJournalHeroArticle = ({
     classNames,
