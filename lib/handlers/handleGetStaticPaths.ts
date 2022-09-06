@@ -2,17 +2,13 @@ import {
   TypeRoutesFront,
   TypePageProgramPaths,
   TypePageTeachersTeacherPaths,
-  TypePageJournalCategoryPaths,
-  TypePageJournalTagPaths,
-  TypePageJournalArticlePaths
+  TypePageJournalArticlesPaths,
 } from '@/types/index'
 import { routesFront, fallback } from '@/config/index'
 import {
   getStaticPathsPageProgram,
   getStaticPathsPageTeachersTeacher,
-  getStaticPathsPageJournalCategory,
-  getStaticPathsPageJournalCategoryTag,
-  getStaticPathsPageJournalCategoryTagArticle
+  getStaticPathsPageJournalArticles
 } from '@/lib/index'
 
 type TypeHandleGetStaticPathsProps = {
@@ -29,9 +25,7 @@ const handleGetStaticPaths = async ({
   paths:
     | TypePageProgramPaths
     | TypePageTeachersTeacherPaths
-    | TypePageJournalCategoryPaths
-    | TypePageJournalTagPaths
-    | TypePageJournalArticlePaths
+    | TypePageJournalArticlesPaths
     | []
   fallback: boolean | 'blocking'
 }> => {
@@ -43,14 +37,8 @@ const handleGetStaticPaths = async ({
       case routesFront.teachersTeacher:
         return await getStaticPathsPageTeachersTeacher()
 
-      case routesFront.journalCategory:
-        return await getStaticPathsPageJournalCategory()
-
-      case routesFront.journalCategoryTag:
-        return await getStaticPathsPageJournalCategoryTag()
-
-      case routesFront.journalCategoryTagArticle:
-        return await getStaticPathsPageJournalCategoryTagArticle()
+      case routesFront.journalArticles:
+        return await getStaticPathsPageJournalArticles()
 
       default:
         return {
@@ -59,7 +47,7 @@ const handleGetStaticPaths = async ({
         }
     }
   } catch (err) {
-    console.log(err)
+    console.error(err)
     return {
       paths: [],
       fallback: fallback.default

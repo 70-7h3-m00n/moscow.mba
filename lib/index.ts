@@ -1,7 +1,5 @@
 // getStaticPaths
-export { default as getStaticPathsPageJournalCategory } from '@/lib/getStaticPaths/getStaticPathsPageJournalCategory'
-export { default as getStaticPathsPageJournalCategoryTag } from '@/lib/getStaticPaths/getStaticPathsPageJournalCategoryTag'
-export { default as getStaticPathsPageJournalCategoryTagArticle } from '@/lib/getStaticPaths/getStaticPathsPageJournalCategoryTagArticle'
+export { default as getStaticPathsPageJournalArticles } from '@/lib/getStaticPaths/getStaticPathsPageJournalArticles'
 export { default as getStaticPathsPageProgram } from '@/lib/getStaticPaths/getStaticPathsPageProgram'
 export { default as getStaticPathsPageTeachersTeacher } from '@/lib/getStaticPaths/getStaticPathsPageTeachersTeacher'
 

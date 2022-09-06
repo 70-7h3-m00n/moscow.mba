@@ -11,10 +11,7 @@ const routesFront: TypeRoutesFront = {
   corporateClients: '/corporate-clients',
   promo: '/promo',
   journal: '/journal',
-  journalCategory: '/journal/[journalCategory]',
-  journalCategoryTag: '/journal/[journalCategory]/[journalTag]',
-  journalCategoryTagArticle:
-    '/journal/[journalCategory]/[journalTag]/[journalArticle]',
+  journalArticles: '/journal/[journalArticles]',
   webinars: '/webinars',
   webinarsArchive: '/webinars/archive',
   webinarsUpcoming: '/webinars/upcoming',

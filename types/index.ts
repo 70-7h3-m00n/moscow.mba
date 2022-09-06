@@ -83,18 +83,10 @@ export type { default as TypePageHomePropsQuery } from '@/types/page/home/querie
 // Page/journal/gspContext
 export type { default as TypePageJournalArticlesGspContext } from '@/types/page/journal/gspContext/TypePageJournalArticlesGspContext'
 // Page/journal/paths
-export type { default as TypePageJournalArticlePaths } from '@/types/page/journal/paths/TypePageJournalArticlePaths'
-export type { default as TypePageJournalCategoryPaths } from '@/types/page/journal/paths/TypePageJournalCategoryPaths'
-export type { default as TypePageJournalTagPaths } from '@/types/page/journal/paths/TypePageJournalTagPaths'
+export type { default as TypePageJournalArticlesPaths } from '@/types/page/journal/paths/TypePageJournalArticlesPaths'
 // Page/journal/props
 export type { default as TypePageJournalArticleProps } from '@/types/page/journal/props/TypePageJournalArticleProps'
 export type { default as TypePageJournalArticlesProps } from '@/types/page/journal/props/TypePageJournalArticlesProps'
-// Page/journal/queries
-export type { default as TypePageJournalArticlePathsQuery } from '@/types/page/journal/queries/TypePageJournalArticlePathsQuery'
-export type { default as TypePageJournalArticlePropsQuery } from '@/types/page/journal/queries/TypePageJournalArticlePropsQuery'
-export type { default as TypePageJournalArticlesPropsQuery } from '@/types/page/journal/queries/TypePageJournalArticlesPropsQuery'
-export type { default as TypePageJournalCategoryPathsQuery } from '@/types/page/journal/queries/TypePageJournalCategoryPathsQuery'
-export type { default as TypePageJournalTagPathsQuery } from '@/types/page/journal/queries/TypePageJournalTagPathsQuery'
 
 // Page/program/paths
 export type { default as TypePageProgramPaths } from '@/types/page/program/paths/TypePageProgramPaths'

@@ -1,7 +1,5 @@
 type TypePageJournalArticlePaths = {
   params: {
-    journalCategory: string
-    journalTag: string
     journalArticle: string
   }
 }[]

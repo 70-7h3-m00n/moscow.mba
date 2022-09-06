@@ -1,9 +1,11 @@
 import {
-  TypePageJournalArticlesPropsQuery,
-  TypePageJournalArticlesGspContext
+  TypeLibPrograms,
+  TypeLibJournalArticles
 } from '@/types/index'
 
-type TypePageJournalArticlesProps = TypePageJournalArticlesPropsQuery &
-  TypePageJournalArticlesGspContext
+type TypePageJournalArticlesProps = {
+  programs: TypeLibPrograms
+  journalArticle: TypeLibJournalArticles
+}
 
 export default TypePageJournalArticlesProps
