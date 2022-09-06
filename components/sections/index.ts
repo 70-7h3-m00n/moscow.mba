@@ -14,6 +14,7 @@ export { default as SectionJournalCategories } from '@/components/sections/journ
 export { default as SectionJournalArticles } from '@/components/sections/journal/SectionJournalArticles'
 export { default as SectionJournalHeroArticle } from '@/components/sections/journal/SectionJournalHeroArticle'
 export { default as SectionJournalHistoryArticle} from '@/components/sections/journal/SectionJournalHistoryArticle'
+export { default as SectionJournalArticleHeader } from '@/components/sections/journal/SectionJournalArticleHeader'
 
 // ./
 export { default as About } from '@/components/sections/general/About'

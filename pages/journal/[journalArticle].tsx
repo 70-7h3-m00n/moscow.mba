@@ -1,8 +1,13 @@
 
-import { GetStaticPaths, GetStaticProps } from 'next'
-import { useEffect, useState } from 'react'
-
+import {
+    GetStaticPaths,
+    GetStaticProps
+} from 'next'
 import type { NextPage } from 'next'
+import {
+    useEffect,
+    useState
+} from 'react'
 
 import {
     routesFront
@@ -16,7 +21,10 @@ import {
 import { TypeLibJournalArticle } from '@/types/index'
 
 import { Wrapper } from '@/components/layout'
-import { SectionJournalHistoryArticle } from '@/components/sections/index'
+import {
+    SectionJournalHistoryArticle,
+    SectionJournalArticleHeader
+} from '@/components/sections/index'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
 
@@ -60,6 +68,13 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                             }%)`
                     }}></div>
             </div>
+            <Wrapper>
+                <article className={stls.article}>
+                    <SectionJournalArticleHeader
+                        journalArticle={journalArticle}
+                        classNames={[stls.articleHeader]} />
+                </article>
+            </Wrapper>
         </>
     )
 }
