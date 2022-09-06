@@ -13,6 +13,7 @@ export { default as SectionCorporateClientsWhyUs } from '@/components/sections/c
 export { default as SectionJournalCategories } from '@/components/sections/journal/SectionJournalCategories'
 export { default as SectionJournalArticles } from '@/components/sections/journal/SectionJournalArticles'
 export { default as SectionJournalHeroArticle } from '@/components/sections/journal/SectionJournalHeroArticle'
+export { default as SectionJournalHistoryArticle} from '@/components/sections/journal/SectionJournalHistoryArticle'
 
 // ./
 export { default as About } from '@/components/sections/general/About'
