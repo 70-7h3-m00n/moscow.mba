@@ -5,10 +5,10 @@
 $phone: bp.$phone
 $tablet: bp.$tablet
 $laptop: bp.$laptop
-$widescreen: bp.$widescreen
+$desktop: bp.$desktop
 
-$breakpointsMin: (phone: null, tablet: $phone+1, laptop: $tablet+1, desktop: $laptop+1, widescreen: $widescreen+1)
-$breakpointsMax: (phone: $phone, tablet: $tablet, laptop: $laptop, desktop: $widescreen, widescreen: null)
+$breakpointsMin: (phone: null, tablet: $phone+1, laptop: $tablet+1, desktop: $laptop+1, widescreen: $desktop)
+$breakpointsMax: (phone: $phone, tablet: $tablet, laptop: $laptop, desktop: $desktop, widescreen: null)
 
 @mixin media($keys...)
   @each $key in $keys
