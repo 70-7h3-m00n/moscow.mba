@@ -41,7 +41,7 @@ export type { default as TypeLibJournalArticlePicture } from '@/types/lib/journa
 export type { default as TypeLibJournalArticleProgram } from '@/types/lib/journal/article/TypeLibJournalArticleProgram'
 export type { default as TypeLibJournalArticleTitle } from '@/types/lib/journal/article/TypeLibJournalArticleTitle'
 export type { default as TypeLibJournalArticleTitleBody } from '@/types/lib/journal/article/TypeLibJournalArticleTitleBody'
-export type { default as TypeLibJournalArticleItem } from '@/types/lib/journal/article/TypeLibJournalArticleItem'
+export type { default as TypeLibJournalArticleConclusion } from '@/types/lib/journal/article/TypeLibJournalArticleConclusion'
 export type { default as TypeLibJournalArticleAuthorName } from '@/types/lib/journal/article/TypeLibJournalArticleAuthorName'
 export type { default as TypeLibJournalArticleAuthorPosition } from '@/types/lib/journal/article/TypeLibJournalArticleAuthorPosition'
 export type { default as TypeLibJournalArticleBody } from '@/types/lib/journal/article/TypeLibJournalArticleBody'

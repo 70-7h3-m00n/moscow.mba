@@ -5,6 +5,7 @@ import {
 } from 'next'
 import type { NextPage } from 'next'
 import {
+    Fragment,
     useEffect,
     useState
 } from 'react'
@@ -23,8 +24,21 @@ import { TypeLibJournalArticle } from '@/types/index'
 import { Wrapper } from '@/components/layout'
 import {
     SectionJournalHistoryArticle,
-    SectionJournalArticleHeader
-} from '@/components/sections/index'
+    SectionJournalArticleHeader,
+    SectionJournalArticleTitle,
+    SectionJournalArticleContents
+} from '@/components/sections'
+
+import {
+    SectionJournalParagraph,
+    SectionJournalTitle,
+    SectionJournalPicture,
+    SectionJournalEmphasis,
+    SectionJournalQuote,
+    SectionJournalList,
+    SectionJournalConclusion,
+    SectionJournalRecommendedProgram
+} from '@/components/sections'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
 
@@ -73,6 +87,56 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                     <SectionJournalArticleHeader
                         journalArticle={journalArticle}
                         classNames={[stls.articleHeader]} />
+
+                    {/* !!!!TODO */}
+
+                    {/* <SectionJournalArticleTitle
+                        journalArticle={journalArticle}
+                        classNames={[stls.articleTitle]} /> */}
+                    {/* <SectionJournalArticleContents
+                    journalArticle={journalArticle}
+                    classNames={[stls.articleTitle]}/> */}
+                    {
+                        journalArticle?.articleBody?.map((component, idx) => (
+                            <Fragment key={`${component.__typename} ${idx}`}>
+                                {component.__typename === 'ComponentJournalParagraph' && (
+                                    <SectionJournalParagraph body={component.paragraphBodyParts} idx={idx} />
+                                )}
+                                {component.__typename === 'ComponentJournalTitle' && (
+                                    <SectionJournalTitle body={component.titleBodyParts} idx={idx} />
+                                )}
+                                {component.__typename === 'ComponentGeneralPicture' && (
+                                    <SectionJournalPicture
+                                        picture={component.picture}
+                                        title={component.title}
+                                        idx={idx}
+                                    />
+                                )}
+                                {component.__typename === 'ComponentJournalEmphasis' && (
+                                    <SectionJournalEmphasis body={component.emphasisBody} />
+                                )}
+                                {component.__typename === 'ComponentJournalQuote' && (
+                                    <SectionJournalQuote
+                                        body={component.quote.body}
+                                        authorPosition={component.quote.athorPosition}
+                                        authorName={component.quote.authorName}
+                                    />
+                                )}
+                                {component.__typename === 'ComponentJournalList' && (
+                                    <SectionJournalList listItem={component.list} />
+                                )}
+                                {component.__typename === 'ComponentJournalConclusion' && (
+                                    <SectionJournalConclusion item={component.conclusion} />
+                                )}
+
+                                {/* !!!TODO */}
+
+                                {/* {component.__typename === 'ComponentJournalJournalRecommendedProgram' && (
+                                    <SectionJournalRecommendedProgram program={component.recommendedProgram} />
+                                )} */}
+                            </Fragment>
+                        ))
+                    }
                 </article>
             </Wrapper>
         </>

@@ -12,7 +12,6 @@ const SectionJournalRecommendedProgram = ({
   classNames,
   program
 }: TypeSectionJournalRecommendedProgramProps) => {
-  return null
   return (
     <section
       className={

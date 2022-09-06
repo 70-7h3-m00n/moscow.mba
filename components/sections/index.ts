@@ -15,6 +15,16 @@ export { default as SectionJournalArticles } from '@/components/sections/journal
 export { default as SectionJournalHeroArticle } from '@/components/sections/journal/SectionJournalHeroArticle'
 export { default as SectionJournalHistoryArticle} from '@/components/sections/journal/SectionJournalHistoryArticle'
 export { default as SectionJournalArticleHeader } from '@/components/sections/journal/SectionJournalArticleHeader'
+export { default as SectionJournalArticleTitle } from '@/components/sections/journal/SectionJournalArticleTitle'
+export { default as SectionJournalArticleContents } from '@/components/sections/journal/SectionJournalArticleContents'
+export { default as SectionJournalParagraph } from '@/components/sections/journal/SectionJournalParagraph'
+export { default as SectionJournalTitle } from '@/components/sections/journal/SectionJournalTitle'
+export { default as SectionJournalPicture } from '@/components/sections/journal/SectionJournalPicture'
+export { default as SectionJournalEmphasis } from '@/components/sections/journal/SectionJournalEmphasis'
+export { default as SectionJournalQuote } from '@/components/sections/journal/SectionJournalQuote'
+export { default as SectionJournalList } from '@/components/sections/journal/SectionJournalList'
+export { default as SectionJournalConclusion } from '@/components/sections/journal/SectionJournalConclusion'
+export { default as SectionJournalRecommendedProgram } from '@/components/sections/journal/SectionJournalRecommendedProgram'
 
 // ./
 export { default as About } from '@/components/sections/general/About'

@@ -11,7 +11,7 @@ import {
   TypeLibJournalArticleBody,
   TypeLibJournalArticleListItem,
   TypeLibJournalArticleProgram,
-  TypeLibJournalArticleItem
+  TypeLibJournalArticleConclusion
 } from '@/types/index'
 
 type TypeLibJournalArticle = {
@@ -27,17 +27,22 @@ type TypeLibJournalArticle = {
   articleBody?:
     | {
         __typename: TypeLibTypename
-        paragraphBody?: TypeLibJournalArticleParagraphBody | null
-        titleBody?: TypeLibJournalArticleTitleBody | null
+        paragraphBodyParts?: TypeLibJournalArticleParagraphBody | null
+        titleBodyParts?: TypeLibJournalArticleTitleBody | null
         picture?: TypeLibJournalArticlePicture | null
         title?: TypeLibJournalArticleTitle | null
         emphasisBody?: TypeLibJournalArticleEmphasisBody | null
         athorPosition?: TypeLibJournalArticleAuthorPosition | null
         authorName?: TypeLibJournalArticleAuthorName | null
         body?: TypeLibJournalArticleBody | null
-        listItem?: TypeLibJournalArticleListItem | null
-        program?: TypeLibJournalArticleProgram | null
-        item?: TypeLibJournalArticleItem | null
+        list?: TypeLibJournalArticleListItem | null
+        recommendedProgram?: TypeLibJournalArticleProgram | null
+        conclusion?: TypeLibJournalArticleConclusion | null
+        quote?: {
+          body?: TypeLibJournalArticleBody | null
+          athorPosition?: TypeLibJournalArticleAuthorPosition | null
+          authorName?: TypeLibJournalArticleAuthorName | null
+        }
       }[]
     | null
 }
