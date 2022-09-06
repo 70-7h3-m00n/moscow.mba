@@ -82,7 +82,7 @@ const lessThan: TypeLessThan = [
   },
 ]
 
-const cardOptions = lessThan.filter(item => item.type === 'liniar') as Array<TypeLessThanLiniar>
+const cardOptions = lessThan.filter(item => item.type === 'nonLiniar') as Array<TypeLessThanLiniar>
 
 const CardJournalArticle = ({
   classNames,
