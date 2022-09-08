@@ -8,29 +8,23 @@ import {
 
 import {
   getClassNames,
-  getImageHeight,
 } from '@/helpers/index'
 
 import {
   Wrapper,
   ContentJournalArticle
 } from '@/components/layout'
-import { 
-  ImgJournalArticle,
-  ImgJournalArticleRecommendedProgram
- } from '@/components/images'
+import {
+  ImgJournalArticleRecommended
+} from '@/components/images'
 
 import routesFront from '@/config/routesFront'
-import paperPlaneImg from '@/public/assets/images/journal/paperPlane.png'
 
 import stls from '@/styles/components/sections/journal/SectionJournalRecommendedProgram.module.sass'
 
 type TypeSectionJournalRecommendedProgramProps = TypeClassNames & {
   recommendedProgram: TypeLibJournalArticleRecommendedProgram | null
 }
-
-const widthpaperPlaneImg = 90
-const heightpaperPlaneImg = 66
 
 const SectionJournalRecommendedProgram = ({
   classNames,
@@ -44,18 +38,10 @@ const SectionJournalRecommendedProgram = ({
       <Wrapper column>
         <ContentJournalArticle classNames={[stls.SectionJournalRecommendedProgram]}>
           <div className={stls.columnImage}>
-          <ImgJournalArticleRecommendedProgram/>
-            <ImgJournalArticle
-              src={paperPlaneImg}
-              width={widthpaperPlaneImg}
-              height={heightpaperPlaneImg &&
-                getImageHeight({
-                  width: widthpaperPlaneImg,
-                  widthInitial: widthpaperPlaneImg,
-                  heightInitial: heightpaperPlaneImg
-                })
-              }
-              alt={'paperPlane'} />
+            <ImgJournalArticleRecommended 
+            icon={recommendedProgram?.program.icon} 
+            backgroundColor='dark'
+            />
           </div>
           <div className={stls.columnTitle}>
             <p className={stls.title}>{recommendedProgram?.title}</p>
@@ -64,7 +50,7 @@ const SectionJournalRecommendedProgram = ({
             <p className={stls.content}>{recommendedProgram?.program?.title}</p>
           </div>
           <div className={stls.columnLink}>
-            <Link href={`${routesFront.root}${routesFront.programs}/${recommendedProgram.program.categorySlug}/${recommendedProgram.program.studyFormatSlug}/${recommendedProgram.program.slug}`}>
+            <Link href={`${routesFront.root}${routesFront.programs}/${recommendedProgram?.program.categorySlug}/${recommendedProgram?.program.studyFormatSlug}/${recommendedProgram?.program.slug}`}>
               <a className={stls.link}>{recommendedProgram?.btnValue}</a>
             </Link></div>
         </ContentJournalArticle>
