@@ -12,6 +12,7 @@ import {
 import { getRenderTime } from '@/helpers/index'
 
 import { GeneralJournalArticleCreatedAt } from '@/components/general'
+import { Wrapper, ContentJournalArticle } from '@/components/layout'
 
 import stls from '@/styles/components/sections/journal/SectionJournalArticleHeader.module.sass'
 
@@ -79,8 +80,10 @@ const SectionJournalArticleHeader = ({
         <header className={
             cn([stls.container], getClassNames({ classNames })) || undefined
         }>
-            <button className={stls.category} disabled>{journalArticle.journalCategory.title}</button>
-            <GeneralJournalArticleCreatedAt time={time} />
+                <ContentJournalArticle classNames={[stls.wrapper]}>
+                    <button className={stls.category} disabled>{journalArticle.journalCategory.title}</button>
+                    <GeneralJournalArticleCreatedAt time={time} />
+                </ContentJournalArticle>
         </header>
     )
 }
