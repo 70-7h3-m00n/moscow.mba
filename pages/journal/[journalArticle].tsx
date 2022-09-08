@@ -40,7 +40,8 @@ import {
     SectionJournalList,
     SectionJournalConclusion,
     SectionJournalRecommendedProgram,
-    SectionJournalRecommendedArticles
+    SectionJournalRecommendedArticles,
+    SectionJournalRecommendedPrograms
 } from '@/components/sections'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
@@ -110,8 +111,8 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                             heightInitial: journalArticle.picture.height
                         })}
                         alt={journalArticle.picture?.alt}
-                        title={journalArticle.picture.alt} 
-                        classNames={[stls.articlePicture]}/>
+                        title={journalArticle.picture.alt}
+                        classNames={[stls.articlePicture]} />
                     {
                         journalArticle?.articleBody?.map((component, idx) => (
                             <Fragment key={`${component.__typename} ${idx}`}>
@@ -149,6 +150,9 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                                 )}
                                 {component.__typename === 'ComponentJournalJournalRecommendedArticles' && (
                                     <SectionJournalRecommendedArticles journalRecommendedArticles={component.journalRecommendedArticles} />
+                                )}
+                                {component.__typename === 'ComponentJournalJournalArticleRecommendedProgramsSection' && (
+                                    <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection}/>
                                 )}
                             </Fragment>
                         ))
