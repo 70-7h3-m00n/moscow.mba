@@ -3,3 +3,68 @@
 @use '@/styles/utils/funcs' as f
 @use '@/styles/themes/default/colors' as c
 @use '@/styles/shared/journal' as j
+
+.SectionJournalRecommendedProgram
+    display: grid
+    @include m.dye(bgc, c.$sigma)
+    @include m.media(laptop, desktop, widescreen)
+        padding: f.px(20)
+        grid-template-rows: 1fr 5fr
+        grid-template-columns: 90px 3fr 1fr
+        grid-column-gap: f.px(25)
+        grid-row-gap: f.px(10)
+    @include m.media(phone, tablet)
+        padding: f.px(15)
+        grid-template-columns: 90px 1fr
+        grid-template-rows: 1fr 5fr 1fr
+        grid-column-gap: f.px(15)
+        grid-row-gap: f.px(15)
+.columnImage
+    @include m.media(laptop, desktop, widescreen)
+        grid-row: 2 / 3
+        grid-column: 1 / 2
+        align-self: center
+    @include m.media(phone, tablet)
+        grid-row: 2 / 3
+        grid-column: 1 / 2
+
+.columnTitle
+    @include m.media(laptop, desktop, widescreen)
+        grid-row: 1 / 2
+        grid-column: 2 / 3
+    @include m.media(phone, tablet)
+        grid-row: 1 / 2
+        grid-column: 2 / 3
+
+.title
+    font-size: f.px(13)
+    font-weight: 400
+    @include m.dye(c, c.$tau)
+
+.columnContent
+    @include m.media(laptop, desktop, widescreen)
+        grid-row: 2 / 3
+        grid-column: 2 / 3
+        align-self: center
+    @include m.media(phone, tablet)
+        grid-row: 2 / 3
+        grid-column: 2 / 3
+
+.content
+    font-size: f.px(18)
+    font-weight: 500
+
+.columnLink
+    @include m.media(laptop, desktop, widescreen)
+        grid-row: 2 / 3
+        grid-column: 3 / 4
+        align-self: center
+        justify-self: end
+    @include m.media(phone, tablet)
+        grid-row: 3 / 4
+        grid-column: 2 / 3
+
+.link
+    font-size: f.px(15)
+    font-weight: 400
+    text-decoration-line: underline

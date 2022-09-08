@@ -11,7 +11,8 @@ import {
   TypeLibJournalArticleBody,
   TypeLibJournalArticleListItem,
   TypeLibJournalArticleProgram,
-  TypeLibJournalArticleConclusion
+  TypeLibJournalArticleConclusion,
+  TypeLibRecommendedArticles
 } from '@/types/index'
 
 type TypeLibJournalArticle = {
@@ -38,6 +39,7 @@ type TypeLibJournalArticle = {
         list?: TypeLibJournalArticleListItem | null
         recommendedProgram?: TypeLibJournalArticleProgram | null
         conclusion?: TypeLibJournalArticleConclusion | null
+        journalRecommendedArticles?: TypeLibRecommendedArticles | null
         quote?: {
           body?: TypeLibJournalArticleBody | null
           athorPosition?: TypeLibJournalArticleAuthorPosition | null

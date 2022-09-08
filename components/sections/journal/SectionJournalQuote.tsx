@@ -3,7 +3,8 @@ import {
   TypeClassNames,
   TypeLibJournalArticleEmphasisBody,
   TypeLibJournalArticleAuthorPosition,
-  TypeLibJournalArticleAuthorName
+  TypeLibJournalArticleAuthorName,
+  TypeLibPicture
 } from '@/types/index'
 import cn from 'classnames'
 import { getClassNames } from '@/helpers/index'
@@ -14,6 +15,7 @@ type TypeSectionJournalQuoteProps = TypeClassNames & {
   body: TypeLibJournalArticleEmphasisBody | null
   authorPosition: TypeLibJournalArticleAuthorPosition | null
   authorName: TypeLibJournalArticleAuthorName | null
+  portrait: TypeLibPicture | null
 }
 
 const SectionJournalQuote = ({

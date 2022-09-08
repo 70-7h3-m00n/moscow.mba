@@ -37,7 +37,8 @@ import {
     SectionJournalQuote,
     SectionJournalList,
     SectionJournalConclusion,
-    SectionJournalRecommendedProgram
+    SectionJournalRecommendedProgram,
+    SectionJournalRecommendedArticles
 } from '@/components/sections'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
@@ -67,6 +68,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
             document.removeEventListener('scroll', handleScroll)
         }
     }, [])
+    console.log(journalArticle?.articleBody)
     return (
         <>
             <Wrapper column>
@@ -92,8 +94,8 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
 
                     {/* <SectionJournalArticleTitle
                         journalArticle={journalArticle}
-                        classNames={[stls.articleTitle]} /> */}
-                    {/* <SectionJournalArticleContents
+                        classNames={[stls.articleTitle]} />
+                    <SectionJournalArticleContents
                     journalArticle={journalArticle}
                     classNames={[stls.articleTitle]}/> */}
                     {
@@ -128,16 +130,19 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                                 {component.__typename === 'ComponentJournalConclusion' && (
                                     <SectionJournalConclusion item={component.conclusion} />
                                 )}
-
-                                {/* !!!TODO */}
-
-                                {/* {component.__typename === 'ComponentJournalJournalRecommendedProgram' && (
-                                    <SectionJournalRecommendedProgram program={component.recommendedProgram} />
-                                )} */}
+                                {component.__typename === 'ComponentJournalJournalRecommendedProgram' && (
+                                    <SectionJournalRecommendedProgram recommendedProgram={component.recommendedProgram} />
+                                )}
+                                {component.__typename === 'ComponentJournalJournalRecommendedArticles' && (
+                                    <SectionJournalRecommendedArticles journalRecommendedArticles={component.journalRecommendedArticles}/>
+                                )}
                             </Fragment>
                         ))
                     }
                 </article>
+                <aside>
+
+                </aside>
             </Wrapper>
         </>
     )

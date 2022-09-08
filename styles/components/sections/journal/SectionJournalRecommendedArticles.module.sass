@@ -1,0 +1,39 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/shared/journal' as j
+
+.container
+    margin-top: f.px(65)
+    margin-bottom: f.px(65)
+.SectionJournalRecommendedArticles
+    padding: f.px(35) f.px(20)
+    box-shadow: f.px(0) f.px(0) f.px(14) rgba(230, 230, 230, 0.5)
+
+.rowTitle
+    margin-bottom: f.px(35)
+
+.title
+    font-size: f.px(15)
+    font-weight: 700
+    @include m.dye(c, c.$alpha)
+    text-transform: uppercase
+
+.link
+    display: flex
+    align-items: center
+    & + .link
+        margin-top: f.px(25)
+
+.linkText
+    font-size: f.px(16)
+    font-weight: 500
+    @include m.dye(c, c.$chi)
+    line-height: f.px(22.4)
+
+.line
+    display: inline-block
+    width: f.px(38)
+    height: f.px(2)
+    margin-right: f.px(15)
+    @include m.dye(bgc, c.$tau)

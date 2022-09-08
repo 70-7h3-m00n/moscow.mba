@@ -47,6 +47,8 @@ export type { default as TypeLibJournalArticleAuthorPosition } from '@/types/lib
 export type { default as TypeLibJournalArticleBody } from '@/types/lib/journal/article/TypeLibJournalArticleBody'
 export type { default as TypeLibJournalArticleEmphasisBody } from '@/types/lib/journal/article/TypeLibJournalArticleEmphasisBody'
 export type { default as TypeLibJournalArticleListItem } from '@/types/lib/journal/article/TypeLibJournalArticleListItem'
+export type { default as TypeLibJournalArticleRecommendedProgram } from '@/types/lib/journal/article/TypeLibJournalArticleRecommendedProgram'
+export type { default as TypeLibJournalArticleRecommendedArticles } from '@/types/lib/journal/article/TypeLibJournalArticleRecommendedArticles'
 
 //Lib/journal/renderTime
 export type { default as TypeLessThanLiniar } from '@/types/lib/journal/renderTime/TypeLessThanLiniar'

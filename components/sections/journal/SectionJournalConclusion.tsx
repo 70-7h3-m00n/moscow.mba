@@ -1,11 +1,11 @@
 import stls from '@/styles/components/sections/journal/SectionJournalConclusion.module.sass'
-import { TypeClassNames, TypeLibJournalArticleItem } from '@/types/index'
+import { TypeClassNames, TypeLibJournalArticleConclusion } from '@/types/index'
 import cn from 'classnames'
 import { getClassNames } from '@/helpers/index'
 import { Wrapper, ContentJournalArticle } from '@/components/layout'
 
 type TypeSectionJournalConclusionProps = TypeClassNames & {
-  item: TypeLibJournalArticleItem | null
+  item: TypeLibJournalArticleConclusion | null
 }
 
 const SectionJournalConclusion = ({
