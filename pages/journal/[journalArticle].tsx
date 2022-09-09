@@ -97,7 +97,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                         journalArticle={journalArticle}
                         classNames={[stls.articleTitle]} />
 
-{/* TODO Сделать содержание */}
+                    {/* TODO Сделать содержание */}
                     {/* <SectionJournalArticleContents
                         journalArticle={journalArticle}
                         classNames={[stls.articleTitle]} /> */}

@@ -15,6 +15,7 @@ type TypeJournalArticleProps = {
 
 import { Wrapper, ContentJournalArticle } from '@/components/layout'
 import { CardAuthor } from '@/components/cards'
+import { PopupToShare } from '@/components/popups'
 
 const SectionJournalArticleTitle = ({
     journalArticle,
@@ -25,10 +26,15 @@ const SectionJournalArticleTitle = ({
             <ContentJournalArticle>
                 <h2 className={stls.title}>{journalArticle.title}</h2>
                 <div className={stls.footer}>
-                    {
-                        journalArticle?.journalAuthors.map(author =>
-                            <CardAuthor textAlign={'start'} fontWeightAuthorName={400} quote={author} />)
-                    }
+                    <div className={stls.authors}>
+                        {
+                            journalArticle?.journalAuthors.map(author =>
+                                <CardAuthor textAlign={'start'} fontWeightAuthorName={400} quote={author} />)
+                        }
+                    </div>
+                    <div className={stls.toShare}>
+                        <PopupToShare />
+                    </div>
                 </div>
             </ContentJournalArticle>
         </Wrapper>

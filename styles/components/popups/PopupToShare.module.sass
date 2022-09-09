@@ -1,0 +1,51 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.list
+    box-shadow: f.px(0) f.px(0) f.px(14) rgba(230, 230, 230, 0.5)
+    padding: f.px(15)
+    position: absolute
+    bottom: f.px(75)
+    z-index: 2
+    @include m.dye(bgc, c.$psi)
+
+.item
+    margin-bottom: f.px(15)
+    &:nth-last-of-type(1)
+        margin-bottom: 0
+
+.link
+    display: flex
+    align-items: center
+
+.copyLink
+    display: flex
+    align-items: center
+    border: 0
+    padding: 0
+    @include m.dye(bgc, c.$psi)
+
+.text
+    margin-left: f.px(10)
+    font-size: f.px(13)
+    font-weight: 400
+    @include m.dye(c, c.$chi)
+
+.buttonShare
+    display: flex
+    align-items: center
+    margin-top: f.px(25)
+    padding: 0
+    border: 0
+    @include m.dye(bgc, c.$psi)
+
+.arrowWrapper
+    padding: f.px(15)
+    border-radius: f.px(5)
+    margin-right: f.px(15)
+    @include m.dye(bgc, c.$sigma)
+
+.textShare
+    font-size: f.px(15)
+    font-weight: 500
