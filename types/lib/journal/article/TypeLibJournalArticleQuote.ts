@@ -7,11 +7,11 @@ import {
 } from '@/types/index'
 
 type TypeSectionJournalQuoteProps = {
-    body: TypeLibJournalArticleEmphasisBody
-    label: TypeLibJournalArticleLabel
-    authorPosition: TypeLibJournalArticleAuthorPosition
-    authorName: TypeLibJournalArticleAuthorName
-    portrait: TypeLibPicture
+    body: TypeLibJournalArticleEmphasisBody | null
+    label: TypeLibJournalArticleLabel | null
+    authorPosition: TypeLibJournalArticleAuthorPosition | null
+    authorName: TypeLibJournalArticleAuthorName | null
+    portrait: TypeLibPicture | null
 }
 
 export default TypeSectionJournalQuoteProps

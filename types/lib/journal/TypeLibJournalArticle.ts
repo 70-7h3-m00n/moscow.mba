@@ -13,7 +13,8 @@ import {
   TypeLibJournalArticleProgram,
   TypeLibJournalArticleConclusion,
   TypeLibJournalArticleRecommendedArticles,
-  TypeLibJournalArticleRecommendedProgramsSection
+  TypeLibJournalArticleRecommendedProgramsSection,
+  TypeLibJournalArticleLabel
 } from '@/types/index'
 
 type TypeLibJournalArticle = {
@@ -27,28 +28,30 @@ type TypeLibJournalArticle = {
   shortDescription?: string | null
   createdAt?: string | null
   articleBody?:
-    | {
-        __typename: TypeLibTypename
-        paragraphBodyParts?: TypeLibJournalArticleParagraphBody | null
-        titleBodyParts?: TypeLibJournalArticleTitleBody | null
-        picture?: TypeLibJournalArticlePicture | null
-        title?: TypeLibJournalArticleTitle | null
-        emphasisBody?: TypeLibJournalArticleEmphasisBody | null
-        athorPosition?: TypeLibJournalArticleAuthorPosition | null
-        authorName?: TypeLibJournalArticleAuthorName | null
-        body?: TypeLibJournalArticleBody | null
-        list?: TypeLibJournalArticleListItem | null
-        recommendedProgram?: TypeLibJournalArticleProgram | null
-        conclusion?: TypeLibJournalArticleConclusion | null
-        journalRecommendedArticles?: TypeLibJournalArticleRecommendedArticles | null
-        recommendedProgramsSection?: TypeLibJournalArticleRecommendedProgramsSection | null
-        quote?: {
-          body?: TypeLibJournalArticleBody | null
-          athorPosition?: TypeLibJournalArticleAuthorPosition | null
-          authorName?: TypeLibJournalArticleAuthorName | null
-        }
-      }[]
-    | null
+  | {
+    __typename: TypeLibTypename
+    paragraphBodyParts?: TypeLibJournalArticleParagraphBody | null
+    titleBodyParts?: TypeLibJournalArticleTitleBody | null
+    picture?: TypeLibJournalArticlePicture | null
+    title?: TypeLibJournalArticleTitle | null
+    emphasisBody?: TypeLibJournalArticleEmphasisBody | null
+    athorPosition?: TypeLibJournalArticleAuthorPosition | null
+    authorName?: TypeLibJournalArticleAuthorName | null
+    body?: TypeLibJournalArticleBody | null
+    list?: TypeLibJournalArticleListItem | null
+    recommendedProgram?: TypeLibJournalArticleProgram | null
+    conclusion?: TypeLibJournalArticleConclusion | null
+    journalRecommendedArticles?: TypeLibJournalArticleRecommendedArticles | null
+    recommendedProgramsSection?: TypeLibJournalArticleRecommendedProgramsSection | null
+    quote?: {
+      body: TypeLibJournalArticleEmphasisBody | null
+      label: TypeLibJournalArticleLabel | null
+      authorPosition: TypeLibJournalArticleAuthorPosition | null
+      authorName: TypeLibJournalArticleAuthorName | null
+      portrait: TypeLibPicture | null
+    }
+  }[]
+  | null
 }
 
 export default TypeLibJournalArticle
