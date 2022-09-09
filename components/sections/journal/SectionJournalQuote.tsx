@@ -1,28 +1,25 @@
-import stls from '@/styles/components/sections/journal/SectionJournalQuote.module.sass'
+import cn from 'classnames'
+
 import {
   TypeClassNames,
-  TypeLibJournalArticleEmphasisBody,
-  TypeLibJournalArticleAuthorPosition,
-  TypeLibJournalArticleAuthorName,
-  TypeLibPicture
+  TypeLibJournalArticleQuote
 } from '@/types/index'
-import cn from 'classnames'
+
 import { getClassNames } from '@/helpers/index'
+
 import { Wrapper, ContentJournalArticle } from '@/components/layout'
 import { IconQuote } from '@/components/icons'
+import { CardAuthor } from '@/components/cards'
+
+import stls from '@/styles/components/sections/journal/SectionJournalQuote.module.sass'
 
 type TypeSectionJournalQuoteProps = TypeClassNames & {
-  body: TypeLibJournalArticleEmphasisBody | null
-  authorPosition: TypeLibJournalArticleAuthorPosition | null
-  authorName: TypeLibJournalArticleAuthorName | null
-  portrait: TypeLibPicture | null
+  quote: TypeLibJournalArticleQuote
 }
 
 const SectionJournalQuote = ({
   classNames,
-  body,
-  authorPosition,
-  authorName
+  quote
 }: TypeSectionJournalQuoteProps) => {
   return (
     <section
@@ -32,10 +29,9 @@ const SectionJournalQuote = ({
       <Wrapper column>
         <ContentJournalArticle classNames={[stls.content]}>
           <IconQuote classNames={[stls.icon]} />
-          <blockquote className={stls.blockquote}>{body}</blockquote>
+          <blockquote className={stls.blockquote}>{quote.body}</blockquote>
           <div className={stls.credit}>
-            <p className={stls.author}>— {authorName}</p>
-            <p className={stls.position}>{authorPosition}</p>
+            <CardAuthor textAlign={'end'} fontWeightAuthorName={700} quote={quote} />
           </div>
         </ContentJournalArticle>
       </Wrapper>

@@ -50,6 +50,9 @@ export type { default as TypeLibJournalArticleListItem } from '@/types/lib/journ
 export type { default as TypeLibJournalArticleRecommendedProgram } from '@/types/lib/journal/article/TypeLibJournalArticleRecommendedProgram'
 export type { default as TypeLibJournalArticleRecommendedArticles } from '@/types/lib/journal/article/TypeLibJournalArticleRecommendedArticles'
 export type { default as TypeLibJournalArticleRecommendedProgramsSection } from '@/types/lib/journal/article/TypeLibJournalArticleRecommendedProgramsSection'
+export type { default as TypeLibJournalArticleCardAuthor } from '@/types/lib/journal/article/TypeLibJournalArticleCardAuthor'
+export type { default as TypeLibJournalArticleLabel } from '@/types/lib/journal/article/TypeLibJournalArticleLabel'
+export type { default as TypeLibJournalArticleQuote } from '@/types/lib/journal/article/TypeLibJournalArticleQuote'
 
 //Lib/journal/renderTime
 export type { default as TypeLessThanLiniar } from '@/types/lib/journal/renderTime/TypeLessThanLiniar'

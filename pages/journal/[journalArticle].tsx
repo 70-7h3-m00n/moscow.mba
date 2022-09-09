@@ -134,9 +134,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                                 )}
                                 {component.__typename === 'ComponentJournalQuote' && (
                                     <SectionJournalQuote
-                                        body={component.quote.body}
-                                        authorPosition={component.quote.athorPosition}
-                                        authorName={component.quote.authorName}
+                                        quote={component.quote}
                                     />
                                 )}
                                 {component.__typename === 'ComponentJournalList' && (
