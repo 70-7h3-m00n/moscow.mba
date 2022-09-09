@@ -53,6 +53,8 @@ export type { default as TypeLibJournalArticleRecommendedProgramsSection } from 
 export type { default as TypeLibJournalArticleCardAuthor } from '@/types/lib/journal/article/TypeLibJournalArticleCardAuthor'
 export type { default as TypeLibJournalArticleLabel } from '@/types/lib/journal/article/TypeLibJournalArticleLabel'
 export type { default as TypeLibJournalArticleQuote } from '@/types/lib/journal/article/TypeLibJournalArticleQuote'
+export type { default as TypeLibJournalAuthor } from '@/types/lib/journal/article/TypeLibJournalAuthor'
+export type { default as TypeLibJournalAuthors } from '@/types/lib/journal/article/TypeLibJournalAuthors'
 
 //Lib/journal/renderTime
 export type { default as TypeLessThanLiniar } from '@/types/lib/journal/renderTime/TypeLessThanLiniar'
