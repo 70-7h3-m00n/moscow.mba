@@ -19,6 +19,9 @@ const SectionJournalConclusion = ({
       }>
       <Wrapper column>
         <ContentJournalArticle>
+          <h2 className={stls.title}>
+            <span>{'Резюмируем'}</span>
+          </h2>
           <ol className={stls.list}>
             {item
               ?.filter(part => part)
@@ -26,7 +29,7 @@ const SectionJournalConclusion = ({
                 <li key={`${part.title} ${idx}`} className={stls.item}>
                   <div className={stls.idx}>{idx + 1}</div>
                   <div>
-                    <h3 className={stls.title}>{part.title}</h3>
+                    <h3 className={stls.subTitle}>{part.title}</h3>
                     <p className={stls.p}>{part.body}</p>
                   </div>
                 </li>
