@@ -1,11 +1,12 @@
-import stls from '@/styles/components/sections/journal/SectionJournalList.module.sass'
-import { TypeClassNames, TypeLibJournalArticleListItem } from '@/types/index'
 import cn from 'classnames'
-import parse from 'html-react-parser'
-import truncate from 'truncate'
-import { marked } from 'marked'
+
+import { TypeClassNames, TypeLibJournalArticleListItem } from '@/types/index'
+
 import { getClassNames } from '@/helpers/index'
+
 import { Wrapper, ContentJournalArticle } from '@/components/layout'
+
+import stls from '@/styles/components/sections/journal/SectionJournalList.module.sass'
 
 type TypeSectionJournalListProps = TypeClassNames & {
   listItem: TypeLibJournalArticleListItem | null
