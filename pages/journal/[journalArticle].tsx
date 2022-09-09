@@ -96,9 +96,11 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                     <SectionJournalArticleTitle
                         journalArticle={journalArticle}
                         classNames={[stls.articleTitle]} />
-                    <SectionJournalArticleContents
+
+{/* TODO Сделать содержание */}
+                    {/* <SectionJournalArticleContents
                         journalArticle={journalArticle}
-                        classNames={[stls.articleTitle]} />
+                        classNames={[stls.articleTitle]} /> */}
                     <ImgJournalArticlePicture
                         src={journalArticle.picture.url || undefined}
                         width={journalArticle.picture.width && widthArticlePicture}

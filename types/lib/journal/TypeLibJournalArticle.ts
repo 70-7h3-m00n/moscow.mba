@@ -10,7 +10,7 @@ import {
   TypeLibJournalArticleAuthorPosition,
   TypeLibJournalArticleBody,
   TypeLibJournalArticleListItem,
-  TypeLibJournalArticleProgram,
+  TypeLibJournalArticleRecommendedProgram,
   TypeLibJournalArticleConclusion,
   TypeLibJournalArticleRecommendedArticles,
   TypeLibJournalArticleRecommendedProgramsSection,
@@ -41,7 +41,7 @@ type TypeLibJournalArticle = {
     authorName?: TypeLibJournalArticleAuthorName | null
     body?: TypeLibJournalArticleBody | null
     list?: TypeLibJournalArticleListItem | null
-    recommendedProgram?: TypeLibJournalArticleProgram | null
+    recommendedProgram?: TypeLibJournalArticleRecommendedProgram | null
     conclusion?: TypeLibJournalArticleConclusion | null
     journalRecommendedArticles?: TypeLibJournalArticleRecommendedArticles | null
     recommendedProgramsSection?: TypeLibJournalArticleRecommendedProgramsSection | null
