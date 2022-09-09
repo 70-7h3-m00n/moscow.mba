@@ -93,15 +93,12 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                     <SectionJournalArticleHeader
                         journalArticle={journalArticle}
                         classNames={[stls.articleHeader]} />
-
-                    {/* !!!!TODO */}
-
-                    {/* <SectionJournalArticleTitle
+                    <SectionJournalArticleTitle
                         journalArticle={journalArticle}
                         classNames={[stls.articleTitle]} />
                     <SectionJournalArticleContents
-                    journalArticle={journalArticle}
-                    classNames={[stls.articleTitle]}/> */}
+                        journalArticle={journalArticle}
+                        classNames={[stls.articleTitle]} />
                     <ImgJournalArticlePicture
                         src={journalArticle.picture.url || undefined}
                         width={journalArticle.picture.width && widthArticlePicture}
@@ -150,7 +147,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                                     <SectionJournalRecommendedArticles journalRecommendedArticles={component.journalRecommendedArticles} />
                                 )}
                                 {component.__typename === 'ComponentJournalJournalArticleRecommendedProgramsSection' && (
-                                    <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection}/>
+                                    <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection} />
                                 )}
                             </Fragment>
                         ))

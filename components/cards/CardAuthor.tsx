@@ -27,21 +27,24 @@ const CardAuthor = ({
                     ? stls.textAlignEnd
                     : '')
         }>
-            <div className={stls.image}>
-                <Image
-                    src={quote?.portrait.url || undefined}
-                    width={quote?.portrait.width && 48}
-                    height={quote?.portrait.height && 48}
-                    alt={quote?.portrait.alt || 'Фото'}
-                    className={stls.img} />
-            </div>
+            {
+                quote?.portrait.url &&
+                <div className={stls.image}>
+                    <Image
+                        src={quote?.portrait.url || undefined}
+                        width={quote?.portrait.width && 48}
+                        height={quote?.portrait.height && 48}
+                        alt={quote?.portrait.alt || 'Фото'}
+                        className={stls.img} />
+                </div>
+            }
             <div className={stls.content}>
                 {
                     quote?.label
                         ? <p className={stls.label}>{quote?.label}</p>
                         : quote?.authorPosition
                             ? <p className={stls.position}>{quote?.authorPosition}</p>
-                            : 'Автор'
+                            : <p className={stls.position}>{'Автор'}</p>
                 }
                 <p className={cn(
                     stls.authorName,
