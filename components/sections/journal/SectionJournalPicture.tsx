@@ -7,7 +7,7 @@ import {
 import cn from 'classnames'
 import { getClassNames, getImageHeight } from '@/helpers/index'
 import { Wrapper, ContentJournalArticle } from '@/components/layout'
-import { ImgJournalArticlePicture } from '@/components/images'
+import { ImgTemplate } from '@/components/images'
 
 type TypeSectionJournalPictureProps = TypeClassNames & {
   picture: TypeLibJournalArticlePicture | null
@@ -30,7 +30,7 @@ const SectionJournalPicture = ({
       <Wrapper column>
         <ContentJournalArticle>
           <figure>
-            <ImgJournalArticlePicture
+            <ImgTemplate
               src={picture.url}
               width={850}
               height={getImageHeight({

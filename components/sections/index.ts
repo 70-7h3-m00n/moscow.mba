@@ -27,6 +27,7 @@ export { default as SectionJournalConclusion } from '@/components/sections/journ
 export { default as SectionJournalRecommendedProgram } from '@/components/sections/journal/SectionJournalRecommendedProgram'
 export { default as SectionJournalRecommendedArticles } from '@/components/sections/journal/SectionJournalRecommendedArticles'
 export { default as SectionJournalRecommendedPrograms } from '@/components/sections/journal/SectionJournalRecommendedPrograms'
+export { default as SectionJournalTitlePicture } from '@/components/sections/journal/SectionJournalTitlePicture'
 
 // ./
 export { default as About } from '@/components/sections/general/About'

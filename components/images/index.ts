@@ -15,7 +15,6 @@ export { default as ImgLogoMde } from '@/components/images/general/ImgLogoMde'
 export { default as ImgLogoRabo } from '@/components/images/general/ImgLogoRabo'
 // ./journal
 export { default as ImgJournalArticle } from '@/components/images/journal/ImgJournalArticle'
-export { default as ImgJournalArticlePicture } from '@/components/images/journal/ImgJournalArticlePicture'
 export { default as ImgJournalArticleRecommended } from '@/components/images/journal/ImgJournalArticleRecommended'
 // ./newyears
 export { default as ImgDiscountDecoration } from '@/components/images/newyears/ImgDiscountDecoration'

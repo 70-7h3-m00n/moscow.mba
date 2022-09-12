@@ -20,11 +20,7 @@ import {
 
 import { TypeLibJournalArticle } from '@/types/index'
 
-import { getClassNames, getImageHeight } from '@/helpers/index'
-
 import { Wrapper } from '@/components/layout'
-
-import { ImgJournalArticlePicture } from '@/components/images'
 
 import {
     SectionJournalHistoryArticle,
@@ -40,7 +36,8 @@ import {
     SectionJournalConclusion,
     SectionJournalRecommendedProgram,
     SectionJournalRecommendedArticles,
-    SectionJournalRecommendedPrograms
+    SectionJournalRecommendedPrograms,
+    SectionJournalTitlePicture
 } from '@/components/sections'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
@@ -48,8 +45,6 @@ import stls from '@/styles/pages/PageJournalArticles.module.sass'
 type TypeJournalArticleProps = {
     journalArticle: TypeLibJournalArticle
 }
-
-const widthArticlePicture = 850
 
 const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle }) => {
     const [pageYOffset, setPageYOffset] = useState(0)
@@ -97,20 +92,10 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                         classNames={[stls.articleTitle]} />
 
                     {/* TODO Сделать содержание */}
-                    {/* <SectionJournalArticleContents
+                    <SectionJournalArticleContents
                         journalArticle={journalArticle}
-                        classNames={[stls.articleTitle]} /> */}
-                    <ImgJournalArticlePicture
-                        src={journalArticle.picture.url || undefined}
-                        width={journalArticle.picture.width && widthArticlePicture}
-                        height={getImageHeight({
-                            width: widthArticlePicture,
-                            widthInitial: journalArticle.picture.width,
-                            heightInitial: journalArticle.picture.height
-                        })}
-                        alt={journalArticle.picture?.alt}
-                        title={journalArticle.picture.alt}
-                        classNames={[stls.articlePicture]} />
+                        classNames={[stls.articleTitle]} />
+                    <SectionJournalTitlePicture journalArticle={journalArticle}/>
                     {
                         journalArticle?.articleBody?.map((component, idx) => (
                             <Fragment key={`${component.__typename} ${idx}`}>

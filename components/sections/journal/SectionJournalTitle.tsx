@@ -16,10 +16,7 @@ const SectionJournalTitle = ({
   idx
 }: TypeSectionJournalTitleProps) => {
   return (
-    <section
-      className={
-        cn(stls.container, getClassNames({ classNames })) || undefined
-      }>
+    <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
       <Wrapper column>
         <ContentJournalArticle>
           <h2 className={stls.title}>
