@@ -1,3 +1,5 @@
+
+import slugify from 'slugify'
 import stls from '@/styles/components/sections/journal/SectionJournalTitle.module.sass'
 import { TypeClassNames, TypeLibJournalArticleTitleBody } from '@/types/index'
 import cn from 'classnames'
@@ -15,8 +17,13 @@ const SectionJournalTitle = ({
   body,
   idx
 }: TypeSectionJournalTitleProps) => {
+  const idSection = slugify(
+    body
+      ?.map(item => item.text)
+      .join(' ')
+  )
   return (
-    <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+    <section id={idSection} className={cn(stls.container, getClassNames({ classNames })) || undefined}>
       <Wrapper column>
         <ContentJournalArticle>
           <h2 className={stls.title}>

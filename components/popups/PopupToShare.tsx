@@ -23,12 +23,6 @@ import arrowIcon from '@/public/assets/images/journal/toShare/arrow.svg'
 
 import stls from '@/styles/components/popups/PopupToShare.module.sass'
 
-// const list = [
-//     { icon: vkIcon, text: 'Vkontakte', href: routesExternal, },
-//     { icon: telegramIcon, text: 'Telegram', href: routesExternal, },
-//     { icon: whatsAppIcon, text: 'What’s App', href: routesExternal, },
-// ]
-
 type TypePopupToShareProps = {
     journalArticle: TypeLibJournalArticle
 } & TypeClassNames
@@ -44,7 +38,6 @@ const PopupToShare = ({
     classNames
 }: TypePopupToShareProps) => {
     const [isList, setIsList] = useState(false)
-    const [state, setState] = useState(false)
     const urlPage = `${routesFront.root}${routesFront.journal}/${journalArticle.slug}`
 
     const handleShowList = () => (

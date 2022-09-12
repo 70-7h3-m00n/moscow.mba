@@ -60,7 +60,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
             document.body.clientHeight
         )
     }
-
+    
     useEffect(() => {
         document.addEventListener('scroll', handleScroll)
         return () => {
@@ -95,7 +95,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                     <SectionJournalArticleContents
                         journalArticle={journalArticle}
                         classNames={[stls.articleTitle]} />
-                    <SectionJournalTitlePicture journalArticle={journalArticle}/>
+                    <SectionJournalTitlePicture journalArticle={journalArticle} />
                     {
                         journalArticle?.articleBody?.map((component, idx) => (
                             <Fragment key={`${component.__typename} ${idx}`}>
@@ -103,7 +103,9 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                                     <SectionJournalParagraph body={component.paragraphBodyParts} idx={idx} />
                                 )}
                                 {component.__typename === 'ComponentJournalTitle' && (
-                                    <SectionJournalTitle body={component.titleBodyParts} idx={idx} />
+                                    <SectionJournalTitle
+                                        body={component.titleBodyParts}
+                                        idx={idx} />
                                 )}
                                 {component.__typename === 'ComponentGeneralPicture' && (
                                     <SectionJournalPicture
