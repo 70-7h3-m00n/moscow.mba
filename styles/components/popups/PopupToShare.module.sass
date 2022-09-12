@@ -9,6 +9,8 @@
     bottom: f.px(75)
     z-index: 2
     @include m.dye(bgc, c.$psi)
+    @include m.media(phone, tablet)
+        right: 0
 
 .item
     margin-bottom: f.px(15)
@@ -16,9 +18,16 @@
         margin-bottom: 0
 
 .link
+    width: 100%
+    padding: 0
     display: flex
     align-items: center
-
+    @include m.dye(bgc, c.$psi)
+    border: none
+    white-space: nowrap
+.imageWrapper
+    width: 25px
+    height: 25px
 .copyLink
     display: flex
     align-items: center
@@ -28,6 +37,7 @@
 
 .text
     margin-left: f.px(10)
+    font-family: "Styrene", Arial, Tahoma, sans-serif
     font-size: f.px(13)
     font-weight: 400
     @include m.dye(c, c.$chi)
@@ -39,13 +49,18 @@
     padding: 0
     border: 0
     @include m.dye(bgc, c.$psi)
+    font-family: "Styrene", Arial, Tahoma, sans-serif
 
 .arrowWrapper
-    padding: f.px(15)
+    padding: f.px(14) f.px(15)
     border-radius: f.px(5)
     margin-right: f.px(15)
     @include m.dye(bgc, c.$sigma)
+    @include m.media(phone, tablet)
+        padding: f.px(10) f.px(12)
 
 .textShare
     font-size: f.px(15)
     font-weight: 500
+    @include m.media(phone, tablet)
+        display: none

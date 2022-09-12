@@ -1,22 +1,37 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import { routesExternal } from '@/config/index'
+import {
+    TelegramShareButton,
+    WhatsappShareButton,
+    VKShareButton,
+} from 'react-share';
 
-import vk from '@/public/assets/images/journal/toShare/vk.svg'
-import telegram from '@/public/assets/images/journal/toShare/telegram.svg'
-import whatsApp from '@/public/assets/images/journal/toShare/whatsApp.svg'
-import share from '@/public/assets/images/journal/toShare/share.svg'
-import arrow from '@/public/assets/images/journal/toShare/arrow.svg'
+import {
+    TypeLibJournalArticle,
+    TypeClassNames
+} from '@/types/index'
+
+import { routesExternal, routesFront } from '@/config/index'
+
+import vkIcon from '@/public/assets/images/journal/toShare/vk.svg'
+import telegramIcon from '@/public/assets/images/journal/toShare/telegram.svg'
+import whatsAppIcon from '@/public/assets/images/journal/toShare/whatsApp.svg'
+import shareIcon from '@/public/assets/images/journal/toShare/share.svg'
+import arrowIcon from '@/public/assets/images/journal/toShare/arrow.svg'
 
 import stls from '@/styles/components/popups/PopupToShare.module.sass'
 
-const list = [
-    { icon: vk, text: 'Vkontakte', href: routesExternal.vk, },
-    { icon: telegram, text: 'Telegram', href: routesExternal.telegram, },
-    { icon: whatsApp, text: 'What’s App', href: routesExternal.whatsapp, },
-]
+// const list = [
+//     { icon: vkIcon, text: 'Vkontakte', href: routesExternal, },
+//     { icon: telegramIcon, text: 'Telegram', href: routesExternal, },
+//     { icon: whatsAppIcon, text: 'What’s App', href: routesExternal, },
+// ]
+
+type TypePopupToShareProps = {
+    journalArticle: TypeLibJournalArticle
+} & TypeClassNames
 
 const widthIcon = 25
 const heightIcon = 25
@@ -24,55 +39,91 @@ const heightIcon = 25
 const widthIconArrow = 18
 const heightIconArrow = 18
 
-const PopupToShare = () => {
+const PopupToShare = ({
+    journalArticle,
+    classNames
+}: TypePopupToShareProps) => {
     const [isList, setIsList] = useState(false)
+    const [state, setState] = useState(false)
+    const urlPage = `${routesFront.root}${routesFront.journal}/${journalArticle.slug}`
 
     const handleShowList = () => (
         setIsList(isList => !isList)
     )
+
+    const handleClipboardLink = () => {
+        navigator.clipboard.writeText(urlPage)
+            .then(
+                () => alert('Ссылка скопирована в буфер обмена.'),
+                (err) => alert('Произошла ошибка... Повторите еще раз.')
+            )
+    }
+
     return (
         <div className={stls.popupToShare}>
             {
                 isList &&
                 <div className={stls.list}>
                     <ul>
-                        {
-                            list.map(item =>
-                                <li className={stls.item}>
-                                    <Link href={item.href}>
-                                        <a className={stls.link}>
-                                            <Image
-                                                width={widthIcon}
-                                                height={heightIcon}
-                                                src={item.icon} />
-                                            <span className={stls.text}>{item.text}</span>
-                                        </a>
-                                    </Link>
-                                </li>
-                            )
-                        }
-                        <li>
-                            {/* TODO Разобраться, почему у button странные стили */}
-                            <Link href={'/'}>
-                                <a className={stls.link}>
+                        <li className={stls.item}>
+                            <VKShareButton className={stls.link} url={urlPage}>
+                                <button className={stls.link}>
+                                    <div className={stls.imageWrapper}>
+                                        <Image
+                                            width={widthIcon}
+                                            height={heightIcon}
+                                            src={vkIcon} />
+                                    </div>
+                                    <span className={stls.text}>{'Vkontakte'}</span>
+                                </button>
+                            </VKShareButton>
+                        </li>
+                        <li className={stls.item}>
+                            <TelegramShareButton className={stls.link} url={urlPage}>
+                                <button className={stls.link}>
+                                    <div className={stls.imageWrapper}>
+                                        <Image
+                                            width={widthIcon}
+                                            height={heightIcon}
+                                            src={telegramIcon} />
+                                            </div>
+                                        <span className={stls.text}>{'Telegram'}</span>
+                                </button>
+                            </TelegramShareButton>
+                        </li>
+                        <li className={stls.item}>
+                            <WhatsappShareButton className={stls.link} url={urlPage}>
+                                <button className={stls.link}>
+                                    <div className={stls.imageWrapper}>
+                                        <Image
+                                            width={widthIcon}
+                                            height={heightIcon}
+                                            src={whatsAppIcon} />
+                                    </div>
+                                    <span className={stls.text}>{'What’s App'}</span>
+                                </button>
+                            </WhatsappShareButton>
+                        </li>
+                        <li className={stls.item}>
+                            <button className={stls.link} onClick={handleClipboardLink}>
+                                <div className={stls.imageWrapper}>
                                     <Image
                                         width={widthIcon}
                                         height={heightIcon}
-                                        src={share} />
-                                    <span className={stls.text}>{'Скопировать ссылку'}</span>
-                                </a>
-                            </Link>
+                                        src={shareIcon} />
+                                </div>
+                                <span className={stls.text}>{'Скопировать ссылку'}</span>
+                            </button>
                         </li>
                     </ul>
                 </div>
             }
-            {/* TODO Разобраться, почему у button странные стили */}
             <button className={stls.buttonShare} onClick={handleShowList}>
                 <div className={stls.arrowWrapper}>
                     <Image
                         width={widthIconArrow}
                         height={heightIconArrow}
-                        src={arrow} />
+                        src={arrowIcon} />
                 </div>
                 <span className={stls.textShare}>{'Поделиться'}</span>
             </button>
