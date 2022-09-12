@@ -12,8 +12,14 @@
     display: flex
     justify-content: space-between
     align-items: center
+    @include m.media(phone, tablet)
+        align-items: flex-start
 
 .authors
     display: flex
     align-items: center
     column-gap: f.px(25)
+    @include m.media(phone, tablet)
+        flex-direction: column
+        row-gap: f.px(25)
+        align-items: flex-start

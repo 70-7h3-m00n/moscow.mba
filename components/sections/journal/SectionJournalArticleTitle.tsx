@@ -13,7 +13,10 @@ type TypeJournalArticleProps = {
     journalArticle: TypeLibJournalArticle
 } & TypeClassNames
 
-import { Wrapper, ContentJournalArticle } from '@/components/layout'
+import {
+    Wrapper,
+    ContentJournalArticle
+} from '@/components/layout'
 import { CardAuthor } from '@/components/cards'
 import { PopupToShare } from '@/components/popups'
 
@@ -33,7 +36,7 @@ const SectionJournalArticleTitle = ({
                         }
                     </div>
                     <div className={stls.toShare}>
-                        <PopupToShare journalArticle={journalArticle}/>
+                        <PopupToShare journalArticle={journalArticle} />
                     </div>
                 </div>
             </ContentJournalArticle>
