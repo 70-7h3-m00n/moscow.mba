@@ -39,6 +39,7 @@
     "react-transition-group": "^4.4.2",
     "reactjs-popup": "^2.0.5",
     "sharp": "^0.30.7",
+    "slugify": "^1.6.5",
     "truncate": "^3.0.0",
     "uuid": "^8.3.2"
   },
