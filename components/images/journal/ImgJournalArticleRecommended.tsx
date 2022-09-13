@@ -19,7 +19,7 @@ import { ImgTemplate } from '@/components/images'
 
 type TypeImgJournalArticleRecommendedProps = {
     icon: string | null
-    backgroundColor?: 'dark' | 'light' | null
+    backgroundColor?: 'dark' | 'light' | 'medium' | null
 }
 
 const widthIcon = 50
@@ -48,7 +48,9 @@ const ImgJournalArticleRecommended = ({ icon, backgroundColor }: TypeImgJournalA
                         ? stls.dark
                         : backgroundColor === 'light'
                             ? stls.light
-                            : stls.light,
+                            : backgroundColor === 'medium'
+                                ? stls.medium
+                                : stls.light,
                     stls.container
                 ]} />
     )
