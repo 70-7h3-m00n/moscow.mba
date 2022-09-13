@@ -1,0 +1,1 @@
+export { default as SectionPopupCoursesOnTopic } from '@/components/sections/journal/popups/SectionPopupCoursesOnTopic'

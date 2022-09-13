@@ -21,7 +21,6 @@ import {
 import { TypeLibJournalArticle } from '@/types/index'
 
 import { Wrapper } from '@/components/layout'
-
 import {
     SectionJournalHistoryArticle,
     SectionJournalArticleHeader,
@@ -41,6 +40,7 @@ import {
     SectionJournalToShare,
     SectionJournalForm
 } from '@/components/sections'
+import { SectionPopupCoursesOnTopic } from '@/components/sections/journal/popups'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
 
@@ -62,7 +62,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
             document.body.clientHeight
         )
     }
-    
+
     useEffect(() => {
         document.addEventListener('scroll', handleScroll)
         return () => {
@@ -140,15 +140,21 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                                     <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection} />
                                 )}
                                 {component.__typename === 'ComponentJournalFormPdfMaterials' && (
-                                    <SectionJournalForm pdfMaterials={journalArticle.pdfMaterials} formPdfMaterials={component.formPdfMaterials}/>
+                                    <SectionJournalForm pdfMaterials={journalArticle.pdfMaterials} formPdfMaterials={component.formPdfMaterials} />
                                 )}
                             </Fragment>
                         ))
                     }
-                    <SectionJournalToShare journalArticle={journalArticle}/>
+                    <SectionJournalToShare journalArticle={journalArticle} />
                 </article>
                 <aside>
-
+                    <SectionPopupCoursesOnTopic recommendedProgramsSection =
+                        {
+                            journalArticle?.articleBody
+                                ?.find(item =>
+                                    item.__typename === "ComponentJournalJournalArticleRecommendedProgramsSection")
+                                ?.recommendedProgramsSection
+                        } />
                 </aside>
             </Wrapper>
         </>
