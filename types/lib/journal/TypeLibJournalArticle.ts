@@ -15,7 +15,9 @@ import {
   TypeLibJournalArticleRecommendedArticles,
   TypeLibJournalArticleRecommendedProgramsSection,
   TypeLibJournalArticleLabel,
-  TypeLibJournalAuthors
+  TypeLibJournalAuthors,
+  TypeLibJournalArticleFormPdfMaterials,
+  TypeLibJournalPdfMaterials
 } from '@/types/index'
 
 type TypeLibJournalArticle = {
@@ -26,6 +28,7 @@ type TypeLibJournalArticle = {
     slug: string | null
   }
   journalAuthors: TypeLibJournalAuthors | null
+  pdfMaterials: TypeLibJournalPdfMaterials | null
   picture: TypeLibPicture | null
   shortDescription?: string | null
   createdAt?: string | null
@@ -45,6 +48,8 @@ type TypeLibJournalArticle = {
     conclusion?: TypeLibJournalArticleConclusion | null
     journalRecommendedArticles?: TypeLibJournalArticleRecommendedArticles | null
     recommendedProgramsSection?: TypeLibJournalArticleRecommendedProgramsSection | null
+    formPdfMaterials?: TypeLibJournalArticleFormPdfMaterials | null
+
     quote?: {
       body: TypeLibJournalArticleEmphasisBody | null
       label: TypeLibJournalArticleLabel | null

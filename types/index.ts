@@ -55,6 +55,7 @@ export type { default as TypeLibJournalArticleLabel } from '@/types/lib/journal/
 export type { default as TypeLibJournalArticleQuote } from '@/types/lib/journal/article/TypeLibJournalArticleQuote'
 export type { default as TypeLibJournalAuthor } from '@/types/lib/journal/article/TypeLibJournalAuthor'
 export type { default as TypeLibJournalAuthors } from '@/types/lib/journal/article/TypeLibJournalAuthors'
+export type { default as TypeLibJournalArticleFormPdfMaterials } from '@/types/lib/journal/article/TypeLibJournalArticleFormPdfMaterials'
 
 //Lib/journal/renderTime
 export type { default as TypeLessThanLiniar } from '@/types/lib/journal/renderTime/TypeLessThanLiniar'
@@ -69,6 +70,7 @@ export type { default as TypeLibJournalCategories } from '@/types/lib/journal/Ty
 export type { default as TypeLibJournalTag } from '@/types/lib/journal/TypeLibJournalTag'
 export type { default as TypeLibJournalTags } from '@/types/lib/journal/TypeLibJournalTags'
 export type { default as TypeLibJournalIcon } from '@/types/lib/journal/TypeLibJournalIcon'
+export type { default as TypeLibJournalPdfMaterials } from '@/types/lib/journal/TypeLibJournalPdfMaterials'
 
 // Lib/programs
 export type { default as TypeLibProgram } from '@/types/lib/programs/TypeLibProgram'

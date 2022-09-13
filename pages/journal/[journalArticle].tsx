@@ -38,7 +38,8 @@ import {
     SectionJournalRecommendedArticles,
     SectionJournalRecommendedPrograms,
     SectionJournalTitlePicture,
-    SectionJournalToShare
+    SectionJournalToShare,
+    SectionJournalForm
 } from '@/components/sections'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
@@ -137,6 +138,9 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                                 )}
                                 {component.__typename === 'ComponentJournalJournalArticleRecommendedProgramsSection' && (
                                     <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection} />
+                                )}
+                                {component.__typename === 'ComponentJournalFormPdfMaterials' && (
+                                    <SectionJournalForm pdfMaterials={journalArticle.pdfMaterials} formPdfMaterials={component.formPdfMaterials}/>
                                 )}
                             </Fragment>
                         ))

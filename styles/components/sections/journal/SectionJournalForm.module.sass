@@ -1,0 +1,41 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/shared/journal' as j
+
+.container
+    max-width: f.px(850)
+    position: relative
+    margin: 0 10px
+    padding: f.px(50)
+
+.backgroundImage
+    z-index: -1
+
+.title
+    font-size: f.px(48)
+    font-weight: 400
+    line-height: f.px(52.8)
+    @include m.dye(c, c.$psi)
+
+.mockupPicture
+    position: absolute
+    right: 0
+    top: f.px(130)
+
+.filePdf
+    display: flex
+    align-items: center
+    margin-top: f.px(28)
+
+.nameFiles
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-column-gap: f.px(3)
+    margin-left: f.px(15)
+    position: relative
+.nameFile
+    font-size: f.px(13)
+    font-weight: 400
+    line-height: 120%
+    @include m.dye(c, c.$psi)
