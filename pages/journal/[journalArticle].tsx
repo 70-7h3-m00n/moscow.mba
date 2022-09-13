@@ -37,7 +37,8 @@ import {
     SectionJournalRecommendedProgram,
     SectionJournalRecommendedArticles,
     SectionJournalRecommendedPrograms,
-    SectionJournalTitlePicture
+    SectionJournalTitlePicture,
+    SectionJournalToShare
 } from '@/components/sections'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
@@ -140,6 +141,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                             </Fragment>
                         ))
                     }
+                    <SectionJournalToShare journalArticle={journalArticle}/>
                 </article>
                 <aside>
 

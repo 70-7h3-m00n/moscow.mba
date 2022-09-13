@@ -28,6 +28,7 @@ export { default as SectionJournalRecommendedProgram } from '@/components/sectio
 export { default as SectionJournalRecommendedArticles } from '@/components/sections/journal/SectionJournalRecommendedArticles'
 export { default as SectionJournalRecommendedPrograms } from '@/components/sections/journal/SectionJournalRecommendedPrograms'
 export { default as SectionJournalTitlePicture } from '@/components/sections/journal/SectionJournalTitlePicture'
+export { default as SectionJournalToShare } from '@/components/sections/journal/SectionJournalToShare'
 
 // ./
 export { default as About } from '@/components/sections/general/About'
