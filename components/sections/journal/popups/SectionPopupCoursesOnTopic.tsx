@@ -1,16 +1,27 @@
 import { PopupCoursesOnTopic } from '@/components/popups'
-import { TypeLibJournalArticleRecommendedProgramsSection } from '@/types/index'
+
+import {
+    TypeClassNames,
+    TypeLibJournalArticleRecommendedProgramsSection
+} from '@/types/index'
+
+import stls from '@/styles/components/sections/journal/popup/SectionPopupCoursesOnTopic.module.sass'
 
 
 type TypeSectionPopupCoursesOnTopicProps = {
     recommendedProgramsSection: TypeLibJournalArticleRecommendedProgramsSection | null
-}
+} & TypeClassNames
 
 const SectionPopupCoursesOnTopic = ({ recommendedProgramsSection }: TypeSectionPopupCoursesOnTopicProps) => {
     if (!recommendedProgramsSection) return null
 
     return (
-        <PopupCoursesOnTopic recommendedProgramsSection={recommendedProgramsSection} />
+        <section>
+            <PopupCoursesOnTopic
+                classNames={[stls.wrapper]}
+                recommendedProgramsSection={recommendedProgramsSection} />
+        </section>
+
     )
 }
 

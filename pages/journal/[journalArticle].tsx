@@ -40,7 +40,10 @@ import {
     SectionJournalToShare,
     SectionJournalForm
 } from '@/components/sections'
-import { SectionPopupCoursesOnTopic } from '@/components/sections/journal/popups'
+import {
+    SectionPopupCoursesOnTopic,
+    SectionPopupDownloadMaterials
+} from '@/components/sections/journal/popups'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
 
@@ -71,11 +74,9 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
     }, [])
     return (
         <>
-            <Wrapper column>
-                <SectionJournalHistoryArticle
-                    classNames={[stls.historyArticle]}
-                    journalArticle={journalArticle} />
-            </Wrapper>
+            <SectionJournalHistoryArticle
+                classNames={[stls.historyArticle]}
+                journalArticle={journalArticle} />
             <div className={stls.scrollProgress}>
                 <div
                     className={stls.scrollProgressBar}
@@ -139,22 +140,24 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                                 {component.__typename === 'ComponentJournalJournalArticleRecommendedProgramsSection' && (
                                     <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection} />
                                 )}
-                                {component.__typename === 'ComponentJournalFormPdfMaterials' && (
-                                    <SectionJournalForm pdfMaterials={journalArticle.pdfMaterials} formPdfMaterials={component.formPdfMaterials} />
-                                )}
+                                {/* {component.__typename === 'ComponentJournalFormPdfMaterials' && (
+                                <SectionJournalForm pdfMaterials={journalArticle.pdfMaterials} formPdfMaterials={component.formPdfMaterials} />
+                            )} */}
                             </Fragment>
                         ))
                     }
                     <SectionJournalToShare journalArticle={journalArticle} />
                 </article>
                 <aside className={stls.aside}>
-                    <SectionPopupCoursesOnTopic recommendedProgramsSection =
+                    <SectionPopupCoursesOnTopic recommendedProgramsSection=
                         {
                             journalArticle?.articleBody
                                 ?.find(item =>
                                     item.__typename === "ComponentJournalJournalArticleRecommendedProgramsSection")
                                 ?.recommendedProgramsSection
-                        } />
+                        }
+                        classNames={[stls.popupCoursesOnTopic]} />
+                    <SectionPopupDownloadMaterials classNames={[stls.popupDownloadMaterials]} />
                 </aside>
             </Wrapper>
         </>
