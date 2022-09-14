@@ -4,10 +4,7 @@ import { TypeClassNames, TypeLibJournalArticle } from '@/types/index'
 
 import { getClassNames, getImageHeight } from '@/helpers/index'
 
-import {
-    Wrapper,
-    ContentJournalArticle
-} from '@/components/layout'
+import { ContentJournalArticle } from '@/components/layout'
 import { ImgTemplate } from '@/components/images'
 
 import stls from '@/styles/components/sections/journal/SectionJournalTitlePicture.module.sass'
@@ -22,22 +19,20 @@ const SectionJournalTitlePicture = ({
     journalArticle
 }: TypeImgJournalArticleTitlePicture) => (
     <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-        <Wrapper column>
-            <ContentJournalArticle>
-                <ImgTemplate
-                    classNames={[stls.articlePicture]}
-                    src={journalArticle.picture.url || undefined}
-                    width={journalArticle.picture.width && widthArticlePicture}
-                    height={getImageHeight({
-                        width: widthArticlePicture,
-                        widthInitial: journalArticle.picture.width,
-                        heightInitial: journalArticle.picture.height
-                    })}
-                    alt={journalArticle.picture?.alt || 'Изображение'}
-                    title={journalArticle.picture.alt || 'Изображение'}
-                />
-            </ContentJournalArticle>
-        </Wrapper>
+        <ContentJournalArticle>
+            <ImgTemplate
+                classNames={[stls.articlePicture]}
+                src={journalArticle.picture.url || undefined}
+                width={journalArticle.picture.width && widthArticlePicture}
+                height={getImageHeight({
+                    width: widthArticlePicture,
+                    widthInitial: journalArticle.picture.width,
+                    heightInitial: journalArticle.picture.height
+                })}
+                alt={journalArticle.picture?.alt || 'Изображение'}
+                title={journalArticle.picture.alt || 'Изображение'}
+            />
+        </ContentJournalArticle>
     </section >
 )
 

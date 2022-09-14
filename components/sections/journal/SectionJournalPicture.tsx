@@ -6,7 +6,7 @@ import {
 } from '@/types/index'
 import cn from 'classnames'
 import { getClassNames, getImageHeight } from '@/helpers/index'
-import { Wrapper, ContentJournalArticle } from '@/components/layout'
+import { ContentJournalArticle } from '@/components/layout'
 import { ImgTemplate } from '@/components/images'
 
 type TypeSectionJournalPictureProps = TypeClassNames & {
@@ -27,24 +27,22 @@ const SectionJournalPicture = ({
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
-      <Wrapper column>
-        <ContentJournalArticle>
-          <figure>
-            <ImgTemplate
-              src={picture.url}
-              width={850}
-              height={getImageHeight({
-                width: 850,
-                widthInitial: picture.width,
-                heightInitial: picture.height
-              })}
-              alt={title}
-              title={title}
-            />
-            <figcaption className={stls.figcaption}>{title}</figcaption>
-          </figure>
-        </ContentJournalArticle>
-      </Wrapper>
+      <ContentJournalArticle>
+        <figure>
+          <ImgTemplate
+            src={picture.url}
+            width={850}
+            height={getImageHeight({
+              width: 850,
+              widthInitial: picture.width,
+              heightInitial: picture.height
+            })}
+            alt={title}
+            title={title}
+          />
+          <figcaption className={stls.figcaption}>{title}</figcaption>
+        </figure>
+      </ContentJournalArticle>
     </section>
   )
 }

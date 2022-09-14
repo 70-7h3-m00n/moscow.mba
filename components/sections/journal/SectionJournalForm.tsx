@@ -34,43 +34,45 @@ const SectionJournalForm = ({
 }: TypeSectionJournalParagraphProps) => {
     return (
         <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-            <ContentJournalArticle>
-                <div className={stls.form}>
-                    <Image
-                        src={formJournalPicture}
-                        objectFit="cover"
-                        layout="fill"
-                        className={stls.backgroundImage} />
-                    <div className={stls.mockupPicture}>
+            <Wrapper column>
+                <ContentJournalArticle>
+                    <div className={stls.form}>
                         <Image
-                            src={mockupPicture}
-                            width={207}
-                            height={238}
-                        />
-                    </div>
-                    <p className={stls.title}>{formPdfMaterials?.title}</p>
-                    <div className={stls.filePdf}>
-                        <div className={stls.pdfPicture}>
+                            src={formJournalPicture}
+                            objectFit="cover"
+                            layout="fill"
+                            className={stls.backgroundImage} />
+                        <div className={stls.mockupPicture}>
                             <Image
-                                src={pdfImages}
-                                width={30}
-                                height={38} />
+                                src={mockupPicture}
+                                width={207}
+                                height={238}
+                            />
                         </div>
-                        <div className={stls.nameFiles}>
-                            {
-                                pdfMaterials.map(file =>
-                                    <Link href={file.url}>
-                                        <a className={stls.nameFile}>{file.name}</a>
-                                    </Link>
-                                )
-                            }
+                        <p className={stls.title}>{formPdfMaterials?.title}</p>
+                        <div className={stls.filePdf}>
+                            <div className={stls.pdfPicture}>
+                                <Image
+                                    src={pdfImages}
+                                    width={30}
+                                    height={38} />
+                            </div>
+                            <div className={stls.nameFiles}>
+                                {
+                                    pdfMaterials.map(file =>
+                                        <Link href={file.url}>
+                                            <a className={stls.nameFile}>{file.name}</a>
+                                        </Link>
+                                    )
+                                }
+                            </div>
+                        </div>
+                        <div className={stls.inputs}>
+                            <FormAlpha />
                         </div>
                     </div>
-                    <div className={stls.inputs}>
-                        <FormAlpha />
-                    </div>
-                </div>
-            </ContentJournalArticle>
+                </ContentJournalArticle>
+            </Wrapper>
         </section >
     )
 }

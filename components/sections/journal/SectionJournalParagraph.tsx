@@ -8,7 +8,7 @@ import parse from 'html-react-parser'
 import truncate from 'truncate'
 import { marked } from 'marked'
 import { getClassNames } from '@/helpers/index'
-import { Wrapper, ContentJournalArticle } from '@/components/layout'
+import { ContentJournalArticle } from '@/components/layout'
 
 type TypeSectionJournalParagraphProps = TypeClassNames & {
   body: TypeLibJournalArticleParagraphBody | null
@@ -25,31 +25,29 @@ const SectionJournalParagraph = ({
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
-      <Wrapper column>
-        <ContentJournalArticle>
-          <p className={stls.p}>
-            {body
-              ?.filter(part => part)
-              .map(part => (
-                <span
-                  key={
-                    part.text
-                      ? truncate(part.text, 21)
-                      : `SectionJournalParagraph ${idx}`
-                  }
-                  className={cn({
-                    [stls.isHighlighted]: part.isHighlighted,
-                    [stls.isLarger]: part.isLarger
-                  })}>
-                  {part.text &&
-                    parse(
-                      marked(part.text).replace('<p>', '').replace('</p>', '')
-                    )}
-                </span>
-              ))}
-          </p>
-        </ContentJournalArticle>
-      </Wrapper>
+      <ContentJournalArticle>
+        <p className={stls.p}>
+          {body
+            ?.filter(part => part)
+            .map(part => (
+              <span
+                key={
+                  part.text
+                    ? truncate(part.text, 21)
+                    : `SectionJournalParagraph ${idx}`
+                }
+                className={cn({
+                  [stls.isHighlighted]: part.isHighlighted,
+                  [stls.isLarger]: part.isLarger
+                })}>
+                {part.text &&
+                  parse(
+                    marked(part.text).replace('<p>', '').replace('</p>', '')
+                  )}
+              </span>
+            ))}
+        </p>
+      </ContentJournalArticle>
     </section>
   )
 }

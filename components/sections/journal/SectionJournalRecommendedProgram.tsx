@@ -10,10 +10,7 @@ import {
   getClassNames,
 } from '@/helpers/index'
 
-import {
-  Wrapper,
-  ContentJournalArticle
-} from '@/components/layout'
+import { ContentJournalArticle } from '@/components/layout'
 import {
   ImgJournalArticleRecommended
 } from '@/components/images'
@@ -35,29 +32,27 @@ const SectionJournalRecommendedProgram = ({
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
-      <Wrapper column>
-        <ContentJournalArticle classNames={[stls.SectionJournalRecommendedProgram]}>
-          <div className={stls.columnImage}>
-            <ImgJournalArticleRecommended 
-            icon={recommendedProgram?.program.icon} 
+      <ContentJournalArticle classNames={[stls.SectionJournalRecommendedProgram]}>
+        <div className={stls.columnImage}>
+          <ImgJournalArticleRecommended
+            icon={recommendedProgram?.program.icon}
             backgroundColor='dark'
             usage='program'
             widthIcon={50}
             heightIcon={50}
-            />
-          </div>
-          <div className={stls.columnTitle}>
-            <p className={stls.title}>{recommendedProgram?.title}</p>
-          </div>
-          <div className={stls.columnContent}>
-            <p className={stls.content}>{recommendedProgram?.program?.title}</p>
-          </div>
-          <div className={stls.columnLink}>
-            <Link href={`${routesFront.root}${routesFront.programs}/${recommendedProgram?.program.categorySlug}/${recommendedProgram?.program.studyFormatSlug}/${recommendedProgram?.program.slug}`}>
-              <a className={stls.link}>{recommendedProgram?.btnValue}</a>
-            </Link></div>
-        </ContentJournalArticle>
-      </Wrapper>
+          />
+        </div>
+        <div className={stls.columnTitle}>
+          <p className={stls.title}>{recommendedProgram?.title}</p>
+        </div>
+        <div className={stls.columnContent}>
+          <p className={stls.content}>{recommendedProgram?.program?.title}</p>
+        </div>
+        <div className={stls.columnLink}>
+          <Link href={`${routesFront.root}${routesFront.programs}/${recommendedProgram?.program.categorySlug}/${recommendedProgram?.program.studyFormatSlug}/${recommendedProgram?.program.slug}`}>
+            <a className={stls.link}>{recommendedProgram?.btnValue}</a>
+          </Link></div>
+      </ContentJournalArticle>
     </section>
   )
 }

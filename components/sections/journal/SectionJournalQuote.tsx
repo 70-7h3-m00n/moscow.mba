@@ -7,7 +7,7 @@ import {
 
 import { getClassNames } from '@/helpers/index'
 
-import { Wrapper, ContentJournalArticle } from '@/components/layout'
+import { ContentJournalArticle } from '@/components/layout'
 import { IconQuote } from '@/components/icons'
 import { CardAuthor } from '@/components/cards'
 
@@ -26,15 +26,13 @@ const SectionJournalQuote = ({
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
-      <Wrapper column>
-        <ContentJournalArticle classNames={[stls.content]}>
-          <IconQuote classNames={[stls.icon]} />
-          <blockquote className={stls.blockquote}>{quote.body}</blockquote>
-          <div className={stls.credit}>
-            <CardAuthor textAlign={'end'} fontWeightAuthorName={700} quote={quote} />
-          </div>
-        </ContentJournalArticle>
-      </Wrapper>
+      <ContentJournalArticle classNames={[stls.content]}>
+        <IconQuote classNames={[stls.icon]} />
+        <blockquote className={stls.blockquote}>{quote.body}</blockquote>
+        <div className={stls.credit}>
+          <CardAuthor textAlign={'end'} fontWeightAuthorName={700} quote={quote} />
+        </div>
+      </ContentJournalArticle>
     </section>
   )
 }

@@ -13,6 +13,7 @@ import {
 import {
     routesFront
 } from '@/config/index'
+import { Wrapper } from '@/components/layout'
 
 type TypeJournalArticleProps = {
     journalArticle: TypeLibJournalArticle
@@ -22,16 +23,18 @@ const SectionJournalHistoryArticle = ({
     journalArticle,
     classNames
 }: TypeJournalArticleProps) => (
-    <div className={
+    <section className={
         cn([stls.container], getClassNames({ classNames })) || undefined
     }>
-        <div className={stls.row}>
-            <Link href={routesFront.journal}>
-                <a className={stls.title}>{'Журнал'}</a>
-            </Link>
-            <span className={stls.slug}>{journalArticle.title}</span>
-        </div>
-    </div>
+        <Wrapper column>
+            <div className={stls.row}>
+                <Link href={routesFront.journal}>
+                    <a className={stls.title}>{'Журнал'}</a>
+                </Link>
+                <span className={stls.slug}>{journalArticle.title}</span>
+            </div>
+        </Wrapper>
+    </section>
 )
 
 export default SectionJournalHistoryArticle

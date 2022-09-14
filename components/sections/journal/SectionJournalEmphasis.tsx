@@ -5,7 +5,7 @@ import {
 } from '@/types/index'
 import cn from 'classnames'
 import { getClassNames } from '@/helpers/index'
-import { Wrapper, ContentJournalArticle } from '@/components/layout'
+import { ContentJournalArticle } from '@/components/layout'
 
 type TypeSectionJournalEmphasisProps = TypeClassNames & {
   body: TypeLibJournalArticleEmphasisBody | null
@@ -20,11 +20,9 @@ const SectionJournalEmphasis = ({
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
-      <Wrapper column>
-        <ContentJournalArticle>
-          <p className={stls.p}>{body}</p>
-        </ContentJournalArticle>
-      </Wrapper>
+      <ContentJournalArticle>
+        <p className={stls.p}>{body}</p>
+      </ContentJournalArticle>
     </section>
   )
 }
