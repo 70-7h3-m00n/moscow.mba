@@ -30,12 +30,16 @@
     width: 100%
     margin-bottom: f.px(155)
     margin-top: f.px(71)
-    @include m.media(desktop, widescreen)
+    @include m.media(widescreen)
         margin-left: f.px(110)
+    @include m.media(desktop, widescreen)
         margin-right: f.px(30)
 
 .aside
+    position: sticky
+    top: 0
     margin-top: f.px(71)
+    margin-bottom: f.px(220)
 
 .articleHeader
     margin-bottom: f.px(65)
@@ -43,3 +47,6 @@
 .articlePicture
     margin-top: f.px(130)
     margin-bottom: f.px(65)
+
+// .popupCoursesOnTopic
+//     margin-bottom: f.px(38)
