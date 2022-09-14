@@ -2,20 +2,24 @@ import Link from 'next/link'
 import { useState } from 'react'
 import cn from 'classnames'
 
-import { TypeLibJournalArticleRecommendedProgramsSection } from '@/types/index'
+import { TypeClassNames, TypeLibJournalArticleRecommendedProgramsSection } from '@/types/index'
 
 import routesFront from '@/config/routesFront'
 
 import { ImgJournalArticleRecommended } from '@/components/images'
 
 import stls from '@/styles/components/popups/PopupCoursesOnTopic.module.sass'
+import { getClassNames } from '@/helpers/index'
 
 
 type TypeSectionPopupCoursesOnTopicProps = {
     recommendedProgramsSection: TypeLibJournalArticleRecommendedProgramsSection | null
-}
+} & TypeClassNames
 
-const PopupCoursesOnTopic = ({ recommendedProgramsSection }: TypeSectionPopupCoursesOnTopicProps) => {
+const PopupCoursesOnTopic = ({
+    recommendedProgramsSection,
+    classNames
+}: TypeSectionPopupCoursesOnTopicProps) => {
     const [isShow, setIsShow] = useState(true)
 
     const handleShowPopupCoursesOnTopic = () => {
@@ -25,7 +29,7 @@ const PopupCoursesOnTopic = ({ recommendedProgramsSection }: TypeSectionPopupCou
     if (!isShow) return null
 
     return (
-        <div className={stls.popupCoursesOnTopic}>
+        <div className={cn([stls.popupCoursesOnTopic], getClassNames({ classNames })) || undefined}>
             <div className={stls.buttonClosed}>
                 <button className={stls.closed} onClick={handleShowPopupCoursesOnTopic}></button>
             </div>

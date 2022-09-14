@@ -1,0 +1,62 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/shared/journal' as j
+
+.popupDownloadMaterials
+    position: relative
+    overflow: hidden
+    width: f.px(190)
+    height: f.px(190)
+    padding: f.px(10) f.px(10) f.px(20) f.px(20)
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+    border-radius: f.px(10)
+    background: linear-gradient(205.63deg, rgba(0, 0, 0, 0) 29.74%, rgba(255, 53, 53, 0.31) 101.33%), linear-gradient(207.7deg, #000000 34.1%, rgba(255, 53, 53, 0.31) 148.13%), #000000
+
+.lineDownload
+    position: absolute
+    right: 0
+    top: 0
+
+.text
+    font-size: f.px(20)
+    font-weight: 500
+    line-height: 100%
+    @include m.dye(c, c.$psi)
+
+.buttonClosed
+    display: flex
+    justify-content: flex-end
+    align-items: center
+
+.closed
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    width: f.px(27)
+    height: f.px(27)
+    padding: 0
+    border: none
+    border-radius: 50%
+    @include m.dye(bgc, c.$psi)
+    &::before
+        position: absolute
+        display: block
+        content: ""
+        width: f.px(18)
+        height: f.px(2)
+        transform: rotate(45deg)
+        border-radius: f.px(5)
+        @include m.dye(bgc, c.$chi)
+    &::after
+        position: absolute
+        display: block
+        content: ""
+        width: f.px(18)
+        height: f.px(2)
+        transform: rotate(-45deg)
+        border-radius: f.px(5)
+        @include m.dye(bgc, c.$chi)
