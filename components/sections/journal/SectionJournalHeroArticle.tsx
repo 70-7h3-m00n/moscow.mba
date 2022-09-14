@@ -92,7 +92,14 @@ const SectionJournalHeroArticle = ({
     handleFilterActiclesButtons
 }: TypeSectionJournalArticleProps) => {
     const articleNew = filteredArticles[0]
-    const time = getRenderTime({ timestamp: articleNew?.createdAt, options: pageOptions })
+
+    const getTime = () => (
+        articleNew
+            ? getRenderTime({ timestamp: filteredArticles[0]?.createdAt, options: pageOptions })
+            : null
+    )
+
+    const time = getTime()
     return (
         articleNew?.slug
             || articleNew?.picture

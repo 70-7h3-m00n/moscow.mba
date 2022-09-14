@@ -90,8 +90,14 @@ const CardJournalArticle = ({
   filterCategoriesButtons,
   handleFilterActiclesButtons
 }: TypeCardJournalArticleProps) => {
-  const time = getRenderTime({ timestamp: article.createdAt, options: cardOptions })
 
+  const getTime = () => (
+    article
+      ? getRenderTime({ timestamp: article?.createdAt, options: cardOptions })
+      : null
+  )
+
+  const time = getTime()
   const { slug, picture, title, journalCategory, createdAt } = article
 
   return (
