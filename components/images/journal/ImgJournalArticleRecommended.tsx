@@ -20,12 +20,18 @@ import { ImgTemplate } from '@/components/images'
 type TypeImgJournalArticleRecommendedProps = {
     icon: string | null
     backgroundColor?: 'dark' | 'light' | 'medium' | null
+    widthIcon: number
+    heightIcon: number
+    usage: 'popup' | 'program'
 }
 
-const widthIcon = 50
-const heightIcon = 50
-
-const ImgJournalArticleRecommended = ({ icon, backgroundColor }: TypeImgJournalArticleRecommendedProps) => {
+const ImgJournalArticleRecommended = ({
+    icon,
+    backgroundColor,
+    widthIcon,
+    heightIcon,
+    usage
+}: TypeImgJournalArticleRecommendedProps) => {
     const iconArray = {
         ['paperPlane']: paperPlane,
         ['book']: book,
@@ -51,7 +57,11 @@ const ImgJournalArticleRecommended = ({ icon, backgroundColor }: TypeImgJournalA
                             : backgroundColor === 'medium'
                                 ? stls.medium
                                 : stls.light,
-                    stls.container
+                    usage === 'popup' ?
+                        stls.popupContainer
+                        : usage === 'program'
+                            ? stls.programContainer
+                            : stls.container
                 ]} />
     )
 }

@@ -84,7 +84,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                             }%)`
                     }}></div>
             </div>
-            <Wrapper>
+            <Wrapper classNames={[stls.wrapper]}>
                 <article className={stls.article}>
                     <SectionJournalArticleHeader
                         journalArticle={journalArticle}
@@ -147,7 +147,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                     }
                     <SectionJournalToShare journalArticle={journalArticle} />
                 </article>
-                <aside>
+                <aside className={stls.aside}>
                     <SectionPopupCoursesOnTopic recommendedProgramsSection =
                         {
                             journalArticle?.articleBody

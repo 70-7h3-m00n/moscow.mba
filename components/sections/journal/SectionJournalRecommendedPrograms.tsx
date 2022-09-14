@@ -46,6 +46,9 @@ const SectionJournalRecommendedPrograms = ({
                                     <ImgJournalArticleRecommended
                                         icon={program.icon}
                                         backgroundColor='light'
+                                        usage='program'
+                                        widthIcon={50}
+                                        heightIcon={50}
                                     />
                                 </div>
                                 <div className={stls.content}>
