@@ -13,9 +13,11 @@ import { TypeClassNames } from '@/types/index'
 
 import stls from '@/styles/components/popups/PopupShowCoursesOnTopic.module.sass'
 
-type TypeSectionPopupCoursesOnTopicProps = TypeClassNames
+type TypeSectionPopupCoursesOnTopicProps = {
+    handlePopupCoursesOnTopic: () => void
+} & TypeClassNames
 
-const PopupShowCoursesOnTopic = ({ classNames }: TypeSectionPopupCoursesOnTopicProps) => {
+const PopupPreviewCoursesOnTopic = ({ classNames, handlePopupCoursesOnTopic }: TypeSectionPopupCoursesOnTopicProps) => {
     const [isShow, setIsShow] = useState(true)
     const [mounted, setMounted] = useState(false)
 
@@ -25,20 +27,20 @@ const PopupShowCoursesOnTopic = ({ classNames }: TypeSectionPopupCoursesOnTopicP
         return () => setMounted(false)
     }, [])
 
-    const handleShowPopupCoursesOnTopic = () => {
-        setIsShow(isShow => !isShow)
-    }
-
     const windowWidth = useWindowWidth()
 
-    const popupShowCoursesOnTopicElements = (
+    const handleShowPopupPreviewCoursesOnTopic = () => {
+        setIsShow(false)
+    }
+
+    const popupPreviewCoursesOnTopicElements = (
         <div className={cn([stls.container], getClassNames({ classNames })) || undefined}>
             <div className={stls.courses}>
                 <span className={stls.text}>{'Курсы по теме'}</span>
-                <button className={stls.show}>{'Посмотреть'}</button>
+                <button className={stls.show} onClick={handlePopupCoursesOnTopic}>{'Посмотреть'}</button>
             </div>
-            <div className={stls.buttonClosed} onClick={handleShowPopupCoursesOnTopic}>
-                <button className={stls.closed}></button>
+            <div className={stls.buttonClosed}>
+                <button className={stls.closed} onClick={handleShowPopupPreviewCoursesOnTopic}></button>
             </div>
         </div>
     )
@@ -48,9 +50,9 @@ const PopupShowCoursesOnTopic = ({ classNames }: TypeSectionPopupCoursesOnTopicP
     } else {
         return (mounted && windowWidth <= 1020)
             ? createPortal(
-                popupShowCoursesOnTopicElements, document.querySelector('#__next'))
+                popupPreviewCoursesOnTopicElements, document.querySelector('#__next'))
             : ''
     }
 }
 
-export default PopupShowCoursesOnTopic
+export default PopupPreviewCoursesOnTopic
