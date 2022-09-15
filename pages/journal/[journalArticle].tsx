@@ -9,6 +9,8 @@ import {
     useState
 } from 'react'
 
+import { useScroll } from '@/hooks/index'
+
 import {
     routesFront
 } from '@/config/index'
@@ -40,10 +42,12 @@ import {
     SectionJournalToShare,
     SectionJournalForm
 } from '@/components/sections'
+
 import {
-    SectionPopupCoursesOnTopic,
-    SectionPopupDownloadMaterials
-} from '@/components/sections/journal/popups'
+    PopupCoursesOnTopic,
+    PopupDownloadMaterials,
+    PopupShowCoursesOnTopic
+} from '@/components/popups'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
 
@@ -72,6 +76,9 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
             document.removeEventListener('scroll', handleScroll)
         }
     }, [])
+
+    const scroll = useScroll()
+
     return (
         <>
             <SectionJournalHistoryArticle
@@ -149,15 +156,16 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                     <SectionJournalToShare journalArticle={journalArticle} />
                 </article>
                 <aside className={stls.aside}>
-                    <SectionPopupCoursesOnTopic recommendedProgramsSection=
-                        {
+                    {/* <PopupCoursesOnTopic
+                        recommendedProgramsSection={
                             journalArticle?.articleBody
                                 ?.find(item =>
                                     item.__typename === "ComponentJournalJournalArticleRecommendedProgramsSection")
                                 ?.recommendedProgramsSection
                         }
-                        classNames={[stls.popupCoursesOnTopic]} />
-                    <SectionPopupDownloadMaterials classNames={[stls.popupDownloadMaterials]} />
+                        classNames={[stls.popupCoursesOnTopic]} /> */}
+                    <PopupDownloadMaterials classNames={[stls.popupDownloadMaterials]} />
+                    <PopupShowCoursesOnTopic classNames={[scroll.height > 200 ? stls.showPopup : stls.noShowPopup]}/>
                 </aside>
             </Wrapper>
         </>
