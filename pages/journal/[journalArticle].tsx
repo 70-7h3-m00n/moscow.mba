@@ -3,13 +3,14 @@ import {
     GetStaticProps
 } from 'next'
 import type { NextPage } from 'next'
+import { createPortal } from "react-dom"
 import {
     Fragment,
     useEffect,
     useState
 } from 'react'
 
-import { useScroll } from '@/hooks/index'
+import { useScroll, useWindowWidth } from '@/hooks/index'
 
 import {
     routesFront
@@ -46,7 +47,7 @@ import {
 import {
     PopupCoursesOnTopic,
     PopupDownloadMaterials,
-    PopupShowCoursesOnTopic
+    PopupPreviewCoursesOnTopic
 } from '@/components/popups'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
@@ -56,6 +57,8 @@ type TypeJournalArticleProps = {
 }
 
 const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle }) => {
+
+    // ScrollBar
     const [pageYOffset, setPageYOffset] = useState(0)
     const [scollHeight, setScrollHeight] = useState(0)
     const [clientHeight, setClientHeight] = useState(0)
@@ -77,7 +80,27 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
         }
     }, [])
 
+    // Popup is show  (PopupCoursesOnTopicDesktop)
     const scroll = useScroll()
+    const windowWidth = useWindowWidth()
+
+    const [mounted, setMounted] = useState(false)
+    useEffect(() => {
+        setMounted(true)
+
+        return () => setMounted(false)
+    }, [])
+
+    const [isPopupCoursesOnTopicDesktop, setIsPopupCoursesOnTopicDesktop] = useState(true)
+    const [isPopupCoursesOnTopicPhone, setIsPopupCoursesOnTopicPhone] = useState(false)
+
+    const handlePopupCoursesOnTopicDesktop = () => {
+        setIsPopupCoursesOnTopicDesktop(isPopupCoursesOnTopicDesktop => !isPopupCoursesOnTopicDesktop)
+    }
+
+    const handlePopupCoursesOnTopicPhone = () => {
+        setIsPopupCoursesOnTopicPhone(isPopupCoursesOnTopicPhone => !isPopupCoursesOnTopicPhone)
+    }
 
     return (
         <>
@@ -100,8 +123,6 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                     <SectionJournalArticleTitle
                         journalArticle={journalArticle}
                         classNames={[stls.articleTitle]} />
-
-                    {/* TODO Сделать содержание */}
                     <SectionJournalArticleContents
                         journalArticle={journalArticle}
                         classNames={[stls.articleTitle]} />
@@ -156,16 +177,33 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                     <SectionJournalToShare journalArticle={journalArticle} />
                 </article>
                 <aside className={stls.aside}>
-                    {/* <PopupCoursesOnTopic
-                        recommendedProgramsSection={
-                            journalArticle?.articleBody
-                                ?.find(item =>
-                                    item.__typename === "ComponentJournalJournalArticleRecommendedProgramsSection")
-                                ?.recommendedProgramsSection
-                        }
-                        classNames={[stls.popupCoursesOnTopic]} /> */}
+                    {
+                        (mounted && windowWidth <= 1020 && isPopupCoursesOnTopicPhone)
+                            ? createPortal(
+                                <PopupCoursesOnTopic
+                                    recommendedProgramsSection={
+                                        journalArticle?.articleBody
+                                            ?.find(item =>
+                                                item.__typename === "ComponentJournalJournalArticleRecommendedProgramsSection")
+                                            ?.recommendedProgramsSection
+                                    }
+                                    classNames={[stls.popupCoursesOnTopic]}
+                                    handlePopupCoursesOnTopic={handlePopupCoursesOnTopicPhone} />
+                                , document.querySelector('#__next'))
+                            : (mounted && windowWidth > 1020 && isPopupCoursesOnTopicDesktop)
+                                ? <PopupCoursesOnTopic
+                                    recommendedProgramsSection={
+                                        journalArticle?.articleBody
+                                            ?.find(item =>
+                                                item.__typename === "ComponentJournalJournalArticleRecommendedProgramsSection")
+                                            ?.recommendedProgramsSection
+                                    }
+                                    classNames={[stls.popupCoursesOnTopic]}
+                                    handlePopupCoursesOnTopic={handlePopupCoursesOnTopicDesktop} />
+                                : ''
+                    }
+                    <PopupPreviewCoursesOnTopic handlePopupCoursesOnTopic={handlePopupCoursesOnTopicPhone} classNames={[scroll.height > 200 ? stls.showPopup : stls.noShowPopup]} />
                     <PopupDownloadMaterials classNames={[stls.popupDownloadMaterials]} />
-                    <PopupShowCoursesOnTopic classNames={[scroll.height > 200 ? stls.showPopup : stls.noShowPopup]}/>
                 </aside>
             </Wrapper>
         </>

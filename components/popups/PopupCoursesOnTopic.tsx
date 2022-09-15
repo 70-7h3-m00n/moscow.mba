@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { useState } from 'react'
 import cn from 'classnames'
 
 import { TypeClassNames, TypeLibJournalArticleRecommendedProgramsSection } from '@/types/index'
@@ -14,24 +13,20 @@ import { getClassNames } from '@/helpers/index'
 
 type TypeSectionPopupCoursesOnTopicProps = {
     recommendedProgramsSection: TypeLibJournalArticleRecommendedProgramsSection | null
+    handlePopupCoursesOnTopic: () => void
 } & TypeClassNames
 
 const PopupCoursesOnTopic = ({
     recommendedProgramsSection,
-    classNames
-}: TypeSectionPopupCoursesOnTopicProps) => {
-    const [isShow, setIsShow] = useState(true)
-
-    const handleShowPopupCoursesOnTopic = () => {
-        setIsShow(isShow => !isShow)
-    }
-
-    if (!isShow) return null
-
-    return (
+    classNames,
+    handlePopupCoursesOnTopic
+}: TypeSectionPopupCoursesOnTopicProps) => (
+    <>
+        <div className={stls.popupWrapper} onClick={handlePopupCoursesOnTopic}></div>
         <div className={cn([stls.popupCoursesOnTopic], getClassNames({ classNames })) || undefined}>
+
             <div className={stls.buttonClosed}>
-                <button className={stls.closed} onClick={handleShowPopupCoursesOnTopic}></button>
+                <button className={stls.closed} onClick={handlePopupCoursesOnTopic}></button>
             </div>
             <div className={stls.category}>
                 <span className={stls.categoryItem}>{'Курсы по теме'}</span>
@@ -73,7 +68,7 @@ const PopupCoursesOnTopic = ({
                 }
             </div>
         </div>
-    )
-}
+    </>
+)
 
 export default PopupCoursesOnTopic

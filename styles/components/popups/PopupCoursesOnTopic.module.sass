@@ -4,10 +4,27 @@
 @use '@/styles/shared/journal' as j
     
 .popupCoursesOnTopic
-    width: 300px
     padding: f.px(10) f.px(20) f.px(35) f.px(20)
     border-radius: f.px(20)
     @include m.dye(bgc, c.$chi)
+    width: 300px
+    @include m.media(phone, tablet, laptop)
+        position: fixed
+        top: 0
+        left: 0
+        z-index: 101
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+.popupWrapper
+    @include m.media(phone, tablet, laptop)
+        position: fixed
+        top: 0
+        left: 0
+        width: 100vw
+        height: 100vh
+        z-index: 100
+        @include m.dye(bgc, c.$gamma-2)
 
 .buttonClosed
     display: flex
@@ -84,10 +101,12 @@
     font-weight: 400
     @include m.dye(c, c.$alpha)
 
+.bottom
+    line-height: f.px(14.4)
+ 
 .textBottom
-    font-size: f.px(15)
+    font-size: f.px(12)
     font-weight: 400
-    line-height: f.px(18)
     @include m.dye(c, c.$tau)
 
 .isHighlighted
