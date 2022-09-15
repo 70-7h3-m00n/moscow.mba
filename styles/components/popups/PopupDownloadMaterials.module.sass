@@ -6,25 +6,61 @@
 .popupDownloadMaterials
     position: relative
     overflow: hidden
-    width: f.px(190)
-    height: f.px(190)
-    padding: f.px(10) f.px(10) f.px(20) f.px(20)
     display: flex
     justify-content: space-between
-    align-items: flex-start
-    border-radius: f.px(10)
-    background: linear-gradient(205.63deg, rgba(0, 0, 0, 0) 29.74%, rgba(255, 53, 53, 0.31) 101.33%), linear-gradient(207.7deg, #000000 34.1%, rgba(255, 53, 53, 0.31) 148.13%), #000000
+    @include m.media(desktop, widescreen)
+        width: f.px(190)
+        height: f.px(190)
+        padding: f.px(10) f.px(10) f.px(20) f.px(20)
+        border-radius: f.px(10)
+        align-items: flex-start
+        background: linear-gradient(205.63deg, rgba(0, 0, 0, 0) 29.74%, rgba(255, 53, 53, 0.31) 101.33%), linear-gradient(207.7deg, #000000 34.1%, rgba(255, 53, 53, 0.31) 148.13%), #000000
+
+    @include m.media(phone, tablet, laptop)
+        align-items: center
+        padding-left: 10px
+        padding-right: 10px
+        background: linear-gradient(45.63deg, rgba(0, 0, 0, 0) 29.74%, rgba(255, 53, 53, 0.31) 101.33%), linear-gradient(207.7deg, #000000 34.1%, rgba(255, 53, 53, 0.31) 148.13%), #000000
 
 .lineDownload
     position: absolute
     right: 0
     top: 0
 
+.content
+    @include m.media(phone, tablet, laptop)
+        display: flex
+        align-items: center
+        flex-direction: row-reverse
+
+.textContent
+    @include m.media(phone)
+        width: f.px(184)
+    @include m.media(phone, tablet, laptop)
+        margin-right: f.px(15)
+
+.bookDownload
+    @include m.media(desktop, widescreen)
+        position: relative
+    @include m.media(phone, tablet, laptop)
+        margin-bottom: -12px
+
+.ellipse
+    @include m.media(phone, tablet, laptop)
+        display: none
+    @include m.media(desktop, widescreen)
+        position: absolute
+        top: f.px(55)
+        left: f.px(-20)
+
 .text
     font-size: f.px(20)
     font-weight: 500
     line-height: 100%
     @include m.dye(c, c.$psi)
+    @include m.media(phone, tablet, laptop)
+        font-size: f.px(18)
+        line-height: 120%
 
 .buttonClosed
     display: flex

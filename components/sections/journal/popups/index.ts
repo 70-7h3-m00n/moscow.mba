@@ -1,2 +1,0 @@
-export { default as SectionPopupCoursesOnTopic } from '@/components/sections/journal/popups/SectionPopupCoursesOnTopic'
-export { default as SectionPopupDownloadMaterials } from '@/components/sections/journal/popups/SectionPopupDownloadMaterials'

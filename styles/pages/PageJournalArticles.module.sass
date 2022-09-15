@@ -48,5 +48,13 @@
     margin-top: f.px(130)
     margin-bottom: f.px(65)
 
-// .popupCoursesOnTopic
-//     margin-bottom: f.px(38)
+.popupCoursesOnTopic
+    margin-bottom: f.px(38)
+
+.popupDownloadMaterials
+    @include m.media(phone, tablet, laptop)
+        position: fixed
+        bottom: 0
+        left: 0
+        width: 100%
+        z-index: 5
