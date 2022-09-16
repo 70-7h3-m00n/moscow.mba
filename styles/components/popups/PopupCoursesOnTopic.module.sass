@@ -3,7 +3,7 @@
 @use '@/styles/themes/default/colors' as c
 @use '@/styles/shared/journal' as j
 
-.popupCoursesOnTopic
+.container
     padding: f.px(10) f.px(20) f.px(35) f.px(20)
     border-radius: f.px(20)
     @include m.dye(bgc, c.$chi)
@@ -13,20 +13,20 @@
         position: fixed
         top: 0
         left: 0
-        z-index: 101
+        z-index: 151
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
         max-width: 350px
         width: 100%
-.popupWrapper
+.wrapper
     @include m.media(phone, tablet, laptop)
         position: fixed
         top: 0
         left: 0
         width: 100vw
         height: 100vh
-        z-index: 100
+        z-index: 150
         @include m.dye(bgc, c.$gamma-2)
 
 .buttonClosed

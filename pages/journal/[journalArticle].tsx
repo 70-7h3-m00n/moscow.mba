@@ -95,12 +95,18 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
     const [isPopupCoursesOnTopicDesktop, setIsPopupCoursesOnTopicDesktop] = useState(true)
     const [isPopupCoursesOnTopicPhone, setIsPopupCoursesOnTopicPhone] = useState(false)
 
+    const [isPopupGetMaterials, setIsPopupGetMaterials] = useState(false)
+
     const handlePopupCoursesOnTopicDesktop = () => {
         setIsPopupCoursesOnTopicDesktop(isPopupCoursesOnTopicDesktop => !isPopupCoursesOnTopicDesktop)
     }
 
     const handlePopupCoursesOnTopicPhone = () => {
         setIsPopupCoursesOnTopicPhone(isPopupCoursesOnTopicPhone => !isPopupCoursesOnTopicPhone)
+    }
+
+    const handlePopupGetMaterials = () => {
+        setIsPopupGetMaterials(isPopupGetMaterials => !isPopupGetMaterials)
     }
 
     return (
@@ -214,17 +220,24 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                     {
                         (mounted && windowWidth <= 1020)
                             ? createPortal(
-                                <PopupDownloadMaterials classNames={[stls.popupDownloadMaterials]} />, document.querySelector('#__next'))
+                                <PopupDownloadMaterials
+                                    classNames={[stls.popupDownloadMaterials]}
+                                    handlePopupGetMaterials={handlePopupGetMaterials}
+                                />, document.querySelector('#__next'))
                             : (mounted && windowWidth > 1020)
-                                ? <PopupDownloadMaterials classNames={[stls.popupDownloadMaterials]} />
+                                ? <PopupDownloadMaterials
+                                    classNames={[stls.popupDownloadMaterials]}
+                                    handlePopupGetMaterials={handlePopupGetMaterials} />
                                 : ''
                     }
-                    {/* {
-                        mounted
+                    {
+                        (mounted && isPopupGetMaterials)
                             ? createPortal(
-                                <PopupGetMaterials classNames={[stls.popupGetMaterials]} />, document.querySelector('#__next'))
-                            : <PopupGetMaterials classNames={[stls.popupGetMaterials]} />
-                    } */}
+                                <PopupGetMaterials
+                                    classNames={[stls.popupGetMaterials]}
+                                    handlePopupGetMaterials={handlePopupGetMaterials} />, document.querySelector('#__next'))
+                            : ""
+                    }
                 </aside>
             </Wrapper>
         </>

@@ -22,8 +22,8 @@ const PopupCoursesOnTopic = ({
     handlePopupCoursesOnTopic
 }: TypeSectionPopupCoursesOnTopicProps) => (
     <>
-        <div className={stls.popupWrapper} onClick={handlePopupCoursesOnTopic}></div>
-        <div className={cn([stls.popupCoursesOnTopic], getClassNames({ classNames })) || undefined}>
+        <div className={stls.wrapper} onClick={handlePopupCoursesOnTopic}></div>
+        <div className={cn([stls.container], getClassNames({ classNames })) || undefined}>
 
             <div className={stls.buttonClosed}>
                 <button className={stls.closed} onClick={handlePopupCoursesOnTopic}></button>
