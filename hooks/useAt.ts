@@ -32,7 +32,7 @@ const useAt = () => {
     webinarsArchive:
       getSplitedPath[0] === 'webinars' && getSplitedPath[1] === 'archive',
     webinarsIndex: getSplitedPath[0] === 'webinars' && !getSplitedPath[1],
-    articles: getSplitedPath[0] === 'articles',
+    journal: getSplitedPath[0] === 'journal',
     contact: getSplitedPath[0] === 'contact',
     mbl: getSplitedPath[1] === 'international-business-law',
     ru: locale === 'ru',
