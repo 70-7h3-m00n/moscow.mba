@@ -34,6 +34,7 @@ const PopupCoursesOnTopic = ({
             <div className={stls.programs}>
                 {
                     recommendedProgramsSection?.programs.map((program, idx) =>
+
                         <div key={`${program.title}_${idx}`} className={stls.program}>
                             <div className={stls.iconProgram}>
                                 <ImgJournalArticleRecommended
@@ -53,6 +54,57 @@ const PopupCoursesOnTopic = ({
                                 </Link>
                             </div>
                         </div>
+
+                    )
+                }
+                {
+                    recommendedProgramsSection?.programs.map((program, idx) =>
+
+                        <div key={`${program.title}_${idx}`} className={stls.program}>
+                            <div className={stls.iconProgram}>
+                                <ImgJournalArticleRecommended
+                                    icon={program.icon}
+                                    backgroundColor='medium'
+                                    widthIcon={30}
+                                    heightIcon={30}
+                                    usage='popup'
+                                />
+                            </div>
+                            <div className={stls.contentProgram}>
+                                <p className={stls.nameProgram}>{program.title}</p>
+                            </div>
+                            <div className={stls.linkProgram}>
+                                <Link href={`${routesFront.root}${routesFront.programs}/${program.categorySlug}/${program.studyFormatSlug}/${program.slug}`}>
+                                    <a className={stls.link}>{recommendedProgramsSection?.btnVal}</a>
+                                </Link>
+                            </div>
+                        </div>
+
+                    )
+                }
+                {
+                    recommendedProgramsSection?.programs.map((program, idx) =>
+
+                        <div key={`${program.title}_${idx}`} className={stls.program}>
+                            <div className={stls.iconProgram}>
+                                <ImgJournalArticleRecommended
+                                    icon={program.icon}
+                                    backgroundColor='medium'
+                                    widthIcon={30}
+                                    heightIcon={30}
+                                    usage='popup'
+                                />
+                            </div>
+                            <div className={stls.contentProgram}>
+                                <p className={stls.nameProgram}>{program.title}</p>
+                            </div>
+                            <div className={stls.linkProgram}>
+                                <Link href={`${routesFront.root}${routesFront.programs}/${program.categorySlug}/${program.studyFormatSlug}/${program.slug}`}>
+                                    <a className={stls.link}>{recommendedProgramsSection?.btnVal}</a>
+                                </Link>
+                            </div>
+                        </div>
+
                     )
                 }
             </div>

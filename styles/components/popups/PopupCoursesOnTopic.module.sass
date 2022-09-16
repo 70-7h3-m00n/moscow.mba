@@ -2,12 +2,13 @@
 @use '@/styles/utils/funcs' as f
 @use '@/styles/themes/default/colors' as c
 @use '@/styles/shared/journal' as j
-    
+
 .popupCoursesOnTopic
     padding: f.px(10) f.px(20) f.px(35) f.px(20)
     border-radius: f.px(20)
     @include m.dye(bgc, c.$chi)
-    width: 300px
+    @include m.media(desktop, widescreen)
+        width: 300px
     @include m.media(phone, tablet, laptop)
         position: fixed
         top: 0
@@ -16,6 +17,8 @@
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
+        max-width: 350px
+        width: 100%
 .popupWrapper
     @include m.media(phone, tablet, laptop)
         position: fixed
@@ -72,19 +75,28 @@
     @include m.dye(bgc, c.$alpha)
 
 .programs
-    margin: f.px(35) 0
+    padding: f.px(35) 0
     @include m.dye(bgc, c.$chi)
+    @include m.media(desktop, widescreen)
+        max-height: 40vh
+        overflow-y: auto
+    @include m.media(phone, tablet, laptop)
+        max-height: 60vh
+        overflow: auto
 
 .program
     margin-bottom: f.px(25)
-    &:nth-last-child(1)
-        margin-bottom: 0
     display: grid
     grid-template-columns: 38px 1fr
     grid-column-gap: f.px(15)
+    &:nth-last-child(1)
+        margin-bottom: 0
+
+.contentProgram
+    width: 200px
 
 .nameProgram
-    margin-top: f.px(4)  
+    margin-top: f.px(4)
     margin-bottom: f.px(15)
     font-size: f.px(15)
     font-weight: 500
@@ -103,7 +115,7 @@
 
 .bottom
     line-height: f.px(14.4)
- 
+
 .textBottom
     font-size: f.px(12)
     font-weight: 400
