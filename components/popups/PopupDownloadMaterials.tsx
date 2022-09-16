@@ -3,12 +3,9 @@ import {
     useEffect,
     useState
 } from "react"
-import { createPortal } from "react-dom"
 import cn from 'classnames'
 
 import { getClassNames } from '@/helpers/index'
-
-import { useWindowWidth } from '@/hooks/index'
 
 import { TypeClassNames } from '@/types/index'
 
@@ -34,9 +31,10 @@ const PopupDownloadMaterials = ({ classNames }: TypeSectionPopupCoursesOnTopicPr
         setIsShow(isShow => !isShow)
     }
 
-    const windowWidth = useWindowWidth()
-    const popupDownloadMaterialsElement =
-        (
+    if (!isShow) {
+        return null
+    } else {
+        return (
             <div className={cn([stls.popupDownloadMaterials], getClassNames({ classNames })) || undefined}>
                 <div className={stls.lineDownload}>
                     <Image
@@ -65,13 +63,6 @@ const PopupDownloadMaterials = ({ classNames }: TypeSectionPopupCoursesOnTopicPr
                 </div>
             </div>
         )
-    if (!isShow) {
-        return null
-    } else {
-        return (mounted && windowWidth <= 1020)
-            ? createPortal(
-                popupDownloadMaterialsElement, document.body)
-            : popupDownloadMaterialsElement
     }
 }
 
