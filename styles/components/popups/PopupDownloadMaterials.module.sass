@@ -9,8 +9,8 @@
     display: flex
     justify-content: space-between
     @include m.media(desktop, widescreen)
-        width: f.px(190)
-        height: f.px(190)
+        width: f.px(200)
+        height: f.px(200)
         padding: f.px(10) f.px(10) f.px(20) f.px(20)
         border-radius: f.px(10)
         align-items: flex-start
@@ -33,12 +33,6 @@
         align-items: center
         flex-direction: row-reverse
 
-.textContent
-    @include m.media(phone)
-        width: f.px(184)
-    @include m.media(phone, tablet, laptop)
-        margin-right: f.px(15)
-
 .bookDownload
     @include m.media(desktop, widescreen)
         position: relative
@@ -53,11 +47,28 @@
         top: f.px(55)
         left: f.px(-20)
 
+.textContent
+    @include m.media(phone)
+        max-width: f.px(200)
+        width: 100%
+    @include m.media(phone, tablet, laptop)
+        margin-right: f.px(15)
+    @include m.media(desktop, widescreen)
+        margin-top: f.px(8)
+
 .text
+    position: relative
+    z-index: 5
+    padding: 0
+    font-family: "Styrene", Arial, Tahoma, sans-serif
+    color: #262626
     font-size: f.px(20)
     font-weight: 500
     line-height: 100%
     @include m.dye(c, c.$psi)
+    background-color: inherit
+    border: none
+    text-align: start
     @include m.media(phone, tablet, laptop)
         font-size: f.px(18)
         line-height: 120%

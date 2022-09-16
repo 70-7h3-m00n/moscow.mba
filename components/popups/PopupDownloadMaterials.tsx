@@ -15,9 +15,14 @@ import ellipse from '@/public/assets/images/journal/ellipse.svg'
 
 import stls from '@/styles/components/popups/PopupDownloadMaterials.module.sass'
 
-type TypeSectionPopupCoursesOnTopicProps = TypeClassNames
+type TypeSectionPopupCoursesOnTopicProps = {
+    handlePopupGetMaterials: () => void
+} & TypeClassNames
 
-const PopupDownloadMaterials = ({ classNames }: TypeSectionPopupCoursesOnTopicProps) => {
+const PopupDownloadMaterials = ({
+    classNames,
+    handlePopupGetMaterials
+}: TypeSectionPopupCoursesOnTopicProps) => {
     const [isShow, setIsShow] = useState(true)
     const [mounted, setMounted] = useState(false)
 
@@ -55,7 +60,10 @@ const PopupDownloadMaterials = ({ classNames }: TypeSectionPopupCoursesOnTopicPr
                         </div>
                     </div>
                     <div className={stls.textContent}>
-                        <span className={stls.text}>{"Скачать полезные материалы"}</span>
+                        <button
+                            className={stls.text}
+                            onClick={handlePopupGetMaterials}
+                        >{"Скачать полезные материалы"}</button>
                     </div>
                 </div>
                 <div className={stls.buttonClosed}>
