@@ -47,7 +47,8 @@ import {
 import {
     PopupCoursesOnTopic,
     PopupDownloadMaterials,
-    PopupPreviewCoursesOnTopic
+    PopupPreviewCoursesOnTopic,
+    PopupGetMaterials
 } from '@/components/popups'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
@@ -169,8 +170,8 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                                     <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection} />
                                 )}
                                 {/* {component.__typename === 'ComponentJournalFormPdfMaterials' && (
-                                <SectionJournalForm pdfMaterials={journalArticle.pdfMaterials} formPdfMaterials={component.formPdfMaterials} />
-                            )} */}
+                                    <SectionJournalForm pdfMaterials={journalArticle.pdfMaterials} formPdfMaterials={component.formPdfMaterials} />
+                                )} */}
                             </Fragment>
                         ))
                     }
@@ -202,8 +203,28 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                                     handlePopupCoursesOnTopic={handlePopupCoursesOnTopicDesktop} />
                                 : ''
                     }
-                    <PopupPreviewCoursesOnTopic handlePopupCoursesOnTopic={handlePopupCoursesOnTopicPhone} classNames={[scroll.height > 200 ? stls.showPopup : stls.noShowPopup]} />
-                    <PopupDownloadMaterials classNames={[stls.popupDownloadMaterials]} />
+                    {
+                        mounted
+                            ? <PopupPreviewCoursesOnTopic
+                                handlePopupCoursesOnTopic={handlePopupCoursesOnTopicPhone}
+                                classNames={[scroll.height > 200 ? stls.showPopup : stls.noShowPopup]} />
+                            : ''
+                    }
+
+                    {
+                        (mounted && windowWidth <= 1020)
+                            ? createPortal(
+                                <PopupDownloadMaterials classNames={[stls.popupDownloadMaterials]} />, document.querySelector('#__next'))
+                            : (mounted && windowWidth > 1020)
+                                ? <PopupDownloadMaterials classNames={[stls.popupDownloadMaterials]} />
+                                : ''
+                    }
+                    {/* {
+                        mounted
+                            ? createPortal(
+                                <PopupGetMaterials classNames={[stls.popupGetMaterials]} />, document.querySelector('#__next'))
+                            : <PopupGetMaterials classNames={[stls.popupGetMaterials]} />
+                    } */}
                 </aside>
             </Wrapper>
         </>
