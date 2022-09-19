@@ -30,6 +30,7 @@ export { default as SectionJournalRecommendedPrograms } from '@/components/secti
 export { default as SectionJournalTitlePicture } from '@/components/sections/journal/SectionJournalTitlePicture'
 export { default as SectionJournalToShare } from '@/components/sections/journal/SectionJournalToShare'
 export { default as SectionJournalForm } from '@/components/sections/journal/SectionJournalForm'
+export { default as SectionJournalTable } from '@/components/sections/journal/SectionJournalTable'
 
 // ./
 export { default as About } from '@/components/sections/general/About'

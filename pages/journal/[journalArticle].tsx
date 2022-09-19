@@ -21,7 +21,10 @@ import {
     handleGetStaticPaths
 } from '@/lib/index'
 
-import { TypeLibJournalArticle } from '@/types/index'
+import { 
+    TypeLibJournalArticle,
+    TypeLibJournalArticleTables
+ } from '@/types/index'
 
 import { Wrapper } from '@/components/layout'
 import {
@@ -41,7 +44,8 @@ import {
     SectionJournalRecommendedPrograms,
     SectionJournalTitlePicture,
     SectionJournalToShare,
-    SectionJournalForm
+    SectionJournalForm, 
+    SectionJournalTable
 } from '@/components/sections'
 
 import {
@@ -55,10 +59,10 @@ import stls from '@/styles/pages/PageJournalArticles.module.sass'
 
 type TypeJournalArticleProps = {
     journalArticle: TypeLibJournalArticle
+    journalArticleTables: TypeLibJournalArticleTables
 }
 
-const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle }) => {
-
+const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle, journalArticleTables }) => {
     // ScrollBar
     const [pageYOffset, setPageYOffset] = useState(0)
     const [scollHeight, setScrollHeight] = useState(0)
@@ -174,6 +178,9 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                                 )}
                                 {component.__typename === 'ComponentJournalJournalArticleRecommendedProgramsSection' && (
                                     <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection} />
+                                )}
+                                {component.__typename === 'ComponentJournalJournalTable' && (
+                                    <SectionJournalTable journalArticleTables={journalArticleTables}/>
                                 )}
                                 {/* {component.__typename === 'ComponentJournalFormPdfMaterials' && (
                                     <SectionJournalForm pdfMaterials={journalArticle.pdfMaterials} formPdfMaterials={component.formPdfMaterials} />

@@ -1,7 +1,3 @@
-
-
-
-
 import { GetStaticPropsContext } from 'next'
 import {
   TypePageJournalArticleProps
@@ -22,15 +18,26 @@ const getStaticPropsPageJournalArticle = async ({
 }> => {
   const res = await fetch(`${routesBack.root}${routesBack.getStaticPropsPageJournalArticles}/${context?.params?.journalArticle}`)
   const data = await res.json()
-  // return { props: { data } }
 
+  const getTables = async () => {
+    const linkToTable = data.journalArticle.articleBody.filter(data => data.__typename === "ComponentJournalJournalTable")
+    let tables = []
+    for (let item of linkToTable) {
+      const res = await fetch(item.htmlTableBody.url)
+      const data = await res.text()
+      tables.push(data)
+    }
+    return tables
+  }
 
-
+  const tables = await getTables()
+  
   return {
     props: {
       ...data,
-      programs: createBlended(data?.programs)
-      
+      programs: createBlended(data?.programs),
+      journalArticleTables: tables
+
     },
     revalidate: revalidate.default
   }

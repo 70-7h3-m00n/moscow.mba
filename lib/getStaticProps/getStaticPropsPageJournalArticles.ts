@@ -1,7 +1,6 @@
 import { GetStaticPropsContext } from 'next'
 import {
   TypePageJournalArticlesProps,
-  TypePageJournalArticlesPropsQuery
 } from '@/types/index'
 import { gql } from '@apollo/client'
 import apolloClient from '@/lib/apolloClient'
