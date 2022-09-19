@@ -182,9 +182,9 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle,
                                 {component.__typename === 'ComponentJournalJournalTable' && (
                                     <SectionJournalTable journalArticleTables={journalArticleTables}/>
                                 )}
-                                {/* {component.__typename === 'ComponentJournalFormPdfMaterials' && (
+                                {component.__typename === 'ComponentJournalFormPdfMaterials' && (
                                     <SectionJournalForm pdfMaterials={journalArticle.pdfMaterials} formPdfMaterials={component.formPdfMaterials} />
-                                )} */}
+                                )}
                             </Fragment>
                         ))
                     }
