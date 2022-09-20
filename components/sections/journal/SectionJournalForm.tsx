@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useState } from 'react'
 import cn from 'classnames'
 
-import {
-    Wrapper,
-    ContentJournalArticle
-} from '@/components/layout'
-import { FormAlpha, AskQuestionForm } from '@/components/forms'
+import { LeadLoaderThankyou } from '@/components/general'
+
+import { ContentJournalArticle } from '@/components/layout'
+import { FormJournalArticle } from '@/components/forms'
 
 import { getClassNames } from '@/helpers/index'
 
@@ -32,6 +32,9 @@ const SectionJournalForm = ({
     formPdfMaterials,
     pdfMaterials
 }: TypeSectionJournalParagraphProps) => {
+    const [open, setOpen] = useState(false)
+    const [openLoader, setOpenLoader] = useState(false)
+
     return (
         <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
             <ContentJournalArticle>
@@ -67,10 +70,21 @@ const SectionJournalForm = ({
                         </div>
                     </div>
                     <div className={stls.inputs}>
-                        <FormAlpha />
+                        <FormJournalArticle
+                            programTitle={null}
+                            setOpenLoader={setOpenLoader}
+                            setOpen={setOpen} />
                     </div>
                 </div>
             </ContentJournalArticle>
+            <LeadLoaderThankyou
+                open={open}
+                setOpen={setOpen}
+                openLoader={openLoader}
+                setOpenLoader={setOpenLoader}
+                programId={null}
+                programTitle={null}
+            />
         </section >
     )
 }
