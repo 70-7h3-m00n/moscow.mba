@@ -18,11 +18,20 @@
     font-weight: 400
     line-height: f.px(52.8)
     @include m.dye(c, c.$psi)
+    @include m.media(phone, tablet)
+        font-size: f.px(32)
+        line-height: 110%
 
 .mockupPicture
     position: absolute
     right: 0
-    top: f.px(130)
+    @include m.media(desktop, widescreen)
+        top: f.px(130)
+    @include m.media(laptop)
+        top: f.px(180)
+    @include m.media(phone, tablet)
+        display: none
+
 
 .filePdf
     display: flex
