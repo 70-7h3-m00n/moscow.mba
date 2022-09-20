@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 import { useState } from 'react'
@@ -8,15 +7,13 @@ import cn from 'classnames'
 
 import stls from '@/styles/components/forms/FormJournalArticle.module.sass'
 
-import { onSubmitForm } from '@/helpers/index'
+import { getClassNames, onSubmitForm } from '@/helpers/index'
 import {
     InputEmail,
     InputName,
     InputPhone,
     InputSubmitJournal
 } from '@/components/inputs'
-
-import pdfIcon from '@/public/assets/images/journal/form/pdf.svg'
 
 type TypeFormValues = {
     name: string
@@ -29,7 +26,9 @@ const FormJournalArticle = ({
     setOpenLoader,
     setOpen,
     width = '33',
-    formName = null
+    formName = null,
+    children,
+    classNames
 }) => {
     const {
         register,
@@ -74,12 +73,11 @@ const FormJournalArticle = ({
                     <InputEmail register={register} errors={errors} width={width} />
                     <div className={stls.submit}>
                         <InputSubmitJournal errors={errors}
-                            classNames={[stls.submitButton,
+                            classNames={[cn(getClassNames({ classNames })),
                             errors.name || errors.phone || errors.email
                                 ? stls.submitButtonDisabled
                                 : '']}>
-                            <span className={stls.submitText}>{'скачать'}</span>
-                            <Image src={pdfIcon} />
+                            {children}
                         </InputSubmitJournal>
                     </div>
                 </div>
