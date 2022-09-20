@@ -1,15 +1,18 @@
 import Image from 'next/image'
 import cn from 'classnames'
+import { useState } from 'react'
 
 import { getClassNames } from '@/helpers/index'
 
 import { TypeClassNames } from '@/types/index'
-import { FormAlpha } from '@/components/forms'
+import { FormAlpha, FormJournalArticle } from '@/components/forms'
 
 import stls from '@/styles/components/popups/PopupGetMaterials.module.sass'
 
 import pdfPopupGetMaterials from '@/public/assets/images/journal/pdfPopupGetMaterials.png'
 import linePopupGetMaterials from '@/public/assets/images/journal/linePopupGetMaterials.png'
+
+import pdfIcon from '@/public/assets/images/journal/form/pdf.svg'
 
 type TypeSectionPopupCoursesOnTopicProps = {
     handlePopupGetMaterials: () => void
@@ -20,6 +23,8 @@ const PopupGetMaterials = ({
     classNames,
     handlePopupGetMaterials
 }: TypeSectionPopupCoursesOnTopicProps) => {
+    const [open, setOpen] = useState(false)
+    const [openLoader, setOpenLoader] = useState(false)
     return (
         <>
             <div
@@ -55,7 +60,13 @@ const PopupGetMaterials = ({
                     <p className={stls.text}>{'7 ошибок разрушения карьеры.\nГайд по профессиям IT '}</p>
                 </div>
                 <div className={stls.form}>
-                    <FormAlpha />
+                    <FormJournalArticle
+                        programTitle={null}
+                        setOpenLoader={setOpenLoader}
+                        setOpen={setOpen}
+                        classNames={[stls.submitButton]}>
+                        <span className={stls.submitText}>{'получить бесплатно'}</span>
+                    </FormJournalArticle>
                 </div>
             </div>
         </>

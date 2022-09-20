@@ -6,8 +6,11 @@
 .container
     max-width: f.px(850)
     position: relative
-    padding: f.px(50)
     margin: f.px(65) 0
+    @include m.media(laptop, desktop, widescreen)
+        padding: f.px(50)
+    @include m.media(phone, tablet)
+        padding: f.px(40) f.px(15)
 
 .backgroundImage
     z-index: -1
@@ -25,6 +28,7 @@
 .mockupPicture
     position: absolute
     right: 0
+    z-index: 3
     @include m.media(desktop, widescreen)
         top: f.px(130)
     @include m.media(laptop)
@@ -32,7 +36,24 @@
     @include m.media(phone, tablet)
         display: none
 
+.folderForm
+    position: absolute
+    bottom: -1px
+    right: 0
+    z-index: 0
 
+.folderFormPicture
+    border-radius: f.px(20)
+
+.lineForm
+    position: absolute
+    bottom: 0
+    left: 0
+
+.lineFormPhone
+    position: absolute
+    bottom: 0
+    right: 0
 .filePdf
     display: flex
     align-items: center
@@ -49,3 +70,41 @@
     font-weight: 400
     line-height: 120%
     @include m.dye(c, c.$psi)
+    
+// Form
+.submitButton
+    position: relative
+    z-index: 5
+    display: flex
+    align-items: center
+    justify-content: center
+    border: none
+    border-radius: f.px(10)
+    background: linear-gradient(86.79deg, #C02A2A 1.15%, #FF3535 59.06%)
+    box-shadow: 0px 4px 7px rgba(255, 0, 0, 0.37)
+    @include m.media(desktop, widescreen)
+        width: f.px(410)
+        padding-top: f.px(22)
+        padding-bottom: f.px(26)
+    @include m.media(phone, tablet, laptop)
+        width: 100%
+        padding-top: f.px(17)
+        padding-bottom: f.px(20)
+
+.pdfIcon
+    @include m.media(phone, tablet)
+        position: relative
+        bottom: -2px
+        width: f.px(22)
+
+.submitText
+    text-transform: uppercase
+    @include m.dye(c, c.$psi)
+    font-weight: 700
+    font-family: 'Styrene', Arial, Tahoma, sans-serif
+    @include m.media(laptop, desktop, widescreen)
+        margin-right: f.px(9)
+        font-size: f.px(18)
+    @include m.media(phone, tablet)
+        margin-right: f.px(2)
+        font-size: f.px(15)
