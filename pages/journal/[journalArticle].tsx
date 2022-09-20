@@ -21,10 +21,10 @@ import {
     handleGetStaticPaths
 } from '@/lib/index'
 
-import { 
+import {
     TypeLibJournalArticle,
     TypeLibJournalArticleTables
- } from '@/types/index'
+} from '@/types/index'
 
 import { Wrapper } from '@/components/layout'
 import {
@@ -44,7 +44,7 @@ import {
     SectionJournalRecommendedPrograms,
     SectionJournalTitlePicture,
     SectionJournalToShare,
-    SectionJournalForm, 
+    SectionJournalForm,
     SectionJournalTable
 } from '@/components/sections'
 
@@ -180,10 +180,13 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle,
                                     <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection} />
                                 )}
                                 {component.__typename === 'ComponentJournalJournalTable' && (
-                                    <SectionJournalTable journalArticleTables={journalArticleTables}/>
+                                    <SectionJournalTable journalArticleTables={journalArticleTables} />
                                 )}
                                 {component.__typename === 'ComponentJournalFormPdfMaterials' && (
-                                    <SectionJournalForm pdfMaterials={journalArticle.pdfMaterials} formPdfMaterials={component.formPdfMaterials} />
+                                    <SectionJournalForm
+                                        pdfMaterials={journalArticle.pdfMaterials}
+                                        formPdfMaterials={component.formPdfMaterials}
+                                        windowWidth={windowWidth} />
                                 )}
                             </Fragment>
                         ))
