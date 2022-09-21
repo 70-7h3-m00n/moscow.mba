@@ -16,29 +16,28 @@ type TypeJournalArticleTables = {
     journalArticleTables: TypeLibJournalArticleTables
 } & TypeClassNames
 
-const SectionJournalTable = ({ journalArticleTables, classNames }) => {
-    return (
-        <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-            <ContentJournalArticle>
-                <div
-                    className={
-                        cn(
-                            [stls.container, stls.regularTable],
-                            // { [stls.complicatedTable]: complicatedTable },
-                            getClassNames({ classNames })
-                        ) || undefined
-                    }>
-                    {journalArticleTables[0] &&
-                        parse(
-                            journalArticleTables[0]
-                                .replace(/<link.*>/g, '')
-                                .replace(/<meta.*>/g, '')
-                                .replace(/<style.*<\/style>/, '')
-                        )}
-                </div>
-            </ContentJournalArticle>
-        </div>
-    )
-}
+const SectionJournalTable = ({ journalArticleTables, classNames }: TypeJournalArticleTables) => (
+    <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+        <ContentJournalArticle>
+            <div
+                className={
+                    cn(
+                        // TODO Если будет нужда в complicatedTable (усложненная таблица), то сделать
+                        // { [stls.complicatedTable]: complicatedTable },
+                        [stls.container, stls.regularTable],
+                        getClassNames({ classNames })
+                    ) || undefined
+                }>
+                {journalArticleTables[0] &&
+                    parse(
+                        journalArticleTables[0]
+                            .replace(/<link.*>/g, '')
+                            .replace(/<meta.*>/g, '')
+                            .replace(/<style.*<\/style>/, '')
+                    )}
+            </div>
+        </ContentJournalArticle>
+    </div>
+)
 
 export default SectionJournalTable
