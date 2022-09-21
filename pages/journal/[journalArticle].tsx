@@ -189,7 +189,8 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle,
                                         <SectionJournalForm
                                             pdfMaterials={journalArticle.pdfMaterials}
                                             formPdfMaterials={component.formPdfMaterials}
-                                            windowWidth={windowWidth} />
+                                            windowWidth={windowWidth} 
+                                            mounted={mounted}/>
                                     )}
                                 </Fragment>
                             ))

@@ -30,13 +30,15 @@ type TypeSectionJournalParagraphProps = {
     pdfMaterials: TypeLibJournalPdfMaterials
     formPdfMaterials: TypeLibJournalArticleFormPdfMaterials
     windowWidth: number
+    mounted: boolean
 } & TypeClassNames
 
 const SectionJournalForm = ({
     classNames,
     formPdfMaterials,
     pdfMaterials,
-    windowWidth
+    windowWidth,
+    mounted
 }: TypeSectionJournalParagraphProps) => {
     const [open, setOpen] = useState(false)
     const [openLoader, setOpenLoader] = useState(false)
@@ -58,23 +60,23 @@ const SectionJournalForm = ({
                         />
                     </div>
                     {
-                        windowWidth > 768
-                            ? <div className={stls.lineForm}>
-                                <Image
-                                    src={lineForm}
-                                />
-                            </div>
+                        mounted
+                            ? windowWidth > 768
+                                ? <div className={stls.lineForm}>
+                                    <Image
+                                        src={lineForm}
+                                    />
+                                </div>
+                                : <div className={stls.lineFormPhone}>
+                                    <Image
+                                        src={lineFormPhone}
+                                    />
+                                </div>
                             : <div className={stls.lineForm}>
                                 <Image
                                     src={lineForm}
                                 />
                             </div>
-                        // TODO Обзеразанная картинка, поэтому не смогу вставить
-                        // <div className={stls.lineFormPhone}>
-                        // <Image
-                        //     src={lineFormPhone}
-                        // />
-                        // </div>
                     }
                     <div className={stls.folderForm}>
                         <Image
