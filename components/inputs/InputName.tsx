@@ -1,7 +1,6 @@
 import stls from '@/styles/components/inputs/InputName.module.sass'
 import cn from 'classnames'
 import { useAt } from '@/hooks/index'
-import { handlePlaceholder } from '@/helpers/index'
 
 const InputName = ({ register, errors, width = '25' }) => {
   const at = useAt()
@@ -13,14 +12,16 @@ const InputName = ({ register, errors, width = '25' }) => {
         {...register('name', {
           maxLength: {
             value: 32,
-            message: `*${
-              at.en
+            message: `*${at.en
                 ? 'Name should be no longer than 32 symbols'
                 : 'Введите имя не длинее, чем 32 символа'
-            }`
+              }`
           }
         })}
-        onKeyUp={e => handlePlaceholder(e)}
+        onFocus={e => e.target.classList.add('texted')}
+        onBlur={e => (e.target.value === '')
+          ? e.target.classList.remove('texted')
+          : ''}
       />
       <div
         className={cn({
