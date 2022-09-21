@@ -95,9 +95,7 @@ const SectionJournalForm = ({
                         <div className={stls.nameFiles}>
                             {
                                 pdfMaterials.map(file =>
-                                    <Link href={file.url}>
-                                        <a className={stls.nameFile}>{file.name}</a>
-                                    </Link>
+                                    <span className={stls.nameFile}>{file.name}</span>
                                 )
                             }
                         </div>
