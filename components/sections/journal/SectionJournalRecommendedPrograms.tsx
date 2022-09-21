@@ -24,7 +24,7 @@ const SectionJournalRecommendedPrograms = ({
     recommendedProgramsSection,
     classNames
 }: TypeLibJournalArticleRecommendedProgramsSectionProps) => (
-    <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+    <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
         <ContentJournalArticle classNames={[stls.SectionJournalRecommendedPrograms]}>
             <div className={stls.title}>
                 {
@@ -74,7 +74,7 @@ const SectionJournalRecommendedPrograms = ({
                 }
             </div>
         </ContentJournalArticle>
-    </section>
+    </div>
 )
 
 export default SectionJournalRecommendedPrograms

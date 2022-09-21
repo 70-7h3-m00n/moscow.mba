@@ -42,7 +42,7 @@ const SectionJournalForm = ({
     const [openLoader, setOpenLoader] = useState(false)
 
     return (
-        <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+        <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
             <ContentJournalArticle>
                 <div className={stls.form}>
                     <Image
@@ -122,7 +122,7 @@ const SectionJournalForm = ({
                 programId={null}
                 programTitle={null}
             />
-        </section >
+        </div>
     )
 }
 

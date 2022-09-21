@@ -77,12 +77,12 @@ const SectionJournalArticleHeader = ({
     const time = getRenderTime({ timestamp: journalArticle.createdAt, options: pageOptions })
 
     return (
-        <header className={cn([stls.container], getClassNames({ classNames })) || undefined}>
+        <div className={cn([stls.container], getClassNames({ classNames })) || undefined}>
             <ContentJournalArticle classNames={[stls.wrapper]}>
                 <button className={stls.category} disabled>{journalArticle.journalCategory.title}</button>
                 <GeneralJournalArticleCreatedAt time={time} />
             </ContentJournalArticle>
-        </header>
+        </div>
     )
 }
 

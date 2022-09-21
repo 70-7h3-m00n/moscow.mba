@@ -17,7 +17,7 @@ const SectionJournalList = ({
   listItem
 }: TypeSectionJournalListProps) => {
   return (
-    <section
+    <div
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
@@ -32,7 +32,7 @@ const SectionJournalList = ({
             ))}
         </ul>
       </ContentJournalArticle>
-    </section>
+    </div>
   )
 }
 

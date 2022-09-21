@@ -21,7 +21,7 @@ const SectionJournalParagraph = ({
   idx
 }: TypeSectionJournalParagraphProps) => {
   return (
-    <section
+    <div
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
@@ -48,7 +48,7 @@ const SectionJournalParagraph = ({
             ))}
         </p>
       </ContentJournalArticle>
-    </section>
+    </div>
   )
 }
 

@@ -23,7 +23,7 @@ const SectionJournalTitle = ({
       .join(' ')
   )
   return (
-    <section id={idSection} className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+    <div id={idSection} className={cn(stls.container, getClassNames({ classNames })) || undefined}>
       <ContentJournalArticle>
         <h2 className={stls.title}>
           {body
@@ -43,7 +43,7 @@ const SectionJournalTitle = ({
             ))}
         </h2>
       </ContentJournalArticle>
-    </section>
+    </div>
   )
 }
 

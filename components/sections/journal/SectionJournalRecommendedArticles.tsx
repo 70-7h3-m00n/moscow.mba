@@ -23,7 +23,7 @@ const SectionJournalRecommendedArticles = ({
     classNames
 }: TypeSectionJournalRecommendedArticlesProps) => {
     return (
-        <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+        <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
             <ContentJournalArticle classNames={[stls.SectionJournalRecommendedArticles]}>
                 <div className={stls.rowTitle}>
                     <p className={stls.title}>{journalRecommendedArticles.title}</p>
@@ -43,7 +43,7 @@ const SectionJournalRecommendedArticles = ({
                     }
                 </div>
             </ContentJournalArticle>
-        </section>
+        </div>
     )
 }
 

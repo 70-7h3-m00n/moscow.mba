@@ -9,9 +9,9 @@ type TypeGeneralJournalArticleCreatedAtProps = TypeClassNames & {
 const GeneralJournalArticleCreatedAt = ({
   time,
 }: TypeGeneralJournalArticleCreatedAtProps) => (
-  time ? <div className={stls.date}>
+  time ? <time className={stls.date}>
     {time}
-  </div>
+  </time>
     : <></>
 )
 

@@ -22,7 +22,7 @@ const SectionJournalQuote = ({
   quote
 }: TypeSectionJournalQuoteProps) => {
   return (
-    <section
+    <div
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
@@ -33,7 +33,7 @@ const SectionJournalQuote = ({
           <CardAuthor textAlign={'end'} fontWeightAuthorName={700} quote={quote} />
         </div>
       </ContentJournalArticle>
-    </section>
+    </div>
   )
 }
 

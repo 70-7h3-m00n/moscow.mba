@@ -128,70 +128,75 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle,
             </div>
             <Wrapper classNames={[stls.wrapper]}>
                 <article className={stls.article}>
-                    <SectionJournalArticleHeader
-                        journalArticle={journalArticle}
-                        classNames={[stls.articleHeader]} />
-                    <SectionJournalArticleTitle
-                        journalArticle={journalArticle}
-                        classNames={[stls.articleTitle]} />
-                    <SectionJournalArticleContents
-                        journalArticle={journalArticle}
-                        classNames={[stls.articleTitle]} />
-                    <SectionJournalTitlePicture journalArticle={journalArticle} />
-                    {
-                        journalArticle?.articleBody?.map((component, idx) => (
-                            <Fragment key={`${component.__typename} ${idx}`}>
-                                {component.__typename === 'ComponentJournalParagraph' && (
-                                    <SectionJournalParagraph body={component.paragraphBodyParts} idx={idx} />
-                                )}
-                                {component.__typename === 'ComponentJournalTitle' && (
-                                    <SectionJournalTitle
-                                        body={component.titleBodyParts}
-                                        idx={idx} />
-                                )}
-                                {component.__typename === 'ComponentGeneralPicture' && (
-                                    <SectionJournalPicture
-                                        picture={component.picture}
-                                        title={component.title}
-                                        idx={idx}
-                                    />
-                                )}
-                                {component.__typename === 'ComponentJournalEmphasis' && (
-                                    <SectionJournalEmphasis body={component.emphasisBody} />
-                                )}
-                                {component.__typename === 'ComponentJournalQuote' && (
-                                    <SectionJournalQuote
-                                        quote={component.quote}
-                                    />
-                                )}
-                                {component.__typename === 'ComponentJournalList' && (
-                                    <SectionJournalList listItem={component.list} />
-                                )}
-                                {component.__typename === 'ComponentJournalConclusion' && (
-                                    <SectionJournalConclusion item={component.conclusion} />
-                                )}
-                                {component.__typename === 'ComponentJournalJournalRecommendedProgram' && (
-                                    <SectionJournalRecommendedProgram recommendedProgram={component.recommendedProgram} />
-                                )}
-                                {component.__typename === 'ComponentJournalJournalRecommendedArticles' && (
-                                    <SectionJournalRecommendedArticles journalRecommendedArticles={component.journalRecommendedArticles} />
-                                )}
-                                {component.__typename === 'ComponentJournalJournalArticleRecommendedProgramsSection' && (
-                                    <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection} />
-                                )}
-                                {component.__typename === 'ComponentJournalJournalTable' && (
-                                    <SectionJournalTable journalArticleTables={journalArticleTables} />
-                                )}
-                                {component.__typename === 'ComponentJournalFormPdfMaterials' && (
-                                    <SectionJournalForm
-                                        pdfMaterials={journalArticle.pdfMaterials}
-                                        formPdfMaterials={component.formPdfMaterials}
-                                        windowWidth={windowWidth} />
-                                )}
-                            </Fragment>
-                        ))
-                    }
-                    <SectionJournalToShare journalArticle={journalArticle} />
+                    <header>
+                        <SectionJournalArticleHeader
+                            journalArticle={journalArticle}
+                            classNames={[stls.articleHeader]} />
+                        <SectionJournalArticleTitle
+                            journalArticle={journalArticle}
+                            classNames={[stls.articleTitle]} />
+                        <SectionJournalArticleContents
+                            journalArticle={journalArticle}
+                            classNames={[stls.articleTitle]} />
+                    </header>
+                    <section>
+                        <SectionJournalTitlePicture journalArticle={journalArticle} />
+                        {
+                            journalArticle?.articleBody?.map((component, idx) => (
+                                <Fragment key={`${component.__typename} ${idx}`}>
+                                    {component.__typename === 'ComponentJournalParagraph' && (
+                                        <SectionJournalParagraph body={component.paragraphBodyParts} idx={idx} />
+                                    )}
+                                    {component.__typename === 'ComponentJournalTitle' && (
+                                        <SectionJournalTitle
+                                            body={component.titleBodyParts}
+                                            idx={idx} />
+                                    )}
+                                    {component.__typename === 'ComponentGeneralPicture' && (
+                                        <SectionJournalPicture
+                                            picture={component.picture}
+                                            title={component.title}
+                                            idx={idx}
+                                        />
+                                    )}
+                                    {component.__typename === 'ComponentJournalEmphasis' && (
+                                        <SectionJournalEmphasis body={component.emphasisBody} />
+                                    )}
+                                    {component.__typename === 'ComponentJournalQuote' && (
+                                        <SectionJournalQuote
+                                            quote={component.quote}
+                                        />
+                                    )}
+                                    {component.__typename === 'ComponentJournalList' && (
+                                        <SectionJournalList listItem={component.list} />
+                                    )}
+                                    {component.__typename === 'ComponentJournalConclusion' && (
+                                        <SectionJournalConclusion item={component.conclusion} />
+                                    )}
+                                    {component.__typename === 'ComponentJournalJournalRecommendedProgram' && (
+                                        <SectionJournalRecommendedProgram recommendedProgram={component.recommendedProgram} />
+                                    )}
+                                    {component.__typename === 'ComponentJournalJournalRecommendedArticles' && (
+                                        <SectionJournalRecommendedArticles journalRecommendedArticles={component.journalRecommendedArticles} />
+                                    )}
+                                    {component.__typename === 'ComponentJournalJournalArticleRecommendedProgramsSection' && (
+                                        <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection} />
+                                    )}
+                                    {component.__typename === 'ComponentJournalJournalTable' && (
+                                        <SectionJournalTable journalArticleTables={journalArticleTables} />
+                                    )}
+                                    {component.__typename === 'ComponentJournalFormPdfMaterials' && (
+                                        <SectionJournalForm
+                                            pdfMaterials={journalArticle.pdfMaterials}
+                                            formPdfMaterials={component.formPdfMaterials}
+                                            windowWidth={windowWidth} />
+                                    )}
+                                </Fragment>
+                            ))
+                        }
+                        <SectionJournalToShare journalArticle={journalArticle} />
+                    </section>
+
                 </article>
                 <aside className={stls.aside}>
                     {

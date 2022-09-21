@@ -18,7 +18,7 @@ const SectionJournalTitlePicture = ({
     classNames,
     journalArticle
 }: TypeImgJournalArticleTitlePicture) => (
-    <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+    <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
         <ContentJournalArticle>
             <ImgTemplate
                 classNames={[stls.articlePicture]}
@@ -33,7 +33,7 @@ const SectionJournalTitlePicture = ({
                 title={journalArticle.picture.alt || 'Изображение'}
             />
         </ContentJournalArticle>
-    </section >
+    </div>
 )
 
 export default SectionJournalTitlePicture

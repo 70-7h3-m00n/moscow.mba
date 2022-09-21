@@ -24,13 +24,13 @@ const SectionJournalToShare = ({
     classNames,
     journalArticle
 }: TypeSectionJournalToShareProps) => (
-    <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+    <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
         <ContentJournalArticle>
             <PopupToShare 
             journalArticle={journalArticle}
             classNames={[stls.popupJournalToShare]} />
         </ContentJournalArticle>
-    </section>
+    </div>
 )
 
 export default SectionJournalToShare

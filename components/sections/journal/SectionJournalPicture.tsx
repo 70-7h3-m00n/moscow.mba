@@ -23,7 +23,7 @@ const SectionJournalPicture = ({
 }: TypeSectionJournalPictureProps) => {
   if (!picture) return null
   return (
-    <section
+    <div
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
@@ -43,7 +43,7 @@ const SectionJournalPicture = ({
           <figcaption className={stls.figcaption}>{title}</figcaption>
         </figure>
       </ContentJournalArticle>
-    </section>
+    </div>
   )
 }
 

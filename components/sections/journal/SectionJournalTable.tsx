@@ -18,7 +18,7 @@ type TypeJournalArticleTables = {
 
 const SectionJournalTable = ({ journalArticleTables, classNames }) => {
     return (
-        <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+        <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
             <ContentJournalArticle>
                 <div
                     className={
@@ -37,7 +37,7 @@ const SectionJournalTable = ({ journalArticleTables, classNames }) => {
                         )}
                 </div>
             </ContentJournalArticle>
-        </section>
+        </div>
     )
 }
 

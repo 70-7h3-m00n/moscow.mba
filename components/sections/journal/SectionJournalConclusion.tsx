@@ -13,7 +13,7 @@ const SectionJournalConclusion = ({
   item
 }: TypeSectionJournalConclusionProps) => {
   return (
-    <section
+    <div
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
@@ -35,7 +35,7 @@ const SectionJournalConclusion = ({
             ))}
         </ol>
       </ContentJournalArticle>
-    </section>
+    </div>
   )
 }
 

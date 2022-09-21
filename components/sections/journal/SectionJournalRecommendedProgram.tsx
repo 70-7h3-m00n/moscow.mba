@@ -28,7 +28,7 @@ const SectionJournalRecommendedProgram = ({
   recommendedProgram
 }: TypeSectionJournalRecommendedProgramProps) => {
   return (
-    <section
+    <div
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
@@ -53,7 +53,7 @@ const SectionJournalRecommendedProgram = ({
             <a className={stls.link}>{recommendedProgram?.btnValue}</a>
           </Link></div>
       </ContentJournalArticle>
-    </section>
+    </div>
   )
 }
 

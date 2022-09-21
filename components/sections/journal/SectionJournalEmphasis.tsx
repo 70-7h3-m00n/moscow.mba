@@ -16,14 +16,14 @@ const SectionJournalEmphasis = ({
   body
 }: TypeSectionJournalEmphasisProps) => {
   return (
-    <section
+    <div
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
       <ContentJournalArticle>
         <p className={stls.p}>{body}</p>
       </ContentJournalArticle>
-    </section>
+    </div>
   )
 }
 
