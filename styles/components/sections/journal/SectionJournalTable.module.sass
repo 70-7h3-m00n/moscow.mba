@@ -4,6 +4,10 @@
 @use '@/styles/shared/journal' as j
 
 .container
+    // TODO Возможно, есть вариант лучше исправить баг 
+    // на десктопе о том, что width больше остальных контейнеров
+    @include m.media(desktop)
+        max-width: 652px
     &.regularTable
         // Reset default Google Sheet elements and style elements
         overflow-x: auto
@@ -25,7 +29,7 @@
                 overflow-wrap: break-word
                 padding: f.px(15) f.px(47)
                 @include m.media(phone, tablet)
-                        padding: f.px(15)
+                    padding: f.px(15)
 
             &:nth-child(odd)
                 @include m.dye(bgc, c.$delta-2)
@@ -37,11 +41,11 @@
                     @include m.media(phone, tablet)
                         font-size: f.px(12)
 
-
             &:nth-child(1)
                 @include m.dye(bgc, c.$chi)
                 & td
                     text-transform: uppercase
+                    // TODO Фонт фемили поменять, что бы не только этот шрифт был
                     font-family: 'Styrene'
                     font-size: f.px(14)
                     font-weight: 500
