@@ -1186,14 +1186,14 @@ div.popup-content.pdf-popup-content {
 }
 
 .inputs-flex--alt {
-  & .input-block {
-    & :not(:last-child) {
-      margin-top: 27px;
-    }
-    & .input-placeholder {
-      top: 6px;
-    }
-  }
+  // & .input-block {
+    // & :not(:last-child) {
+    //   margin-top: 27px;
+    // }
+    // & .input-placeholder {
+    //   top: 6px;
+    // }
+  // }
   & .input-block button {
     height: 83px;
   }
