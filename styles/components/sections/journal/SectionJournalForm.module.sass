@@ -29,10 +29,10 @@
     position: absolute
     right: 0
     z-index: 3
-    @include m.media(desktop, widescreen)
+    @include m.media(widescreen)
         top: f.px(130)
-    @include m.media(laptop)
-        top: f.px(180)
+    @include m.media(desktop, laptop)
+        top: f.px(190)
     @include m.media(phone, tablet)
         display: none
 
