@@ -23,17 +23,17 @@
         justify-content: center
         width: 100%
         margin-top: f.px(29)
-    @include m.media(laptop)
+    @include m.media(tablet, laptop)
         width: calc(50% - 30px)
         margin-left: f.px(15)
-        height: f.px(83)
+        height: f.px(92)
         margin-right: f.px(15)
         margin-bottom: f.px(25)
-    @include m.media(phone, tablet)
+        display: flex
+    @media (max-width: 767px)
         width: 100%
         margin-left: f.px(15)
         margin-right: f.px(15)
 
 .submitButtonDisabled
     cursor: no-drop
-        
