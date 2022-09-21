@@ -32,7 +32,10 @@ const SectionJournalArticleTitle = ({
                     }
                 </div>
                 <div className={stls.toShare}>
-                    <PopupToShare journalArticle={journalArticle} />
+                    <PopupToShare 
+                    journalArticle={journalArticle}
+                    classNames={[stls.popupJournalArticleTitle]}
+                    />
                 </div>
             </div>
         </ContentJournalArticle>

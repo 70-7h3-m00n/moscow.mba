@@ -3,6 +3,7 @@
 @use '@/styles/themes/default/colors' as c
 
 .container
+    position: relative
     @include m.media(laptop, desktop, widescreen)
         margin: f.px(65) 0
     @include m.media(phone, tablet)
@@ -23,3 +24,10 @@
         flex-direction: column
         row-gap: f.px(25)
         align-items: flex-start
+
+.popupJournalArticleTitle
+    right: 0
+    @include m.media(laptop, desktop, widescreen)
+        bottom: 75px
+    @include m.media(phone, tablet)
+        bottom: 113px

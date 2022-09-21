@@ -25,11 +25,11 @@ const SectionJournalToShare = ({
     journalArticle
 }: TypeSectionJournalToShareProps) => (
     <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-        <Wrapper column>
-            <ContentJournalArticle>
-                <PopupToShare journalArticle={journalArticle}/>
-            </ContentJournalArticle>
-        </Wrapper>
+        <ContentJournalArticle>
+            <PopupToShare 
+            journalArticle={journalArticle}
+            classNames={[stls.popupJournalToShare]} />
+        </ContentJournalArticle>
     </section>
 )
 

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import cn from 'classnames'
 
 import {
     TelegramShareButton,
@@ -22,6 +23,7 @@ import shareIcon from '@/public/assets/images/journal/toShare/share.svg'
 import arrowIcon from '@/public/assets/images/journal/toShare/arrow.svg'
 
 import stls from '@/styles/components/popups/PopupToShare.module.sass'
+import { getClassNames } from '@/helpers/index';
 
 type TypePopupToShareProps = {
     journalArticle: TypeLibJournalArticle
@@ -56,7 +58,7 @@ const PopupToShare = ({
         <div className={stls.popupToShare}>
             {
                 isList &&
-                <div className={stls.list}>
+                <div className={cn(stls.list, getClassNames({ classNames }))}>
                     <ul>
                         <li className={stls.item}>
                             <VKShareButton className={stls.link} url={urlPage}>
@@ -79,8 +81,8 @@ const PopupToShare = ({
                                             width={widthIcon}
                                             height={heightIcon}
                                             src={telegramIcon} />
-                                            </div>
-                                        <span className={stls.text}>{'Telegram'}</span>
+                                    </div>
+                                    <span className={stls.text}>{'Telegram'}</span>
                                 </button>
                             </TelegramShareButton>
                         </li>

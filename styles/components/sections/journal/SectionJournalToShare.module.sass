@@ -4,5 +4,18 @@
 @use '@/styles/shared/journal' as j
 
 .container
+    display: flex
+    position: relative
     margin-top: f.px(65)
     margin-bottom: f.px(65)
+    @include m.media(laptop, desktop, widescreen)
+        justify-content: flex-start
+    @include m.media(phone, tablet)
+        justify-content: flex-end
+.popupJournalToShare
+    @include m.media(laptop, desktop, widescreen)
+        left: 0
+        bottom: 73px
+    @include m.media(phone, tablet)
+        right: 0
+        bottom: 64px
