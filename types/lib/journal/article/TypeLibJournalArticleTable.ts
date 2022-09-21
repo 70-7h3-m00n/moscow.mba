@@ -1,3 +1,3 @@
-type TypeLibJournalArticleTable = Array<string>
+type TypeLibJournalArticleTable = string
 
 export default TypeLibJournalArticleTable
