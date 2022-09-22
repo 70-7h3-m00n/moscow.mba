@@ -94,8 +94,11 @@ const SectionJournalForm = ({
                         </div>
                         <div className={stls.nameFiles}>
                             {
-                                pdfMaterials.map(file =>
-                                    <span className={stls.nameFile}>{file.name}</span>
+                                pdfMaterials.map((file, idx) =>
+                                    <span
+                                        className={stls.nameFile}
+                                        key={`${file.name}_${idx}`}
+                                    >{file.name}</span>
                                 )
                             }
                         </div>

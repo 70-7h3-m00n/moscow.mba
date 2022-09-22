@@ -27,14 +27,18 @@ const SectionJournalArticleTitle = ({
             <div className={stls.footer}>
                 <div className={stls.authors}>
                     {
-                        journalArticle?.journalAuthors.map(author =>
-                            <CardAuthor textAlign={'start'} fontWeightAuthorName={400} quote={author} />)
+                        journalArticle?.journalAuthors.map((author, idx) =>
+                            <CardAuthor
+                                textAlign={'start'}
+                                fontWeightAuthorName={400}
+                                quote={author}
+                                key={`${author.authorName}_${idx}`} />)
                     }
                 </div>
                 <div className={stls.toShare}>
-                    <PopupToShare 
-                    journalArticle={journalArticle}
-                    classNames={[stls.popupJournalArticleTitle]}
+                    <PopupToShare
+                        journalArticle={journalArticle}
+                        classNames={[stls.popupJournalArticleTitle]}
                     />
                 </div>
             </div>

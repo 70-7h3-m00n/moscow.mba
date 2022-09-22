@@ -30,15 +30,15 @@ const SectionJournalRecommendedArticles = ({
                 </div>
                 <div className={stls.rowArticlesLink}>
                     {
-                        journalRecommendedArticles?.articles.map(article =>
-                            <>
-                                <Link href={`${routesFront.root}${routesFront.journal}/${article.slug}`}>
-                                    <a className={stls.link}>
-                                        <span className={stls.line}></span>
-                                        <span className={stls.linkText}>{article.title}</span>
-                                    </a>
-                                </Link>
-                            </>
+                        journalRecommendedArticles?.articles.map((article, idx) =>
+                            <Link
+                                href={`${routesFront.root}${routesFront.journal}/${article.slug}`}
+                                key={`${article.title}_${idx}`}>
+                                <a className={stls.link}>
+                                    <span className={stls.line}></span>
+                                    <span className={stls.linkText}>{article.title}</span>
+                                </a>
+                            </Link>
                         )
                     }
                 </div>
