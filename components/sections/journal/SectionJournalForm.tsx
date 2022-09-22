@@ -38,8 +38,10 @@ const SectionJournalForm = ({
     formPdfMaterials,
     pdfMaterials,
     windowWidth,
-    mounted
+    mounted,
 }: TypeSectionJournalParagraphProps) => {
+    const formName = `Заявка с модальной формы: "${formPdfMaterials?.title}"`
+
     const [open, setOpen] = useState(false)
     const [openLoader, setOpenLoader] = useState(false)
 
@@ -108,7 +110,8 @@ const SectionJournalForm = ({
                             programTitle={null}
                             setOpenLoader={setOpenLoader}
                             setOpen={setOpen}
-                            classNames={[stls.submitButton]}>
+                            classNames={[stls.submitButton]}
+                            formName={formName}>
                             <span className={stls.submitText}>{'скачать'}</span>
                             <div className={stls.pdfIcon}>
                                 <Image src={pdfIcon} />
