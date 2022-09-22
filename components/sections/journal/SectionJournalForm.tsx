@@ -4,6 +4,8 @@ import { useState } from 'react'
 import cn from 'classnames'
 
 import { LeadLoaderThankyou } from '@/components/general'
+import PopupLoader from '@/components/popups/PopupLoader'
+import { IconLoader, IconClose } from '@/components/icons'
 
 import { ContentJournalArticle } from '@/components/layout'
 import { FormJournalArticle } from '@/components/forms/'
@@ -44,7 +46,8 @@ const SectionJournalForm = ({
 
     const [open, setOpen] = useState(false)
     const [openLoader, setOpenLoader] = useState(false)
-
+    console.log('Открыто:', open)
+    console.log('Открыт лодер:', openLoader)
     return (
         <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
             <ContentJournalArticle>
@@ -86,48 +89,65 @@ const SectionJournalForm = ({
                             className={stls.folderFormPicture}
                         />
                     </div>
-                    <p className={stls.title}>{formPdfMaterials?.title}</p>
-                    <div className={stls.filePdf}>
-                        <div className={stls.pdfPicture}>
-                            <Image
-                                src={pdfImages}
-                                width={30}
-                                height={38} />
-                        </div>
-                        <div className={stls.nameFiles}>
-                            {
-                                pdfMaterials.map((file, idx) =>
-                                    <span
-                                        className={stls.nameFile}
-                                        key={`${file.name}_${idx}`}
-                                    >{file.name}</span>
-                                )
-                            }
-                        </div>
-                    </div>
-                    <div className={stls.inputs}>
-                        <FormJournalArticle
-                            programTitle={null}
-                            setOpenLoader={setOpenLoader}
-                            setOpen={setOpen}
-                            classNames={[stls.submitButton]}
-                            formName={formName}>
-                            <span className={stls.submitText}>{'скачать'}</span>
-                            <div className={stls.pdfIcon}>
-                                <Image src={pdfIcon} />
+                    <div className={openLoader || open ? stls.formContent : ''}>
+                        <p className={stls.title}>{formPdfMaterials?.title}</p>
+                        <div className={stls.filePdf}>
+                            <div className={stls.pdfPicture}>
+                                <Image
+                                    src={pdfImages}
+                                    width={30}
+                                    height={38} />
                             </div>
-                        </FormJournalArticle>
+                            <div className={stls.nameFiles}>
+                                {
+                                    pdfMaterials.map((file, idx) =>
+                                        <span
+                                            className={stls.nameFile}
+                                            key={`${file.name}_${idx}`}
+                                        >{file.name}</span>
+                                    )
+                                }
+                            </div>
+                        </div>
+                        <div className={stls.inputs}>
+                            <FormJournalArticle
+                                programTitle={null}
+                                setOpenLoader={setOpenLoader}
+                                setOpen={setOpen}
+                                classNames={[stls.submitButton]}
+                                formName={formName}>
+                                <span className={stls.submitText}>{'скачать'}</span>
+                                <div className={stls.pdfIcon}>
+                                    <Image src={pdfIcon} />
+                                </div>
+                            </FormJournalArticle>
+                        </div>
                     </div>
+                    {
+                        (open && !openLoader)
+                            ? <div className={stls.formComplited}>
+                                <p className={stls.formComplitedTitle}>Спасибо! Файл отправлен Вам на почту.</p>
+                                <button
+                                    className={stls.formComplitedClosed}
+                                    onClick={() => setOpen(open => !open)}>Вернуться назад</button>
+                            </div>
+                            : ''
+                    }
+                    {
+                        (!open && openLoader)
+                            ? <div className={stls.formLoading}><IconLoader /></div>
+                            : ''
+                    }
                 </div>
             </ContentJournalArticle>
-            <LeadLoaderThankyou
+            {/* <LeadLoaderThankyou
                 open={open}
                 setOpen={setOpen}
                 openLoader={openLoader}
                 setOpenLoader={setOpenLoader}
                 programId={null}
                 programTitle={null}
-            />
+            /> */}
         </div>
     )
 }
