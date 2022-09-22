@@ -100,8 +100,7 @@ const handleGetStaticProps = async ({
         return await getStaticPropsDefault({ context })
     }
   } catch (err) {
-    console.log(err)
-    // throw new Error(`Error at handleGetStaticProps: ${err}`)
+    console.error(err)
     return {
       props: {
         programs: []
