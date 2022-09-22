@@ -7,7 +7,10 @@ import cn from 'classnames'
 
 import stls from '@/styles/components/forms/FormJournalArticle.module.sass'
 
-import { getClassNames, onSubmitForm } from '@/helpers/index'
+import { 
+    getClassNames, 
+    handleSubmitForm
+} from '@/helpers/index'
 import {
     InputEmail,
     InputName,
@@ -22,7 +25,7 @@ type TypeFormValues = {
 }
 
 const FormJournalArticle = ({
-    programTitle,
+    programTitle = null,
     setOpenLoader,
     setOpen,
     width = '33',
@@ -38,7 +41,6 @@ const FormJournalArticle = ({
     } = useForm<TypeFormValues>()
 
     const { asPath } = useRouter()
-
     const [submitIsDisabled, setSubmitIsDisabled] = useState(false)
 
     return (
@@ -46,25 +48,18 @@ const FormJournalArticle = ({
             method='post'
             className='simple-form'
             onChange={() => window.sessionStorage.setItem('formFilled', 'true')} // this is a goal for a marketing campaign also used in /pages/_app.tsx
-            onSubmit={handleSubmit(values => {
-                if (!submitIsDisabled) {
-                    setSubmitIsDisabled(true)
-                    setTimeout(() => {
-                        setSubmitIsDisabled(false)
-                    }, 5000)
-
-                    window.sessionStorage.setItem('formFilled', 'false')
-                    return onSubmitForm({
-                        values,
-                        programTitle,
-                        setOpenLoader,
-                        asPath,
-                        setOpen,
-                        formName,
-                        reset
-                    })
-                }
-            })}>
+            onSubmit={handleSubmit(values =>
+                handleSubmitForm(values,
+                    formName,
+                    programTitle,
+                    asPath,
+                    reset,
+                    setOpen,
+                    setOpenLoader,
+                    submitIsDisabled,
+                    setSubmitIsDisabled
+                ))
+            }>
             <div
                 className={cn(stls.container)}>
                 <div className={cn(stls.inputs, 'inputs-flex', 'inputs-flex--alt')}>

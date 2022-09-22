@@ -19,6 +19,7 @@ export { default as getBackJWTToken } from '@/helpers/general/getBackJWTToken'
 export { default as onSubmitForm } from '@/helpers/general/onSubmitForm'
 export { default as toNumberWithSpaces } from '@/helpers/general/toNumberWithSpaces'
 export { default as getRenderTime } from '@/helpers/general/getRenderTime'
+export { default as handleSubmitForm } from '@/helpers/general/handleSubmitForm'
 
 // ./ruCases
 export { default as ruCaseMonth } from '@/helpers/ruCases/ruCaseMonth'

@@ -5,18 +5,18 @@ import cn from 'classnames'
 import { useForm } from 'react-hook-form'
 import { useAt } from '@/hooks/index'
 import {
-  onSubmitForm,
   getClassNames,
   openedMainForm,
-  filledUpFormWithoutSubmission
+  filledUpFormWithoutSubmission,
+  handleSubmitForm
 } from '@/helpers/index'
+
 import {
   InputEmail,
   InputName,
   InputPhone,
   InputSubmit
 } from '@/components/inputs'
-import routesFront from '@/config/routesFront'
 
 type TypeFormValues = {
   name: string
@@ -62,25 +62,18 @@ const FormAlpha = ({
       method='post'
       className='simple-form'
       onChange={() => window.sessionStorage.setItem('formFilled', 'true')} // this is a goal for a marketing campaign also used in /pages/_app.tsx
-      onSubmit={handleSubmit(values => {
-        if (!submitIsDisabled) {
-          setSubmitIsDisabled(true)
-          setTimeout(() => {
-            setSubmitIsDisabled(false)
-          }, 5000)
-
-          window.sessionStorage.setItem('formFilled', 'false')
-          return onSubmitForm({
-            values,
-            programTitle,
-            setOpenLoader,
-            asPath,
-            setOpen,
-            formName,
-            reset
-          })
-        }
-      })}>
+      onSubmit={handleSubmit(values =>
+        handleSubmitForm(values,
+          formName,
+          programTitle,
+          asPath,
+          reset,
+          setOpen,
+          setOpenLoader,
+          submitIsDisabled,
+          setSubmitIsDisabled
+        ))
+      }>
       <div
         className={cn(container, {
           'inputs-flex': globalStyle,
