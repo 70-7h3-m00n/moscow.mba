@@ -17,7 +17,8 @@ import {
   TypeLibJournalArticleLabel,
   TypeLibJournalAuthors,
   TypeLibJournalArticleFormPdfMaterials,
-  TypeLibJournalPdfMaterials
+  TypeLibJournalPdfMaterials,
+  TypeLibJournalArticleHtmlTableBody
 } from '@/types/index'
 
 type TypeLibJournalArticle = {
@@ -49,6 +50,7 @@ type TypeLibJournalArticle = {
     journalRecommendedArticles?: TypeLibJournalArticleRecommendedArticles | null
     recommendedProgramsSection?: TypeLibJournalArticleRecommendedProgramsSection | null
     formPdfMaterials?: TypeLibJournalArticleFormPdfMaterials | null
+    htmlTableBody?: TypeLibJournalArticleHtmlTableBody | null
 
     quote?: {
       body: TypeLibJournalArticleEmphasisBody | null

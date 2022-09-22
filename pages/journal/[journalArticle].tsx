@@ -21,10 +21,7 @@ import {
     handleGetStaticPaths
 } from '@/lib/index'
 
-import {
-    TypeLibJournalArticle,
-    TypeLibJournalArticleTables
-} from '@/types/index'
+import { TypeLibJournalArticle } from '@/types/index'
 
 import { Wrapper } from '@/components/layout'
 import {
@@ -59,10 +56,11 @@ import stls from '@/styles/pages/PageJournalArticles.module.sass'
 
 type TypeJournalArticleProps = {
     journalArticle: TypeLibJournalArticle
-    journalArticleTables: TypeLibJournalArticleTables
 }
 
-const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle, journalArticleTables }) => {
+const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
+    journalArticle,
+}) => {
     // ScrollBar
     const [pageYOffset, setPageYOffset] = useState(0)
     const [scollHeight, setScrollHeight] = useState(0)
@@ -183,14 +181,14 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle,
                                         <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection} />
                                     )}
                                     {component.__typename === 'ComponentJournalJournalTable' && (
-                                        <SectionJournalTable journalArticleTables={journalArticleTables} />
+                                        <SectionJournalTable htmlTableBody={component.htmlTableBody} />
                                     )}
                                     {component.__typename === 'ComponentJournalFormPdfMaterials' && (
                                         <SectionJournalForm
                                             pdfMaterials={journalArticle.pdfMaterials}
                                             formPdfMaterials={component.formPdfMaterials}
-                                            windowWidth={windowWidth} 
-                                            mounted={mounted}/>
+                                            windowWidth={windowWidth}
+                                            mounted={mounted} />
                                     )}
                                 </Fragment>
                             ))

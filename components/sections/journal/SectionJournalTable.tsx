@@ -1,7 +1,10 @@
 import cn from 'classnames'
 import parse from 'html-react-parser'
 
-import { TypeClassNames, TypeLibJournalArticleTables } from '@/types/index'
+import {
+    TypeClassNames,
+    TypeLibJournalArticleHtmlTableBody
+} from '@/types/index'
 
 import { getClassNames } from '@/helpers/index'
 
@@ -13,10 +16,10 @@ import {
 import stls from '@/styles/components/sections/journal/SectionJournalTable.module.sass'
 
 type TypeJournalArticleTables = {
-    journalArticleTables: TypeLibJournalArticleTables
+    htmlTableBody: TypeLibJournalArticleHtmlTableBody
 } & TypeClassNames
 
-const SectionJournalTable = ({ journalArticleTables, classNames }: TypeJournalArticleTables) => (
+const SectionJournalTable = ({ htmlTableBody, classNames }: TypeJournalArticleTables) => (
     <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
         <ContentJournalArticle>
             <div
@@ -28,9 +31,9 @@ const SectionJournalTable = ({ journalArticleTables, classNames }: TypeJournalAr
                         getClassNames({ classNames })
                     ) || undefined
                 }>
-                {journalArticleTables[0] &&
+                {htmlTableBody?.table &&
                     parse(
-                        journalArticleTables[0]
+                        htmlTableBody?.table
                             .replace(/<link.*>/g, '')
                             .replace(/<meta.*>/g, '')
                             .replace(/<style.*<\/style>/, '')
@@ -39,5 +42,4 @@ const SectionJournalTable = ({ journalArticleTables, classNames }: TypeJournalAr
         </ContentJournalArticle>
     </div>
 )
-
 export default SectionJournalTable

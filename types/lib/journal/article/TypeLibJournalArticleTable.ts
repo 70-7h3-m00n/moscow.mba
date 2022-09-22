@@ -1,3 +1,0 @@
-type TypeLibJournalArticleTable = string
-
-export default TypeLibJournalArticleTable

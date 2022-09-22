@@ -7,6 +7,7 @@ import {
 } from '@/config/index'
 import { revalidate } from '@/config/index'
 import { createBlended } from '@/helpers/index'
+import axios from 'axios'
 
 const getStaticPropsPageJournalArticle = async ({
   context
@@ -16,28 +17,24 @@ const getStaticPropsPageJournalArticle = async ({
   props: TypePageJournalArticleProps
   revalidate: number | boolean
 }> => {
-  const res = await fetch(`${routesBack.root}${routesBack.getStaticPropsPageJournalArticles}/${context?.params?.journalArticle}`)
-  const data = await res.json()
-
-  const getTables = async () => {
-    const linkToTable = data.journalArticle.articleBody.filter(data => data.__typename === "ComponentJournalJournalTable")
-    let tables = []
-    for (let item of linkToTable) {
-      const res = await fetch(item.htmlTableBody.url)
-      const data = await res.text()
-      tables.push(data)
+  const getData = async () => {
+    try {
+      const res = await fetch(`${routesBack.root}${routesBack.getStaticPropsPageJournalArticles}/${context?.params?.journalArticle}`)
+      const data = await res.json()
+      return data
     }
-    return tables
+    catch (error) {
+      console.error(`TYPE: ${error.type}. MESSAGE: ${error.message}`)
+      return []
+    }
   }
 
-  const tables = await getTables()
-  
+  const data = await getData()
+
   return {
     props: {
       ...data,
-      programs: createBlended(data?.programs),
-      journalArticleTables: tables
-
+      programs: createBlended(data?.programs)
     },
     revalidate: revalidate.default
   }
