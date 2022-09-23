@@ -1,8 +1,12 @@
-import stls from '@/styles/components/sections/journal/SectionJournalConclusion.module.sass'
-import { TypeClassNames, TypeLibJournalArticleConclusion } from '@/types/index'
 import cn from 'classnames'
+
 import { getClassNames } from '@/helpers/index'
+
+import { TypeClassNames, TypeLibJournalArticleConclusion } from '@/types/index'
+
 import { ContentJournalArticle } from '@/components/layout'
+
+import stls from '@/styles/components/sections/journal/SectionJournalConclusion.module.sass'
 
 type TypeSectionJournalConclusionProps = TypeClassNames & {
   item: TypeLibJournalArticleConclusion | null
@@ -12,6 +16,8 @@ const SectionJournalConclusion = ({
   classNames,
   item
 }: TypeSectionJournalConclusionProps) => {
+  if (!item) return null
+
   return (
     <div
       className={

@@ -1,9 +1,6 @@
 import Link from 'next/link'
 import cn from 'classnames'
 
-import stls from '@/styles/components/sections/journal/SectionJournalHeroArticle.module.sass'
-
-import bp from '@/config/breakpoints'
 import { routesFront } from '@/config/index'
 
 import {
@@ -23,10 +20,11 @@ import {
     TypeContextJournalFilterButtons
 } from '@/types/context/journal/TypeContextJournal'
 
-
 import { Wrapper } from 'components/layout'
 import { ImgJournalArticle } from '@/components/images'
 import { GeneralJournalArticleCreatedAt } from '@/components/general'
+
+import stls from '@/styles/components/sections/journal/SectionJournalHeroArticle.module.sass'
 
 type TypeSectionJournalArticleProps = {
     filteredArticles: TypeContextJournalArticles
@@ -93,6 +91,15 @@ const SectionJournalHeroArticle = ({
 }: TypeSectionJournalArticleProps) => {
     const articleNew = filteredArticles[0]
 
+    if (
+        !articleNew?.slug
+        || !articleNew?.picture
+        || !articleNew?.title
+        || !articleNew?.journalCategory?.title
+        || !articleNew?.journalCategory?.slug
+        || !articleNew?.createdAt
+    ) return null
+
     const getTime = () => (
         articleNew
             ? getRenderTime({ timestamp: filteredArticles[0]?.createdAt, options: pageOptions })
@@ -100,55 +107,47 @@ const SectionJournalHeroArticle = ({
     )
 
     const time = getTime()
+    
     return (
-        articleNew?.slug
-            || articleNew?.picture
-            || articleNew?.title
-            || articleNew?.journalCategory?.title
-            || articleNew?.journalCategory?.slug
-            || articleNew?.createdAt
-            ? <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-                <Wrapper classNames={[stls.wrapper]}>
-                    <div className={stls.column}>
-                        <ImgJournalArticle
-                            src={articleNew.picture.url || undefined}
-                            width={articleNew.picture.width && sizeImage}
-                            height={articleNew.picture.height &&
-                                getImageHeight({
-                                    width: sizeImage,
-                                    widthInitial: articleNew.picture.width,
-                                    heightInitial: articleNew.picture.height
-                                })
-                            }
-                            alt={articleNew.picture.alt}
-                            title={articleNew.title} />
+        <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+            <Wrapper classNames={[stls.wrapper]}>
+                <div className={stls.column}>
+                    <ImgJournalArticle
+                        src={articleNew.picture.url || undefined}
+                        width={articleNew.picture.width && sizeImage}
+                        height={articleNew.picture.height &&
+                            getImageHeight({
+                                width: sizeImage,
+                                widthInitial: articleNew.picture.width,
+                                heightInitial: articleNew.picture.height
+                            })
+                        }
+                        alt={articleNew.picture.alt}
+                        title={articleNew.title} />
+                </div>
+                <div className={stls.column}>
+                    <Link href={`${routesFront.journal}/${articleNew.slug}`}>
+                        <a className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+                            <h3 className={stls.title}>{articleNew.title}</h3>
+                        </a>
+                    </Link>
+                    <p className={stls.decription}>{articleNew.shortDescription}</p>
+                    <div className={stls.items}>
+                        {
+                            filterCategoriesButtons
+                                .filter(category => category.title === articleNew.journalCategory.title)
+                                .map(category =>
+                                    <button
+                                        key={category.slug}
+                                        className={stls.category}
+                                        onClick={() => handleFilterActiclesButtons(category)}
+                                    >{category.title}</button>)
+                        }
+                        <GeneralJournalArticleCreatedAt time={time} />
                     </div>
-                    <div className={stls.column}>
-                        <Link href={`${routesFront.journal}/${articleNew.slug}`}>
-                            <a className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-                                <h3 className={stls.title}>{articleNew.title}</h3>
-                            </a>
-                        </Link>
-                        <p className={stls.decription}>{articleNew.shortDescription}</p>
-                        <div className={stls.items}>
-                            {/* <BtnCategory>{articleNew.journalCategory.title}</BtnCategory>
-                             */}
-                            {
-                                filterCategoriesButtons
-                                    .filter(category => category.title === articleNew.journalCategory.title)
-                                    .map(category =>
-                                        <button
-                                            key={category.slug}
-                                            className={stls.category}
-                                            onClick={() => handleFilterActiclesButtons(category)}
-                                        >{category.title}</button>)
-                            }
-                            <GeneralJournalArticleCreatedAt time={time} />
-                        </div>
-                    </div>
-                </Wrapper>
-            </section>
-            : <></>
+                </div>
+            </Wrapper>
+        </section>
     )
 }
 

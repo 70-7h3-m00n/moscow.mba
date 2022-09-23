@@ -15,22 +15,23 @@ type TypeSectionJournalToShareProps = {
     journalArticle: TypeLibJournalArticle
 } & TypeClassNames
 
-import {
-    Wrapper,
-    ContentJournalArticle
-} from '@/components/layout'
+import { ContentJournalArticle } from '@/components/layout'
 
 const SectionJournalToShare = ({
     classNames,
     journalArticle
-}: TypeSectionJournalToShareProps) => (
-    <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-        <ContentJournalArticle>
-            <PopupToShare 
-            journalArticle={journalArticle}
-            classNames={[stls.popupJournalToShare]} />
-        </ContentJournalArticle>
-    </div>
-)
+}: TypeSectionJournalToShareProps) => {
+    if (!journalArticle) return null
+
+    return (
+        <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+            <ContentJournalArticle>
+                <PopupToShare
+                    journalArticle={journalArticle}
+                    classNames={[stls.popupJournalToShare]} />
+            </ContentJournalArticle>
+        </div>
+    )
+}
 
 export default SectionJournalToShare

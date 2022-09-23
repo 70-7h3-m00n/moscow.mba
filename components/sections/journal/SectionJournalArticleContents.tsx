@@ -22,13 +22,15 @@ const SectionJournalArticleContents = ({
     journalArticle,
     classNames
 }: TypeJournalArticleContentsProps) => {
+    if (!journalArticle?.articleBody) return null
+
     const [isList, setIsList] = useState(false)
 
     const handleShowList = () => {
         setIsList(isList => !isList)
     }
 
-    const textLinkTitle = journalArticle.articleBody
+    const textLinkTitle = journalArticle?.articleBody
         ?.filter(title => (title.__typename === 'ComponentJournalTitle'))
         .map(item =>
             item.titleBodyParts
@@ -52,7 +54,7 @@ const SectionJournalArticleContents = ({
                         isList && <div className={stls.accordionList}>
                             <ul>
                                 {
-                                    textLinkTitle.map((item, idx) =>
+                                    textLinkTitle?.map((item, idx) =>
                                         <li key={`${item}_${idx}`} className={stls.item}>
                                             <Link href={`#${slugify(item)}`}>
                                                 <a>{item}</a>

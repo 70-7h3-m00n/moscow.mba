@@ -4,29 +4,36 @@ import { useState } from 'react'
 
 import { getClassNames } from '@/helpers/index'
 
-import { TypeClassNames } from '@/types/index'
-import { FormAlpha, FormJournalArticle } from '@/components/forms'
-import { IconLoader, IconClose } from '@/components/icons'
+import {
+    TypeClassNames,
+    TypeLibJournalPdfMaterials
+} from '@/types/index'
 
-import stls from '@/styles/components/popups/PopupGetMaterials.module.sass'
+import { FormJournalArticle } from '@/components/forms'
+import { IconLoader } from '@/components/icons'
 
 import pdfPopupGetMaterials from '@/public/assets/images/journal/pdfPopupGetMaterials.png'
 import linePopupGetMaterials from '@/public/assets/images/journal/linePopupGetMaterials.png'
 
-import pdfIcon from '@/public/assets/images/journal/form/pdf.svg'
+import stls from '@/styles/components/popups/PopupGetMaterials.module.sass'
 
 type TypeSectionPopupCoursesOnTopicProps = {
     handlePopupGetMaterials: () => void
+    pdfMaterials: TypeLibJournalPdfMaterials
 }
     & TypeClassNames
 
 const PopupGetMaterials = ({
     classNames,
-    handlePopupGetMaterials
+    handlePopupGetMaterials,
+    pdfMaterials
 }: TypeSectionPopupCoursesOnTopicProps) => {
+    if (!pdfMaterials) return null
+
     const [open, setOpen] = useState(false)
     const [isSuccess, setIsSuccess] = useState(true)
     const [openLoader, setOpenLoader] = useState(false)
+
     return (
         <>
             <div
@@ -72,7 +79,9 @@ const PopupGetMaterials = ({
                             setOpenLoader={setOpenLoader}
                             setOpen={setOpen}
                             setIsSuccess={setIsSuccess}
-                            classNames={[stls.submitButton]}>
+                            classNames={[stls.submitButton]}
+                            pdfMaterials={pdfMaterials}
+                        >
                             <span className={stls.submitText}>{'получить бесплатно'}</span>
                         </FormJournalArticle>
                     </div>
@@ -83,8 +92,8 @@ const PopupGetMaterials = ({
                             <p className={stls.formComplitedTitle}>
                                 {
                                     isSuccess
-                                    ? 'Спасибо! Файл отправлен Вам на почту.'
-                                    : 'Что-то пошло не так. Повторите, пожалуйста, попытку.'
+                                        ? 'Спасибо! Файл отправлен Вам на почту.'
+                                        : 'Что-то пошло не так. Повторите, пожалуйста, попытку.'
                                 }
                             </p>
                             <button

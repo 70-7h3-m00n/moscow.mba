@@ -1,11 +1,13 @@
 import {
   TypeLibPrograms,
-  TypeLibJournalArticles
+  TypeLibJournalArticles,
+  TypeLibJournalCategories
 } from '@/types/index'
 
 type TypePageJournalArticlesProps = {
   programs: TypeLibPrograms
-  journalArticle: TypeLibJournalArticles
+  journalArticles: TypeLibJournalArticles
+  journalCategories: TypeLibJournalCategories
 }
 
 export default TypePageJournalArticlesProps

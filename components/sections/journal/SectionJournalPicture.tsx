@@ -1,13 +1,17 @@
-import stls from '@/styles/components/sections/journal/SectionJournalPicture.module.sass'
+import cn from 'classnames'
+
 import {
   TypeClassNames,
   TypeLibJournalArticlePicture,
   TypeLibJournalArticleTitle
 } from '@/types/index'
-import cn from 'classnames'
+
 import { getClassNames, getImageHeight } from '@/helpers/index'
+
 import { ContentJournalArticle } from '@/components/layout'
 import { ImgTemplate } from '@/components/images'
+
+import stls from '@/styles/components/sections/journal/SectionJournalPicture.module.sass'
 
 type TypeSectionJournalPictureProps = TypeClassNames & {
   picture: TypeLibJournalArticlePicture | null
@@ -22,6 +26,7 @@ const SectionJournalPicture = ({
   idx
 }: TypeSectionJournalPictureProps) => {
   if (!picture) return null
+  
   return (
     <div
       className={

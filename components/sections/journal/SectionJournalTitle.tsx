@@ -1,11 +1,14 @@
-
-import slugify from 'slugify'
-import stls from '@/styles/components/sections/journal/SectionJournalTitle.module.sass'
-import { TypeClassNames, TypeLibJournalArticleTitleBody } from '@/types/index'
-import cn from 'classnames'
 import truncate from 'truncate'
+import slugify from 'slugify'
+import cn from 'classnames'
+
+import { TypeClassNames, TypeLibJournalArticleTitleBody } from '@/types/index'
+
 import { getClassNames } from '@/helpers/index'
+
 import { ContentJournalArticle } from '@/components/layout'
+
+import stls from '@/styles/components/sections/journal/SectionJournalTitle.module.sass'
 
 type TypeSectionJournalTitleProps = TypeClassNames & {
   body: TypeLibJournalArticleTitleBody | null
@@ -17,6 +20,8 @@ const SectionJournalTitle = ({
   body,
   idx
 }: TypeSectionJournalTitleProps) => {
+  if (!body) return null
+
   const idSection = slugify(
     body
       ?.map(item => item.text)

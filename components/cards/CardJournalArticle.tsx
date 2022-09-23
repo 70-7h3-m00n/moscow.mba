@@ -100,42 +100,49 @@ const CardJournalArticle = ({
   const time = getTime()
   const { slug, picture, title, journalCategory, createdAt } = article
 
+  if (
+    !slug
+    && !picture
+    && !title
+    && !journalCategory.title
+    && !journalCategory.slug
+    && !createdAt
+  ) return null
+
   return (
-    (slug && picture && title && journalCategory.title && journalCategory.slug && createdAt)
-      ? <article className={stls.article}>
-        <div className={stls.top}>
-          <ImgJournalArticle
-            src={picture.url || undefined}
-            width={picture.width && bp.phone}
-            height={picture.height &&
-              getImageHeight({
-                width: bp.phone,
-                widthInitial: picture.width,
-                heightInitial: picture.height
-              })
-            }
-            alt={picture.alt}
-            title={title} />
-        </div>
-        <div className={stls.bottom}>
-          {
-            filterCategoriesButtons
-              .filter(category => category.title === journalCategory.title)
-              .map(category =>
-                <button
-                  className={stls.category}
-                  onClick={() => handleFilterActiclesButtons(category)}
-                >{category.title}</button>)
+    <article className={stls.article}>
+      <div className={stls.top}>
+        <ImgJournalArticle
+          src={picture.url || undefined}
+          width={picture.width && bp.phone}
+          height={picture.height &&
+            getImageHeight({
+              width: bp.phone,
+              widthInitial: picture.width,
+              heightInitial: picture.height
+            })
           }
-          <Link href={`${routesFront.journal}/${slug}`}>
-            <a className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-              <h3 className={stls.title}>{title}</h3>
-            </a>
-          </Link>
-          <GeneralJournalArticleCreatedAt time={time} />
-        </div>
-      </article>
-      : <></>
+          alt={picture.alt}
+          title={title} />
+      </div>
+      <div className={stls.bottom}>
+        {
+          filterCategoriesButtons
+            .filter(category => category.title === journalCategory.title)
+            .map(category =>
+              <button
+                className={stls.category}
+                onClick={() => handleFilterActiclesButtons(category)}
+              >{category.title}</button>)
+        }
+        <Link href={`${routesFront.journal}/${slug}`}>
+          <a className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+            <h3 className={stls.title}>{title}</h3>
+          </a>
+        </Link>
+        <GeneralJournalArticleCreatedAt time={time} />
+      </div>
+    </article>
   )
 }
 

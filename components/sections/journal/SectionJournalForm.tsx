@@ -42,13 +42,14 @@ const SectionJournalForm = ({
     windowWidth,
     mounted,
 }: TypeSectionJournalParagraphProps) => {
+    if (!pdfMaterials || !formPdfMaterials) return null
+
     const formName = `Заявка с модальной формы: "${formPdfMaterials?.title}"`
 
     const [open, setOpen] = useState(false)
     const [openLoader, setOpenLoader] = useState(false)
     const [isSuccess, setIsSuccess] = useState(true)
-    console.log('Открыто:', open)
-    console.log('Открыт лодер:', openLoader)
+    
     return (
         <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
             <ContentJournalArticle>
@@ -117,7 +118,9 @@ const SectionJournalForm = ({
                                 setOpen={setOpen}
                                 setIsSuccess={setIsSuccess}
                                 classNames={[stls.submitButton]}
-                                formName={formName}>
+                                formName={formName}
+                                pdfMaterials={pdfMaterials}
+                                >
                                 <span className={stls.submitText}>{'скачать'}</span>
                                 <div className={stls.pdfIcon}>
                                     <Image src={pdfIcon} />
@@ -148,14 +151,6 @@ const SectionJournalForm = ({
                     }
                 </div>
             </ContentJournalArticle>
-            {/* <LeadLoaderThankyou
-                open={open}
-                setOpen={setOpen}
-                openLoader={openLoader}
-                setOpenLoader={setOpenLoader}
-                programId={null}
-                programTitle={null}
-            /> */}
         </div>
     )
 }

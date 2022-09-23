@@ -32,7 +32,8 @@ const FormJournalArticle = ({
     width = '33',
     formName = null,
     children,
-    classNames
+    classNames,
+    pdfMaterials
 }) => {
     const {
         register,
@@ -59,7 +60,8 @@ const FormJournalArticle = ({
                     setOpenLoader,
                     setIsSuccess,
                     submitIsDisabled,
-                    setSubmitIsDisabled
+                    setSubmitIsDisabled,
+                    pdfMaterials
                 ))
             }>
             <div

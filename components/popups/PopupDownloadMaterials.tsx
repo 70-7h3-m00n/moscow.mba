@@ -1,8 +1,5 @@
 import Image from 'next/image'
-import {
-    useEffect,
-    useState
-} from "react"
+import { useState } from "react"
 import cn from 'classnames'
 
 import { getClassNames } from '@/helpers/index'
@@ -24,13 +21,6 @@ const PopupDownloadMaterials = ({
     handlePopupGetMaterials
 }: TypeSectionPopupCoursesOnTopicProps) => {
     const [isShow, setIsShow] = useState(true)
-    const [mounted, setMounted] = useState(false)
-
-    useEffect(() => {
-        setMounted(true)
-
-        return () => setMounted(false)
-    }, [])
 
     const handleShowPopupCoursesOnTopic = () => {
         setIsShow(isShow => !isShow)

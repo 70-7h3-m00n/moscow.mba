@@ -16,6 +16,8 @@ const SectionJournalList = ({
   classNames,
   listItem
 }: TypeSectionJournalListProps) => {
+  if (!listItem) return null
+
   return (
     <div
       className={

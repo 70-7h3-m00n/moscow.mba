@@ -2,9 +2,8 @@ import { useState } from 'react'
 
 import cn from 'classnames'
 
-import stls from '@/styles/components/sections/journal/SectionJournalAllArticles.module.sass'
-
 import { TypeClassNames } from '@/types/index'
+
 import {
     TypeContextJournalArticles,
     TypeContextJournalCategory,
@@ -18,6 +17,7 @@ import { Wrapper } from '@/components/layout'
 import { CardJournalArticle } from '@/components/cards'
 import { BtnArticlesShowMore } from '@/components/btns'
 
+import stls from '@/styles/components/sections/journal/SectionJournalAllArticles.module.sass'
 
 type TypeSectionJournalAllArticlesProps = {
     filteredArticles: TypeContextJournalArticles
@@ -42,6 +42,8 @@ const SectionJournalAllArticles = ({
         setSizeShowArticles(sizeShowArticles => sizeShowArticles + defaultSizeShowMore)
     }
 
+    if (!filteredArticles) return null
+    
     return (
         <section
             className={

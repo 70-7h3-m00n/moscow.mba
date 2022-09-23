@@ -3,12 +3,12 @@ import {
     GetStaticProps
 } from 'next'
 import type { NextPage } from 'next'
-import { createPortal } from "react-dom"
 import {
     Fragment,
     useEffect,
     useState
 } from 'react'
+import { createPortal } from "react-dom"
 
 import { useScroll, useWindowWidth } from '@/hooks/index'
 
@@ -97,8 +97,6 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
     const [isPopupCoursesOnTopicDesktop, setIsPopupCoursesOnTopicDesktop] = useState(true)
     const [isPopupCoursesOnTopicPhone, setIsPopupCoursesOnTopicPhone] = useState(false)
 
-    const [isPopupGetMaterials, setIsPopupGetMaterials] = useState(false)
-
     const handlePopupCoursesOnTopicDesktop = () => {
         setIsPopupCoursesOnTopicDesktop(isPopupCoursesOnTopicDesktop => !isPopupCoursesOnTopicDesktop)
     }
@@ -106,6 +104,8 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
     const handlePopupCoursesOnTopicPhone = () => {
         setIsPopupCoursesOnTopicPhone(isPopupCoursesOnTopicPhone => !isPopupCoursesOnTopicPhone)
     }
+
+    const [isPopupGetMaterials, setIsPopupGetMaterials] = useState(false)
 
     const handlePopupGetMaterials = () => {
         setIsPopupGetMaterials(isPopupGetMaterials => !isPopupGetMaterials)
@@ -249,6 +249,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
                             ? createPortal(
                                 <PopupGetMaterials
                                     classNames={[stls.popupGetMaterials]}
+                                    pdfMaterials={journalArticle.pdfMaterials}
                                     handlePopupGetMaterials={handlePopupGetMaterials} />, document.querySelector('#__next'))
                             : ""
                     }

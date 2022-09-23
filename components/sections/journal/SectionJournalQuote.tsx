@@ -21,6 +21,8 @@ const SectionJournalQuote = ({
   classNames,
   quote
 }: TypeSectionJournalQuoteProps) => {
+  if (!quote) return null
+
   return (
     <div
       className={

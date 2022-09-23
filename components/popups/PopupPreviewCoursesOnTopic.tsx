@@ -7,7 +7,7 @@ import cn from 'classnames'
 
 import { getClassNames } from '@/helpers/index'
 
-import { useWindowWidth, useScroll } from '@/hooks/index'
+import { useWindowWidth } from '@/hooks/index'
 
 import { TypeClassNames } from '@/types/index'
 
@@ -17,7 +17,10 @@ type TypeSectionPopupCoursesOnTopicProps = {
     handlePopupCoursesOnTopic: () => void
 } & TypeClassNames
 
-const PopupPreviewCoursesOnTopic = ({ classNames, handlePopupCoursesOnTopic }: TypeSectionPopupCoursesOnTopicProps) => {
+const PopupPreviewCoursesOnTopic = ({ 
+    classNames, 
+    handlePopupCoursesOnTopic 
+}: TypeSectionPopupCoursesOnTopicProps) => {
     const [isShow, setIsShow] = useState(true)
     const [mounted, setMounted] = useState(false)
 

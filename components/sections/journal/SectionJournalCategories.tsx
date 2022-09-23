@@ -30,6 +30,9 @@ const SectionJournalCategories = ({
         title: `Все статьи`,
         slug: 'vse_stati',
     }
+
+    if (!filterCategoriesButtons) return null
+    
     return (
         <section className={
             cn(stls.container, getClassNames({ classNames })) || undefined

@@ -27,6 +27,8 @@ const SectionJournalRecommendedProgram = ({
   classNames,
   recommendedProgram
 }: TypeSectionJournalRecommendedProgramProps) => {
+  if (!recommendedProgram) return null
+
   return (
     <div
       className={
