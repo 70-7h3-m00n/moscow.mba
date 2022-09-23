@@ -74,7 +74,7 @@ const SectionJournalArticleHeader = ({
     journalArticle,
     classNames
 }: TypeJournalArticleProps) => {
-    if (!journalArticle?.createdAt || journalArticle?.journalCategory) return null
+    if (!journalArticle?.createdAt || !journalArticle?.journalCategory) return null
     
     const time = getRenderTime({ timestamp: journalArticle?.createdAt, options: pageOptions })
 

@@ -21,7 +21,7 @@ const SectionJournalArticleTitle = ({
     journalArticle,
     classNames
 }: TypeJournalArticleProps) => {
-    if (!journalArticle?.title || journalArticle?.journalAuthors) return null
+    if (!journalArticle?.title || !journalArticle?.journalAuthors) return null
 
     return (
         <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
