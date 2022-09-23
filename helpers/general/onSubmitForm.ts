@@ -9,7 +9,8 @@ const onSubmitForm = async ({
   setIsSuccess,
   setOpen,
   formName,
-  reset
+  reset,
+  pdfMaterials
 }) => {
   setOpenLoader(o => !o)
   values.programTitle = programTitle || ''

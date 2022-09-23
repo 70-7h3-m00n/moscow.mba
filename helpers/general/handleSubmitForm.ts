@@ -12,7 +12,8 @@ const handleSubmitForm = (
     setOpenLoader,
     setIsSuccess,
     submitIsDisabled,
-    setSubmitIsDisabled
+    setSubmitIsDisabled,
+    pdfMaterials
 ) => {
 
     if (!submitIsDisabled) {
@@ -30,7 +31,8 @@ const handleSubmitForm = (
             setIsSuccess,
             asPath,
             formName,
-            reset
+            reset,
+            pdfMaterials
         })
     }
 }
