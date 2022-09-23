@@ -10,6 +10,7 @@ const handleSubmitForm = (
     reset,
     setOpen,
     setOpenLoader,
+    setIsSuccess,
     submitIsDisabled,
     setSubmitIsDisabled
 ) => {
@@ -24,9 +25,10 @@ const handleSubmitForm = (
         return onSubmitForm({
             values,
             programTitle,
-            setOpenLoader,
-            asPath,
             setOpen,
+            setOpenLoader,
+            setIsSuccess,
+            asPath,
             formName,
             reset
         })

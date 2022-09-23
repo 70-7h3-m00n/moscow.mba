@@ -25,9 +25,8 @@ const PopupGetMaterials = ({
     handlePopupGetMaterials
 }: TypeSectionPopupCoursesOnTopicProps) => {
     const [open, setOpen] = useState(false)
+    const [isSuccess, setIsSuccess] = useState(true)
     const [openLoader, setOpenLoader] = useState(false)
-    console.log(open)
-    console.log("OpenLoader", openLoader)
     return (
         <>
             <div
@@ -72,6 +71,7 @@ const PopupGetMaterials = ({
                             programTitle={null}
                             setOpenLoader={setOpenLoader}
                             setOpen={setOpen}
+                            setIsSuccess={setIsSuccess}
                             classNames={[stls.submitButton]}>
                             <span className={stls.submitText}>{'получить бесплатно'}</span>
                         </FormJournalArticle>
@@ -80,7 +80,13 @@ const PopupGetMaterials = ({
                 {
                     (open && !openLoader)
                         ? <div className={stls.formComplited}>
-                            <p className={stls.formComplitedTitle}>Спасибо! Файл отправлен Вам на почту.</p>
+                            <p className={stls.formComplitedTitle}>
+                                {
+                                    isSuccess
+                                    ? 'Спасибо! Файл отправлен Вам на почту.'
+                                    : 'Что-то пошло не так. Повторите, пожалуйста, попытку.'
+                                }
+                            </p>
                             <button
                                 className={stls.formComplitedClosed}
                                 onClick={() => setOpen(open => !open)}>Вернуться назад

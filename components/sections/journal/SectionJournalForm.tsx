@@ -46,6 +46,7 @@ const SectionJournalForm = ({
 
     const [open, setOpen] = useState(false)
     const [openLoader, setOpenLoader] = useState(false)
+    const [isSuccess, setIsSuccess] = useState(true)
     console.log('Открыто:', open)
     console.log('Открыт лодер:', openLoader)
     return (
@@ -114,6 +115,7 @@ const SectionJournalForm = ({
                                 programTitle={null}
                                 setOpenLoader={setOpenLoader}
                                 setOpen={setOpen}
+                                setIsSuccess={setIsSuccess}
                                 classNames={[stls.submitButton]}
                                 formName={formName}>
                                 <span className={stls.submitText}>{'скачать'}</span>
@@ -126,7 +128,13 @@ const SectionJournalForm = ({
                     {
                         (open && !openLoader)
                             ? <div className={stls.formComplited}>
-                                <p className={stls.formComplitedTitle}>Спасибо! Файл отправлен Вам на почту.</p>
+                                <p className={stls.formComplitedTitle}>
+                                    {
+                                        isSuccess
+                                            ? 'Спасибо! Файл отправлен Вам на почту.'
+                                            : 'Что-то пошло не так. Повторите, пожалуйста, попытку.'
+                                    }
+                                </p>
                                 <button
                                     className={stls.formComplitedClosed}
                                     onClick={() => setOpen(open => !open)}>Вернуться назад</button>

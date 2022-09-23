@@ -27,6 +27,7 @@ type TypeFormValues = {
 const FormJournalArticle = ({
     programTitle = null,
     setOpenLoader,
+    setIsSuccess,
     setOpen,
     width = '33',
     formName = null,
@@ -56,6 +57,7 @@ const FormJournalArticle = ({
                     reset,
                     setOpen,
                     setOpenLoader,
+                    setIsSuccess,
                     submitIsDisabled,
                     setSubmitIsDisabled
                 ))
