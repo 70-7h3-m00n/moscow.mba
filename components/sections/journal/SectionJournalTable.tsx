@@ -17,17 +17,24 @@ import stls from '@/styles/components/sections/journal/SectionJournalTable.modul
 
 type TypeJournalArticleTables = {
     htmlTableBody: TypeLibJournalArticleHtmlTableBody
+    isPopupCoursesOnTopicDesktop: boolean
+    isPopupDownloadMaterials: boolean
 } & TypeClassNames
 
 const SectionJournalTable = ({
     htmlTableBody,
-    classNames
+    classNames,
+    isPopupCoursesOnTopicDesktop,
+    isPopupDownloadMaterials
 }: TypeJournalArticleTables) => {
     if (!htmlTableBody) return null
 
     return (
         <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-            <ContentJournalArticle>
+            <ContentJournalArticle classNames={[
+                (!isPopupCoursesOnTopicDesktop && !isPopupDownloadMaterials)
+                    ? stls.noShowPopup
+                    : stls.showPopup]}>
                 <div
                     className={
                         cn(

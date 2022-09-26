@@ -4,10 +4,6 @@
 @use '@/styles/shared/journal' as j
 
 .container
-    // TODO Возможно, есть вариант лучше исправить баг 
-    // на десктопе о том, что width больше остальных контейнеров
-    @include m.media(desktop)
-        max-width: 652px
     &.regularTable
         // Reset default Google Sheet elements and style elements
         overflow-x: auto

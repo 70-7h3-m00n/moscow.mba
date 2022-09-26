@@ -34,6 +34,14 @@
         margin-left: f.px(110)
     @include m.media(desktop, widescreen)
         margin-right: f.px(30)
+    @include m.media(widescreen)
+        max-width: 850px
+    @include m.media(desktop)
+        max-width: 652px
+
+.isPopup
+    max-width: 1070px
+    transition-duration: 200ms
 
 .aside
     position: sticky

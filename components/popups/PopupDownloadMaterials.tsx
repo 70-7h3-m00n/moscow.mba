@@ -14,54 +14,56 @@ import stls from '@/styles/components/popups/PopupDownloadMaterials.module.sass'
 
 type TypeSectionPopupCoursesOnTopicProps = {
     handlePopupGetMaterials: () => void
+    handlePopupDownloadMaterials: () => void
 } & TypeClassNames
 
 const PopupDownloadMaterials = ({
     classNames,
-    handlePopupGetMaterials
+    handlePopupGetMaterials,
+    handlePopupDownloadMaterials
 }: TypeSectionPopupCoursesOnTopicProps) => {
-    const [isShow, setIsShow] = useState(true)
+    // const [isShow, setIsShow] = useState(true)
 
-    const handleShowPopupCoursesOnTopic = () => {
-        setIsShow(isShow => !isShow)
-    }
+    // const handleShowPopupCoursesOnTopic = () => {
+    //     setIsShow(isShow => !isShow)
+    // }
 
-    if (!isShow) {
-        return null
-    } else {
-        return (
-            <div className={cn([stls.popupDownloadMaterials], getClassNames({ classNames })) || undefined}>
-                <div className={stls.lineDownload}>
+    // if (!isShow) {
+    //     return null
+    // } else {
+    return (
+        <div className={cn([stls.popupDownloadMaterials], getClassNames({ classNames })) || undefined}>
+            <div className={stls.lineDownload}>
+                <Image
+                    src={lineDownload}
+                />
+            </div>
+            <div className={stls.content}>
+                <div className={stls.bookDownload}>
                     <Image
-                        src={lineDownload}
+                        src={bookDownload}
+                        width={80}
+                        height={92}
                     />
-                </div>
-                <div className={stls.content}>
-                    <div className={stls.bookDownload}>
+                    <div className={stls.ellipse}>
                         <Image
-                            src={bookDownload}
-                            width={80}
-                            height={92}
+                            src={ellipse}
                         />
-                        <div className={stls.ellipse}>
-                            <Image
-                                src={ellipse}
-                            />
-                        </div>
-                    </div>
-                    <div className={stls.textContent}>
-                        <button
-                            className={stls.text}
-                            onClick={handlePopupGetMaterials}
-                        >{"Скачать полезные материалы"}</button>
                     </div>
                 </div>
-                <div className={stls.buttonClosed}>
-                    <button className={stls.closed} onClick={handleShowPopupCoursesOnTopic}></button>
+                <div className={stls.textContent}>
+                    <button
+                        className={stls.text}
+                        onClick={handlePopupGetMaterials}
+                    >{"Скачать полезные материалы"}</button>
                 </div>
             </div>
-        )
-    }
+            <div className={stls.buttonClosed}>
+                <button className={stls.closed} onClick={handlePopupDownloadMaterials}></button>
+            </div>
+        </div>
+    )
 }
+// }
 
 export default PopupDownloadMaterials

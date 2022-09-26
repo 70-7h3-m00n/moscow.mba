@@ -9,6 +9,7 @@ import {
     useState
 } from 'react'
 import { createPortal } from "react-dom"
+import cn from 'classnames'
 
 import { useScroll, useWindowWidth } from '@/hooks/index'
 
@@ -53,6 +54,7 @@ import {
 } from '@/components/popups'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
+import classNames from 'classnames'
 
 type TypeJournalArticleProps = {
     journalArticle: TypeLibJournalArticle
@@ -111,6 +113,12 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
         setIsPopupGetMaterials(isPopupGetMaterials => !isPopupGetMaterials)
     }
 
+    const [isPopupDownloadMaterials, setIsPopupDownloadMaterials] = useState(true)
+
+    const handlePopupDownloadMaterials = () => {
+        setIsPopupDownloadMaterials(isPopupDownloadMaterials => !isPopupDownloadMaterials)
+    }
+
     return (
         <>
             <SectionJournalHistoryArticle
@@ -125,7 +133,11 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
                     }}></div>
             </div>
             <Wrapper classNames={[stls.wrapper]}>
-                <article className={stls.article}>
+                <article className={cn(stls.article,
+                (!isPopupCoursesOnTopicDesktop && !isPopupDownloadMaterials)
+                    ? stls.isPopup
+                    : '')
+                }>
                     <header>
                         <SectionJournalArticleHeader
                             journalArticle={journalArticle}
@@ -181,7 +193,11 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
                                         <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection} />
                                     )}
                                     {component.__typename === 'ComponentJournalJournalTable' && (
-                                        <SectionJournalTable htmlTableBody={component.htmlTableBody} />
+                                        <SectionJournalTable
+                                            htmlTableBody={component.htmlTableBody}
+                                            isPopupCoursesOnTopicDesktop={isPopupCoursesOnTopicDesktop}
+                                            isPopupDownloadMaterials={isPopupDownloadMaterials}
+                                        />
                                     )}
                                     {component.__typename === 'ComponentJournalFormPdfMaterials' && (
                                         <SectionJournalForm
@@ -232,16 +248,18 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
                     }
 
                     {
-                        (mounted && windowWidth <= 1020)
+                        (mounted && windowWidth <= 1020 && isPopupDownloadMaterials)
                             ? createPortal(
                                 <PopupDownloadMaterials
                                     classNames={[stls.popupDownloadMaterials]}
                                     handlePopupGetMaterials={handlePopupGetMaterials}
+                                    handlePopupDownloadMaterials={handlePopupDownloadMaterials}
                                 />, document.querySelector('#__next'))
-                            : (mounted && windowWidth > 1020)
+                            : (mounted && windowWidth > 1020 && isPopupDownloadMaterials)
                                 ? <PopupDownloadMaterials
                                     classNames={[stls.popupDownloadMaterials]}
-                                    handlePopupGetMaterials={handlePopupGetMaterials} />
+                                    handlePopupGetMaterials={handlePopupGetMaterials}
+                                    handlePopupDownloadMaterials={handlePopupDownloadMaterials} />
                                 : ''
                     }
                     {

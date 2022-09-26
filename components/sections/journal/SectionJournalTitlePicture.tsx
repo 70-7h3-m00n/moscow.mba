@@ -18,7 +18,7 @@ type TypeImgJournalArticleTitlePicture = {
     journalArticle: TypeLibJournalArticle
 } & TypeClassNames
 
-const widthArticlePicture = 850
+const widthArticlePicture = 1070
 
 const SectionJournalTitlePicture = ({
     classNames,
