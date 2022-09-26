@@ -35,7 +35,8 @@ const ImgJournalArticleRecommended = ({
 
     }
     return (
-        <ImgTemplate src={iconArray[icon] || paperPlane}
+        <ImgTemplate
+            src={iconArray[icon] || paperPlane}
             width={widthIcon}
             height={heightIcon}
             alt={icon}
@@ -48,8 +49,8 @@ const ImgJournalArticleRecommended = ({
                             : backgroundColor === 'medium'
                                 ? stls.medium
                                 : stls.light,
-                    usage === 'popup' ?
-                        stls.popupContainer
+                    usage === 'popup'
+                        ? stls.popupContainer
                         : usage === 'program'
                             ? stls.programContainer
                             : stls.container

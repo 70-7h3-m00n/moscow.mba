@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 import { onSubmitForm } from '@/helpers/index'
 
 const handleSubmitForm = (
@@ -10,12 +8,11 @@ const handleSubmitForm = (
     reset,
     setOpen,
     setOpenLoader,
-    setIsSuccess,
+    setOpenSuccess,
     submitIsDisabled,
     setSubmitIsDisabled,
     pdfMaterials
 ) => {
-
     if (!submitIsDisabled) {
         setSubmitIsDisabled(true)
         setTimeout(() => {
@@ -28,7 +25,7 @@ const handleSubmitForm = (
             programTitle,
             setOpen,
             setOpenLoader,
-            setIsSuccess,
+            setOpenSuccess,
             asPath,
             formName,
             reset,

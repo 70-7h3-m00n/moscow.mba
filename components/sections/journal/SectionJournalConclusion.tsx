@@ -2,15 +2,18 @@ import cn from 'classnames'
 
 import { getClassNames } from '@/helpers/index'
 
-import { TypeClassNames, TypeLibJournalArticleConclusion } from '@/types/index'
+import {
+  TypeClassNames,
+  TypeLibJournalArticleConclusion
+} from '@/types/index'
 
 import { ContentJournalArticle } from '@/components/layout'
 
 import stls from '@/styles/components/sections/journal/SectionJournalConclusion.module.sass'
 
-type TypeSectionJournalConclusionProps = TypeClassNames & {
+type TypeSectionJournalConclusionProps = {
   item: TypeLibJournalArticleConclusion | null
-}
+} & TypeClassNames
 
 const SectionJournalConclusion = ({
   classNames,
@@ -20,9 +23,7 @@ const SectionJournalConclusion = ({
 
   return (
     <div
-      className={
-        cn(stls.container, getClassNames({ classNames })) || undefined
-      }>
+      className={cn(stls.container, getClassNames({ classNames })) || undefined}>
       <ContentJournalArticle>
         <h2 className={stls.title}>
           <span>{'Резюмируем'}</span>

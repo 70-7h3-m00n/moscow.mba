@@ -3,8 +3,6 @@ import cn from 'classnames'
 
 import { TypeLibJournalArticleCardAuthor } from '@/types/index'
 
-import { ImgJournalArticle } from '@/components/images'
-
 import stls from "@/styles/components/cards/CardAuthor.module.sass"
 
 type TypeCardQuoteProps = {
@@ -18,6 +16,8 @@ const CardAuthor = ({
     textAlign,
     fontWeightAuthorName
 }: TypeCardQuoteProps) => {
+    if (!quote) return null
+
     return (
         <div className={cn(
             stls.cardAuthor,
@@ -28,7 +28,7 @@ const CardAuthor = ({
                     : '')
         }>
             {
-                quote?.portrait.url &&
+                quote?.portrait?.url &&
                 <div className={stls.image}>
                     <Image
                         src={quote?.portrait.url || undefined}
@@ -55,7 +55,7 @@ const CardAuthor = ({
                             : ''
                 )}>{quote?.authorName}</p>
             </div>
-        </div >
+        </div>
     )
 }
 

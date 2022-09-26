@@ -1,16 +1,15 @@
 import { useRouter } from 'next/router'
-
 import { useState } from 'react'
-
 import { useForm } from 'react-hook-form'
 import cn from 'classnames'
 
 import stls from '@/styles/components/forms/FormJournalArticle.module.sass'
 
-import { 
-    getClassNames, 
+import {
+    getClassNames,
     handleSubmitForm
 } from '@/helpers/index'
+
 import {
     InputEmail,
     InputName,
@@ -26,14 +25,14 @@ type TypeFormValues = {
 
 const FormJournalArticle = ({
     programTitle = null,
-    setOpenLoader,
-    setIsSuccess,
+    pdfMaterials,
     setOpen,
+    setOpenLoader,
+    setOpenSuccess,
     width = '33',
     formName = null,
     children,
     classNames,
-    pdfMaterials
 }) => {
     const {
         register,
@@ -43,6 +42,7 @@ const FormJournalArticle = ({
     } = useForm<TypeFormValues>()
 
     const { asPath } = useRouter()
+
     const [submitIsDisabled, setSubmitIsDisabled] = useState(false)
 
     return (
@@ -58,20 +58,19 @@ const FormJournalArticle = ({
                     reset,
                     setOpen,
                     setOpenLoader,
-                    setIsSuccess,
+                    setOpenSuccess,
                     submitIsDisabled,
                     setSubmitIsDisabled,
                     pdfMaterials
-                ))
-            }>
-            <div
-                className={cn(stls.container)}>
+                ))}>
+            <div className={cn(stls.container)}>
                 <div className={cn(stls.inputs, 'inputs-flex', 'inputs-flex--alt')}>
                     <InputName register={register} errors={errors} width={width} />
                     <InputPhone register={register} errors={errors} width={width} />
                     <InputEmail register={register} errors={errors} width={width} />
                     <div className={stls.submit}>
-                        <InputSubmitJournal errors={errors}
+                        <InputSubmitJournal
+                            errors={errors}
                             classNames={[cn(getClassNames({ classNames })),
                             errors.name || errors.phone || errors.email
                                 ? stls.submitButtonDisabled

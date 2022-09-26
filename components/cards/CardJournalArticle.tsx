@@ -29,7 +29,6 @@ import stls from '@/styles/components/cards/CardJournalArticle.module.sass'
 
 type TypeCardJournalArticleProps = {
   article: TypeLibJournalArticle | null
-  tag?: boolean
   filterCategoriesButtons: TypeContextJournalFilterButtons
   handleFilterActiclesButtons: (category: TypeContextJournalCategory) => void
 } & TypeClassNames

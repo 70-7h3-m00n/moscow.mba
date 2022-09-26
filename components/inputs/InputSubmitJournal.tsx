@@ -8,12 +8,17 @@ type TypeInputSubmitJournalProps = {
     children: React.ReactNode
     errors: any
 } & TypeClassNames
-const InputSubmitJournal = ({ children, errors, classNames }: TypeInputSubmitJournalProps) => {
+
+const InputSubmitJournal = ({
+    children,
+    errors,
+    classNames
+}: TypeInputSubmitJournalProps) => {
     return (
         <button
             type='submit'
             className={cn(getClassNames({ classNames }))}
-            disabled={errors.name || errors.phone || errors.email ? true : false}>
+            disabled={(errors.name || errors.phone || errors.email) ? true : false}>
             {children}
         </button>
     )

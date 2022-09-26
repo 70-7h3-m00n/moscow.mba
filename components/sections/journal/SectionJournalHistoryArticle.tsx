@@ -11,6 +11,7 @@ import {
 } from '@/types/index'
 
 import { routesFront } from '@/config/index'
+
 import { Wrapper } from '@/components/layout'
 
 type TypeJournalArticleProps = {
@@ -22,11 +23,9 @@ const SectionJournalHistoryArticle = ({
     classNames
 }: TypeJournalArticleProps) => {
     if (!journalArticle?.title) return null
-    
+
     return (
-        <section className={
-            cn([stls.container], getClassNames({ classNames })) || undefined
-        }>
+        <section className={cn([stls.container], getClassNames({ classNames })) || undefined}>
             <Wrapper column>
                 <div className={stls.row}>
                     <Link href={routesFront.journal}>

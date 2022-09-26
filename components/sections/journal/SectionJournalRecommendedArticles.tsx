@@ -23,7 +23,7 @@ const SectionJournalRecommendedArticles = ({
     classNames
 }: TypeSectionJournalRecommendedArticlesProps) => {
     if (!journalRecommendedArticles) return null
-    
+
     return (
         <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
             <ContentJournalArticle classNames={[stls.SectionJournalRecommendedArticles]}>

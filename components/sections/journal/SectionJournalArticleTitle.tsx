@@ -26,7 +26,9 @@ const SectionJournalArticleTitle = ({
     return (
         <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
             <ContentJournalArticle>
-                <h2 className={stls.title}>{journalArticle?.title}</h2>
+                <h2 className={stls.title}>
+                    {journalArticle?.title}
+                </h2>
                 <div className={stls.footer}>
                     <div className={stls.authors}>
                         {

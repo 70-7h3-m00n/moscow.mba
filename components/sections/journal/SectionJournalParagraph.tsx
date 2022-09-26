@@ -40,16 +40,15 @@ const SectionJournalParagraph = ({
                 key={
                   part.text
                     ? truncate(part.text, 21)
-                    : `SectionJournalParagraph ${idx}`
+                    : `SectionJournalParagraph_${idx}`
                 }
                 className={cn({
                   [stls.isHighlighted]: part.isHighlighted,
                   [stls.isLarger]: part.isLarger
                 })}>
-                {part.text &&
-                  parse(
-                    marked(part.text).replace('<p>', '').replace('</p>', '')
-                  )}
+                {part.text && parse(
+                  marked(part.text).replace('<p>', '').replace('</p>', '')
+                )}
               </span>
             ))}
         </p>

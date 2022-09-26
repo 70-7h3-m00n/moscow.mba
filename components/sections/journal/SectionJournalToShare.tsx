@@ -8,14 +8,13 @@ import {
 import { getClassNames } from '@/helpers/index'
 
 import { PopupToShare } from '@/components/popups'
+import { ContentJournalArticle } from '@/components/layout'
 
 import stls from '@/styles/components/sections/journal/SectionJournalToShare.module.sass'
 
 type TypeSectionJournalToShareProps = {
     journalArticle: TypeLibJournalArticle
 } & TypeClassNames
-
-import { ContentJournalArticle } from '@/components/layout'
 
 const SectionJournalToShare = ({
     classNames,

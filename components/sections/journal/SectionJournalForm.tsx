@@ -1,14 +1,10 @@
-import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import cn from 'classnames'
 
-import { LeadLoaderThankyou } from '@/components/general'
-import PopupLoader from '@/components/popups/PopupLoader'
-import { IconLoader, IconClose } from '@/components/icons'
-
+import { IconLoader } from '@/components/icons'
 import { ContentJournalArticle } from '@/components/layout'
-import { FormJournalArticle } from '@/components/forms/'
+import { FormJournalArticle } from '@/components/forms'
 
 import { getClassNames } from '@/helpers/index'
 
@@ -48,8 +44,8 @@ const SectionJournalForm = ({
 
     const [open, setOpen] = useState(false)
     const [openLoader, setOpenLoader] = useState(false)
-    const [isSuccess, setIsSuccess] = useState(true)
-    
+    const [openSuccess, setOpenSuccess] = useState(true)
+
     return (
         <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
             <ContentJournalArticle>
@@ -63,35 +59,27 @@ const SectionJournalForm = ({
                         <Image
                             src={mockupPicture}
                             width={207}
-                            height={238}
-                        />
+                            height={238} />
                     </div>
                     {
                         mounted
-                            ? windowWidth > 768
+                            ? (windowWidth > 768)
                                 ? <div className={stls.lineForm}>
-                                    <Image
-                                        src={lineForm}
-                                    />
+                                    <Image src={lineForm} />
                                 </div>
                                 : <div className={stls.lineFormPhone}>
-                                    <Image
-                                        src={lineFormPhone}
-                                    />
+                                    <Image src={lineFormPhone} />
                                 </div>
                             : <div className={stls.lineForm}>
-                                <Image
-                                    src={lineForm}
-                                />
+                                <Image src={lineForm} />
                             </div>
                     }
                     <div className={stls.folderForm}>
                         <Image
                             src={folderForm}
-                            className={stls.folderFormPicture}
-                        />
+                            className={stls.folderFormPicture} />
                     </div>
-                    <div className={openLoader || open ? stls.formContent : ''}>
+                    <div className={(openLoader || open) ? stls.formContent : ''}>
                         <p className={stls.title}>{formPdfMaterials?.title}</p>
                         <div className={stls.filePdf}>
                             <div className={stls.pdfPicture}>
@@ -105,8 +93,9 @@ const SectionJournalForm = ({
                                     pdfMaterials.map((file, idx) =>
                                         <span
                                             className={stls.nameFile}
-                                            key={`${file.name}_${idx}`}
-                                        >{file.name}</span>
+                                            key={`${file.name}_${idx}`}>
+                                            {file.name}
+                                        </span>
                                     )
                                 }
                             </div>
@@ -116,11 +105,10 @@ const SectionJournalForm = ({
                                 programTitle={null}
                                 setOpenLoader={setOpenLoader}
                                 setOpen={setOpen}
-                                setIsSuccess={setIsSuccess}
+                                setOpenSuccess={setOpenSuccess}
                                 classNames={[stls.submitButton]}
                                 formName={formName}
-                                pdfMaterials={pdfMaterials}
-                                >
+                                pdfMaterials={pdfMaterials}>
                                 <span className={stls.submitText}>{'скачать'}</span>
                                 <div className={stls.pdfIcon}>
                                     <Image src={pdfIcon} />
@@ -133,20 +121,22 @@ const SectionJournalForm = ({
                             ? <div className={stls.formComplited}>
                                 <p className={stls.formComplitedTitle}>
                                     {
-                                        isSuccess
+                                        openSuccess
                                             ? 'Спасибо! Файл отправлен Вам на почту.'
                                             : 'Что-то пошло не так. Повторите, пожалуйста, попытку.'
                                     }
                                 </p>
                                 <button
                                     className={stls.formComplitedClosed}
-                                    onClick={() => setOpen(open => !open)}>Вернуться назад</button>
+                                    onClick={() => setOpen(open => !open)}>{'Вернуться назад'}</button>
                             </div>
                             : ''
                     }
                     {
                         (!open && openLoader)
-                            ? <div className={stls.formLoading}><IconLoader /></div>
+                            ? <div className={stls.formLoading}>
+                                <IconLoader />
+                            </div>
                             : ''
                     }
                 </div>

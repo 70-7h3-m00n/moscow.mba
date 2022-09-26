@@ -25,9 +25,7 @@ const SectionJournalQuote = ({
 
   return (
     <div
-      className={
-        cn(stls.container, getClassNames({ classNames })) || undefined
-      }>
+      className={cn(stls.container, getClassNames({ classNames })) || undefined}>
       <ContentJournalArticle classNames={[stls.content]}>
         <IconQuote classNames={[stls.icon]} />
         <blockquote className={stls.blockquote}>{quote.body}</blockquote>

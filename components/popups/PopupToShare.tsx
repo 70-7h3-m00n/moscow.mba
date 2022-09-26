@@ -1,20 +1,21 @@
-import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import cn from 'classnames'
 
 import {
     TelegramShareButton,
     WhatsappShareButton,
     VKShareButton,
-} from 'react-share';
+} from 'react-share'
 
 import {
     TypeLibJournalArticle,
     TypeClassNames
 } from '@/types/index'
 
-import { routesExternal, routesFront } from '@/config/index'
+import { routesFront } from '@/config/index'
+
+import { getClassNames } from '@/helpers/index'
 
 import vkIcon from '@/public/assets/images/journal/toShare/vk.svg'
 import telegramIcon from '@/public/assets/images/journal/toShare/telegram.svg'
@@ -23,7 +24,6 @@ import shareIcon from '@/public/assets/images/journal/toShare/share.svg'
 import arrowIcon from '@/public/assets/images/journal/toShare/arrow.svg'
 
 import stls from '@/styles/components/popups/PopupToShare.module.sass'
-import { getClassNames } from '@/helpers/index';
 
 type TypePopupToShareProps = {
     journalArticle: TypeLibJournalArticle
@@ -39,13 +39,15 @@ const PopupToShare = ({
     journalArticle,
     classNames
 }: TypePopupToShareProps) => {
+    if(!journalArticle?.slug) return null
+
     const [isList, setIsList] = useState(false)
-    const urlPage = `${routesFront.root}${routesFront.journal}/${journalArticle.slug}`
+    const urlPage = `${routesFront.root}${routesFront.journal}/${journalArticle?.slug}`
 
-    const handleShowList = () => (
+    const handleShowList = () => {
         setIsList(isList => !isList)
-    )
-
+    }
+    // TODO Нужно что-нибудь другое или оставить alert?
     const handleClipboardLink = () => {
         navigator.clipboard.writeText(urlPage)
             .then(

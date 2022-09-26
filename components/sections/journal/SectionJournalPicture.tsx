@@ -6,7 +6,10 @@ import {
   TypeLibJournalArticleTitle
 } from '@/types/index'
 
-import { getClassNames, getImageHeight } from '@/helpers/index'
+import {
+  getClassNames,
+  getImageHeight
+} from '@/helpers/index'
 
 import { ContentJournalArticle } from '@/components/layout'
 import { ImgTemplate } from '@/components/images'
@@ -16,22 +19,17 @@ import stls from '@/styles/components/sections/journal/SectionJournalPicture.mod
 type TypeSectionJournalPictureProps = TypeClassNames & {
   picture: TypeLibJournalArticlePicture | null
   title: TypeLibJournalArticleTitle | null
-  idx: number
 }
 
 const SectionJournalPicture = ({
   classNames,
   picture,
-  title,
-  idx
+  title
 }: TypeSectionJournalPictureProps) => {
   if (!picture) return null
-  
+
   return (
-    <div
-      className={
-        cn(stls.container, getClassNames({ classNames })) || undefined
-      }>
+    <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
       <ContentJournalArticle>
         <figure>
           <ImgTemplate

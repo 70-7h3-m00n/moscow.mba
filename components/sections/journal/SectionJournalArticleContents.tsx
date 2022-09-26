@@ -31,7 +31,7 @@ const SectionJournalArticleContents = ({
     }
 
     const textLinkTitle = journalArticle?.articleBody
-        ?.filter(title => (title.__typename === 'ComponentJournalTitle'))
+        ?.filter(title => title.__typename === 'ComponentJournalTitle')
         .map(item =>
             item.titleBodyParts
                 .map(content => content.text)

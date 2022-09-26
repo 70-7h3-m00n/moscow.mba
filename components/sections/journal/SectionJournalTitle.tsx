@@ -2,7 +2,10 @@ import truncate from 'truncate'
 import slugify from 'slugify'
 import cn from 'classnames'
 
-import { TypeClassNames, TypeLibJournalArticleTitleBody } from '@/types/index'
+import {
+  TypeClassNames,
+  TypeLibJournalArticleTitleBody
+} from '@/types/index'
 
 import { getClassNames } from '@/helpers/index'
 

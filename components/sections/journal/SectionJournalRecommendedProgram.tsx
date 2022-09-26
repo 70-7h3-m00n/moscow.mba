@@ -6,22 +6,18 @@ import {
   TypeLibJournalArticleRecommendedProgram
 } from '@/types/index'
 
-import {
-  getClassNames,
-} from '@/helpers/index'
+import { getClassNames } from '@/helpers/index'
 
 import { ContentJournalArticle } from '@/components/layout'
-import {
-  ImgJournalArticleRecommended
-} from '@/components/images'
+import { ImgJournalArticleRecommended } from '@/components/images'
 
 import routesFront from '@/config/routesFront'
 
 import stls from '@/styles/components/sections/journal/SectionJournalRecommendedProgram.module.sass'
 
-type TypeSectionJournalRecommendedProgramProps = TypeClassNames & {
+type TypeSectionJournalRecommendedProgramProps = {
   recommendedProgram: TypeLibJournalArticleRecommendedProgram | null
-}
+} & TypeClassNames
 
 const SectionJournalRecommendedProgram = ({
   classNames,
@@ -30,14 +26,11 @@ const SectionJournalRecommendedProgram = ({
   if (!recommendedProgram) return null
 
   return (
-    <div
-      className={
-        cn(stls.container, getClassNames({ classNames })) || undefined
-      }>
+    <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
       <ContentJournalArticle classNames={[stls.SectionJournalRecommendedProgram]}>
         <div className={stls.columnImage}>
           <ImgJournalArticleRecommended
-            icon={recommendedProgram?.program.icon}
+            icon={recommendedProgram?.program?.icon}
             backgroundColor='dark'
             usage='program'
             widthIcon={50}

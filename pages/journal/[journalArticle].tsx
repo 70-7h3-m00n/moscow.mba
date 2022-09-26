@@ -11,11 +11,12 @@ import {
 import { createPortal } from "react-dom"
 import cn from 'classnames'
 
-import { useScroll, useWindowWidth } from '@/hooks/index'
-
 import {
-    routesFront
-} from '@/config/index'
+    useScroll,
+    useWindowWidth
+} from '@/hooks/index'
+
+import { routesFront } from '@/config/index'
 
 import {
     handleGetStaticProps,
@@ -54,15 +55,12 @@ import {
 } from '@/components/popups'
 
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
-import classNames from 'classnames'
 
 type TypeJournalArticleProps = {
     journalArticle: TypeLibJournalArticle
 }
 
-const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
-    journalArticle,
-}) => {
+const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle }) => {
     // ScrollBar
     const [pageYOffset, setPageYOffset] = useState(0)
     const [scollHeight, setScrollHeight] = useState(0)
@@ -85,10 +83,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
         }
     }, [])
 
-    // Popup is show  (PopupCoursesOnTopicDesktop)
-    const scroll = useScroll()
-    const windowWidth = useWindowWidth()
-
+    // Is mounting the component on the client
     const [mounted, setMounted] = useState(false)
     useEffect(() => {
         setMounted(true)
@@ -96,6 +91,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
         return () => setMounted(false)
     }, [])
 
+    // Popup is show  (PopupCoursesOnTopicDesktop)
     const [isPopupCoursesOnTopicDesktop, setIsPopupCoursesOnTopicDesktop] = useState(true)
     const [isPopupCoursesOnTopicPhone, setIsPopupCoursesOnTopicPhone] = useState(false)
 
@@ -106,18 +102,25 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
     const handlePopupCoursesOnTopicPhone = () => {
         setIsPopupCoursesOnTopicPhone(isPopupCoursesOnTopicPhone => !isPopupCoursesOnTopicPhone)
     }
-
+    // Popup is show  (PopupGetMaterials, PopupDownloadMaterials)
     const [isPopupGetMaterials, setIsPopupGetMaterials] = useState(false)
+    const [isPopupDownloadMaterials, setIsPopupDownloadMaterials] = useState(true)
+    const [isPopupPreviewCoursesOnTopic, setIsPopupPreviewCoursesOnTopic] = useState(true)
 
     const handlePopupGetMaterials = () => {
         setIsPopupGetMaterials(isPopupGetMaterials => !isPopupGetMaterials)
     }
 
-    const [isPopupDownloadMaterials, setIsPopupDownloadMaterials] = useState(true)
-
     const handlePopupDownloadMaterials = () => {
         setIsPopupDownloadMaterials(isPopupDownloadMaterials => !isPopupDownloadMaterials)
     }
+
+    const handleShowPopupPreviewCoursesOnTopic = () => {
+        setIsPopupPreviewCoursesOnTopic(isPopupPreviewCoursesOnTopic => !isPopupPreviewCoursesOnTopic)
+    }
+
+    const scrollLocation = useScroll()
+    const windowWidth = useWindowWidth()
 
     return (
         <>
@@ -128,16 +131,15 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
                 <div
                     className={stls.scrollProgressBar}
                     style={{
-                        transform: `translateX(-${100 - pageYOffset / ((scollHeight - clientHeight) / 100)
-                            }%)`
+                        transform: `translateX(-${100 - pageYOffset / ((scollHeight - clientHeight) / 100)}%)`
                     }}></div>
             </div>
             <Wrapper classNames={[stls.wrapper]}>
                 <article className={cn(stls.article,
-                (!isPopupCoursesOnTopicDesktop && !isPopupDownloadMaterials)
-                    ? stls.isPopup
-                    : '')
-                }>
+                    (!isPopupCoursesOnTopicDesktop && !isPopupDownloadMaterials)
+                        ? stls.notPopup
+                        : ''
+                )}>
                     <header>
                         <SectionJournalArticleHeader
                             journalArticle={journalArticle}
@@ -153,7 +155,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
                         <SectionJournalTitlePicture journalArticle={journalArticle} />
                         {
                             journalArticle?.articleBody?.map((component, idx) => (
-                                <Fragment key={`${component.__typename} ${idx}`}>
+                                <Fragment key={`${component.__typename}_${idx}`}>
                                     {component.__typename === 'ComponentJournalParagraph' && (
                                         <SectionJournalParagraph body={component.paragraphBodyParts} idx={idx} />
                                     )}
@@ -166,16 +168,13 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
                                         <SectionJournalPicture
                                             picture={component.picture}
                                             title={component.title}
-                                            idx={idx}
                                         />
                                     )}
                                     {component.__typename === 'ComponentJournalEmphasis' && (
                                         <SectionJournalEmphasis body={component.emphasisBody} />
                                     )}
                                     {component.__typename === 'ComponentJournalQuote' && (
-                                        <SectionJournalQuote
-                                            quote={component.quote}
-                                        />
+                                        <SectionJournalQuote quote={component.quote} />
                                     )}
                                     {component.__typename === 'ComponentJournalList' && (
                                         <SectionJournalList listItem={component.list} />
@@ -193,11 +192,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
                                         <SectionJournalRecommendedPrograms recommendedProgramsSection={component.recommendedProgramsSection} />
                                     )}
                                     {component.__typename === 'ComponentJournalJournalTable' && (
-                                        <SectionJournalTable
-                                            htmlTableBody={component.htmlTableBody}
-                                            isPopupCoursesOnTopicDesktop={isPopupCoursesOnTopicDesktop}
-                                            isPopupDownloadMaterials={isPopupDownloadMaterials}
-                                        />
+                                        <SectionJournalTable htmlTableBody={component.htmlTableBody} />
                                     )}
                                     {component.__typename === 'ComponentJournalFormPdfMaterials' && (
                                         <SectionJournalForm
@@ -211,50 +206,54 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
                         }
                         <SectionJournalToShare journalArticle={journalArticle} />
                     </section>
-
                 </article>
                 <aside className={stls.aside}>
                     {
                         (mounted && windowWidth <= 1020 && isPopupCoursesOnTopicPhone)
                             ? createPortal(
                                 <PopupCoursesOnTopic
+                                    classNames={[stls.popupCoursesOnTopic]}
+                                    handlePopupCoursesOnTopic={handlePopupCoursesOnTopicPhone}
                                     recommendedProgramsSection={
                                         journalArticle?.articleBody
                                             ?.find(item =>
                                                 item.__typename === "ComponentJournalJournalArticleRecommendedProgramsSection")
                                             ?.recommendedProgramsSection
-                                    }
-                                    classNames={[stls.popupCoursesOnTopic]}
-                                    handlePopupCoursesOnTopic={handlePopupCoursesOnTopicPhone} />
+                                    } />
                                 , document.querySelector('#__next'))
                             : (mounted && windowWidth > 1020 && isPopupCoursesOnTopicDesktop)
                                 ? <PopupCoursesOnTopic
+                                    classNames={[stls.popupCoursesOnTopic]}
+                                    handlePopupCoursesOnTopic={handlePopupCoursesOnTopicDesktop}
                                     recommendedProgramsSection={
                                         journalArticle?.articleBody
                                             ?.find(item =>
                                                 item.__typename === "ComponentJournalJournalArticleRecommendedProgramsSection")
                                             ?.recommendedProgramsSection
-                                    }
-                                    classNames={[stls.popupCoursesOnTopic]}
-                                    handlePopupCoursesOnTopic={handlePopupCoursesOnTopicDesktop} />
+                                    } />
                                 : ''
                     }
                     {
-                        mounted
-                            ? <PopupPreviewCoursesOnTopic
-                                handlePopupCoursesOnTopic={handlePopupCoursesOnTopicPhone}
-                                classNames={[scroll.height > 200 ? stls.showPopup : stls.noShowPopup]} />
+                        (mounted && windowWidth <= 1020 && isPopupPreviewCoursesOnTopic)
+                            ? createPortal(
+                                <PopupPreviewCoursesOnTopic
+                                    handlePopupCoursesOnTopic={handlePopupCoursesOnTopicPhone}
+                                    handleShowPopupPreviewCoursesOnTopic={handleShowPopupPreviewCoursesOnTopic}
+                                    classNames={[
+                                        scrollLocation.height > 200
+                                            ? stls.showPopup
+                                            : stls.noShowPopup]} />
+                                , document.querySelector('#__next'))
                             : ''
                     }
-
                     {
                         (mounted && windowWidth <= 1020 && isPopupDownloadMaterials)
                             ? createPortal(
                                 <PopupDownloadMaterials
                                     classNames={[stls.popupDownloadMaterials]}
                                     handlePopupGetMaterials={handlePopupGetMaterials}
-                                    handlePopupDownloadMaterials={handlePopupDownloadMaterials}
-                                />, document.querySelector('#__next'))
+                                    handlePopupDownloadMaterials={handlePopupDownloadMaterials} />
+                                , document.querySelector('#__next'))
                             : (mounted && windowWidth > 1020 && isPopupDownloadMaterials)
                                 ? <PopupDownloadMaterials
                                     classNames={[stls.popupDownloadMaterials]}
@@ -268,8 +267,9 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
                                 <PopupGetMaterials
                                     classNames={[stls.popupGetMaterials]}
                                     pdfMaterials={journalArticle.pdfMaterials}
-                                    handlePopupGetMaterials={handlePopupGetMaterials} />, document.querySelector('#__next'))
-                            : ""
+                                    handlePopupGetMaterials={handlePopupGetMaterials} />
+                                , document.querySelector('#__next'))
+                            : ''
                     }
                 </aside>
             </Wrapper>
