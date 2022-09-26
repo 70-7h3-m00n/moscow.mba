@@ -1,7 +1,4 @@
-import {
-    getClassNames,
-    getImageHeight,
-} from '@/helpers/index'
+import { TypeLibJournalArticleRecommendedImg } from '@/types/index'
 
 import paperPlane from '@/public/assets/images/journal/recomended/paperPlane.png'
 import book from '@/public/assets/images/journal/recomended/book.png'
@@ -17,13 +14,7 @@ import stls from '@/styles/components/images/journal/ImgJournalArticleRecommende
 
 import { ImgTemplate } from '@/components/images'
 
-type TypeImgJournalArticleRecommendedProps = {
-    icon: string | null
-    backgroundColor?: 'dark' | 'light' | 'medium' | null
-    widthIcon: number
-    heightIcon: number
-    usage: 'popup' | 'program'
-}
+type TypeImgJournalArticleRecommendedProps = TypeLibJournalArticleRecommendedImg
 
 const ImgJournalArticleRecommended = ({
     icon,

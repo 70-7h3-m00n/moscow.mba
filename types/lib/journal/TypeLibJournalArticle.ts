@@ -18,7 +18,7 @@ import {
   TypeLibJournalAuthors,
   TypeLibJournalArticleFormPdfMaterials,
   TypeLibJournalPdfMaterials,
-  TypeLibJournalArticleHtmlTableBody
+  TypeLibJournalArticleHtmlTableBody,
 } from '@/types/index'
 
 type TypeLibJournalArticle = {

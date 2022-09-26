@@ -1,3 +1,5 @@
+import { TypeLibJournalArticleRecommendedImg } from '@/types/index'
+
 type TypeLibJournalArticleRecommendedProgram = {
     title: string | null
     btnValue: string | null
@@ -6,7 +8,7 @@ type TypeLibJournalArticleRecommendedProgram = {
         slug: string | null
         categorySlug: string | null
         studyFormatSlug: string | null
-        icon: string | null
+        icon: TypeLibJournalArticleRecommendedImg
     }
 }
 export default TypeLibJournalArticleRecommendedProgram

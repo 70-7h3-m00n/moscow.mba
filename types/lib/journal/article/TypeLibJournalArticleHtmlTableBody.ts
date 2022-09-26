@@ -1,5 +1,5 @@
 type TypeLibJournalArticleHtmlTableBody = {
-    table: string
+    table: string | null
 }
 
 export default TypeLibJournalArticleHtmlTableBody

@@ -10,12 +10,12 @@ type TypeLibProgram = {
     type: string | null
     slug: string | null
   } | null
-  study_field: {
-    id: string | null
+  study_field?: {
     name: string | null
     slug: string | null
     description: string | null
   } | null
+  // TODO Этих типов нет в новых типах (в телеге)
   price?: string | number | null
   discount?: string | number | null
   duration?: {
@@ -71,6 +71,7 @@ type TypeLibProgram = {
       }[]
     | null
   teachers?: TypeLibTeachers | null
+  // TODO 
 }
 
 export default TypeLibProgram

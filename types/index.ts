@@ -49,6 +49,7 @@ export type { default as TypeLibJournalArticleEmphasisBody } from '@/types/lib/j
 export type { default as TypeLibJournalArticleListItem } from '@/types/lib/journal/article/TypeLibJournalArticleListItem'
 export type { default as TypeLibJournalArticleRecommendedProgram } from '@/types/lib/journal/article/TypeLibJournalArticleRecommendedProgram'
 export type { default as TypeLibJournalArticleRecommendedArticles } from '@/types/lib/journal/article/TypeLibJournalArticleRecommendedArticles'
+export type { default as TypeLibJournalArticleRecommendedImg } from '@/types/lib/journal/article/TypeLibJournalArticleRecommendedImg'
 export type { default as TypeLibJournalArticleRecommendedProgramsSection } from '@/types/lib/journal/article/TypeLibJournalArticleRecommendedProgramsSection'
 export type { default as TypeLibJournalArticleCardAuthor } from '@/types/lib/journal/article/TypeLibJournalArticleCardAuthor'
 export type { default as TypeLibJournalArticleLabel } from '@/types/lib/journal/article/TypeLibJournalArticleLabel'
