@@ -32,7 +32,7 @@ const SectionJournalCategories = ({
     }
 
     if (!filterCategoriesButtons) return null
-    
+
     return (
         <section className={
             cn(stls.container, getClassNames({ classNames })) || undefined
@@ -48,17 +48,18 @@ const SectionJournalCategories = ({
                         }>{buttonAllArticles.title}</button>
                     </li>
                     {
-                        filterCategoriesButtons?.map(category => (
-                            <li
-                                key={category.slug}
-                                onClick={() => handleFilterButtons(category)}>
-                                <button className={
-                                    category.state && !filterAllCategoriesButtons
-                                        ? stls.categoryItemIsActive
-                                        : stls.categoryItem
-                                }>{category.title}</button>
-                            </li>
-                        ))
+                        filterCategoriesButtons
+                            ?.map(category => (
+                                <li
+                                    key={category.slug}
+                                    onClick={() => handleFilterButtons(category)}>
+                                    <button className={
+                                        category.state && !filterAllCategoriesButtons
+                                            ? stls.categoryItemIsActive
+                                            : stls.categoryItem
+                                    }>{category.title}</button>
+                                </li>
+                            ))
                     }
                 </ul>
             </Wrapper>

@@ -16,20 +16,31 @@ const defaultSizeArticlesShowSectionArticles = 2
 
 const PageJournalArticles = () => {
   const { categories, articles } = useContext(ContextStaticPropsJournal)
+  
+  if (!categories || !articles) return null
 
   // Saving those categories that have articles.
   // Сохранение тех категорий, которые имеют статьи.
   const existenceCategory = categories
-    .filter(category => articles
-      .some(article => article.journalCategory.title === category.title))
+    .filter(category => articles.some(
+      article => article.journalCategory.title === category.title)
+    )
 
   const [filterAllCategoriesButtons, setfilterAllCategoriesButtons] = useState(true)
-  const [filterCategoriesButtons, setfilterCategoriesButtons] = useState(existenceCategory.map(item => ({ ...item, state: true })))
+  const [filterCategoriesButtons, setfilterCategoriesButtons] = useState(
+    existenceCategory
+      .map(item => ({ ...item, state: true }))
+  )
 
   // Output of articles by filtered categories
   // Вывод статей по фильтрованным категориям
-  const appliedCategories = filterCategoriesButtons.filter(category => category.state === true)
-  const filteredArticles = articles.filter(article => appliedCategories.some(appliedCategory => appliedCategory.title === article.journalCategory.title))
+  const appliedCategories = filterCategoriesButtons
+    .filter(category => category.state === true)
+
+  const filteredArticles = articles
+    .filter(article => appliedCategories.some(
+      appliedCategory => appliedCategory.title === article.journalCategory.title)
+    )
   const sizeArticles = filteredArticles.length
 
   // Output of all existing articles by clicking on the "all articles" button
@@ -72,21 +83,22 @@ const PageJournalArticles = () => {
   // Вывод тех статей, которые соотстветствуют выбранной (нажатой) категогии в компоненте "Статья"
   const handleFilterActiclesButtons = ({ title }) => {
     setfilterCategoriesButtons(filterCategoriesButtons =>
-      filterCategoriesButtons.map(
-        item =>
+      filterCategoriesButtons
+        .map(item =>
           (item.title === title)
             ? { ...item, state: true }
             : (item.title !== title)
               ? { ...item, state: false }
               : { ...item }
-      ))
+        ))
     setfilterAllCategoriesButtons(false)
   }
 
   // Output of all articles if no category is selected (the "All articles" button is pressed)
   // Вывод всех статей, если не выбрана ни одна категория (нажата кнопка "Все статьи")
   useEffect(() => {
-    if (filterCategoriesButtons.every(category => category.state === false)) {
+    if (filterCategoriesButtons
+      .every(category => category.state === false)) {
       handlefilterAllCategoriesButtons()
     }
   }, [filterCategoriesButtons])

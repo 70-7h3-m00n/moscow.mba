@@ -21,9 +21,9 @@ import stls from '@/styles/components/sections/journal/SectionJournalAllArticles
 
 type TypeSectionJournalAllArticlesProps = {
     filteredArticles: TypeContextJournalArticles
-    sizeArticles: number
-    handleFilterActiclesButtons: (category: TypeContextJournalCategory) => void
     filterCategoriesButtons: TypeContextJournalFilterButtons
+    handleFilterActiclesButtons: (category: TypeContextJournalCategory) => void
+    sizeArticles: number
 } & TypeClassNames
 
 const defaultSizeShowArticles = 2
@@ -36,19 +36,17 @@ const SectionJournalAllArticles = ({
     handleFilterActiclesButtons,
     filterCategoriesButtons
 }: TypeSectionJournalAllArticlesProps) => {
+    if (!filteredArticles) return null
+
     const [sizeShowArticles, setSizeShowArticles] = useState(defaultSizeShowArticles)
 
     const changeShowMore = () => {
         setSizeShowArticles(sizeShowArticles => sizeShowArticles + defaultSizeShowMore)
     }
 
-    if (!filteredArticles) return null
-    
     return (
         <section
-            className={
-                cn(stls.container, getClassNames({ classNames })) || undefined
-            }>
+            className={cn(stls.container, getClassNames({ classNames })) || undefined}>
             <Wrapper column>
                 <GeneralJournalSectionTitle>Все статьи</GeneralJournalSectionTitle>
                 <ul className={stls.articles}>

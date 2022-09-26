@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import cn from 'classnames'
 
-import stls from '@/styles/components/cards/CardJournalArticle.module.sass'
-
 import {
   TypeClassNames,
   TypeLibJournalArticle,
@@ -27,12 +25,14 @@ import {
 import { GeneralJournalArticleCreatedAt } from '@/components/general'
 import { ImgJournalArticle } from '@/components/images'
 
-type TypeCardJournalArticleProps = TypeClassNames & {
+import stls from '@/styles/components/cards/CardJournalArticle.module.sass'
+
+type TypeCardJournalArticleProps = {
   article: TypeLibJournalArticle | null
   tag?: boolean
   filterCategoriesButtons: TypeContextJournalFilterButtons
   handleFilterActiclesButtons: (category: TypeContextJournalCategory) => void
-}
+} & TypeClassNames
 
 const lessThan: TypeLessThan = [
   {
@@ -91,13 +91,6 @@ const CardJournalArticle = ({
   handleFilterActiclesButtons
 }: TypeCardJournalArticleProps) => {
 
-  const getTime = () => (
-    article
-      ? getRenderTime({ timestamp: article?.createdAt, options: cardOptions })
-      : null
-  )
-
-  const time = getTime()
   const { slug, picture, title, journalCategory, createdAt } = article
 
   if (
@@ -109,8 +102,16 @@ const CardJournalArticle = ({
     && !createdAt
   ) return null
 
+  const getTime = () => (
+    article
+      ? getRenderTime({ timestamp: article?.createdAt, options: cardOptions })
+      : null
+  )
+
+  const time = getTime()
+
   return (
-    <article className={stls.article}>
+    <div className={stls.article}>
       <div className={stls.top}>
         <ImgJournalArticle
           src={picture.url || undefined}
@@ -129,11 +130,14 @@ const CardJournalArticle = ({
         {
           filterCategoriesButtons
             .filter(category => category.title === journalCategory.title)
-            .map(category =>
+            .map((category, idx) =>
               <button
                 className={stls.category}
                 onClick={() => handleFilterActiclesButtons(category)}
-              >{category.title}</button>)
+                key={`${category.title}_${idx}`}>
+                {category.title}
+              </button>
+            )
         }
         <Link href={`${routesFront.journal}/${slug}`}>
           <a className={cn(stls.container, getClassNames({ classNames })) || undefined}>
@@ -142,7 +146,7 @@ const CardJournalArticle = ({
         </Link>
         <GeneralJournalArticleCreatedAt time={time} />
       </div>
-    </article>
+    </div>
   )
 }
 

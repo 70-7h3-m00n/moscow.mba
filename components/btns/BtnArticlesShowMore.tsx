@@ -1,15 +1,17 @@
-import stls from '@/styles/components/btns/BtnArticlesShowMore.module.sass'
-
 import { ImgTemplate } from '@/components/images'
 
 import circleShowMore from '@/data/svgLoaders/circleShowMore.svg'
+
+import stls from '@/styles/components/btns/BtnArticlesShowMore.module.sass'
 
 type TProps = {
     onClick: () => void
 }
 
-const BtnArticlesShowMore: React.FC<TProps> = ({ onClick }) => (
-    <button className={stls.button} onClick={onClick}>
+const BtnArticlesShowMore = ({ onClick }: TProps) => (
+    <button
+        className={stls.button}
+        onClick={onClick}>
         <ImgTemplate
             src={circleShowMore}
             width={20}

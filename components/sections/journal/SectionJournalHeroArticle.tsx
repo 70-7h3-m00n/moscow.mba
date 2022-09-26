@@ -28,8 +28,8 @@ import stls from '@/styles/components/sections/journal/SectionJournalHeroArticle
 
 type TypeSectionJournalArticleProps = {
     filteredArticles: TypeContextJournalArticles
-    handleFilterActiclesButtons: (category: TypeContextJournalCategory) => void
     filterCategoriesButtons: TypeContextJournalFilterButtons
+    handleFilterActiclesButtons: (category: TypeContextJournalCategory) => void
 } & TypeClassNames
 
 const lessThan: TypeLessThan = [
@@ -107,7 +107,7 @@ const SectionJournalHeroArticle = ({
     )
 
     const time = getTime()
-    
+
     return (
         <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
             <Wrapper classNames={[stls.wrapper]}>
@@ -140,8 +140,10 @@ const SectionJournalHeroArticle = ({
                                     <button
                                         key={category.slug}
                                         className={stls.category}
-                                        onClick={() => handleFilterActiclesButtons(category)}
-                                    >{category.title}</button>)
+                                        onClick={() => handleFilterActiclesButtons(category)}>
+                                        {category.title}
+                                    </button>
+                                )
                         }
                         <GeneralJournalArticleCreatedAt time={time} />
                     </div>

@@ -28,11 +28,11 @@ type TypeLibJournalArticle = {
     title: string | null
     slug: string | null
   }
-  journalAuthors: TypeLibJournalAuthors | null
-  pdfMaterials: TypeLibJournalPdfMaterials | null
+  journalAuthors?: TypeLibJournalAuthors | null
+  pdfMaterials?: TypeLibJournalPdfMaterials | null
   picture: TypeLibPicture | null
-  shortDescription?: string | null
-  createdAt?: string | null
+  shortDescription: string | null
+  createdAt: string | null
   articleBody?:
   | {
     __typename: TypeLibTypename
