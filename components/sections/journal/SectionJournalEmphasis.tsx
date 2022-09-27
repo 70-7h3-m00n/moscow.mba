@@ -7,8 +7,6 @@ import {
 
 import { getClassNames } from '@/helpers/index'
 
-import { ContentJournalArticle } from '@/components/layout'
-
 import stls from '@/styles/components/sections/journal/SectionJournalEmphasis.module.sass'
 
 type TypeSectionJournalEmphasisProps = {
@@ -23,9 +21,7 @@ const SectionJournalEmphasis = ({
 
   return (
     <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-      <ContentJournalArticle>
-        <p className={stls.p}>{body}</p>
-      </ContentJournalArticle>
+      <p className={stls.p}>{body}</p>
     </div>
   )
 }

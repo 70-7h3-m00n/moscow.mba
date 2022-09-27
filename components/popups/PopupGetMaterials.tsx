@@ -20,8 +20,7 @@ import stls from '@/styles/components/popups/PopupGetMaterials.module.sass'
 type TypeSectionPopupCoursesOnTopicProps = {
     handlePopupGetMaterials: () => void
     pdfMaterials: TypeLibJournalPdfMaterials
-}
-    & TypeClassNames
+} & TypeClassNames
 
 const PopupGetMaterials = ({
     classNames,
@@ -31,24 +30,22 @@ const PopupGetMaterials = ({
     if (!pdfMaterials) return null
 
     const [open, setOpen] = useState(false)
-    const [isSuccess, setIsSuccess] = useState(true)
     const [openLoader, setOpenLoader] = useState(false)
+    const [isSuccess, setIsSuccess] = useState(true)
 
     return (
         <>
             <div
                 className={stls.wrapper}
-                onClick={handlePopupGetMaterials}
-            ></div>
+                onClick={handlePopupGetMaterials}></div>
             <div className={cn([stls.container], getClassNames({ classNames })) || undefined}>
                 {
-                    (!openLoader)
+                    !openLoader
                         ? <div className={stls.pdfPopupGetMaterials}>
                             <Image
                                 src={pdfPopupGetMaterials}
                                 width={190}
-                                height={230}
-                            />
+                                height={230} />
                         </div>
                         : ''
                 }
@@ -56,15 +53,13 @@ const PopupGetMaterials = ({
                     <Image
                         src={linePopupGetMaterials}
                         width={246}
-                        height={246}
-                    />
+                        height={246} />
                 </div>
                 <div className={stls.bottomLinePopupGetMaterials}>
                     <Image
                         src={linePopupGetMaterials}
                         width={246}
-                        height={246}
-                    />
+                        height={246} />
                 </div>
                 <button
                     className={stls.closed}
@@ -80,14 +75,13 @@ const PopupGetMaterials = ({
                             setOpen={setOpen}
                             setIsSuccess={setIsSuccess}
                             classNames={[stls.submitButton]}
-                            pdfMaterials={pdfMaterials}
-                        >
+                            pdfMaterials={pdfMaterials}>
                             <span className={stls.submitText}>{'получить бесплатно'}</span>
                         </FormJournalArticle>
                     </div>
                 </div>
                 {
-                    (open && !openLoader)
+                    open && !openLoader
                         ? <div className={stls.formComplited}>
                             <p className={stls.formComplitedTitle}>
                                 {
@@ -98,14 +92,15 @@ const PopupGetMaterials = ({
                             </p>
                             <button
                                 className={stls.formComplitedClosed}
-                                onClick={() => setOpen(open => !open)}>Вернуться назад
-                            </button>
+                                onClick={() => setOpen(open => !open)}>{'Вернуться назад'}</button>
                         </div>
                         : ''
                 }
                 {
-                    (!open && openLoader)
-                        ? <div className={stls.formLoading}><IconLoader /></div>
+                    !open && openLoader
+                        ? <div className={stls.formLoading}>
+                            <IconLoader />
+                        </div>
                         : ''
                 }
             </div>

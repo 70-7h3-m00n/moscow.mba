@@ -10,8 +10,6 @@ import { getClassNames } from '@/helpers/index'
 
 import routesFront from '@/config/routesFront'
 
-import { ContentJournalArticle } from '@/components/layout'
-
 import stls from '@/styles/components/sections/journal/SectionJournalRecommendedArticles.module.sass'
 
 type TypeSectionJournalRecommendedArticlesProps = {
@@ -26,7 +24,7 @@ const SectionJournalRecommendedArticles = ({
 
     return (
         <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-            <ContentJournalArticle classNames={[stls.SectionJournalRecommendedArticles]}>
+            <div className={stls.SectionJournalRecommendedArticles}>
                 <div className={stls.rowTitle}>
                     <p className={stls.title}>{journalRecommendedArticles.title}</p>
                 </div>
@@ -44,7 +42,7 @@ const SectionJournalRecommendedArticles = ({
                         )
                     }
                 </div>
-            </ContentJournalArticle>
+            </div>
         </div>
     )
 }

@@ -8,7 +8,6 @@ import {
 
 import { getClassNames } from '@/helpers/index'
 
-import { ContentJournalArticle } from '@/components/layout'
 import { ImgJournalArticleRecommended } from '@/components/images'
 
 import routesFront from '@/config/routesFront'
@@ -27,7 +26,7 @@ const SectionJournalRecommendedProgram = ({
 
   return (
     <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-      <ContentJournalArticle classNames={[stls.SectionJournalRecommendedProgram]}>
+      <div className={stls.SectionJournalRecommendedProgram}>
         <div className={stls.columnImage}>
           <ImgJournalArticleRecommended
             icon={recommendedProgram?.program?.icon}
@@ -46,8 +45,9 @@ const SectionJournalRecommendedProgram = ({
         <div className={stls.columnLink}>
           <Link href={`${routesFront.root}${routesFront.programs}/${recommendedProgram?.program.categorySlug}/${recommendedProgram?.program.studyFormatSlug}/${recommendedProgram?.program.slug}`}>
             <a className={stls.link}>{recommendedProgram?.btnValue}</a>
-          </Link></div>
-      </ContentJournalArticle>
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }

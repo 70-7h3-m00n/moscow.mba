@@ -3,7 +3,6 @@ import { useState } from 'react'
 import cn from 'classnames'
 
 import { IconLoader } from '@/components/icons'
-import { ContentJournalArticle } from '@/components/layout'
 import { FormJournalArticle } from '@/components/forms'
 
 import { getClassNames } from '@/helpers/index'
@@ -48,99 +47,97 @@ const SectionJournalForm = ({
 
     return (
         <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-            <ContentJournalArticle>
-                <div className={stls.form}>
+            <div className={stls.form}>
+                <Image
+                    src={formJournalPicture}
+                    objectFit="cover"
+                    layout="fill"
+                    className={stls.backgroundImage} />
+                <div className={stls.mockupPicture}>
                     <Image
-                        src={formJournalPicture}
-                        objectFit="cover"
-                        layout="fill"
-                        className={stls.backgroundImage} />
-                    <div className={stls.mockupPicture}>
-                        <Image
-                            src={mockupPicture}
-                            width={207}
-                            height={238} />
-                    </div>
-                    {
-                        mounted
-                            ? (windowWidth > 768)
-                                ? <div className={stls.lineForm}>
-                                    <Image src={lineForm} />
-                                </div>
-                                : <div className={stls.lineFormPhone}>
-                                    <Image src={lineFormPhone} />
-                                </div>
-                            : <div className={stls.lineForm}>
+                        src={mockupPicture}
+                        width={207}
+                        height={238} />
+                </div>
+                {
+                    mounted
+                        ? (windowWidth > 768)
+                            ? <div className={stls.lineForm}>
                                 <Image src={lineForm} />
                             </div>
-                    }
-                    <div className={stls.folderForm}>
-                        <Image
-                            src={folderForm}
-                            className={stls.folderFormPicture} />
-                    </div>
-                    <div className={(openLoader || open) ? stls.formContent : ''}>
-                        <p className={stls.title}>{formPdfMaterials?.title}</p>
-                        <div className={stls.filePdf}>
-                            <div className={stls.pdfPicture}>
-                                <Image
-                                    src={pdfImages}
-                                    width={30}
-                                    height={38} />
+                            : <div className={stls.lineFormPhone}>
+                                <Image src={lineFormPhone} />
                             </div>
-                            <div className={stls.nameFiles}>
-                                {
-                                    pdfMaterials.map((file, idx) =>
-                                        <span
-                                            className={stls.nameFile}
-                                            key={`${file.name}_${idx}`}>
-                                            {file.name}
-                                        </span>
-                                    )
-                                }
-                            </div>
+                        : <div className={stls.lineForm}>
+                            <Image src={lineForm} />
                         </div>
-                        <div className={stls.inputs}>
-                            <FormJournalArticle
-                                programTitle={null}
-                                setOpenLoader={setOpenLoader}
-                                setOpen={setOpen}
-                                setIsSuccess={setIsSuccess}
-                                classNames={[stls.submitButton]}
-                                formName={formName}
-                                pdfMaterials={pdfMaterials}>
-                                <span className={stls.submitText}>{'скачать'}</span>
-                                <div className={stls.pdfIcon}>
-                                    <Image src={pdfIcon} />
-                                </div>
-                            </FormJournalArticle>
-                        </div>
-                    </div>
-                    {
-                        (open && !openLoader)
-                            ? <div className={stls.formComplited}>
-                                <p className={stls.formComplitedTitle}>
-                                    {
-                                        isSuccess
-                                            ? 'Спасибо! Файл отправлен Вам на почту.'
-                                            : 'Что-то пошло не так. Повторите, пожалуйста, попытку.'
-                                    }
-                                </p>
-                                <button
-                                    className={stls.formComplitedClosed}
-                                    onClick={() => setOpen(open => !open)}>{'Вернуться назад'}</button>
-                            </div>
-                            : ''
-                    }
-                    {
-                        (!open && openLoader)
-                            ? <div className={stls.formLoading}>
-                                <IconLoader />
-                            </div>
-                            : ''
-                    }
+                }
+                <div className={stls.folderForm}>
+                    <Image
+                        src={folderForm}
+                        className={stls.folderFormPicture} />
                 </div>
-            </ContentJournalArticle>
+                <div className={(openLoader || open) ? stls.formContent : ''}>
+                    <p className={stls.title}>{formPdfMaterials?.title}</p>
+                    <div className={stls.filePdf}>
+                        <div className={stls.pdfPicture}>
+                            <Image
+                                src={pdfImages}
+                                width={30}
+                                height={38} />
+                        </div>
+                        <div className={stls.nameFiles}>
+                            {
+                                pdfMaterials.map((file, idx) =>
+                                    <span
+                                        className={stls.nameFile}
+                                        key={`${file.name}_${idx}`}>
+                                        {file.name}
+                                    </span>
+                                )
+                            }
+                        </div>
+                    </div>
+                    <div className={stls.inputs}>
+                        <FormJournalArticle
+                            programTitle={null}
+                            setOpenLoader={setOpenLoader}
+                            setOpen={setOpen}
+                            setIsSuccess={setIsSuccess}
+                            classNames={[stls.submitButton]}
+                            formName={formName}
+                            pdfMaterials={pdfMaterials}>
+                            <span className={stls.submitText}>{'скачать'}</span>
+                            <div className={stls.pdfIcon}>
+                                <Image src={pdfIcon} />
+                            </div>
+                        </FormJournalArticle>
+                    </div>
+                </div>
+                {
+                    (open && !openLoader)
+                        ? <div className={stls.formComplited}>
+                            <p className={stls.formComplitedTitle}>
+                                {
+                                    isSuccess
+                                        ? 'Спасибо! Файл отправлен Вам на почту.'
+                                        : 'Что-то пошло не так. Повторите, пожалуйста, попытку.'
+                                }
+                            </p>
+                            <button
+                                className={stls.formComplitedClosed}
+                                onClick={() => setOpen(open => !open)}>{'Вернуться назад'}</button>
+                        </div>
+                        : ''
+                }
+                {
+                    (!open && openLoader)
+                        ? <div className={stls.formLoading}>
+                            <IconLoader />
+                        </div>
+                        : ''
+                }
+            </div>
         </div>
     )
 }

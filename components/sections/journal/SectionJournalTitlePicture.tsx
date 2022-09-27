@@ -10,7 +10,6 @@ import {
     getImageHeight
 } from '@/helpers/index'
 
-import { ContentJournalArticle } from '@/components/layout'
 import { ImgTemplate } from '@/components/images'
 
 import stls from '@/styles/components/sections/journal/SectionJournalTitlePicture.module.sass'
@@ -29,20 +28,18 @@ const SectionJournalTitlePicture = ({
 
     return (
         <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-            <ContentJournalArticle>
-                <ImgTemplate
-                    classNames={[stls.articlePicture]}
-                    src={journalArticle?.picture?.url || undefined}
-                    width={journalArticle?.picture?.width && widthArticlePicture}
-                    height={getImageHeight({
-                        width: widthArticlePicture,
-                        widthInitial: journalArticle?.picture?.width,
-                        heightInitial: journalArticle?.picture?.height
-                    })}
-                    alt={journalArticle?.picture?.alt || 'Изображение'}
-                    title={journalArticle?.picture?.alt || 'Изображение'}
-                />
-            </ContentJournalArticle>
+            <ImgTemplate
+                classNames={[stls.articlePicture]}
+                src={journalArticle?.picture?.url || undefined}
+                width={journalArticle?.picture?.width && widthArticlePicture}
+                height={getImageHeight({
+                    width: widthArticlePicture,
+                    widthInitial: journalArticle?.picture?.width,
+                    heightInitial: journalArticle?.picture?.height
+                })}
+                alt={journalArticle?.picture?.alt || 'Изображение'}
+                title={journalArticle?.picture?.alt || 'Изображение'}
+            />
         </div>
     )
 }

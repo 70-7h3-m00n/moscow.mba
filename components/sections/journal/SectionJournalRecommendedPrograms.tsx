@@ -10,7 +10,6 @@ import { getClassNames } from '@/helpers/index'
 
 import routesFront from '@/config/routesFront'
 
-import { ContentJournalArticle } from '@/components/layout'
 import { ImgJournalArticleRecommended } from '@/components/images'
 
 import stls from '@/styles/components/sections/journal/SectionJournalRecommendedPrograms.module.sass'
@@ -27,7 +26,7 @@ const SectionJournalRecommendedPrograms = ({
 
     return (
         <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-            <ContentJournalArticle classNames={[stls.SectionJournalRecommendedPrograms]}>
+            <div className={stls.SectionJournalRecommendedPrograms}>
                 <div className={stls.title}>
                     {
                         recommendedProgramsSection?.title.map((title, idx) =>
@@ -85,7 +84,7 @@ const SectionJournalRecommendedPrograms = ({
                         )
                     }
                 </div>
-            </ContentJournalArticle>
+            </div>
         </div>
     )
 }

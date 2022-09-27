@@ -7,7 +7,6 @@ import {
 
 import { getClassNames } from '@/helpers/index'
 
-import { ContentJournalArticle } from '@/components/layout'
 import { IconQuote } from '@/components/icons'
 import { CardAuthor } from '@/components/cards'
 
@@ -24,15 +23,14 @@ const SectionJournalQuote = ({
   if (!quote) return null
 
   return (
-    <div
-      className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-      <ContentJournalArticle classNames={[stls.content]}>
+    <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+      <div className={stls.content}>
         <IconQuote classNames={[stls.icon]} />
         <blockquote className={stls.blockquote}>{quote.body}</blockquote>
         <div className={stls.credit}>
           <CardAuthor textAlign={'end'} fontWeightAuthorName={700} quote={quote} />
         </div>
-      </ContentJournalArticle>
+      </div>
     </div>
   )
 }

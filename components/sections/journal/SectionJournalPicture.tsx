@@ -11,7 +11,6 @@ import {
   getImageHeight
 } from '@/helpers/index'
 
-import { ContentJournalArticle } from '@/components/layout'
 import { ImgTemplate } from '@/components/images'
 
 import stls from '@/styles/components/sections/journal/SectionJournalPicture.module.sass'
@@ -30,22 +29,20 @@ const SectionJournalPicture = ({
 
   return (
     <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-      <ContentJournalArticle>
-        <figure>
-          <ImgTemplate
-            src={picture.url}
-            width={850}
-            height={getImageHeight({
-              width: 850,
-              widthInitial: picture.width,
-              heightInitial: picture.height
-            })}
-            alt={title}
-            title={title}
-          />
-          <figcaption className={stls.figcaption}>{title}</figcaption>
-        </figure>
-      </ContentJournalArticle>
+      <figure>
+        <ImgTemplate
+          src={picture.url}
+          width={850}
+          height={getImageHeight({
+            width: 850,
+            widthInitial: picture.width,
+            heightInitial: picture.height
+          })}
+          alt={title}
+          title={title}
+        />
+        <figcaption className={stls.figcaption}>{title}</figcaption>
+      </figure>
     </div>
   )
 }

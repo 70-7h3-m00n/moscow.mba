@@ -8,7 +8,6 @@ import {
 import { getClassNames } from '@/helpers/index'
 
 import { PopupToShare } from '@/components/popups'
-import { ContentJournalArticle } from '@/components/layout'
 
 import stls from '@/styles/components/sections/journal/SectionJournalToShare.module.sass'
 
@@ -24,11 +23,9 @@ const SectionJournalToShare = ({
 
     return (
         <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-            <ContentJournalArticle>
-                <PopupToShare
-                    journalArticle={journalArticle}
-                    classNames={[stls.popupJournalToShare]} />
-            </ContentJournalArticle>
+            <PopupToShare
+                journalArticle={journalArticle}
+                classNames={[stls.popupJournalToShare]} />
         </div>
     )
 }
