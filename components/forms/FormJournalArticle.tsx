@@ -28,7 +28,7 @@ const FormJournalArticle = ({
     pdfMaterials,
     setOpen,
     setOpenLoader,
-    setOpenSuccess,
+    setIsSuccess,
     width = '33',
     formName = null,
     children,
@@ -58,7 +58,7 @@ const FormJournalArticle = ({
                     reset,
                     setOpen,
                     setOpenLoader,
-                    setOpenSuccess,
+                    setIsSuccess,
                     submitIsDisabled,
                     setSubmitIsDisabled,
                     pdfMaterials

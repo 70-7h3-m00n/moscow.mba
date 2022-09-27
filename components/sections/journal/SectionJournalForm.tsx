@@ -44,7 +44,7 @@ const SectionJournalForm = ({
 
     const [open, setOpen] = useState(false)
     const [openLoader, setOpenLoader] = useState(false)
-    const [openSuccess, setOpenSuccess] = useState(true)
+    const [isSuccess, setIsSuccess] = useState(true)
 
     return (
         <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
@@ -105,7 +105,7 @@ const SectionJournalForm = ({
                                 programTitle={null}
                                 setOpenLoader={setOpenLoader}
                                 setOpen={setOpen}
-                                setOpenSuccess={setOpenSuccess}
+                                setIsSuccess={setIsSuccess}
                                 classNames={[stls.submitButton]}
                                 formName={formName}
                                 pdfMaterials={pdfMaterials}>
@@ -121,7 +121,7 @@ const SectionJournalForm = ({
                             ? <div className={stls.formComplited}>
                                 <p className={stls.formComplitedTitle}>
                                     {
-                                        openSuccess
+                                        isSuccess
                                             ? 'Спасибо! Файл отправлен Вам на почту.'
                                             : 'Что-то пошло не так. Повторите, пожалуйста, попытку.'
                                     }

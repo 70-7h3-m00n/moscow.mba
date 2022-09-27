@@ -8,7 +8,7 @@ const handleSubmitForm = (
     reset,
     setOpen,
     setOpenLoader,
-    setOpenSuccess,
+    setIsSuccess,
     submitIsDisabled,
     setSubmitIsDisabled,
     pdfMaterials
@@ -25,7 +25,7 @@ const handleSubmitForm = (
             programTitle,
             setOpen,
             setOpenLoader,
-            setOpenSuccess,
+            setIsSuccess,
             asPath,
             formName,
             reset,

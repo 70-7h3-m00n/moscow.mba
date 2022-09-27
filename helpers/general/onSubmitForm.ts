@@ -6,7 +6,7 @@ const onSubmitForm = async ({
   promoCourseLink = null,
   setOpenLoader,
   asPath,
-  setOpenSuccess,
+  setIsSuccess,
   setOpen,
   formName,
   reset,
@@ -31,10 +31,10 @@ const onSubmitForm = async ({
   if (req === 200) {
     setOpenLoader(false)
     setOpen(o => !o)
-    setOpenSuccess(true)
+    setIsSuccess(true)
     reset()
   } else {
-    setOpenSuccess(false)
+    setIsSuccess(false)
     console.log('err')
   }
 }
