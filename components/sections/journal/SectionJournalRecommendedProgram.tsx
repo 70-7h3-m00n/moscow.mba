@@ -22,7 +22,9 @@ const SectionJournalRecommendedProgram = ({
   classNames,
   recommendedProgram
 }: TypeSectionJournalRecommendedProgramProps) => {
-  if (!recommendedProgram) return null
+  if (!recommendedProgram?.btnValue
+    || !recommendedProgram?.title
+    || !recommendedProgram.program) return null
 
   return (
     <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
