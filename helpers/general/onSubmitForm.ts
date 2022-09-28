@@ -6,11 +6,9 @@ const onSubmitForm = async ({
   promoCourseLink = null,
   setOpenLoader,
   asPath,
-  setIsSuccess,
   setOpen,
   formName,
   reset,
-  pdfMaterials
 }) => {
   setOpenLoader(o => !o)
   values.programTitle = programTitle || ''
@@ -31,10 +29,8 @@ const onSubmitForm = async ({
   if (req === 200) {
     setOpenLoader(false)
     setOpen(o => !o)
-    setIsSuccess(true)
     reset()
   } else {
-    setIsSuccess(false)
     console.log('err')
   }
 }
