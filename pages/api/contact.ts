@@ -419,7 +419,9 @@ const contact = async (req, res) => {
       from: 'lead@moscow.mba',
       to: `${
         dev
-          ? 'nova@ipo.msk.ru, novailoveyou3@gmail.com'
+        // TODO Поставь обратно почту!
+          // ? 'nova@ipo.msk.ru, novailoveyou3@gmail.com'
+          ? 'baurinanton2013@yandex.ru'
           : 'mba.academy@yandex.ru, leads@moscow.mba'
       }`,
       subject, // Subject line
