@@ -4,6 +4,7 @@
 
 .container
   display: flex
+  flex-basis: 100%
   &.tag
     & .bottom
       @include m.dye(bgc, c.$psi)
@@ -39,18 +40,19 @@
 .bottom
   display: flex
   flex-direction: column
-  justify-content: space-between
+  // justify-content: space-between
   flex-basis: 100%
-  padding: f.px(15)
+  padding-left: f.px(15)
+  padding-right: f.px(15)
+  padding-bottom: f.px(15)
   @include m.dye(bgc, c.$phi)
 
 .title
   @include m.media(phone, tablet)
-    margin-top: f.px(25)
+    margin-top: f.px(10)
     margin-bottom: f.px(24)
     font-size: f.px(15)
   @include m.media(laptop, desktop, widescreen)
-    margin-top: f.px(15)
     margin-bottom: f.px(25)
     font-size: f.px(18)
   font-weight: 500

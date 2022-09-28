@@ -143,7 +143,9 @@ const CardJournalArticle = ({
             <h3 className={stls.title}>{title}</h3>
           </a>
         </Link>
-        <GeneralJournalArticleCreatedAt time={time} />
+        <div className={stls.date}>
+          <GeneralJournalArticleCreatedAt time={time} />
+        </div>
       </div>
     </div>
   )
