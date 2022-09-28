@@ -13,7 +13,8 @@ import cn from 'classnames'
 
 import {
     useScroll,
-    useWindowWidth
+    useWindowWidth,
+    useCheckIfResourseExists
 } from '@/hooks/index'
 
 import { routesFront } from '@/config/index'
@@ -122,6 +123,11 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
     const scrollLocation = useScroll()
     const windowWidth = useWindowWidth()
 
+    // Condition for rendering the Popup Download Materials, SectionJournalForm, PopupGetMaterials components
+    const isRenderComponentsOutOfPdfMaterials = journalArticle?.pdfMaterials
+        .map(item => useCheckIfResourseExists(item.url))
+        .some(item => item === true)
+
     return (
         <>
             <SectionJournalHistoryArticle
@@ -195,11 +201,13 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                                         <SectionJournalTable htmlTableBody={component.htmlTableBody} />
                                     )}
                                     {component.__typename === 'ComponentJournalFormPdfMaterials' && (
-                                        <SectionJournalForm
-                                            pdfMaterials={journalArticle.pdfMaterials}
-                                            formPdfMaterials={component.formPdfMaterials}
-                                            windowWidth={windowWidth}
-                                            mounted={mounted} />
+                                        isRenderComponentsOutOfPdfMaterials
+                                            ? <SectionJournalForm
+                                                pdfMaterials={journalArticle.pdfMaterials}
+                                                formPdfMaterials={component.formPdfMaterials}
+                                                windowWidth={windowWidth}
+                                                mounted={mounted} />
+                                            : ''
                                     )}
                                 </Fragment>
                             ))
@@ -247,28 +255,32 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                             : ''
                     }
                     {
-                        (mounted && windowWidth <= 1020 && isPopupDownloadMaterials)
-                            ? createPortal(
-                                <PopupDownloadMaterials
-                                    classNames={[stls.popupDownloadMaterials]}
-                                    handlePopupGetMaterials={handlePopupGetMaterials}
-                                    handlePopupDownloadMaterials={handlePopupDownloadMaterials} />
-                                , document.querySelector('#__next'))
-                            : (mounted && windowWidth > 1020 && isPopupDownloadMaterials)
-                                ? <PopupDownloadMaterials
-                                    classNames={[stls.popupDownloadMaterials]}
-                                    handlePopupGetMaterials={handlePopupGetMaterials}
-                                    handlePopupDownloadMaterials={handlePopupDownloadMaterials} />
-                                : ''
+                        isRenderComponentsOutOfPdfMaterials
+                            ? (mounted && windowWidth <= 1020 && isPopupDownloadMaterials)
+                                ? createPortal(
+                                    <PopupDownloadMaterials
+                                        classNames={[stls.popupDownloadMaterials]}
+                                        handlePopupGetMaterials={handlePopupGetMaterials}
+                                        handlePopupDownloadMaterials={handlePopupDownloadMaterials} />
+                                    , document.querySelector('#__next'))
+                                : (mounted && windowWidth > 1020 && isPopupDownloadMaterials)
+                                    ? <PopupDownloadMaterials
+                                        classNames={[stls.popupDownloadMaterials]}
+                                        handlePopupGetMaterials={handlePopupGetMaterials}
+                                        handlePopupDownloadMaterials={handlePopupDownloadMaterials} />
+                                    : ''
+                            : ''
                     }
                     {
-                        (mounted && isPopupGetMaterials)
-                            ? createPortal(
-                                <PopupGetMaterials
-                                    classNames={[stls.popupGetMaterials]}
-                                    pdfMaterials={journalArticle.pdfMaterials}
-                                    handlePopupGetMaterials={handlePopupGetMaterials} />
-                                , document.querySelector('#__next'))
+                        isRenderComponentsOutOfPdfMaterials
+                            ? (mounted && isPopupGetMaterials)
+                                ? createPortal(
+                                    <PopupGetMaterials
+                                        classNames={[stls.popupGetMaterials]}
+                                        pdfMaterials={journalArticle.pdfMaterials}
+                                        handlePopupGetMaterials={handlePopupGetMaterials} />
+                                    , document.querySelector('#__next'))
+                                : ''
                             : ''
                     }
                 </aside>
