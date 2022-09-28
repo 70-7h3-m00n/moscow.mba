@@ -20,7 +20,7 @@ const SectionJournalArticleContents = ({
     journalArticle,
     classNames
 }: TypeJournalArticleContentsProps) => {
-    if (!journalArticle?.articleBody) return null
+    if (journalArticle?.articleBody.length === 0) return null
 
     const [isList, setIsList] = useState(false)
 
