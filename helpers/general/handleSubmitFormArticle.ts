@@ -1,6 +1,6 @@
-import { onSubmitForm } from '@/helpers/index'
+import { onSubmitFormArticle } from '@/helpers/index'
 
-const handleSubmitForm = (
+const handleSubmitFormArticle = (
     values,
     formName,
     programTitle,
@@ -20,7 +20,7 @@ const handleSubmitForm = (
         }, 5000)
 
         window.sessionStorage.setItem('formFilled', 'false')
-        return onSubmitForm({
+        return onSubmitFormArticle({
             values,
             programTitle,
             setOpen,
@@ -34,4 +34,4 @@ const handleSubmitForm = (
     }
 }
 
-export default handleSubmitForm
+export default handleSubmitFormArticle

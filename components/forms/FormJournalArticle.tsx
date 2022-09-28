@@ -7,7 +7,7 @@ import stls from '@/styles/components/forms/FormJournalArticle.module.sass'
 
 import {
     getClassNames,
-    handleSubmitForm
+    handleSubmitFormArticle
 } from '@/helpers/index'
 
 import {
@@ -51,7 +51,8 @@ const FormJournalArticle = ({
             className='simple-form'
             onChange={() => window.sessionStorage.setItem('formFilled', 'true')} // this is a goal for a marketing campaign also used in /pages/_app.tsx
             onSubmit={handleSubmit(values =>
-                handleSubmitForm(values,
+                handleSubmitFormArticle(
+                    values,
                     formName,
                     programTitle,
                     asPath,

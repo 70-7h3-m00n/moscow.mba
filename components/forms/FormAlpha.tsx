@@ -8,7 +8,7 @@ import {
   getClassNames,
   openedMainForm,
   filledUpFormWithoutSubmission,
-  handleSubmitForm
+  onSubmitForm
 } from '@/helpers/index'
 
 import {
@@ -62,18 +62,25 @@ const FormAlpha = ({
       method='post'
       className='simple-form'
       onChange={() => window.sessionStorage.setItem('formFilled', 'true')} // this is a goal for a marketing campaign also used in /pages/_app.tsx
-      onSubmit={handleSubmit(values =>
-        handleSubmitForm(values,
-          formName,
-          programTitle,
-          asPath,
-          reset,
-          setOpen,
-          setOpenLoader,
-          submitIsDisabled,
-          setSubmitIsDisabled
-        ))
-      }>
+      onSubmit={handleSubmit(values => {
+        if (!submitIsDisabled) {
+          setSubmitIsDisabled(true)
+          setTimeout(() => {
+            setSubmitIsDisabled(false)
+          }, 5000)
+
+          window.sessionStorage.setItem('formFilled', 'false')
+          return onSubmitForm({
+            values,
+            programTitle,
+            setOpenLoader,
+            asPath,
+            setOpen,
+            formName,
+            reset
+          })
+        }
+      })}>
       <div
         className={cn(container, {
           'inputs-flex': globalStyle,
@@ -84,19 +91,19 @@ const FormAlpha = ({
         <InputEmail register={register} errors={errors} width={width} />
         <InputSubmit errors={errors} alpha={alpha} width={width} />
       </div>
-      {policyPrivacy && (
-        <div
-          className={cn({
-            'personal-data': globalStyle
-          })}>
-          {/* TODO: should be a link here to privacy policy */}
-          {at.en
-            ? 'By pressing submit button, you agree to'
-            : 'Нажимая на кнопку, Вы даете согласие на обработку своих'}{' '}
-          <span>{at.en ? 'Privacy Policy' : 'персональных данных'}</span>
-        </div>
-      )}
-    </form>
+      { policyPrivacy && (
+          <div
+            className={cn({
+              'personal-data': globalStyle
+            })}>
+            {/* TODO: should be a link here to privacy policy */}
+            {at.en
+              ? 'By pressing submit button, you agree to'
+              : 'Нажимая на кнопку, Вы даете согласие на обработку своих'}{' '}
+            <span>{at.en ? 'Privacy Policy' : 'персональных данных'}</span>
+          </div>
+        )}
+    </form >
   )
 }
 
