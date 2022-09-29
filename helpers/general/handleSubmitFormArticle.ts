@@ -1,9 +1,27 @@
 import { onSubmitFormArticle } from '@/helpers/index'
 
-const handleSubmitFormArticle = (
+import { TypeLibJournalPdfMaterials } from '@/types/index'
+
+type TypePropsHandleSubmitFormArticle = {
+    values: {
+        name: string
+        phone: string
+        email: string
+    }
+    formName: string | null
+    asPath: string
+    reset: () => void
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>
+    setOpenLoader: React.Dispatch<React.SetStateAction<boolean>>
+    setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>
+    submitIsDisabled: boolean
+    setSubmitIsDisabled: React.Dispatch<React.SetStateAction<boolean>>
+    pdfMaterials: TypeLibJournalPdfMaterials
+}
+
+const handleSubmitFormArticle = ({
     values,
     formName,
-    programTitle,
     asPath,
     reset,
     setOpen,
@@ -12,7 +30,7 @@ const handleSubmitFormArticle = (
     submitIsDisabled,
     setSubmitIsDisabled,
     pdfMaterials
-) => {
+}: TypePropsHandleSubmitFormArticle) => {
     if (!submitIsDisabled) {
         setSubmitIsDisabled(true)
         setTimeout(() => {
@@ -20,9 +38,8 @@ const handleSubmitFormArticle = (
         }, 5000)
 
         window.sessionStorage.setItem('formFilled', 'false')
-        return onSubmitFormArticle({
+        onSubmitFormArticle({
             values,
-            programTitle,
             setOpen,
             setOpenLoader,
             setIsSuccess,

@@ -3,22 +3,36 @@ import {
   hitMaterialsRoute
 } from '@/helpers/index'
 
-const onSubmitForm = async ({
+import { TypeLibJournalPdfMaterials } from '@/types/index'
+
+type TypePropsSubmitFormArticle = {
+  values: {
+      name: string
+      phone: string
+      email: string
+  }
+  formName: string | null
+  asPath: string
+  reset: () => void
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setOpenLoader: React.Dispatch<React.SetStateAction<boolean>>
+  setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>
+  pdfMaterials: TypeLibJournalPdfMaterials
+}
+
+const onSubmitFormArticle = async ({
   values,
-  programTitle,
-  promoCourseLink = null,
-  setOpenLoader,
-  asPath,
-  setIsSuccess,
   setOpen,
+  setOpenLoader,
+  setIsSuccess,
+  asPath,
   formName,
   reset,
   pdfMaterials
-}) => {
+}: TypePropsSubmitFormArticle) => {
 
   const normalizeDataForManagers = (values) => {
-    values.programTitle = programTitle || ''
-    values.leadPage = promoCourseLink ? promoCourseLink : asPath
+    values.leadPage = asPath
     const utms = JSON.parse(sessionStorage.getItem('utms'))
 
     if (utms?.utm_term) {
@@ -36,7 +50,7 @@ const onSubmitForm = async ({
 
     return values
   }
-  // TODO Если надо какая-то нормальизация, то сделаем
+  // TODO Если надо какая-то нормализация, то сделаем
   const normalizeDataForClient = (pdfMaterials) => {
     return pdfMaterials
   }
@@ -74,4 +88,4 @@ const onSubmitForm = async ({
   await resultProcessingFetching()
 }
 
-export default onSubmitForm
+export default onSubmitFormArticle

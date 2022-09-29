@@ -1,9 +1,10 @@
+import { NextApiRequest, NextApiResponse } from 'next'
 
 import nodemailer from 'nodemailer'
 import { dev } from '@/config/index'
 import axios from 'axios'
 
-const materials = async (req, res) => {
+const materials = async (req: NextApiRequest, res: NextApiResponse) => {
     
     // This function checks if it is available (working) whether the link.
     // Which do not work, the function discards.

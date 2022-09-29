@@ -16,6 +16,7 @@ import {
     InputPhone,
     InputSubmitJournal
 } from '@/components/inputs'
+import { TypeClassNames, TypeLibJournalPdfMaterials } from '@/types/index'
 
 type TypeFormValues = {
     name: string
@@ -23,8 +24,17 @@ type TypeFormValues = {
     email: string
 }
 
+type TypePropsFormJournalArticle = {
+    pdfMaterials: TypeLibJournalPdfMaterials
+    width?: string
+    formName: string | null
+    children: React.ReactNode
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>
+    setOpenLoader: React.Dispatch<React.SetStateAction<boolean>>
+    setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>
+} & TypeClassNames
+
 const FormJournalArticle = ({
-    programTitle = null,
     pdfMaterials,
     setOpen,
     setOpenLoader,
@@ -33,7 +43,7 @@ const FormJournalArticle = ({
     formName = null,
     children,
     classNames,
-}) => {
+}: TypePropsFormJournalArticle) => {
     const {
         register,
         handleSubmit,
@@ -47,14 +57,12 @@ const FormJournalArticle = ({
 
     return (
         <form
-            method='post'
             className='simple-form'
             onChange={() => window.sessionStorage.setItem('formFilled', 'true')} // this is a goal for a marketing campaign also used in /pages/_app.tsx
-            onSubmit={handleSubmit(values =>
-                handleSubmitFormArticle(
+            onSubmit={handleSubmit(values => handleSubmitFormArticle(
+                {
                     values,
                     formName,
-                    programTitle,
                     asPath,
                     reset,
                     setOpen,
@@ -63,7 +71,8 @@ const FormJournalArticle = ({
                     submitIsDisabled,
                     setSubmitIsDisabled,
                     pdfMaterials
-                ))}>
+                }
+            ))}>
             <div className={cn(stls.container)}>
                 <div className={cn(stls.inputs, 'inputs-flex', 'inputs-flex--alt')}>
                     <InputName register={register} errors={errors} width={width} />
