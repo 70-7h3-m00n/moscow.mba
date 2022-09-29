@@ -27,6 +27,8 @@ const PopupGetMaterials = ({
     handlePopupGetMaterials,
     pdfMaterials
 }: TypeSectionPopupCoursesOnTopicProps) => {
+    const formName = `Заявка с модальной формы: 7 ошибок разрушения карьеры.\nГайд по профессиям IT`
+
     if (!pdfMaterials) return null
 
     const [open, setOpen] = useState(false)
@@ -70,12 +72,12 @@ const PopupGetMaterials = ({
                     </div>
                     <div className={stls.form}>
                         <FormJournalArticle
-                            programTitle={null}
-                            setOpenLoader={setOpenLoader}
+                            pdfMaterials={pdfMaterials}
                             setOpen={setOpen}
+                            setOpenLoader={setOpenLoader}
                             setIsSuccess={setIsSuccess}
-                            classNames={[stls.submitButton]}
-                            pdfMaterials={pdfMaterials}>
+                            formName={formName}
+                            classNames={[stls.submitButton]}>
                             <span className={stls.submitText}>{'получить бесплатно'}</span>
                         </FormJournalArticle>
                     </div>
