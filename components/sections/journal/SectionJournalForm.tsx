@@ -100,7 +100,6 @@ const SectionJournalForm = ({
                     </div>
                     <div className={stls.inputs}>
                         <FormJournalArticle
-                            programTitle={null}
                             setOpenLoader={setOpenLoader}
                             setOpen={setOpen}
                             setIsSuccess={setIsSuccess}
