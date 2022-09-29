@@ -1,9 +1,10 @@
-import { useEffect, useState, FC } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { dev } from '@/config/index'
 
 const useCheckIfResourseExists = (src: string) => {
     const [isData, setIsData] = useState(false)
+    
     useEffect(() => {
         const getData = async () => {
             try {
