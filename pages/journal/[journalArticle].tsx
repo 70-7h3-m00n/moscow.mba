@@ -124,9 +124,16 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
     const windowWidth = useWindowWidth()
 
     // Condition for rendering the Popup Download Materials, SectionJournalForm, PopupGetMaterials components
-    const isRenderComponentsOutOfPdfMaterials = journalArticle?.pdfMaterials
-        .map(item => useCheckIfResourseExists(item.url))
-        .some(item => item === true)
+    const [isUrlsPdf, setIsUrlsPdf] = useState(true)
+    useEffect(() => {
+        const getIsUrls = async () => {
+            const urls = await Promise.all(journalArticle?.pdfMaterials
+                .map(async item => await useCheckIfResourseExists(item.url)))
+            const urlsSuccess = urls.some(item => item === true)
+            setIsUrlsPdf(urlsSuccess)
+        }
+        getIsUrls()
+    }, [])
 
     return (
         <>
@@ -155,7 +162,10 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                             classNames={[stls.articleTitle]} />
                         <SectionJournalArticleContents
                             journalArticle={journalArticle}
-                            classNames={[stls.articleTitle]} />
+                            classNames={[stls.articleTitle]}
+                            isPopupCoursesOnTopicDesktop={isPopupCoursesOnTopicDesktop}
+                            isPopupDownloadMaterials={isPopupDownloadMaterials}
+                        />
                     </header>
                     <section>
                         <SectionJournalTitlePicture journalArticle={journalArticle} />
@@ -201,7 +211,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                                         <SectionJournalTable htmlTableBody={component.htmlTableBody} />
                                     )}
                                     {component.__typename === 'ComponentJournalFormPdfMaterials' && (
-                                        isRenderComponentsOutOfPdfMaterials
+                                        isUrlsPdf
                                             ? <SectionJournalForm
                                                 pdfMaterials={journalArticle.pdfMaterials}
                                                 formPdfMaterials={component.formPdfMaterials}
@@ -255,7 +265,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                             : ''
                     }
                     {
-                        isRenderComponentsOutOfPdfMaterials
+                        isUrlsPdf
                             ? (mounted && windowWidth <= 1020 && isPopupDownloadMaterials)
                                 ? createPortal(
                                     <PopupDownloadMaterials
@@ -272,7 +282,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({ journalArticle 
                             : ''
                     }
                     {
-                        isRenderComponentsOutOfPdfMaterials
+                        isUrlsPdf
                             ? (mounted && isPopupGetMaterials)
                                 ? createPortal(
                                     <PopupGetMaterials
