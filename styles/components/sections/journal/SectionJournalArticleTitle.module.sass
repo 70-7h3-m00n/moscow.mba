@@ -13,6 +13,10 @@
     display: flex
     justify-content: space-between
     align-items: center
+    @include m.media(laptop, desktop, widescreen)
+        margin-top: f.px(25)
+    @include m.media(phone, tablet)
+        margin-top: f.px(40)
     @include m.media(phone, tablet)
         align-items: flex-start
 

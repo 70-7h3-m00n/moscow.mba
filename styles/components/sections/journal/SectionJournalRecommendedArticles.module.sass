@@ -22,14 +22,20 @@
 .link
     display: flex
     align-items: center
+    transition-duration: 300ms
     & + .link
         margin-top: f.px(25)
+    &:hover
+        .linkText
+            @include m.dye(c, c.$alpha)
+        .line
+            @include m.dye(bgc, c.$alpha)
 
 .linkText
     font-size: f.px(16)
     font-weight: 500
-    @include m.dye(c, c.$chi)
     line-height: f.px(22.4)
+    @include m.dye(c, c.$chi)
 
 .line
     display: inline-block
@@ -37,3 +43,4 @@
     height: f.px(2)
     margin-right: f.px(15)
     @include m.dye(bgc, c.$tau)
+

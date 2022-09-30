@@ -40,7 +40,6 @@
 .bottom
   display: flex
   flex-direction: column
-  // justify-content: space-between
   flex-basis: 100%
   padding-left: f.px(15)
   padding-right: f.px(15)
@@ -48,6 +47,10 @@
   @include m.dye(bgc, c.$phi)
 
 .title
+  font-weight: 500
+  line-height: 120%
+  transition-duration: 300ms
+  @include m.dye(c, c.$chi)
   @include m.media(phone, tablet)
     margin-top: f.px(10)
     margin-bottom: f.px(24)
@@ -55,9 +58,8 @@
   @include m.media(laptop, desktop, widescreen)
     margin-bottom: f.px(25)
     font-size: f.px(18)
-  font-weight: 500
-  line-height: 120%
-  @include m.dye(c, c.$chi)
+  &:hover
+    @include m.dye(c, c.$alpha)
 
 .bottomBottom
   display: flex
@@ -85,16 +87,20 @@
   font-size: f.px(14)
   line-height: 120%
   @include m.dye(c, c.$upsilon)
-  
+
 .category
-    align-self: flex-start
-    padding: f.px(6) f.px(18)
-    border: f.px(1) solid
-    @include m.dye(border, c.$chi)
-    border-radius: f.px(15)
-    font-family: 'Styrene', Arial, Tahoma, sans-serif
-    font-size: f.px(13)
-    font-weight: 400
-    line-height: 120%
-    @include m.dye(c, c.$chi)
-    @include m.dye(bgc, c.$psi)
+  align-self: flex-start
+  padding: f.px(5) f.px(18)
+  border: 1px solid
+  @include m.dye(border, c.$chi)
+  border-radius: f.px(15)
+  font-family: 'Styrene', Arial, Tahoma, sans-serif
+  font-size: f.px(13)
+  font-weight: 400
+  line-height: 120%
+  transition-duration: 300ms
+  @include m.dye(c, c.$chi)
+  @include m.dye(bgc, c.$phi)
+  &:hover
+    @include m.dye(c, c.$alpha)
+    border: 1px solid c.$alpha

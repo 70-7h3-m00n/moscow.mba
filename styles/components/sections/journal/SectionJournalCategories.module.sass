@@ -20,25 +20,29 @@
     
 
 .categoryItem
-  padding: f.px(6) f.px(18)
-  border-radius: f.px(15)
+  padding: f.px(10) f.px(18)
+  border-radius: f.px(25)
   font-family: 'Styrene', Arial, Tahoma, sans-serif
-  font-size: f.px(14)
+  font-size: f.px(18)
   font-weight: 400
   line-height: 120%
   border: 1px solid c.$chi
   white-space: nowrap
+  transition-duration: 300ms
   @include m.dye(bgc, c.$psi)
   @include m.media(phone, tablet)
     margin-right: f.px(20)
   @include m.media(laptop, desktop, widescreen)
     margin-right: f.px(34)
+  &:hover
+    @include m.dye(c, c.$alpha)
+    border: 1px solid c.$alpha
 
 .categoryItemIsActive
-  padding: f.px(6) f.px(18)
-  border-radius: f.px(15)
+  padding: f.px(10) f.px(18)
+  border-radius: f.px(25)
   font-family: 'Styrene', Arial, Tahoma, sans-serif
-  font-size: f.px(14)
+  font-size: f.px(18)
   font-weight: 400
   line-height: 120%
   border: 1px solid c.$alpha

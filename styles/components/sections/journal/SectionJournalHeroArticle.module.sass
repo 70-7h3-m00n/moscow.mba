@@ -32,6 +32,7 @@
         .title
             font-weight: 500
             line-height: 120%
+            transition-duration: 300ms
             @include m.media(laptop, desktop, widescreen)
                 width: f.px(630)
                 margin-bottom: f.px(35)
@@ -44,6 +45,8 @@
                 font-size: f.px(24)
                 margin-bottom: f.px(25)
                 @include m.dye(c, c.$psi)
+            &:hover
+                @include m.dye(c, c.$alpha)
 
         .decription
             font-weight: 400
@@ -71,17 +74,23 @@
             align-items: center
             .category
                 align-self: flex-start
-                padding: f.px(6) f.px(18)
-                border: f.px(1) solid
+                padding: f.px(5) f.px(18)
+                border: 1px solid
                 @include m.dye(border, c.$chi)
                 border-radius: f.px(15)
                 font-family: 'Styrene', Arial, Tahoma, sans-serif
                 font-size: f.px(13)
                 font-weight: 400
                 line-height: 120%
-                @include m.dye(c, c.$chi)
-                @include m.dye(bgc, c.$psi)
+                transition-duration: 300ms
+                @include m.media(laptop, desktop, widescreen)
+                    @include m.dye(c, c.$chi)
+                    @include m.dye(bgc, c.$psi)
                 @include m.media(phone, tablet)
                     @include m.dye(c, c.$psi)
                     @include m.dye(bgc, c.$chi)
+                &:hover
+                    @include m.dye(c, c.$alpha)
+                    border: 1px solid c.$alpha
+                
 
