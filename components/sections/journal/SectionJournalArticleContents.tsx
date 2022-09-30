@@ -14,10 +14,14 @@ import stls from '@/styles/components/sections/journal/SectionJournalArticleCont
 
 type TypeJournalArticleContentsProps = {
     journalArticle: TypeLibJournalArticle
+    isPopupCoursesOnTopicDesktop: boolean
+    isPopupDownloadMaterials: boolean
 } & TypeClassNames
 
 const SectionJournalArticleContents = ({
     journalArticle,
+    isPopupCoursesOnTopicDesktop,
+    isPopupDownloadMaterials,
     classNames
 }: TypeJournalArticleContentsProps) => {
     if (journalArticle?.articleBody.length === 0) return null
@@ -36,7 +40,12 @@ const SectionJournalArticleContents = ({
                 .join(' ')
         )
     return (
-        <section className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+        <section className={cn(
+            stls.container,
+            !isPopupCoursesOnTopicDesktop && !isPopupDownloadMaterials
+                ? stls.notPopup
+                : stls.popup,
+            getClassNames({ classNames })) || undefined}>
             <div className={stls.accordion}>
                 <div className={stls.accordionTitle} onClick={handleShowList}>
                     <span className={stls.title}>{'Содержание'}</span>
