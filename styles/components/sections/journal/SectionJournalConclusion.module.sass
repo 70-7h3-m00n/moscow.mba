@@ -5,11 +5,18 @@
 
 .container
   @include m.media(phone, tablet)
+    margin-top: f.px(65)
+    margin-bottom: f.px(65)
+  @include m.media(laptop, desktop, widescreen)
     margin-top: f.px(60)
     margin-bottom: f.px(60)
+
+.title
+  font-size: f.px(35)
   @include m.media(laptop, desktop, widescreen)
-    margin-top: f.px(35)
-    margin-bottom: f.px(65)
+    margin-bottom: f.px(35)
+  @include m.media(phone, tablet)
+    margin-bottom: f.px(40)
 
 .item
   display: flex
@@ -18,6 +25,9 @@
     margin-bottom: f.px(40)
   @include m.media(laptop, desktop, widescreen)
     margin-bottom: f.px(35)
+  &:nth-last-of-type(1)
+    margin-bottom: f.px(0)
+    
 
 .idx
   display: flex
@@ -38,7 +48,7 @@
   @include m.dye(bgc, c.$alpha)
   @include m.dye(c, c.$psi)
 
-.title
+.subTitle
   @include m.media(phone, tablet)
     font-size: f.px(18)
     font-weight: 500

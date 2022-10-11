@@ -16,7 +16,6 @@ import { Header, Main, WrapperPage, Footer } from '@/components/layout'
 import {
   MenuState,
   OverlayState,
-  ContextJournalState,
   ContextStaticProps
 } from '@/context/index'
 import { filledUpFormWithoutSubmission } from '../helpers'
@@ -28,24 +27,24 @@ function MyApp({ Component, pageProps, router }) {
   const [studyFields, setStudyFields] = useState(
     programs?.length > 0
       ? Array.from(
-          new Set([
-            ...programs
-              ?.filter(program => program.study_field?.name)
-              ?.map(program => program.study_field?.name)
-          ])
-        )
+        new Set([
+          ...programs
+            ?.filter(program => program.study_field?.name)
+            ?.map(program => program.study_field?.name)
+        ])
+      )
       : []
   )
   const [studyFieldsWithSlugs, setStudyFieldsWithSlugs] = useState(
     studyFields?.length > 0
       ? studyFields?.map(studyField => ({
-          label: studyField,
-          slug: programs?.reduce((acc, cur) => {
-            cur?.study_field?.name === studyField &&
-              (acc = cur?.study_field?.slug)
-            return acc.trim()
-          }, '')
-        }))
+        label: studyField,
+        slug: programs?.reduce((acc, cur) => {
+          cur?.study_field?.name === studyField &&
+            (acc = cur?.study_field?.slug)
+          return acc.trim()
+        }, '')
+      }))
       : null
   )
 
@@ -156,15 +155,13 @@ function MyApp({ Component, pageProps, router }) {
         }}>
         <OverlayState>
           <MenuState>
-            <ContextJournalState>
-              <WrapperPage>
-                <Header />
-                <Main>
-                  <Component {...pageProps} />
-                </Main>
-                <Footer />
-              </WrapperPage>
-            </ContextJournalState>
+            <WrapperPage>
+              <Header />
+              <Main>
+                <Component {...pageProps} />
+              </Main>
+              <Footer />
+            </WrapperPage>
           </MenuState>
         </OverlayState>
       </ContextStaticProps.Provider>

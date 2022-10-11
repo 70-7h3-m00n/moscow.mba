@@ -1,5 +1,5 @@
 import { TypeLibProgram } from '@/types/index'
 
-type TypeLibPrograms = TypeLibProgram[]
+type TypeLibPrograms = Array<TypeLibProgram>
 
 export default TypeLibPrograms

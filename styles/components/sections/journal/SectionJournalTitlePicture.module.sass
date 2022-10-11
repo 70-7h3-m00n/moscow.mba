@@ -1,0 +1,12 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/shared/journal' as j
+
+.container
+    @include m.media(laptop, desktop, widescreen)
+        margin-top: f.px(130)
+        margin-bottom: f.px(65)
+    @include m.media(phone, tablet)
+        margin-top: f.px(40)
+        margin-bottom: f.px(47)

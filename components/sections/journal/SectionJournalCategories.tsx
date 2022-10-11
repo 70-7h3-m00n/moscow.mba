@@ -1,62 +1,70 @@
-import stls from '@/styles/components/sections/journal/SectionJournalCategories.module.sass'
-import { TypeClassNames } from '@/types/index'
-import Link from 'next/link'
-import { useContext } from 'react'
 import cn from 'classnames'
-import { routesFront } from '@/config/index'
-import { getClassNames } from '@/helpers/index'
-import { ContextJournalContext } from '@/context/index'
-import { Wrapper } from '@/components/layout'
 
-type TypeSectionJournalCategoriesProps = TypeClassNames
+import { TypeClassNames } from '@/types/index'
+import {
+    TypeContextJournalFilterButtons,
+    TypeContextJournalCategory
+} from '@/types/context/journal/TypeContextJournal'
+
+import { getClassNames } from '@/helpers/index'
+
+import { Wrapper } from 'components/layout'
+
+import stls from '@/styles/components/sections/journal/SectionJournalCategories.module.sass'
+
+type TypeSectionJournalCategoriesProps = {
+    filterCategoriesButtons: TypeContextJournalFilterButtons
+    filterAllCategoriesButtons: boolean
+    handleFilterButtons: (category: TypeContextJournalCategory) => void
+    handlefilterAllCategoriesButtons: () => void
+} & TypeClassNames
 
 const SectionJournalCategories = ({
-  classNames
+    classNames,
+    handleFilterButtons,
+    handlefilterAllCategoriesButtons,
+    filterCategoriesButtons,
+    filterAllCategoriesButtons,
 }: TypeSectionJournalCategoriesProps) => {
-  const {
-    journalCategories,
-    gspContextParamsJournalCategoryTag,
-    gspContextParamsJournalCategory
-  } = useContext(ContextJournalContext)
+    const buttonAllArticles = {
+        title: `Все статьи`,
+        slug: 'vse_stati',
+    }
 
-  return (
-    <section
-      className={
-        cn(stls.container, getClassNames({ classNames })) || undefined
-      }>
-      <Wrapper>
-        <ul className={stls.categories}>
-          <li className={stls.categoryItem}>
-            {'categories' === gspContextParamsJournalCategory ||
-            !gspContextParamsJournalCategory ? (
-              <div className={cn(stls.category, stls.isActive)}>
-                Все&nbsp;форматы
-              </div>
-            ) : (
-              <Link href={routesFront.journal}>
-                <a className={cn(stls.category)}>Все&nbsp;форматы</a>
-              </Link>
-            )}
-          </li>
-          {journalCategories
-            ?.filter(category => category.title && category.slug)
-            .map(category => (
-              <li key={category.slug} className={stls.categoryItem}>
-                <Link href={routesFront.journal}>
-                  <a
-                    className={cn(stls.category, {
-                      [stls.isActive]:
-                        category.slug === gspContextParamsJournalCategory
-                    })}>
-                    {category.title}
-                  </a>
-                </Link>
-              </li>
-            ))}
-        </ul>
-      </Wrapper>
-    </section>
-  )
+    if (!filterCategoriesButtons) return null
+
+    return (
+        <section className={
+            cn(stls.container, getClassNames({ classNames })) || undefined
+        }>
+            <Wrapper>
+                <ul className={stls.categories}>
+                    <li
+                        onClick={() => handlefilterAllCategoriesButtons()}>
+                        <button className={
+                            filterAllCategoriesButtons
+                                ? `${stls.categoryItemIsActive} ${stls.categoryAllItemIsActive}`
+                                : stls.categoryItem
+                        }>{buttonAllArticles.title}</button>
+                    </li>
+                    {
+                        filterCategoriesButtons
+                            ?.map(category => (
+                                <li
+                                    key={category.slug}
+                                    onClick={() => handleFilterButtons(category)}>
+                                    <button className={
+                                        category.state && !filterAllCategoriesButtons
+                                            ? stls.categoryItemIsActive
+                                            : stls.categoryItem
+                                    }>{category.title}</button>
+                                </li>
+                            ))
+                    }
+                </ul>
+            </Wrapper>
+        </section>
+    )
 }
 
 export default SectionJournalCategories

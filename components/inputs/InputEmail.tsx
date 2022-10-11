@@ -1,7 +1,6 @@
 import stls from '@/styles/components/inputs/InputEmail.module.sass'
 import cn from 'classnames'
 import { useAt } from '@/hooks/index'
-import { handlePlaceholder } from '@/helpers/index'
 
 const InputEmail = ({ register, errors, width = '25', ...props }) => {
   const at = useAt()
@@ -16,12 +15,14 @@ const InputEmail = ({ register, errors, width = '25', ...props }) => {
           pattern: {
             value:
               /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
-            message: `*${
-              at.en ? 'Email address invalid' : 'Адрес почты введен неверно'
-            }`
+            message: `*${at.en ? 'Email address invalid' : 'Адрес почты введен неверно'
+              }`
           }
         })}
-        onKeyUp={e => handlePlaceholder(e)}
+        onFocus={e => e.target.classList.add('texted')}
+        onBlur={e => (e.target.value === '')
+          ? e.target.classList.remove('texted')
+          : ''}
       />
       <div
         className={cn({

@@ -1,7 +1,6 @@
 import stls from '@/styles/components/inputs/InputPhone.module.sass'
 import cn from 'classnames'
 import { useAt } from '@/hooks/index'
-import { handlePlaceholder } from '@/helpers/index'
 
 const InputPhone = ({ register, errors, width = '25' }) => {
   const at = useAt()
@@ -11,21 +10,22 @@ const InputPhone = ({ register, errors, width = '25' }) => {
         type='tel'
         aria-label={at.en ? 'Phone number' : 'Телефон'}
         {...register('phone', {
-          required: `*${
-            at.en
+          required: `*${at.en
               ? 'Phone number is required'
               : 'Пожалуйста, введите Ваш номер телефона'
-          }`,
+            }`,
           minLength: {
             value: 5,
-            message: `*${
-              at.en
+            message: `*${at.en
                 ? 'Phone number is too short'
                 : 'Номер телефона слишком короткий'
-            }`
+              }`
           }
         })}
-        onKeyUp={e => handlePlaceholder(e)}
+        onFocus={e => e.target.classList.add('texted')}
+        onBlur={e => (e.target.value === '')
+          ? e.target.classList.remove('texted')
+          : ''}
       />
       <div
         className={cn({

@@ -1,5 +1,5 @@
 import { TypeLibJournalTag } from '@/types/index'
 
-type TypeLibJournalTags = TypeLibJournalTag[]
+type TypeLibJournalTags = Array<TypeLibJournalTag>
 
 export default TypeLibJournalTags

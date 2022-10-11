@@ -1,0 +1,20 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.button
+    border: 0
+    display: flex
+    padding: f.px(18) f.px(62)
+    @include m.dye(bgc, c.$alpha)
+    @include m.media(phone, tablet)
+        width: 100%
+        justify-content: center
+    @include m.media(laptop, desktop, widescreen)
+        width: f.px(310)
+    .text
+        margin-left: f.px(12)
+        font-family: 'Styrene', Arial, Tahoma, sans-serif
+        font-size: f.px(15)
+        font-weight: 700
+        @include m.dye(c, c.$psi)

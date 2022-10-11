@@ -23,7 +23,8 @@ const routesBack = {
   getStaticPropsPageJournalArticles: '/get-static-props/page-journal-articles',
   getStaticPropsPagePromo: '/get-static-props/page-promo',
   getStaticPropsPrograms: '/get-static-props/programs',
-  getStaticPropsTeachers: '/get-static-props/teachers'
+  getStaticPropsTeachers: '/get-static-props/teachers',
+  journal: '/get-static-props/page-journal-articles'
 }
 
 export default routesBack

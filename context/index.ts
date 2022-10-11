@@ -1,7 +1,5 @@
 // ./journal
-export { default as ContextJournalContext } from '@/context/journal/contextJournalContext'
-export { default as contextJournalReducer } from '@/context/journal/contextJournalReducer'
-export { default as ContextJournalState } from '@/context/journal/ContextJournalState'
+export { default as ContextStaticPropsJournal } from '@/context/simple/ContextStaticPropsJournal'
 // ./menu
 export { default as MenuContext } from '@/context/menu/menuContext'
 export { default as menuReducer } from '@/context/menu/menuReducer'

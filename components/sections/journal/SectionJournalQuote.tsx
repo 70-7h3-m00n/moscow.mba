@@ -1,43 +1,37 @@
-import stls from '@/styles/components/sections/journal/SectionJournalQuote.module.sass'
+import cn from 'classnames'
+
 import {
   TypeClassNames,
-  TypeLibJournalArticleEmphasisBody,
-  TypeLibJournalArticleAuthorPosition,
-  TypeLibJournalArticleAuthorName
+  TypeLibJournalArticleQuote
 } from '@/types/index'
-import cn from 'classnames'
+
 import { getClassNames } from '@/helpers/index'
-import { Wrapper, ContentJournalArticle } from '@/components/layout'
+
 import { IconQuote } from '@/components/icons'
+import { CardAuthor } from '@/components/cards'
+
+import stls from '@/styles/components/sections/journal/SectionJournalQuote.module.sass'
 
 type TypeSectionJournalQuoteProps = TypeClassNames & {
-  body: TypeLibJournalArticleEmphasisBody | null
-  authorPosition: TypeLibJournalArticleAuthorPosition | null
-  authorName: TypeLibJournalArticleAuthorName | null
+  quote: TypeLibJournalArticleQuote
 }
 
 const SectionJournalQuote = ({
   classNames,
-  body,
-  authorPosition,
-  authorName
+  quote
 }: TypeSectionJournalQuoteProps) => {
+  if (!quote) return null
+
   return (
-    <section
-      className={
-        cn(stls.container, getClassNames({ classNames })) || undefined
-      }>
-      <Wrapper column>
-        <ContentJournalArticle classNames={[stls.content]}>
-          <IconQuote classNames={[stls.icon]} />
-          <blockquote className={stls.blockquote}>{body}</blockquote>
-          <div className={stls.credit}>
-            <p className={stls.author}>— {authorName}</p>
-            <p className={stls.position}>{authorPosition}</p>
-          </div>
-        </ContentJournalArticle>
-      </Wrapper>
-    </section>
+    <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+      <div className={stls.content}>
+        <IconQuote classNames={[stls.icon]} />
+        <blockquote className={stls.blockquote}>{quote.body}</blockquote>
+        <div className={stls.credit}>
+          <CardAuthor textAlign={'end'} fontWeightAuthorName={700} quote={quote} />
+        </div>
+      </div>
+    </div>
   )
 }
 
