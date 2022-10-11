@@ -6,6 +6,7 @@ export { default as filledUpFormWithoutSubmission } from '@/helpers/dataLayer/fi
 export { default as openedMainForm } from '@/helpers/dataLayer/openedMainForm'
 
 // ./general
+export { default as checkIfResourceExists } from '@/helpers/general/checkIfResourceExists'
 export { default as createBlended } from '@/helpers/general/createBlended'
 export { default as createLeadBackApi } from '@/helpers/general/createLeadBackApi'
 export { default as createProgramModules } from '@/helpers/general/createProgramModules'
