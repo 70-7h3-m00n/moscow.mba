@@ -1,40 +1,44 @@
-import stls from '@/styles/components/sections/journal/SectionJournalConclusion.module.sass'
-import { TypeClassNames, TypeLibJournalArticleItem } from '@/types/index'
 import cn from 'classnames'
-import { getClassNames } from '@/helpers/index'
-import { Wrapper, ContentJournalArticle } from '@/components/layout'
 
-type TypeSectionJournalConclusionProps = TypeClassNames & {
-  item: TypeLibJournalArticleItem | null
-}
+import { getClassNames } from '@/helpers/index'
+
+import {
+  TypeClassNames,
+  TypeLibJournalArticleConclusion
+} from '@/types/index'
+
+import stls from '@/styles/components/sections/journal/SectionJournalConclusion.module.sass'
+
+type TypeSectionJournalConclusionProps = {
+  item: TypeLibJournalArticleConclusion | null
+} & TypeClassNames
 
 const SectionJournalConclusion = ({
   classNames,
   item
 }: TypeSectionJournalConclusionProps) => {
+  if (!item) return null
+
   return (
-    <section
-      className={
-        cn(stls.container, getClassNames({ classNames })) || undefined
-      }>
-      <Wrapper column>
-        <ContentJournalArticle>
-          <ol className={stls.list}>
-            {item
-              ?.filter(part => part)
-              .map((part, idx) => (
-                <li key={`${part.title} ${idx}`} className={stls.item}>
-                  <div className={stls.idx}>{idx + 1}</div>
-                  <div>
-                    <h3 className={stls.title}>{part.title}</h3>
-                    <p className={stls.p}>{part.body}</p>
-                  </div>
-                </li>
-              ))}
-          </ol>
-        </ContentJournalArticle>
-      </Wrapper>
-    </section>
+    <div
+      className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+      <h2 className={stls.title}>
+        <span>{'Резюмируем'}</span>
+      </h2>
+      <ol className={stls.list}>
+        {item
+          ?.filter(part => part)
+          .map((part, idx) => (
+            <li key={`${part.title} ${idx}`} className={stls.item}>
+              <div className={stls.idx}>{idx + 1}</div>
+              <div>
+                <h3 className={stls.subTitle}>{part.title}</h3>
+                <p className={stls.p}>{part.body}</p>
+              </div>
+            </li>
+          ))}
+      </ol>
+    </div>
   )
 }
 

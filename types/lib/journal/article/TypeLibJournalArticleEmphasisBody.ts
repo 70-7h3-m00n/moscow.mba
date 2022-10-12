@@ -1,3 +1,3 @@
-type TypeLibJournalArticleEmphasisBody = string
+type TypeLibJournalArticleEmphasisBody = string | null
 
 export default TypeLibJournalArticleEmphasisBody

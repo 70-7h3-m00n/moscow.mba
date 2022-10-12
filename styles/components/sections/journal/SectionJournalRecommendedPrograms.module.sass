@@ -1,0 +1,84 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/shared/journal' as j
+
+.container
+    margin: f.px(65) 0
+
+.SectionJournalRecommendedPrograms
+    padding: f.px(50)
+    border: f.px(1) solid
+    @include m.dye(borderc, c.$eta)
+    border-radius: f.px(40)
+    @include m.media(phone, tablet)
+        padding: f.px(40) f.px(15)
+
+.title
+    font-size: f.px(24)
+    font-weight: 400
+    line-height: f.px(33.6)
+    margin-bottom: f.px(40)
+    @include m.media(phone, tablet)
+        font-size: f.px(18)
+        line-height: f.px(23.4)
+        margin-bottom: f.px(5)
+
+.isHighlighted
+    @include m.dye(c, c.$alpha)
+
+.isHighlightedTextBottom
+    font-weight: 700
+    @include m.dye(c, c.$alpha)
+
+.program
+    display: grid
+    grid-template-columns: f.px(90) 2fr 1fr
+    grid-column-gap: f.px(25)
+    align-items: center
+    padding: f.px(25) 0
+    border-bottom: f.px(1) solid
+    @include m.dye(borderc, c.$eta)
+    &:nth-last-of-type(1)
+        border: 0
+    @include m.media(phone, tablet)
+        padding: f.px(20) 0
+        grid-template-columns: f.px(90) 1fr
+        grid-template-rows: 1fr f.px(35)
+        grid-column-gap: f.px(15)
+        grid-row-gap: f.px(25)
+        align-items: flex-start
+
+.nameProgram
+    font-size: f.px(18)
+    font-weight: 500
+    line-height: f.px(21.6)
+    @include m.dye(c, c.$chi)
+
+.linkProgram
+    justify-self: self-end
+    @include m.media(phone, tablet)
+        grid-column: 2 / 3
+        justify-self: self-start
+
+.link
+    padding-top: f.px(12)
+    padding-right: f.px(16)
+    padding-bottom: f.px(10)
+    padding-left: f.px(16)
+    font-size: f.px(11)
+    font-weight: 700
+    text-transform: uppercase
+    @include m.dye(c, c.$alpha)
+    border: f.px(2) solid
+    @include m.dye(borderc, c.$alpha)
+    border-radius: f.px(5)
+
+.bottom
+    margin-top: f.px(40)
+
+.textBottom
+    font-size: f.px(15)
+    font-weight: 400
+    line-height: f.px(18)
+    @include m.dye(c, c.$tau)

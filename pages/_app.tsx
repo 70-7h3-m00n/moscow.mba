@@ -13,12 +13,7 @@ import { usePreserveScroll } from '@/hooks/index'
 import { dev, gtmId, routesFront } from '@/config/index'
 import { Header, Main, WrapperPage, Footer } from '@/components/layout'
 // import Script from 'next/script'
-import {
-  MenuState,
-  OverlayState,
-  ContextJournalState,
-  ContextStaticProps
-} from '@/context/index'
+import { MenuState, OverlayState, ContextStaticProps } from '@/context/index'
 import { filledUpFormWithoutSubmission } from '../helpers'
 
 function MyApp({ Component, pageProps, router }) {
@@ -156,15 +151,13 @@ function MyApp({ Component, pageProps, router }) {
         }}>
         <OverlayState>
           <MenuState>
-            <ContextJournalState>
-              <WrapperPage>
-                <Header />
-                <Main>
-                  <Component {...pageProps} />
-                </Main>
-                <Footer />
-              </WrapperPage>
-            </ContextJournalState>
+            <WrapperPage>
+              <Header />
+              <Main>
+                <Component {...pageProps} />
+              </Main>
+              <Footer />
+            </WrapperPage>
           </MenuState>
         </OverlayState>
       </ContextStaticProps.Provider>

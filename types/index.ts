@@ -9,10 +9,6 @@ export type { default as TypeBtnTag } from '@/types/btn/TypeBtnTag'
 export type { default as TypeBtnTagWithLink } from '@/types/btn/TypeBtnTagWithLink'
 export type { default as TypeBtnType } from '@/types/btn/TypeBtnType'
 
-// context/journal
-export type { default as TypeContextJournalContext } from '@/types/context/journal/TypeContextJournalContext'
-export type { default as TypeContextJournalState } from '@/types/context/journal/TypeContextJournalState'
-
 // general
 export type { default as TGeneralRoute } from '@/types/general/TGeneralRoute'
 export type { default as TGeneralWindowDataLayer } from '@/types/general/TGeneralWindowDataLayer'
@@ -45,13 +41,29 @@ export type { default as TypeLibJournalArticlePicture } from '@/types/lib/journa
 export type { default as TypeLibJournalArticleProgram } from '@/types/lib/journal/article/TypeLibJournalArticleProgram'
 export type { default as TypeLibJournalArticleTitle } from '@/types/lib/journal/article/TypeLibJournalArticleTitle'
 export type { default as TypeLibJournalArticleTitleBody } from '@/types/lib/journal/article/TypeLibJournalArticleTitleBody'
-export type { default as TypeLibJournalArticleItem } from '@/types/lib/journal/article/TypeLibJournalArticleItem'
+export type { default as TypeLibJournalArticleConclusion } from '@/types/lib/journal/article/TypeLibJournalArticleConclusion'
 export type { default as TypeLibJournalArticleAuthorName } from '@/types/lib/journal/article/TypeLibJournalArticleAuthorName'
 export type { default as TypeLibJournalArticleAuthorPosition } from '@/types/lib/journal/article/TypeLibJournalArticleAuthorPosition'
 export type { default as TypeLibJournalArticleBody } from '@/types/lib/journal/article/TypeLibJournalArticleBody'
 export type { default as TypeLibJournalArticleEmphasisBody } from '@/types/lib/journal/article/TypeLibJournalArticleEmphasisBody'
 export type { default as TypeLibJournalArticleListItem } from '@/types/lib/journal/article/TypeLibJournalArticleListItem'
+export type { default as TypeLibJournalArticleRecommendedProgram } from '@/types/lib/journal/article/TypeLibJournalArticleRecommendedProgram'
+export type { default as TypeLibJournalArticleRecommendedArticles } from '@/types/lib/journal/article/TypeLibJournalArticleRecommendedArticles'
+export type { default as TypeLibJournalArticleRecommendedImg } from '@/types/lib/journal/article/TypeLibJournalArticleRecommendedImg'
+export type { default as TypeLibJournalArticleRecommendedProgramsSection } from '@/types/lib/journal/article/TypeLibJournalArticleRecommendedProgramsSection'
+export type { default as TypeLibJournalArticleCardAuthor } from '@/types/lib/journal/article/TypeLibJournalArticleCardAuthor'
+export type { default as TypeLibJournalArticleLabel } from '@/types/lib/journal/article/TypeLibJournalArticleLabel'
+export type { default as TypeLibJournalArticleQuote } from '@/types/lib/journal/article/TypeLibJournalArticleQuote'
+export type { default as TypeLibJournalAuthor } from '@/types/lib/journal/article/TypeLibJournalAuthor'
+export type { default as TypeLibJournalAuthors } from '@/types/lib/journal/article/TypeLibJournalAuthors'
+export type { default as TypeLibJournalArticleFormPdfMaterials } from '@/types/lib/journal/article/TypeLibJournalArticleFormPdfMaterials'
+export type { default as TypeLibJournalArticleHtmlTableBody } from '@/types/lib/journal/article/TypeLibJournalArticleHtmlTableBody'
 
+//Lib/journal/renderTime
+export type { default as TypeLessThanLiniar } from '@/types/lib/journal/renderTime/TypeLessThanLiniar'
+export type { default as TypeLessThanNonLiniar } from '@/types/lib/journal/renderTime/TypeLessThanNonLiniar'
+export type { default as TypeLessThan } from '@/types/lib/journal/renderTime/TypeLessThan'
+export type { default as TypeRenederTimeProps } from '@/types/lib/journal/renderTime/TypeRenederTimeProps'
 // Lib/journal
 export type { default as TypeLibJournalArticle } from '@/types/lib/journal/TypeLibJournalArticle'
 export type { default as TypeLibJournalArticles } from '@/types/lib/journal/TypeLibJournalArticles'
@@ -59,6 +71,8 @@ export type { default as TypeLibJournalCategory } from '@/types/lib/journal/Type
 export type { default as TypeLibJournalCategories } from '@/types/lib/journal/TypeLibJournalCategories'
 export type { default as TypeLibJournalTag } from '@/types/lib/journal/TypeLibJournalTag'
 export type { default as TypeLibJournalTags } from '@/types/lib/journal/TypeLibJournalTags'
+export type { default as TypeLibJournalIcon } from '@/types/lib/journal/TypeLibJournalIcon'
+export type { default as TypeLibJournalPdfMaterials } from '@/types/lib/journal/TypeLibJournalPdfMaterials'
 
 // Lib/programs
 export type { default as TypeLibProgram } from '@/types/lib/programs/TypeLibProgram'
@@ -81,18 +95,14 @@ export type { default as TypePageHomePropsQuery } from '@/types/page/home/querie
 // Page/journal/gspContext
 export type { default as TypePageJournalArticlesGspContext } from '@/types/page/journal/gspContext/TypePageJournalArticlesGspContext'
 // Page/journal/paths
-export type { default as TypePageJournalArticlePaths } from '@/types/page/journal/paths/TypePageJournalArticlePaths'
-export type { default as TypePageJournalCategoryPaths } from '@/types/page/journal/paths/TypePageJournalCategoryPaths'
-export type { default as TypePageJournalTagPaths } from '@/types/page/journal/paths/TypePageJournalTagPaths'
+export type { default as TypePageJournalArticlesPaths } from '@/types/page/journal/paths/TypePageJournalArticlesPaths'
 // Page/journal/props
 export type { default as TypePageJournalArticleProps } from '@/types/page/journal/props/TypePageJournalArticleProps'
 export type { default as TypePageJournalArticlesProps } from '@/types/page/journal/props/TypePageJournalArticlesProps'
-// Page/journal/queries
-export type { default as TypePageJournalArticlePathsQuery } from '@/types/page/journal/queries/TypePageJournalArticlePathsQuery'
+
+// page/journal/queries
 export type { default as TypePageJournalArticlePropsQuery } from '@/types/page/journal/queries/TypePageJournalArticlePropsQuery'
 export type { default as TypePageJournalArticlesPropsQuery } from '@/types/page/journal/queries/TypePageJournalArticlesPropsQuery'
-export type { default as TypePageJournalCategoryPathsQuery } from '@/types/page/journal/queries/TypePageJournalCategoryPathsQuery'
-export type { default as TypePageJournalTagPathsQuery } from '@/types/page/journal/queries/TypePageJournalTagPathsQuery'
 
 // Page/program/paths
 export type { default as TypePageProgramPaths } from '@/types/page/program/paths/TypePageProgramPaths'

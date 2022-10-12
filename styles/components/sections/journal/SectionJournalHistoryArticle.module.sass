@@ -1,0 +1,27 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/shared/journal' as j
+
+.container
+    overflow-x: auto
+.row
+    display: flex
+    align-items: center
+    width: f.px(620)
+
+.title
+    font-size: f.px(14)
+    @include m.dye(c, c.$tau)
+    margin-right: f.px(20)
+
+.slug
+    font-size: f.px(14)
+    @include m.dye(c, c.$kappa)
+    &:before
+        content: '▪'
+        @include m.dye(c, c.$alpha)
+        margin-right: f.px(20)
+
+.historyArticle
+    padding: 200px 0

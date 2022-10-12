@@ -1,3 +1,3 @@
-type TypeLibJournalArticleAuthorPosition = string
+type TypeLibJournalArticleAuthorPosition = string | null
 
 export default TypeLibJournalArticleAuthorPosition

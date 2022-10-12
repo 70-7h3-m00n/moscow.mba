@@ -8,7 +8,7 @@ const onSubmitForm = async ({
   asPath,
   setOpen,
   formName,
-  reset
+  reset,
 }) => {
   setOpenLoader(o => !o)
   values.programTitle = programTitle || ''

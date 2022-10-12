@@ -4,7 +4,6 @@ import {
   TypePageHomeProps,
   TypeRoutesFront,
   TypePageJournalArticlesProps,
-  TypePageJournalArticleProps,
   TypePageProgramProps,
   TypePageProgramsProps,
   TypePagePromoProps,
@@ -42,7 +41,6 @@ const handleGetStaticProps = async ({
     | TypePageDefaultProps
     | TypePageHomeProps
     | TypePageJournalArticlesProps
-    | TypePageJournalArticleProps
     | TypePageProgramProps
     | TypePageProgramsProps
     | TypePagePromoProps
@@ -56,7 +54,7 @@ const handleGetStaticProps = async ({
       case routesFront.journal:
         return await getStaticPropsPageJournalArticles({ context })
 
-      case routesFront.journalCategoryTagArticle:
+      case routesFront.journalArticles:
         return await getStaticPropsPageJournalArticle({ context })
 
       case routesFront.programs:
@@ -102,8 +100,7 @@ const handleGetStaticProps = async ({
         return await getStaticPropsDefault({ context })
     }
   } catch (err) {
-    console.log(err)
-    throw new Error(`Error at handleGetStaticProps: ${err}`)
+    console.error(err)
     return {
       props: {
         programs: []

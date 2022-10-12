@@ -10,40 +10,57 @@ import {
   TypeLibJournalArticleAuthorPosition,
   TypeLibJournalArticleBody,
   TypeLibJournalArticleListItem,
-  TypeLibJournalArticleProgram,
-  TypeLibJournalArticleItem
+  TypeLibJournalArticleRecommendedProgram,
+  TypeLibJournalArticleConclusion,
+  TypeLibJournalArticleRecommendedArticles,
+  TypeLibJournalArticleRecommendedProgramsSection,
+  TypeLibJournalArticleLabel,
+  TypeLibJournalAuthors,
+  TypeLibJournalArticleFormPdfMaterials,
+  TypeLibJournalPdfMaterials,
+  TypeLibJournalArticleHtmlTableBody,
 } from '@/types/index'
 
 type TypeLibJournalArticle = {
   title: string | null
   slug: string | null
-  journal_category: {
+  journalCategory: {
     title: string | null
     slug: string | null
   }
-  journal_tag: {
-    title: string | null
-    slug: string | null
-  }
+  journalAuthors?: TypeLibJournalAuthors | null
+  pdfMaterials?: TypeLibJournalPdfMaterials | null
   picture: TypeLibPicture | null
   shortDescription: string | null
   createdAt: string | null
   articleBody?:
-    | {
-        __typename: TypeLibTypename
-        paragraphBody?: TypeLibJournalArticleParagraphBody | null
-        titleBody?: TypeLibJournalArticleTitleBody | null
-        picture?: TypeLibJournalArticlePicture | null
-        title?: TypeLibJournalArticleTitle | null
-        emphasisBody?: TypeLibJournalArticleEmphasisBody | null
-        athorPosition?: TypeLibJournalArticleAuthorPosition | null
-        authorName?: TypeLibJournalArticleAuthorName | null
-        body?: TypeLibJournalArticleBody | null
-        listItem?: TypeLibJournalArticleListItem | null
-        program?: TypeLibJournalArticleProgram | null
-        item?: TypeLibJournalArticleItem | null
-      }[]
-    | null
+  | {
+    __typename: TypeLibTypename
+    paragraphBodyParts?: TypeLibJournalArticleParagraphBody | null
+    titleBodyParts?: TypeLibJournalArticleTitleBody | null
+    picture?: TypeLibJournalArticlePicture | null
+    title?: TypeLibJournalArticleTitle | null
+    emphasisBody?: TypeLibJournalArticleEmphasisBody | null
+    athorPosition?: TypeLibJournalArticleAuthorPosition | null
+    authorName?: TypeLibJournalArticleAuthorName | null
+    body?: TypeLibJournalArticleBody | null
+    list?: TypeLibJournalArticleListItem | null
+    recommendedProgram?: TypeLibJournalArticleRecommendedProgram | null
+    conclusion?: TypeLibJournalArticleConclusion | null
+    journalRecommendedArticles?: TypeLibJournalArticleRecommendedArticles | null
+    recommendedProgramsSection?: TypeLibJournalArticleRecommendedProgramsSection | null
+    formPdfMaterials?: TypeLibJournalArticleFormPdfMaterials | null
+    htmlTableBody?: TypeLibJournalArticleHtmlTableBody | null
+
+    quote?: {
+      body: TypeLibJournalArticleEmphasisBody | null
+      label: TypeLibJournalArticleLabel | null
+      authorPosition: TypeLibJournalArticleAuthorPosition | null
+      authorName: TypeLibJournalArticleAuthorName | null
+      portrait: TypeLibPicture | null
+    }
+  }[]
+  | null
 }
 
 export default TypeLibJournalArticle

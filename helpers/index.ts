@@ -6,6 +6,7 @@ export { default as filledUpFormWithoutSubmission } from '@/helpers/dataLayer/fi
 export { default as openedMainForm } from '@/helpers/dataLayer/openedMainForm'
 
 // ./general
+export { default as checkIfResourceExists } from '@/helpers/general/checkIfResourceExists'
 export { default as createBlended } from '@/helpers/general/createBlended'
 export { default as createLeadBackApi } from '@/helpers/general/createLeadBackApi'
 export { default as createProgramModules } from '@/helpers/general/createProgramModules'
@@ -15,9 +16,13 @@ export { default as getClassNames } from '@/helpers/general/getClassNames'
 export { default as getImageHeight } from '@/helpers/general/getImageHeight'
 export { default as handlePlaceholder } from '@/helpers/general/handlePlaceholder'
 export { default as hitContactRoute } from '@/helpers/general/hitContactRoute'
+export { default as hitMaterialsRoute } from '@/helpers/general/hitMaterialsRoute'
 export { default as getBackJWTToken } from '@/helpers/general/getBackJWTToken'
 export { default as onSubmitForm } from '@/helpers/general/onSubmitForm'
+export { default as onSubmitFormArticle } from '@/helpers/general/onSubmitFormArticle'
 export { default as toNumberWithSpaces } from '@/helpers/general/toNumberWithSpaces'
+export { default as getRenderTime } from '@/helpers/general/getRenderTime'
+export { default as handleSubmitFormArticle } from '@/helpers/general/handleSubmitFormArticle'
 
 // ./ruCases
 export { default as ruCaseMonth } from '@/helpers/ruCases/ruCaseMonth'

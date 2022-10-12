@@ -1,0 +1,38 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/utils/mixin/media' as bp
+
+.container
+    @include m.media(laptop, desktop, widescreen)
+        margin-top: f.px(43)
+    @include m.media(phoen, tablet)
+        margin-top: f.px(31)
+
+.inputs
+    @include m.dye(c, c.$psi)
+    @include m.media(desktop, widescreen)
+        display: flex
+        justify-content: space-between
+        margin-bottom: f.px(29)
+
+.submit
+    @include m.media(desktop, widescreen)
+        display: flex
+        justify-content: center
+        width: 100%
+        margin-top: f.px(29)
+    @include m.media(tablet, laptop)
+        width: calc(50% - 30px)
+        margin-left: f.px(15)
+        height: f.px(92)
+        margin-right: f.px(15)
+        margin-bottom: f.px(25)
+        display: flex
+    @media (max-width: 767px)
+        width: 100%
+        margin-left: f.px(15)
+        margin-right: f.px(15)
+
+.submitButtonDisabled
+    cursor: no-drop

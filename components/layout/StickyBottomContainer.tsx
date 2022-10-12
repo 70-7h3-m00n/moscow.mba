@@ -6,6 +6,7 @@ import { AskQuestion } from '@/components/general'
 import { AskQuestionForm } from '@/components/forms'
 import { routesFront } from '@/config/index'
 import { clickedAskQuestion } from '@/helpers/index'
+import { useAt } from '@/hooks/index'
 
 const StickyBottomContainer = () => {
   const [clickedAsk, setClickedAsk] = useState(false)
@@ -13,7 +14,8 @@ const StickyBottomContainer = () => {
   const [stickyHasBeenClosed, setStickyHasBeenClosed] = useState(false)
 
   const router = useRouter()
-
+  const at = useAt()
+  
   const containerClasses = [
     stls.container,
     isStickyBottomShown && !stickyHasBeenClosed
@@ -28,7 +30,7 @@ const StickyBottomContainer = () => {
   }
 
   const handleAskQuestionFormClose = () => setClickedAsk(false)
-
+  if (at.journal) return null
   return (
     <noindex>
       <div className={containerClasses.join(' ')}>
