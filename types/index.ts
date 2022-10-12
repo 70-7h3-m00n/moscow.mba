@@ -82,7 +82,6 @@ export type { default as TypeLibPrograms } from '@/types/lib/programs/TypeLibPro
 export type { default as TypeLibTeacher } from '@/types/lib/teachers/TypeLibTeacher'
 export type { default as TypeLibTeachers } from '@/types/lib/teachers/TypeLibTeachers'
 
-
 // Page/default/props
 export type { default as TypePageDefaultProps } from '@/types/page/default/props/TypePageDefaultProps'
 // Page/default/queries
@@ -100,6 +99,10 @@ export type { default as TypePageJournalArticlesPaths } from '@/types/page/journ
 // Page/journal/props
 export type { default as TypePageJournalArticleProps } from '@/types/page/journal/props/TypePageJournalArticleProps'
 export type { default as TypePageJournalArticlesProps } from '@/types/page/journal/props/TypePageJournalArticlesProps'
+
+// page/journal/queries
+export type { default as TypePageJournalArticlePropsQuery } from '@/types/page/journal/queries/TypePageJournalArticlePropsQuery'
+export type { default as TypePageJournalArticlesPropsQuery } from '@/types/page/journal/queries/TypePageJournalArticlesPropsQuery'
 
 // Page/program/paths
 export type { default as TypePageProgramPaths } from '@/types/page/program/paths/TypePageProgramPaths'
