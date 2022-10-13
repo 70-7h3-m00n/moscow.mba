@@ -61,6 +61,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
   const [scollHeight, setScrollHeight] = useState(0)
   const [clientHeight, setClientHeight] = useState(0)
 
+  // ! bug with too many rerenders on scroll, has to be fixed
   const handleScroll = () => {
     setPageYOffset(window.pageYOffset)
     setScrollHeight(document.body.scrollHeight)
