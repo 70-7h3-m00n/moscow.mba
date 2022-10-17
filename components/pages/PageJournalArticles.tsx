@@ -8,7 +8,7 @@ import {
   SectionJournalHeroArticle
 } from '@/components/sections'
 
-const defaultSizeArticlesShowSectionArticles = 2
+const defaultSizeArticlesShowSectionArticles = 8
 
 const PageJournalArticles = () => {
   const { categories, articles } = useContext(ContextStaticPropsJournal)
