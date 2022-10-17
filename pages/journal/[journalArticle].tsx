@@ -1,23 +1,21 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import stls from '@/styles/pages/PageJournalArticles.module.sass'
+import { TypeLibJournalArticle } from '@/types/index'
 import type { NextPage } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { Fragment, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { NextSeo } from 'next-seo'
 import cn from 'classnames'
-
+import truncate from 'truncate'
 import {
   useScroll,
   useWindowWidth,
   useCheckIfResourseExists
 } from '@/hooks/index'
-
-import { checkIfResourceExists } from '@/helpers/index'
-
-import { routesFront } from '@/config/index'
-
+import { routesFront, companyName } from '@/config/index'
 import { handleGetStaticProps, handleGetStaticPaths } from '@/lib/index'
-
-import { TypeLibJournalArticle } from '@/types/index'
-
+import { checkIfResourceExists } from '@/helpers/index'
+import { useAt } from '@/hooks/index'
 import { Wrapper } from '@/components/layout'
 import {
   SectionJournalHistoryArticle,
@@ -39,15 +37,13 @@ import {
   SectionJournalForm,
   SectionJournalTable
 } from '@/components/sections'
-
 import {
   PopupCoursesOnTopic,
   PopupDownloadMaterials,
   PopupPreviewCoursesOnTopic,
   PopupGetMaterials
 } from '@/components/popups'
-
-import stls from '@/styles/pages/PageJournalArticles.module.sass'
+import { SeoOrganizationJsonLd } from '@/components/seo'
 
 type TypeJournalArticleProps = {
   journalArticle: TypeLibJournalArticle
@@ -145,8 +141,40 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
     getIsUrls()
   }, [])
 
+  const at = useAt()
+
+  const seoParams = {
+    title: `${journalArticle?.title || 'Статья'} • MBA - ${companyName}`,
+    desc: truncate(`${journalArticle?.shortDescription}`, 120),
+    canonical: `${routesFront.root}${routesFront.journal}/${journalArticle.slug}`
+  }
+
   return (
     <>
+      <NextSeo
+        title={seoParams.title}
+        description={seoParams.desc}
+        canonical={seoParams.canonical}
+        openGraph={{
+          url: seoParams.canonical,
+          title: seoParams.title,
+          description: seoParams.desc,
+          images: [
+            {
+              url: `${routesFront.root}${routesFront.assetsImgsIconsManifestIcon512}`,
+              width: 512,
+              height: 512,
+              alt: companyName,
+              type: 'image/png'
+            }
+          ],
+          site_name: companyName
+        }}
+        // todo: add dynamic nofollow & noindex from the api.
+        nofollow
+        noindex
+      />
+      <SeoOrganizationJsonLd />
       <SectionJournalHistoryArticle
         classNames={[stls.historyArticle]}
         journalArticle={journalArticle}

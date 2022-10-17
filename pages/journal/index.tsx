@@ -1,38 +1,71 @@
 import type { NextPage } from 'next'
 import { GetStaticProps } from 'next'
-import { useState } from 'react'
-
 import { TypePageJournalArticlesProps } from '@/types/index'
-
-import { ContextStaticPropsJournal } from '@/context/index'
-
-import { routesFront } from '@/config/index'
-
+import { useState } from 'react'
+import { NextSeo } from 'next-seo'
+import truncate from 'truncate'
+import { routesFront, companyName } from '@/config/index'
 import { handleGetStaticProps } from '@/lib/index'
-
-import { usePageHandleContext } from '@/hooks/index'
-
+import { useAt, usePageHandleContext } from '@/hooks/index'
+import { ContextStaticPropsJournal } from '@/context/index'
 import { PageJournalArticles } from '@/components/pages'
+import { SeoOrganizationJsonLd } from '@/components/seo'
 
 const PageJournal: NextPage<TypePageJournalArticlesProps> = ({
   programs,
   journalCategories,
-  journalArticles,
+  journalArticles
 }) => {
   usePageHandleContext({
     programs
   })
   const [categories, setCategories] = useState(journalCategories || null)
   const [articles, setArticles] = useState(journalArticles || null)
+
+  const at = useAt()
+
+  const seoParams = {
+    title: `Журнал • MBA - ${companyName}`,
+    desc: truncate(`Журнал MBA`, 120),
+    canonical: `${routesFront.root}${routesFront.journal}`
+  }
+
   return (
-    <ContextStaticPropsJournal.Provider value={{
-      categories,
-      setCategories,
-      articles,
-      setArticles
-    }}>
-      <PageJournalArticles />
-    </ContextStaticPropsJournal.Provider>
+    <>
+      <NextSeo
+        title={seoParams.title}
+        description={seoParams.desc}
+        canonical={seoParams.canonical}
+        openGraph={{
+          url: seoParams.canonical,
+          title: seoParams.title,
+          description: seoParams.desc,
+          images: [
+            {
+              url: `${routesFront.root}${routesFront.assetsImgsIconsManifestIcon512}`,
+              width: 512,
+              height: 512,
+              alt: companyName,
+              type: 'image/png'
+            }
+          ],
+          site_name: companyName
+        }}
+        // todo: add dynamic nofollow & noindex from the api.
+        nofollow
+        noindex
+      />
+      <SeoOrganizationJsonLd />
+      <ContextStaticPropsJournal.Provider
+        value={{
+          categories,
+          setCategories,
+          articles,
+          setArticles
+        }}>
+        <PageJournalArticles />
+      </ContextStaticPropsJournal.Provider>
+    </>
   )
 }
 
