@@ -26,8 +26,8 @@ type TypeSectionJournalAllArticlesProps = {
   sizeArticles: number
 } & TypeClassNames
 
-const defaultSizeShowArticles = 2
-const defaultSizeShowMore = 1
+const defaultSizeShowArticles = 8
+const defaultSizeShowMore = 4
 
 const SectionJournalAllArticles = ({
   classNames,
