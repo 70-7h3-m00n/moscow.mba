@@ -1,4 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { NextApiRequest, NextApiResponse } from 'next'
 
 import nodemailer from 'nodemailer'
 import { dev } from '@/config/index'
@@ -9,7 +10,7 @@ import moment from 'moment'
 import { WebServiceClient } from '@maxmind/geoip2-node'
 import { createLeadBackApi } from '@/helpers/index'
 
-const contact = async (req, res) => {
+const contact = async (req: NextApiRequest, res: NextApiResponse) => {
   process.env.TZ = 'Europe/Moscow'
   // data from the client
   let {
@@ -138,7 +139,8 @@ const contact = async (req, res) => {
     utmMedium: (utms && utms.utm_medium) || null,
     utmCampaign: (utms && utms.utm_campaign) || null,
     utmContent: (utms && utms.utm_content) || null,
-    utmTerm: (utms && utms.utm_term) || null
+    utmTerm: (utms && utms.utm_term) || null,
+    fallback: req?.body || null
   }
 
   // const createLeadBackApiRes = await createLeadBackApi({ data })
@@ -321,6 +323,10 @@ const contact = async (req, res) => {
       {
         tdKey: 'Подсказка для менеджера',
         tdVal: data.formName || ''
+      },
+      {
+        tdKey: 'Резервная строка',
+        tdVal: data
       }
     ]
 
@@ -416,12 +422,13 @@ const contact = async (req, res) => {
   })
 
   try {
-    const emailRes = await transporter.sendMail({
+    await transporter.sendMail({
       from: 'lead@moscow.mba',
       to: `${
         dev
           ? 'nova@ipo.msk.ru, novailoveyou3@gmail.com'
-          : 'mba.academy@yandex.ru, leads@moscow.mba'
+          : // 'baurinanton2013@yandex.ru'
+            'mba.academy@yandex.ru, leads@moscow.mba'
       }`,
       subject, // Subject line
       text: `

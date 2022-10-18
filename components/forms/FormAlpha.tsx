@@ -91,19 +91,19 @@ const FormAlpha = ({
         <InputEmail register={register} errors={errors} width={width} />
         <InputSubmit errors={errors} alpha={alpha} width={width} />
       </div>
-      { policyPrivacy && (
-          <div
-            className={cn({
-              'personal-data': globalStyle
-            })}>
-            {/* TODO: should be a link here to privacy policy */}
-            {at.en
-              ? 'By pressing submit button, you agree to'
-              : 'Нажимая на кнопку, Вы даете согласие на обработку своих'}{' '}
-            <span>{at.en ? 'Privacy Policy' : 'персональных данных'}</span>
-          </div>
-        )}
-    </form >
+      {policyPrivacy && (
+        <div
+          className={cn({
+            'personal-data': globalStyle
+          })}>
+          {/* TODO: should be a link here to privacy policy */}
+          {at.en
+            ? 'By pressing submit button, you agree to'
+            : 'Нажимая на кнопку, Вы даете согласие на обработку своих'}{' '}
+          <span>{at.en ? 'Privacy Policy' : 'персональных данных'}</span>
+        </div>
+      )}
+    </form>
   )
 }
 

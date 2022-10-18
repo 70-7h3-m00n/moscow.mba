@@ -7,7 +7,7 @@ const hitContactRoute = async data => {
       method: 'post',
       body: JSON.stringify(data)
     })
-    
+
     if (!res.ok) throw res
 
     return res.status
