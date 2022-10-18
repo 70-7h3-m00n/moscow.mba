@@ -1,5 +1,4 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { NextApiRequest, NextApiResponse } from 'next'
 
 import nodemailer from 'nodemailer'
 import { dev } from '@/config/index'
@@ -10,7 +9,7 @@ import moment from 'moment'
 import { WebServiceClient } from '@maxmind/geoip2-node'
 import { createLeadBackApi } from '@/helpers/index'
 
-const contact = async (req: NextApiRequest, res: NextApiResponse) => {
+const contact = async (req, res) => {
   process.env.TZ = 'Europe/Moscow'
   // data from the client
   let {
@@ -150,8 +149,9 @@ const contact = async (req: NextApiRequest, res: NextApiResponse) => {
   const createEmailBody = () => {
     const createTr = (item, idx) => {
       const output = /* html */ `
-        <tr id='tr-item-${idx}' class="${idx % 2 === 0 && 'bgOnEven'} ${item.tdKey === 'Телефон' && 'active-row'
-        } ${!(idx + 1) && 'bgBorderHighlight'}">
+        <tr id='tr-item-${idx}' class="${idx % 2 === 0 && 'bgOnEven'} ${
+        item.tdKey === 'Телефон' && 'active-row'
+      } ${!(idx + 1) && 'bgBorderHighlight'}">
           <td class="counterCell">${idx + 1}</td>
           <td>${item.tdKey}</td>
           <td>${item.tdVal}</td>
@@ -415,14 +415,13 @@ const contact = async (req: NextApiRequest, res: NextApiResponse) => {
   })
 
   try {
-    await transporter.sendMail({
+    const emailRes = await transporter.sendMail({
       from: 'lead@moscow.mba',
-      to: `${dev
-          // TODO Поставь обратно почту!
-          // ? 'nova@ipo.msk.ru, novailoveyou3@gmail.com'
-          ? 'baurinanton2013@yandex.ru'
+      to: `${
+        dev
+          ? 'nova@ipo.msk.ru, novailoveyou3@gmail.com'
           : 'mba.academy@yandex.ru, leads@moscow.mba'
-        }`,
+      }`,
       subject, // Subject line
       text: `
       ${name}, \n
