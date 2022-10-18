@@ -5,18 +5,18 @@ import cn from 'classnames'
 import { useForm } from 'react-hook-form'
 import { useAt } from '@/hooks/index'
 import {
+  onSubmitForm,
   getClassNames,
   openedMainForm,
-  filledUpFormWithoutSubmission,
-  onSubmitForm
+  filledUpFormWithoutSubmission
 } from '@/helpers/index'
-
 import {
   InputEmail,
   InputName,
   InputPhone,
   InputSubmit
 } from '@/components/inputs'
+import routesFront from '@/config/routesFront'
 
 type TypeFormValues = {
   name: string

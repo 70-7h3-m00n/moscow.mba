@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { routesFront } from '@/config/index'
 
+// ! do not change this ever
 const hitContactRoute = async values => {
   try {
     const res = await axios.post(`${routesFront.root}/api/contact`, values)
