@@ -4,6 +4,7 @@ import {
   TypeLibJournalArticleParagraphBody,
   TypeLibJournalArticleTitleBody,
   TypeLibJournalArticlePicture,
+  TypeLibJournalRecommendedPrograms,
   TypeLibJournalArticleTitle,
   TypeLibJournalArticleEmphasisBody,
   TypeLibJournalArticleAuthorName,
@@ -18,7 +19,7 @@ import {
   TypeLibJournalAuthors,
   TypeLibJournalArticleFormPdfMaterials,
   TypeLibJournalPdfMaterials,
-  TypeLibJournalArticleHtmlTableBody,
+  TypeLibJournalArticleHtmlTableBody
 } from '@/types/index'
 
 type TypeLibJournalArticle = {
@@ -33,34 +34,35 @@ type TypeLibJournalArticle = {
   picture: TypeLibPicture | null
   shortDescription: string | null
   createdAt: string | null
+  recommendedPrograms?: TypeLibJournalRecommendedPrograms
   articleBody?:
-  | {
-    __typename: TypeLibTypename
-    paragraphBodyParts?: TypeLibJournalArticleParagraphBody | null
-    titleBodyParts?: TypeLibJournalArticleTitleBody | null
-    picture?: TypeLibJournalArticlePicture | null
-    title?: TypeLibJournalArticleTitle | null
-    emphasisBody?: TypeLibJournalArticleEmphasisBody | null
-    athorPosition?: TypeLibJournalArticleAuthorPosition | null
-    authorName?: TypeLibJournalArticleAuthorName | null
-    body?: TypeLibJournalArticleBody | null
-    list?: TypeLibJournalArticleListItem | null
-    recommendedProgram?: TypeLibJournalArticleRecommendedProgram | null
-    conclusion?: TypeLibJournalArticleConclusion | null
-    journalRecommendedArticles?: TypeLibJournalArticleRecommendedArticles | null
-    recommendedProgramsSection?: TypeLibJournalArticleRecommendedProgramsSection | null
-    formPdfMaterials?: TypeLibJournalArticleFormPdfMaterials | null
-    htmlTableBody?: TypeLibJournalArticleHtmlTableBody | null
+    | {
+        __typename: TypeLibTypename
+        paragraphBodyParts?: TypeLibJournalArticleParagraphBody | null
+        titleBodyParts?: TypeLibJournalArticleTitleBody | null
+        picture?: TypeLibJournalArticlePicture | null
+        title?: TypeLibJournalArticleTitle | null
+        emphasisBody?: TypeLibJournalArticleEmphasisBody | null
+        athorPosition?: TypeLibJournalArticleAuthorPosition | null
+        authorName?: TypeLibJournalArticleAuthorName | null
+        body?: TypeLibJournalArticleBody | null
+        list?: TypeLibJournalArticleListItem | null
+        recommendedProgram?: TypeLibJournalArticleRecommendedProgram | null
+        conclusion?: TypeLibJournalArticleConclusion | null
+        journalRecommendedArticles?: TypeLibJournalArticleRecommendedArticles | null
+        recommendedProgramsSection?: TypeLibJournalArticleRecommendedProgramsSection | null
+        formPdfMaterials?: TypeLibJournalArticleFormPdfMaterials | null
+        htmlTableBody?: TypeLibJournalArticleHtmlTableBody | null
 
-    quote?: {
-      body: TypeLibJournalArticleEmphasisBody | null
-      label: TypeLibJournalArticleLabel | null
-      authorPosition: TypeLibJournalArticleAuthorPosition | null
-      authorName: TypeLibJournalArticleAuthorName | null
-      portrait: TypeLibPicture | null
-    }
-  }[]
-  | null
+        quote?: {
+          body: TypeLibJournalArticleEmphasisBody | null
+          label: TypeLibJournalArticleLabel | null
+          authorPosition: TypeLibJournalArticleAuthorPosition | null
+          authorName: TypeLibJournalArticleAuthorName | null
+          portrait: TypeLibPicture | null
+        }
+      }[]
+    | null
 }
 
 export default TypeLibJournalArticle

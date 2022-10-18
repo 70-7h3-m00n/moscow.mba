@@ -52,6 +52,7 @@ type TypeJournalArticleProps = {
 const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
   journalArticle
 }) => {
+  console.log(journalArticle)
   // ScrollBar
   const [pageYOffset, setPageYOffset] = useState(0)
   const [scollHeight, setScrollHeight] = useState(0)
@@ -295,13 +296,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
               <PopupCoursesOnTopic
                 classNames={[stls.popupCoursesOnTopic]}
                 handlePopupCoursesOnTopic={handlePopupCoursesOnTopicPhone}
-                recommendedProgramsSection={
-                  journalArticle?.articleBody?.find(
-                    item =>
-                      item.__typename ===
-                      'ComponentJournalJournalArticleRecommendedProgramsSection'
-                  )?.recommendedProgramsSection
-                }
+                recommendedPrograms={journalArticle?.recommendedPrograms}
               />,
               document.querySelector('#__next')
             )
@@ -309,13 +304,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
             <PopupCoursesOnTopic
               classNames={[stls.popupCoursesOnTopic]}
               handlePopupCoursesOnTopic={handlePopupCoursesOnTopicDesktop}
-              recommendedProgramsSection={
-                journalArticle?.articleBody?.find(
-                  item =>
-                    item.__typename ===
-                    'ComponentJournalJournalArticleRecommendedProgramsSection'
-                )?.recommendedProgramsSection
-              }
+              recommendedPrograms={journalArticle?.recommendedPrograms}
             />
           ) : (
             ''

@@ -6,10 +6,7 @@ import {
   TypeLibJournalArticleTitle
 } from '@/types/index'
 
-import {
-  getClassNames,
-  getImageHeight
-} from '@/helpers/index'
+import { getClassNames, getImageHeight } from '@/helpers/index'
 
 import { ImgTemplate } from '@/components/images'
 
@@ -28,13 +25,16 @@ const SectionJournalPicture = ({
   if (!picture) return null
 
   return (
-    <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+    <div
+      className={
+        cn(stls.container, getClassNames({ classNames })) || undefined
+      }>
       <figure>
         <ImgTemplate
           src={picture.url}
-          width={850}
+          width={picture.width > 850 ? 850 : picture.width}
           height={getImageHeight({
-            width: 850,
+            width: picture.width > 850 ? 850 : picture.width,
             widthInitial: picture.width,
             heightInitial: picture.height
           })}

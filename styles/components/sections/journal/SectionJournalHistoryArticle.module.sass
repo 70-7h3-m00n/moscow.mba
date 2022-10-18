@@ -4,24 +4,28 @@
 @use '@/styles/shared/journal' as j
 
 .container
-    overflow-x: auto
+	overflow-x: auto
+
 .row
-    display: flex
-    align-items: center
-    width: f.px(620)
+	display: flex
+	align-items: center
+	width: f.px(620)
 
 .title
-    font-size: f.px(14)
-    @include m.dye(c, c.$tau)
-    margin-right: f.px(20)
+	font-size: f.px(14)
+	@include m.dye(c, c.$tau)
+	margin-right: f.px(20)
 
 .slug
-    font-size: f.px(14)
-    @include m.dye(c, c.$kappa)
-    &:before
-        content: '▪'
-        @include m.dye(c, c.$alpha)
-        margin-right: f.px(20)
+	display: flex
+	align-items: center
+	justify-content: center
+	font-size: f.px(14)
+	@include m.dye(c, c.$kappa)
+	&:before
+		content: '▪'
+		margin-right: f.px(20)
+		@include m.dye(c, c.$alpha)
 
 .historyArticle
-    padding: 200px 0
+	padding: 200px 0

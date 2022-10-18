@@ -26,8 +26,7 @@
   @include m.media(laptop, desktop, widescreen)
     margin-bottom: f.px(35)
   &:nth-last-of-type(1)
-    margin-bottom: f.px(0)
-    
+    margin-bottom: f.px(0)  
 
 .idx
   display: flex
@@ -58,10 +57,11 @@
   line-height: 140%
   @include m.dye(c, c.$chi)
 
-.p
-  margin-top: f.px(25)
-  margin-bottom: 0
-  font-size: f.px(18)
-  font-weight: normal
-  line-height: 140%
-  @include m.dye(c, c.$chi)
+.subtitleBody
+  & p
+    margin-top: f.px(25)
+    margin-bottom: 0
+    font-size: f.px(18)
+    font-weight: normal
+    line-height: 140%
+    @include m.dye(c, c.$chi)
