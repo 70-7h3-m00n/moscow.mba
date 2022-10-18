@@ -98,7 +98,8 @@ const contact = async (req, res) => {
     }
   }
 
-  const locationData = await getUserLocation()
+  // const locationData = await getUserLocation()
+  const locationData = null
 
   const data = {
     id: uuidv4() || null,
