@@ -14,6 +14,11 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
 
   const programTitle = program?.title || (at.en ? 'Program' : 'Программа')
 
+  const cannonialFallback =
+    program.category?.slug && program?.studyFormat && program?.slug
+      ? `${routesFront.root}${routesFront.programs}/${program.category?.slug}/${program?.studyFormat}/${program?.slug}`
+      : `${routesFront.root}${routesFront.programs}`
+
   const seoParams = {
     title: `${programTitle} • MBA - ${companyName}`,
     programTitle: programTitle,
@@ -24,9 +29,7 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
       : at.en
       ? 'Concur relevant business education from international experts'
       : 'Получите современное бизнес образование от международных экспертов',
-    canonical:
-      canonical ||
-      `${routesFront.root}${routesFront.programs}/${program.category.slug}/${program.studyFormat}/${program.slug}`
+    canonical: canonical || cannonialFallback
   }
 
   return (
