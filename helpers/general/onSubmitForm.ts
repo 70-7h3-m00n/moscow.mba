@@ -25,7 +25,6 @@ const onSubmitForm = async ({
   const ymUid = JSON.parse(localStorage.getItem('_ym_uid'))
   values.ymUid = ymUid
   values.formName = formName
-
   const req = await hitContactRoute(values)
   if (req === 200) {
     setOpenLoader(false)
