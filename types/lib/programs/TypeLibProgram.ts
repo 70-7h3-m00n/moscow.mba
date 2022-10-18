@@ -4,6 +4,10 @@ type TypeLibProgram = {
   _id: string | null
   id: string | null
   title: string | null
+  metaTitle: string | null
+  metaDescription: string | null
+  noindex: boolean | null
+  nofollow: boolean | null
   slug: string | null
   studyFormat: string | null
   category: {
@@ -71,7 +75,7 @@ type TypeLibProgram = {
       }[]
     | null
   teachers?: TypeLibTeachers | null
-  // TODO 
+  // TODO
 }
 
 export default TypeLibProgram

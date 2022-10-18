@@ -25,6 +25,10 @@ import {
 type TypeLibJournalArticle = {
   title: string | null
   slug: string | null
+  metaTitle: string | null
+  metaDescription: string | null
+  noindex: boolean | null
+  nofollow: boolean | null
   journalCategory: {
     title: string | null
     slug: string | null

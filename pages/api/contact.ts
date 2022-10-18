@@ -9,6 +9,9 @@ import moment from 'moment'
 import { WebServiceClient } from '@maxmind/geoip2-node'
 import { createLeadBackApi } from '@/helpers/index'
 
+// ! pay close attention working with this file
+// * 2022.10.18 we've expirienced a week of lost leads, this is critical and should never accure ever again
+// TODO: write down TEST to make sure with each deployment that leads are being delivered properly
 const contact = async (req, res) => {
   process.env.TZ = 'Europe/Moscow'
   // data from the client

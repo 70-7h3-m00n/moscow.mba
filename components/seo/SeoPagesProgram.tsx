@@ -20,15 +20,17 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
       : `${routesFront.root}${routesFront.programs}`
 
   const seoParams = {
-    title: `${programTitle} • MBA - ${companyName}`,
+    title: program?.metaTitle || `${programTitle} • MBA - ${companyName}`,
     programTitle: programTitle,
-    desc: program?.goal
-      ? truncate(program?.goal, 120)
-      : program?.description
-      ? truncate(program?.description, 120)
-      : at.en
-      ? 'Concur relevant business education from international experts'
-      : 'Получите современное бизнес образование от международных экспертов',
+    desc:
+      program?.metaDescription ||
+      (program?.goal
+        ? truncate(program?.goal, 120)
+        : program?.description
+        ? truncate(program?.description, 120)
+        : at.en
+        ? 'Concur relevant business education from international experts'
+        : 'Получите современное бизнес образование от международных экспертов'),
     canonical: canonical || cannonialFallback
   }
 
@@ -53,6 +55,8 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
           ],
           site_name: companyName
         }}
+        noindex={program?.noindex || false}
+        nofollow={program?.nofollow || false}
       />
       <CourseJsonLd
         courseName={seoParams.programTitle}

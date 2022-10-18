@@ -1,15 +1,12 @@
-import {
-  hitContactRoute,
-  hitMaterialsRoute
-} from '@/helpers/index'
+import { hitContactRoute, hitMaterialsRoute } from '@/helpers/index'
 
 import { TypeLibJournalPdfMaterials } from '@/types/index'
 
 type TypePropsSubmitFormArticle = {
   values: {
-      name: string
-      phone: string
-      email: string
+    name: string
+    phone: string
+    email: string
   }
   formName: string | null
   asPath: string
@@ -30,8 +27,7 @@ const onSubmitFormArticle = async ({
   reset,
   pdfMaterials
 }: TypePropsSubmitFormArticle) => {
-
-  const normalizeDataForManagers = (values) => {
+  const normalizeDataForManagers = values => {
     values.leadPage = asPath
     const utms = JSON.parse(sessionStorage.getItem('utms'))
 
@@ -51,7 +47,7 @@ const onSubmitFormArticle = async ({
     return values
   }
   // TODO Если надо какая-то нормализация, то сделаем
-  const normalizeDataForClient = (pdfMaterials) => {
+  const normalizeDataForClient = pdfMaterials => {
     return pdfMaterials
   }
 

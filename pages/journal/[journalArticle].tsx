@@ -145,8 +145,12 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
   const at = useAt()
 
   const seoParams = {
-    title: `${journalArticle?.title || 'Статья'} • MBA - ${companyName}`,
-    desc: truncate(`${journalArticle?.shortDescription}`, 120),
+    title:
+      journalArticle.metaTitle ||
+      `${journalArticle?.title || 'Статья'} • MBA - ${companyName}`,
+    desc:
+      journalArticle.metaDescription ||
+      truncate(`${journalArticle?.shortDescription}`, 120),
     canonical: `${routesFront.root}${routesFront.journal}/${journalArticle.slug}`
   }
 
@@ -171,9 +175,8 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
           ],
           site_name: companyName
         }}
-        // todo: add dynamic nofollow & noindex from the api.
-        nofollow
-        noindex
+        nofollow={journalArticle?.nofollow || false}
+        noindex={journalArticle?.noindex || false}
       />
       <SeoOrganizationJsonLd />
       <SectionJournalHistoryArticle
