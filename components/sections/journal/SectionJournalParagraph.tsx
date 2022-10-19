@@ -27,16 +27,12 @@ const SectionJournalParagraph = ({
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
-      <span className={stls.p}>
+      <div className={stls.p}>
         {body
           ?.filter(part => part)
-          .map(part => (
+          .map((part, idx2) => (
             <span
-              key={
-                part.text
-                  ? truncate(part.text, 21)
-                  : `SectionJournalParagraph_${idx}`
-              }
+              key={`SectionJournalParagraph_${idx}-${idx2}`}
               className={cn({
                 [stls.isHighlighted]: part.isHighlighted,
                 [stls.isLarger]: part.isLarger
@@ -44,7 +40,7 @@ const SectionJournalParagraph = ({
               {part.text && parse(marked(part.text))}
             </span>
           ))}
-      </span>
+      </div>
     </div>
   )
 }

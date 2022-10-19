@@ -4,77 +4,79 @@
 @use '@/styles/shared/journal' as j
 
 .container
-    &.regularTable
-        // Reset default Google Sheet elements and style elements
-        overflow-x: auto
-        max-width: 100%
-        & thead
-            display: none
-        & th
-            display: none
-        & td
-        & div
-            width: auto !important
+		margin-top: f.px(65)
+		margin-bottom: f.px(65)
+		&.regularTable
+				// Reset default Google Sheet elements and style elements
+				overflow-x: auto
+				max-width: 100%
+				& thead
+						display: none
+				& th
+						display: none
+				& td
+				& div
+						width: auto !important
 
-        // Style elements table
-        & tr
-            & td
-                text-align: center
-                vertical-align: middle
-                line-height: 140%
-                overflow-wrap: break-word
-                padding: f.px(15) f.px(47)
-                @include m.media(phone, tablet)
-                    padding: f.px(15)
+				// Style elements table
+				& tr
+						& td
+								text-align: center
+								vertical-align: middle
+								line-height: 140%
+								overflow-wrap: break-word
+								padding: f.px(15) f.px(47)
+								@include m.media(phone, tablet)
+										padding: f.px(15)
 
-            &:nth-child(odd)
-                @include m.dye(bgc, c.$delta-2)
+						&:nth-child(odd)
+								@include m.dye(bgc, c.$delta-2)
 
-            &:nth-child(n+1)
-                & td
-                    font-weight: 400
-                    font-size: f.px(16)
-                    @include m.media(phone, tablet)
-                        font-size: f.px(12)
+						&:nth-child(n+1)
+								& td
+										font-weight: 400
+										font-size: f.px(16)
+										@include m.media(phone, tablet)
+												font-size: f.px(12)
 
-            &:nth-child(1)
-                @include m.dye(bgc, c.$chi)
-                & td
-                    text-transform: uppercase
-                    font-family: 'Styrene', Arial, Tahoma, sans-serif
-                    font-size: f.px(14)
-                    font-weight: 500
-                    @include m.dye(c, c.$psi)
-                    @include m.media(phone, tablet)
-                        font-size: f.px(10)
+						&:nth-child(1)
+								@include m.dye(bgc, c.$chi)
+								& td
+										text-transform: uppercase
+										font-family: 'Styrene', Arial, Tahoma, sans-serif
+										font-size: f.px(14)
+										font-weight: 500
+										@include m.dye(c, c.$psi)
+										@include m.media(phone, tablet)
+												font-size: f.px(10)
 
-    &.complicatedTable
-        overflow-x: auto
-        max-width: 100%
-        & thead
-            display: none
-        & th
-            display: none
-        & td
-        & div
-            width: auto !important
-        & tbody
-        & tr
-            & td
-                min-width: 25ch
-            & + td
-                padding-left: f.px(16) !important
-                padding: f.px(8) !important
-                border: 1px solid
-            @include m.dye(border, c.$delta)
-            font-family: Arimo !important
-            @include m.media(phone, laptop, desktop)
-                font-size: f.px(12) !important
-            @include m.media(tablet)
-                font-size: f.px(12) !important
-            font-weight: normal !important
-            line-height: 120% !important
-            background-color: transparent !important
-            &:first-child
-            & td
-                font-weight: 700 !important
+		&.complicatedTable
+				overflow-x: auto
+				max-width: 100%
+				& thead
+						display: none
+				& th
+						display: none
+				& td
+				& div
+						width: auto !important
+				& tbody
+				& tr
+						& td
+								min-width: 25ch
+						& + td
+								padding-left: f.px(16) !important
+								padding: f.px(8) !important
+								border: 1px solid
+						@include m.dye(border, c.$delta)
+						font-family: Arimo !important
+						@include m.media(phone, laptop, desktop)
+								font-size: f.px(12) !important
+						@include m.media(tablet)
+								font-size: f.px(12) !important
+						font-weight: normal !important
+						line-height: 120% !important
+						background-color: transparent !important
+						&:first-child
+						& td
+								font-weight: 700 !important

@@ -146,10 +146,10 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 
   const seoParams = {
     title:
-      journalArticle.metaTitle ||
+      journalArticle?.metaTitle ||
       `${journalArticle?.title || 'Статья'} • MBA - ${companyName}`,
     desc:
-      journalArticle.metaDescription ||
+      journalArticle?.metaDescription ||
       truncate(`${journalArticle?.shortDescription}`, 120),
     canonical: `${routesFront.root}${routesFront.journal}/${journalArticle.slug}`
   }

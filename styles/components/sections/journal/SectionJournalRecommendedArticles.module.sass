@@ -4,43 +4,44 @@
 @use '@/styles/shared/journal' as j
 
 .container
-    margin-top: f.px(65)
-    margin-bottom: f.px(65)
+	margin-top: f.px(65)
+	margin-bottom: f.px(65)
+
 .SectionJournalRecommendedArticles
-    padding: f.px(35) f.px(20)
-    box-shadow: f.px(0) f.px(0) f.px(14) rgba(230, 230, 230, 0.5)
+	padding: f.px(35) f.px(20)
+	box-shadow: f.px(0) f.px(0) f.px(14) rgba(230, 230, 230, 0.5)
 
 .rowTitle
-    margin-bottom: f.px(35)
+	margin-bottom: f.px(35)
 
 .title
-    font-size: f.px(15)
-    font-weight: 700
-    @include m.dye(c, c.$alpha)
-    text-transform: uppercase
+	font-size: f.px(15)
+	font-weight: 700
+	@include m.dye(c, c.$alpha)
+	text-transform: uppercase
 
 .link
-    display: flex
-    align-items: center
-    transition-duration: 300ms
-    & + .link
-        margin-top: f.px(25)
-    &:hover
-        .linkText
-            @include m.dye(c, c.$alpha)
-        .line
-            @include m.dye(bgc, c.$alpha)
+	display: flex
+	align-items: center
+	transition-duration: 300ms
+	& + .link
+		margin-top: f.px(25)
+	&:hover
+		.linkText
+			@include m.dye(c, c.$alpha)
+		.line
+			@include m.dye(bgc, c.$alpha)
 
 .linkText
-    font-size: f.px(16)
-    font-weight: 500
-    line-height: f.px(22.4)
-    @include m.dye(c, c.$chi)
+	font-size: f.px(16)
+	font-weight: 500
+	line-height: f.px(22.4)
+	@include m.dye(c, c.$chi)
 
 .line
-    display: inline-block
-    width: f.px(38)
-    height: f.px(2)
-    margin-right: f.px(15)
-    @include m.dye(bgc, c.$tau)
+	display: inline-block
+	width: f.px(38)
+	height: f.px(2)
+	margin-right: f.px(15)
+	@include m.dye(bgc, c.$tau)
 

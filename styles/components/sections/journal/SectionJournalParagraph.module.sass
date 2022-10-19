@@ -8,22 +8,32 @@
   margin-bottom: f.px(25)
 
 .p
-  display: inline-block
   margin: 0
   font-size: f.px(18)
   font-weight: 400
   line-height: 140%
   @include m.dye(c, c.$chi)
-  & p + p
-    margin-top: f.px(25)
+  // & p + p
+  //   margin-top: f.px(25)
+  // & p
+  //   display: inline
 
 .isHighlighted
   border-bottom: 2px solid
   @include m.dye(borderc, c.$alpha)
   @include m.dye(bgc, c.$eta)
+  & p
+    border-bottom: 2px solid
+    @include m.dye(borderc, c.$alpha)
+    @include m.dye(bgc, c.$eta)
 
 .isLarger
   @include m.media(laptop, desktop, widescreen)
     font-size: f.px(20)
-  font-weight: 500
+  // font-weight: 500
   line-height: 120%
+  & p
+    @include m.media(laptop, desktop, widescreen)
+    font-size: f.px(20)
+    // font-weight: 500
+    line-height: 120%
