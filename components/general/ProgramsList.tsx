@@ -46,41 +46,58 @@ const ProgramsList = ({ data, id, type }) => {
   })
 
   const columnPrograms = array => {
-    return array.map((key, i) => (
-      <Fragment key={`columnPrograms-${i}`}>
-        <div className={stls.listTitle}>{key.title}</div>
-        {key.fields.map((item, idx) => {
-          if (idx < 5) {
-            return (
-              <div key={item.id} className={stls.listItem}>
-                <Link
-                  href={`/programs/${item.category.type}/${item.studyFormat}/${item.slug}`}
-                  {...(at.en ? { locale: 'ru' } : undefined)}>
-                  <a onClick={handleLinkClick}>
-                    {at.en
-                      ? item?.slug?.split('-').join(' ') || item?.title
-                      : item?.title}
-                  </a>
-                </Link>
-              </div>
-            )
-          } else if (idx === 5) {
-            return (
-              <div key={item.id} className={stls.listItem}>
-                <Link
-                  href={`/programs/${type}/online`}
-                  {...(at.en ? { locale: 'ru' } : undefined)}>
-                  <a className={stls.link} onClick={handleLinkClick}>
-                    {at.en ? 'View all' : 'Посмотреть все'}
-                    <IconArrowLeft classNames={[stls.IconArrowLeft]} />
-                  </a>
-                </Link>
-              </div>
-            )
-          }
-        })}
-      </Fragment>
-    ))
+    return array.map((key, i) => {
+      const getEncodeStudyFieldsTitle = () =>
+        // TODO: figure out encodeURIComponent not working
+        encodeURIComponent(
+          studyFieldsWithSlugs
+            .filter(item => item.label === key.title)
+            .map(item => item.label)
+            .join()
+        )
+      const studyFieldLink = `/programs/${type}/online?curStudyField=${getEncodeStudyFieldsTitle()}`
+      return (
+        <Fragment key={`columnPrograms-${i}`}>
+          <Link
+            href={studyFieldLink}
+            {...(at.en ? { locale: 'ru' } : undefined)}>
+            <div className={stls.listTitle}>
+              <a onClick={handleLinkClick}>{key.title}</a>
+            </div>
+          </Link>
+          {key.fields.map((item, idx) => {
+            if (idx < 5) {
+              return (
+                <div key={item.id} className={stls.listItem}>
+                  <Link
+                    href={`/programs/${item.category.type}/${item.studyFormat}/${item.slug}`}
+                    {...(at.en ? { locale: 'ru' } : undefined)}>
+                    <a onClick={handleLinkClick}>
+                      {at.en
+                        ? item?.slug?.split('-').join(' ') || item?.title
+                        : item?.title}
+                    </a>
+                  </Link>
+                </div>
+              )
+            } else if (idx === 5) {
+              return (
+                <div key={item.id} className={stls.listItem}>
+                  <Link
+                    href={studyFieldLink}
+                    {...(at.en ? { locale: 'ru' } : undefined)}>
+                    <a className={stls.link} onClick={handleLinkClick}>
+                      {at.en ? 'View all' : 'Посмотреть все'}
+                      <IconArrowLeft classNames={[stls.IconArrowLeft]} />
+                    </a>
+                  </Link>
+                </div>
+              )
+            }
+          })}
+        </Fragment>
+      )
+    })
   }
   return (
     <div id={id} className={cn(stls.container)}>
