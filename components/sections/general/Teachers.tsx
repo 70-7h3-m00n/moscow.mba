@@ -124,6 +124,11 @@ const Teachers = ({
     )
   ]
 
+  const hiddenTeachers: TypeLibTeachers | null = teachers.filter(
+    (teacher, idx) => teacher && idx >= shownTeachersCount
+  )
+  console.log(hiddenTeachers)
+
   const handleSearch = e => {
     setSearchTermIsAppliedtoUrl(false)
     setSearchTerm(e.target.value)
@@ -490,6 +495,27 @@ const Teachers = ({
                       )}
                     </Popup>
                   )}
+                </li>
+              ))}
+            {hiddenTeachers?.length > 0 &&
+              hiddenTeachers.map((teacher, idx) => (
+                <li
+                  key={`${teacher?.name || 'LiTeacherContent'}-${idx}`}
+                  className={stls.teachersListItem}
+                  style={{
+                    display: 'none'
+                  }}>
+                  <Link
+                    href={`${routesFront.teachers}/${
+                      teacher?.slug || 'teacher'
+                    }`}>
+                    <a className={stls.a}>
+                      <LiTeacherContent
+                        teacher={teacher}
+                        atStandAlonePage={atStandAlonePage}
+                      />
+                    </a>
+                  </Link>
                 </li>
               ))}
           </ul>
