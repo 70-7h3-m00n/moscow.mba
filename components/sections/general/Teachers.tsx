@@ -127,7 +127,6 @@ const Teachers = ({
   const hiddenTeachers: TypeLibTeachers | null = teachers.filter(
     (teacher, idx) => teacher && idx >= shownTeachersCount
   )
-  console.log(hiddenTeachers)
 
   const handleSearch = e => {
     setSearchTermIsAppliedtoUrl(false)
