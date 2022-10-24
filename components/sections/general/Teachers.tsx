@@ -92,7 +92,7 @@ const Teachers = ({
   programId = null,
   atStandAlonePage = false,
   teachers = null
-}) => {
+}): JSX.Element => {
   const at = useAt()
   const router = useRouter()
   const contactInfo = contactData()
@@ -104,6 +104,8 @@ const Teachers = ({
   const [searchInputIsFocused, setSearchInputIsFocused] = useState(null)
   const [searchTermIsAppliedtoUrl, setSearchTermIsAppliedtoUrl] =
     useState(false)
+
+  const [isInputClose, setIsInputClose] = useState(false)
 
   const [shownTeachersCount, setShownTeachersCount] = useState(8)
   const showMoreTeachersAddendum = 12
@@ -133,21 +135,30 @@ const Teachers = ({
     setSearchTerm(e.target.value)
   }
 
-  const applySearchTermToUrl = (title: string | null) => {
+  const applySearchTermToUrl = (title: string | null = '') => {
     setSearchTerm(title)
-    setSearchTermIsAppliedtoUrl(true)
+    setSearchTermIsAppliedtoUrl(!!title)
     router.replace({ query: { q: encodeURIComponent(title) } }, undefined, {
       shallow: true,
       scroll: false
     })
   }
 
+  const setEmptyInput = () => {
+    setSearchTerm('')
+    setSearchTermIsAppliedtoUrl(false)
+    setIsInputClose(true)
+    router.replace({ query: { q: '' } }, undefined, {
+      shallow: true,
+      scroll: false
+    })
+  }
+
   useEffect(() => {
-    if (!searchTerm && router.query.q) {
-      setSearchTerm(decodeURIComponent(router.query.q.toString()))
+    if (!isInputClose && !searchTerm && router.query.q) {
+      setSearchTerm(decodeURIComponent(router.query.q?.toString()))
       setSearchTermIsAppliedtoUrl(true)
     }
-
     const shownTeachersCountSS = sessionStorage.getItem('shownTeachersCount')
 
     if (shownTeachersCountSS && +shownTeachersCountSS > shownTeachersCount) {
@@ -155,7 +166,7 @@ const Teachers = ({
     }
 
     sessionStorage.setItem('shownTeachersCount', shownTeachersCount.toString())
-  }, [router, searchTerm, shownTeachersCount])
+  }, [isInputClose, router, searchTerm, shownTeachersCount])
 
   return (
     <>
@@ -364,10 +375,13 @@ const Teachers = ({
                         [stls.searchIconSearthTermIsApplied]:
                           searchTermIsAppliedtoUrl
                       })}>
-                      {searchTermIsAppliedtoUrl ? (
-                        <IconClose />
+                      {searchTerm ? (
+                        <IconClose
+                          style={{ cursor: 'pointer' }}
+                          onClick={setEmptyInput}
+                        />
                       ) : (
-                        <IconSearch />
+                        <IconSearch style={{ cursor: 'text' }} />
                       )}
                     </div>
                     <input
