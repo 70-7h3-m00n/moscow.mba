@@ -4,19 +4,32 @@ import cn from 'classnames'
 import { colors } from '@/config/index'
 import { getClassNames } from '@/helpers/index'
 import { IconContainer } from '@/components/layout'
+import React from 'react'
 
 type TIconCloseProps = TypeClassNames & {
   stroke?: TypeColor
+  style?: React.CSSProperties
+  onClick?: React.MouseEventHandler
 }
 
 // TODO: improve structure
-const IconClose = ({ classNames, stroke }: TIconCloseProps) => {
+const IconClose: React.FC<TIconCloseProps> = ({
+  classNames,
+  stroke,
+  style = {},
+  ...props
+}): JSX.Element => {
   return (
     <IconContainer
       classNames={[
         cn(stls.container, getClassNames({ classNames })) || undefined
-      ]}>
-      <svg viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
+      ]}
+      {...props}>
+      <svg
+        style={style}
+        viewBox='0 0 14 14'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'>
         <title>Закрыть</title>
         <path
           d='M1 1L13 13'
