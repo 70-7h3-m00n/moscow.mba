@@ -74,7 +74,10 @@
   @include m.media(desktop, widescreen)
     font-size: 24px
     margin: 20px 0
-
+    a
+      transition: color .3s ease-out
+      &:hover
+        @include m.dye(c, c.$alpha)
 .link
   display: flex
   align-items: center
