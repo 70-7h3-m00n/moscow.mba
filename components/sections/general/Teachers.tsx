@@ -124,6 +124,7 @@ const Teachers = ({
     )
   ]
 
+  // * quick fix for the SEO robots to see the full list of teachers
   const hiddenTeachers: TypeLibTeachers | null = teachers.filter(
     (teacher, idx) => teacher && idx >= shownTeachersCount
   )
