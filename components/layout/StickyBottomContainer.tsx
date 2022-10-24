@@ -1,5 +1,5 @@
 import stls from '@/styles/components/layout/StickyBottomContainer.module.sass'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Overlay, StickyBottom } from '@/components/layout'
 import { AskQuestion } from '@/components/general'
@@ -15,7 +15,7 @@ const StickyBottomContainer = () => {
 
   const router = useRouter()
   const at = useAt()
-  
+
   const containerClasses = [
     stls.container,
     isStickyBottomShown && !stickyHasBeenClosed
@@ -30,9 +30,16 @@ const StickyBottomContainer = () => {
   }
 
   const handleAskQuestionFormClose = () => setClickedAsk(false)
+
+  const [isMounted, setIsMounted] = useState(false)
+  useEffect(() => {
+    setIsMounted(true)
+  }, [isMounted])
+
   if (at.journal) return null
-  return (
-    <noindex>
+
+  if (isMounted)
+    return (
       <div className={containerClasses.join(' ')}>
         {clickedAsk ? (
           <>
@@ -54,8 +61,9 @@ const StickyBottomContainer = () => {
           clickedAsk={clickedAsk}
         />
       </div>
-    </noindex>
-  )
+    )
+
+  return null
 }
 
 export default StickyBottomContainer
