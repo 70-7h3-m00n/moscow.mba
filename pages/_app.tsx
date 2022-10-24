@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps, router }) {
 
   const [loading, setLoading] = useState(false)
   useEffect(() => {
-    TagManager.initialize({ gtmId, dataLayerName: 'dataLayer' })
+    if (!dev) TagManager.initialize({ gtmId, dataLayerName: 'dataLayer' })
 
     const utms = JSON.parse(sessionStorage.getItem('utms')) || {}
     let utmsAreEmpty = false

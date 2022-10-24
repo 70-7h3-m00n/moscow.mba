@@ -48,22 +48,30 @@ const ProgramsList = ({ data, id, type }) => {
   const columnPrograms = array => {
     return array.map((key, i) => {
       const getEncodeStudyFieldsTitle = () =>
-        // TODO: figure out encodeURIComponent not working
         encodeURIComponent(
           studyFieldsWithSlugs
             .filter(item => item.label === key.title)
             .map(item => item.label)
             .join()
         )
-      const studyFieldLink = `/programs/${type}/online?curStudyField=${getEncodeStudyFieldsTitle()}`
+
+      const encodedStudyFieldTitle = getEncodeStudyFieldsTitle()
+
+      const studyFieldLink = `/programs/${type}/online`
+
+      console.log(studyFieldLink)
+
       return (
         <Fragment key={`columnPrograms-${i}`}>
           <Link
-            href={studyFieldLink}
+            href={{
+              pathname: studyFieldLink,
+              query: { curStudyField: encodedStudyFieldTitle }
+            }}
             {...(at.en ? { locale: 'ru' } : undefined)}>
-            <div className={stls.listTitle}>
-              <a onClick={handleLinkClick}>{key.title}</a>
-            </div>
+            <a className={stls.listTitle} onClick={handleLinkClick}>
+              {key.title}
+            </a>
           </Link>
           {key.fields.map((item, idx) => {
             if (idx < 5) {
@@ -84,7 +92,10 @@ const ProgramsList = ({ data, id, type }) => {
               return (
                 <div key={item.id} className={stls.listItem}>
                   <Link
-                    href={studyFieldLink}
+                    href={{
+                      pathname: studyFieldLink,
+                      query: { curStudyField: encodedStudyFieldTitle }
+                    }}
                     {...(at.en ? { locale: 'ru' } : undefined)}>
                     <a className={stls.link} onClick={handleLinkClick}>
                       {at.en ? 'View all' : 'Посмотреть все'}
