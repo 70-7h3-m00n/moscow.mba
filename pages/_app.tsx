@@ -17,7 +17,6 @@ import { MenuState, OverlayState, ContextStaticProps } from '@/context/index'
 import { filledUpFormWithoutSubmission } from '../helpers'
 
 function MyApp({ Component, pageProps, router }) {
-  //
   const [programs, setPrograms] = useState(pageProps.programs || null)
   const [program, setProgram] = useState(pageProps.program || null)
   const [curStudyField, setCurStudyField] = useState(null)
