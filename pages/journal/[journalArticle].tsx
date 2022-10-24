@@ -52,7 +52,7 @@ type TypeJournalArticleProps = {
 const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
   journalArticle
 }) => {
-  console.log(journalArticle)
+  // console.log(journalArticle)
   // ScrollBar
   const [pageYOffset, setPageYOffset] = useState(0)
   const [scollHeight, setScrollHeight] = useState(0)

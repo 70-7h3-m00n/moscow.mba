@@ -67,19 +67,21 @@ const ImgTemplate = ({
           [stls.darken]: darken,
           [stls.isHidden]: !faded && !filter && !filterAlt && !darken
         })}></div>
-      <Image
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        className={stls.img}
-        placeholder='blur'
-        blurDataURL={base64pixel}
-        priority={priority}
-        layout={layout}
-        objectFit={objectFit}
-        objectPosition={objectPosition}
-      />
+      {src && (
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          className={stls.img}
+          placeholder='blur'
+          blurDataURL={base64pixel}
+          priority={priority}
+          layout={layout}
+          objectFit={objectFit}
+          objectPosition={objectPosition}
+        />
+      )}
     </div>
   )
 }

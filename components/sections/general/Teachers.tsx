@@ -33,22 +33,24 @@ const LiTeacherContent = ({
     <div className={stls.teachersItem}>
       <div className={stls.teachersItemWrapper}>
         <div className={stls.image}>
-          <Image
-            src={teacher?.portrait?.url}
-            alt={teacher?.name}
-            width={teacher?.portrait?.url ? 270 : undefined}
-            height={
-              teacher?.portrait?.url &&
-              getImageHeight({
-                width: 270,
-                widthInitial: teacher?.portrait?.width,
-                heightInitial: teacher?.portrait?.height
-              })
-            }
-            layout='responsive'
-            placeholder='blur'
-            blurDataURL={base64pixel}
-          />
+          {teacher?.portrait?.url && (
+            <Image
+              src={teacher?.portrait?.url}
+              alt={teacher?.name}
+              width={teacher?.portrait?.url ? 270 : undefined}
+              height={
+                teacher?.portrait?.url &&
+                getImageHeight({
+                  width: 270,
+                  widthInitial: teacher?.portrait?.width,
+                  heightInitial: teacher?.portrait?.height
+                })
+              }
+              layout='responsive'
+              placeholder='blur'
+              blurDataURL={base64pixel}
+            />
+          )}
         </div>
         <div className={stls.teachersItemContent}>
           <div>
