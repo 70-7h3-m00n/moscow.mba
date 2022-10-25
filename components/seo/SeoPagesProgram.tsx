@@ -15,18 +15,18 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
   const programTitle = program?.title || (at.en ? 'Program' : 'Программа')
 
   const metaTitle =
-    program?.category.type === 'mini' && program?.studyFormat === 'blended'
+    program?.category.type === 'mini' && at.blended
       ? `${program?.metaTitle} mini blended`
-      : program?.category.type === 'mba' && program?.studyFormat === 'blended'
+      : program?.category.type === 'mba' && at.blended
       ? `${program?.metaTitle.replace('online', 'blended')}`
       : program?.metaTitle
 
   const metaDescription =
-    program?.category.type === 'mini' && program?.studyFormat === 'blended'
+    program?.category.type === 'mini' && at.blended
       ? `${program?.metaDescription} MBA mini blended`
-      : program?.category.type === 'mba' && program?.studyFormat === 'blended'
+      : program?.category.type === 'mba' && at.blended
       ? `${program?.metaDescription} MBA blended`
-      : program?.category.type === 'mba' && program?.studyFormat === 'online'
+      : program?.category.type === 'mba' && at.online
       ? `${program?.metaDescription} MBA online`
       : program?.metaTitle
 
@@ -35,10 +35,15 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
       ? `${routesFront.root}${routesFront.programs}/${program.category?.slug}/${program?.studyFormat}/${program?.slug}`
       : `${routesFront.root}${routesFront.programs}`
 
+  console.log(metaTitle)
+  console.log(program?.studyFormat)
+
   const seoParams = {
     title: program?.metaTitle
       ? metaTitle
-      : `${programTitle} • MBA - ${companyName}`,
+      : `${programTitle} • ${program.category.type === 'mini' ? 'MBA' : ''} ${
+          program.category.type
+        } ${at.blended ? 'blended' : 'online'} • ${companyName}`,
     programTitle: programTitle,
     desc: program?.metaDescription
       ? metaDescription
