@@ -21,6 +21,7 @@ const SectionJournalParagraph = ({
 }: TypeSectionJournalParagraphProps) => {
   if (!body) return null
 
+  //
   // console.log(body)
   return (
     <div
