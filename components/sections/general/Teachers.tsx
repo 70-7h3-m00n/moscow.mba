@@ -371,7 +371,15 @@ const Teachers = ({
                 )}
               </h3>
               {at.teachers && !at.en && (
-                <div className={stls.searchGroup}>
+                <div
+                  className={stls.searchGroup}
+                  style={
+                    searchTerm && searchTerm.length > 50
+                      ? {
+                          maxWidth: 'max-content'
+                        }
+                      : {}
+                  }>
                   <div className={stls.searchInputGroup}>
                     <div
                       className={cn(stls.searchIcon, {
@@ -415,6 +423,11 @@ const Teachers = ({
                         ) && setSearchInputIsFocused(false)
                       }
                       value={searchTerm || ''}
+                      size={
+                        searchTerm && searchTerm.length > 50
+                          ? searchTerm.length
+                          : undefined
+                      }
                     />
                   </div>
                   {searchTerm && searchInputIsFocused && (
