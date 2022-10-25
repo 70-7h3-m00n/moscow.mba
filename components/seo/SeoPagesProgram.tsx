@@ -14,23 +14,41 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
 
   const programTitle = program?.title || (at.en ? 'Program' : 'Программа')
 
+  const metaTitle =
+    program?.category.type === 'mini' && program?.studyFormat === 'blended'
+      ? `${program?.metaTitle} mini blended`
+      : program?.category.type === 'mba' && program?.studyFormat === 'blended'
+      ? `${program?.metaTitle.replace('online', 'blended')}`
+      : program?.metaTitle
+
+  const metaDescription =
+    program?.category.type === 'mini' && program?.studyFormat === 'blended'
+      ? `${program?.metaDescription} MBA mini blended`
+      : program?.category.type === 'mba' && program?.studyFormat === 'blended'
+      ? `${program?.metaDescription} MBA blended`
+      : program?.category.type === 'mba' && program?.studyFormat === 'online'
+      ? `${program?.metaDescription} MBA online`
+      : program?.metaTitle
+
   const cannonialFallback =
     program.category?.slug && program?.studyFormat && program?.slug
       ? `${routesFront.root}${routesFront.programs}/${program.category?.slug}/${program?.studyFormat}/${program?.slug}`
       : `${routesFront.root}${routesFront.programs}`
 
   const seoParams = {
-    title: program?.metaTitle || `${programTitle} • MBA - ${companyName}`,
+    title: program?.metaTitle
+      ? metaTitle
+      : `${programTitle} • MBA - ${companyName}`,
     programTitle: programTitle,
-    desc:
-      program?.metaDescription ||
-      (program?.goal
-        ? truncate(program?.goal, 120)
-        : program?.description
-        ? truncate(program?.description, 120)
-        : at.en
-        ? 'Concur relevant business education from international experts'
-        : 'Получите современное бизнес образование от международных экспертов'),
+    desc: program?.metaDescription
+      ? metaDescription
+      : program?.goal
+      ? truncate(program?.goal, 120)
+      : program?.description
+      ? truncate(program?.description, 120)
+      : at.en
+      ? 'Concur relevant business education from international experts'
+      : 'Получите современное бизнес образование от международных экспертов',
     canonical: canonical || cannonialFallback
   }
 
