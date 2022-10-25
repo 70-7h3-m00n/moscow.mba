@@ -10,7 +10,7 @@ type TypeGetStaticPathsPageProgram = {
 
 const getStaticPathsPageProgram = async ({
   format,
-  type
+  type = 'mini'
 }: TypeGetStaticPathsPageProgram): Promise<{
   paths: TypePageProgramPaths
   fallback: boolean | 'blocking'
