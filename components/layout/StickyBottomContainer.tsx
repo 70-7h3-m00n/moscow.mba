@@ -32,9 +32,10 @@ const StickyBottomContainer = () => {
   const handleAskQuestionFormClose = () => setClickedAsk(false)
 
   const [isMounted, setIsMounted] = useState(false)
+
   useEffect(() => {
     setIsMounted(true)
-  }, [isMounted])
+  }, [])
 
   if (at.journal) return null
 
