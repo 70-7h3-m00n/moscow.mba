@@ -35,9 +35,6 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
       ? `${routesFront.root}${routesFront.programs}/${program.category?.slug}/${program?.studyFormat}/${program?.slug}`
       : `${routesFront.root}${routesFront.programs}`
 
-  console.log(metaTitle)
-  console.log(program?.studyFormat)
-
   const seoParams = {
     title: program?.metaTitle
       ? metaTitle

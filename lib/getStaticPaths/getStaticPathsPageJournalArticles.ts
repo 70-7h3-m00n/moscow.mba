@@ -1,20 +1,17 @@
 import { fallback, routesBack } from '@/config/index'
-
-import {
-  TypePageJournalArticlesPaths,
-} from '@/types/index'
+import { TypePageJournalArticlesPaths } from '@/types/index'
+import axios from 'axios'
 
 const getStaticPathsPageJournalCategory = async (): Promise<{
   paths: TypePageJournalArticlesPaths
   fallback: boolean | 'blocking'
 }> => {
-  const res = await fetch(`${routesBack.root}${routesBack.getStaticPropsPageJournalArticles}`)
-  const articles = await res.json()
-  const paths = articles.journalArticles.map(article => (
-    {
-      params: { journalArticle: article.slug }
-    }
-  ))
+  const res = await axios.get(
+    `${routesBack.root}${routesBack.getStaticPathsPageJournalArticles}`
+  )
+
+  const paths = res.data
+
   return {
     paths,
     fallback: fallback.default
