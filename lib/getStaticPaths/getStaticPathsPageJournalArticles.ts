@@ -1,6 +1,6 @@
-import { fallback, routesBack } from '@/config/index'
 import { TypePageJournalArticlesPaths } from '@/types/index'
 import axios from 'axios'
+import { fallback, routesBack } from '@/config/index'
 
 const getStaticPathsPageJournalCategory = async (): Promise<{
   paths: TypePageJournalArticlesPaths
@@ -10,7 +10,7 @@ const getStaticPathsPageJournalCategory = async (): Promise<{
     `${routesBack.root}${routesBack.getStaticPathsPageJournalArticles}`
   )
 
-  const paths = res.data
+  const paths = res.data.paths
 
   return {
     paths,
