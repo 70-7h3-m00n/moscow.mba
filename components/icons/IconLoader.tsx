@@ -10,8 +10,12 @@ const IconLoader = () => {
   // <!-- By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL -->
   return (
     <div className={stls.container}>
-      <svg viewBox='0 0 120 30' xmlns='http://www.w3.org/2000/svg' fill='#fff'>
-        <title>Загрузка...</title>
+      <svg
+        viewBox='0 0 120 30'
+        xmlns='http://www.w3.org/2000/svg'
+        fill='#fff'
+        aria-label='Загрузка..'>
+        {/* <title>Загрузка...</title> */}
         <circle cx='15' cy='15' r='15'>
           <animate
             attributeName='r'

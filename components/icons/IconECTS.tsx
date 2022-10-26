@@ -11,8 +11,12 @@ const IconECTS = ({ classNames = [] }) => {
 
   return (
     <div className={cn([stls.container], container)}>
-      <svg viewBox='0 0 258 259' fill='none' xmlns='http://www.w3.org/2000/svg'>
-        <title>ECTS</title>
+      <svg
+        viewBox='0 0 258 259'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+        aria-label='ECTS'>
+        {/* <title>ECTS</title> */}
         <path
           d='M42.9138 58.2856L42.823 71.2966L55.169 75.4036L42.7668 79.3378L42.676 92.3487L35.1018 81.7692L22.6996 85.7034L30.4207 75.2308L22.8466 64.6513L35.1927 68.7583L42.9138 58.2856Z'
           fill='#FDCC03'

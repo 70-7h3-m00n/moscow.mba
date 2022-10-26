@@ -58,7 +58,9 @@ const ImgTemplate = ({
           getClassNames({ classNames })
         ) || undefined
       }
-      title={title}>
+      // aria-label={title || alt}
+      // title={title}
+    >
       <div
         className={cn({
           [stls.faded]: faded,
@@ -80,6 +82,7 @@ const ImgTemplate = ({
           layout={layout}
           objectFit={objectFit}
           objectPosition={objectPosition}
+          aria-label={title || alt}
         />
       )}
     </div>

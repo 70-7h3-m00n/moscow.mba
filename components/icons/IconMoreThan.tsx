@@ -13,8 +13,12 @@ const IconMoreThan = ({ classNames }: TypeIconMoreThanProps) => {
     <div
       className={cn(stls.container, getClassNames({ classNames })) || undefined}
       aria-hidden={'true'}>
-      <svg viewBox='0 0 8 11' fill='none' xmlns='http://www.w3.org/2000/svg'>
-        <title>Стрелка вправо</title>
+      <svg
+        viewBox='0 0 8 11'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+        aria-label={'Стрелка вправо'}>
+        {/* <title>Стрелка вправо</title> */}
         <path
           d='M2 1.5L6 5.5L2 9.5'
           stroke={colors.alpha}
