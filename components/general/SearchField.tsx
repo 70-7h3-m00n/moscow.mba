@@ -29,10 +29,11 @@ const SearchField = () => {
     program => program.studyFormat !== 'blended'
   )
 
-  const filteredPrograms = programsNotBlended.filter(program =>
-    program?.title?.toLowerCase().includes(searchTerm)
-      ? searchTerm && program?.title?.toLowerCase().includes(searchTerm)
-      : program?.title?.toLowerCase().includes(decodedEnInput)
+  const filteredPrograms = programsNotBlended.filter(
+    program =>
+      (decodedEnInput &&
+        program?.title?.toLowerCase().includes(decodedEnInput)) ||
+      (searchTerm && program?.title?.toLowerCase().includes(searchTerm))
   )
 
   const handleInput = e => {
