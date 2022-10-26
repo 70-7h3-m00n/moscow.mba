@@ -10,6 +10,7 @@ import { LeadLoaderThankyou } from '@/components/general'
 import { Wrapper } from '@/components/layout'
 import { FormAlpha } from '@/components/forms'
 import { IconSearch, IconClose } from '@/components/icons'
+import keyboard from '@/config/keyboard'
 
 const SearchField = () => {
   const at = useAt()
@@ -20,17 +21,38 @@ const SearchField = () => {
 
   const [searchTerm, setSearchTerm] = useState('')
 
+  const [decodedEnInput, setDecodedEnInput] = useState('')
+
   const [open, setOpen] = useState(false)
   const [openLoader, setOpenLoader] = useState(false)
-
   const programsNotBlended = programs.filter(
     program => program.studyFormat !== 'blended'
   )
 
-  const filteredPrograms = programsNotBlended.filter(
-    program => searchTerm && program?.title?.toLowerCase().includes(searchTerm)
+  const filteredPrograms = programsNotBlended.filter(program =>
+    program?.title?.toLowerCase().includes(searchTerm)
+      ? searchTerm && program?.title?.toLowerCase().includes(searchTerm)
+      : program?.title?.toLowerCase().includes(decodedEnInput)
   )
 
+  const handleInput = e => {
+    setDecodedEnInput(
+      /[^а-я]/gi.test(e.target.value)
+        ? e.target.value
+            .toLowerCase()
+            .match(/\s*[^а-я]/gi)
+            .map(str =>
+              keyboard.hasOwnProperty(str.length > 1 ? str.at(-1) : str)
+                ? str.length > 1
+                  ? ` ${keyboard[str.at(-1)]}`
+                  : keyboard[str]
+                : ''
+            )
+            .join('')
+        : ''
+    )
+    setSearchTerm(e.target.value.toLowerCase())
+  }
   useEffect(() => {
     inputIsFocused && document.getElementById('SearchField-input')?.focus()
   }, [inputIsFocused])
@@ -73,12 +95,15 @@ const SearchField = () => {
                   className={stls.input}
                   value={searchTerm}
                   placeholder={'Поиск'}
-                  onChange={e => setSearchTerm(e.target.value.toLowerCase())}
+                  onChange={handleInput}
                 />
                 {searchTerm && (
                   <a
                     href='#!'
-                    onClick={() => setSearchTerm('')}
+                    onClick={() => {
+                      setSearchTerm('')
+                      setDecodedEnInput('')
+                    }}
                     className={stls.iconClearBtn}>
                     <IconClose
                       classNames={[stls.iconClear]}
@@ -98,7 +123,7 @@ const SearchField = () => {
                         <p className={stls.p}>
                           <Highlighter
                             highlightClassName={stls.highlight}
-                            searchWords={[searchTerm]}
+                            searchWords={[decodedEnInput || searchTerm]}
                             autoEscape={true}
                             highlightTag={'span'}
                             textToHighlight={program?.title}
