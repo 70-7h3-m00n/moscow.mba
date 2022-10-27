@@ -3,12 +3,24 @@ import { useState, useRef, useContext } from 'react'
 import cn from 'classnames'
 import { ContextStaticProps } from '@/context/index'
 import { AccordionsContainer, Pagination } from '@/components/general'
+import useAt from '@/hooks/useAt'
+import { IconClose, IconSearch } from '@/components/icons'
+import keyboard from '@/config/keyboard'
 
 const CourseOptions = () => {
   const { programs } = useContext(ContextStaticProps)
-  const programsFiltered = programs.filter(
-    program => program?.studyFormat === 'online'
-  )
+  const at = useAt()
+  const [decodedEnInput, setDecodedEnInput] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
+  const programsFiltered = programs
+    .filter(program => program?.studyFormat === 'online')
+    .filter(
+      program =>
+        (searchTerm === '' && true) ||
+        (decodedEnInput &&
+          program?.title?.toLowerCase().includes(decodedEnInput)) ||
+        (searchTerm && program?.title?.toLowerCase().includes(searchTerm))
+    )
   const swapDataItems = () => {
     const firstDataItem = programsFiltered?.[0]
     const lastDataItem = programsFiltered?.[programsFiltered?.length - 1]
@@ -46,6 +58,25 @@ const CourseOptions = () => {
     })
   }
 
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDecodedEnInput(
+      /[^а-я]/gi.test(e.target.value)
+        ? e.target.value
+            .toLowerCase()
+            .match(/\s*[^а-я]/gi)
+            .map(str =>
+              keyboard.hasOwnProperty(str.length > 1 ? str.at(-1) : str)
+                ? str.length > 1
+                  ? ` ${keyboard[str.at(-1)]}`
+                  : keyboard[str]
+                : ''
+            )
+            .join('')
+        : ''
+    )
+    setSearchTerm(e.target.value.toLowerCase())
+  }
+
   const handleShowNextPage = newFirstCourseOnPage => {
     setFirstCourseOnPage(newFirstCourseOnPage)
     setLastCourseOnPage(newFirstCourseOnPage + coursesPerPage)
@@ -63,31 +94,64 @@ const CourseOptions = () => {
       <div className={stls.titleContainer}>
         <h2 className={stls.title}>Направления обучения</h2>
         <p className={stls.coursesNumber}>{numberOfCourses}+ направлений</p>
+        <div className={stls.searchInputGroup}>
+          {searchTerm ? (
+            <div
+              className={stls.searchIcon}
+              style={{ pointerEvents: 'all', cursor: 'pointer' }}
+              onClick={() => setSearchTerm('')}>
+              <IconClose />
+            </div>
+          ) : (
+            <div className={stls.searchIcon}>
+              <IconSearch />
+            </div>
+          )}
+          <input
+            type='text'
+            placeholder={at.en ? '' : 'Введите название направления...'}
+            className={stls.search}
+            onChange={handleInput}
+            value={searchTerm || ''}
+          />
+        </div>
       </div>
       <div
         className={cn({
           [stls.content]: true,
           ['accordionsContent']: true
         })}>
-        <AccordionsContainer
-          accordionsItems={shownCourses}
-          firstAccordionActive={firstCourseOnPage === 0}
-          closeAll={closeAllAccordions}
-          setCloseAll={setCloseAllAccordions}
-          isCoursesContainer
-        />
-        <div className={stls.paginationContainer}>
-          <Pagination
-            numberOfPages={numberOfPages}
-            itemsPerPage={coursesPerPage}
-            totalItems={numberOfCourses}
-            lastShownItem={lastCourseOnPage}
-            showNextPage={newFirstCourseOnPage =>
-              handleShowNextPage(newFirstCourseOnPage)
-            }
-            loadMoreItems={setLastCourseOnPage}
-            toggleItems={handleToggleAllCourses}
+        {numberOfCourses > 0 ? (
+          <AccordionsContainer
+            accordionsItems={shownCourses}
+            firstAccordionActive={firstCourseOnPage === 0}
+            closeAll={closeAllAccordions}
+            setCloseAll={setCloseAllAccordions}
+            isCoursesContainer
           />
+        ) : (
+          <article>
+            <h2>Кажется, по Вашему запросу ничего не нашлось...</h2>
+            <p className={stls.notFound}>
+              Пожалуйста, оставьте заявку, наш менеджер свяжется с Вами и
+              поможет подобрать программу
+            </p>
+          </article>
+        )}
+        <div className={stls.paginationContainer}>
+          {numberOfCourses > coursesPerPage && (
+            <Pagination
+              numberOfPages={numberOfPages}
+              itemsPerPage={coursesPerPage}
+              totalItems={numberOfCourses}
+              lastShownItem={lastCourseOnPage}
+              showNextPage={newFirstCourseOnPage =>
+                handleShowNextPage(newFirstCourseOnPage)
+              }
+              loadMoreItems={setLastCourseOnPage}
+              toggleItems={handleToggleAllCourses}
+            />
+          )}
         </div>
       </div>
     </section>

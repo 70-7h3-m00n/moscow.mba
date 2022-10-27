@@ -33,7 +33,7 @@ const SearchField = () => {
     program =>
       (decodedEnInput &&
         program?.title?.toLowerCase().includes(decodedEnInput)) ||
-      (searchTerm && program?.title?.toLowerCase().includes(searchTerm))
+      (searchTerm && program?.title?.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
   )
 
   const handleInput = e => {
@@ -52,7 +52,7 @@ const SearchField = () => {
             .join('')
         : ''
     )
-    setSearchTerm(e.target.value.toLowerCase())
+    setSearchTerm(e.target.value)
   }
   useEffect(() => {
     inputIsFocused && document.getElementById('SearchField-input')?.focus()
