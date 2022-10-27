@@ -10,18 +10,15 @@ import { LeadLoaderThankyou } from '@/components/general'
 import { Wrapper } from '@/components/layout'
 import { FormAlpha } from '@/components/forms'
 import { IconSearch, IconClose } from '@/components/icons'
-import keyboard from '@/config/keyboard'
+import useDecodedInput from '@/hooks/useDecodedInput'
 
 const SearchField = () => {
   const at = useAt()
-
+  const { clearInput, handleInput, searchTerm, decodedEnInput } =
+    useDecodedInput('')
   const [inputIsFocused, setInputIsFocused] = useState(false)
 
   const { programs } = useContext(ContextStaticProps)
-
-  const [searchTerm, setSearchTerm] = useState('')
-
-  const [decodedEnInput, setDecodedEnInput] = useState('')
 
   const [open, setOpen] = useState(false)
   const [openLoader, setOpenLoader] = useState(false)
@@ -33,27 +30,10 @@ const SearchField = () => {
     program =>
       (decodedEnInput &&
         program?.title?.toLowerCase().includes(decodedEnInput)) ||
-      (searchTerm && program?.title?.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
+      (searchTerm &&
+        program?.title?.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
   )
 
-  const handleInput = e => {
-    setDecodedEnInput(
-      /[^а-я]/gi.test(e.target.value)
-        ? e.target.value
-            .toLowerCase()
-            .match(/\s*[^а-я]/gi)
-            .map(str =>
-              keyboard.hasOwnProperty(str.length > 1 ? str.at(-1) : str)
-                ? str.length > 1
-                  ? ` ${keyboard[str.at(-1)]}`
-                  : keyboard[str]
-                : ''
-            )
-            .join('')
-        : ''
-    )
-    setSearchTerm(e.target.value)
-  }
   useEffect(() => {
     inputIsFocused && document.getElementById('SearchField-input')?.focus()
   }, [inputIsFocused])
@@ -101,10 +81,7 @@ const SearchField = () => {
                 {searchTerm && (
                   <a
                     href='#!'
-                    onClick={() => {
-                      setSearchTerm('')
-                      setDecodedEnInput('')
-                    }}
+                    onClick={clearInput}
                     className={stls.iconClearBtn}>
                     <IconClose
                       classNames={[stls.iconClear]}
