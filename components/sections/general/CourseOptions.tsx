@@ -5,13 +5,13 @@ import { ContextStaticProps } from '@/context/index'
 import { AccordionsContainer, Pagination } from '@/components/general'
 import useAt from '@/hooks/useAt'
 import { IconClose, IconSearch } from '@/components/icons'
-import keyboard from '@/config/keyboard'
+import useDecodedInput from '@/hooks/useDecodedInput'
 
 const CourseOptions = () => {
   const { programs } = useContext(ContextStaticProps)
   const at = useAt()
-  const [decodedEnInput, setDecodedEnInput] = useState('')
-  const [searchTerm, setSearchTerm] = useState('')
+  const { clearInput, handleInput, searchTerm, decodedEnInput } =
+    useDecodedInput('')
   const programsFiltered = programs
     .filter(program => program?.studyFormat === 'online')
     .filter(
@@ -19,7 +19,8 @@ const CourseOptions = () => {
         (searchTerm === '' && true) ||
         (decodedEnInput &&
           program?.title?.toLowerCase().includes(decodedEnInput)) ||
-        (searchTerm && program?.title?.toLowerCase().includes(searchTerm))
+        (searchTerm &&
+          program?.title?.toLowerCase().includes(searchTerm.toLowerCase()))
     )
   const swapDataItems = () => {
     const firstDataItem = programsFiltered?.[0]
@@ -58,25 +59,6 @@ const CourseOptions = () => {
     })
   }
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDecodedEnInput(
-      /[^а-я]/gi.test(e.target.value)
-        ? e.target.value
-            .toLowerCase()
-            .match(/\s*[^а-я]/gi)
-            .map(str =>
-              keyboard.hasOwnProperty(str.length > 1 ? str.at(-1) : str)
-                ? str.length > 1
-                  ? ` ${keyboard[str.at(-1)]}`
-                  : keyboard[str]
-                : ''
-            )
-            .join('')
-        : ''
-    )
-    setSearchTerm(e.target.value.toLowerCase())
-  }
-
   const handleShowNextPage = newFirstCourseOnPage => {
     setFirstCourseOnPage(newFirstCourseOnPage)
     setLastCourseOnPage(newFirstCourseOnPage + coursesPerPage)
@@ -99,7 +81,7 @@ const CourseOptions = () => {
             <div
               className={stls.searchIcon}
               style={{ pointerEvents: 'all', cursor: 'pointer' }}
-              onClick={() => setSearchTerm('')}>
+              onClick={clearInput}>
               <IconClose />
             </div>
           ) : (
