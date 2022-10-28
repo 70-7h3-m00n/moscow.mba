@@ -28,7 +28,7 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
       ? `${program?.metaDescription} MBA blended`
       : program?.category.type === 'mba' && at.online
       ? `${program?.metaDescription} MBA online`
-      : program?.metaTitle
+      : program?.metaDescription
 
   const cannonialFallback =
     program.category?.slug && program?.studyFormat && program?.slug
