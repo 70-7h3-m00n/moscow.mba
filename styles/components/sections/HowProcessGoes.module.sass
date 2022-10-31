@@ -1,5 +1,7 @@
 @use '@/styles/utils/mixin' as m
 
+$stick-height: calc(100% - 48px)
+
 .container
   position: relative
   margin-bottom: 130px
@@ -102,20 +104,24 @@
     padding: 0
     margin: 0
     display: none
-  &::before
+  &::before, & .redStick
     content: ''
     left: 18px
-    bottom: 0
+    top: calc(100% - $stick-height)
     width: 1px
     background: #d9d9d9
     position: absolute
-    height: calc(100% - 48px)
+    height: $stick-height
     @include m.media(tablet, phone)
       display: none
+  & .redStick
+    height: 0
+    background: #ff3535
+    transition: height .2s linear
   &:nth-last-of-type(1)
     padding-bottom: 0
     margin-bottom: 0
-    &::before
+    &::before, & .redStick
       display: none
   &.activeProcessStep
     display: block
