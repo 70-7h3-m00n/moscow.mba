@@ -56,9 +56,8 @@ const SectionJournalAllArticles = ({
       <Wrapper column>
         <GeneralJournalSectionTitle>Все статьи</GeneralJournalSectionTitle>
         <ul className={stls.articles}>
-          {filteredArticles
-            ?.filter((_, idx) => idx < sizeShowArticles)
-            ?.map(article => (
+          {filteredArticles?.map((article, idx) =>
+            idx < sizeShowArticles ? (
               <li key={article?.slug} className={stls.articleItem}>
                 <CardJournalArticle
                   handleFilterActiclesButtons={handleFilterActiclesButtons}
@@ -66,7 +65,19 @@ const SectionJournalAllArticles = ({
                   article={article}
                 />
               </li>
-            ))}
+            ) : (
+              <li
+                key={article?.slug}
+                className={stls.articleItem}
+                style={{ display: 'none' }}>
+                <CardJournalArticle
+                  handleFilterActiclesButtons={handleFilterActiclesButtons}
+                  filterCategoriesButtons={filterCategoriesButtons}
+                  article={article}
+                />
+              </li>
+            )
+          )}
         </ul>
         {sizeArticles > sizeShowArticles ? (
           <div className={stls.buttonWrapper}>
