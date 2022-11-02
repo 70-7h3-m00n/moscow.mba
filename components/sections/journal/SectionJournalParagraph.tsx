@@ -27,12 +27,6 @@ const SectionJournalParagraph = ({
     className: stls.br
   })
 
-  console.log(
-    smartParagraph.map(item => {
-      item.text
-    })
-  )
-
   return (
     <div
       className={
