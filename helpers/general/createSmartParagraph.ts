@@ -46,7 +46,7 @@ const createSmartParagraph = <T extends Array<any>>({
   if (!paragraphFiltered.length) return null
 
   return paragraphFiltered.map(item => {
-    const itemText = item.text.includes('\n') ? `\n\n${item.text}` : item.text
+    const itemText = item.text.includes('\n') ? `\n${item.text}` : item.text
 
     return {
       ...item,
