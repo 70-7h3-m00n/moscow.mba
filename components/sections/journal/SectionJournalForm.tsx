@@ -58,10 +58,10 @@ const SectionJournalForm = ({
           layout='fill'
           className={stls.backgroundImage}
         />
-        <div className={stls.mockupPicture}>
-          {/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
+        {/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
+        {/* <div className={stls.mockupPicture}>
           <Image src={mockupPicture} width={207} height={238} />
-        </div>
+        </div> */}
         {mounted ? (
           windowWidth > 768 ? (
             <div className={stls.lineForm}>
