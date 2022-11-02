@@ -21,20 +21,13 @@
   position: relative
   & + .item
     margin-top: f.px(25)
+  & em
+    font-style: italic
   display: flex
   font-size: f.px(18)
   font-weight: normal
   line-height: 140%
   @include m.dye(c, c.$chi)
-  &.ol
-    &::before
-      content: counter(list) '.'
-      counter-increment: list
-      display: block
-      min-width: f.px(25) // todo: this is not dynamic and not based on the length of the number in counter & this should be made dynamic
-      margin-right: f.px(10)
-      font-weight: 500
-      @include m.dye(c, c.$alpha)
   &.ul
     padding-left: f.px(15)
     &::before
@@ -50,4 +43,18 @@
       max-height: f.px(5)
       border-radius: 50%
       @include m.dye(bgc, c.$alpha)
+
+.idx
+  counter-increment: list
+  min-width: f.px(25) // todo: this is not dynamic and not based on the length of the number in counter & this should be made dynamic
+  // margin-right: f.px(10)
+  font-weight: 500
+  @include m.dye(c, c.$alpha)
+
+.text
+  & .br
+    & + .br
+      display: block
+      margin-top: f.px(25)
+      // margin-bottom: 0
 

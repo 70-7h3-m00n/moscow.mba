@@ -15,6 +15,7 @@ const SectionJournalConclusion = ({
 }: TypeSectionJournalConclusionProps) => {
   if (!item || item?.length === 0) return null
 
+  // todo: figure out the same smart paragraph as is Paragraph section
   const itemFiltered = item.filter(part => part)
 
   return (
