@@ -1,37 +1,44 @@
 import cn from 'classnames'
 
-import {
-  TypeClassNames,
-  TypeLibJournalArticleListItem
-} from '@/types/index'
+import { TypeClassNames, TypeLibJournalArticleList } from '@/types/index'
 
 import { getClassNames } from '@/helpers/index'
 
 import stls from '@/styles/components/sections/journal/SectionJournalList.module.sass'
 
 type TypeSectionJournalListProps = {
-  listItem: TypeLibJournalArticleListItem | null
+  list: {
+    items: TypeLibJournalArticleList | null
+    tag: 'ul' | 'ol' | null
+  }
 } & TypeClassNames
 
 const SectionJournalList = ({
   classNames,
-  listItem
+  list
 }: TypeSectionJournalListProps) => {
-  if (!listItem) return null
+  if (!list.items) return null
+
+  const tag = list.tag || 'ul'
+
+  const List = tag
 
   return (
-    <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-      <ul className={stls.list}>
-        {
-          listItem
-            ?.filter(item => item)
-            .map((item, iidx) => (
-              <li key={`${item.body} ${iidx}`} className={stls.item}>
-                {item.body}
-              </li>
-            ))
-        }
-      </ul>
+    <div
+      className={
+        cn(stls.container, getClassNames({ classNames })) || undefined
+      }>
+      <List className={cn(stls.list, stls[tag])}>
+        {list.items
+          ?.filter(item => item)
+          .map((item, idx) => (
+            <li
+              key={`${item.body} ${idx}`}
+              className={cn(stls.item, stls[tag])}>
+              {item.body}
+            </li>
+          ))}
+      </List>
     </div>
   )
 }

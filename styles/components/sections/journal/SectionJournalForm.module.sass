@@ -4,160 +4,166 @@
 @use '@/styles/shared/journal' as j
 
 .container
-    // max-width: f.px(850)
-    position: relative
-    margin: f.px(65) 0
-    @include m.media(laptop, desktop, widescreen)
-        padding: f.px(50)
-    @include m.media(phone, tablet)
-        padding: f.px(40) f.px(15)
+	// max-width: f.px(850)
+	position: relative
+	margin: f.px(65) 0
+	@include m.media(laptop, desktop, widescreen)
+		padding: f.px(50)
+	@include m.media(phone, tablet)
+		padding: f.px(40) f.px(15)
 
 .backgroundImage
-    z-index: -1
-    border-radius: f.px(20)
+	z-index: -1
+	border-radius: f.px(20)
 
 .title
-    font-size: f.px(48)
-    font-weight: 400
-    line-height: f.px(52.8)
-    @include m.dye(c, c.$psi)
-    @include m.media(phone, tablet)
-        font-size: f.px(32)
-        line-height: 110%
+	font-size: f.px(48)
+	font-weight: 400
+	line-height: f.px(52.8)
+	@include m.dye(c, c.$psi)
+	@include m.media(phone, tablet)
+		font-size: f.px(32)
+		line-height: 110%
 
 .mockupPicture
-    position: absolute
-    right: 0
-    z-index: 3
-    @include m.media(widescreen)
-        top: f.px(130)
-    @include m.media(desktop, laptop)
-        top: f.px(190)
-    @include m.media(phone, tablet)
-        display: none
+	position: absolute
+	right: 0
+	z-index: 3
+	@include m.media(widescreen)
+		top: f.px(130)
+	@include m.media(desktop, laptop)
+		top: f.px(190)
+	@include m.media(phone, tablet)
+		display: none
 
 .folderForm
-    position: absolute
-    bottom: -1px
-    right: 0
-    z-index: 0
+	position: absolute
+	bottom: -1px
+	right: 0
+	z-index: 0
 
 .folderFormPicture
-    border-radius: f.px(20)
+	border-radius: f.px(20)
 
 .lineForm
-    position: absolute
-    bottom: f.px(25)
-    left: 0
-    z-index: -1
+	position: absolute
+	bottom: f.px(25)
+	left: 0
+	z-index: -1
 
 .lineFormPhone
-    position: absolute
-    bottom: 0
-    right: 0
-    z-index: -1
+	position: absolute
+	bottom: 0
+	right: 0
+	z-index: -1
 
-.filePdf
-    display: flex
-    align-items: center
-    margin-top: f.px(28)
-    @include m.media(phone, tablet)
-        margin-bottom: f.px(30)
+.pdfFiles
+	display: flex
+	flex-wrap: wrap
+	align-items: center
+	gap: f.px(20)
+	margin-top: f.px(28)
+	@include m.media(laptop, desktop, widescreen)
+		max-width: 78%
+	@include m.media(phone, tablet)
+		margin-bottom: f.px(30)
 
-.nameFiles
-    display: grid
-    grid-template-columns: repeat(2, 1fr)
-    grid-column-gap: f.px(3)
-    margin-left: f.px(15)
-    position: relative
-.nameFile
-    font-size: f.px(13)
-    font-weight: 400
-    line-height: 120%
-    @include m.dye(c, c.$psi)
+.pdfFile
+	display: flex
+	align-items: center
+	justify-content: center
+
+.pdfFilePicture
+
+.pdfFileName
+	margin-left: f.px(15)
+	font-size: f.px(13)
+	font-weight: 400
+	line-height: 120%
+	@include m.dye(c, c.$psi)
 
 // Form
 .submitButton
-    position: relative
-    z-index: 5
-    display: flex
-    align-items: center
-    justify-content: center
-    border: none
-    border-radius: f.px(10)
-    background: linear-gradient(86.79deg, #C02A2A 1.15%, #FF3535 59.06%)
-    box-shadow: 0px 4px 7px rgba(255, 0, 0, 0.37)
-    @include m.media(desktop, widescreen)
-        width: f.px(410)
-        padding-top: f.px(22)
-        padding-bottom: f.px(26)
-    @include m.media(phone, tablet, laptop)
-        width: 100%
-        padding-top: f.px(17)
-        padding-bottom: f.px(20)
+	position: relative
+	z-index: 5
+	display: flex
+	align-items: center
+	justify-content: center
+	border: none
+	border-radius: f.px(10)
+	background: linear-gradient(86.79deg, #C02A2A 1.15%, #FF3535 59.06%)
+	box-shadow: 0px 4px 7px rgba(255, 0, 0, 0.37)
+	@include m.media(desktop, widescreen)
+		width: f.px(410)
+		padding-top: f.px(22)
+		padding-bottom: f.px(26)
+	@include m.media(phone, tablet, laptop)
+		width: 100%
+		padding-top: f.px(17)
+		padding-bottom: f.px(20)
 
 .pdfIcon
-    @include m.media(phone, tablet)
-        position: relative
-        bottom: -2px
-        width: f.px(22)
+	@include m.media(phone, tablet)
+		position: relative
+		bottom: -2px
+		width: f.px(22)
 
 .submitText
-    text-transform: uppercase
-    @include m.dye(c, c.$psi)
-    font-weight: 700
-    font-family: 'Styrene', Arial, Tahoma, sans-serif
-    @include m.media(laptop, desktop, widescreen)
-        margin-right: f.px(9)
-        font-size: f.px(18)
-    @include m.media(phone, tablet)
-        margin-right: f.px(2)
-        font-size: f.px(15)
+	text-transform: uppercase
+	@include m.dye(c, c.$psi)
+	font-weight: 700
+	font-family: 'Styrene', Arial, Tahoma, sans-serif
+	@include m.media(laptop, desktop, widescreen)
+		margin-right: f.px(9)
+		font-size: f.px(18)
+	@include m.media(phone, tablet)
+		margin-right: f.px(2)
+		font-size: f.px(15)
 
 .formComplited
-    position: absolute
-    top: 50%
-    transform: translateY(-50%)
-    left: 0
-    z-index: 10
-    @include m.media(laptop, desktop, widescreen)
-        padding: 0 f.px(50)
-    @include m.media(laptop, desktop)
-        width: f.px(500)
-    @include m.media(phone, tablet)
-        width: 100%
-        display: flex
-        flex-direction: column
-        align-items: center
-        text-align: center
-        padding: 0 f.px(15)
+	position: absolute
+	top: 50%
+	transform: translateY(-50%)
+	left: 0
+	z-index: 10
+	@include m.media(laptop, desktop, widescreen)
+		padding: 0 f.px(50)
+	@include m.media(laptop, desktop)
+		width: f.px(500)
+	@include m.media(phone, tablet)
+		width: 100%
+		display: flex
+		flex-direction: column
+		align-items: center
+		text-align: center
+		padding: 0 f.px(15)
 
 .formComplitedTitle
-    width: f.px(600)
-    margin-bottom: f.px(25)
-    font-size: f.px(24)
-    font-weight: 500
-    line-height: 120%
-    @include m.dye(c, c.$psi)
+	width: f.px(600)
+	margin-bottom: f.px(25)
+	font-size: f.px(24)
+	font-weight: 500
+	line-height: 120%
+	@include m.dye(c, c.$psi)
 
 .formComplitedClosed
-    font-size: f.px(15)
-    font-weight: 400
-    font-family: 'Styrene', Arial, Tahoma, sans-serif
-    text-decoration-line: underline
-    @include m.dye(c, c.$alpha)
-    background: none
-    border: none
-    padding: 0
+	font-size: f.px(15)
+	font-weight: 400
+	font-family: 'Styrene', Arial, Tahoma, sans-serif
+	text-decoration-line: underline
+	@include m.dye(c, c.$alpha)
+	background: none
+	border: none
+	padding: 0
 
 .formContent
-    opacity: 0
-    position: relative
-    z-index: -100
+	opacity: 0
+	position: relative
+	z-index: -100
 
 .formLoading
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    z-index: 10
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+	z-index: 10

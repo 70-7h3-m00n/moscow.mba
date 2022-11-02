@@ -10,7 +10,7 @@ import {
   TypeLibJournalArticleAuthorName,
   TypeLibJournalArticleAuthorPosition,
   TypeLibJournalArticleBody,
-  TypeLibJournalArticleListItem,
+  TypeLibJournalArticleList,
   TypeLibJournalArticleRecommendedProgram,
   TypeLibJournalArticleConclusion,
   TypeLibJournalArticleRecommendedArticles,
@@ -43,21 +43,25 @@ type TypeLibJournalArticle = {
     | {
         __typename: TypeLibTypename
         paragraphBodyParts?: TypeLibJournalArticleParagraphBody | null
-        titleBodyParts?: TypeLibJournalArticleTitleBody | null
+        title?: {
+          titleBodyParts: TypeLibJournalArticleTitleBody | null
+          hType: 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | null
+        }
         picture?: TypeLibJournalArticlePicture | null
-        title?: TypeLibJournalArticleTitle | null
         emphasisBody?: TypeLibJournalArticleEmphasisBody | null
         athorPosition?: TypeLibJournalArticleAuthorPosition | null
         authorName?: TypeLibJournalArticleAuthorName | null
         body?: TypeLibJournalArticleBody | null
-        list?: TypeLibJournalArticleListItem | null
+        list?: {
+          items: TypeLibJournalArticleList | null
+          tag: 'ul' | 'ol' | null
+        }
         recommendedProgram?: TypeLibJournalArticleRecommendedProgram | null
         conclusion?: TypeLibJournalArticleConclusion | null
         journalRecommendedArticles?: TypeLibJournalArticleRecommendedArticles | null
         recommendedProgramsSection?: TypeLibJournalArticleRecommendedProgramsSection | null
         formPdfMaterials?: TypeLibJournalArticleFormPdfMaterials | null
         htmlTableBody?: TypeLibJournalArticleHtmlTableBody | null
-
         quote?: {
           body: TypeLibJournalArticleEmphasisBody | null
           label: TypeLibJournalArticleLabel | null

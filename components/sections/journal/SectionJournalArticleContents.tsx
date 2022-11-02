@@ -29,7 +29,9 @@ const SectionJournalArticleContents = ({
 
   const textLinkTitle = journalArticle?.articleBody
     ?.filter(title => title.__typename === 'ComponentJournalTitle')
-    .map(item => item.titleBodyParts.map(content => content.text).join(' '))
+    .map(item =>
+      item.title.titleBodyParts.map(content => content.text).join(' ')
+    )
 
   if (journalArticle?.articleBody.length === 0) return null
 
