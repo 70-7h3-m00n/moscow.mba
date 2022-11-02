@@ -7,29 +7,38 @@ import { getClassNames } from '@/helpers/index'
 import stls from '@/styles/components/sections/journal/SectionJournalList.module.sass'
 
 type TypeSectionJournalListProps = {
-  list: TypeLibJournalArticleList | null
+  list: {
+    items: TypeLibJournalArticleList | null
+    tag: 'ul' | 'ol' | null
+  }
 } & TypeClassNames
 
 const SectionJournalList = ({
   classNames,
   list
 }: TypeSectionJournalListProps) => {
-  if (!list) return null
+  if (!list.items) return null
+
+  const tag = list.tag || 'ul'
+
+  const List = tag
 
   return (
     <div
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
-      <ul className={stls.list}>
-        {list
+      <List className={cn(stls.list, stls[tag])}>
+        {list.items
           ?.filter(item => item)
           .map((item, idx) => (
-            <li key={`${item.body} ${idx}`} className={stls.item}>
+            <li
+              key={`${item.body} ${idx}`}
+              className={cn(stls.item, stls[tag])}>
               {item.body}
             </li>
           ))}
-      </ul>
+      </List>
     </div>
   )
 }
