@@ -233,10 +233,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
                   />
                 )}
                 {component.__typename === 'ComponentGeneralPicture' && (
-                  <SectionJournalPicture
-                    picture={component.picture}
-                    title={component.title}
-                  />
+                  <SectionJournalPicture picture={component.picture} />
                 )}
                 {component.__typename === 'ComponentJournalEmphasis' && (
                   <SectionJournalEmphasis body={component.emphasisBody} />

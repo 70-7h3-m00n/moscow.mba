@@ -86,18 +86,18 @@ const SectionJournalForm = ({
         </div>
         <div className={openLoader || open ? stls.formContent : ''}>
           <p className={stls.title}>{formPdfMaterials?.title}</p>
-          <div className={stls.filePdf}>
-            <div className={stls.pdfPicture}>
-              {/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
-              <Image src={pdfImages} width={30} height={38} />
-            </div>
-            <div className={stls.nameFiles}>
-              {pdfMaterials.map((file, idx) => (
-                <span className={stls.nameFile} key={`${file.name}_${idx}`}>
+          <div className={stls.pdfFiles}>
+            {pdfMaterials.map((file, idx) => (
+              <div key={`${file?.name}-${idx}`} className={stls.pdfFile}>
+                <div className={stls.pdfFilePicture}>
+                  {/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
+                  <Image src={pdfImages} width={30} height={38} />
+                </div>
+                <span className={stls.pdfFileName} key={`${file.name}_${idx}`}>
                   {file.name}
                 </span>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
           <div className={stls.inputs}>
             <FormJournalArticle

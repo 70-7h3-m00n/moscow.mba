@@ -87,20 +87,20 @@ const SectionJournalHeroArticle = ({
   filterCategoriesButtons,
   handleFilterActiclesButtons
 }: TypeSectionJournalArticleProps) => {
-  const articleNew = filteredArticles[0]
+  const latestArticle = filteredArticles[0]
 
   if (
-    !articleNew?.slug ||
-    !articleNew?.picture ||
-    !articleNew?.title ||
-    !articleNew?.journalCategory?.title ||
-    !articleNew?.journalCategory?.slug ||
-    !articleNew?.createdAt
+    !latestArticle?.slug ||
+    !latestArticle?.picture ||
+    !latestArticle?.title ||
+    !latestArticle?.journalCategory?.title ||
+    !latestArticle?.journalCategory?.slug ||
+    !latestArticle?.createdAt
   )
     return null
 
   const getTime = () =>
-    articleNew
+    latestArticle
       ? getRenderTime({
           timestamp: filteredArticles[0]?.createdAt,
           options: pageOptions
@@ -117,34 +117,35 @@ const SectionJournalHeroArticle = ({
       <Wrapper classNames={[stls.wrapper]}>
         <div className={stls.column}>
           <ImgJournalArticle
-            src={articleNew.picture.url || undefined}
-            width={articleNew.picture.width && sizeImage}
+            src={latestArticle.picture?.url || undefined}
+            width={latestArticle.picture?.width && sizeImage}
             height={
-              articleNew.picture.height &&
+              latestArticle.picture?.height &&
               getImageHeight({
                 width: sizeImage,
-                widthInitial: articleNew.picture.width,
-                heightInitial: articleNew.picture.height
+                widthInitial: latestArticle.picture?.width,
+                heightInitial: latestArticle.picture?.height
               })
             }
-            alt={articleNew.picture.alt}
-            title={articleNew.title}
+            alt={latestArticle.picture?.alt}
+            title={latestArticle.title}
           />
         </div>
         <div className={stls.column}>
-          <Link href={`${routesFront.journal}/${articleNew.slug}`}>
+          <Link href={`${routesFront.journal}/${latestArticle.slug}`}>
             <a
               className={
                 cn(stls.container, getClassNames({ classNames })) || undefined
               }>
-              <h3 className={stls.title}>{articleNew.title}</h3>
+              <h3 className={stls.title}>{latestArticle.title}</h3>
             </a>
           </Link>
-          <p className={stls.decription}>{articleNew.shortDescription}</p>
+          <p className={stls.decription}>{latestArticle.shortDescription}</p>
           <div className={stls.items}>
             {filterCategoriesButtons
               .filter(
-                category => category.title === articleNew.journalCategory.title
+                category =>
+                  category.title === latestArticle.journalCategory.title
               )
               .map(category => (
                 <button
