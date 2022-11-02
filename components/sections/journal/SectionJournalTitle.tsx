@@ -2,35 +2,39 @@ import truncate from 'truncate'
 import slugify from 'slugify'
 import cn from 'classnames'
 
-import {
-  TypeClassNames,
-  TypeLibJournalArticleTitleBody
-} from '@/types/index'
+import { TypeClassNames, TypeLibJournalArticleTitleBody } from '@/types/index'
 
 import { getClassNames } from '@/helpers/index'
 
 import stls from '@/styles/components/sections/journal/SectionJournalTitle.module.sass'
 
 type TypeSectionJournalTitleProps = TypeClassNames & {
-  body: TypeLibJournalArticleTitleBody | null
+  title: {
+    titleBodyParts: TypeLibJournalArticleTitleBody | null
+    hType: 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  }
   idx: number
 }
 
 const SectionJournalTitle = ({
   classNames,
-  body,
+  title,
   idx
 }: TypeSectionJournalTitleProps) => {
-  if (!body) return null
+  if (!title.titleBodyParts) return null
 
-  const idSection = slugify(
-    body
-      ?.map(item => item.text)
-      .join(' ')
-  )
+  const body = title.titleBodyParts
+
+  const Title = title.hType || 'h2'
+
+  const idSection = slugify(body?.map(item => item.text).join(' '))
   return (
-    <div id={idSection} className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-      <h2 className={stls.title}>
+    <div
+      id={idSection}
+      className={
+        cn(stls.container, getClassNames({ classNames })) || undefined
+      }>
+      <Title className={stls.title}>
         {body
           ?.filter(part => part)
           .map((part, pidx) => (
@@ -46,7 +50,7 @@ const SectionJournalTitle = ({
               {part.text}{' '}
             </span>
           ))}
-      </h2>
+      </Title>
     </div>
   )
 }

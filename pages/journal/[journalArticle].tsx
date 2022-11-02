@@ -52,7 +52,6 @@ type TypeJournalArticleProps = {
 const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
   journalArticle
 }) => {
-  // console.log(journalArticle)
   // ScrollBar
   const [pageYOffset, setPageYOffset] = useState(0)
   const [scollHeight, setScrollHeight] = useState(0)
@@ -151,7 +150,9 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
     desc:
       journalArticle?.metaDescription ||
       truncate(`${journalArticle?.shortDescription}`, 120),
-    canonical: `${routesFront.root}${routesFront.journal}/${journalArticle.slug}`
+    canonical: `${routesFront.root}${routesFront.journal}/${
+      journalArticle?.slug || 'test-statya'
+    }`
   }
 
   return (
@@ -227,10 +228,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
                   />
                 )}
                 {component.__typename === 'ComponentJournalTitle' && (
-                  <SectionJournalTitle
-                    body={component.titleBodyParts}
-                    idx={idx}
-                  />
+                  <SectionJournalTitle title={component.title} idx={idx} />
                 )}
                 {component.__typename === 'ComponentGeneralPicture' && (
                   <SectionJournalPicture picture={component.picture} />
