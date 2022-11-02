@@ -242,7 +242,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
                   <SectionJournalQuote quote={component.quote} />
                 )}
                 {component.__typename === 'ComponentJournalList' && (
-                  <SectionJournalList listItem={component.list} />
+                  <SectionJournalList list={component.list} />
                 )}
                 {component.__typename === 'ComponentJournalConclusion' && (
                   <SectionJournalConclusion item={component.conclusion} />
