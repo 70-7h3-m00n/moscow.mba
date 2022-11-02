@@ -7,7 +7,7 @@ import {
   TypeClassNames,
   TypeLibJournalArticleParagraphBody
 } from '@/types/index'
-import { getClassNames } from '@/helpers/index'
+import { getClassNames, createSmartParagraph } from '@/helpers/index'
 
 type TypeSectionJournalParagraphProps = TypeClassNames & {
   body: TypeLibJournalArticleParagraphBody | null
@@ -20,27 +20,36 @@ const SectionJournalParagraph = ({
   idx
 }: TypeSectionJournalParagraphProps) => {
   if (!body) return null
+  if (!body.length) return null
 
-  // console.log(body)
+  const smartParagraph = createSmartParagraph<typeof body>({
+    paragraph: body,
+    className: stls.br
+  })
+
+  console.log(
+    smartParagraph.map(item => {
+      item.text
+    })
+  )
+
   return (
     <div
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
-      <div className={stls.p}>
-        {body
-          ?.filter(part => part)
-          .map((part, idx2) => (
-            <span
-              key={`SectionJournalParagraph_${idx}-${idx2}`}
-              className={cn({
-                [stls.isHighlighted]: part.isHighlighted,
-                [stls.isLarger]: part.isLarger
-              })}>
-              {part.text && parse(marked(part.text))}
-            </span>
-          ))}
-      </div>
+      <p className={stls.p}>
+        {smartParagraph.map((part, idx2) => (
+          <span
+            key={`SectionJournalParagraph_${idx}-${idx2}`}
+            className={cn({
+              [stls.isHighlighted]: part.isHighlighted,
+              [stls.isLarger]: part.isLarger
+            })}>
+            {part.text}
+          </span>
+        ))}
+      </p>
     </div>
   )
 }

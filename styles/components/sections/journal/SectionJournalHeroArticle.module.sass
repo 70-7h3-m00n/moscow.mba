@@ -5,92 +5,98 @@
 @use '@/styles/shared/journal' as j
 
 .container
-    @include m.media(phone, tablet)
-        @include m.dye(bgc, c.$chi)
-        margin-bottom: f.px(60)
-    @include m.media(laptop, desktop, widescreen)
-        margin-bottom: f.px(87)
-    @include m.media(phone, tablet)
-            padding-top: f.px(60) 
-            padding-bottom: f.px(60) 
+	@include m.media(phone, tablet)
+		@include m.dye(bgc, c.$chi)
+		margin-bottom: f.px(60)
+	@include m.media(laptop, desktop, widescreen)
+		margin-bottom: f.px(87)
+	@include m.media(phone, tablet)
+		padding-top: f.px(60) 
+		padding-bottom: f.px(60) 
 
-    .wrapper
-        display: flex
-        justify-content: space-between
-        align-items: center
-        @include m.media(phone, tablet, laptop)
-            flex-wrap: wrap
+.wrapper
+	display: flex
+	justify-content: space-between
+	align-items: center
+	@include m.media(phone, tablet, laptop)
+		flex-wrap: wrap
 
-    .column
-        &:nth-of-type(1)
-            @include m.media(desktop)
-                max-width: f.px(485)
-            @include m.media(widescreen)
-                max-width: f.px(630)
-            @include m.media(phone, tablet, laptop)
-                margin-bottom: f.px(40)
-        .title
-            font-weight: 500
-            line-height: 120%
-            transition-duration: 300ms
-            @include m.media(laptop, desktop, widescreen)
-                width: f.px(630)
-                margin-bottom: f.px(35)
-                font-size: f.px(36)
-                @include m.dye(c, c.$chi)
-            @include m.media(desktop)
-                width: f.px(530)
-                font-size: f.px(28)
-            @include m.media(phone, tablet)
-                font-size: f.px(24)
-                margin-bottom: f.px(25)
-                @include m.dye(c, c.$psi)
-            &:hover
-                @include m.dye(c, c.$alpha)
+.column
+	&:nth-of-type(1)
+		@include m.media(desktop)
+			max-width: f.px(485)
+		@include m.media(widescreen)
+			max-width: f.px(630)
+		@include m.media(phone, tablet, laptop)
+			margin-bottom: f.px(40)
+	&:nth-of-type(2)
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		
+.title
+	font-weight: 500
+	line-height: 120%
+	transition-duration: 300ms
+	@include m.media(laptop, desktop, widescreen)
+		width: f.px(630)
+		margin-bottom: f.px(35)
+		font-size: f.px(36)
+		@include m.dye(c, c.$chi)
+	@include m.media(desktop)
+			width: f.px(530)
+			font-size: f.px(28)
+	@include m.media(phone, tablet)
+		font-size: f.px(24)
+		margin-bottom: f.px(25)
+		@include m.dye(c, c.$psi)
+	&:hover
+		@include m.dye(c, c.$alpha)
 
-        .decription
-            font-weight: 400
-            @include m.dye(c, c.$psi)
-            @include m.media(desktop)
-                line-height: f.px(22)
-                width: f.px(530)
-                font-size: f.px(16)
-            @include m.media(widescreen)
-                width: f.px(630)
-            @include m.media(phone, tablet)
-                font-size: f.px(15)
-                margin-bottom: f.px(60)
-                line-height: f.px(18)
-            @include m.media(laptop, widescreen)
-                font-size: f.px(20)
-                line-height: f.px(26)
-            @include m.media(laptop, desktop, widescreen)
-                margin-bottom: f.px(66)
-                @include m.dye(c, c.$chi)
 
-        .items
-            display: flex
-            justify-content: space-between
-            align-items: center
-            .category
-                align-self: flex-start
-                padding: f.px(5) f.px(18)
-                border: 1px solid
-                @include m.dye(border, c.$chi)
-                border-radius: f.px(15)
-                font-family: 'Styrene', Arial, Tahoma, sans-serif
-                font-size: f.px(13)
-                font-weight: 400
-                line-height: 120%
-                transition-duration: 300ms
-                @include m.media(laptop, desktop, widescreen)
-                    @include m.dye(c, c.$chi)
-                    @include m.dye(bgc, c.$psi)
-                @include m.media(phone, tablet)
-                    @include m.dye(c, c.$psi)
-                    @include m.dye(bgc, c.$chi)
-                &:hover
-                    @include m.dye(c, c.$alpha)
-                    border: 1px solid c.$alpha
-                
+.decription
+	font-weight: 400
+	@include m.dye(c, c.$psi)
+	@include m.media(desktop)
+		line-height: f.px(22)
+		width: f.px(530)
+		font-size: f.px(16)
+	@include m.media(widescreen)
+		width: f.px(630)
+	@include m.media(phone, tablet)
+		font-size: f.px(15)
+		margin-bottom: f.px(60)
+		line-height: f.px(18)
+	@include m.media(laptop, widescreen)
+		font-size: f.px(20)
+		line-height: f.px(26)
+	@include m.media(laptop, desktop, widescreen)
+		margin-bottom: f.px(66)
+		@include m.dye(c, c.$chi)
 
+
+.items
+	display: flex
+	justify-content: space-between
+	align-items: center
+
+.category
+	align-self: flex-start
+	padding: f.px(5) f.px(18)
+	border: 1px solid
+	@include m.dye(border, c.$chi)
+	border-radius: f.px(15)
+	font-family: 'Styrene', Arial, Tahoma, sans-serif
+	font-size: f.px(13)
+	font-weight: 400
+	line-height: 120%
+	transition-duration: 300ms
+	@include m.media(laptop, desktop, widescreen)
+		@include m.dye(c, c.$chi)
+		@include m.dye(bgc, c.$psi)
+	@include m.media(phone, tablet)
+		@include m.dye(c, c.$psi)
+		@include m.dye(bgc, c.$chi)
+	&:hover
+		@include m.dye(c, c.$alpha)
+		border: 1px solid c.$alpha
