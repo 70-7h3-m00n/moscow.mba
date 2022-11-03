@@ -1,7 +1,7 @@
 import { dev } from '@/config/index'
 
 const routesBack = {
-  root: dev ? 'http://localhost:1337' : 'https://api-moscow-mba.herokuapp.com',
+  root: dev ? 'http://localhost:1337' : 'https://api.moscow.mba',
   // root: 'http://localhost:1337',
   home: '/',
   graphql: '/graphql',
