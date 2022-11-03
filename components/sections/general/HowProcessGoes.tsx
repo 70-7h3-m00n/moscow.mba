@@ -8,10 +8,11 @@ import studentPhoto from '@/public/assets/images/student-using-laptop.jpg'
 
 const HowProcessGoes = () => {
   const [activeStep, setActiveStep] = useState(0)
-  const [processStepsNodes, setProcessStepsNodes] = useState<Element[]>()
+  const [stepsWrapNodes, setStepsWrapNodes] = useState<Element[]>()
+  const [touchPoint, setTouchPoint] = useState(0)
   const at = useAt()
-  const infoContainerRef = useRef(null)
-  const isScroll = useScrollObserver(null, processStepsNodes)
+  const stepsWrapRef = useRef(null)
+  const isScroll = useScrollObserver(null, stepsWrapNodes)
 
   const processSteps = useMemo(
     () => [
@@ -69,11 +70,9 @@ const HowProcessGoes = () => {
   )
 
   useEffect(() => {
-    if (!infoContainerRef.current) return
-    setProcessStepsNodes(
-      processSteps.map((_step, idx) =>
-        infoContainerRef.current?.children.item(idx + 1)
-      )
+    if (!stepsWrapRef.current) return
+    setStepsWrapNodes(
+      processSteps.map((_step, idx) => stepsWrapRef.current?.children.item(idx))
     )
   }, [processSteps])
 
@@ -94,7 +93,7 @@ const HowProcessGoes = () => {
               </div>
             ))}
         </div>
-        <div className={stls.infoContainer} ref={infoContainerRef}>
+        <div className={stls.infoContainer}>
           <ul className={stls.tabsList}>
             {processSteps.map((step, idx) => (
               <li
@@ -111,31 +110,38 @@ const HowProcessGoes = () => {
               </li>
             ))}
           </ul>
-          {processSteps.map((step, idx) => (
-            <div
-              key={idx + step.tabTitle}
-              className={cn(
-                stls.processStep,
-                idx === activeStep && stls.activeProcessStep,
-                isScroll[idx] && stls.processStepScroll
-              )}>
-              <span
-                className={stls.redStick}
-                style={{
-                  height: `calc(${Number(isScroll[idx]) * 100}% - 48px)`
-                }}
-              />
-              <div className={stls.processStepNumber}>{idx + 1}</div>
-              <div className={stls.processStepTitle}>{step.stepTitle}</div>
-              <ul className={stls.list}>
-                {step.listItems.map((item, idx) => (
-                  <li key={item + idx} className={stls.listItem}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className={stls.stepsWrap} ref={stepsWrapRef}>
+            {processSteps.map((step, idx) => (
+              <div
+                key={idx + step.tabTitle}
+                onTouchStart={e => setTouchPoint(e.changedTouches[0].clientX)}
+                onTouchMove={e =>
+                  e.changedTouches[0].clientX < touchPoint
+                    ? idx + 1 < processSteps.length && setActiveStep(idx + 1)
+                    : idx - 1 >= 0 && setActiveStep(idx - 1)
+                }
+                className={cn(
+                  stls.processStep,
+                  idx === activeStep && stls.activeProcessStep
+                )}>
+                <span
+                  className={stls.redStick}
+                  style={{
+                    height: `calc(${Number(isScroll[idx]) * 100}% - 48px)`
+                  }}
+                />
+                <div className={stls.processStepNumber}>{idx + 1}</div>
+                <div className={stls.processStepTitle}>{step.stepTitle}</div>
+                <ul className={stls.list}>
+                  {step.listItems.map((item, idx) => (
+                    <li key={item + idx} className={stls.listItem}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </Wrapper>
     </section>
