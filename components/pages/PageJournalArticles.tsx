@@ -5,7 +5,8 @@ import { ContextStaticPropsJournal } from '@/context/index'
 import {
   SectionJournalCategories,
   SectionJournalArticles,
-  SectionJournalHeroArticle
+  SectionJournalHeroArticle,
+  SectionJournalHistoryArticle
 } from '@/components/sections'
 
 const defaultSizeArticlesShowSectionArticles = 2
@@ -97,6 +98,7 @@ const PageJournalArticles = () => {
 
   return (
     <>
+      <SectionJournalHistoryArticle atArticlesPage />
       <SectionJournalCategories
         filterCategoriesButtons={filterCategoriesButtons}
         filterAllCategoriesButtons={filterAllCategoriesButtons}

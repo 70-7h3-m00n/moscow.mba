@@ -33,7 +33,7 @@ const SectionJournalConclusion = ({
               <div className={stls.idx}>{idx + 1}</div>
             )}
             <div className={stls.subtitleBody}>
-              <h3 className={stls.subTitle}>{part.title}</h3>
+              {part?.title && <h3 className={stls.subTitle}>{part.title}</h3>}
               <div>{parse(marked(part.body))}</div>
             </div>
           </li>

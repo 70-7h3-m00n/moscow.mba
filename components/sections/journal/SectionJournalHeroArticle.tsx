@@ -137,7 +137,7 @@ const SectionJournalHeroArticle = ({
               className={
                 cn(stls.container, getClassNames({ classNames })) || undefined
               }>
-              <h3 className={stls.title}>{latestArticle.title}</h3>
+              <h1 className={stls.title}>{latestArticle.title}</h1>
             </a>
           </Link>
           <p className={stls.decription}>{latestArticle.shortDescription}</p>

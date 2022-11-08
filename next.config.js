@@ -119,6 +119,15 @@ module.exports = {
         //   },
         //   referrerPolicy: 'no-referrer'
         // })
+      },
+      {
+        source: '/feed.yml',
+        headers: [
+          {
+            key: 'Content-type',
+            value: 'application/xml; charset=UTF-8'
+          }
+        ]
       }
     ]
   },

@@ -180,10 +180,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
         noindex={journalArticle?.noindex || false}
       />
       <SeoOrganizationJsonLd />
-      <SectionJournalHistoryArticle
-        classNames={[stls.historyArticle]}
-        journalArticle={journalArticle}
-      />
+      <SectionJournalHistoryArticle journalArticle={journalArticle} />
       <div className={stls.scrollProgress}>
         <div
           className={stls.scrollProgressBar}
