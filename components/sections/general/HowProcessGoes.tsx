@@ -1,18 +1,15 @@
 import stls from '@/styles/components/sections/HowProcessGoes.module.sass'
 import Image from 'next/image'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import React, { RefObject, useEffect, useMemo, useRef, useState } from 'react'
 import cn from 'classnames'
 import { useAt, useScrollObserver } from '@/hooks/index'
 import { Wrapper } from '@/components/layout'
 import studentPhoto from '@/public/assets/images/student-using-laptop.jpg'
 
 const HowProcessGoes = () => {
-  const [activeStep, setActiveStep] = useState(0)
-  const [stepsWrapNodes, setStepsWrapNodes] = useState<Element[]>()
-  const [touchPoint, setTouchPoint] = useState(0)
+  const [activeStep, setActiveStep] = useState<number>(null)
+  const [touchPoint, setTouchPoint] = useState<number>(null)
   const at = useAt()
-  const stepsWrapRef = useRef(null)
-  const isScroll = useScrollObserver(null, stepsWrapNodes)
 
   const processSteps = useMemo(
     () => [
@@ -69,12 +66,34 @@ const HowProcessGoes = () => {
     [at.course, at.profession]
   )
 
+  const stepsRefs = useRef<RefObject<HTMLDivElement>[]>(
+    processSteps.map(() => React.createRef())
+  )
+  const tabsRefs = useRef<RefObject<HTMLLIElement>[]>(
+    processSteps.map(() => React.createRef())
+  )
+
+  const isScroll = useScrollObserver(null, stepsRefs)
+
   useEffect(() => {
-    if (!stepsWrapRef.current) return
-    setStepsWrapNodes(
-      processSteps.map((_step, idx) => stepsWrapRef.current?.children.item(idx))
-    )
-  }, [processSteps])
+    const tabElement = tabsRefs.current[activeStep]?.current
+    tabElement &&
+      tabElement.scrollIntoView({
+        inline: 'center',
+        block: 'nearest',
+        behavior: 'auto'
+      })
+  }, [activeStep])
+
+  useEffect(() => {
+    const stepElement = stepsRefs.current[activeStep]?.current
+    stepElement &&
+      stepElement.scrollIntoView({
+        inline: 'start',
+        block: 'nearest',
+        behavior: 'smooth'
+      })
+  }, [activeStep])
 
   return (
     <section className={stls.container}>
@@ -99,10 +118,14 @@ const HowProcessGoes = () => {
               <li
                 key={step.tabTitle + idx}
                 className={stls.tabItem}
-                onClick={() => setActiveStep(idx)}>
+                ref={tabsRefs.current[idx]}
+                onClick={() => {
+                  setActiveStep(idx)
+                }}>
                 <a
                   className={cn(
                     stls.tabLink,
+                    !activeStep && idx === 0 && stls.activeTabLink,
                     idx === activeStep && stls.activeTabLink
                   )}>
                   {step.tabTitle}
@@ -110,20 +133,30 @@ const HowProcessGoes = () => {
               </li>
             ))}
           </ul>
-          <div className={stls.stepsWrap} ref={stepsWrapRef}>
+          <div className={stls.stepsWrap}>
             {processSteps.map((step, idx) => (
               <div
+                ref={stepsRefs.current[idx]}
                 key={idx + step.tabTitle}
-                onTouchStart={e => setTouchPoint(e.changedTouches[0].clientX)}
-                onTouchMove={e =>
-                  e.changedTouches[0].clientX < touchPoint
-                    ? idx + 1 < processSteps.length && setActiveStep(idx + 1)
-                    : idx - 1 >= 0 && setActiveStep(idx - 1)
-                }
-                className={cn(
-                  stls.processStep,
-                  idx === activeStep && stls.activeProcessStep
-                )}>
+                onTouchStart={e => {
+                  e.preventDefault()
+                  setTouchPoint(e.changedTouches[0].clientX)
+                }}
+                onTouchEnd={e => {
+                  e.preventDefault()
+                  if (e.changedTouches[0].clientX === touchPoint) return
+                  if (
+                    e.changedTouches[0].clientX - touchPoint < 30 &&
+                    e.changedTouches[0].clientX - touchPoint > -30
+                  )
+                    return
+                  if (e.changedTouches[0].clientX < touchPoint)
+                    return setActiveStep(prev =>
+                      prev + 1 < processSteps.length ? ++prev : prev
+                    )
+                  setActiveStep(prev => (prev - 1 >= 0 ? --prev : prev))
+                }}
+                className={cn(stls.processStep)}>
                 <span
                   className={stls.redStick}
                   style={{

@@ -1,9 +1,13 @@
-import { MutableRefObject, useEffect, useRef, useState } from 'react'
+import { MutableRefObject, RefObject, useEffect, useRef, useState } from 'react'
 
-export const useScrollObserver = (parentRef = null, childRefs: Element[]) => {
+export const useScrollObserver = (
+  parentRef = null,
+  childRefs: MutableRefObject<RefObject<HTMLElement>[]>
+) => {
   const observer = useRef<IntersectionObserver>()
   const [isScroll, setIsScroll] = useState({})
   useEffect(() => {
+    const childRef = childRefs?.current
     const options = {
       root: parentRef?.current || parentRef,
       rootMargin: '-40% 0px',
@@ -28,11 +32,9 @@ export const useScrollObserver = (parentRef = null, childRefs: Element[]) => {
           })
       })
     }, options)
-    childRefs?.map?.((childRef: Element) => observer.current.observe(childRef))
+    childRef.map(({ current }) => observer.current.observe(current))
     return () =>
-      childRefs?.forEach?.((childRef: Element) =>
-        observer.current.unobserve(childRef)
-      )
+      childRef.forEach?.(({ current }) => observer.current.unobserve(current))
   }, [childRefs, parentRef])
   return Object.values(isScroll)
 }
