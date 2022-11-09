@@ -100,7 +100,12 @@ const FormAlpha = ({
 					{at.en
 						? 'By pressing submit button, you agree to'
 						: 'Нажимая на кнопку, Вы даете согласие на обработку своих'}{' '}
-					<span>{at.en ? 'Privacy Policy' : 'персональных данных'}</span>
+					<a
+						href='/legaldocuments/NDA.pdf'
+						target={'_blank'}
+						rel='noreferrer noopener'>
+						{at.en ? 'Privacy Policy' : 'персональных данных'}
+					</a>
 				</div>
 			)}
 		</form>
