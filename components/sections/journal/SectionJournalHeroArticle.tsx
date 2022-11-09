@@ -115,47 +115,58 @@ const SectionJournalHeroArticle = ({
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
       <Wrapper classNames={[stls.wrapper]}>
-        <div className={stls.column}>
-          <ImgJournalArticle
-            src={latestArticle.picture?.url || undefined}
-            width={latestArticle.picture?.width && sizeImage}
-            height={
-              latestArticle.picture?.height &&
-              getImageHeight({
-                width: sizeImage,
-                widthInitial: latestArticle.picture?.width,
-                heightInitial: latestArticle.picture?.height
-              })
-            }
-            alt={latestArticle.picture?.alt}
-            title={latestArticle.title}
-          />
-        </div>
-        <div className={stls.column}>
+        <div className={stls.content}>
           <Link href={`${routesFront.journal}/${latestArticle.slug}`}>
-            <a
-              className={
-                cn(stls.container, getClassNames({ classNames })) || undefined
-              }>
-              <h1 className={stls.title}>{latestArticle.title}</h1>
+            <a className={cn(stls.link, stls.leftRightContainer)}>
+              <div className={stls.left}>
+                <ImgJournalArticle
+                  src={latestArticle.picture?.url || undefined}
+                  width={latestArticle.picture?.width && sizeImage}
+                  height={
+                    latestArticle.picture?.height &&
+                    getImageHeight({
+                      width: sizeImage,
+                      widthInitial: latestArticle.picture?.width,
+                      heightInitial: latestArticle.picture?.height
+                    })
+                  }
+                  alt={latestArticle.picture?.alt}
+                  title={latestArticle.title}
+                />
+              </div>
+              <div className={cn(stls.right, stls.pb)}>
+                <h1 className={stls.title}>{latestArticle.title}</h1>
+                <p className={stls.description}>
+                  {latestArticle.shortDescription ||
+                    'Медиахудожник Вадим Эпштейн о том, что такое «квантовый дизайн» и почему идеальную работу невозможно доделать до конца'}
+                </p>
+              </div>
             </a>
           </Link>
-          <p className={stls.decription}>{latestArticle.shortDescription}</p>
-          <div className={stls.items}>
-            {filterCategoriesButtons
-              .filter(
-                category =>
-                  category.title === latestArticle.journalCategory.title
-              )
-              .map(category => (
-                <button
-                  key={category.slug}
-                  className={stls.category}
-                  onClick={() => handleFilterActiclesButtons(category)}>
-                  {category.title}
-                </button>
-              ))}
-            <GeneralJournalArticleCreatedAt time={time} />
+          <div
+            className={cn(
+              stls.leftRightContainer,
+              stls.leftRightContainerAbsolute
+            )}>
+            <div className={stls.left}></div>
+            <div className={stls.right}>
+              <div className={stls.categoriesButtons}>
+                {filterCategoriesButtons
+                  .filter(
+                    category =>
+                      category?.title === latestArticle?.journalCategory?.title
+                  )
+                  .map(category => (
+                    <button
+                      key={`SectionJournalHeroArticle__categoryBtn--${category.slug}`}
+                      className={stls.btn}
+                      onClick={() => handleFilterActiclesButtons(category)}>
+                      {category.title}
+                    </button>
+                  ))}
+                <GeneralJournalArticleCreatedAt time={time} />
+              </div>
+            </div>
           </div>
         </div>
       </Wrapper>
