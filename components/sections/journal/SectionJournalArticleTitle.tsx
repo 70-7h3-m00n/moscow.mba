@@ -20,7 +20,7 @@ const SectionJournalArticleTitle = ({
       className={
         cn(stls.container, getClassNames({ classNames })) || undefined
       }>
-      <h2 className={stls.title}>{journalArticle?.title}</h2>
+      <h1 className={stls.title}>{journalArticle?.title}</h1>
       <div className={stls.footer}>
         <div className={stls.authors}>
           {journalArticle?.journalAuthors?.map((author, idx) => (
