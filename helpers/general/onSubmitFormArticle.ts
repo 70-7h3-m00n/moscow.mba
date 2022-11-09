@@ -58,7 +58,7 @@ const onSubmitFormArticle = async ({
 	}
 
 	const fetchingDataForClient = async () => {
-		const data = normalizeDataForClient(pdfMaterials)
+		const data = normalizeDataForClient({ pdfMaterials, values })
 
 		return await hitMaterialsRoute(data)
 	}
