@@ -347,6 +347,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
               ? createPortal(
                   <PopupGetMaterials
                     classNames={[stls.popupGetMaterials]}
+                    title={journalArticle?.title}
                     pdfMaterials={journalArticle.pdfMaterials}
                     handlePopupGetMaterials={handlePopupGetMaterials}
                   />,

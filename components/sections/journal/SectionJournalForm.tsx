@@ -1,3 +1,4 @@
+import stls from '@/styles/components/sections/journal/SectionJournalForm.module.sass'
 import Image from 'next/image'
 import { useState } from 'react'
 import cn from 'classnames'
@@ -13,11 +14,9 @@ import {
   TypeLibJournalArticleFormPdfMaterials
 } from '@/types/index'
 
-import stls from '@/styles/components/sections/journal/SectionJournalForm.module.sass'
-
 import formJournalPicture from '@/public/assets/images/journal/formJournal.png'
 import mockupPicture from '@/public/assets/images/journal/mockup.png'
-import pdfImages from '@/public/assets/images/journal/pdf.svg'
+import pdfImage from '@/public/assets/images/journal/pdf.svg'
 import lineForm from '@/public/assets/images/journal/lineForm.svg'
 import lineFormPhone from '@/public/assets/images/journal/lineFormPhone.svg'
 import folderForm from '@/public/assets/images/journal/folderForm.png'
@@ -91,7 +90,7 @@ const SectionJournalForm = ({
               <div key={`${file?.name}-${idx}`} className={stls.pdfFile}>
                 <div className={stls.pdfFilePicture}>
                   {/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
-                  <Image src={pdfImages} width={30} height={38} />
+                  <Image src={pdfImage} width={30} height={38} />
                 </div>
                 <span className={stls.pdfFileName} key={`${file.name}_${idx}`}>
                   {file.name}
