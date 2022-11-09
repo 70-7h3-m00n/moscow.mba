@@ -7,14 +7,14 @@ import axios from 'axios'
 const materials = async (req: NextApiRequest, res: NextApiResponse) => {
 	// This function checks if it is available (working) whether the link.
 	// Which do not work, the function discards.
-	const isCheckResourseToUrl = async dataParse => {
-		const isUrl = async data => {
+	const isCheckResourseToUrl = async data => {
+		const isUrl = async pdfMaterial => {
 			try {
-				const res = await axios.head(data?.url)
+				const res = await axios.head(pdfMaterial?.url)
 				if (res.status === 200) {
 					return {
-						filename: `${data?.name}` || 'fileName.pdf',
-						path: `${data?.url}`
+						filename: `${pdfMaterial?.name}` || 'fileName.pdf',
+						path: `${pdfMaterial?.url}`
 					}
 				}
 			} catch (err) {
@@ -22,20 +22,17 @@ const materials = async (req: NextApiRequest, res: NextApiResponse) => {
 			}
 		}
 
-		const urls = await Promise.all(
-			dataParse.map(async item => await isUrl(item))
-		)
+		const urls = await Promise.all(data.map(async item => await isUrl(item)))
 		const succesUrls = urls.filter(url => url !== null)
 		return succesUrls
 	}
 
-	const data = req.body
-	const dataParse = JSON.parse(data)
-	const normilizeAttachments = await isCheckResourseToUrl(dataParse)
+	const data = JSON.parse(req.body)
+	const normilizeAttachments = await isCheckResourseToUrl(data.pdfMaterials)
 	const subject = 'Подборка файлов от Московской Бизнес Академии'
 
 	const transporter = nodemailer.createTransport({
-		host: process.env.SMTP_HOST,
+		host: process.env.SMTP_PDF_MATERIALS_HOST,
 		port: 587,
 		secure: false, // true for 465, false for other ports
 		logger: true,
@@ -44,21 +41,20 @@ const materials = async (req: NextApiRequest, res: NextApiResponse) => {
 			rejectUnAuthorized: true
 		},
 		auth: {
-			user: process.env.SMTP_LOGIN,
-			pass: process.env.SMTP_PASS
+			user: process.env.SMTP_PDF_MATERIALS_LOGIN,
+			pass: process.env.SMTP_PDF_MATERIALS_PASSWORD
 		}
 	})
 
 	try {
 		await transporter.sendMail({
-			// TODO Оформление письма сделать
-			from: 'lead@moscow.mba',
+			// todo: make sure there is a design for the email
+			from: 'info@moscow.mba',
 			to: `${
 				dev
-					? // TODO Поставь обратно почту!
-					  // ? 'nova@ipo.msk.ru, novailoveyou3@gmail.com'
+					? // ? 'nova@ipo.msk.ru, novailoveyou3@gmail.com'
 					  'baurinanton2013@yandex.ru'
-					: 'mba.academy@yandex.ru, leads@moscow.mba'
+					: data.values.email
 			}`,
 			subject, // Subject line
 			text: 'Подборка файлов от Московской Бизнес Академии',

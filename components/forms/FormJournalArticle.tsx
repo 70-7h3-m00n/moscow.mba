@@ -29,6 +29,7 @@ type TypePropsFormJournalArticle = {
 	setOpen: React.Dispatch<React.SetStateAction<boolean>>
 	setOpenLoader: React.Dispatch<React.SetStateAction<boolean>>
 	setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>
+	emailIsRequired?: boolean
 } & TypeClassNames
 
 const FormJournalArticle = ({
@@ -39,7 +40,8 @@ const FormJournalArticle = ({
 	width = '33',
 	formName = null,
 	children,
-	classNames
+	classNames,
+	emailIsRequired
 }: TypePropsFormJournalArticle) => {
 	const {
 		register,
@@ -74,7 +76,12 @@ const FormJournalArticle = ({
 				<div className={cn(stls.inputs, 'inputs-flex', 'inputs-flex--alt')}>
 					<InputName register={register} errors={errors} width={width} />
 					<InputPhone register={register} errors={errors} width={width} />
-					<InputEmail register={register} errors={errors} width={width} />
+					<InputEmail
+						register={register}
+						errors={errors}
+						width={width}
+						isRequired={emailIsRequired}
+					/>
 					<div className={stls.submit}>
 						<InputSubmitJournal
 							errors={errors}
