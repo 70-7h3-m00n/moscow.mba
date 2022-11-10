@@ -100,7 +100,7 @@ const PageJournalArticles = () => {
 		<>
 			<SectionJournalHistoryArticle atArticlesPage />
 			<Wrapper>
-				<h1 className={stls.h1}>{'Журнал Moscow Business Academy'}</h1>
+				<h1 className={stls.h1}>{'Журнал'}</h1>
 			</Wrapper>
 			<SectionJournalCategories
 				filterCategoriesButtons={filterCategoriesButtons}
