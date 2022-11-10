@@ -130,7 +130,7 @@ const SectionJournalHeroArticle = ({
 								/>
 							</div>
 							<div className={cn(stls.right, stls.pb)}>
-								<h1 className={stls.title}>{latestArticle.title}</h1>
+								<p className={stls.title}>{latestArticle.title}</p>
 								<p className={stls.description}>
 									{latestArticle.shortDescription ||
 										'Медиахудожник Вадим Эпштейн о том, что такое «квантовый дизайн» и почему идеальную работу невозможно доделать до конца'}
