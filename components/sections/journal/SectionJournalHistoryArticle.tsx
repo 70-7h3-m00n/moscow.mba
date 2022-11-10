@@ -31,9 +31,7 @@ const SectionJournalHistoryArticle = ({
 						<Link href={routesFront.home}>
 							<a className={stls.title}>{'Главная'}</a>
 						</Link>
-						<span className={cn(stls.slug, stls.withDot)}>
-							{'Журнал Moscow Business Academy'}
-						</span>
+						<span className={cn(stls.slug, stls.withDot)}>{'Журнал'}</span>
 					</div>
 				</Wrapper>
 			</section>
