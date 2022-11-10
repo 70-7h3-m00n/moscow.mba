@@ -1,16 +1,21 @@
 import stls from '@/styles/components/sections/HowProcessGoes.module.sass'
 import Image from 'next/image'
-import React, { RefObject, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  RefObject,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
 import cn from 'classnames'
 import { useAt, useScrollObserver } from '@/hooks/index'
 import { Wrapper } from '@/components/layout'
 import studentPhoto from '@/public/assets/images/student-using-laptop.jpg'
 
 const HowProcessGoes = () => {
-  const [activeStep, setActiveStep] = useState<number>(null)
-  const [touchPoint, setTouchPoint] = useState<number>(null)
   const at = useAt()
-
   const processSteps = useMemo(
     () => [
       {
@@ -66,6 +71,13 @@ const HowProcessGoes = () => {
     [at.course, at.profession]
   )
 
+  const [activeStep, setActiveStep] = useState<number>(null)
+  const [scrolledData, setScrolledData] = useState<number[]>(
+    Array.from({ length: processSteps.length }, () => 0)
+  )
+
+  const [touchPoint, setTouchPoint] = useState<number>()
+
   const stepsRefs = useRef<RefObject<HTMLDivElement>[]>(
     processSteps.map(() => React.createRef())
   )
@@ -73,7 +85,74 @@ const HowProcessGoes = () => {
     processSteps.map(() => React.createRef())
   )
 
-  const isScroll = useScrollObserver(null, stepsRefs)
+  const handleIntersectDesktopSteps: IntersectionObserverCallback = useCallback(
+    entries => {
+      entries.map(entry => {
+        if (entry.isIntersecting) {
+          const stepIdx = processSteps.findIndex(
+            step => step.stepTitle === entry.target.children.item(2).textContent
+          )
+          const increment = 0.1
+          setScrolledData(prevArray =>
+            prevArray.map((prevValue, idx) =>
+              idx === stepIdx
+                ? !prevValue
+                  ? increment
+                  : prevValue < 1
+                  ? prevValue + increment
+                  : 1
+                : prevValue
+            )
+          )
+        }
+      })
+    },
+    [processSteps]
+  )
+
+  const handleIntersectPhoneSteps: IntersectionObserverCallback = useCallback(
+    entries => {
+      entries.map(entry => {
+        if (entry.isIntersecting) {
+          const stepTitle = entry.target.children.item(2).textContent
+          setActiveStep(
+            processSteps.findIndex(step => step.stepTitle === stepTitle)
+          )
+        }
+      })
+    },
+    [processSteps]
+  )
+
+  const desktopIntersectOptions = useMemo(
+    () => ({
+      rootMargin: '-40% 0px',
+      threshold: Array.from({ length: 10 }, (_v, i) =>
+        Number(((i + 1) * 0.1).toFixed(2))
+      )
+    }),
+    []
+  )
+
+  const phoneIntersectOptions = useMemo(
+    () => ({
+      rootMargin: '0px',
+      threshold: 1
+    }),
+    []
+  )
+
+  useScrollObserver(
+    stepsRefs.current,
+    handleIntersectDesktopSteps,
+    desktopIntersectOptions
+  )
+
+  useScrollObserver(
+    stepsRefs.current,
+    handleIntersectPhoneSteps,
+    phoneIntersectOptions
+  )
 
   useEffect(() => {
     const tabElement = tabsRefs.current[activeStep]?.current
@@ -139,11 +218,9 @@ const HowProcessGoes = () => {
                 ref={stepsRefs.current[idx]}
                 key={idx + step.tabTitle}
                 onTouchStart={e => {
-                  e.preventDefault()
                   setTouchPoint(e.changedTouches[0].clientX)
                 }}
                 onTouchEnd={e => {
-                  e.preventDefault()
                   if (e.changedTouches[0].clientX === touchPoint) return
                   if (
                     e.changedTouches[0].clientX - touchPoint < 30 &&
@@ -160,7 +237,7 @@ const HowProcessGoes = () => {
                 <span
                   className={stls.redStick}
                   style={{
-                    height: `calc(${Number(isScroll[idx]) * 100}% - 48px)`
+                    height: `calc(${Number(scrolledData[idx]) * 100}% - 48px)`
                   }}
                 />
                 <div className={stls.processStepNumber}>{idx + 1}</div>
