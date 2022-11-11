@@ -62,7 +62,11 @@ const PopupGetMaterials = ({
 					onClick={handlePopupGetMaterials}></button>
 				<div className={openLoader || open ? stls.formContent : ''}>
 					<div className={stls.title}>
-						<p className={stls.text}>{title}</p>
+						<p className={stls.text}>
+							{
+								'Получите подборку файлов от Московской Бизнес Академии беслпатно'
+							}
+						</p>
 						<div className={stls.pdfFiles}>
 							{pdfMaterials.map((file, idx) => (
 								<div key={`${file?.name}-${idx}`} className={stls.pdfFile}>
