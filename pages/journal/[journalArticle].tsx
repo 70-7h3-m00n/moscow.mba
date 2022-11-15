@@ -176,8 +176,8 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 					],
 					site_name: companyName
 				}}
-				nofollow={journalArticle?.nofollow || false}
-				noindex={journalArticle?.noindex || false}
+				nofollow={journalArticle?.nofollow || true}
+				noindex={journalArticle?.noindex || true}
 			/>
 			<SeoOrganizationJsonLd />
 			<SectionJournalHistoryArticle journalArticle={journalArticle} />
