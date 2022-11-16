@@ -15,7 +15,7 @@ import { routesFront } from '@/config/index'
 import { getClassNames, getImageHeight, getRenderTime } from '@/helpers/index'
 import { Wrapper } from 'components/layout'
 import { ImgJournalArticle } from '@/components/images'
-import { GeneralJournalArticleCreatedAt } from '@/components/general'
+import { GeneralJournalArticleCreatedAtLegacy } from '@/components/general'
 
 type TypeSectionJournalArticleProps = {
 	filteredArticles: TypeContextJournalArticles
@@ -159,7 +159,7 @@ const SectionJournalHeroArticle = ({
 											{category.title}
 										</button>
 									))}
-								<GeneralJournalArticleCreatedAt time={time} />
+								<GeneralJournalArticleCreatedAtLegacy time={time} />
 							</div>
 						</div>
 					</div>

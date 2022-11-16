@@ -27,6 +27,7 @@ import {
 	SectionJournalPicture,
 	SectionJournalEmphasis,
 	SectionJournalQuote,
+	SectionJournalReadMoreArticles,
 	SectionJournalList,
 	SectionJournalConclusion,
 	SectionJournalRecommendedProgram,
@@ -155,6 +156,8 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 		}`
 	}
 
+	// console.log(journalArticle)
+
 	return (
 		<>
 			<NextSeo
@@ -240,7 +243,10 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 									<SectionJournalList list={component.list} />
 								)}
 								{component.__typename === 'ComponentJournalConclusion' && (
-									<SectionJournalConclusion item={component.conclusion} />
+									<SectionJournalConclusion
+										item={component.conclusion}
+										journalArticle={journalArticle}
+									/>
 								)}
 								{component.__typename ===
 									'ComponentJournalJournalRecommendedProgram' && (
@@ -254,6 +260,13 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 										journalRecommendedArticles={
 											component.journalRecommendedArticles
 										}
+									/>
+								)}
+								{component.__typename ===
+									'ComponentJournalReadAlsoArticles' && (
+									<SectionJournalReadMoreArticles
+										title={component.journalReadAlsoArticles?.title}
+										articles={component.journalReadAlsoArticles?.articles}
 									/>
 								)}
 								{component.__typename ===
@@ -282,7 +295,6 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 									))}
 							</Fragment>
 						))}
-						<SectionJournalToShare journalArticle={journalArticle} />
 					</section>
 				</article>
 				<aside className={stls.aside}>
