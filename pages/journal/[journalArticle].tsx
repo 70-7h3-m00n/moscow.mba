@@ -262,6 +262,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 										}
 									/>
 								)}
+								{/* TODO: filter out articles that are in ComponentJournalJournalRecommendedArticles component */}
 								{component.__typename ===
 									'ComponentJournalReadAlsoArticles' && (
 									<SectionJournalReadMoreArticles
