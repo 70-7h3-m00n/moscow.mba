@@ -54,7 +54,7 @@ const CardJournalArticle = ({
 								{article.journalCategory.title}
 							</div>
 						)}
-						<h3 className={stls.title}>{article.title}</h3>
+						<p className={stls.title}>{article.title}</p>
 						<GeneralJournalArticleCreatedAt
 							classNames={[stls.GeneralJournalArticleCreatedAt]}
 							timestamp={article.createdAt}

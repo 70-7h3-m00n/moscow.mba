@@ -30,7 +30,7 @@ const SectionJournalReadMoreArticles = ({
 			className={
 				cn(stls.container, getClassNames({ classNames })) || undefined
 			}>
-			<h2 className={stls.title}>{translations.title}</h2>
+			<p className={stls.title}>{translations.title}</p>
 			<CardsJournalArticles articles={articles} />
 		</div>
 	)
