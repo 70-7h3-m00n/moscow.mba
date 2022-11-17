@@ -26,9 +26,6 @@ type TypeSectionJournalAllArticlesProps = {
 	sizeArticles: number
 } & TypeClassNames
 
-const defaultSizeShowArticles = 8
-const defaultSizeShowMore = 4
-
 const SectionJournalAllArticles = ({
 	classNames,
 	filteredArticles,
@@ -36,6 +33,9 @@ const SectionJournalAllArticles = ({
 	handleFilterActiclesButtons,
 	filterCategoriesButtons
 }: TypeSectionJournalAllArticlesProps) => {
+	const defaultSizeShowArticles = 8
+	const defaultSizeShowMore = 4
+
 	const [sizeShowArticles, setSizeShowArticles] = useState(
 		defaultSizeShowArticles
 	)
@@ -57,9 +57,13 @@ const SectionJournalAllArticles = ({
 				<GeneralJournalSectionTitle>Все статьи</GeneralJournalSectionTitle>
 				<ul className={stls.articles}>
 					{filteredArticles
-						?.filter((_, idx) => idx < sizeShowArticles)
-						?.map(article => (
-							<li key={article?.slug} className={stls.articleItem}>
+						// ?.filter((_, idx) => idx < sizeShowArticles)
+						?.map((article, idx) => (
+							<li
+								key={`SectionJournalArticles__${article?.slug}--${idx}`}
+								className={cn(stls.articleItem, {
+									[stls.dNone]: !(idx < sizeShowArticles)
+								})}>
 								<CardJournalArticleLegacy
 									handleFilterActiclesButtons={handleFilterActiclesButtons}
 									filterCategoriesButtons={filterCategoriesButtons}
