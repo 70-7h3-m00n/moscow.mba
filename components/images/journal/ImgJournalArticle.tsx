@@ -20,7 +20,7 @@ const ImgJournalArticle = ({
 	title,
 	darken
 }: TypeImgJournalArticleProps) => {
-	const [srcExists, setSrcExists] = useState(false)
+	const [srcExists, setSrcExists] = useState(true)
 
 	useEffect(() => {
 		const checkSrc = async () => {
