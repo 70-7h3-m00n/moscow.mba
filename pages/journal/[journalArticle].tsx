@@ -1,5 +1,8 @@
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
-import { TypeLibJournalArticle } from '@/types/index'
+import {
+	TypeLibJournalArticle,
+	TypeLibJournalReadMoreArticlesArticles
+} from '@/types/index'
 import type { NextPage } from 'next'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { Fragment, useEffect, useState } from 'react'
@@ -144,6 +147,20 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 
 	const at = useAt()
 
+	const journalRecommendedArticles: TypeLibJournalReadMoreArticlesArticles =
+		journalArticle.articleBody
+			?.filter(
+				item =>
+					item &&
+					item.__typename === 'ComponentJournalJournalRecommendedArticles'
+			)
+			?.reduce(
+				(acc, cur) => [...acc, ...cur?.journalRecommendedArticles?.articles],
+				[]
+			)
+
+	const currentJournalArticleSlug = journalArticle.slug
+
 	const seoParams = {
 		title:
 			journalArticle?.metaTitle ||
@@ -261,14 +278,23 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 										journalRecommendedArticles={
 											component.journalRecommendedArticles
 										}
+										currentJournalArticleSlug={currentJournalArticleSlug}
 									/>
 								)}
-								{/* TODO: filter out articles that are in ComponentJournalJournalRecommendedArticles component */}
 								{component.__typename ===
 									'ComponentJournalReadAlsoArticles' && (
 									<SectionJournalReadMoreArticles
 										title={component.journalReadAlsoArticles?.title}
-										articles={component.journalReadAlsoArticles?.articles}
+										articles={component.journalReadAlsoArticles?.articles?.filter(
+											article =>
+												article &&
+												article?.slug !== currentJournalArticleSlug &&
+												journalRecommendedArticles.some(
+													recommendedArticle =>
+														recommendedArticle.slug !== article?.slug
+												)
+										)}
+										currentJournalArticleSlug={currentJournalArticleSlug}
 									/>
 								)}
 								{component.__typename ===
@@ -285,16 +311,14 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 									/>
 								)}
 								{component.__typename === 'ComponentJournalFormPdfMaterials' &&
-									(isUrlsPdf ? (
+									isUrlsPdf && (
 										<SectionJournalForm
 											pdfMaterials={journalArticle.pdfMaterials}
 											formPdfMaterials={component.formPdfMaterials}
 											windowWidth={windowWidth}
 											mounted={mounted}
 										/>
-									) : (
-										''
-									))}
+									)}
 							</Fragment>
 						))}
 					</section>

@@ -11,12 +11,15 @@ import { getClassNames } from '@/helpers/index'
 import { CardJournalArticle, CardsJournalArticles } from '@/components/cards'
 
 type TypeSectionJournalReadMoreArticlesProps = TypeClassNames &
-	TypeLibJournalReadMoreArticles
+	TypeLibJournalReadMoreArticles & {
+		currentJournalArticleSlug: TypeLibJournalArticle['slug']
+	}
 
 const SectionJournalReadMoreArticles = ({
+	classNames,
 	title,
 	articles,
-	classNames
+	currentJournalArticleSlug
 }: TypeSectionJournalReadMoreArticlesProps) => {
 	// console.log(articles)
 	if (!articles || !articles?.length) return null
