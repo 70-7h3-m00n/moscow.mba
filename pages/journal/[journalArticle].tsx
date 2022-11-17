@@ -157,6 +157,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 	}
 
 	// console.log(journalArticle)
+	// redeployment
 
 	return (
 		<>
