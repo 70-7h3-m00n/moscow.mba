@@ -133,7 +133,9 @@ const SectionJournalHeroArticle = ({
 								<p className={stls.title}>{latestArticle.title}</p>
 								<p className={stls.description}>
 									{latestArticle.shortDescription ||
-										'Медиахудожник Вадим Эпштейн о том, что такое «квантовый дизайн» и почему идеальную работу невозможно доделать до конца'}
+										// latestArticle.metaDescription ||
+										// 'Медиахудожник Вадим Эпштейн о том, что такое «квантовый дизайн» и почему идеальную работу невозможно доделать до конца'
+										'Узнайте что-то новое для себя в самой свежей статье от Moscow Business Academy'}
 								</p>
 							</div>
 						</a>
