@@ -173,11 +173,6 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 		}`
 	}
 
-	// console.log(journalArticle)
-	// redeployment
-
-	console.log(journalArticle.nofollow)
-
 	return (
 		<>
 			<NextSeo
@@ -199,8 +194,8 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 					],
 					site_name: companyName
 				}}
-				nofollow={journalArticle?.nofollow ?? true}
-				noindex={journalArticle?.noindex ?? true}
+				nofollow={journalArticle?.nofollow === false ? false : true}
+				noindex={journalArticle?.noindex === false ? false : true}
 			/>
 			<SeoOrganizationJsonLd />
 			<SectionJournalHistoryArticle journalArticle={journalArticle} />
