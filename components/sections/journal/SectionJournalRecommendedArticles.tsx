@@ -39,7 +39,7 @@ const SectionJournalRecommendedArticles = ({
 				<div className={stls.rowArticlesLink}>
 					{journalRecommendedArticles?.articles
 						.filter(
-							article => article && article.slug !== currentJournalArticleSlug
+							article => article && article?.slug !== currentJournalArticleSlug
 						)
 						.map((article, idx) => (
 							<Link

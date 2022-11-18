@@ -52,8 +52,8 @@ const PageJournal: NextPage<TypePageJournalArticlesProps> = ({
 					site_name: companyName
 				}}
 				// todo: add dynamic nofollow & noindex from the api.
-				nofollow
-				noindex
+				// nofollow
+				// noindex
 			/>
 			<SeoOrganizationJsonLd />
 			<ContextStaticPropsJournal.Provider

@@ -291,7 +291,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 												article?.slug !== currentJournalArticleSlug &&
 												journalRecommendedArticles.some(
 													recommendedArticle =>
-														recommendedArticle.slug !== article?.slug
+														recommendedArticle?.slug !== article?.slug
 												)
 										)}
 										currentJournalArticleSlug={currentJournalArticleSlug}
