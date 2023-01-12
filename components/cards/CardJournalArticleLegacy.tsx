@@ -106,48 +106,52 @@ const CardJournalArticleLegacy = ({
 
 	const time = getTime()
 
+	const handleClickCategory = (e, category) => {
+		e.preventDefault(), handleFilterActiclesButtons(category)
+	}
+
 	return (
-		<div className={stls.article}>
-			<div className={stls.top}>
-				<ImgJournalArticle
-					src={picture.url || undefined}
-					width={picture.width && bp.phone}
-					height={
-						picture.height &&
-						getImageHeight({
-							width: bp.phone,
-							widthInitial: picture.width,
-							heightInitial: picture.height
-						})
-					}
-					alt={picture.alt}
-					title={title}
-				/>
-			</div>
-			<div className={stls.bottom}>
-				{filterCategoriesButtons
-					.filter(category => category.title === journalCategory.title)
-					.map((category, idx) => (
-						<button
-							className={stls.category}
-							onClick={() => handleFilterActiclesButtons(category)}
-							key={`${category.title}_${idx}`}>
-							{category.title}
-						</button>
-					))}
-				<Link href={`${routesFront.journal}/${slug}`}>
-					<a
-						className={
-							cn(stls.container, getClassNames({ classNames })) || undefined
-						}>
+		<Link href={`${routesFront.journal}/${slug}`}>
+			<a
+				className={
+					cn(stls.container, getClassNames({ classNames })) || undefined
+				}>
+				<div className={stls.article}>
+					<div className={stls.top}>
+						<ImgJournalArticle
+							src={picture.url || undefined}
+							width={picture.width && bp.phone}
+							height={
+								picture.height &&
+								getImageHeight({
+									width: bp.phone,
+									widthInitial: picture.width,
+									heightInitial: picture.height
+								})
+							}
+							alt={picture.alt}
+							title={title}
+						/>
+					</div>
+					<div className={stls.bottom}>
+						{filterCategoriesButtons
+							.filter(category => category.title === journalCategory.title)
+							.map((category, idx) => (
+								<span
+									className={stls.category}
+									onClick={e => handleClickCategory(e, category)}
+									key={`${category.title}_${idx}`}>
+									{category.title}
+								</span>
+							))}
 						<h3 className={stls.title}>{title}</h3>
-					</a>
-				</Link>
-				<div className={stls.date}>
-					<GeneralJournalArticleCreatedAtLegacy time={time} />
+						<div className={stls.date}>
+							<GeneralJournalArticleCreatedAtLegacy time={time} />
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
+			</a>
+		</Link>
 	)
 }
 
