@@ -14,6 +14,9 @@
   display: flex
   flex-direction: column
   @include m.dye(bgc, c.$phi)
+  &:hover
+    .title
+      @include m.dye(c, c.$alpha)
 
 .tagLabel
   position: absolute
@@ -58,8 +61,6 @@
   @include m.media(laptop, desktop, widescreen)
     margin-bottom: f.px(25)
     font-size: f.px(18)
-  &:hover
-    @include m.dye(c, c.$alpha)
 
 .bottomBottom
   display: flex

@@ -43,44 +43,62 @@ import SectionStudyCost from '@/components/sections/general/SectionStudyCost'
 import SectionCheckPros from '@/components/sections/general/SectionCheckPros'
 import Accreditation from '@/components/sections/general/Accreditation'
 import Pros from '@/components/sections/general/Pros'
+import React from 'react'
+import { DigitalTransformationContext } from '@/context/index'
 
 const PageOnlineProgram = ({ program, teachers }) => {
-  const router = useRouter()
+	const router = useRouter()
 
-  return (
-    <>
-      <JumbotronProgram program={program} />
-      <ProgramGoal data={program} />
-      <WhatWillYouLearn data={program} />
-      <ProgramDesc />
-      <Pros format={'online'} />
-      <HowProcessGoes />
-      <ProgramsModules program={program} />
-      {/* <ECTSStandard /> */}
-      <GetStudyPlan />
-      <Teachers
-        programId={program?._id}
-        programTitle={program?.title}
-        teachers={teachers}
-      />
-      <UpToDateContent withBottomLine />
-      <CorporateClients />
-      <Accreditation />
-      <Diploma />
-      <Students />
-      <Reviews />
-      <SectionStudyCost />
-      <SectionCheckPros />
-      <Qna programId={program?._id} programTitle={program?.title} />
-      <ContactUs
-        programId={program?._id}
-        programTitle={program?.title}
-        title={''}
-        titleNewStr={'Получите консультацию по программам MBA'}
-        overlapsFooter
-      />
-    </>
-  )
+	// TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA
+	const setIsdigitalTransformation = () => {
+		if (
+			program?.category?.slug === 'mini' &&
+			program?.studyFormat === 'online' &&
+			program?.slug === 'digital-transformation'
+		)
+			return true
+
+		return false
+	}
+
+	return (
+		<>
+			{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
+			<DigitalTransformationContext.Provider
+				value={setIsdigitalTransformation()}>
+				<JumbotronProgram program={program} />
+				<ProgramGoal data={program} />
+				<WhatWillYouLearn data={program} />
+				<ProgramDesc />
+				<Pros format={'online'} />
+				<HowProcessGoes />
+				<ProgramsModules program={program} />
+				{/* <ECTSStandard /> */}
+				<GetStudyPlan />
+				<Teachers
+					programId={program?._id}
+					programTitle={program?.title}
+					teachers={teachers}
+				/>
+				<UpToDateContent withBottomLine />
+				<CorporateClients />
+				<Accreditation />
+				<Diploma />
+				<Students />
+				<Reviews />
+				<SectionStudyCost />
+				<SectionCheckPros />
+				<Qna programId={program?._id} programTitle={program?.title} />
+				<ContactUs
+					programId={program?._id}
+					programTitle={program?.title}
+					title={''}
+					titleNewStr={'Получите консультацию по программам MBA'}
+					overlapsFooter
+				/>
+			</DigitalTransformationContext.Provider>
+		</>
+	)
 }
 
 export default PageOnlineProgram
