@@ -131,16 +131,19 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 	const windowWidth = useWindowWidth()
 
 	// Condition for rendering the Popup Download Materials, SectionJournalForm, PopupGetMaterials components
-	const [isUrlsPdf, setIsUrlsPdf] = useState(true)
+	const [isUrlsPdf, setIsUrlsPdf] = useState(false)
+
 	useEffect(() => {
 		const getIsUrls = async () => {
-			const urls = await Promise.all(
-				journalArticle?.pdfMaterials.map(
-					async item => await checkIfResourceExists(item.url)
+			if (journalArticle?.pdfMaterials) {
+				const urls = await Promise.all(
+					journalArticle?.pdfMaterials?.map(
+						async item => await checkIfResourceExists(item.url)
+					)
 				)
-			)
-			const urlsSuccess = urls.some(item => item === true)
-			setIsUrlsPdf(urlsSuccess)
+				const urlsSuccess = urls.some(item => item === true)
+				setIsUrlsPdf(urlsSuccess)
+			}
 		}
 		getIsUrls()
 	}, [])
@@ -148,7 +151,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 	const at = useAt()
 
 	const journalRecommendedArticles: TypeLibJournalReadMoreArticlesArticles =
-		journalArticle.articleBody
+		journalArticle?.articleBody
 			?.filter(
 				item =>
 					item &&
@@ -159,7 +162,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 				[]
 			)
 
-	const currentJournalArticleSlug = journalArticle.slug
+	const currentJournalArticleSlug = journalArticle?.slug
 
 	const seoParams = {
 		title:
@@ -386,7 +389,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 									<PopupGetMaterials
 										classNames={[stls.popupGetMaterials]}
 										title={journalArticle?.title}
-										pdfMaterials={journalArticle.pdfMaterials}
+										pdfMaterials={journalArticle?.pdfMaterials}
 										handlePopupGetMaterials={handlePopupGetMaterials}
 									/>,
 									document.querySelector('#__next')
