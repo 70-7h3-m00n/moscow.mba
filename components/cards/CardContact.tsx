@@ -12,12 +12,12 @@ const CardContact = ({
   return (
     <div>
       <address className='vcard'>
-        <span className='adr'>
-          <h2 className={`locality ${stls.h2}`}>
+        <div className='adr'>
+          <div className={`locality ${stls.h2}`}>
             <IconLocation large={true} />
             {city}
-          </h2>
-        </span>
+          </div>
+        </div>
         <ul className={stls.list}>
           <li>
             <span className='adr'>
