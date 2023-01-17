@@ -16,11 +16,7 @@ import {
 import bp from '@/config/breakpoints'
 import { routesFront } from '@/config/index'
 
-import {
-  getClassNames,
-  getImageHeight,
-  getRenderTime
-} from '@/helpers/index'
+import { getClassNames, getImageHeight, getRenderTime } from '@/helpers/index'
 
 import { GeneralJournalArticleCreatedAt } from '@/components/general'
 import { ImgJournalArticle } from '@/components/images'
@@ -78,10 +74,12 @@ const lessThan: TypeLessThan = [
     type: 'nonLiniar',
     days: -2,
     label: 'Меньше двух дней назад'
-  },
+  }
 ]
 
-const cardOptions = lessThan.filter(item => item.type === 'nonLiniar') as Array<TypeLessThanLiniar>
+const cardOptions = lessThan.filter(
+  item => item.type === 'nonLiniar'
+) as Array<TypeLessThanLiniar>
 
 const CardJournalArticle = ({
   classNames,
@@ -89,23 +87,22 @@ const CardJournalArticle = ({
   filterCategoriesButtons,
   handleFilterActiclesButtons
 }: TypeCardJournalArticleProps) => {
-
   const { slug, picture, title, journalCategory, createdAt } = article
 
   if (
-    !slug
-    && !picture
-    && !title
-    && !journalCategory.title
-    && !journalCategory.slug
-    && !createdAt
-  ) return null
+    !slug &&
+    !picture &&
+    !title &&
+    !journalCategory.title &&
+    !journalCategory.slug &&
+    !createdAt
+  )
+    return null
 
-  const getTime = () => (
+  const getTime = () =>
     article
       ? getRenderTime({ timestamp: article?.createdAt, options: cardOptions })
       : null
-  )
 
   const time = getTime()
 
@@ -115,7 +112,8 @@ const CardJournalArticle = ({
         <ImgJournalArticle
           src={picture.url || undefined}
           width={picture.width && bp.phone}
-          height={picture.height &&
+          height={
+            picture.height &&
             getImageHeight({
               width: bp.phone,
               widthInitial: picture.width,
@@ -123,28 +121,33 @@ const CardJournalArticle = ({
             })
           }
           alt={picture.alt}
-          title={title} />
+          title={title}
+        />
       </div>
       <div className={stls.bottom}>
-        {
-          filterCategoriesButtons
-            .filter(category => category.title === journalCategory.title)
-            .map((category, idx) =>
-              <button
-                className={stls.category}
-                onClick={() => handleFilterActiclesButtons(category)}
-                key={`${category.title}_${idx}`}>
-                {category.title}
-              </button>
-            )
-        }
+        {filterCategoriesButtons
+          .filter(category => category.title === journalCategory.title)
+          .map((category, idx) => (
+            <button
+              className={stls.category}
+              onClick={() => handleFilterActiclesButtons(category)}
+              key={`${category.title}_${idx}`}>
+              {category.title}
+            </button>
+          ))}
         <Link href={`${routesFront.journal}/${slug}`}>
-          <a className={cn(stls.container, getClassNames({ classNames })) || undefined}>
+          <a
+            className={
+              cn(stls.container, getClassNames({ classNames })) || undefined
+            }>
             <h3 className={stls.title}>{title}</h3>
           </a>
         </Link>
         <div className={stls.date}>
-          <GeneralJournalArticleCreatedAt time={time} />
+          <GeneralJournalArticleCreatedAt
+            time={time}
+            createdAt={article.createdAt}
+          />
         </div>
       </div>
     </div>
