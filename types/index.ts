@@ -59,6 +59,11 @@ export type { default as TypeLibJournalAuthors } from '@/types/lib/journal/artic
 export type { default as TypeLibJournalArticleFormPdfMaterials } from '@/types/lib/journal/article/TypeLibJournalArticleFormPdfMaterials'
 export type { default as TypeLibJournalRecommendedPrograms } from '@/types/lib/journal/TypeLibJournalRecommendedPrograms'
 export type { default as TypeLibJournalArticleHtmlTableBody } from '@/types/lib/journal/article/TypeLibJournalArticleHtmlTableBody'
+export type { default as TypeLibJournalReadMoreArticles } from '@/types/lib/journal/article/TypeLibJournalReadMoreArticles'
+export type {
+	TypeLibJournalReadMoreArticlesArticles,
+	TypeLibJournalReadMoreArticlesArticle
+} from '@/types/lib/journal/article/TypeLibJournalReadMoreArticlesArticles'
 
 //Lib/journal/renderTime
 export type { default as TypeLessThanLiniar } from '@/types/lib/journal/renderTime/TypeLessThanLiniar'

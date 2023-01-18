@@ -6,15 +6,17 @@ import cn from 'classnames'
 import { Wrapper } from '@/components/layout'
 import { IconPaperCorner } from '@/components/icons'
 import { ImgLogoEcicel, ImgLogoRabo, ImgLogoMde } from '@/components/images'
+import { useContext } from 'react'
+import { DigitalTransformationContext } from '@/context/index'
 
 const Accreditation = () => {
-  const at = useAt()
+	const at = useAt()
 
-  const logos = [
-    { logo: <ImgLogoEcicel /> },
-    { logo: <ImgLogoRabo /> },
-    { logo: <ImgLogoMde /> }
-  ]
+	const logos = [
+		{ logo: <ImgLogoEcicel /> },
+		{ logo: <ImgLogoRabo /> },
+		{ logo: <ImgLogoMde /> }
+	]
 
   return (
     <section

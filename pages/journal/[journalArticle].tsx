@@ -1,5 +1,8 @@
 import stls from '@/styles/pages/PageJournalArticles.module.sass'
-import { TypeLibJournalArticle } from '@/types/index'
+import {
+	TypeLibJournalArticle,
+	TypeLibJournalReadMoreArticlesArticles
+} from '@/types/index'
 import type { NextPage } from 'next'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { Fragment, useEffect, useState } from 'react'
@@ -27,6 +30,7 @@ import {
 	SectionJournalPicture,
 	SectionJournalEmphasis,
 	SectionJournalQuote,
+	SectionJournalReadMoreArticles,
 	SectionJournalList,
 	SectionJournalConclusion,
 	SectionJournalRecommendedProgram,
@@ -127,21 +131,38 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 	const windowWidth = useWindowWidth()
 
 	// Condition for rendering the Popup Download Materials, SectionJournalForm, PopupGetMaterials components
-	const [isUrlsPdf, setIsUrlsPdf] = useState(true)
+	const [isUrlsPdf, setIsUrlsPdf] = useState(false)
+
 	useEffect(() => {
 		const getIsUrls = async () => {
-			const urls = await Promise.all(
-				journalArticle?.pdfMaterials.map(
-					async item => await checkIfResourceExists(item.url)
+			if (journalArticle?.pdfMaterials) {
+				const urls = await Promise.all(
+					journalArticle?.pdfMaterials?.map(
+						async item => await checkIfResourceExists(item.url)
+					)
 				)
-			)
-			const urlsSuccess = urls.some(item => item === true)
-			setIsUrlsPdf(urlsSuccess)
+				const urlsSuccess = urls.some(item => item === true)
+				setIsUrlsPdf(urlsSuccess)
+			}
 		}
 		getIsUrls()
 	}, [])
 
 	const at = useAt()
+
+	const journalRecommendedArticles: TypeLibJournalReadMoreArticlesArticles =
+		journalArticle?.articleBody
+			?.filter(
+				item =>
+					item &&
+					item.__typename === 'ComponentJournalJournalRecommendedArticles'
+			)
+			?.reduce(
+				(acc, cur) => [...acc, ...cur?.journalRecommendedArticles?.articles],
+				[]
+			)
+
+	const currentJournalArticleSlug = journalArticle?.slug
 
 	const seoParams = {
 		title:
@@ -176,8 +197,8 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 					],
 					site_name: companyName
 				}}
-				nofollow={journalArticle?.nofollow || false}
-				noindex={journalArticle?.noindex || false}
+				nofollow={journalArticle?.nofollow === false ? false : true}
+				noindex={journalArticle?.noindex === false ? false : true}
 			/>
 			<SeoOrganizationJsonLd />
 			<SectionJournalHistoryArticle journalArticle={journalArticle} />
@@ -240,7 +261,10 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 									<SectionJournalList list={component.list} />
 								)}
 								{component.__typename === 'ComponentJournalConclusion' && (
-									<SectionJournalConclusion item={component.conclusion} />
+									<SectionJournalConclusion
+										item={component.conclusion}
+										journalArticle={journalArticle}
+									/>
 								)}
 								{component.__typename ===
 									'ComponentJournalJournalRecommendedProgram' && (
@@ -254,6 +278,23 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 										journalRecommendedArticles={
 											component.journalRecommendedArticles
 										}
+										currentJournalArticleSlug={currentJournalArticleSlug}
+									/>
+								)}
+								{component.__typename ===
+									'ComponentJournalReadAlsoArticles' && (
+									<SectionJournalReadMoreArticles
+										title={component.journalReadAlsoArticles?.title}
+										articles={component.journalReadAlsoArticles?.articles?.filter(
+											article =>
+												article &&
+												article?.slug !== currentJournalArticleSlug &&
+												journalRecommendedArticles.some(
+													recommendedArticle =>
+														recommendedArticle?.slug !== article?.slug
+												)
+										)}
+										currentJournalArticleSlug={currentJournalArticleSlug}
 									/>
 								)}
 								{component.__typename ===
@@ -270,19 +311,16 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 									/>
 								)}
 								{component.__typename === 'ComponentJournalFormPdfMaterials' &&
-									(isUrlsPdf ? (
+									isUrlsPdf && (
 										<SectionJournalForm
 											pdfMaterials={journalArticle.pdfMaterials}
 											formPdfMaterials={component.formPdfMaterials}
 											windowWidth={windowWidth}
 											mounted={mounted}
 										/>
-									) : (
-										''
-									))}
+									)}
 							</Fragment>
 						))}
-						<SectionJournalToShare journalArticle={journalArticle} />
 					</section>
 				</article>
 				<aside className={stls.aside}>
@@ -351,7 +389,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 									<PopupGetMaterials
 										classNames={[stls.popupGetMaterials]}
 										title={journalArticle?.title}
-										pdfMaterials={journalArticle.pdfMaterials}
+										pdfMaterials={journalArticle?.pdfMaterials}
 										handlePopupGetMaterials={handlePopupGetMaterials}
 									/>,
 									document.querySelector('#__next')

@@ -1,22 +1,87 @@
 import stls from '@/styles/components/general/GeneralJournalArticleCreatedAt.module.sass'
+import {
+	TypeClassNames,
+	TypeLessThan,
+	TypeLessThanNonLiniar
+} from '@/types/index'
+import cn from 'classnames'
+import { getClassNames, getRenderTime } from '@/helpers/index'
 
-import { TypeClassNames } from '@/types/index'
-
+// TODO: figure out better time types, it should be timestamp type
 type TypeGeneralJournalArticleCreatedAtProps = TypeClassNames & {
-  time: string
-  createdAt: string
+	timestamp: string
 }
 
 const GeneralJournalArticleCreatedAt = ({
-  time,
-  createdAt
+	classNames,
+	timestamp
 }: TypeGeneralJournalArticleCreatedAtProps) => {
-  if (!time) return null
-  return (
-    <time className={stls.date} dateTime={createdAt}>
-      {time}
-    </time>
-  )
+	if (!timestamp) return null
+
+	const lessThan: TypeLessThan = [
+		{
+			type: 'liniar',
+			sec: 10,
+			label: 'Только что'
+		},
+		{
+			type: 'liniar',
+			sec: 60,
+			label: 'Меньше минуты назад'
+		},
+		{
+			type: 'liniar',
+			sec: 60 * 5,
+			label: 'Меньше пяти минут назад'
+		},
+		{
+			type: 'liniar',
+			sec: 3600,
+			label: 'Меньше часа назад'
+		},
+		{
+			type: 'liniar',
+			sec: 3600 * 2,
+			label: 'Меньше двух часов назад'
+		},
+		{
+			type: 'liniar',
+			sec: 3600 * 3,
+			label: 'Меньше трех часов назад'
+		},
+		{
+			type: 'nonLiniar',
+			days: 0,
+			label: 'Сегодня'
+		},
+		{
+			type: 'nonLiniar',
+			days: -1,
+			label: 'Вчера'
+		},
+		{
+			type: 'nonLiniar',
+			days: -2,
+			label: 'Меньше двух дней назад'
+		}
+	]
+
+	const options = lessThan.filter(
+		item => item.type === 'nonLiniar'
+	) as Array<TypeLessThanNonLiniar>
+
+	const getTime = () => getRenderTime({ timestamp, options })
+
+	const time = getTime()
+
+	return (
+		<div
+			className={
+				cn(stls.container, getClassNames({ classNames })) || undefined
+			}>
+			<time className={stls.time} dateTime={timestamp}>{time}</time>
+		</div>
+	)
 }
 
 export default GeneralJournalArticleCreatedAt

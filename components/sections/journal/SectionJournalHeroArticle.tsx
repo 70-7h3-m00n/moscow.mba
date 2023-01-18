@@ -18,7 +18,7 @@ import {
 
 import { Wrapper } from 'components/layout'
 import { ImgJournalArticle } from '@/components/images'
-import { GeneralJournalArticleCreatedAt } from '@/components/general'
+import { GeneralJournalArticleCreatedAtLegacy } from '@/components/general'
 
 import stls from '@/styles/components/sections/journal/SectionJournalHeroArticle.module.sass'
 
@@ -109,60 +109,71 @@ const SectionJournalHeroArticle = ({
 
   const time = getTime()
 
-  return (
-    <section
-      className={
-        cn(stls.container, getClassNames({ classNames })) || undefined
-      }>
-      <Wrapper classNames={[stls.wrapper]}>
-        <div className={stls.column}>
-          <ImgJournalArticle
-            src={articleNew.picture.url || undefined}
-            width={articleNew.picture.width && sizeImage}
-            height={
-              articleNew.picture.height &&
-              getImageHeight({
-                width: sizeImage,
-                widthInitial: articleNew.picture.width,
-                heightInitial: articleNew.picture.height
-              })
-            }
-            alt={articleNew.picture.alt}
-            title={articleNew.title}
-          />
-        </div>
-        <div className={stls.column}>
-          <Link href={`${routesFront.journal}/${articleNew.slug}`}>
-            <a
-              className={
-                cn(stls.container, getClassNames({ classNames })) || undefined
-              }>
-              <h3 className={stls.title}>{articleNew.title}</h3>
-            </a>
-          </Link>
-          <p className={stls.decription}>{articleNew.shortDescription}</p>
-          <div className={stls.items}>
-            {filterCategoriesButtons
-              .filter(
-                category => category.title === articleNew.journalCategory.title
-              )
-              .map(category => (
-                <button
-                  key={category.slug}
-                  className={stls.category}
-                  onClick={() => handleFilterActiclesButtons(category)}>
-                  {category.title}
-                </button>
-              ))}
-            <GeneralJournalArticleCreatedAt
-              time={time}
-              createdAt={filteredArticles[0]?.createdAt}
-            />
-          </div>
-        </div>
-      </Wrapper>
-    </section>
-  )
+	return (
+		<section
+			className={
+				cn(stls.container, getClassNames({ classNames })) || undefined
+			}>
+			<Wrapper classNames={[stls.wrapper]}>
+				<div className={stls.content}>
+					<Link href={`${routesFront.journal}/${latestArticle.slug}`}>
+						<a className={cn(stls.link, stls.leftRightContainer)}>
+							<div className={stls.left}>
+								<ImgJournalArticle
+									src={latestArticle.picture?.url || undefined}
+									width={latestArticle.picture?.width && sizeImage}
+									height={
+										latestArticle.picture?.height &&
+										getImageHeight({
+											width: sizeImage,
+											widthInitial: latestArticle.picture?.width,
+											heightInitial: latestArticle.picture?.height
+										})
+									}
+									alt={latestArticle.picture?.alt}
+									title={latestArticle.title}
+								/>
+							</div>
+							<div className={cn(stls.right, stls.pb)}>
+								<p className={stls.title}>{latestArticle.title}</p>
+								<p className={stls.description}>
+									{latestArticle.shortDescription ||
+										// latestArticle.metaDescription ||
+										// 'Медиахудожник Вадим Эпштейн о том, что такое «квантовый дизайн» и почему идеальную работу невозможно доделать до конца'
+										'Узнайте что-то новое для себя в самой свежей статье от Moscow Business Academy'}
+								</p>
+							</div>
+						</a>
+					</Link>
+					<div
+						className={cn(
+							stls.leftRightContainer,
+							stls.leftRightContainerAbsolute
+						)}>
+						<div className={stls.left}></div>
+						<div className={stls.right}>
+							<div className={stls.categoriesButtons}>
+								{filterCategoriesButtons
+									.filter(
+										category =>
+											category?.title === latestArticle?.journalCategory?.title
+									)
+									.map(category => (
+										<button
+											key={`SectionJournalHeroArticle__categoryBtn--${category.slug}`}
+											className={stls.btn}
+											onClick={() => handleFilterActiclesButtons(category)}>
+											{category.title}
+										</button>
+									))}
+								<GeneralJournalArticleCreatedAtLegacy time={time} />
+							</div>
+						</div>
+					</div>
+				</div>
+			</Wrapper>
+		</section>
+	)
 }
 
 export default SectionJournalHeroArticle
