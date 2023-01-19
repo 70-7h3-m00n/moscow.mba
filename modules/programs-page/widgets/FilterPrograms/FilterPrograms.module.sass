@@ -1,0 +1,29 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.filter
+    margin-top: f.px(40)
+
+.highlight
+    display: flex
+    align-items: center
+    margin-top: f.px(24)
+    font-weight: 500
+    font-size: 16px
+    line-height: 120%
+    margin-bottom: 0
+    transition: color 0.3s ease-in-out
+    &:hover
+        color: #ff3535
+        & .premium
+            border-color: #ff3535
+
+.premium
+    border: 1px solid
+    border-color: #000
+    font-size: 10px
+    line-height: 120%
+    padding: 6px
+    margin-left: 20px
+    transition: border-color 0.3s ease-in-out

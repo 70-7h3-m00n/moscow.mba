@@ -133,21 +133,21 @@ module.exports = {
 	},
 	async redirects() {
 		return [
-			{
-				source: '/programs',
-				destination: '/programs/mini/online',
-				permanent: true
-			},
-			{
-				source: '/programs/mini',
-				destination: '/programs/mini/online',
-				permanent: true
-			},
-			{
-				source: '/programs/mba',
-				destination: '/programs/mba/online',
-				permanent: true
-			},
+			// {
+			// 	source: '/programs',
+			// 	destination: '/programs/mini/online',
+			// 	permanent: true
+			// },
+			// {
+			// 	source: '/programs/mini',
+			// 	destination: '/programs/mini/online',
+			// 	permanent: true
+			// },
+			// {
+			// 	source: '/programs/mba',
+			// 	destination: '/programs/mba/online',
+			// 	permanent: true
+			// },
 			{
 				source: '/journal/korporativnoe-upravlenie-proektami-uspeh-biznesa',
 				destination:

@@ -1,0 +1,83 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.filterTitle
+    font-weight: 500
+    font-size: f.px(20)
+    line-height: 120%
+    color: #262626
+    margin-bottom: f.px(26)
+
+.itemFilterDirection
+    display: flex
+    gap: f.px(8)
+    &:hover
+        input
+            border: f.px(1) solid #FF3535
+    &:nth-child(n+4)
+        display: none
+
+    & + &
+        margin-top: f.px(20)
+
+    input
+        margin: 0
+        -webkit-appearance: none
+        -moz-appearance: none
+        appearance: none
+        border-radius: 50%
+        width: f.px(20)
+        height: f.px(20)
+        background-color: #EFEFEF
+        border: none
+        display: block
+        width: 20px
+        height: 20px
+        flex: 0 0 20px
+
+    input:checked
+        transition: 0.1s all linear
+        border: f.px(5) solid #FF3535
+        background-color: white
+
+    label
+        font-weight: 300
+        font-size: f.px(16)
+        line-height: 120%
+        color: #262626
+        display: flex
+        align-items: center
+        gap: f.px(8)
+        cursor: pointer
+
+.itemFilterDirectionActive
+    display: flex !important
+
+.fullDirection
+    margin-top: f.px(26)
+    border-top: f.px(1) solid black
+
+.buttonFullDirection
+    padding-top: f.px(12)
+    padding-bottom: f.px(12)
+    border: none
+    display: flex
+    align-items: center
+    gap: f.px(12)
+    background-color: transparent
+    font-family: "Styrene", Arial, Tahoma, sans-serif
+    font-weight: 400
+    font-size: f.px(16)
+    line-height: 120%
+    color: #262626
+    text-transform: uppercase
+    transition-duration: 300ms
+    &:hover
+        color: #FF3535
+        .pathCircle
+            fill: #FF3535
+
+.pathCircle
+    fill: black
+    transition-duration: 300ms

@@ -4,32 +4,32 @@ import { useAt } from '@/hooks/index'
 import { ruCaseProgram } from '@/helpers/index'
 
 const ProgramsQty = ({
-  programs,
-  type = '',
-  format = '',
-  isInsideHeader = false
+	programs,
+	type = '',
+	format = '',
+	isInsideHeader = false
 }) => {
-  const at = useAt()
-  let ProgramsQty
+	const at = useAt()
+	let ProgramsQty
 
-  if (type && format)
-    ProgramsQty =
-      programs &&
-      programs.filter(
-        program =>
-          program?.category?.type === type && program?.studyFormat === format
-      ).length
-  else ProgramsQty = programs.length
+	if (type && format)
+		ProgramsQty =
+			programs &&
+			programs.filter(
+				program =>
+					program?.category?.type === type && program?.studyFormat === format
+			).length
+	else ProgramsQty = programs?.length
 
-  return (
-    <div
-      className={cn(stls.container, {
-        [stls.headerContainer]: isInsideHeader
-      })}>
-      <span>{ProgramsQty} </span>
-      {at.en ? 'programs' : ruCaseProgram(ProgramsQty)}
-    </div>
-  )
+	return (
+		<div
+			className={cn(stls.container, {
+				[stls.headerContainer]: isInsideHeader
+			})}>
+			<span>{ProgramsQty} </span>
+			{at.en ? 'programs' : ruCaseProgram(ProgramsQty)}
+		</div>
+	)
 }
 
 export default ProgramsQty

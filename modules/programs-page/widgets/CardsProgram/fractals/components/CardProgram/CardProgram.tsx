@@ -6,11 +6,14 @@ import TrainingPeriod from '@/components/costs/TrainingPeriod'
 import Price from '@/components/costs/Price'
 import { IconArrowTopRight } from '@/components/icons'
 
-const CardProgram = ({ professionLayout, program, number, type, format }) => {
+const CardProgram = ({ program }) => {
 	const at = useAt()
 
 	const studyFieldIsAccounting =
 		program?.study_field?.slug?.trim() === 'accounting-analysis-and-audit'
+
+	const type = program?.category.type
+	const format = program?.studyFormat
 
 	return (
 		<Link href={`/programs/${type}/${format}/${program?.slug}`}>
@@ -20,15 +23,15 @@ const CardProgram = ({ professionLayout, program, number, type, format }) => {
 				</div>
 				<div>
 					<span className={stls.category}>
-						{at.mini
+						{type === 'mini'
 							? 'Mini MBA'
-							: at.mba
+							: type === 'mba'
 							? 'MBA'
-							: at.profession
+							: type === 'profession'
 							? at.en
 								? 'Profession'
 								: 'Профессия'
-							: at.course
+							: type === 'course'
 							? at.en
 								? 'Course'
 								: 'Курс'

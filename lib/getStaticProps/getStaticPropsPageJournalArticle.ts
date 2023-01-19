@@ -6,37 +6,37 @@ import { createBlended } from '@/helpers/index'
 import axios from 'axios'
 
 const getStaticPropsPageJournalArticle = async ({
-  context
+	context
 }: {
-  context: GetStaticPropsContext
+	context: GetStaticPropsContext
 }): Promise<{
-  props: TypePageJournalArticleProps
-  revalidate: number | boolean
+	props: TypePageJournalArticleProps
+	revalidate: number | boolean
 }> => {
-  const getData = async () => {
-    try {
-      const res = await axios.get(
-        `${routesBack.root}${routesBack.getStaticPropsPageJournalArticles}/${context?.params?.journalArticle}`
-      )
+	const getData = async () => {
+		try {
+			const res = await axios.get(
+				`${routesBack.root}${routesBack.getStaticPropsPageJournalArticles}/${context?.params?.journalArticle}`
+			)
 
-      const data = await res.data
+			const data = await res.data
 
-      return data
-    } catch (err) {
-      console.error(`TYPE: ${err.type}. MESSAGE: ${err.message}`)
-      return []
-    }
-  }
+			return data
+		} catch (err) {
+			console.error(`TYPE: ${err.type}. MESSAGE: ${err.message}`)
+			return []
+		}
+	}
 
-  const data = await getData()
+	const data = await getData()
 
-  return {
-    props: {
-      ...data,
-      programs: createBlended(data?.programs)
-    },
-    revalidate: revalidate.default
-  }
+	return {
+		props: {
+			...data,
+			programs: data?.programs
+		},
+		revalidate: revalidate.default
+	}
 }
 
 export default getStaticPropsPageJournalArticle

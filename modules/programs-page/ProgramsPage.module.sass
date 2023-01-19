@@ -1,0 +1,200 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.generalContainer
+    margin-right: auto
+    margin-left: auto
+    padding-left: 10px
+    padding-right: 10px
+    width: 1310px
+    @include m.media(desktop)
+        width: 1000px
+    @include m.media(laptop, tablet)
+        width: 710px
+    @include m.media(tablet, phone)
+        width: 100%
+    &::before,
+    &::after
+        content: ' '
+        display: table
+    &::after
+        clear: both
+
+.filtersContainer
+    margin-top: f.px(33)
+    flex-basis: 25%
+
+.sortingContainer
+    position: relative
+    display: flex
+    justify-content: flex-end
+    @include m.media(phone, tablet)
+        justify-content: flex-start
+
+.heroProgram
+    position: relative
+    margin-bottom: f.px(68)
+
+.heroProgramContainer
+    position: relative
+    margin-right: auto
+    margin-left: auto
+    padding-top: f.px(130)
+    padding-bottom: f.px(130)
+    padding-left: 10px
+    padding-right: 10px
+    width: 1310px
+    @include m.media(desktop)
+        width: 1000px
+    @include m.media(laptop, tablet)
+        width: 710px
+    @include m.media(tablet, phone)
+        width: 100%
+
+.ourPrograms
+    position: relative
+    font-weight: 400
+    font-size: f.px(24)
+    line-height: 120%
+    color: #FFFFFF
+    max-width: f.px(850)
+
+.title
+    margin-bottom: 48px
+    font-style: normal
+    font-weight: bold
+    font-size: 62px
+    line-height: 100%
+    @include m.media(tablet, phone)
+        margin-bottom: 30px
+        font-size: 46px
+        span
+            display: none
+    @include m.media(phone)
+        font-size: 36px
+
+section.jumbotronPrograms
+    background-color: #f7f7f7
+    & > * > *
+        position: relative
+    & a
+        color: #808080
+
+.subtitle
+    display: flex
+    align-items: center
+    margin-bottom: 20px
+    & h2
+        font-style: normal
+        font-weight: bold
+        font-size: 30px
+        line-height: 100%
+        margin: 0
+    @include m.media(tablet, phone)
+        flex-direction: column
+        align-items: flex-start
+        & > *:nth-child(1)
+            margin-bottom: 20px
+
+.content
+    flex: 1
+    margin-bottom: 130px
+    flex-basis: 75%
+    @media (max-width: 1329px)
+        margin-bottom: 80px
+    @media (max-width: 767px)
+        margin-bottom: 60px
+
+.qtPrograms
+    padding: 12px
+    @include m.media(laptop, desktop, widescreen)
+        margin-left: 16px
+    font-size: 13px
+    line-height: 120%
+    font-weight: 500
+    background-color: #f7f7f7
+    color: #ff3535
+
+.desc
+    margin-bottom: 25px
+    font-style: normal
+    font-weight: 300
+    font-size: 20px
+    line-height: 130%
+
+.counters
+    margin-bottom: 25px
+    display: flex
+    align-items: center
+    & div
+        display: flex
+        font-style: normal
+        font-weight: bold
+        font-size: 20px
+        line-height: 120%
+    & > div
+        margin-right: 10px
+    @media (max-width: 1330px)
+        flex-direction: column
+        align-items: flex-start
+
+.counter
+    @media (max-width: 1330px)
+        &:nth-child(1)
+            margin-bottom: 20px
+    @media (min-width: 1330px)
+        align-items: center
+        margin-right: 30px
+
+.container
+    display: flex
+    gap: f.px(30)
+    @media (max-width: 1019px)
+        flex-direction: column
+
+.programMainInfo
+    margin-bottom: 43px
+
+.programs
+    display: flex
+    flex-wrap: wrap
+    margin: 0 -15px -30px
+    margin-top: 47px
+    @media (max-width: 1019px)
+        margin: 60px -10px -20px
+    @media (max-width: 480px)
+        margin: 30px 2px -20px
+    @include m.media(tablet, phone)
+        flex-direction: column
+
+    // .slick-dots
+    //   text-align: center
+    //   display: flex
+    //   align-items: center
+    //   justify-content: center
+    //   width: 100%
+    //   margin-top: 15px
+    //   button
+    //     display: inline-block
+    //     vertical-align: middle
+    //     background: transparent
+    //     border-radius: 50%
+    //     cursor: pointer
+    //     width: 74px
+    //     height: 74px
+    //     border: none
+    //     margin: 0 7px
+    //     background: #f7f7f7
+    //     transition: all 0.3s ease-out
+    //     font-weight: 500
+    //     font-size: 20px
+    //     color: rgba(38, 38, 38, 0.12)
+    //     font-family: 'Styrene', Arial, Tahoma, sans-serif
+    //     &:hover
+    //       background: #ff3535
+    //       color: #262626
+
+    //   .slick-active button
+    //     background: #ff3535
+    //     color: #fff

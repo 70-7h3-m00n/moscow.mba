@@ -1,0 +1,45 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.filterTitle
+    font-weight: 500
+    font-size: f.px(20)
+    line-height: 120%
+    color: #262626
+    margin-bottom: f.px(26)
+
+.itemFilterTypeProgram
+    display: flex
+    gap: f.px(8)
+
+    & + &
+        margin-top: f.px(20)
+
+    input
+        margin: 0
+        -webkit-appearance: none
+        -moz-appearance: none
+        appearance: none
+        border-radius: 50%
+        width: f.px(20)
+        height: f.px(20)
+        background-color: #EFEFEF
+        border: none
+        &:hover
+            border: f.px(1) solid #FF3535
+
+    input:checked
+        transition: 0.1s all linear
+        border: f.px(5) solid #FF3535
+        background-color: white
+
+    label
+        font-weight: 300
+        font-size: f.px(16)
+        line-height: 120%
+        color: #262626
+        display: flex
+        align-items: center
+        gap: f.px(8)
+        cursor: pointer

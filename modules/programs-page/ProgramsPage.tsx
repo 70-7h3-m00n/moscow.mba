@@ -1,88 +1,57 @@
-import stls from '@/styles/components/pages/Programs.module.sass'
-import { useContext, useEffect } from 'react'
-import { NextSeo } from 'next-seo'
-import truncate from 'truncate'
-import { useAt } from '@/hooks/index'
-import { ContextStaticProps } from '@/context/index'
-// import {
-//   Breadcrumbs,
-//   InfoRectangle,
-//   ProgramSubjects,
-//   ProgramsQty,
-//   Filters
-// } from '@/components/general'
+import Image from 'next/image'
+import stls from './ProgramsPage.module.sass'
 import Breadcrumbs from '@/components/general/Breadcrumbs'
-import InfoRectangle from '@/components/general/InfoRectangle'
-import ProgramSubjects from '@/components/general/ProgramSubjects'
-import ProgramsQty from '@/components/general/ProgramsQty'
-import Filters from '@/components/general/Filters'
-// import { CardProgram } from '@/components/cards'
-import CardProgram from '@/components/cards/CardProgram'
-// import { IconCheckCircle } from '@/components/icons'
-import IconCheckCircle from '@/components/icons/IconCheckCircle'
+import {
+	CardProgram,
+	CardsProgram,
+	FilterPrograms,
+	SortingPrograms
+} from './widgets'
+import heroProgramPicture from '@/public/assets/images/heroProgram.jpg'
+import { ConfigProgramsProvider } from './fractals'
+import {
+	InfoRectangle,
+	ProgramsQty,
+	ProgramSubjects
+} from '@/components/general'
+import { IconCheckCircle } from '@/components/icons'
 
-const PagePrograms = ({ mbaTypeOfProgram, mbaFormat }) => {
-	const { programs, curStudyField } = useContext(ContextStaticProps)
-	console.log(programs)
-
-	const at = useAt()
-
-	const programsFiltered = programs?.filter(
-		program =>
-			program?.studyFormat === mbaFormat &&
-			program?.category?.type === mbaTypeOfProgram
-	)
-
-	const programCards =
-		(at.profession || at.course) && curStudyField
-			? programsFiltered?.filter(
-					program => program?.study_field?.name === curStudyField
-			  )
-			: programsFiltered
-
-	// const studyFieldsFiltered = Array.from(
-	//   new Set(programsFiltered.map(program => program.study_field.name))
-	// )
-
-	// const studyFieldsFiltered =
-	//   (at.profession || at.course) &&
-	//   studyFields?.filter((studyField, idx) => {
-	//     return programsFiltered.some(
-	//       program =>
-	//         program?.study_field?.name?.toLowerCase() ===
-	//         studyField?.toLowerCase()
-	//     )
-	//   })
-
-	// useEffect(() => {
-	//   if (at.profession || at.course) {
-	//     setCurStudyField(studyFields?.[0] || null)
-	//   } else {
-	//     setCurStudyField(null)
-	//   }
-	// }, [
-	//   at.profession,
-	//   at.course,
-	//   setCurStudyField,
-	//   studyFields
-	//   // studyFieldsFiltered
-	// ])
-
+const ProgramsPage = () => {
 	return (
-		<>
+		<ConfigProgramsProvider>
 			<section className={stls.jumbotronPrograms}>
 				<div className={stls.generalContainer}>
 					<Breadcrumbs />
 				</div>
 			</section>
+			<section className={stls.heroProgram}>
+				<Image
+					src={heroProgramPicture}
+					alt='Студенты ставит лайк'
+					layout='fill'
+					objectFit='cover'
+				/>
+				<div className={stls.heroProgramContainer}>
+					<p className={stls.ourPrograms}>
+						Наши программы — это бизнес-образование международного уровня,
+						которое ежегодно получают тысячи предпринимателей, топ-менеджеров и
+						узкопрофильных специалистов.
+					</p>
+				</div>
+			</section>
 			<div className={stls.generalContainer}>
-				<h1 className={stls.title}>
-					ПРОГРАММЫ <span>ОБУЧЕНИЯ</span>
-				</h1>
 				<div className={stls.container}>
-					<Filters mbaTypeOfProgram={mbaTypeOfProgram} mbaFormat={mbaFormat} />
+					<div className={stls.filtersContainer}>
+						<FilterPrograms />
+					</div>
 					<div className={stls.content}>
-						<div className={stls.programMainInfo}>
+						<h1 className={stls.title}>
+							ПРОГРАММЫ <span>ОБУЧЕНИЯ</span>
+						</h1>
+						<div className={stls.infoRectangle}>
+							<InfoRectangle programPage={true} />
+						</div>
+						{/* <div className={stls.programMainInfo}>
 							<div className={stls.subtitle}>
 								<h2>
 									{at.mini
@@ -144,33 +113,18 @@ const PagePrograms = ({ mbaTypeOfProgram, mbaFormat }) => {
 									</div>
 								</div>
 							)}
+						</div> */}
+						<div className={stls.sortingContainer}>
+							<SortingPrograms />
 						</div>
-						{!at.profession && !at.course && (
-							<InfoRectangle
-								programPage={true}
-								type={mbaTypeOfProgram}
-								format={mbaFormat}
-							/>
-						)}
 						<div className={stls.programs}>
-							{programCards.map((program, idx) => {
-								return (
-									<CardProgram
-										key={program?._id || program?.id}
-										professionLayout={at.profession || at.course}
-										program={program}
-										number={idx + 1}
-										type={mbaTypeOfProgram}
-										format={mbaFormat}
-									/>
-								)
-							})}
+							<CardsProgram />
 						</div>
 					</div>
 				</div>
 			</div>
-		</>
+		</ConfigProgramsProvider>
 	)
 }
 
-export default PagePrograms
+export default ProgramsPage
