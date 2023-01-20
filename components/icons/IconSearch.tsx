@@ -4,19 +4,32 @@ import cn from 'classnames'
 import { colors } from '@/config/index'
 import { getClassNames } from '@/helpers/index'
 import { IconContainer } from '@/components/layout'
+import React from 'react'
 
 type TIconSearchProps = TypeClassNames & {
   color?: TypeColor
-}
+  style?: React.CSSProperties
+  onClick?: React.MouseEventHandler
+} 
 
 // TODO: improve structure
-const IconSearch = ({ classNames, color }: TIconSearchProps) => {
+const IconSearch: React.FC<TIconSearchProps> = ({
+  classNames,
+  color,
+  style = {},
+  ...props
+}): JSX.Element => {
   return (
     <IconContainer
       classNames={[
         cn(stls.container, getClassNames({ classNames })) || undefined
-      ]}>
-      <svg viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
+      ]}
+      {...props}>
+      <svg
+        style={style}
+        viewBox='0 0 30 30'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'>
         <rect
           x='20.4531'
           y='21.4165'
