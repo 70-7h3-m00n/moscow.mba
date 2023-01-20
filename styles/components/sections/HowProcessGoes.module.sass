@@ -1,5 +1,7 @@
 @use '@/styles/utils/mixin' as m
 
+$stick-height: calc(100% - 48px)
+
 .container
   position: relative
   margin-bottom: 130px
@@ -55,10 +57,11 @@
   display: none
   @include m.media(tablet, phone)
     display: flex
-    overflow: auto
+    overflow-x: auto
     margin-right: -10px
     border-bottom: 1px solid rgba(38, 38, 38, 0.11)
     margin-bottom: 20px
+    scroll-snap-type: x mandatory
     &::-webkit-scrollbar
       background: transparent
       height: 0
@@ -68,6 +71,8 @@
 
 .tabItem
   margin: 0 10px
+  scroll-snap-align: center
+  scroll-snap-stop: always
   &:first-child
     margin-left: 0
   &:last-child
@@ -83,42 +88,53 @@
   font-size: 16px
   line-height: 1.2
   border-bottom: 2px solid transparent
-  &:hover
-    color: #ff3535
   &.activeTabLink
     color: #ff3535
     border-bottom-color: #ff3535
 
+.stepsWrap
+  @include m.media(tablet, phone)
+    display: flex
+    overflow-x: auto
+    scroll-snap-type: x mandatory
+
 .processStep
-  display: none
   padding-left: 87px
   position: relative
   padding-top: 4px
   padding-bottom: 18px
   margin-bottom: 10px
-  @include m.media(widescreen, desktop, laptop)
-    display: block !important
-  @include m.media(tablet, phone)
-    padding: 0
-    margin: 0
-    display: none
-  &::before
+  &::before, .redStick
     content: ''
     left: 18px
-    bottom: 0
+    top: calc(100% - $stick-height)
     width: 1px
     background: #d9d9d9
     position: absolute
-    height: calc(100% - 48px)
+    height: $stick-height
     @include m.media(tablet, phone)
       display: none
+  .redStick
+    height: 0
+    background: #ff3535
+    transition: height .2s linear
   &:nth-last-of-type(1)
     padding-bottom: 0
     margin-bottom: 0
-    &::before
+    &::before, .redStick
       display: none
-  &.activeProcessStep
-    display: block
+  @include m.media(widescreen, desktop, laptop)
+    display: block !important
+  @include m.media(tablet, phone)
+    display: flex
+    flex-direction: column
+    flex-shrink: 0
+    overflow: hidden
+    width: 100%
+    scroll-snap-align: start
+    scroll-snap-stop: always
+    padding: 0
+    margin: 0
 
 .processStepTitle
   font-weight: 500

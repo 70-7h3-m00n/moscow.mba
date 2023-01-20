@@ -99,7 +99,6 @@
   right: f.px(15)
   transform: translateY(-50%)
   max-width: f.px(18)
-  pointer-events: none
   & path,
   & rect
     @include m.dye(fill, c.$omicron)
@@ -109,6 +108,7 @@
 
 .search
   width: 100%
+  text-overflow: ellipsis
   padding-top: f.px(15)
   padding-right: f.px(30+18)
   padding-bottom: f.px(15)
@@ -182,6 +182,7 @@
   line-height: 120%
 
 .searchResultLabel
+  flex-shrink: 0
   @include m.media(phone, tablet)
     order: 1
     margin-bottom: f.px(10)

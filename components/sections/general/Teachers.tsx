@@ -18,7 +18,6 @@ import { PopupForm, PopupTeacher } from '@/components/popups'
 import {
 	IconCheck,
 	IconClose,
-	IconCross,
 	IconMoreThan,
 	IconSearch
 } from '@/components/icons'
@@ -110,6 +109,8 @@ const Teachers = ({
 	const [searchTermIsAppliedtoUrl, setSearchTermIsAppliedtoUrl] =
 		useState(false)
 
+	const [isInputClose, setIsInputClose] = useState(false)
+
 	const [shownTeachersCount, setShownTeachersCount] = useState(8)
 	const showMoreTeachersAddendum = 12
 	const UITeachers: TypeLibTeachers | null = teachers
@@ -139,21 +140,30 @@ const Teachers = ({
 		setSearchTerm(e.target.value)
 	}
 
-	const applySearchTermToUrl = (title: string | null) => {
+	const applySearchTermToUrl = (title: string | null = '') => {
 		setSearchTerm(title)
-		setSearchTermIsAppliedtoUrl(true)
+		setSearchTermIsAppliedtoUrl(!!title)
 		router.replace({ query: { q: encodeURIComponent(title) } }, undefined, {
 			shallow: true,
 			scroll: false
 		})
 	}
 
+	const setEmptyInput = () => {
+		setSearchTerm('')
+		setSearchTermIsAppliedtoUrl(false)
+		setIsInputClose(true)
+		router.replace({ query: { q: '' } }, undefined, {
+			shallow: true,
+			scroll: false
+		})
+	}
+
 	useEffect(() => {
-		if (!searchTerm && router.query.q) {
-			setSearchTerm(decodeURIComponent(router.query.q.toString()))
+		if (!isInputClose && !searchTerm && router.query.q) {
+			setSearchTerm(decodeURIComponent(router.query.q?.toString()))
 			setSearchTermIsAppliedtoUrl(true)
 		}
-
 		const shownTeachersCountSS = sessionStorage.getItem('shownTeachersCount')
 
 		if (shownTeachersCountSS && +shownTeachersCountSS > shownTeachersCount) {
@@ -161,7 +171,7 @@ const Teachers = ({
 		}
 
 		sessionStorage.setItem('shownTeachersCount', shownTeachersCount.toString())
-	}, [router, searchTerm, shownTeachersCount])
+	}, [isInputClose, router, searchTerm, shownTeachersCount])
 
 	{
 		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
@@ -377,17 +387,28 @@ const Teachers = ({
 								)}
 							</h3>
 							{at.teachers && !at.en && (
-								<div className={stls.searchGroup}>
+								<div
+									className={stls.searchGroup}
+									style={
+										searchTerm && searchTerm.length > 50
+											? {
+													maxWidth: 'max-content'
+											  }
+											: {}
+									}>
 									<div className={stls.searchInputGroup}>
 										<div
 											className={cn(stls.searchIcon, {
 												[stls.searchIconSearthTermIsApplied]:
 													searchTermIsAppliedtoUrl
 											})}>
-											{searchTermIsAppliedtoUrl ? (
-												<IconClose />
+											{searchTerm ? (
+												<IconClose
+													style={{ cursor: 'pointer' }}
+													onClick={setEmptyInput}
+												/>
 											) : (
-												<IconSearch />
+												<IconSearch style={{ cursor: 'text' }} />
 											)}
 										</div>
 										<input
@@ -418,6 +439,11 @@ const Teachers = ({
 												) && setSearchInputIsFocused(false)
 											}
 											value={searchTerm || ''}
+											size={
+												searchTerm && searchTerm.length > 50
+													? searchTerm.length
+													: undefined
+											}
 										/>
 									</div>
 									{searchTerm && searchInputIsFocused && (
