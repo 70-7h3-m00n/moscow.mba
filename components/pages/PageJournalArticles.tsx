@@ -1,125 +1,130 @@
+import stls from '@/styles/components/pages/PageJournalArticles.module.sass'
 import { useContext, useEffect, useState } from 'react'
-
 import { ContextStaticPropsJournal } from '@/context/index'
-
 import {
-  SectionJournalCategories,
-  SectionJournalArticles,
-  SectionJournalHeroArticle
+	SectionJournalCategories,
+	SectionJournalArticles,
+	SectionJournalHeroArticle,
+	SectionJournalHistoryArticle
 } from '@/components/sections'
-
-const defaultSizeArticlesShowSectionArticles = 2
+import { Wrapper } from '../layout'
 
 const PageJournalArticles = () => {
-  const { categories, articles } = useContext(ContextStaticPropsJournal)
+	const defaultSizeArticlesShowSectionArticles = 2
 
-  // Saving those categories that have articles.
-  // Сохранение тех категорий, которые имеют статьи.
-  const existenceCategory = categories.filter(category =>
-    articles.some(article => article.journalCategory.title === category.title)
-  )
+	const { categories, articles } = useContext(ContextStaticPropsJournal)
 
-  const [filterAllCategoriesButtons, setfilterAllCategoriesButtons] =
-    useState(true)
-  const [filterCategoriesButtons, setfilterCategoriesButtons] = useState(
-    existenceCategory.map(item => ({ ...item, state: true }))
-  )
+	// Saving those categories that have articles.
+	// Сохранение тех категорий, которые имеют статьи.
+	const existenceCategory = categories.filter(category =>
+		articles.some(article => article.journalCategory.title === category.title)
+	)
 
-  // Output of articles by filtered categories
-  // Вывод статей по фильтрованным категориям
-  const appliedCategories = filterCategoriesButtons.filter(
-    category => category.state === true
-  )
+	const [filterAllCategoriesButtons, setfilterAllCategoriesButtons] =
+		useState(true)
+	const [filterCategoriesButtons, setfilterCategoriesButtons] = useState(
+		existenceCategory.map(item => ({ ...item, state: true }))
+	)
 
-  const filteredArticles = articles.filter(article =>
-    appliedCategories.some(
-      appliedCategory => appliedCategory.title === article.journalCategory.title
-    )
-  )
-  const sizeArticles = filteredArticles.length
+	// Output of articles by filtered categories
+	// Вывод статей по фильтрованным категориям
+	const appliedCategories = filterCategoriesButtons.filter(
+		category => category.state === true
+	)
 
-  // Output of all existing articles by clicking on the "all articles" button
-  // Вывод всех существующих статей, при клике на кнопку "все статьи"
-  const handlefilterAllCategoriesButtons = () => {
-    setfilterCategoriesButtons(filterCategoriesButtons =>
-      filterCategoriesButtons.map(item => ({ ...item, state: true }))
-    )
-    setfilterAllCategoriesButtons(true)
-  }
+	const filteredArticles = articles.filter(article =>
+		appliedCategories.some(
+			appliedCategory => appliedCategory.title === article.journalCategory.title
+		)
+	)
+	const sizeArticles = filteredArticles.length
 
-  // Output of those articles that correspond to the selected (pressed) categories
-  // Вывод тех статей, которые соотстветствуют выбранной (нажатой) категогии
-  const handleFilterButtons = ({ title }) => {
-    if (!filterAllCategoriesButtons) {
-      setfilterCategoriesButtons(filterCategoriesButtons =>
-        filterCategoriesButtons.map(item =>
-          item.title === title
-            ? { ...item, state: !item.state }
-            : { ...item, state: item.state }
-        )
-      )
-    } else if (filterAllCategoriesButtons) {
-      setfilterCategoriesButtons(filterCategoriesButtons =>
-        filterCategoriesButtons
-          .map(item => ({ ...item, state: false }))
-          .map(item =>
-            item.title === title
-              ? { ...item, state: !item.state }
-              : { ...item, state: item.state }
-          )
-      )
-      setfilterAllCategoriesButtons(false)
-    }
-  }
-  // Вывод тех статей, которые соотстветствуют выбранной (нажатой) категогии в компоненте "Статья"
-  const handleFilterActiclesButtons = ({ title }) => {
-    setfilterCategoriesButtons(filterCategoriesButtons =>
-      filterCategoriesButtons.map(item =>
-        item.title === title
-          ? { ...item, state: true }
-          : item.title !== title
-          ? { ...item, state: false }
-          : { ...item }
-      )
-    )
-    setfilterAllCategoriesButtons(false)
-  }
+	// Output of all existing articles by clicking on the "all articles" button
+	// Вывод всех существующих статей, при клике на кнопку "все статьи"
+	const handlefilterAllCategoriesButtons = () => {
+		setfilterCategoriesButtons(filterCategoriesButtons =>
+			filterCategoriesButtons.map(item => ({ ...item, state: true }))
+		)
+		setfilterAllCategoriesButtons(true)
+	}
 
-  // Output of all articles if no category is selected (the "All articles" button is pressed)
-  // Вывод всех статей, если не выбрана ни одна категория (нажата кнопка "Все статьи")
-  useEffect(() => {
-    if (filterCategoriesButtons.every(category => category.state === false)) {
-      handlefilterAllCategoriesButtons()
-    }
-  }, [filterCategoriesButtons])
+	// Output of those articles that correspond to the selected (pressed) categories
+	// Вывод тех статей, которые соотстветствуют выбранной (нажатой) категогии
+	const handleFilterButtons = ({ title }) => {
+		if (!filterAllCategoriesButtons) {
+			setfilterCategoriesButtons(filterCategoriesButtons =>
+				filterCategoriesButtons.map(item =>
+					item.title === title
+						? { ...item, state: !item.state }
+						: { ...item, state: item.state }
+				)
+			)
+		} else if (filterAllCategoriesButtons) {
+			setfilterCategoriesButtons(filterCategoriesButtons =>
+				filterCategoriesButtons
+					.map(item => ({ ...item, state: false }))
+					.map(item =>
+						item.title === title
+							? { ...item, state: !item.state }
+							: { ...item, state: item.state }
+					)
+			)
+			setfilterAllCategoriesButtons(false)
+		}
+	}
+	// Вывод тех статей, которые соотстветствуют выбранной (нажатой) категогии в компоненте "Статья"
+	const handleFilterActiclesButtons = ({ title }) => {
+		setfilterCategoriesButtons(filterCategoriesButtons =>
+			filterCategoriesButtons.map(item =>
+				item.title === title
+					? { ...item, state: true }
+					: item.title !== title
+					? { ...item, state: false }
+					: { ...item }
+			)
+		)
+		setfilterAllCategoriesButtons(false)
+	}
 
-  if (!categories || !articles) return null
+	// Output of all articles if no category is selected (the "All articles" button is pressed)
+	// Вывод всех статей, если не выбрана ни одна категория (нажата кнопка "Все статьи")
+	useEffect(() => {
+		if (filterCategoriesButtons.every(category => category.state === false)) {
+			handlefilterAllCategoriesButtons()
+		}
+	}, [filterCategoriesButtons])
 
-  return (
-    <>
-      <SectionJournalCategories
-        filterCategoriesButtons={filterCategoriesButtons}
-        filterAllCategoriesButtons={filterAllCategoriesButtons}
-        handleFilterButtons={handleFilterButtons}
-        handlefilterAllCategoriesButtons={handlefilterAllCategoriesButtons}
-      />
-      <SectionJournalHeroArticle
-        filteredArticles={filteredArticles}
-        filterCategoriesButtons={filterCategoriesButtons}
-        handleFilterActiclesButtons={handleFilterActiclesButtons}
-      />
-      {sizeArticles > defaultSizeArticlesShowSectionArticles ? (
-        <SectionJournalArticles
-          filteredArticles={filteredArticles}
-          filterCategoriesButtons={filterCategoriesButtons}
-          handleFilterActiclesButtons={handleFilterActiclesButtons}
-          sizeArticles={sizeArticles}
-        />
-      ) : (
-        ''
-      )}
-    </>
-  )
+	if (!categories || !articles) return null
+
+	return (
+		<>
+			<SectionJournalHistoryArticle atArticlesPage />
+			<Wrapper>
+				<h1 className={stls.h1}>{'Журнал'}</h1>
+			</Wrapper>
+			<SectionJournalCategories
+				filterCategoriesButtons={filterCategoriesButtons}
+				filterAllCategoriesButtons={filterAllCategoriesButtons}
+				handleFilterButtons={handleFilterButtons}
+				handlefilterAllCategoriesButtons={handlefilterAllCategoriesButtons}
+			/>
+			<SectionJournalHeroArticle
+				filteredArticles={filteredArticles}
+				filterCategoriesButtons={filterCategoriesButtons}
+				handleFilterActiclesButtons={handleFilterActiclesButtons}
+			/>
+			{sizeArticles > defaultSizeArticlesShowSectionArticles ? (
+				<SectionJournalArticles
+					filteredArticles={filteredArticles}
+					filterCategoriesButtons={filterCategoriesButtons}
+					handleFilterActiclesButtons={handleFilterActiclesButtons}
+					sizeArticles={sizeArticles}
+				/>
+			) : (
+				''
+			)}
+		</>
+	)
 }
 
 export default PageJournalArticles

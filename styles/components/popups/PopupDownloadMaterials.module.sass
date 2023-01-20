@@ -3,6 +3,7 @@
 @use '@/styles/themes/default/colors' as c
 @use '@/styles/shared/journal' as j
 
+// todo: redo these styles
 .popupDownloadMaterials
 	position: relative
 	overflow: hidden
@@ -34,8 +35,9 @@
 	@include m.media(desktop, widescreen)
 		padding: f.px(10) f.px(10) f.px(20) f.px(20)
 	@include m.media(phone, tablet, laptop)
+		min-width: 100%
 		padding-left: f.px(10)
-		padding-right: f.px(10)
+		padding-right: 10%
 		font-size: f.px(18)
 		line-height: 120%
 
