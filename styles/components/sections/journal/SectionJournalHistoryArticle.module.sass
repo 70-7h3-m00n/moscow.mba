@@ -5,16 +5,22 @@
 
 .container
 	overflow-x: auto
+	overflow-y: hidden
+	margin-top: f.px(22)
 
 .row
 	display: flex
 	align-items: center
-	width: f.px(620)
+	min-width: f.px(420)
+	max-width: f.px(620)
 
 .title
 	font-size: f.px(14)
 	@include m.dye(c, c.$tau)
 	margin-right: f.px(20)
+
+.item
+	min-width: min-content
 
 .slug
 	display: flex
@@ -22,10 +28,12 @@
 	justify-content: center
 	font-size: f.px(14)
 	@include m.dye(c, c.$kappa)
-	&:before
+
+.withDot
+	&::before
 		content: '▪'
 		margin-right: f.px(20)
 		@include m.dye(c, c.$alpha)
 
 .historyArticle
-	padding: 200px 0
+	padding: f.px(200) 0

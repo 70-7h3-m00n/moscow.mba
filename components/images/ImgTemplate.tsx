@@ -47,7 +47,7 @@ const ImgTemplate = ({
   objectPosition
 }: TypeImgTemplateProps) => {
   return (
-    <div
+    <span
       className={
         cn(
           [stls.container],
@@ -58,17 +58,15 @@ const ImgTemplate = ({
           getClassNames({ classNames })
         ) || undefined
       }
-      // aria-label={title || alt}
-      // title={title}
-    >
-      <div
+      title={title}>
+      <span
         className={cn({
           [stls.faded]: faded,
           [stls.filter]: filter,
           [stls.filterAlt]: filterAlt,
           [stls.darken]: darken,
           [stls.isHidden]: !faded && !filter && !filterAlt && !darken
-        })}></div>
+        })}></span>
       {src && (
         <Image
           src={src}
@@ -85,7 +83,7 @@ const ImgTemplate = ({
           aria-label={title || alt}
         />
       )}
-    </div>
+    </span>
   )
 }
 

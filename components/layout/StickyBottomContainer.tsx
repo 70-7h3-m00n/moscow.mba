@@ -12,6 +12,7 @@ const StickyBottomContainer = () => {
   const [clickedAsk, setClickedAsk] = useState(false)
   const [isStickyBottomShown, setIsStickyBottomShown] = useState(false)
   const [stickyHasBeenClosed, setStickyHasBeenClosed] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
   const router = useRouter()
   const at = useAt()
@@ -31,40 +32,33 @@ const StickyBottomContainer = () => {
 
   const handleAskQuestionFormClose = () => setClickedAsk(false)
 
-  const [isMounted, setIsMounted] = useState(false)
+  useEffect(() => setIsMounted(true), [])
 
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
+  if (!isMounted || at.journal) return null
 
-  if (at.journal) return null
-
-  if (isMounted)
-    return (
-      <div className={containerClasses.join(' ')}>
-        {clickedAsk ? (
-          <>
-            <Overlay handleAskQuestionFormClose={handleAskQuestionFormClose} />
-            <AskQuestionForm
-              handleAskQuestionFormClose={handleAskQuestionFormClose}
-            />
-          </>
-        ) : (
-          <AskQuestion
-            handleClickedAskQuestion={handleClickedAskQuestion}
-            stickyShown={isStickyBottomShown}
+  return (
+    <div className={containerClasses.join(' ')}>
+      {clickedAsk ? (
+        <>
+          <Overlay handleAskQuestionFormClose={handleAskQuestionFormClose} />
+          <AskQuestionForm
+            handleAskQuestionFormClose={handleAskQuestionFormClose}
           />
-        )}
-        <StickyBottom
-          openStickyModule={() => setIsStickyBottomShown(true)}
-          hideStickyModule={() => setIsStickyBottomShown(false)}
-          closeStickyModule={() => setStickyHasBeenClosed(true)}
-          clickedAsk={clickedAsk}
+        </>
+      ) : (
+        <AskQuestion
+          handleClickedAskQuestion={handleClickedAskQuestion}
+          stickyShown={isStickyBottomShown}
         />
-      </div>
-    )
-
-  return null
+      )}
+      <StickyBottom
+        openStickyModule={() => setIsStickyBottomShown(true)}
+        hideStickyModule={() => setIsStickyBottomShown(false)}
+        closeStickyModule={() => setStickyHasBeenClosed(true)}
+        clickedAsk={clickedAsk}
+      />
+    </div>
+  )
 }
 
 export default StickyBottomContainer

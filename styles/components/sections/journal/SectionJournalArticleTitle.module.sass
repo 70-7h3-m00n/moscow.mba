@@ -3,35 +3,48 @@
 @use '@/styles/themes/default/colors' as c
 
 .container
-    position: relative
-    @include m.media(laptop, desktop, widescreen)
-        margin: f.px(65) 0
-    @include m.media(phone, tablet)
-        margin: f.px(40) 0
+	position: relative
+	@include m.media(laptop, desktop, widescreen)
+		margin: f.px(65) 0
+	@include m.media(phone, tablet)
+		margin: f.px(40) 0
+
+.title
+	@include m.media(widescreen)
+		font-size: f.px(48)
+	@include m.media(desktop, laptop)
+		font-size: f.px(44)
+	@include m.media(tablet)
+		font-size: f.px(36)
+	@include m.media(phone)
+		font-size: f.px(28)
+	font-weight: bold
+	line-height: 1.2
+	margin-bottom: 20px
 
 .footer
-    display: flex
-    justify-content: space-between
-    align-items: center
-    @include m.media(laptop, desktop, widescreen)
-        margin-top: f.px(25)
-    @include m.media(phone, tablet)
-        margin-top: f.px(40)
-    @include m.media(phone, tablet)
-        align-items: flex-start
+	display: flex
+	justify-content: space-between
+	align-items: center
+	@include m.media(laptop, desktop, widescreen)
+		margin-top: f.px(25)
+	@include m.media(phone, tablet)
+		margin-top: f.px(40)
+	@include m.media(phone, tablet)
+		align-items: flex-start
 
 .authors
-    display: flex
-    align-items: center
-    column-gap: f.px(25)
-    @include m.media(phone, tablet)
-        flex-direction: column
-        row-gap: f.px(25)
-        align-items: flex-start
+	display: flex
+	align-items: center
+	column-gap: f.px(25)
+	@include m.media(phone, tablet)
+		flex-direction: column
+		row-gap: f.px(25)
+		align-items: flex-start
 
 .popupJournalArticleTitle
-    right: 0
-    @include m.media(laptop, desktop, widescreen)
-        bottom: 75px
-    @include m.media(phone, tablet)
-        bottom: 113px
+	right: 0
+	@include m.media(laptop, desktop, widescreen)
+		bottom: 75px
+	@include m.media(phone, tablet)
+		bottom: 113px

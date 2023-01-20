@@ -1,14 +1,12 @@
 import stls from '@/styles/components/sections/journal/SectionJournalParagraph.module.sass'
 import cn from 'classnames'
-import parse from 'html-react-parser'
-import truncate from 'truncate'
-import { marked } from 'marked'
 import {
   TypeClassNames,
   TypeLibJournalArticleParagraphBody
 } from '@/types/index'
 import { getClassNames, createSmartParagraph } from '@/helpers/index'
 
+// todo: fix __typename types
 type TypeSectionJournalParagraphProps = TypeClassNames & {
   body: TypeLibJournalArticleParagraphBody | null
   idx: number
@@ -27,6 +25,8 @@ const SectionJournalParagraph = ({
     className: stls.br
   })
 
+  if (!smartParagraph) return null
+
   return (
     <div
       className={
@@ -36,7 +36,7 @@ const SectionJournalParagraph = ({
         {smartParagraph.map((part, idx2) => (
           <span
             key={`SectionJournalParagraph_${idx}-${idx2}`}
-            className={cn({
+            className={cn(stls.text, {
               [stls.isHighlighted]: part.isHighlighted,
               [stls.isLarger]: part.isLarger
             })}>

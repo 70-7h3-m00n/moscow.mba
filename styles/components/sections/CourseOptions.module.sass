@@ -1,4 +1,7 @@
+@use 'sass:math'
 @use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
 
 .container
   display: flex
@@ -12,6 +15,7 @@
   margin-right: 55px
   @include m.media(laptop, tablet, phone)
     flex: 0
+    margin-right: 0
     margin-bottom: 38px
 
 .title
@@ -21,8 +25,49 @@
 .coursesNumber
   font-size: 25px
   font-weight: normal
+  margin-bottom: 20px
   @include m.media(tablet, phone)
     font-size: 20px
+
+.searchInputGroup
+  position: relative
+
+.searchIcon
+  position: absolute
+  top: 50%
+  right: f.px(15)
+  transform: translateY(-50%)
+  max-width: f.px(18)
+  pointer-events: none
+  & path,
+  & rect
+    @include m.dye(fill, c.$omicron)
+
+.search
+  width: 100%
+  padding-top: f.px(15)
+  padding-right: f.px(30+18)
+  padding-bottom: f.px(15)
+  padding-left: f.px(15)
+  border: 0
+  outline: none
+  font-family: 'Styrene', Arial, Tahoma, sans-serif
+  font-size: f.px(16)
+  font-weight: 500
+  line-height: 120%
+  @include m.dye(bgc, c.$sigma)
+  @include m.dye(c, c.$chi)
+  &::placeholder
+    font-weight: 400
+    font-size: f.px(14)
+    line-height: 140%
+    @include m.dye(c, c.$omicron)
+
+.notFound
+  font-size: 20px
+  font-weight: normal
+  @include m.media(tablet, phone)
+    font-size: 15px
 
 .content
   flex: 1

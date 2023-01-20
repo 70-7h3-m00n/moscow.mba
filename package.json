@@ -7,9 +7,10 @@
     "dev_heap": "NODE_OPTIONS=\"--max_old_space_size=4096\" next dev",
     "dev_windows": "set NODE_OPTIONS=--max_old_space_size=4096 && next dev",
     "build": "next build",
-    "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
-    "generateicons": "npx pwa-asset-generator ./data/assets/images/logos/logo-alt.png ./data/assets/images/icons -p \"0\" -b \"#ff3535\""
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
+    "generateicons": "npx pwa-asset-generator ./data/assets/images/logos/logo-alt.png ./data/assets/images/icons -p \"0\" -b \"#ff3535\"",
+    "generateFeedYML": "node generate-yandex-market-language-feed"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
@@ -52,6 +53,7 @@
     "eslint-config-next": "^12.2.0",
     "next-sitemap": "^3.1.10",
     "sass": "^1.53.0",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "yandex-market-language": "^0.4.1"
   }
 }

@@ -1,7 +1,7 @@
 import { GetStaticPropsContext } from 'next'
 import {
-  TypePageProgramsProps,
-  TypePageProgramsPropsQuery
+	TypePageProgramsProps,
+	TypePageProgramsPropsQuery
 } from '@/types/index'
 import axios from 'axios'
 // import { gql } from '@apollo/client'
@@ -9,48 +9,49 @@ import axios from 'axios'
 import { routesBack, revalidate } from '@/config/index'
 
 const getStaticPropsPrograms = async ({
-  context
+	context
 }: {
-  context: GetStaticPropsContext
+	context: GetStaticPropsContext
 }): Promise<{
-  props: TypePageProgramsProps
-  revalidate: number | boolean
+	props: TypePageProgramsProps
+	revalidate: number | boolean
 }> => {
-  const res = await axios.get(
-    `${routesBack.root}${routesBack.getStaticPropsPrograms}`
-  )
-  // const res = await apolloClient.query<TypePageProgramsPropsQuery>({
-  //   query: gql`
-  //     query GetStaticPropsPrograms {
-  //       programs: products {
-  //         _id
-  //         id
-  //         title
-  //         slug
-  //         studyFormat
-  //         price
-  //         duration {
-  //           minStudyMonths
-  //         }
-  //         category {
-  //           type
-  //           slug
-  //         }
-  //         study_field {
-  //           id
-  //           name
-  //           slug
-  //           description
-  //         }
-  //       }
-  //     }
-  //   `
-  // })
+	const res = await axios.get(
+		`${routesBack.root}${routesBack.getStaticPropsPrograms}`
+	)
 
-  return {
-    props: res.data,
-    revalidate: revalidate.default
-  }
+	// const res = await apolloClient.query<TypePageProgramsPropsQuery>({
+	//   query: gql`
+	//     query GetStaticPropsPrograms {
+	//       programs: products {
+	//         _id
+	//         id
+	//         title
+	//         slug
+	//         studyFormat
+	//         price
+	//         duration {
+	//           minStudyMonths
+	//         }
+	//         category {
+	//           type
+	//           slug
+	//         }
+	//         study_field {
+	//           id
+	//           name
+	//           slug
+	//           description
+	//         }
+	//       }
+	//     }
+	//   `
+	// })
+
+	return {
+		props: res.data,
+		revalidate: revalidate.default
+	}
 }
 
 export default getStaticPropsPrograms
