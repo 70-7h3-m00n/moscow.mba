@@ -10,25 +10,51 @@
 
 .list
   display: flex
+  margin: 0
+  padding: 0
   flex-direction: column
-  margin-left: f.px(15)
+  list-style-type: initial
+  &.ol
+    counter-reset: list
 
 .item
   position: relative
   & + .item
     margin-top: f.px(25)
-  padding-left: f.px(15)
+  & em
+    font-style: italic
+  display: flex
   font-size: f.px(18)
   font-weight: normal
   line-height: 140%
   @include m.dye(c, c.$chi)
-  &::before
-    content: ''
-    position: absolute
-    top: f.px(12)
-    left: 0
-    width: f.px(5)
-    height: f.px(5)
-    border-radius: 50%
-    @include m.dye(bgc, c.$alpha)
+  &.ul
+    padding-left: f.px(15)
+    &::before
+      content: ''
+      position: absolute
+      top: f.px(12)
+      left: 0
+      min-width: f.px(5)
+      width: f.px(5)
+      max-width: f.px(5)
+      min-height: f.px(5)
+      height: f.px(5)
+      max-height: f.px(5)
+      border-radius: 50%
+      @include m.dye(bgc, c.$alpha)
+
+.idx
+  counter-increment: list
+  min-width: f.px(25) // todo: this is not dynamic and not based on the length of the number in counter & this should be made dynamic
+  // margin-right: f.px(10)
+  font-weight: 500
+  @include m.dye(c, c.$alpha)
+
+.text
+  & .br
+    & + .br
+      display: block
+      margin-top: f.px(25)
+      // margin-bottom: 0
 

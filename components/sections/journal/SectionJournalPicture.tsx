@@ -14,13 +14,11 @@ import stls from '@/styles/components/sections/journal/SectionJournalPicture.mod
 
 type TypeSectionJournalPictureProps = TypeClassNames & {
   picture: TypeLibJournalArticlePicture | null
-  title: TypeLibJournalArticleTitle | null
 }
 
 const SectionJournalPicture = ({
   classNames,
-  picture,
-  title
+  picture
 }: TypeSectionJournalPictureProps) => {
   if (!picture) return null
 
@@ -38,10 +36,10 @@ const SectionJournalPicture = ({
             widthInitial: picture.width,
             heightInitial: picture.height
           })}
-          alt={title}
-          title={title}
+          alt={picture.alt}
+          title={picture.title}
         />
-        <figcaption className={stls.figcaption}>{title}</figcaption>
+        <figcaption className={stls.figcaption}>{picture.title}</figcaption>
       </figure>
     </div>
   )

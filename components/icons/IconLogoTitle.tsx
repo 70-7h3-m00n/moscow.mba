@@ -1,16 +1,23 @@
 import stls from '@/styles/components/icons/IconLogoTitle.module.sass'
 import { TypeClassNames, TypeColor } from '@/types/index'
 import cn from 'classnames'
-import { colors } from '@/config/index'
+import { colors, companyName } from '@/config/index'
+import { useAt } from '@/hooks/index'
 import { getClassNames } from '@/helpers/index'
 import { IconContainer } from '@/components/layout'
 
 // TODO: improve structure
 const IconLogoTitle = () => {
+  const at = useAt()
+
   return (
     <div className={stls.container}>
-      <svg viewBox='0 0 276 177' fill='none' xmlns='http://www.w3.org/2000/svg'>
-        <title>Московская Бизнес Академия</title>
+      <svg
+        viewBox='0 0 276 177'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+        aria-label={companyName}>
+        <title>{at.en ? companyName : 'Московская Бизнес Академия'}</title>
         <path
           d='M10.6 43.4H3.89999V0.800003H10.7L24.5 20L38.2 0.900005H44.9V43.4H38.2V11.1L26.3 27.1H22.4L10.5 11.1L10.6 43.4Z'
           fill='#262626'

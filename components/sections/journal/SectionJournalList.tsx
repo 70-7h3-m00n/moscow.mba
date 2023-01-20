@@ -1,37 +1,53 @@
-import cn from 'classnames'
-
-import {
-  TypeClassNames,
-  TypeLibJournalArticleListItem
-} from '@/types/index'
-
-import { getClassNames } from '@/helpers/index'
-
 import stls from '@/styles/components/sections/journal/SectionJournalList.module.sass'
+import { TypeClassNames, TypeLibJournalArticleList } from '@/types/index'
+import cn from 'classnames'
+import { createSmartParagraph, getClassNames } from '@/helpers/index'
 
+// todo: fix __typename types
 type TypeSectionJournalListProps = {
-  listItem: TypeLibJournalArticleListItem | null
+  list: {
+    items: TypeLibJournalArticleList | null
+    tag: 'ul' | 'ol' | null
+  }
 } & TypeClassNames
 
 const SectionJournalList = ({
   classNames,
-  listItem
+  list
 }: TypeSectionJournalListProps) => {
-  if (!listItem) return null
+  if (!list.items) return null
+
+  const tag = list.tag || 'ul'
+
+  const List = tag
+
+  const listItems = list.items
+    .filter(item => item && item.body)
+    .map(item => ({
+      ...item,
+      text: item.body
+    }))
+
+  const smartlistItems = createSmartParagraph<typeof listItems>({
+    paragraph: listItems,
+    className: stls.br
+  })
 
   return (
-    <div className={cn(stls.container, getClassNames({ classNames })) || undefined}>
-      <ul className={stls.list}>
-        {
-          listItem
-            ?.filter(item => item)
-            .map((item, iidx) => (
-              <li key={`${item.body} ${iidx}`} className={stls.item}>
-                {item.body}
-              </li>
-            ))
-        }
-      </ul>
+    <div
+      className={
+        cn(stls.container, getClassNames({ classNames })) || undefined
+      }>
+      <List className={cn(stls.list, stls[tag])}>
+        {smartlistItems.map((item, idx) => (
+          <li
+            key={`${item.text.toString()} ${idx}`}
+            className={cn(stls.item, stls[tag])}>
+            {tag === 'ol' && <span className={stls.idx}>{idx + 1}.</span>}
+            <div className={stls.text}>{item.text}</div>
+          </li>
+        ))}
+      </List>
     </div>
   )
 }

@@ -9,8 +9,12 @@ import { IconContainer } from '@/components/layout'
 const IconVk = ({ fill = '#fff' }) => {
   return (
     <div className={stls.container}>
-      <svg viewBox='0 0 18 10' fill='none' xmlns='http://www.w3.org/2000/svg'>
-        <title>VK</title>
+      <svg
+        viewBox='0 0 18 10'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+        aria-label={'VK'}>
+        {/* <title>VK</title> */}
         <path
           fillRule='evenodd'
           clipRule='evenodd'

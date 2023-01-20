@@ -1,13 +1,10 @@
+import stls from '@/styles/components/sections/journal/SectionJournalArticleContents.module.sass'
+import { TypeLibJournalArticle, TypeClassNames } from '@/types/index'
 import Link from 'next/link'
 import { useState } from 'react'
 import cn from 'classnames'
 import slugify from 'slugify'
-
-import { TypeLibJournalArticle, TypeClassNames } from '@/types/index'
-
 import { getClassNames } from '@/helpers/index'
-
-import stls from '@/styles/components/sections/journal/SectionJournalArticleContents.module.sass'
 
 type TypeJournalArticleContentsProps = {
   journalArticle: TypeLibJournalArticle
@@ -29,7 +26,9 @@ const SectionJournalArticleContents = ({
 
   const textLinkTitle = journalArticle?.articleBody
     ?.filter(title => title.__typename === 'ComponentJournalTitle')
-    .map(item => item.titleBodyParts.map(content => content.text).join(' '))
+    .map(item =>
+      item.title.titleBodyParts.map(content => content.text).join(' ')
+    )
 
   if (journalArticle?.articleBody.length === 0) return null
 
@@ -46,7 +45,7 @@ const SectionJournalArticleContents = ({
       }>
       <div className={stls.accordion}>
         <div className={stls.accordionTitle} onClick={handleShowList}>
-          <span className={stls.title}>{'Содержание'}</span>
+          <span className={stls.title}>Содержание</span>
           <div className={stls.arrow}>
             {/* icons should be put in ./components/icons */}
             <svg
@@ -66,19 +65,17 @@ const SectionJournalArticleContents = ({
             </svg>
           </div>
         </div>
-        {isList && (
-          <div className={stls.accordionList}>
-            <ul>
-              {textLinkTitle?.map((item, idx) => (
-                <li key={`${item}_${idx}`} className={stls.item}>
-                  <Link href={`#${slugify(item)}`}>
-                    <a>{item}</a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <div className={cn(stls.accordionList, { [stls.isShown]: isList })}>
+          <ul>
+            {textLinkTitle?.map((item, idx) => (
+              <li key={`${item}_${idx}`} className={stls.item}>
+                <Link href={`#${slugify(item)}`}>
+                  <a>{item}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   )

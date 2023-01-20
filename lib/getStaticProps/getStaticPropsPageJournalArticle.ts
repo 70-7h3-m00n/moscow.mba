@@ -1,10 +1,6 @@
 import { GetStaticPropsContext } from 'next'
-import {
-  TypePageJournalArticleProps
-} from '@/types/index'
-import {
-  routesBack
-} from '@/config/index'
+import { TypePageJournalArticleProps } from '@/types/index'
+import { routesBack } from '@/config/index'
 import { revalidate } from '@/config/index'
 import { createBlended } from '@/helpers/index'
 import axios from 'axios'
@@ -19,12 +15,15 @@ const getStaticPropsPageJournalArticle = async ({
 }> => {
   const getData = async () => {
     try {
-      const res = await fetch(`${routesBack.root}${routesBack.getStaticPropsPageJournalArticles}/${context?.params?.journalArticle}`)
-      const data = await res.json()
+      const res = await axios.get(
+        `${routesBack.root}${routesBack.getStaticPropsPageJournalArticles}/${context?.params?.journalArticle}`
+      )
+
+      const data = await res.data
+
       return data
-    }
-    catch (error) {
-      console.error(`TYPE: ${error.type}. MESSAGE: ${error.message}`)
+    } catch (err) {
+      console.error(`TYPE: ${err.type}. MESSAGE: ${err.message}`)
       return []
     }
   }

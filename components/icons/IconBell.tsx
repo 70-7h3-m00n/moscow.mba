@@ -9,8 +9,12 @@ import { IconContainer } from '@/components/layout'
 const IconBell = () => {
   return (
     <div className={stls.container}>
-      <svg viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
-        <title>Звонок</title>
+      <svg
+        viewBox='0 0 20 20'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+        aria-label='Звонок'>
+        {/* <title>Звонок</title> */}
         <g>
           <path
             d='M9.99878 3.57731C10.8126 3.57731 11.5941 3.72091 12.3192 3.9838V3.89447C12.3192 2.66596 11.3198 1.6665 10.0913 1.6665H9.90667C8.67817 1.6665 7.67871 2.66596 7.67871 3.89447V3.98267C8.4035 3.72055 9.18471 3.57731 9.99878 3.57731V3.57731Z'

@@ -1,8 +1,8 @@
 import { TypeLibTypename } from '@/types/index'
 
-type TypeLibJournalArticleListItem = {
+type TypeLibJournalArticleList = Array<{
   __typename: TypeLibTypename
   body: string | null
-}[]
+}>
 
-export default TypeLibJournalArticleListItem
+export default TypeLibJournalArticleList

@@ -9,8 +9,12 @@ import { IconContainer } from '@/components/layout'
 const IconCross = () => {
   return (
     <div className={stls.container}>
-      <svg viewBox='0 0 27 27' fill='none' xmlns='http://www.w3.org/2000/svg'>
-        <title>Крест</title>
+      <svg
+        viewBox='0 0 27 27'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+        aria-label='Крест'>
+        {/* <title>Крест</title> */}
         <circle opacity='0.1' cx='13.5' cy='13.5' r='13.5' fill='black' />
         <path
           d='M18.837 8.16211L8.1626 18.8365'

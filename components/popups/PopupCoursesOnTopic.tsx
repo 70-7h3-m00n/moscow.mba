@@ -61,7 +61,7 @@ const PopupCoursesOnTopic = ({
               </div>
               <div className={stls.linkProgram}>
                 <Link
-                  href={`${routesFront.root}${routesFront.programs}/${program?.categorySlug}/${program?.studyFormatSlug}/${program?.slug}`}>
+                  href={`${routesFront.programs}/${program?.categorySlug}/${program?.studyFormatSlug}/${program?.slug}`}>
                   <a className={stls.link}>Узнать больше</a>
                 </Link>
               </div>

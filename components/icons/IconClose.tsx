@@ -27,10 +27,14 @@ const IconClose: React.FC<TIconCloseProps> = ({
       {...props}>
       <svg
         style={style}
+       
         viewBox='0 0 14 14'
+       
         fill='none'
-        xmlns='http://www.w3.org/2000/svg'>
-        <title>Закрыть</title>
+       
+        xmlns='http://www.w3.org/2000/svg'
+        aria-label='Закрыть'>
+        {/* <title>Закрыть</title> */}
         <path
           d='M1 1L13 13'
           stroke={stroke || colors.omega}

@@ -26,15 +26,12 @@ const PageHome: NextPage<TypePageHomeProps> = ({ programs }) => {
   const at = useAt()
 
   const seoParams = {
-    title: `${companyName}`,
-    desc: truncate(
-      `${
-        at.en
-          ? 'Concur relevant business education from international experts'
-          : 'Получите современное бизнес образование от международных экспертов'
-      }`,
-      120
-    ),
+    title: `${at.en ? '' : 'Академия бизнеса MBA: '}${companyName}`,
+    desc: `${
+      at.en
+        ? 'MBA online. \n International leading experts! \n Installment 0% \n ECICEL Accreditation '
+        : '✔ MBA бизнес школа дистанционного образования.\n Международные эксперты-практики!\n Рассрочка 0%\n Аккредитация ECICEL'
+    }`,
     canonical: routesFront.root
   }
 

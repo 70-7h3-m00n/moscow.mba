@@ -9,8 +9,12 @@ import { IconContainer } from '@/components/layout'
 const IconDecorativeLines = () => {
   return (
     <div className={stls.container}>
-      <svg viewBox='0 0 429 429' fill='none' xmlns='http://www.w3.org/2000/svg'>
-        <title>Декоративные линии</title>
+      <svg
+        viewBox='0 0 429 429'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+        aria-label='Декоративные линии'>
+        {/* <title>Декоративные линии</title> */}
         <g opacity='0.44'>
           <path
             d='M214.053 214.5C214.053 96.4307 118.46 0.688474 0.446869 0.447332V214.5C0.446869 332.569 96.0403 428.312 214.053 428.553V214.5Z'

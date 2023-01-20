@@ -10,25 +10,28 @@ import { LeadLoaderThankyou } from '@/components/general'
 import { Wrapper } from '@/components/layout'
 import { FormAlpha } from '@/components/forms'
 import { IconSearch, IconClose } from '@/components/icons'
+import useDecodedInput from '@/hooks/useDecodedInput'
 
 const SearchField = () => {
   const at = useAt()
-
+  const { clearInput, handleInput, searchTerm, decodedEnInput } =
+    useDecodedInput('')
   const [inputIsFocused, setInputIsFocused] = useState(false)
 
   const { programs } = useContext(ContextStaticProps)
 
-  const [searchTerm, setSearchTerm] = useState('')
-
   const [open, setOpen] = useState(false)
   const [openLoader, setOpenLoader] = useState(false)
-
   const programsNotBlended = programs.filter(
     program => program.studyFormat !== 'blended'
   )
 
   const filteredPrograms = programsNotBlended.filter(
-    program => searchTerm && program?.title?.toLowerCase().includes(searchTerm)
+    program =>
+      (decodedEnInput &&
+        program?.title?.toLowerCase().includes(decodedEnInput)) ||
+      (searchTerm &&
+        program?.title?.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
   )
 
   useEffect(() => {
@@ -73,12 +76,12 @@ const SearchField = () => {
                   className={stls.input}
                   value={searchTerm}
                   placeholder={'Поиск'}
-                  onChange={e => setSearchTerm(e.target.value.toLowerCase())}
+                  onChange={handleInput}
                 />
                 {searchTerm && (
                   <a
                     href='#!'
-                    onClick={() => setSearchTerm('')}
+                    onClick={clearInput}
                     className={stls.iconClearBtn}>
                     <IconClose
                       classNames={[stls.iconClear]}
@@ -98,7 +101,7 @@ const SearchField = () => {
                         <p className={stls.p}>
                           <Highlighter
                             highlightClassName={stls.highlight}
-                            searchWords={[searchTerm]}
+                            searchWords={[decodedEnInput || searchTerm]}
                             autoEscape={true}
                             highlightTag={'span'}
                             textToHighlight={program?.title}

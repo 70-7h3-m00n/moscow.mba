@@ -59,8 +59,6 @@ const ProgramsList = ({ data, id, type }) => {
 
       const studyFieldLink = `/programs/${type}/online`
 
-      console.log(studyFieldLink)
-
       return (
         <Fragment key={`columnPrograms-${i}`}>
           <Link

@@ -1,5 +1,5 @@
 import stls from '@/styles/components/layout/StickyBottomContainer.module.sass'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Overlay, StickyBottom } from '@/components/layout'
 import { AskQuestion } from '@/components/general'
@@ -12,10 +12,11 @@ const StickyBottomContainer = () => {
   const [clickedAsk, setClickedAsk] = useState(false)
   const [isStickyBottomShown, setIsStickyBottomShown] = useState(false)
   const [stickyHasBeenClosed, setStickyHasBeenClosed] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
   const router = useRouter()
   const at = useAt()
-  
+
   const containerClasses = [
     stls.container,
     isStickyBottomShown && !stickyHasBeenClosed
@@ -30,31 +31,33 @@ const StickyBottomContainer = () => {
   }
 
   const handleAskQuestionFormClose = () => setClickedAsk(false)
-  if (at.journal) return null
+
+  useEffect(() => setIsMounted(true), [])
+
+  if (!isMounted || at.journal) return null
+
   return (
-    <noindex>
-      <div className={containerClasses.join(' ')}>
-        {clickedAsk ? (
-          <>
-            <Overlay handleAskQuestionFormClose={handleAskQuestionFormClose} />
-            <AskQuestionForm
-              handleAskQuestionFormClose={handleAskQuestionFormClose}
-            />
-          </>
-        ) : (
-          <AskQuestion
-            handleClickedAskQuestion={handleClickedAskQuestion}
-            stickyShown={isStickyBottomShown}
+    <div className={containerClasses.join(' ')}>
+      {clickedAsk ? (
+        <>
+          <Overlay handleAskQuestionFormClose={handleAskQuestionFormClose} />
+          <AskQuestionForm
+            handleAskQuestionFormClose={handleAskQuestionFormClose}
           />
-        )}
-        <StickyBottom
-          openStickyModule={() => setIsStickyBottomShown(true)}
-          hideStickyModule={() => setIsStickyBottomShown(false)}
-          closeStickyModule={() => setStickyHasBeenClosed(true)}
-          clickedAsk={clickedAsk}
+        </>
+      ) : (
+        <AskQuestion
+          handleClickedAskQuestion={handleClickedAskQuestion}
+          stickyShown={isStickyBottomShown}
         />
-      </div>
-    </noindex>
+      )}
+      <StickyBottom
+        openStickyModule={() => setIsStickyBottomShown(true)}
+        hideStickyModule={() => setIsStickyBottomShown(false)}
+        closeStickyModule={() => setStickyHasBeenClosed(true)}
+        clickedAsk={clickedAsk}
+      />
+    </div>
   )
 }
 

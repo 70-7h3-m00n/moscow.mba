@@ -13,9 +13,9 @@ const IconRosObrInsignia = () => {
         className={stls.insignia}
         viewBox='0 0 197 200'
         fill='none'
-        xmlns='http://www.w3.org/2000/svg'>
-        <title>РОСОБРНАДЗОР</title>
-
+        xmlns='http://www.w3.org/2000/svg'
+        aria-label={'РОСОБРНАДЗОР'}>
+        {/* <title>РОСОБРНАДЗОР</title> */}
         <path
           fillRule='evenodd'
           clipRule='evenodd'
