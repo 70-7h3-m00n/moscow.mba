@@ -18,7 +18,6 @@ import { PopupForm, PopupTeacher } from '@/components/popups'
 import {
 	IconCheck,
 	IconClose,
-	IconCross,
 	IconMoreThan,
 	IconSearch
 } from '@/components/icons'
@@ -103,76 +102,76 @@ const Teachers = ({
 	const contactInfo = contactData()
 	const defaultTeachers = useDefaultTeachers()
 
-  const { programs, program } = useContext(ContextStaticProps)
+	const { programs, program } = useContext(ContextStaticProps)
 
-  const [searchTerm, setSearchTerm] = useState<string | null>(null)
-  const [searchInputIsFocused, setSearchInputIsFocused] = useState(null)
-  const [searchTermIsAppliedtoUrl, setSearchTermIsAppliedtoUrl] =
-    useState(false)
+	const [searchTerm, setSearchTerm] = useState<string | null>(null)
+	const [searchInputIsFocused, setSearchInputIsFocused] = useState(null)
+	const [searchTermIsAppliedtoUrl, setSearchTermIsAppliedtoUrl] =
+		useState(false)
 
-  const [isInputClose, setIsInputClose] = useState(false)
+	const [isInputClose, setIsInputClose] = useState(false)
 
-  const [shownTeachersCount, setShownTeachersCount] = useState(8)
-  const showMoreTeachersAddendum = 12
-  const UITeachers: TypeLibTeachers | null = teachers
-    ?.filter(teacher =>
-      searchTerm
-        ? teacher?.programs?.some(program => program.includes(searchTerm))
-        : teacher
-    )
-    .filter(
-      (teacher, idx) =>
-        teacher &&
-        (at.programChunk || searchTerm ? teacher : idx < shownTeachersCount)
-    ) || [
-    defaultTeachers?.filter(
-      (teacher, idx) =>
-        teacher && (at.programChunk ? teacher : idx < shownTeachersCount)
-    )
-  ]
+	const [shownTeachersCount, setShownTeachersCount] = useState(8)
+	const showMoreTeachersAddendum = 12
+	const UITeachers: TypeLibTeachers | null = teachers
+		?.filter(teacher =>
+			searchTerm
+				? teacher?.programs?.some(program => program.includes(searchTerm))
+				: teacher
+		)
+		.filter(
+			(teacher, idx) =>
+				teacher &&
+				(at.programChunk || searchTerm ? teacher : idx < shownTeachersCount)
+		) || [
+		defaultTeachers?.filter(
+			(teacher, idx) =>
+				teacher && (at.programChunk ? teacher : idx < shownTeachersCount)
+		)
+	]
 
-  // * quick fix for the SEO robots to see the full list of teachers
-  const hiddenTeachers: TypeLibTeachers | null = teachers?.filter(
-    (teacher, idx) => teacher && idx >= shownTeachersCount
-  )
+	// * quick fix for the SEO robots to see the full list of teachers
+	const hiddenTeachers: TypeLibTeachers | null = teachers?.filter(
+		(teacher, idx) => teacher && idx >= shownTeachersCount
+	)
 
-  const handleSearch = e => {
-    setSearchTermIsAppliedtoUrl(false)
-    setSearchTerm(e.target.value)
-  }
+	const handleSearch = e => {
+		setSearchTermIsAppliedtoUrl(false)
+		setSearchTerm(e.target.value)
+	}
 
-  const applySearchTermToUrl = (title: string | null = '') => {
-    setSearchTerm(title)
-    setSearchTermIsAppliedtoUrl(!!title)
-    router.replace({ query: { q: encodeURIComponent(title) } }, undefined, {
-      shallow: true,
-      scroll: false
-    })
-  }
+	const applySearchTermToUrl = (title: string | null = '') => {
+		setSearchTerm(title)
+		setSearchTermIsAppliedtoUrl(!!title)
+		router.replace({ query: { q: encodeURIComponent(title) } }, undefined, {
+			shallow: true,
+			scroll: false
+		})
+	}
 
-  const setEmptyInput = () => {
-    setSearchTerm('')
-    setSearchTermIsAppliedtoUrl(false)
-    setIsInputClose(true)
-    router.replace({ query: { q: '' } }, undefined, {
-      shallow: true,
-      scroll: false
-    })
-  }
+	const setEmptyInput = () => {
+		setSearchTerm('')
+		setSearchTermIsAppliedtoUrl(false)
+		setIsInputClose(true)
+		router.replace({ query: { q: '' } }, undefined, {
+			shallow: true,
+			scroll: false
+		})
+	}
 
-  useEffect(() => {
-    if (!isInputClose && !searchTerm && router.query.q) {
-      setSearchTerm(decodeURIComponent(router.query.q?.toString()))
-      setSearchTermIsAppliedtoUrl(true)
-    }
-    const shownTeachersCountSS = sessionStorage.getItem('shownTeachersCount')
+	useEffect(() => {
+		if (!isInputClose && !searchTerm && router.query.q) {
+			setSearchTerm(decodeURIComponent(router.query.q?.toString()))
+			setSearchTermIsAppliedtoUrl(true)
+		}
+		const shownTeachersCountSS = sessionStorage.getItem('shownTeachersCount')
 
-    if (shownTeachersCountSS && +shownTeachersCountSS > shownTeachersCount) {
-      setShownTeachersCount(+shownTeachersCountSS)
-    }
+		if (shownTeachersCountSS && +shownTeachersCountSS > shownTeachersCount) {
+			setShownTeachersCount(+shownTeachersCountSS)
+		}
 
-    sessionStorage.setItem('shownTeachersCount', shownTeachersCount.toString())
-  }, [isInputClose, router, searchTerm, shownTeachersCount])
+		sessionStorage.setItem('shownTeachersCount', shownTeachersCount.toString())
+	}, [isInputClose, router, searchTerm, shownTeachersCount])
 
 	{
 		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
@@ -389,14 +388,14 @@ const Teachers = ({
 							</h3>
 							{at.teachers && !at.en && (
 								<div
-                  className={stls.searchGroup}
-                  style={
-                    searchTerm && searchTerm.length > 50
-                      ? {
-                          maxWidth: 'max-content'
-                        }
-                      : {}
-                  }>
+									className={stls.searchGroup}
+									style={
+										searchTerm && searchTerm.length > 50
+											? {
+													maxWidth: 'max-content'
+											  }
+											: {}
+									}>
 									<div className={stls.searchInputGroup}>
 										<div
 											className={cn(stls.searchIcon, {
@@ -404,10 +403,10 @@ const Teachers = ({
 													searchTermIsAppliedtoUrl
 											})}>
 											{searchTerm ? (
-                        <IconClose
-                          style={{ cursor: 'pointer' }}
-												  onClick={setEmptyInput}
-                        />
+												<IconClose
+													style={{ cursor: 'pointer' }}
+													onClick={setEmptyInput}
+												/>
 											) : (
 												<IconSearch style={{ cursor: 'text' }} />
 											)}
@@ -440,11 +439,11 @@ const Teachers = ({
 												) && setSearchInputIsFocused(false)
 											}
 											value={searchTerm || ''}
-                      size={
-                        searchTerm && searchTerm.length > 50
-                          ? searchTerm.length
-                          : undefined
-                      }
+											size={
+												searchTerm && searchTerm.length > 50
+													? searchTerm.length
+													: undefined
+											}
 										/>
 									</div>
 									{searchTerm && searchInputIsFocused && (
@@ -610,147 +609,147 @@ const Teachers = ({
 									}}>
 									{/* @ts-expect-error  */}
 
-                  {close => (
-                    <PopupForm
-                      programId={programId}
-                      programTitle={programTitle}
-                      closePopUpForm={close}
-                      title={
-                        at.en
-                          ? "Get teacher's list"
-                          : 'Получить полный список преподавателей'
-                      }
-                      disc={
-                        at.en
-                          ? 'Submit a request and receive a consultation on experts, programs, discounts, and requirements'
-                          : 'Оставьте заявку и получите консультацию по преподавателям, программам MBA, а также узнайте возможные варианты скидок и требования к поступлению'
-                      }
-                      formName={`Заявка с модальной формы "Получите полный список преподавателей"${
-                        programTitle || program?.title
-                          ? ` программы ${program?.category?.type || ''} ${
-                              program?.studyFormat || ''
-                            } ${programTitle || program.title}`
-                          : ''
-                      }`}
-                    />
-                  )}
-                </Popup>
-              </div>
-            </div>
-          )}
-          {UITeachers?.length > 0 && (
-            <div className={stls.btn}>
-              {shownTeachersCount >= teachers?.length ? (
-                <Popup
-                  trigger={
-                    <button
-                      className='button'
-                      onClick={() =>
-                        setShownTeachersCount(
-                          shownTeachersCount + showMoreTeachersAddendum
-                        )
-                      }>
-                      {at.en ? 'Request full list' : 'Запросить полный список'}
-                    </button>
-                  }
-                  modal
-                  lockScroll
-                  nested
-                  closeOnDocumentClick
-                  onOpen={() => {
-                    clickedGetFullTeachersList({
-                      url: `${routesFront.root}${router.asPath}`
-                    })
-                  }}>
-                  {/* @ts-expect-error  */}
-                  {close => (
-                    <PopupForm
-                      programId={programId}
-                      programTitle={programTitle}
-                      closePopUpForm={close}
-                      title={
-                        at.en
-                          ? 'Get to know the experts'
-                          : 'Узнайте своих экспертов'
-                      }
-                      disc={
-                        at.en
-                          ? 'Submit a request and receive a consultation on experts, programs, discounts, and requirements'
-                          : 'Оставьте заявку и получите консультацию по преподавателям, программам MBA, а также узнайте возможные варианты скидок и требования к поступлению'
-                      }
-                      formName={`Заявка с модальной формы "Запросить полный список преподавателей"${
-                        programTitle || program?.title
-                          ? ` программы ${program?.category?.type || ''} ${
-                              program?.studyFormat || ''
-                            } ${programTitle || program.title}`
-                          : ''
-                      }`}
-                    />
-                  )}
-                </Popup>
-              ) : at.about ? (
-                <Link href={routesFront.teachers}>
-                  <a className={cn('button', stls.btnShowMore)}>
-                    Посмотреть всех
-                  </a>
-                </Link>
-              ) : (
-                UITeachers.length >= 8 &&
-                !searchTerm && (
-                  <button
-                    className={cn('button', stls.btnShowMore, {
-                      [stls.atTeachers]: at.teachers
-                    })}
-                    onClick={() =>
-                      setShownTeachersCount(
-                        shownTeachersCount + showMoreTeachersAddendum
-                      )
-                    }>
-                    {at.en
-                      ? 'Show more'
-                      : `Ещё ${
-                          shownTeachersCount + showMoreTeachersAddendum >
-                          (teachers?.length
-                            ? teachers.filter(teacher =>
-                                searchTerm
-                                  ? teacher?.programs?.some(program =>
-                                      program?.includes(searchTerm)
-                                    )
-                                  : teacher
-                              ).length
-                            : 0)
-                            ? (teachers?.length
-                                ? teachers.filter(teacher =>
-                                    searchTerm
-                                      ? teacher?.programs?.some(program =>
-                                          program?.includes(searchTerm)
-                                        )
-                                      : teacher
-                                  ).length
-                                : 0) - shownTeachersCount
-                            : showMoreTeachersAddendum
-                        } преподавателей${
-                          teachers?.length
-                            ? ` из ${
-                                teachers.filter(teacher =>
-                                  searchTerm
-                                    ? teacher?.programs?.some(program =>
-                                        program?.includes(searchTerm)
-                                      )
-                                    : teacher
-                                ).length
-                              }`
-                            : undefined
-                        }`}
-                  </button>
-                )
-              )}
-            </div>
-          )}
-        </Wrapper>
-      </section>
-    </>
-  )
+									{close => (
+										<PopupForm
+											programId={programId}
+											programTitle={programTitle}
+											closePopUpForm={close}
+											title={
+												at.en
+													? "Get teacher's list"
+													: 'Получить полный список преподавателей'
+											}
+											disc={
+												at.en
+													? 'Submit a request and receive a consultation on experts, programs, discounts, and requirements'
+													: 'Оставьте заявку и получите консультацию по преподавателям, программам MBA, а также узнайте возможные варианты скидок и требования к поступлению'
+											}
+											formName={`Заявка с модальной формы "Получите полный список преподавателей"${
+												programTitle || program?.title
+													? ` программы ${program?.category?.type || ''} ${
+															program?.studyFormat || ''
+													  } ${programTitle || program.title}`
+													: ''
+											}`}
+										/>
+									)}
+								</Popup>
+							</div>
+						</div>
+					)}
+					{UITeachers?.length > 0 && (
+						<div className={stls.btn}>
+							{shownTeachersCount >= teachers?.length ? (
+								<Popup
+									trigger={
+										<button
+											className='button'
+											onClick={() =>
+												setShownTeachersCount(
+													shownTeachersCount + showMoreTeachersAddendum
+												)
+											}>
+											{at.en ? 'Request full list' : 'Запросить полный список'}
+										</button>
+									}
+									modal
+									lockScroll
+									nested
+									closeOnDocumentClick
+									onOpen={() => {
+										clickedGetFullTeachersList({
+											url: `${routesFront.root}${router.asPath}`
+										})
+									}}>
+									{/* @ts-expect-error  */}
+									{close => (
+										<PopupForm
+											programId={programId}
+											programTitle={programTitle}
+											closePopUpForm={close}
+											title={
+												at.en
+													? 'Get to know the experts'
+													: 'Узнайте своих экспертов'
+											}
+											disc={
+												at.en
+													? 'Submit a request and receive a consultation on experts, programs, discounts, and requirements'
+													: 'Оставьте заявку и получите консультацию по преподавателям, программам MBA, а также узнайте возможные варианты скидок и требования к поступлению'
+											}
+											formName={`Заявка с модальной формы "Запросить полный список преподавателей"${
+												programTitle || program?.title
+													? ` программы ${program?.category?.type || ''} ${
+															program?.studyFormat || ''
+													  } ${programTitle || program.title}`
+													: ''
+											}`}
+										/>
+									)}
+								</Popup>
+							) : at.about ? (
+								<Link href={routesFront.teachers}>
+									<a className={cn('button', stls.btnShowMore)}>
+										Посмотреть всех
+									</a>
+								</Link>
+							) : (
+								UITeachers.length >= 8 &&
+								!searchTerm && (
+									<button
+										className={cn('button', stls.btnShowMore, {
+											[stls.atTeachers]: at.teachers
+										})}
+										onClick={() =>
+											setShownTeachersCount(
+												shownTeachersCount + showMoreTeachersAddendum
+											)
+										}>
+										{at.en
+											? 'Show more'
+											: `Ещё ${
+													shownTeachersCount + showMoreTeachersAddendum >
+													(teachers?.length
+														? teachers.filter(teacher =>
+																searchTerm
+																	? teacher?.programs?.some(program =>
+																			program?.includes(searchTerm)
+																	  )
+																	: teacher
+														  ).length
+														: 0)
+														? (teachers?.length
+																? teachers.filter(teacher =>
+																		searchTerm
+																			? teacher?.programs?.some(program =>
+																					program?.includes(searchTerm)
+																			  )
+																			: teacher
+																  ).length
+																: 0) - shownTeachersCount
+														: showMoreTeachersAddendum
+											  } преподавателей${
+													teachers?.length
+														? ` из ${
+																teachers.filter(teacher =>
+																	searchTerm
+																		? teacher?.programs?.some(program =>
+																				program?.includes(searchTerm)
+																		  )
+																		: teacher
+																).length
+														  }`
+														: undefined
+											  }`}
+									</button>
+								)
+							)}
+						</div>
+					)}
+				</Wrapper>
+			</section>
+		</>
+	)
 }
 
 export default Teachers
