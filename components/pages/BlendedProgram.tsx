@@ -48,43 +48,43 @@ import ECTSStandard from '@/components/sections/general/ECTSStandard'
 import GetStudyPlan from '@/components/sections/general/GetStudyPlan'
 
 const PageBlendedProgram = ({ program, teachers }) => {
-  const router = useRouter()
+	const router = useRouter()
 
-  return (
-    <>
-      <JumbotronProgram program={program} />
-      <ProgramGoal data={program} />
-      <WhatWillYouLearn data={program} />
-      <ProgramDesc />
-      <BlendedMetups />
-      <Pros format={'blended'} />
-      <HowProcessGoes />
-      <ProgramsModules program={program} />
-      {/* <ECTSStandard /> */}
-      <GetStudyPlan />
-      <Teachers
-        programId={program?._id}
-        programTitle={program?.title}
-        teachers={teachers}
-      />
-      <UpToDateContent withBottomLine />
-      <CorporateClients />
-      <Accreditation />
-      <Diploma />
-      <Students />
-      <Reviews />
-      <SectionStudyCost />
-      <SectionCheckPros />
-      <Qna programId={program?._id} programTitle={program?.title} />
-      <ContactUs
-        programId={program?._id}
-        programTitle={program?.title}
-        title={'Не знаете что выбрать?'}
-        titleNewStr={'Получите консультацию по программам MBA'}
-        overlapsFooter
-      />
-    </>
-  )
+	return (
+		<>
+			<JumbotronProgram program={program} />
+			<ProgramGoal data={program} />
+			<WhatWillYouLearn data={program} />
+			<ProgramDesc />
+			<BlendedMetups />
+			<Pros format={'blended'} />
+			<HowProcessGoes />
+			<ProgramsModules program={program} />
+			{/* <ECTSStandard /> */}
+			<GetStudyPlan />
+			<Teachers
+				programId={program?._id}
+				programTitle={program?.title}
+				teachers={teachers}
+			/>
+			<UpToDateContent withBottomLine />
+			<CorporateClients />
+			<Accreditation />
+			<Diploma />
+			<Students />
+			<Reviews />
+			<SectionStudyCost />
+			<SectionCheckPros />
+			<Qna programId={program?._id} programTitle={program?.title} />
+			<ContactUs
+				programId={program?._id}
+				programTitle={program?.title}
+				title={'Не знаете что выбрать?'}
+				titleNewStr={'Получите консультацию по программам MBA'}
+				overlapsFooter
+			/>
+		</>
+	)
 }
 
 export default PageBlendedProgram

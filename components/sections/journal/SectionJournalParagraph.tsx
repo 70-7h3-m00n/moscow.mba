@@ -25,6 +25,8 @@ const SectionJournalParagraph = ({
     className: stls.br
   })
 
+  if (!smartParagraph) return null
+
   return (
     <div
       className={

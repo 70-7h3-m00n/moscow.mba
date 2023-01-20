@@ -8,7 +8,7 @@ import { IconContainer } from '@/components/layout'
 // TODO: improve structure
 const IconSpinner = () => {
   return (
-    <div className={stls.container}>
+    <span className={stls.container}>
       <svg
         width='20'
         height='20'
@@ -20,7 +20,7 @@ const IconSpinner = () => {
           fill='white'
         />
       </svg>
-    </div>
+    </span>
   )
 }
 

@@ -4,222 +4,254 @@
 @use '@/styles/shared/journal' as j
 
 .container
-    position: fixed
-    top: 0
-    left: 0
-    z-index: 151
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    background: linear-gradient(227.21deg, rgba(255, 53, 53, 0.2) 9.75%, rgba(0, 0, 0, 0) 84.21%), #000000
-    border-radius: f.px(20)
-    overflow: hidden
-    @include m.media(desktop, widescreen)
-        width: 850px
-        padding: f.px(50)
-    @include m.media(laptop)
-        max-width: f.px(710)
-        width: 100%
-        padding: f.px(50)
-    @include m.media(phone, tablet)
-        max-width: 100%
-        width: calc(100% - 15px)
-        padding: f.px(15)
+	position: fixed
+	top: 0
+	left: 0
+	z-index: 151
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+	background: linear-gradient(227.21deg, rgba(255, 53, 53, 0.2) 9.75%, rgba(0, 0, 0, 0) 84.21%), #000000
+	border-radius: f.px(20)
+	overflow: hidden
+	@include m.media(desktop, widescreen)
+		width: 850px
+		padding: f.px(50)
+	@include m.media(laptop)
+		max-width: f.px(710)
+		width: 100%
+		padding: f.px(50)
+	@include m.media(phone, tablet)
+		max-width: 100%
+		width: calc(100% - 15px)
+		padding: f.px(15)
 
 .wrapper
-    position: fixed
-    top: 0
-    left: 0
-    width: 100vw
-    height: 100vh
-    z-index: 150
-    @include m.dye(bgc, c.$gamma-2)
+	position: fixed
+	top: 0
+	left: 0
+	width: 100vw
+	height: 100vh
+	z-index: 150
+	@include m.dye(bgc, c.$gamma-2)
 
 .closed
-    position: absolute
-    display: flex
-    justify-content: center
-    align-items: center
-    width: f.px(27)
-    height: f.px(27)
-    padding: 0
-    border: none
-    border-radius: 50%
-    @include m.dye(bgc, c.$psi)
-    @include m.media(desktop, widescreen)
-        top: f.px(25)
-        right: f.px(25)
-    @include m.media(phone, tablet, laptop)
-        top: f.px(10)
-        right: f.px(10)
+	position: absolute
+	display: flex
+	justify-content: center
+	align-items: center
+	width: f.px(27)
+	height: f.px(27)
+	padding: 0
+	border: none
+	border-radius: 50%
+	@include m.dye(bgc, c.$psi)
+	@include m.media(desktop, widescreen)
+		top: f.px(25)
+		right: f.px(25)
+	@include m.media(phone, tablet, laptop)
+		top: f.px(10)
+		right: f.px(10)
 
-    &::before
-        position: absolute
-        display: block
-        content: ""
-        width: f.px(18)
-        height: f.px(2)
-        transform: rotate(45deg)
-        border-radius: f.px(5)
-        @include m.dye(bgc, c.$chi)
-    &::after
-        position: absolute
-        display: block
-        content: ""
-        width: f.px(18)
-        height: f.px(2)
-        transform: rotate(-45deg)
-        border-radius: f.px(5)
-        @include m.dye(bgc, c.$chi)
+	&::before
+		position: absolute
+		display: block
+		content: ""
+		width: f.px(18)
+		height: f.px(2)
+		transform: rotate(45deg)
+		border-radius: f.px(5)
+		@include m.dye(bgc, c.$chi)
+	&::after
+		position: absolute
+		display: block
+		content: ""
+		width: f.px(18)
+		height: f.px(2)
+		transform: rotate(-45deg)
+		border-radius: f.px(5)
+		@include m.dye(bgc, c.$chi)
 
 .text
-    font-weight: 500
-    line-height: 100%
-    white-space: pre-wrap
-    @include m.dye(c, c.$psi)
-    @include m.media(laptop, desktop, widescreen)
-        width: f.px(580)
-        font-size: f.px(40)
+	font-weight: 500
+	line-height: 100%
+	white-space: pre-wrap
+	@include m.dye(c, c.$psi)
+	@include m.media(laptop, desktop, widescreen)
+		width: f.px(580)
+		font-size: f.px(40)
 
-    @include m.media(phone, tablet)
-        max-width: f.px(315)
-        width: 100%
-        margin-top: f.px(25)
-        font-size: f.px(32)
+	@include m.media(phone, tablet)
+		max-width: f.px(315)
+		width: 100%
+		margin-top: f.px(25)
+		font-size: f.px(32)
 
-.pdfPopupGetMaterials
-    position: absolute
-    @include m.media(desktop, widescreen)
-        top: f.px(50)
-        right: 0
-    @include m.media(laptop)
-        display: none
-    @include m.media(phone, tablet)
-        bottom: f.px(30)
-        right: f.px(12)
-        width: f.px(55)
-        height: f.px(62)
-        z-index: 10
 
-.topLinePopupGetMaterials
-    position: absolute
-    @include m.media(desktop, widescreen)
-        top: f.px(-125)
-        right: f.px(130)
-    @include m.media(phone, tablet, laptop)
-        top: f.px(-105)
-        right: f.px(-75)
+.pdfFiles
+	display: flex
+	flex-wrap: wrap
+	align-items: center
+	gap: f.px(25)
+	margin-top: f.px(30)
+	@include m.media(laptop, desktop, widescreen)
+		max-width: 78%
+	@include m.media(phone, tablet)
+		margin-bottom: f.px(30)
 
-.bottomLinePopupGetMaterials
-    position: absolute
-    transform: rotate(165deg)
-    @include m.media(desktop, widescreen)
-        bottom: f.px(-150)
-        left: f.px(-20)
-    @include m.media(phone, tablet, laptop)
-        bottom: f.px(-150)
-        left: f.px(-80)
+.pdfFile
+	display: flex
+	align-items: center
+	justify-content: center
 
-.form
-    position: relative
-    z-index: 1
-    @include m.media(desktop, widescreen)
-        margin-top: f.px(130)
-    @include m.media(phone, tablet, laptop)
-        margin-top: f.px(53)
+.pdfFilePicture
 
-.submitButton
-    position: relative
-    z-index: 5
-    display: flex
-    align-items: center
-    justify-content: center
-    border: none
-    border-radius: f.px(10)
-    @include m.dye(bgc, c.$alpha)
-    box-shadow: 0px 18px 43px rgba(207, 34, 34, 0.69), inset -4px 4px 7px rgba(0, 0, 0, 0.4)
-    @include m.media(desktop, widescreen)
-        width: f.px(410)
-        padding-top: f.px(36)
-        padding-bottom: f.px(34)
-    @include m.media(phone, tablet)
-        width: 100%
-        padding-top: f.px(26)
-        padding-bottom: f.px(26)
-    @include m.media(laptop)
-        width: 100%
-        padding-top: f.px(35)
-        padding-bottom: f.px(35)
+.pdfFileName
+	margin-left: f.px(15)
+	font-size: f.px(13)
+	font-weight: 400
+	line-height: 120%
+	@include m.dye(c, c.$psi)
 
 .pdfIcon
-    @include m.media(phone, tablet)
-        position: relative
-        bottom: -2px
-        width: f.px(22)
+	@include m.media(phone, tablet)
+		position: relative
+		bottom: -2px
+		width: f.px(22)
+	
+.pdfPopupGetMaterials
+	position: absolute
+	@include m.media(desktop, widescreen)
+		top: f.px(50)
+		right: 0
+	@include m.media(laptop)
+		display: none
+	@include m.media(phone, tablet)
+		bottom: f.px(30)
+		right: f.px(12)
+		width: f.px(55)
+		height: f.px(62)
+		z-index: 10
+
+.topLinePopupGetMaterials
+	position: absolute
+	@include m.media(desktop, widescreen)
+		top: f.px(-125)
+		right: f.px(130)
+	@include m.media(phone, tablet, laptop)
+		top: f.px(-105)
+		right: f.px(-75)
+
+.bottomLinePopupGetMaterials
+	position: absolute
+	transform: rotate(165deg)
+	@include m.media(desktop, widescreen)
+		bottom: f.px(-150)
+		left: f.px(-20)
+	@include m.media(phone, tablet, laptop)
+		bottom: f.px(-150)
+		left: f.px(-80)
+
+.form
+	position: relative
+	z-index: 1
+	@include m.media(desktop, widescreen)
+		margin-top: f.px(130)
+	@include m.media(phone, tablet, laptop)
+		margin-top: f.px(53)
+
+.submitButton
+	position: relative
+	z-index: 5
+	display: flex
+	align-items: center
+	justify-content: center
+	border: none
+	border-radius: f.px(10)
+	@include m.dye(bgc, c.$alpha)
+	box-shadow: 0px 18px 43px rgba(207, 34, 34, 0.69), inset -4px 4px 7px rgba(0, 0, 0, 0.4)
+	@include m.media(desktop, widescreen)
+		width: f.px(410)
+		padding-top: f.px(36)
+		padding-bottom: f.px(34)
+	@include m.media(phone, tablet)
+		width: 100%
+		padding-top: f.px(26)
+		padding-bottom: f.px(26)
+	@include m.media(laptop)
+		width: 100%
+		padding-top: f.px(35)
+		padding-bottom: f.px(35)
+
+.pdfIcon
+	@include m.media(phone, tablet)
+		position: relative
+		bottom: -2px
+		width: f.px(22)
 
 .submitText
-    text-transform: uppercase
-    @include m.dye(c, c.$psi)
-    font-weight: 700
-    font-family: 'Styrene', Arial, Tahoma, sans-serif
-    @include m.media(desktop, widescreen)
-        margin-right: f.px(9)
-        font-size: f.px(18)
-    @include m.media(phone, tablet, laptop)
-        margin-right: f.px(2)
-        font-size: f.px(15)
+	text-transform: uppercase
+	@include m.dye(c, c.$psi)
+	font-weight: 700
+	font-family: 'Styrene', Arial, Tahoma, sans-serif
+	@include m.media(desktop, widescreen)
+		margin-right: f.px(9)
+		font-size: f.px(18)
+	@include m.media(phone, tablet, laptop)
+		margin-right: f.px(2)
+		font-size: f.px(15)
 
 .formComplited
-    position: absolute
-    top: 50%
-    transform: translateY(-50%)
-    left: 0
-    z-index: 10
-    @include m.media(laptop, desktop, widescreen)
-        padding: 0 f.px(50)
-    @include m.media(laptop, desktop)
-        width: f.px(500)
-    @include m.media(phone, tablet)
-        width: 100%
-        display: flex
-        flex-direction: column
-        align-items: center
-        text-align: center
-        padding: 0 f.px(15)
+	position: absolute
+	top: 50%
+	transform: translateY(-50%)
+	left: 0
+	z-index: 10
+	@include m.media(laptop, desktop, widescreen)
+		padding: 0 f.px(50)
+	@include m.media(laptop, desktop)
+		width: f.px(500)
+	@include m.media(phone, tablet)
+		width: 100%
+		display: flex
+		flex-direction: column
+		align-items: center
+		text-align: center
+		padding: 0 f.px(15)
 
 .formComplitedTitle
-    margin-bottom: f.px(25)
-    font-size: f.px(24)
-    font-weight: 500
-    line-height: 120%
-    @include m.dye(c, c.$psi)
+	margin-bottom: f.px(25)
+	font-size: f.px(24)
+	font-weight: 500
+	line-height: 120%
+	@include m.dye(c, c.$psi)
 
 .formComplitedClosed
-    font-size: f.px(15)
-    font-weight: 400
-    font-family: 'Styrene', Arial, Tahoma, sans-serif
-    text-decoration-line: underline
-    @include m.dye(c, c.$alpha)
-    background: none
-    border: none
-    padding: 0
+	font-size: f.px(15)
+	font-weight: 400
+	font-family: 'Styrene', Arial, Tahoma, sans-serif
+	text-decoration-line: underline
+	@include m.dye(c, c.$alpha)
+	background: none
+	border: none
+	padding: 0
 
 .formContent
-    opacity: 0
-    position: relative
-    z-index: -100
+	opacity: 0
+	position: relative
+	z-index: -100
 
 .formLoading
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    z-index: 10
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+	z-index: 10
 
 .pdfFormComplited
-    position: absolute
-    @include m.media(desktop, widescreen)
-        top: f.px(50)
-        right: 0
-    @include m.media(phone, tablet, laptop)
-        display: none
+	position: absolute
+	@include m.media(desktop, widescreen)
+		top: f.px(50)
+		right: 0
+	@include m.media(phone, tablet, laptop)
+		display: none

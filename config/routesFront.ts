@@ -27,6 +27,7 @@ const routesFront: TypeRoutesFront = {
   programsMiniOnline: '/programs/mini/online',
   programsMiniBlended: '/programs/mini/blended',
   programsProfessionOnline: '/programs/profession/online',
+  programsCoursesOnline: '/programs/course/online',
   teachers: '/teachers',
   teachersTeacher: '/teachers/[teacher]',
   assetsImgsIconsManifestIcon512: '/assets/images/icons/manifest-icon-512.png'
