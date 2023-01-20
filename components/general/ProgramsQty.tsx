@@ -22,13 +22,13 @@ const ProgramsQty = ({
 	else ProgramsQty = programs?.length
 
 	return (
-		<div
+		<span
 			className={cn(stls.container, {
 				[stls.headerContainer]: isInsideHeader
 			})}>
 			<span>{ProgramsQty} </span>
 			{at.en ? 'programs' : ruCaseProgram(ProgramsQty)}
-		</div>
+		</span>
 	)
 }
 

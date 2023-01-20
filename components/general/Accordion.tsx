@@ -1,6 +1,7 @@
 import stls from '@/styles/components/general/Accordion.module.sass'
 import cn from 'classnames'
 import ImageContainer from '@/components/general/ImageContainer'
+import { RefObject, useRef } from 'react'
 
 const Accordion = ({
   accordionItem,
@@ -10,7 +11,7 @@ const Accordion = ({
   scrollableIntoView
 }) => {
   const { title, content, isList, isImage } = accordionItem
-
+  const accordion = useRef<HTMLDivElement>(null)
   let accordionContent
 
   if (typeof content === 'string') {
@@ -49,7 +50,7 @@ const Accordion = ({
   }
 
   const handleAccordionClick = () => {
-    document.getElementById('view_accordion').scrollIntoView()
+    accordion.current.scrollIntoView({ block: 'center' })
 
     if (activeAccordion) setActiveAccordion(-1)
 
@@ -59,7 +60,7 @@ const Accordion = ({
 
   return (
     <div
-      id={'view_accordion'}
+      ref={accordion}
       className={cn(stls.container, {
         [stls.equalPadding]: isImage,
         [stls.opened]: activeAccordion

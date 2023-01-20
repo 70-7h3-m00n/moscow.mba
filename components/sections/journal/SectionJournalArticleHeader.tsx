@@ -92,7 +92,10 @@ const SectionJournalArticleHeader = ({
 				<button className={stls.category} disabled>
 					{journalArticle?.journalCategory?.title}
 				</button>
-				<GeneralJournalArticleCreatedAtLegacy time={time} />
+				<GeneralJournalArticleCreatedAtLegacy
+					time={time}
+					timestamp={journalArticle?.createdAt}
+				/>
 			</div>
 		</div>
 	)

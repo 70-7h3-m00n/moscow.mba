@@ -23,7 +23,6 @@ import IconCheckCircle from '@/components/icons/IconCheckCircle'
 
 const PagePrograms = ({ mbaTypeOfProgram, mbaFormat }) => {
 	const { programs, curStudyField } = useContext(ContextStaticProps)
-	console.log(programs)
 
 	const at = useAt()
 
