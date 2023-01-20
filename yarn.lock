@@ -3211,6 +3211,11 @@ mmdb-lib@2.0.2:
   resolved "https://registry.yarnpkg.com/mmdb-lib/-/mmdb-lib-2.0.2.tgz#fe60404142c0456c19607c72caa15821731ae957"
   integrity sha512-shi1I+fCPQonhTi7qyb6hr7hi87R7YS69FlfJiMFuJ12+grx0JyL56gLNzGTYXPU7EhAPkMLliGeyHer0K+AVA==
 
+moment@2.18.1:
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
+  integrity sha512-QGcnVKRSEhbWy2i0pqFhjWMCczL/YU5ICMB3maUavFcyUqBszRnzsswvOaGOqSfWZ/R+dMnb9gGBuRT4LMTdVQ==
+
 moment@^2.29.3:
   version "2.29.4"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
@@ -4196,6 +4201,11 @@ tar-stream@^2.1.4:
     inherits "^2.0.3"
     readable-stream "^3.1.1"
 
+tcomb@3.2.23:
+  version "3.2.23"
+  resolved "https://registry.yarnpkg.com/tcomb/-/tcomb-3.2.23.tgz#1bacffb96acbb0e2f05bb65028b5e6a60250b0e5"
+  integrity sha512-aaKd6EFSLPhocAWjdPP50xGAwmU3gIVfGZP2tmDRKvSaGXycOKsDmQj2sdQ5RLzwESVdyNYhKzFD6nQZEuFAtw==
+
 temp-dir@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/temp-dir/-/temp-dir-2.0.0.tgz#bde92b05bdfeb1516e804c9c00ad45177f31321e"
@@ -4652,10 +4662,24 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
+xmlbuilder@9.0.4:
+  version "9.0.4"
+  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-9.0.4.tgz#519cb4ca686d005a8420d3496f3f0caeecca580f"
+  integrity sha512-tNc8nWR9fhl8UAKXf5Cyp5Rl46dBVsHO0J4vbzpUt98kvt6OA7Lu8drdIeeJebaMPyiTG6EDivfTyBlwTBMzYA==
+
 yallist@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
+
+yandex-market-language@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/yandex-market-language/-/yandex-market-language-0.4.1.tgz#965d2797a344c51f56c9378adddf2349b6f52042"
+  integrity sha512-L6fu9dRAxJnuqOGnDUyChTXyiC0qePW/MN8vs59Pt48xz8n1m2m2k18yb+RcYe9pBORfQ0Svhu/468Cwf3vdXA==
+  dependencies:
+    moment "2.18.1"
+    tcomb "3.2.23"
+    xmlbuilder "9.0.4"
 
 yocto-queue@^0.1.0:
   version "0.1.0"

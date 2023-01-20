@@ -43,3 +43,6 @@ sitemap-0.xml
 .storybook
 
 .swc
+
+feed.yml
+feed.yml.example

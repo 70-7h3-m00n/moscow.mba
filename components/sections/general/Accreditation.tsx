@@ -6,15 +6,17 @@ import cn from 'classnames'
 import { Wrapper } from '@/components/layout'
 import { IconPaperCorner } from '@/components/icons'
 import { ImgLogoEcicel, ImgLogoRabo, ImgLogoMde } from '@/components/images'
+import { useContext } from 'react'
+import { DigitalTransformationContext } from '@/context/index'
 
 const Accreditation = () => {
-  const at = useAt()
+	const at = useAt()
 
-  const logos = [
-    { logo: <ImgLogoEcicel /> },
-    { logo: <ImgLogoRabo /> },
-    { logo: <ImgLogoMde /> }
-  ]
+	const logos = [
+		{ logo: <ImgLogoEcicel /> },
+		{ logo: <ImgLogoRabo /> },
+		{ logo: <ImgLogoMde /> }
+	]
 
   return (
     <section
@@ -54,18 +56,24 @@ const Accreditation = () => {
                 : 'Наши программы прошли строгую проверку европейской аккредитационной комиссии ECICEL и полностью соответствуют всем стандартам. Наличие данной аккредитации гарантирует высокое качество образования в Moscow Business Academy'}
             </li>
             <li className={stls.listItem}>
-              {at.en
-                ? 'Moscow Business Academy is also a member of Russian Association of Business Education and has a state license, which proves that our programs fully comply with the educational standards of Russian Federation'
-                : 'Moscow Business Academy является членом Российской Ассоциации Бизнес-образования (РАБО). В России членство РАБО имеют ограниченное количество организаций, которые соответствуют требованиям качества образовательных программ'}
+              {at.en ? (
+                'Moscow Business Academy is also a member of Russian Association of Business Education and has a state license, which proves that our programs fully comply with the educational standards of Russian Federation'
+              ) : (
+                <>
+                  <p>
+                    Moscow Business Academy является членом Российской
+                    Ассоциации Бизнес-образования (РАБО). В России членство РАБО
+                    имеют ограниченное количество организаций, которые
+                    соответствуют требованиям качества образовательных программ
+                  </p>
+                  <p>
+                    В настоящий момент за РАБО закрепился статус признанного
+                    лидера, инициатора и координатора программ подготовки кадров
+                    для предпринимательства и бизнеса
+                  </p>
+                </>
+              )}
             </li>
-            {at.en ? null : (
-              <p>
-                В настоящий момент за РАБО закрепился статус признанного лидера,
-                инициатора и координатора программ подготовки кадров для
-                предпринимательства и бизнеса
-              </p>
-            )}
-
             {at.en ? null : (
               <li className={stls.listItem}>
                 Также наша академия имеет государственную лицензию на
