@@ -3,8 +3,11 @@ export {
 	LIST_FILTER_TYPE_PROGRAM,
 	LIST_FILTER_TRAINING_PROGRAM
 } from './constants'
+
 export {
 	usePrograms,
 	ConfigProgramsProvider,
 	useConfigProgramsContext
 } from './hooks'
+
+export { countProgressRange } from './utils'

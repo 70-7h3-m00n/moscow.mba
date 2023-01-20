@@ -2,12 +2,21 @@
 @use '@/styles/utils/funcs' as f
 @use '@/styles/themes/default/colors' as c
 
+.container
+    display: grid
+    @include m.media(desktop, widescreen)
+        grid-template-columns: 1fr 3fr
+        column-gap: f.px(30)
+    @include m.media(laptop, tablet, phone)
+        grid-template-columns: 1fr
+
 .generalContainer
     margin-right: auto
     margin-left: auto
     padding-left: 10px
     padding-right: 10px
     width: 1310px
+    margin-bottom: f.px(68)
     @include m.media(desktop)
         width: 1000px
     @include m.media(laptop, tablet)
@@ -22,14 +31,21 @@
         clear: both
 
 .filtersContainer
-    margin-top: f.px(33)
-    flex-basis: 25%
+    @include m.media(desktop, widescreen)
+        margin-top: f.px(33)
+        grid-column: 1/2
+        grid-row: 1/7
+    @include m.media(tablet, phone, laptop)
+        margin-top: 0
+        grid-row: 2/3
 
 .sortingContainer
     position: relative
     display: flex
     justify-content: flex-end
-    @include m.media(phone, tablet)
+    @include m.media(desktop, widescreen)
+        grid-column: 2/3
+    @include m.media(phone, tablet, laptop)
         justify-content: flex-start
 
 .heroProgram
@@ -61,18 +77,34 @@
     max-width: f.px(850)
 
 .title
-    margin-bottom: 48px
-    font-style: normal
-    font-weight: bold
-    font-size: 62px
-    line-height: 100%
+    @include m.media(desktop, widescreen)
+        margin-bottom: 48px
+        font-style: normal
+        font-weight: bold
+        font-size: 62px
+        line-height: 100%
+        grid-column: 2/3
+    @include m.media(tablet, phone, laptop)
+        grid-row: 1/2
+
+.titleMobile
     @include m.media(tablet, phone)
-        margin-bottom: 30px
-        font-size: 46px
-        span
-            display: none
+        margin-bottom: 48px
+        font-style: normal
+        font-weight: bold
+        font-size: 62px
+        line-height: 100%
+        margin-bottom: f.px(20)
+    @include m.media(tablet)
+        font-size: f.px(46)
     @include m.media(phone)
         font-size: 36px
+    @include m.media(desktop, widescreen)
+        display: none
+
+.infoRectangle
+    @include m.media(desktop, widescreen)
+        grid-column: 2/3
 
 section.jumbotronPrograms
     background-color: #f7f7f7
@@ -147,14 +179,14 @@ section.jumbotronPrograms
         align-items: center
         margin-right: 30px
 
-.container
-    display: flex
-    gap: f.px(30)
-    @media (max-width: 1019px)
-        flex-direction: column
-
 .programMainInfo
     margin-bottom: 43px
+
+.mainInfo
+    @include m.media(desktop, widescreen)
+        grid-column: 2/3
+    @include m.media(phone, tablet, laptop)
+        margin-top: f.px(60)
 
 .programs
     display: flex
@@ -165,36 +197,7 @@ section.jumbotronPrograms
         margin: 60px -10px -20px
     @media (max-width: 480px)
         margin: 30px 2px -20px
-    @include m.media(tablet, phone)
+    @include m.media(desktop, widescreen)
+        grid-column: 2/3
+    @include m.media(tablet, phone, laptop)
         flex-direction: column
-
-    // .slick-dots
-    //   text-align: center
-    //   display: flex
-    //   align-items: center
-    //   justify-content: center
-    //   width: 100%
-    //   margin-top: 15px
-    //   button
-    //     display: inline-block
-    //     vertical-align: middle
-    //     background: transparent
-    //     border-radius: 50%
-    //     cursor: pointer
-    //     width: 74px
-    //     height: 74px
-    //     border: none
-    //     margin: 0 7px
-    //     background: #f7f7f7
-    //     transition: all 0.3s ease-out
-    //     font-weight: 500
-    //     font-size: 20px
-    //     color: rgba(38, 38, 38, 0.12)
-    //     font-family: 'Styrene', Arial, Tahoma, sans-serif
-    //     &:hover
-    //       background: #ff3535
-    //       color: #262626
-
-    //   .slick-active button
-    //     background: #ff3535
-    //     color: #fff

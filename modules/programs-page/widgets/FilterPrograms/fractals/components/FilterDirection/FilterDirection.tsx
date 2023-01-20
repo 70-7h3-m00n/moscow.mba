@@ -42,7 +42,7 @@ const FilterDirection = () => {
 						checked={item === configPrograms.filterDirection}
 						className={stls.inputNotActive}
 					/>
-					<label className={stls.labelModalSorting} htmlFor={item.value}>
+					<label className={stls.labelModalSorting} htmlFor={item}>
 						{item}
 					</label>
 				</div>

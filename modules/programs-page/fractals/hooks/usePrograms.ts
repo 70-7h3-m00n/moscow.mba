@@ -7,7 +7,10 @@ export const usePrograms = () => {
 	const { programs } = useContext(ContextStaticProps)
 	const { configPrograms } = useConfigProgramsContext()
 	const [renderPrograms, setRenderPrograms] = useState(programs)
-	const [minMaxDuration, setMinMaxDuration] = useState(null)
+	const [minMaxDuration, setMinMaxDuration] = useState({
+		minDuration: null,
+		maxDuration: null
+	})
 	const [isBlended, setIsBlended] = useState(true)
 	const [uniqueDirections, setUniqueDirections] = useState([])
 
@@ -29,7 +32,11 @@ export const usePrograms = () => {
 			const minDuration = Math.min(
 				...programs?.map(item => item.duration?.minStudyMonths)
 			)
-			setMinMaxDuration({ minDuration: minDuration, maxDuration: maxDuration })
+
+			setMinMaxDuration(() => ({
+				minDuration: minDuration,
+				maxDuration: maxDuration
+			}))
 
 			return programs?.filter(
 				program =>
