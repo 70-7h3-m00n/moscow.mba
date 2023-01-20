@@ -27,12 +27,12 @@ const InputSubmit = ({ errors, alpha = false, width = '25', ...props }) => {
           ? 'Submit'
           : 'Оставить заявку'}
         {alpha && (
-          <div className={stls.IconArrowTopRightContainer}>
+          <span className={stls.IconArrowTopRightContainer}>
             <IconArrowTopRight
               classNames={[stls.IconArrowTopRight]}
               color={colors.psi}
             />
-          </div>
+          </span>
         )}
       </button>
     </div>

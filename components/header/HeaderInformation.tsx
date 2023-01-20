@@ -29,21 +29,21 @@ const HeaderInformation = ({ classNames = [], handleMenu, openMenu }) => {
             className={stls.logo}
             onClick={() => handleMenu(false)}
             aria-label={companyName}>
-            <span className={stls.picture}>
+            <div className={stls.picture}>
               <IconLogo />
-            </span>
-            <span>
+            </div>
+            <div>
               <IconLogoTitle />
-            </span>
+            </div>
           </a>
         </Link>
         <div className={stls.logos}>
-          <span className={stls.rabo}>
+          <div className={stls.rabo}>
             <ImgLogoRabo />
-          </span>
-          <span className={stls.mde}>
+          </div>
+          <div className={stls.mde}>
             <ImgLogoMde />
-          </span>
+          </div>
         </div>
         <div className={stls.address}>
           <IconLocation />

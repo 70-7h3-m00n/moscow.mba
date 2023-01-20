@@ -1,4 +1,10 @@
-import stls from '@/styles/components/sections/journal/SectionJournalHeroArticle.module.sass'
+import Link from 'next/link'
+import cn from 'classnames'
+
+import { routesFront } from '@/config/index'
+
+import { getClassNames, getImageHeight, getRenderTime } from '@/helpers/index'
+
 import {
 	TypeClassNames,
 	TypeLessThan,
@@ -9,13 +15,12 @@ import {
 	TypeContextJournalCategory,
 	TypeContextJournalFilterButtons
 } from '@/types/context/journal/TypeContextJournal'
-import Link from 'next/link'
-import cn from 'classnames'
-import { routesFront } from '@/config/index'
-import { getClassNames, getImageHeight, getRenderTime } from '@/helpers/index'
+
 import { Wrapper } from 'components/layout'
 import { ImgJournalArticle } from '@/components/images'
 import { GeneralJournalArticleCreatedAtLegacy } from '@/components/general'
+
+import stls from '@/styles/components/sections/journal/SectionJournalHeroArticle.module.sass'
 
 type TypeSectionJournalArticleProps = {
 	filteredArticles: TypeContextJournalArticles
@@ -161,7 +166,10 @@ const SectionJournalHeroArticle = ({
 											{category.title}
 										</button>
 									))}
-								<GeneralJournalArticleCreatedAtLegacy time={time} />
+								<GeneralJournalArticleCreatedAtLegacy
+									time={time}
+									timestamp={filteredArticles[0]?.createdAt}
+								/>
 							</div>
 						</div>
 					</div>

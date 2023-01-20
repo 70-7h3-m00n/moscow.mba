@@ -146,7 +146,10 @@ const CardJournalArticleLegacy = ({
 							))}
 						<h3 className={stls.title}>{title}</h3>
 						<div className={stls.date}>
-							<GeneralJournalArticleCreatedAtLegacy time={time} />
+							<GeneralJournalArticleCreatedAtLegacy
+								time={time}
+								timestamp={article?.createdAt}
+							/>
 						</div>
 					</div>
 				</div>

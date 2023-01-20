@@ -4,14 +4,19 @@ import { TypeClassNames } from '@/types/index'
 
 type TypeGeneralJournalArticleCreatedAtLegacyProps = TypeClassNames & {
 	time: string
+	timestamp: string
 }
 
 const GeneralJournalArticleCreatedAtLegacy = ({
-	time
+	time,
+	timestamp
 }: TypeGeneralJournalArticleCreatedAtLegacyProps) => {
 	if (!time) return null
-
-	return <time className={stls.date}>{time}</time>
+	return (
+		<time className={stls.date} dateTime={timestamp}>
+			{time}
+		</time>
+	)
 }
 
 export default GeneralJournalArticleCreatedAtLegacy

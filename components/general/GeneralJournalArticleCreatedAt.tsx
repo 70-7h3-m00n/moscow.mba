@@ -79,7 +79,7 @@ const GeneralJournalArticleCreatedAt = ({
 			className={
 				cn(stls.container, getClassNames({ classNames })) || undefined
 			}>
-			<time className={stls.time}>{time}</time>
+			<time className={stls.time} dateTime={timestamp}>{time}</time>
 		</div>
 	)
 }
