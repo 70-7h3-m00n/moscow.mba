@@ -3,18 +3,24 @@ import { ContextStaticProps } from '@/context/index'
 import { useConfigProgramsContext } from './ConfigPrograms'
 import { FilterTypeProgramEnum, SortingEnum } from '../enums'
 
+type TMinMaxDuration = {
+	minDuration: number
+	maxDuration: number
+}
+type TUniqueDirections = string[]
+
 export const usePrograms = () => {
 	const { programs } = useContext(ContextStaticProps)
 	const { configPrograms } = useConfigProgramsContext()
 	const [renderPrograms, setRenderPrograms] = useState(programs)
-	const [minMaxDuration, setMinMaxDuration] = useState({
-		minDuration: null,
-		maxDuration: null
-	})
-	const [isBlended, setIsBlended] = useState(true)
-	const [uniqueDirections, setUniqueDirections] = useState([])
+	const [minMaxDuration, setMinMaxDuration] = useState<TMinMaxDuration | null>(
+		null
+	)
 
-	const fitlerAll = programs => [...programs]
+	const [uniqueDirections, setUniqueDirections] =
+		useState<TUniqueDirections | null>(null)
+
+	const fitlerAll = programs => programs && [...programs]
 
 	const filterTypeProgram = programs =>
 		programs?.filter(
@@ -44,7 +50,6 @@ export const usePrograms = () => {
 			)
 		} else {
 			setMinMaxDuration(null)
-
 			return programs
 		}
 	}
@@ -55,14 +60,10 @@ export const usePrograms = () => {
 			FilterTypeProgramEnum.mini === configPrograms?.filterTypeProgram ||
 			FilterTypeProgramEnum.all === configPrograms?.filterTypeProgram
 		) {
-			setIsBlended(true)
-
 			return programs?.filter(
 				program => program?.studyFormat === configPrograms?.filterTrainingFormat
 			)
 		} else {
-			setIsBlended(false)
-
 			return programs
 		}
 	}
@@ -89,7 +90,7 @@ export const usePrograms = () => {
 					program?.study_field?.name === configPrograms?.filterDirection
 			)
 		} else {
-			setUniqueDirections([])
+			setUniqueDirections(null)
 
 			return programs
 		}
@@ -135,7 +136,6 @@ export const usePrograms = () => {
 
 	return {
 		renderPrograms,
-		isBlended,
 		uniqueDirections,
 		minMaxDuration
 	}

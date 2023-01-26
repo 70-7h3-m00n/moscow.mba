@@ -1,14 +1,65 @@
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import {
 	useConfigProgramsContext,
-	LIST_FILTER_TYPE_PROGRAM
+	LIST_FILTER_TYPE_PROGRAM,
+	FilterFormatTrainingEnum,
+	FilterTypeProgramEnum,
+	FiltersEnum
 } from 'modules/programs-page/fractals'
-import Link from 'next/link'
-import { useState } from 'react'
 import stls from './FilterTypeProgram.module.sass'
 
 const FilterTypeProgram = () => {
-	const { configPrograms, setConfigPrograms } = useConfigProgramsContext()
+	const { configPrograms, handlerSetConfigPrograms, router, setQueryURI } =
+		useConfigProgramsContext()
 	const [isShowFilter, setIsShowFilter] = useState(true)
+
+	useEffect(() => {
+		if (router.isReady) {
+			if (router.query?.[FiltersEnum.filterTypeProgram]) {
+				const isFilterInURL = Object.keys(FilterTypeProgramEnum).includes(
+					router.query?.[FiltersEnum.filterTypeProgram]
+				)
+
+				isFilterInURL &&
+					handlerSetConfigPrograms({
+						[FiltersEnum.filterTypeProgram]:
+							router.query?.[FiltersEnum.filterTypeProgram]
+					})
+			}
+		}
+	}, [router.isReady])
+
+	useEffect(() => {
+		if (router.isReady) {
+			if (configPrograms?.[FiltersEnum.filterDirection]) {
+				setQueryURI({
+					...configPrograms,
+					[FiltersEnum.filterDirection]: encodeURIComponent(
+						configPrograms?.[FiltersEnum.filterDirection]
+					)
+				})
+			} else {
+				setQueryURI({ ...configPrograms })
+			}
+		}
+	}, [configPrograms])
+
+	const handlerOnChange = e => {
+		if (
+			e.target.value === FilterTypeProgramEnum.course ||
+			e.target.value === FilterTypeProgramEnum.profession
+		) {
+			handlerSetConfigPrograms({
+				[FiltersEnum.filterTypeProgram]: e.target.value,
+				[FiltersEnum.filterTrainingFormat]: FilterFormatTrainingEnum.online
+			})
+		} else {
+			handlerSetConfigPrograms({
+				[FiltersEnum.filterTypeProgram]: e.target.value
+			})
+		}
+	}
 
 	return (
 		<div className={stls.filterTypeProgram}>
@@ -35,20 +86,17 @@ const FilterTypeProgram = () => {
 				</span>
 			</p>
 			<div className={isShowFilter ? stls.isShowFilter : ''}>
-				{LIST_FILTER_TYPE_PROGRAM.map((item, index) => (
+				{LIST_FILTER_TYPE_PROGRAM.map(item => (
 					<div key={item.value} className={stls.itemFilterTypeProgram}>
 						<input
 							type='radio'
-							name='filterTypeProgram'
+							name={FiltersEnum.filterTypeProgram}
 							value={item.value}
 							id={item.value}
-							onChange={e =>
-								setConfigPrograms(configPrograms => ({
-									...configPrograms,
-									filterTypeProgram: e.target.value
-								}))
+							onChange={e => handlerOnChange(e)}
+							checked={
+								item.value === configPrograms?.[FiltersEnum.filterTypeProgram]
 							}
-							checked={item.value === configPrograms.filterTypeProgram}
 						/>
 						<label className={stls.labelModalSorting} htmlFor={item.value}>
 							{item.text}

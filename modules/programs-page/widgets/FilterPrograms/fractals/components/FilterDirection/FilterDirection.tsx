@@ -1,28 +1,57 @@
 import { useEffect, useState } from 'react'
 import {
 	useConfigProgramsContext,
-	usePrograms
+	usePrograms,
+	FiltersEnum
 } from 'modules/programs-page/fractals'
 import stls from './FilterDirection.module.sass'
 
 const FilterDirection = () => {
 	const { uniqueDirections } = usePrograms()
-	const { configPrograms, setConfigPrograms } = useConfigProgramsContext()
+	const {
+		configPrograms,
+		handlerSetConfigPrograms,
+		router,
+		handlerDeleteConfigPrograms
+	} = useConfigProgramsContext()
 	const [isFullDirection, setIsFullDirection] = useState(false)
 
 	const showInitiallyDirection = 2
 
 	useEffect(() => {
-		setConfigPrograms(configPrograms => ({
-			...configPrograms,
-			filterDirection: uniqueDirections[0]
-		}))
-	}, [uniqueDirections[0]])
+		if (router.isReady) {
+			if (router.query?.[FiltersEnum.filterDirection]) {
+				const isFilterInURL = uniqueDirections?.includes(
+					decodeURIComponent(router.query?.[FiltersEnum.filterDirection])
+				)
+
+				handlerSetConfigPrograms({
+					[FiltersEnum.filterDirection]: isFilterInURL
+						? decodeURIComponent(router.query?.[FiltersEnum.filterDirection])
+						: uniqueDirections?.[0]
+				})
+			} else {
+				handlerSetConfigPrograms({
+					[FiltersEnum.filterDirection]: uniqueDirections?.[0]
+				})
+			}
+		}
+
+		return () => {
+			handlerDeleteConfigPrograms(FiltersEnum.filterDirection)
+		}
+	}, [router.isReady, uniqueDirections?.[0]])
+
+	const handlerOnChange = e => {
+		handlerSetConfigPrograms({
+			[FiltersEnum.filterDirection]: e.target.value
+		})
+	}
 
 	return (
 		<div className={stls.filterDirection}>
 			<p className={stls.filterTitle}>Направление</p>
-			{uniqueDirections?.map((item, index) => (
+			{uniqueDirections?.map(item => (
 				<div
 					key={item}
 					className={`${stls.itemFilterDirection} ${
@@ -30,16 +59,11 @@ const FilterDirection = () => {
 					}`}>
 					<input
 						type='radio'
-						name='filterDirection'
+						name={FiltersEnum.filterDirection}
 						value={item}
 						id={item}
-						onChange={e =>
-							setConfigPrograms(configPrograms => ({
-								...configPrograms,
-								filterDirection: e.target.value
-							}))
-						}
-						checked={item === configPrograms.filterDirection}
+						onChange={e => handlerOnChange(e)}
+						checked={item === configPrograms?.[FiltersEnum.filterDirection]}
 						className={stls.inputNotActive}
 					/>
 					<label className={stls.labelModalSorting} htmlFor={item}>
@@ -53,7 +77,7 @@ const FilterDirection = () => {
 						onClick={() => setIsFullDirection(true)}
 						className={stls.buttonFullDirection}>
 						<span>{`еще ${
-							uniqueDirections.length - showInitiallyDirection
+							uniqueDirections?.length - showInitiallyDirection
 						} направления`}</span>
 						<span>
 							<svg

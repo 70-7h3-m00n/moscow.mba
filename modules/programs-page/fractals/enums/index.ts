@@ -1,2 +1,6 @@
-export { FilterFormatTrainingEnum, FilterTypeProgramEnum } from './filters'
-export { SortingEnum } from './sorting'
+export {
+	FilterFormatTrainingEnum,
+	FilterTypeProgramEnum,
+	FiltersEnum
+} from './filters'
+export { SortingEnum, SortingsEnum } from './sorting'

@@ -9,13 +9,12 @@ import {
 	MainInfo
 } from './widgets'
 import heroProgramPicture from '@/public/assets/images/heroProgram.jpg'
-import { ConfigProgramsProvider } from './fractals'
+import { ConfigProgramsProvider, useConfigProgramsContext } from './fractals'
 import { ProgramsQty, ProgramSubjects } from '@/components/general'
 import { IconCheckCircle } from '@/components/icons'
-import useWindowWidth from '@/hooks/useWindowWidth'
 
 const ProgramsPage = () => {
-	const width = useWindowWidth()
+	const { configPrograms } = useConfigProgramsContext()
 
 	return (
 		<ConfigProgramsProvider>

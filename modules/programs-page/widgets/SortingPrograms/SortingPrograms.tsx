@@ -1,12 +1,37 @@
-import { useConfigProgramsContext } from '../../fractals'
+import { useEffect, useState } from 'react'
 import stls from './SortingPrograms.module.sass'
-import { useContext, useState } from 'react'
-import { LIST_SORTING } from '../../fractals'
-import { ContextStaticProps } from '@/context/index'
+import {
+	LIST_SORTING,
+	SortingsEnum,
+	SortingEnum,
+	useConfigProgramsContext
+} from 'modules/programs-page/fractals'
 
 const SortingPrograms = () => {
 	const [isActiveModal, setIsActiveModal] = useState(false)
-	const { configPrograms, setConfigPrograms } = useConfigProgramsContext()
+	const { configPrograms, handlerSetConfigPrograms, router } =
+		useConfigProgramsContext()
+
+	useEffect(() => {
+		if (router.isReady) {
+			if (router.query?.[SortingsEnum.sorting]) {
+				const isSortingInURL = Object.keys(SortingEnum)?.includes(
+					router.query?.[SortingsEnum.sorting]
+				)
+
+				isSortingInURL &&
+					handlerSetConfigPrograms({
+						[SortingsEnum.sorting]: router.query?.[SortingsEnum.sorting]
+					})
+			}
+		}
+	}, [router.isReady])
+
+	const handlerOnChange = e => {
+		handlerSetConfigPrograms({
+			[SortingsEnum.sorting]: e.target.value
+		})
+	}
 
 	return (
 		<div className={stls.sortingPrograms}>
@@ -88,20 +113,15 @@ const SortingPrograms = () => {
 			</button>
 			{isActiveModal && (
 				<div className={stls.modalSorting}>
-					{LIST_SORTING.map((item, index) => (
+					{LIST_SORTING.map(item => (
 						<div key={item.value} className={stls.itemModalSorting}>
 							<input
 								type='radio'
-								name='itemSorting'
+								name={SortingsEnum.sorting}
 								value={item.value}
 								id={item.value}
-								onChange={e =>
-									setConfigPrograms(configPrograms => ({
-										...configPrograms,
-										sorting: e.target.value
-									}))
-								}
-								checked={configPrograms?.sorting === item.value}
+								onChange={e => handlerOnChange(e)}
+								checked={configPrograms?.[SortingsEnum.sorting] === item.value}
 							/>
 							<label className={stls.labelModalSorting} htmlFor={item.value}>
 								{item.text}

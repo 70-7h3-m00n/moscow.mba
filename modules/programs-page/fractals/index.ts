@@ -10,4 +10,12 @@ export {
 	useConfigProgramsContext
 } from './hooks'
 
+export {
+	SortingEnum,
+	SortingsEnum,
+	FilterFormatTrainingEnum,
+	FilterTypeProgramEnum,
+	FiltersEnum
+} from './enums'
+
 export { countProgressRange } from './utils'

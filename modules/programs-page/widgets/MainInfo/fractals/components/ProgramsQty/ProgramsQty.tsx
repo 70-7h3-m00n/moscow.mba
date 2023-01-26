@@ -4,7 +4,7 @@ import stls from './ProgramsQty.module.sass'
 
 const ProgramsQty = ({ renderPrograms }) => {
 	const at = useAt()
-	const programsCount = renderPrograms.length
+	const programsCount = renderPrograms?.length
 
 	return (
 		<div className={stls.programsQty}>

@@ -2,6 +2,10 @@
 @use '@/styles/utils/funcs' as f
 @use '@/styles/themes/default/colors' as c
 
+.filterDirection
+    @include m.media(tablet, phone, laptop)
+        margin-top: f.px(35)
+
 .filterTitle
     font-weight: 500
     font-size: f.px(20)

@@ -1,19 +1,27 @@
-import Link from 'next/link'
-import { useConfigProgramsContext } from '../../fractals'
+import { useState } from 'react'
 import {
 	FilterDuration,
 	FilterTrainingFormat,
 	FilterTypeProgram,
 	FilterDirection
 } from './fractals'
-import { FilterTypeProgramEnum } from 'modules/programs-page/fractals/enums'
-import stls from './FilterPrograms.module.sass'
-import { useState } from 'react'
+import {
+	useConfigProgramsContext,
+	FilterTypeProgramEnum,
+	FiltersEnum
+} from '../../fractals'
 import { SearchField } from '../SearchField'
+import stls from './FilterPrograms.module.sass'
 
 const FilterPrograms = () => {
 	const { configPrograms } = useConfigProgramsContext()
 	const [isShowFilters, setIsShowFilters] = useState(false)
+
+	const isCourseAndProfession =
+		configPrograms?.[FiltersEnum.filterTypeProgram] ===
+			FilterTypeProgramEnum.course ||
+		configPrograms?.[FiltersEnum.filterTypeProgram] ===
+			FilterTypeProgramEnum.profession
 
 	return (
 		<div className={stls.filters}>
@@ -66,17 +74,13 @@ const FilterPrograms = () => {
 					className={`${stls.filter} ${stls.filterMobile} ${
 						isShowFilters ? stls.filterShowMobile : ''
 					}`}>
-					{(configPrograms.filterTypeProgram === FilterTypeProgramEnum.course ||
-						configPrograms.filterTypeProgram ===
-							FilterTypeProgramEnum.profession) && <FilterDuration />}
+					{isCourseAndProfession && <FilterDuration />}
 				</div>
 				<div
 					className={`${stls.filter} ${stls.filterMobile} ${
 						isShowFilters ? stls.filterShowMobile : ''
 					}`}>
-					{(configPrograms.filterTypeProgram === FilterTypeProgramEnum.course ||
-						configPrograms.filterTypeProgram ===
-							FilterTypeProgramEnum.profession) && <FilterDirection />}
+					{isCourseAndProfession && <FilterDirection />}
 				</div>
 			</div>
 		</div>

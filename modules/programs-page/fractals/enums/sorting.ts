@@ -3,3 +3,7 @@ export enum SortingEnum {
 	novelty = 'novelty',
 	alphabet = 'alphabet'
 }
+
+export enum SortingsEnum {
+	sorting = 'sorting'
+}

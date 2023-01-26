@@ -1,22 +1,51 @@
 import { useEffect } from 'react'
-import { FilterFormatTrainingEnum } from 'modules/programs-page/fractals/enums'
 import {
 	LIST_FILTER_TRAINING_PROGRAM,
 	useConfigProgramsContext,
-	usePrograms
+	FilterFormatTrainingEnum,
+	FilterTypeProgramEnum,
+	FiltersEnum
 } from 'modules/programs-page/fractals'
 import stls from './FilterTrainingFormat.module.sass'
 
 const FilterTrainingFormat = () => {
-	const { isBlended } = usePrograms()
-	const { configPrograms, setConfigPrograms } = useConfigProgramsContext()
+	const { configPrograms, handlerSetConfigPrograms, router } =
+		useConfigProgramsContext()
 
 	useEffect(() => {
-		setConfigPrograms(configPrograms => ({
-			...configPrograms,
-			filterTrainingFormat: FilterFormatTrainingEnum.online
-		}))
-	}, [isBlended])
+		if (router.isReady) {
+			if (router.query?.[FiltersEnum.filterTrainingFormat]) {
+				const isFilterInURL = Object.keys(FilterFormatTrainingEnum).includes(
+					router.query?.[FiltersEnum.filterTrainingFormat]
+				)
+
+				const isCourceAndProfession =
+					router.query?.[FiltersEnum.filterTypeProgram] ===
+						FilterTypeProgramEnum.course ||
+					router.query?.[FiltersEnum.filterTypeProgram] ===
+						FilterTypeProgramEnum.profession
+
+				isFilterInURL &&
+					handlerSetConfigPrograms({
+						[FiltersEnum.filterTrainingFormat]: isCourceAndProfession
+							? FilterFormatTrainingEnum.online
+							: router.query?.[FiltersEnum.filterTrainingFormat]
+					})
+			}
+		}
+	}, [router.isReady])
+
+	const handlerOnChange = e => {
+		handlerSetConfigPrograms({
+			[FiltersEnum.filterTrainingFormat]: e.target.value
+		})
+	}
+
+	const isCourceAndProfession =
+		configPrograms?.[FiltersEnum.filterTypeProgram] ===
+			FilterTypeProgramEnum.course ||
+		configPrograms?.[FiltersEnum.filterTypeProgram] ===
+			FilterTypeProgramEnum.profession
 
 	return (
 		<div className={stls.FilterTrainingFormat}>
@@ -25,29 +54,27 @@ const FilterTrainingFormat = () => {
 				<div
 					key={item.value}
 					className={`${stls.itemFilterTrainingFormat} ${
-						!(item.value === FilterFormatTrainingEnum.online || isBlended)
+						!(item.value === FilterFormatTrainingEnum.online) &&
+						isCourceAndProfession
 							? stls.inputFilterTrainingDisabled
 							: ''
 					}`}>
 					<input
 						type='radio'
-						name='filterTrainingFormat'
+						name={FiltersEnum.filterTrainingFormat}
 						value={item.value}
 						id={item.value}
-						onChange={e =>
-							setConfigPrograms(configPrograms => ({
-								...configPrograms,
-								filterTrainingFormat: e.target.value
-							}))
-						}
+						onChange={e => handlerOnChange(e)}
 						checked={item.value === configPrograms.filterTrainingFormat}
 						disabled={
-							!(item.value === FilterFormatTrainingEnum.online || isBlended)
+							!(item.value === FilterFormatTrainingEnum.online) &&
+							isCourceAndProfession
 						}
 					/>
 					<label
 						className={`${stls.labelModalSorting} ${
-							!(item.value === FilterFormatTrainingEnum.online || isBlended)
+							!(item.value === FilterFormatTrainingEnum.online) &&
+							isCourceAndProfession
 								? stls.labelModalSortingDisable
 								: ''
 						}`}

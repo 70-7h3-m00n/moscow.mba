@@ -105,6 +105,8 @@
 .infoRectangle
     @include m.media(desktop, widescreen)
         grid-column: 2/3
+    @include m.media(phone, tablet, laptop)
+        grid-row: 4/5
 
 section.jumbotronPrograms
     background-color: #f7f7f7
@@ -199,5 +201,3 @@ section.jumbotronPrograms
         margin: 30px 2px -20px
     @include m.media(desktop, widescreen)
         grid-column: 2/3
-    @include m.media(tablet, phone, laptop)
-        flex-direction: column

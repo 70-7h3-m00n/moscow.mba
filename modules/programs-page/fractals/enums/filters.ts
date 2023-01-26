@@ -10,3 +10,10 @@ export enum FilterFormatTrainingEnum {
 	online = 'online',
 	blended = 'blended'
 }
+
+export enum FiltersEnum {
+	filterTypeProgram = 'filterTypeProgram',
+	filterTrainingFormat = 'filterTrainingFormat',
+	filterDuration = 'filterDuration',
+	filterDirection = 'filterDirection'
+}

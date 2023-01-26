@@ -21,11 +21,11 @@ const SearchField = () => {
 
 	const [open, setOpen] = useState(false)
 	const [openLoader, setOpenLoader] = useState(false)
-	const programsNotBlended = programs.filter(
+	const programsNotBlended = programs?.filter(
 		program => program.studyFormat !== 'blended'
 	)
 
-	const filteredPrograms = programsNotBlended.filter(
+	const filteredPrograms = programsNotBlended?.filter(
 		program =>
 			(decodedEnInput &&
 				program?.title?.toLowerCase().includes(decodedEnInput)) ||
@@ -90,7 +90,7 @@ const SearchField = () => {
 								)}
 							</div>
 							<ul className={stls.list}>
-								{filteredPrograms.map((program, idx) => (
+								{filteredPrograms?.map((program, idx) => (
 									<li
 										key={program?.id || `SearchField__filteredPrograms-${idx}`}
 										className={stls.listItem}>
