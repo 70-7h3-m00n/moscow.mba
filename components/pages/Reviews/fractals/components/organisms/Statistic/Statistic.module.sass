@@ -1,0 +1,77 @@
+@use '@/styles/utils/mixin' as m
+
+.container
+    display: flex
+    justify-content: flex-end
+    gap: 30px
+    padding-top: 60px
+    padding-bottom: 70px
+    @include m.media(tablet,phone)
+        flex-wrap: wrap
+        padding-bottom: 145px
+
+.textWrapper
+    display: flex
+    flex-direction: column
+    flex-shrink: 0
+    flex-basis: 80%
+    @include m.media(tablet,phone)
+        flex-basis: 100%
+    & > .description
+        font-weight: 300
+        font-size: 20px
+        line-height: 130%
+        margin-bottom: 60px
+
+.h1
+    color: #000
+    margin-bottom: 54px
+
+.statistic
+    display: flex
+    flex-wrap: wrap
+    gap: 7%
+    row-gap: 20px
+    .item
+        display: flex
+        flex-direction: column
+        @include m.media(tablet,phone)
+            flex-basis: 45%
+        .h2
+            font-weight: 700
+            font-size: 36px
+            line-height: 120%
+            color: #FF3535
+            margin-bottom: 10px
+        .description
+            font-size: 16px
+            line-height: 120%
+            color: #808080
+
+.imgWrapper
+    position: relative
+    display: flex
+    height: 100%
+    @include m.media(tablet,phone)
+        width: 83.74%
+
+
+.img1, .img2
+    & img
+        aspect-ratio: 1/1
+        border-radius: 50%
+
+.img1
+    transform: scaleX(-1)
+
+.img2
+    position: absolute
+    bottom: -28%
+    left: -15%
+    border-width: 10px
+    border-style: solid
+    border-color: #FFFFFF
+    border-radius: 50%
+    width: auto
+    max-width: 57.18%
+

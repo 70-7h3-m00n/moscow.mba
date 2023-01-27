@@ -1,15 +1,9 @@
 import { RefObject, useEffect, useRef } from 'react'
 
-type Options = {
-	root?: Element | Document | null
-	rootMargin?: string
-	threshold?: number | number[]
-}
-
 export const useScrollObserver = (
 	childRefs: RefObject<HTMLElement>[],
 	callBack: IntersectionObserverCallback,
-	options?: Options
+	options?: IntersectionObserverInit
 ) => {
 	const observer = useRef<IntersectionObserver>()
 	useEffect(() => {
