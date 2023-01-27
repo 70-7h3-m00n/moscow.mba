@@ -7,3 +7,4 @@ export { default as PageJournalArticles } from '@/components/pages/PageJournalAr
 export { default as ProfessionOnlineProgram } from '@/components/pages/ProfessionOnlineProgram'
 export { default as Programs } from '@/components/pages/Programs'
 export { default as Webinars } from '@/components/pages/Webinars'
+export { default as Reviews } from '@/components/pages/Reviews/Reviews'
