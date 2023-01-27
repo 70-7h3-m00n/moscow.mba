@@ -58,7 +58,12 @@ const ReviewScreens = () => {
 										)
 									]
 								}>
-								<ImgTemplate src={src} alt={alt} classNames={[stls.reviews]} />
+								<ImgTemplate
+									src={src}
+									alt={alt}
+									quality={100}
+									classNames={[stls.reviews]}
+								/>
 							</div>
 						))}
 					</div>
