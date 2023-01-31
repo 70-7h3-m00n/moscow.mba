@@ -29,7 +29,11 @@
     @include m.media(widescreen, desktop, laptop)
         flex-direction: column
         aspect-ratio: 1/1.8
-
+        @include m.media(desktop, laptop)
+            aspect-ratio: 1/1.9
+            @include m.media(laptop)
+                gap: 15px
+                
 .reviewsColumn2
     @include m.media(widescreen, desktop, laptop)
         justify-content: flex-end
@@ -37,7 +41,8 @@
 .imgWrappers
     display: flex
     align-items: center
-    width: 86vw
+    @include m.media(tablet,phone)
+        width: 86vw
 
 .reviews
     position: relative
