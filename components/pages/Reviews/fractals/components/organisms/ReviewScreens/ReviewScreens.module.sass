@@ -1,19 +1,22 @@
 @use '@/styles/utils/mixin' as m
 
-.container
-    display: flex
-    gap: 30px
-    flex-direction: column
+.sectionContainer
     padding-top: 60px
     padding-bottom: 60px
 
+.container
+    display: flex
+    @include m.media(tablet,phone)
+        gap: 30px
+        flex-direction: column
+
 .reviewsWrapp
-    display: grid
-    grid-auto-flow: column
+    display: flex
     gap: 30px
     @include m.media(tablet,phone)
-        grid: 0fr / auto-flow max-content
         overflow-x: scroll
+        scroll-snap-type: x mandatory
+        scroll-snap-stop: always
         -ms-overflow-style: none
         scrollbar-width: none
         &::-webkit-scrollbar
@@ -21,6 +24,7 @@
 
 .reviewsColumn
     display: flex
+    align-items: center
     gap: 30px
     @include m.media(widescreen, desktop, laptop)
         flex-direction: column
@@ -33,19 +37,18 @@
 .imgWrappers
     display: flex
     align-items: center
+    width: 86vw
 
 .reviews
+    position: relative
+    height: max-content
+    scroll-snap-align: center
     justify-content: center
     align-items: center
-    height: max-content
-    padding: 1%
+    padding: 4%
     border: 1px solid #E6E6E6
     @include m.media(tablet,phone)
-        height: auto
-        width: 95vw
-        & img
-            width: 95vw
-            height: auto
+        width: 100%
 
 
 .dotsWrapp

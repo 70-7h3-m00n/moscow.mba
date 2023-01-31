@@ -1,3 +1,7 @@
 export { ReviewsBreadcrumbs } from './ReviewsBreadcrumbs'
 export { Statistic } from './Statistic'
 export { ReviewScreens } from './ReviewScreens'
+export { ClientList } from './ClientList'
+export { ReviewsSource } from './ReviewsSource'
+export { SocialMedia } from './SocialMedia'
+export { WhereStudentsWorks } from './WhereStudentsWorks'

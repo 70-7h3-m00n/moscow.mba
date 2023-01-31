@@ -1,0 +1,36 @@
+@use '@/styles/utils/mixin' as m
+
+.sectionContainer
+    display: flex
+    justify-content: center
+    gap: 30px
+    padding-top: 130px
+    padding-bottom: 120px
+    background-color: #2D2C2A
+    @include m.media(laptop, tablet,phone)
+        padding-top: 60px
+        padding-bottom: 60px
+
+.listWrapp
+    display: flex
+    overflow-x: scroll
+    overflow-y: hidden
+    gap: 30px
+    -ms-overflow-style: none
+    scrollbar-width: none
+    &::-webkit-scrollbar
+        display: none
+
+.photos
+    margin-bottom: 20px
+
+.linksContent
+    cursor: pointer
+    display: flex
+    align-items: baseline
+    gap: 12px
+    color: #FFFFFF
+
+.arrowsRight
+    height: 10px
+    transform: scaleX(-1)

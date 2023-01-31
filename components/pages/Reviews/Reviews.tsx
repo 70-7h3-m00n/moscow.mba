@@ -1,4 +1,12 @@
-import { ReviewsBreadcrumbs, ReviewScreens, Statistic } from './fractals'
+import {
+	ClientList,
+	ReviewsBreadcrumbs,
+	ReviewScreens,
+	ReviewsSource,
+	SocialMedia,
+	Statistic,
+	WhereStudentsWorks
+} from './fractals'
 
 const Reviews = () => {
 	return (
@@ -6,6 +14,10 @@ const Reviews = () => {
 			<ReviewsBreadcrumbs />
 			<Statistic />
 			<ReviewScreens />
+			<ClientList />
+			<ReviewsSource />
+			<SocialMedia />
+			<WhereStudentsWorks />
 		</>
 	)
 }

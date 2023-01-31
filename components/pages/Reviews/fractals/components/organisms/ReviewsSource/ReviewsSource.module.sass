@@ -1,0 +1,99 @@
+@use '@/styles/utils/mixin' as m
+
+.sectionContainer
+    padding-top: 130px
+    padding-bottom: 130px
+    @include m.media(laptop, tablet,phone)
+        padding-top: 60px
+        padding-bottom: 60px
+
+.container
+    position: relative
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    gap: 1px
+    @include m.media(tablet,phone)
+        flex-direction: column
+
+.title
+    margin-bottom: 59px
+    flex-basis: 100%
+    @include m.media(latop, tablet,phone)
+        margin-bottom: 39px
+        font-size: 32px
+
+.logosWrapp
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+    flex-basis: 24.893%
+    background-color: #fff
+    padding: 32px
+    @include m.media(desktop)
+        padding: 1%
+    @include m.media(laptop)
+        flex-basis: 49.9%
+    @include m.media(tablet)
+        padding: 7%
+    @include m.media(phone)
+        flex-basis: 100%
+        width: 100%
+        padding: 8%
+
+
+.logos
+    justify-content: center
+    align-items: center
+    width: 100%
+    margin-bottom: 20px
+    @include m.media(desktop)
+        margin-bottom: 10px
+    @include m.media( tablet,phone)
+        flex-direction: column
+
+.ratingWrapp
+    display: flex
+    align-items: center
+    width: 100%
+    gap: 10px
+    @include m.media( tablet,phone)
+        justify-content: center
+
+.rating
+    font-weight: 700
+    font-size: 32px
+    line-height: 120%
+    margin: auto
+    @include m.media( tablet,phone)
+        margin: 0 0 0 10%
+
+.logosLines
+    @include m.media( tablet,phone)
+        border-bottom: 1px solid #E6E6E6
+
+
+.logosBorder
+    position: absolute
+    bottom: 1px
+    height: 81%
+    width: 90%
+    z-index: -5
+    background-color: #E6E6E6
+    @include m.media(desktop)
+        height: 78%
+    @include m.media(laptop)
+        height: 90%
+    @include m.media(tablet,phone)
+        display: none
+
+
+.button
+    width: 100%
+    @include m.media(widescreen, desktop, laptop)
+        display: none
+
+.hidden
+    @include m.media(tablet,phone)
+        display: none

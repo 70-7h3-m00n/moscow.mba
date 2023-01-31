@@ -1,14 +1,16 @@
 @use '@/styles/utils/mixin' as m
+.sectionContainer
+    padding-top: 60px
+    padding-bottom: 60px
+    @include m.media(tablet,phone)
+        padding-top: 40px
 
 .container
     display: flex
     justify-content: flex-end
     gap: 30px
-    padding-top: 60px
-    padding-bottom: 70px
     @include m.media(tablet,phone)
         flex-wrap: wrap
-        padding-bottom: 145px
 
 .textWrapper
     display: flex
@@ -22,10 +24,16 @@
         font-size: 20px
         line-height: 130%
         margin-bottom: 60px
+        @include m.media(tablet,phone)
+            font-size: 16px
+            margin-bottom: 30px
 
-.h1
+.title
     color: #000
-    margin-bottom: 54px
+    @include m.media(widescreen, desktop, laptop)
+        margin-bottom: 54px
+    @include m.media(tablet,phone)
+        font-size: 38px
 
 .statistic
     display: flex
@@ -43,10 +51,14 @@
             line-height: 120%
             color: #FF3535
             margin-bottom: 10px
+            @include m.media(tablet,phone)
+                font-size: 38px
         .description
             font-size: 16px
             line-height: 120%
             color: #808080
+            @include m.media(tablet,phone)
+                font-size: 13px
 
 .imgWrapper
     position: relative
@@ -74,4 +86,6 @@
     border-radius: 50%
     width: auto
     max-width: 57.18%
-
+    @include m.media(tablet)
+        bottom: -15%
+        left: -5%
