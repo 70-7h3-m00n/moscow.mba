@@ -12,10 +12,12 @@ const ReviewsSource = () => {
 	const sourceRatings = [
 		4.5, 5, 5, 4.2, 4, 5, 4.3, 5, 4.8, 5, 5, 5, 5, 4.8, 5, 5
 	]
-	const logosArr = createImgsArr(logos).map((logo, idx) => ({
-		...logo,
-		rating: sourceRatings[idx]
-	}))
+	const logosArr = createImgsArr(logos)
+		.map((logo, idx) => ({
+			...logo,
+			rating: sourceRatings[idx]
+		}))
+
 	const [shownSources, showMoreSources] = useReducer<Reducer<number, void>>(
 		prev => {
 			const countLast = logosArr.length - prev
@@ -23,39 +25,43 @@ const ReviewsSource = () => {
 		},
 		3
 	)
+
 	return (
 		<section className={stls.sectionContainer}>
-			<Wrapper classNames={[stls.container]}>
+			<Wrapper column>
 				<h2 className={stls.title}>Больше отзывов о нас</h2>
-				{logosArr.map(({ alt, src, rating }, idx) => (
-					<div
-						key={alt}
-						className={cn(
-							stls.logosWrapp,
-							shownSources < idx + 1 && stls.hidden,
-							shownSources > idx + 1 && stls.logosLines
-						)}>
-						<ImgTemplate
-							src={src}
-							alt={alt}
-							classNames={[stls.logos, stls[`logo${idx + 1}`]]}
-						/>
-						<div className={stls.ratingWrapp}>
-							{Array.from({ length: 5 }, (_v, starIdx) => (
-								<Star
-									key={`star${starIdx + 1}`}
-									rating={
-										(starIdx < Math.trunc(rating) && 1) ||
-										(starIdx === Math.trunc(rating) && rating % 1)
-									}
-									id={`star_${idx + 1}_${starIdx + 1}`}
-								/>
-							))}
-							<p className={stls.rating}>{rating}</p>
+				<div className={stls.logosContainer}>
+					{logosArr.map(({ alt, src, rating }, idx) => (
+						<div
+							key={alt}
+							className={cn(
+								stls.logosWrapp,
+								shownSources < idx + 1 && stls.hidden
+							)}>
+							<ImgTemplate
+								src={src}
+								alt={alt}
+								classNames={[stls.logos, stls[`logo${idx + 1}`]]}
+							/>
+							<div className={stls.ratingWrapp}>
+								{Array.from({ length: 5 }, (_v, starIdx) => (
+									<Star
+										key={`star${starIdx + 1}`}
+										rating={
+											(starIdx < Math.trunc(rating) && 1) ||
+											(starIdx === Math.trunc(rating) && rating % 1)
+										}
+										id={`star_${idx + 1}_${starIdx + 1}`}
+									/>
+								))}
+								<p className={stls.rating}>{rating}</p>
+							</div>
 						</div>
-					</div>
-				))}
-				<div className={stls.logosBorder} />
+					))}
+					{logosArr.length % 4 !== 0 && (
+						<div className={cn(stls.logosWrapp, stls.hidden, stls.emptyItem)} />
+					)}
+				</div>
 				<div
 					className={cn(
 						stls.button,
