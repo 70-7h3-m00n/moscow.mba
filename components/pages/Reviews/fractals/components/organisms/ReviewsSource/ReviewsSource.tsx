@@ -17,7 +17,6 @@ const ReviewsSource = () => {
 			...logo,
 			rating: sourceRatings[idx]
 		}))
-		.filter((rating, idx) => idx < 10)
 
 	const [shownSources, showMoreSources] = useReducer<Reducer<number, void>>(
 		prev => {
