@@ -1,6 +1,6 @@
 import stls from './Statistic.module.sass'
 import { Wrapper } from '@/components/layout'
-import { smileMansImgs } from '../../..'
+import * as smileMansImgs from './smileMans'
 import { ImgTemplate } from '@/components/images'
 import { createImgsArr } from '../../../utils'
 

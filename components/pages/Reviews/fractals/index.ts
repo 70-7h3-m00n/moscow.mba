@@ -1,5 +1,3 @@
-export { smileMansImgs, reviewScreens } from './images'
-
 export {
 	ReviewsBreadcrumbs,
 	Statistic,

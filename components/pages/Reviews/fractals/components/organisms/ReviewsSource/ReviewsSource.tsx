@@ -6,7 +6,7 @@ import { ImgTemplate } from '@/components/images'
 import { Reducer, useReducer } from 'react'
 import cn from 'classnames'
 import { BtnArticlesShowMore } from '@/components/btns'
-import { Star } from './star'
+import { Star } from './Star'
 
 const ReviewsSource = () => {
 	const sourceRatings = [
@@ -17,6 +17,7 @@ const ReviewsSource = () => {
 			...logo,
 			rating: sourceRatings[idx]
 		}))
+		.filter((rating, idx) => idx < 10)
 
 	const [shownSources, showMoreSources] = useReducer<Reducer<number, void>>(
 		prev => {

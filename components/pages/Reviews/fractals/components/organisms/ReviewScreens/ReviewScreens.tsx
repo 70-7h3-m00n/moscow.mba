@@ -1,14 +1,14 @@
 import stls from './ReviewScreens.module.sass'
 import { ImgTemplate } from '@/components/images'
 import { Wrapper } from '@/components/layout'
-import { reviewScreens } from '../../..'
+import * as reviewScreensImg from './reviewScreensImg'
 import { createImgsArr } from '../../../utils'
 import cn from 'classnames'
 import { createRef, Reducer, useReducer, useRef } from 'react'
 import useScrollObserver from '@/hooks/useScrollObserver'
 
 const ReviewScreens = () => {
-	const reviewsArr = createImgsArr(reviewScreens)
+	const reviewsArr = createImgsArr(reviewScreensImg)
 
 	const findReviewIndex = (targetAlt: string) =>
 		reviewsArr.findIndex(({ alt }) => alt === targetAlt)
