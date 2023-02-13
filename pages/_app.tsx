@@ -140,11 +140,15 @@ function MyApp({ Component, pageProps, router }) {
 				value={{
 					programs,
 					program,
+					configPrograms: [],
+					renderPrograms: [],
 					curStudyField,
 					studyFields,
 					studyFieldsWithSlugs,
 					setPrograms,
 					setProgram,
+					setConfigPrograms: () => {},
+					setRenderPrograms: () => {},
 					setCurStudyField,
 					setStudyFields,
 					setStudyFieldsWithSlugs
