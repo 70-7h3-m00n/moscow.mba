@@ -1,0 +1,91 @@
+@use '@/styles/utils/mixin' as m
+.sectionContainer
+    padding-top: 60px
+    padding-bottom: 60px
+    @include m.media(tablet,phone)
+        padding-top: 40px
+
+.container
+    display: flex
+    justify-content: flex-end
+    gap: 30px
+    @include m.media(tablet,phone)
+        flex-wrap: wrap
+
+.textWrapper
+    display: flex
+    flex-direction: column
+    flex-shrink: 0
+    flex-basis: 80%
+    @include m.media(tablet,phone)
+        flex-basis: 100%
+    & > .description
+        font-weight: 300
+        font-size: 20px
+        line-height: 130%
+        margin-bottom: 60px
+        @include m.media(tablet,phone)
+            font-size: 16px
+            margin-bottom: 30px
+
+.title
+    color: #000
+    @include m.media(widescreen, desktop, laptop)
+        margin-bottom: 54px
+    @include m.media(tablet,phone)
+        font-size: 38px
+
+.statistic
+    display: flex
+    flex-wrap: wrap
+    gap: 7%
+    row-gap: 20px
+    .item
+        display: flex
+        flex-direction: column
+        @include m.media(tablet,phone)
+            flex-basis: 45%
+        .h2
+            font-weight: 700
+            font-size: 36px
+            line-height: 120%
+            color: #FF3535
+            margin-bottom: 10px
+            @include m.media(tablet,phone)
+                font-size: 38px
+        .description
+            font-size: 16px
+            line-height: 120%
+            color: #808080
+            @include m.media(tablet,phone)
+                font-size: 13px
+
+.imgWrapper
+    position: relative
+    display: flex
+    height: 100%
+    @include m.media(tablet,phone)
+        width: 83.74%
+
+
+.img1, .img2
+    aspect-ratio: 1/1
+    & img
+        border-radius: 50%
+
+.img1
+    transform: scaleX(-1)
+
+.img2
+    position: absolute
+    bottom: -28%
+    left: -15%
+    border-width: 10px
+    border-style: solid
+    border-color: #FFFFFF
+    border-radius: 50%
+    width: auto
+    max-width: 57.18%
+    @include m.media(tablet)
+        bottom: -15%
+        left: -5%

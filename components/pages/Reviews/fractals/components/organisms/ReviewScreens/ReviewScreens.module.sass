@@ -1,0 +1,77 @@
+@use '@/styles/utils/mixin' as m
+
+.sectionContainer
+    padding-top: 60px
+    padding-bottom: 60px
+
+.container
+    display: flex
+    @include m.media(tablet,phone)
+        gap: 30px
+        flex-direction: column
+
+.reviewsWrapp
+    display: flex
+    gap: 30px
+    @include m.media(tablet,phone)
+        overflow-x: scroll
+        scroll-snap-type: x mandatory
+        scroll-snap-stop: always
+        -ms-overflow-style: none
+        scrollbar-width: none
+        &::-webkit-scrollbar
+            display: none
+
+.reviewsColumn
+    display: flex
+    align-items: center
+    gap: 30px
+    @include m.media(widescreen, desktop, laptop)
+        flex-direction: column
+        aspect-ratio: 1/1.8
+        @include m.media(desktop, laptop)
+            aspect-ratio: 1/1.9
+            @include m.media(laptop)
+                gap: 15px
+                
+.reviewsColumn2
+    @include m.media(widescreen, desktop, laptop)
+        justify-content: flex-end
+
+.imgWrappers
+    display: flex
+    align-items: center
+    @include m.media(tablet,phone)
+        width: 86vw
+
+.reviews
+    position: relative
+    height: max-content
+    scroll-snap-align: center
+    justify-content: center
+    align-items: center
+    padding: 4%
+    border: 1px solid #E6E6E6
+    @include m.media(tablet,phone)
+        width: 100%
+
+
+.dotsWrapp
+    display: flex
+    gap: 23px
+    align-self: center
+
+.dots
+    width: 4px
+    height: 4px
+    background: #D9D9D9
+    border-radius: 20px
+    cursor: pointer
+    @include m.media(widescreen, desktop, laptop)
+        display: none
+
+.activeDot
+    width: 6px
+    height: 6px
+    background: #FF3535
+

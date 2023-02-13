@@ -1,0 +1,39 @@
+@use '@/styles/utils/mixin' as m
+
+.sectionContainer
+    padding-bottom: 130px
+    @include m.media(tablet, phone)
+        padding: 60px 0
+        border:
+            top: 1px solid #E6E6E6
+            bottom: 1px solid #E6E6E6
+
+.title
+    margin-bottom: 60px
+    @include m.media(tablet, phone)
+        font-size: 32px
+        margin-bottom: 40px
+
+.socialsWrapp
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 48px
+
+.socialButtons
+    flex-basis: 33.3%
+    order: 0
+    padding: 0
+    height: 100%
+    border: 1px solid #E6E6E6
+    background: none
+    &:nth-of-type(n + 2)
+        border-left: none
+    &:hover
+        background: #FF3535
+        border: 1px solid #FF3535
+
+.btnIconYaDzen
+    order: 1
+
+

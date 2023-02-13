@@ -131,6 +131,18 @@ const HowProcessGoes = () => {
 		processSteps.map(() => React.createRef<HTMLLIElement>())
 	)
 
+	const scrollIntoViewTabs = (idx: number) =>
+		tabsRefs.current[idx]?.current.scrollIntoView({
+			inline: 'center',
+			block: 'nearest'
+		})
+	const scrollIntoViewSteps = (idx: number) =>
+		stepsRefs.current[idx].current.scrollIntoView({
+			behavior: 'smooth',
+			block: 'nearest',
+			inline: 'center'
+		})
+
 	const handleIntersectDesktopSteps: IntersectionObserverCallback = useCallback(
 		entries => {
 			entries.map(entry => {
@@ -161,9 +173,11 @@ const HowProcessGoes = () => {
 			entries.map(entry => {
 				if (entry.isIntersecting) {
 					const stepTitle = entry.target.children.item(2).textContent
-					setActiveStep(
-						processSteps.findIndex(step => step.stepTitle === stepTitle)
+					const currentActiveStep = processSteps.findIndex(
+						step => step.stepTitle === stepTitle
 					)
+					scrollIntoViewTabs(currentActiveStep)
+					setActiveStep(currentActiveStep)
 				}
 			})
 		},
@@ -200,24 +214,6 @@ const HowProcessGoes = () => {
 		phoneIntersectOptions
 	)
 
-	useEffect(() => {
-		const tabElement = tabsRefs.current[activeStep]?.current
-		tabElement &&
-			tabElement.scrollIntoView({
-				inline: 'center',
-				block: 'nearest'
-			})
-	}, [activeStep])
-
-	useEffect(() => {
-		const stepElement = stepsRefs.current[activeStep]?.current
-		stepElement &&
-			stepElement.scrollIntoView({
-				inline: 'start',
-				block: 'nearest'
-			})
-	}, [activeStep])
-
 	return (
 		<section className={stls.container}>
 			<Wrapper classNames={[stls.content]}>
@@ -246,7 +242,11 @@ const HowProcessGoes = () => {
 								key={step.tabTitle + idx}
 								ref={tabsRefs.current[idx]}
 								className={stls.tabItem}
-								onClick={() => setActiveStep(idx)}>
+								onClick={() => {
+									setActiveStep(idx)
+									scrollIntoViewTabs(idx)
+									scrollIntoViewSteps(idx)
+								}}>
 								<a
 									className={cn(
 										stls.tabLink,

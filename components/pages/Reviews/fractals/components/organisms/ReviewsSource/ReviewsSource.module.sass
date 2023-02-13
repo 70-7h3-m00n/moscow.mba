@@ -1,0 +1,88 @@
+@use '@/styles/utils/mixin' as m
+
+.sectionContainer
+    padding-top: 130px
+    padding-bottom: 130px
+    @include m.media(laptop, tablet,phone)
+        padding-top: 60px
+        padding-bottom: 60px
+
+.logosContainer
+    display: flex
+    flex-wrap: wrap
+    gap: 1px
+    background: linear-gradient(to right, #e6e6e600 99%, #fff 99% ),linear-gradient(to top, #E6E6E6 95%, #fff 95% )
+    @include m.media(desktop, laptop)
+        background: linear-gradient(to right, #e6e6e600 99%, #fff 99% ),linear-gradient(to top, #E6E6E6 97%, #fff 97% )
+    @include m.media(tablet,phone)
+        flex-direction: column
+        background: #E6E6E6
+
+.title
+    margin-bottom: 59px
+    @include m.media(latop, tablet,phone)
+        margin-bottom: 39px
+        font-size: 32px
+
+.logosWrapp
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+    flex-basis: 24.9%
+    flex-grow: 1
+    background-color: #fff
+    padding: 32px
+    @include m.media(desktop)
+        padding: 1%
+    @include m.media(laptop)
+        flex-basis: 49.9295%
+    @include m.media(tablet)
+        padding: 7%
+    @include m.media(phone)
+        flex-basis: 100%
+        width: 100%
+        padding: 8%
+
+
+.logos
+    justify-content: center
+    align-items: center
+    width: 100%
+    margin-bottom: 20px
+    @include m.media(desktop)
+        margin-bottom: 10px
+    @include m.media( tablet,phone)
+        flex-direction: column
+
+.ratingWrapp
+    display: flex
+    align-items: center
+    width: 100%
+    gap: 10px
+    @include m.media( tablet,phone)
+        justify-content: center
+
+.rating
+    font-weight: 700
+    font-size: 32px
+    line-height: 120%
+    margin: auto
+    @include m.media( tablet,phone)
+        margin: 0 0 0 10%
+
+.button
+    width: 100%
+    @include m.media(widescreen, desktop, laptop)
+        display: none
+
+.hidden
+    @include m.media(tablet,phone)
+        display: none
+
+.emptyItem
+    flex-basis: auto
+    flex-shrink: 0
+    flex-grow: 1000
+    margin: -1px 0 0 -1px
+    padding: 0
