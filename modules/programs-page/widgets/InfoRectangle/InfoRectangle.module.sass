@@ -1,0 +1,138 @@
+@use '@/styles/utils/mixin' as m
+
+.container
+    position: absolute
+    z-index: 5
+    height: 112px
+    display: flex
+    left: 50%
+    transform: translateX(-50%)
+    max-width: 1080px
+    align-items: center
+    justify-content: space-between
+    bottom: -56px
+    background: #ff3535
+    padding: 5px 35px
+    line-height: 1.2
+    width: 100%
+    margin-left: 100px
+    margin-bottom: 64px
+    @include m.media(desktop, laptop, tablet, phone)
+        margin-left: 0
+        width: 100%
+        flex-wrap: wrap
+        height: auto
+        min-height: 112px
+        padding: 30px
+        justify-content: space-evenly
+    @include m.media(desktop, laptop, tablet, phone)
+        flex-wrap: wrap
+        height: auto
+        min-height: 112px
+        padding: 30px
+    @include m.media(laptop)
+        bottom: -120px
+    @include m.media(tablet, phone)
+        padding-left: 20px
+        padding-right: 20px
+        bottom: -139px
+
+.programsPageContainer
+    position: relative
+    bottom: initial
+    top: 0
+    margin-top: 0
+    margin-left: 0
+    width: 100%
+    color: #fff
+
+.academyInfoContainer
+    margin-left: 0
+    width: 100%
+    justify-content: space-evenly
+    @include m.media(laptop, tablet, phone)
+        display: block
+    @include m.media(tablet, phone)
+        bottom: -106px
+    @include m.media(phone)
+        margin-top: -80px
+        padding-top: 25px
+
+.item
+    padding: 0 15px
+    @include m.media(desktop, laptop, tablet, phone)
+        padding: 0 8px
+        width: 40%
+        margin-bottom: 20px
+        &:nth-last-child(1)
+    @include m.media(laptop, tablet, phone)
+        padding: 0 8px
+        width: 50%
+        margin-bottom: 20px
+    @include m.media(phone)
+        width: 100%
+        &:nth-last-child(2)
+            margin-bottom: 20px
+
+.academyInfoItem
+    display: block
+    width: 100%
+    max-width: 100%
+    border-right: 0
+    &:first-child
+        max-width: 277px
+        padding-right: 57px
+        border-right: 1px solid rgb(#fff, 0.3)
+        @include m.media(laptop, tablet, phone)
+        display: block
+        width: 100%
+        max-width: 100%
+        border-right: 0
+    &:nth-child(2)
+        max-width: 297px
+        padding-right: 57px
+        border-right: 1px solid rgb(#fff, 0.3)
+        @include m.media(laptop, tablet, phone)
+        display: block
+        width: 100%
+        max-width: 100%
+        border-right: 0
+    &:nth-child(3)
+        max-width: 287px
+        @include m.media(laptop, tablet, phone)
+        display: block
+        width: 100%
+        max-width: 100%
+        border-right: 0
+    @include m.media(laptop, tablet, phone)
+        max-width: 100%
+        &:not(:last-child)
+            padding-bottom: 17px
+            border-bottom: 1px solid rgb(#fff, 0.3)
+
+.itemTitle
+    opacity: 0.67
+    font-weight: 400
+    font-size: 13px
+    margin-bottom: 3px
+
+.popupInfo
+    align-items: flex-end
+    gap: 8px
+
+.itemDetail
+    font-weight: 500
+    font-size: 20px
+    @include m.media(tablet, phone)
+        font-size: 17px
+    @include m.media(phone)
+        font-size: 20px
+
+.academyInfoItemDetail
+    font-style: normal
+    font-weight: 500
+    font-size: 20px
+    @include m.media(tablet)
+        font-size: 17px
+    @include m.media(phone)
+        font-size: 14px

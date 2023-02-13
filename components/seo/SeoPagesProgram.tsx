@@ -31,15 +31,15 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
 			: program?.metaDescription
 
 	const cannonialFallback =
-		program.category?.slug && program?.studyFormat && program?.slug
+		program?.category?.slug && program?.studyFormat && program?.slug
 			? `${routesFront.root}${routesFront.programs}/${program.category?.slug}/${program?.studyFormat}/${program?.slug}`
 			: `${routesFront.root}${routesFront.programs}`
 
 	const seoParams = {
 		title: program?.metaTitle
 			? metaTitle
-			: `${programTitle} • ${program.category.type === 'mini' ? 'MBA' : ''} ${
-					program.category.type
+			: `${programTitle} • ${program?.category.type === 'mini' ? 'MBA' : ''} ${
+					program?.category.type
 			  } ${at.blended ? 'blended' : 'online'} • ${companyName}`,
 		programTitle: programTitle,
 		desc: program?.metaDescription

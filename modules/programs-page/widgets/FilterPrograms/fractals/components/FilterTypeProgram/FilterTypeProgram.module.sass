@@ -1,0 +1,106 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.filterTitle
+    font-weight: 500
+    font-size: f.px(20)
+    line-height: 120%
+    color: #262626
+    margin-bottom: f.px(26)
+    display: flex
+    gap: f.px(20)
+    justify-content: space-between
+    @include m.media(tablet, phone, laptop)
+        background-color: #FF3535
+        color: #FFFFFF
+        justify-content: center
+        padding: f.px(12) 0
+        border-radius: f.px(90)
+        font-size: f.px(14)
+
+.isShowFilter
+    @include m.media(tablet, phone, laptop)
+        display: none
+
+.circle
+    @include m.media(tablet, phone, laptop)
+        display: block
+        transition-duration: 300ms
+    @include m.media(desktop, widescreen)
+        display: none
+
+.isShowCircle
+    transform: rotate(180deg)
+
+.sale
+    padding: f.px(2) f.px(6)
+    display: inline-block
+    font-weight: 400
+    font-size: f.px(16)
+    line-height: 120%
+    color: #FFFFFF
+    background-color: #FF3535
+    @include m.media(tablet, phone, laptop)
+        display: none
+
+.itemFilterTypeProgram
+    display: flex
+    gap: f.px(8)
+
+    & + &
+        margin-top: f.px(20)
+
+    input
+        margin: 0
+        -webkit-appearance: none
+        -moz-appearance: none
+        appearance: none
+        border-radius: 50%
+        width: f.px(20)
+        height: f.px(20)
+        background-color: #EFEFEF
+        border: none
+        flex: 0 0 f.px(20)
+        &:hover
+            border: f.px(1) solid #FF3535
+
+    input:checked
+        transition: 0.1s all linear
+        border: f.px(5) solid #FF3535
+        background-color: white
+
+    label
+        font-weight: 300
+        font-size: f.px(16)
+        line-height: 120%
+        color: #262626
+        display: flex
+        align-items: center
+        gap: f.px(8)
+        cursor: pointer
+
+.highlight
+    display: flex
+    align-items: center
+    margin-top: f.px(24)
+    font-weight: 500
+    font-size: 16px
+    line-height: 120%
+    margin-bottom: 0
+    transition: color 0.3s ease-in-out
+    &:hover
+        color: #ff3535
+        & .premium
+            border-color: #ff3535
+    @include m.media(phone, tablet, laptop)
+        margin-bottom: f.px(35)
+
+.premium
+    border: 1px solid
+    border-color: #000
+    font-size: 10px
+    line-height: 120%
+    padding: 6px
+    margin-left: 20px
+    transition: border-color 0.3s ease-in-out
