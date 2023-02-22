@@ -10,8 +10,23 @@ import { FilterTypeProgramEnum } from 'modules/programs-page/fractals/enums'
 const InfoRectangle = ({ programPage = false }) => {
 	const at = useAt()
 	const date = new Date()
-	const month = date.toLocaleString('default', { month: 'long' })
-	const monthUpperCase = month[0].toUpperCase() + month.slice(1)
+	const currentMonth = date.getMonth()
+
+	const months = [
+		at.en ? 'January' : 'Январь',
+		at.en ? 'February' : 'Февраль',
+		at.en ? 'March' : 'Март',
+		at.en ? 'April' : 'Апрель',
+		at.en ? 'May' : 'Май',
+		at.en ? 'June' : 'Июнь',
+		at.en ? 'July' : 'Июль',
+		at.en ? 'August' : 'Август',
+		at.en ? 'September' : 'Сентябрь',
+		at.en ? 'October' : 'Октябрь',
+		at.en ? 'November' : 'Ноябрь',
+		at.en ? 'December' : 'Декабрь'
+	]
+
 	const year = date.getFullYear()
 	const { configPrograms } = useConfigProgramsContext()
 
@@ -19,7 +34,7 @@ const InfoRectangle = ({ programPage = false }) => {
 		programInfo: [
 			{
 				itemTitle: 'Курс обновлен',
-				itemDetail: `${monthUpperCase} ${year} года`
+				itemDetail: `${months[currentMonth]} ${year} года`
 			},
 			{
 				itemTitle: 'Рассрочка',
