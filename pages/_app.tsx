@@ -118,7 +118,6 @@ function MyApp({ Component, pageProps, router }) {
 		}
 	}, [router, urlParamLocale])
 
-	//
 	if (!dev) {
 		console.log = () => undefined
 	}
