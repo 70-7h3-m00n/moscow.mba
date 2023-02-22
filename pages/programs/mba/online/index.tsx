@@ -8,17 +8,17 @@ import { Programs } from '@/components/pages'
 import { SeoPagesPrograms } from '@/components/seo'
 
 const PageProgramsMbaOnline = ({ programs }) => {
-	usePageHandleContext({ programs })
+  usePageHandleContext({ programs })
 
-	return (
-		<>
-			<SeoPagesPrograms />
-			<Programs mbaTypeOfProgram={'mba'} mbaFormat={'online'} />
-		</>
-	)
+  return (
+    <>
+      <SeoPagesPrograms />
+      <Programs mbaTypeOfProgram={'mba'} mbaFormat={'online'} />
+    </>
+  )
 }
 
 export const getStaticProps: GetStaticProps = async context =>
-	await handleGetStaticProps({ page: routesFront.programs, context })
+  await handleGetStaticProps({ page: routesFront.programs, context })
 
 export default PageProgramsMbaOnline
