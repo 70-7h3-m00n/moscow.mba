@@ -36,7 +36,7 @@ const Until = ({ preposition = true, executive = false }) => {
 						? (output = months[0])
 						: (output = months[currentMonth + 1])
 				}
-				return '28 февраля'
+				return '10 марта'
 				return output
 			})()}
 		</>
