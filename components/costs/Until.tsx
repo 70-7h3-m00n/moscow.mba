@@ -1,4 +1,4 @@
-import { useAt } from '@/hooks/index'
+import { useRouter } from 'next/router'
 
 const setLastDayOfMonth = (currentDate: Date) => {
 	currentDate.setMonth(currentDate.getMonth() + 1)
@@ -11,31 +11,18 @@ const setNextDay = (currentDate: Date, currentDay: number) =>
 		: setLastDayOfMonth(currentDate)
 
 const Until = ({ preposition = true, executive = false }) => {
-	const at = useAt()
+	const { locale } = useRouter()
 	const currentDate = new Date()
 	const currentDay = currentDate.getDate()
-	const currentMonth = currentDate.getMonth()
 
 	setNextDay(currentDate, currentDay)
 
-	const months = [
-		at.en ? 'January' : 'января',
-		at.en ? 'February' : 'февраля',
-		at.en ? 'March' : 'марта',
-		at.en ? 'April' : 'апреля',
-		at.en ? 'May' : 'Мая',
-		at.en ? 'June' : 'июня',
-		at.en ? 'July' : 'июля',
-		at.en ? 'August' : 'августа',
-		at.en ? 'September' : 'сентября',
-		at.en ? 'October' : 'октября',
-		at.en ? 'November' : 'ноября',
-		at.en ? 'December' : 'декабря'
-	]
-
 	return (
 		<>
-			{currentDate.getDate()} {months[currentMonth]}
+			{currentDate.toLocaleString(locale, {
+				day: 'numeric',
+				month: 'long'
+			})}
 		</>
 	)
 }

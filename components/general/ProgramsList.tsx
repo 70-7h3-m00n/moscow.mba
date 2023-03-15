@@ -25,7 +25,7 @@ const ProgramsList = ({ data, id, type }) => {
 
   // TODO: figure out a better way to do this
   const programs = []
-  studyFieldsWithSlugs.map(studyField => {
+  studyFieldsWithSlugs?.map(studyField => {
     let filter = {
       title: '',
       fields: []
