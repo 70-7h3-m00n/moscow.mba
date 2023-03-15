@@ -1,44 +1,28 @@
-import { useAt } from '@/hooks/index'
+import { useRouter } from 'next/router'
+
+const setLastDayOfMonth = (currentDate: Date) => {
+	currentDate.setMonth(currentDate.getMonth() + 1)
+	currentDate.setDate(0)
+}
+
+const setNextDay = (currentDate: Date, currentDay: number) =>
+	currentDay <= 20
+		? currentDate.setDate(currentDay <= 10 ? 10 : 20)
+		: setLastDayOfMonth(currentDate)
 
 const Until = ({ preposition = true, executive = false }) => {
-	const at = useAt()
+	const { locale } = useRouter()
 	const currentDate = new Date()
 	const currentDay = currentDate.getDate()
-	let currentMonth = currentDate.getMonth()
-	const months = [
-		at.en ? 'January' : 'января',
-		at.en ? 'February' : 'февраля',
-		at.en ? 'March' : 'марта',
-		at.en ? 'April' : 'апреля',
-		at.en ? 'May' : 'Мая',
-		at.en ? 'June' : 'июня',
-		at.en ? 'July' : 'июля',
-		at.en ? 'August' : 'августа',
-		at.en ? 'September' : 'сентября',
-		at.en ? 'October' : 'октября',
-		at.en ? 'November' : 'ноября',
-		at.en ? 'December' : 'декабря'
-	]
-	if (executive)
-		currentMonth =
-			currentMonth + 7 > 11 ? currentMonth + 7 - 11 : currentMonth + 7
+
+	setNextDay(currentDate, currentDay)
 
 	return (
 		<>
-			{preposition && (at.en ? 'until ' : 'до ')}
-			{/* {currentDay < 20 ? '20' : '5'}{' '} */}
-			{(() => {
-				let output
-				if (currentDay < 20) {
-					output = months[currentMonth]
-				} else {
-					currentMonth === 11
-						? (output = months[0])
-						: (output = months[currentMonth + 1])
-				}
-				return '10 марта'
-				return output
-			})()}
+			{currentDate.toLocaleString(['ru-RU', 'en-US'], {
+				day: 'numeric',
+				month: 'long'
+			})}
 		</>
 	)
 }
