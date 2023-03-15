@@ -19,7 +19,7 @@ const Until = ({ preposition = true, executive = false }) => {
 
 	return (
 		<>
-			{currentDate.toLocaleString(locale, {
+			{currentDate.toLocaleString(['ru-RU', 'en-US'], {
 				day: 'numeric',
 				month: 'long'
 			})}
