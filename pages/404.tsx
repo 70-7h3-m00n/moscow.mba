@@ -1,18 +1,35 @@
 import stls from '@/styles/pages/Page404.module.sass'
 import { useAt } from '@/hooks/index'
-import src from '@/public/assets/images/404/404.png'
+import srcDesktop from '@/public/assets/images/404/404.png'
+import srcMobile from '@/public/assets/images/404/404mobile.png'
 import Image from 'next/image'
-import { BtnAlpha, BtnCategory } from '@/components/btns'
 import Link from 'next/link'
 import Popup from 'reactjs-popup'
 import { PopupForm } from '@/components/popups'
+import useWindowWidth from '@/hooks/useWindowWidth'
+import { useEffect, useState } from 'react'
 
 const Page404 = () => {
 	const at = useAt()
 
+	const widthWindow = useWindowWidth()
+	const [isMobile, setIsMobile] = useState(false)
+
+	useEffect(() => {
+		if (widthWindow <= 767) {
+			setIsMobile(true)
+		} else {
+			setIsMobile(false)
+		}
+	}, [widthWindow])
+
 	return (
 		<div className={stls.wrapper}>
-			<Image className={stls.image} src={src} alt='404' />
+			<Image
+				className={stls.image}
+				src={isMobile ? srcMobile : srcDesktop}
+				alt='404'
+			/>
 			<div className={stls.container}>
 				<h1 className={stls.h1}>
 					{at.en ? 'Page not found' : 'Страница не найдена!'}
