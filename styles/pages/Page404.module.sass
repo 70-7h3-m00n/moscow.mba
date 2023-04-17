@@ -56,6 +56,10 @@
   font-size: 18px
   line-height: 120%
   background-color: transparent
+  @include m.media(tablet, laptop, desktop, widescreen)
+    &:hover
+        color: c.$alpha
+        border-color: c.$alpha
   @include m.media(phone, tablet)
     font-size: 16px
 
