@@ -1,0 +1,100 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/utils/funcs' as f
+
+.container
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+.h1 
+  margin-top:40px
+  margin-bottom: 20px
+  font-size: 40px
+  @include m.dye(c, c.$alpha)
+  @include m.media(phone, tablet)
+    text-align: center
+    font-size: 24px
+
+.paragraph 
+  font-weight: 400
+  font-size: 20px
+  line-height: 130%
+  @include m.media(phone, tablet)
+    text-align: center
+    font-size: 18px
+
+.buttonBox
+  display: flex
+  flex-wrap: wrap
+  gap: 15px
+  margin-top: 40px
+  margin-bottom: 40px
+  @include m.media(phone, tablet)
+    padding: 0 13px
+    justify-content: center
+    margin-bottom: 35px
+
+.buttonBoxBottom
+  display: flex
+  gap: 30px
+  margin-bottom: 40px
+  @include m.media(phone, tablet)
+    flex-wrap: wrap
+    gap: 15px
+    width: 100%
+    padding: 0 15px
+
+.button
+  border: 1px solid c.$chi
+  border-radius: 25px
+  padding: 10px 15px
+  color: c.$chi
+  font-family: "Styrene", Arial, Tahoma, sans-serif
+  font-weight: 400
+  font-size: 18px
+  line-height: 120%
+  background-color: transparent
+  @include m.media(tablet, laptop, desktop, widescreen)
+    &:hover
+        color: c.$alpha
+        border-color: c.$alpha
+  @include m.media(phone, tablet)
+    font-size: 16px
+
+.link
+  padding: 20px
+  border: 2px solid c.$alpha
+  font-weight: 500
+  font-size: 14px
+  line-height: 120%
+  text-align: center
+  @include m.media(tablet, laptop, desktop, widescreen)
+    &:hover
+      transform: scale(1.02)
+  &:active
+    transform: scale(0.98)
+  @include m.media(phone, tablet)
+    width: 100%
+    letter-spacing: 0.1em
+    font-weight: 500
+    font-size: 15px
+
+.homepageLink
+  border: 2px solid c.$alpha
+  padding: 20px 30px
+  font-family: "Styrene", Arial, Tahoma, sans-serif
+  font-weight: 500
+  font-size: 14px
+  line-height: 120%
+  color: c.$psi
+  background-color: c.$alpha
+  @include m.media(tablet, laptop, desktop, widescreen)
+    &:hover
+      transform: scale(1.02)
+  &:active
+    transform: scale(0.98)
+  @include m.media(phone, tablet)
+    width: 100%
+    letter-spacing: 0.1em
