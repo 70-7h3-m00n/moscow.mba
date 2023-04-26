@@ -55,10 +55,9 @@
 	margin: 0
 	@include m.media(phone, tablet)
 		font-size: f.px(24)
-		@include m.dye(c, c.$psi)
+		@include m.dye(c, c.$chi)
 	@include m.media(laptop, desktop, widescreen)
 		font-size: f.px(36)
-		@include m.dye(c, c.$chi)
 	font-weight: 500
 	line-height: 120%
 	transition: color .2s ease-in-out
@@ -75,7 +74,6 @@ $ldw_gap: 35
 	@include m.media(phone, tablet)
 		margin-top: f.px(25)
 		font-size: f.px(15)
-		@include m.dye(c, c.$psi)
 	@include m.media(laptop, desktop, widescreen)
 		margin-top: f.px($ldw_gap)
 		font-size: f.px(20)
@@ -91,8 +89,6 @@ $ldw_gap: 35
 	background: none
 	@include m.media(phone, tablet)
 		font-size: f.px(13)
-		@include m.dye(borderc, c.$psi)
-		@include m.dye(c, c.$psi)
 	@include m.media(laptop, desktop, widescreen)
 		@include m.dye(borderc, c.$omega)
 		font-size: f.px(13)

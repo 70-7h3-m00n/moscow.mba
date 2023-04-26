@@ -22,6 +22,7 @@ import truncate from 'truncate'
 //   ProgramDevelopedStandard
 // } from '@/components/sections'
 import JumbotronProgram from '@/components/sections/general/JumbotronProgram'
+import JumbotronProgramDisabled from '@/components/sections/general/JumbotronProgramDisabled'
 import WhoItIsFor from '@/components/sections/general/WhoItIsFor'
 import WhatWillYouLearn from '@/components/sections/general/WhatWillYouLearn'
 import ProgramDesc from '@/components/sections/general/ProgramDesc'
@@ -41,44 +42,45 @@ import ProgramDevelopedStandard from '@/components/sections/general/ProgramDevel
 import SectionIPAR from '@/components/sections/general/SectionIPAR'
 
 const ProfessionOnlineProgram = ({ program, teachers }) => {
-  const data = program
+	const data = program
 
-  const studyFieldIsAccounting =
-    program?.study_field?.slug?.trim() === 'accounting-analysis-and-audit'
+	const studyFieldIsAccounting =
+		program?.study_field?.slug?.trim() === 'accounting-analysis-and-audit'
 
-  return (
-    <>
-      <JumbotronProgram program={data} />
-      <WhatWillYouLearn data={data} />
-      <ProgramDesc />
-      <ProgramDevelopedStandard />
-      {studyFieldIsAccounting && <SectionIPAR />}
+	return (
+		<>
+			<JumbotronProgram program={data} />
+			{/* <JumbotronProgramDisabled program={data} /> */}
+			<WhatWillYouLearn data={data} />
+			<ProgramDesc />
+			<ProgramDevelopedStandard />
+			{studyFieldIsAccounting && <SectionIPAR />}
 
-      <WhoItIsFor program={program} />
-      <Pros format={'online'} />
-      <HowProcessGoes />
-      <ProgramsModules program={data} smallerMb />
-      <GetStudyPlan />
-      <Teachers
-        programId={data?._id}
-        programTitle={data?.title}
-        teachers={program?.teachers}
-      />
-      <HelpWithEmployment />
-      <CorporateClients partnershipTitle />
-      <Diploma />
-      <SectionStudyCost />
-      <SectionCheckPros />
-      <Qna programId={data?._id} programTitle={data?.title} />
-      <ContactUs
-        programId={data?._id}
-        programTitle={data?.title}
-        title={'Не знаете что выбрать?'}
-        titleNewStr={'Получите консультацию по программам'}
-        overlapsFooter
-      />
-    </>
-  )
+			<WhoItIsFor program={program} />
+			<Pros format={'online'} />
+			<HowProcessGoes />
+			<ProgramsModules program={data} smallerMb />
+			<GetStudyPlan />
+			<Teachers
+				programId={data?._id}
+				programTitle={data?.title}
+				teachers={program?.teachers}
+			/>
+			<HelpWithEmployment />
+			<CorporateClients partnershipTitle />
+			<Diploma />
+			<SectionStudyCost />
+			<SectionCheckPros />
+			<Qna programId={data?._id} programTitle={data?.title} />
+			<ContactUs
+				programId={data?._id}
+				programTitle={data?.title}
+				title={'Не знаете что выбрать?'}
+				titleNewStr={'Получите консультацию по программам'}
+				overlapsFooter
+			/>
+		</>
+	)
 }
 
 export default ProfessionOnlineProgram
