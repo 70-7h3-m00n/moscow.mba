@@ -1,0 +1,347 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/utils/funcs' as f
+
+.container
+  position: relative
+  z-index: 5
+  margin-bottom: 184px
+  color: #fff
+  @include m.media(phone)
+    margin-bottom: 190px
+
+.disabled
+  position: absolute
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  gap: 40px
+  width: 100%
+  height: 100%
+  background: rgba(122, 122, 122, 0.87)
+  backdrop-filter: blur(0.5px)
+  z-index: 10
+
+.description
+  display: flex
+  align-items: center
+  gap: 21px
+  p
+    font-weight: 500
+    font-size: 20px
+    line-height: 130%
+
+.buttonBoxBottom
+  display: flex
+  gap: 30px
+  margin-bottom: 40px
+  @include m.media(phone, tablet)
+    flex-wrap: wrap
+    gap: 15px
+    width: 100%
+    padding: 0 15px
+
+.link
+  padding: 20px
+  border: 2px solid c.$psi
+  font-weight: 500
+  font-size: 14px
+  line-height: 120%
+  text-align: center
+  @include m.media(tablet, laptop, desktop, widescreen)
+    &:hover
+      transform: scale(1.02)
+  &:active
+    transform: scale(0.98)
+  @include m.media(phone, tablet)
+    width: 100%
+    letter-spacing: 0.1em
+    font-weight: 500
+    font-size: 15px
+
+.homepageLink
+  border: 2px solid c.$alpha
+  padding: 20px 30px
+  font-family: "Styrene", Arial, Tahoma, sans-serif
+  font-weight: 500
+  font-size: 14px
+  line-height: 120%
+  color: c.$psi
+  background-color: c.$alpha
+  @include m.media(tablet, laptop, desktop, widescreen)
+    &:hover
+      transform: scale(1.02)
+  &:active
+    transform: scale(0.98)
+  @include m.media(phone, tablet)
+    width: 100%
+    letter-spacing: 0.1em
+
+.generalContainer
+  margin-right: auto
+  margin-left: auto
+  padding-left: 10px
+  padding-right: 10px
+  width: 1310px
+  @include m.media(desktop)
+    width: 1000px
+  @include m.media(laptop, tablet)
+    width: 710px
+  @include m.media(tablet, phone)
+    width: 100%
+  &::before,
+  &::after
+    content: ' '
+    display: table
+  &::after
+    clear: both
+
+.image
+  position: absolute
+  z-index: -1
+  left: 0
+  top: 0
+  height: 100%
+  width: 100%
+  background-color: rgba(#000, 0.5)
+  &::after
+    content: ''
+    position: absolute
+    z-index: 2
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    background: #070f24
+    opacity: 0.7
+  img
+    object-fit: cover
+    height: 100%
+    width: 100%
+
+.content
+  padding-left: 205px
+  // padding-top: 86px
+  padding-top: 108px
+  padding-bottom: 108px
+  position: relative
+  z-index: 2
+  @include m.media(desktop, laptop, tablet, phone)
+    padding-left: 0
+  @include m.media(laptop, tablet, phone)
+    padding-top: 82px
+  @include m.media(phone)
+    padding-bottom: 210px
+
+.contentTop
+  margin-bottom: 32px
+  @include m.media(desktop, laptop, tablet, phone)
+    display: inline-flex
+    align-items: center
+    position: relative
+  @include m.media(phone)
+    margin-bottom: 25px
+
+.discountSticker
+  display: flex
+  flex-direction: column
+  justify-content: center
+  width: 128px
+  height: 128px
+  position: absolute
+  border-radius: 50%
+  background-color: #ff3535
+  color: #fff
+  text-align: center
+  line-height: 1
+  @include m.media(desktop, laptop, tablet, phone)
+    left: auto
+    right: 0
+    top: 0
+    width: 110px
+    height: 110px
+    margin-top: -30px
+  @include m.media(tablet, phone)
+    left: auto
+    right: 0
+    top: 0
+    width: 90px
+    height: 90px
+    margin-top: -20px
+  @include m.media(phone)
+    margin-top: -23px
+  &.leftCorner
+    left: 30px
+    top: 150px
+    transform: rotate(20deg)
+    @include m.media(desktop, laptop, tablet, phone)
+      top: 0
+      left: auto
+  span
+    font-size: 14px
+    font-family: 'mazzardH', Arial, Tahoma, sans-serif
+    font-weight: 400
+    @include m.media(desktop, laptop)
+      font-size: 12px
+    @include m.media(tablet, phone)
+      font-size: 10px
+
+.discountAmount
+  font-weight: bold
+  font-size: 35px
+  font-family: 'Visuelt', Arial, Tahoma, sans-serif
+  margin-bottom: -2px
+  @include m.media(desktop, laptop, tablet, phone)
+    font-size: 28px
+    margin-bottom: 0
+    @include m.media(tablet, phone)
+      font-size: 23px
+    span
+      @include m.media(tablet, phone)
+        font-size: 10px
+
+.smallerTitle
+  font-size: 35px
+
+.label
+  margin-right: 140px
+  font-size: 14px
+  text-transform: uppercase
+  font-weight: 400
+  color: #fff
+  letter-spacing: 0.1em
+  line-height: 1.2
+  @include m.media(widescreen)
+    padding-bottom: 35px
+  @include m.media(tablet, phone)
+    margin-right: 120px
+  @include m.media(phone)
+    margin-right: 110px
+    font-size: 12px
+  span
+    display: inline-block
+    padding: 13px 29px
+    text-align: center
+    border: 1px solid #ffffff
+    border-radius: 80px
+
+.flexContainer
+  display: flex
+  @include m.media(laptop, tablet, phone)
+    flex-direction: column
+    justify-content: center
+    // align-items: center
+
+.descContainer
+  flex-shrink: 0
+  max-width: 620px
+
+.desc
+  font-size: 20px
+  line-height: 1.3
+  margin-bottom: 40px
+  @include m.media(laptop, tablet)
+    margin-bottom: 30px
+    font-size: 18px
+  @include m.media(phone)
+    font-size: 16px
+    margin-bottom: 20px
+
+.btnLoanGroup
+  display: flex
+  margin-bottom: 40px
+  @include m.media(tablet, phone)
+    flex-direction: column
+
+.button
+  transition: all .3s ease-out
+  display: inline-block
+  font-family: 'MazzardM', Arial, Tahoma, sans-serif
+  font-weight: 700
+  font-size: 15px
+  text-transform: uppercase
+  letter-spacing: 0.1em
+  text-align: center
+  border-radius: 0
+  padding: 20px 30px
+  background: #fff
+  color: #262626
+  margin-bottom: 0
+  width: 100%
+  max-width: 260px
+  cursor: pointer
+  @include m.media(phone)
+    padding: 20px
+  &:hover
+    background: #f2f2f2
+
+.loanContainer
+  display: flex
+  justify-content: center
+  align-items: center
+  max-width: 27ch
+  margin-left: 31px
+  @include m.media(tablet, phone)
+    margin-left: 0
+    margin-top: 11px
+
+.loanDesc
+  margin-left: 11px
+  font-weight: 500
+  line-height: 120%
+
+.list
+  margin-left: auto
+  margin-bottom: 40px
+  line-height: 1.2
+  width: 330px
+  margin-top: -13px
+  @include m.media(widescreen, desktop)
+    display: flex
+    justify-content: space-between
+    flex-direction: column
+  @include m.media(laptop, tablet, phone)
+    margin-top: 0
+    display: flex
+    margin-left: 0
+    width: 100%
+  @include m.media(phone)
+    margin: 0 0 10px
+  @include m.media(tablet, laptop)
+    margin: 0 -15px 10px
+  @include m.media(phone)
+    flex-wrap: wrap
+    margin-bottom: -20px
+
+.item
+  @include m.media(laptop, tablet, phone)
+    width: 33.333%
+    padding: 0 15px
+    padding-bottom: 0
+    margin-bottom: 0
+    border-bottom: none
+  @include m.media(phone)
+    width: 50%
+    margin-bottom: 20px
+    padding: 0 15px 0 0
+
+.number
+  font-weight: bold
+  font-size: 48px
+  @include m.media(tablet)
+    font-size: 38px
+  @include m.media(phone)
+    font-size: 32px
+
+.separator
+  display: flex
+  background-color: rgba(255, 255, 255, 0.3)
+  @include m.media(widescreen, desktop)
+    height: 1px
+    width: 100%
+  @include m.media(laptop, tablet)
+    padding: 0
+    width: 1px
+  @include m.media(phone)
+    display: none

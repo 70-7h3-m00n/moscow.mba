@@ -21,6 +21,7 @@ const PageJournal: NextPage<TypePageJournalArticlesProps> = ({
 	})
 	const [categories, setCategories] = useState(journalCategories || null)
 	const [articles, setArticles] = useState(journalArticles || null)
+	console.log('articles: ', articles)
 
 	const at = useAt()
 
