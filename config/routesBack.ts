@@ -1,8 +1,8 @@
 import { dev } from '@/config/index'
 
 const routesBack = {
-	root: dev ? 'http://localhost:1337' : 'https://test.api.moscow.mba',
-	// root: 'http://localhost:1337',
+	// root: dev ? 'http://localhost:1337' : 'https://test.api.moscow.mba',
+	root: 'https://dev.api.moscow.mba',
 	home: '/',
 	graphql: '/graphql',
 	programs: '/products',
