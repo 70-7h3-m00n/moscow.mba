@@ -22,7 +22,6 @@ import truncate from 'truncate'
 //   ProgramDevelopedStandard
 // } from '@/components/sections'
 import JumbotronProgram from '@/components/sections/general/JumbotronProgram'
-import JumbotronProgramDisabled from '@/components/sections/general/JumbotronProgramDisabled'
 import WhoItIsFor from '@/components/sections/general/WhoItIsFor'
 import WhatWillYouLearn from '@/components/sections/general/WhatWillYouLearn'
 import ProgramDesc from '@/components/sections/general/ProgramDesc'
@@ -50,7 +49,6 @@ const ProfessionOnlineProgram = ({ program, teachers }) => {
 	return (
 		<>
 			<JumbotronProgram program={data} />
-			{/* <JumbotronProgramDisabled program={data} /> */}
 			<WhatWillYouLearn data={data} />
 			<ProgramDesc />
 			<ProgramDevelopedStandard />
