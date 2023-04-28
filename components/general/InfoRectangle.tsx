@@ -8,6 +8,7 @@ import { getRenderTime } from '@/helpers/index'
 
 // TODO:: improve styles for rectangle. It's content is not vertically centered on tablet & laptop, it goes full width on smaller screen but should have padding left & right
 const InfoRectangle = ({
+	notActive = false,
 	programPage = false,
 	type = null,
 	format = null,
@@ -128,29 +129,32 @@ const InfoRectangle = ({
 	const typeOfContent = at.index || at.promo ? 'academyInfo' : 'programInfo'
 
 	return (
-		<ul
-			className={cn(stls.container, {
-				[stls.programsPageContainer]: programPage,
-				[stls.academyInfoContainer]: at.index || at.promo
-			})}>
-			{infoRectangleContent[typeOfContent].map((item, idx) => (
-				<li
-					key={idx + item.itemDetail}
-					className={cn(stls.item, {
-						[stls.academyInfoItem]: at.index || at.promo
-					})}>
-					{item.itemTitle && (
-						<div className={stls.itemTitle}>{item.itemTitle}</div>
-					)}
-					<div
-						className={cn(stls.itemDetail, {
-							[stls.academyInfoItemDetail]: at.index || at.promo
+		<>
+			<ul
+				className={cn(stls.container, {
+					[stls.programsPageContainer]: programPage,
+					[stls.academyInfoContainer]: at.index || at.promo,
+					[stls.notActive]: notActive
+				})}>
+				{infoRectangleContent[typeOfContent].map((item, idx) => (
+					<li
+						key={idx + item.itemDetail}
+						className={cn(stls.item, {
+							[stls.academyInfoItem]: at.index || at.promo
 						})}>
-						{item.itemDetail}
-					</div>
-				</li>
-			))}
-		</ul>
+						{item.itemTitle && (
+							<div className={stls.itemTitle}>{item.itemTitle}</div>
+						)}
+						<div
+							className={cn(stls.itemDetail, {
+								[stls.academyInfoItemDetail]: at.index || at.promo
+							})}>
+							{item.itemDetail}
+						</div>
+					</li>
+				))}
+			</ul>
+		</>
 	)
 }
 
