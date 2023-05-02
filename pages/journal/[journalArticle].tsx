@@ -154,8 +154,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 		journalArticle?.articleBody
 			?.filter(
 				item =>
-					item &&
-					item.__typename === 'ComponentJournalJournalRecommendedArticles'
+					item && item.__typename === 'journal.journal-recommended-articles'
 			)
 			?.reduce(
 				(acc, cur) => [...acc, ...cur?.journalRecommendedArticles?.articles],
@@ -239,41 +238,41 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 						<SectionJournalTitlePicture journalArticle={journalArticle} />
 						{journalArticle?.articleBody?.map((component, idx) => (
 							<Fragment key={`${component.__typename}_${idx}`}>
-								{component.__typename === 'ComponentJournalParagraph' && (
+								{component.__typename === 'journal.paragraph' && (
 									<SectionJournalParagraph
 										body={component.paragraphBodyParts}
 										idx={idx}
 									/>
 								)}
-								{component.__typename === 'ComponentJournalTitle' && (
+								{component.__typename === 'journal.title' && (
 									<SectionJournalTitle title={component.title} idx={idx} />
 								)}
-								{component.__typename === 'ComponentGeneralPicture' && (
+								{component.__typename === 'general.picture' && (
 									<SectionJournalPicture picture={component.picture} />
 								)}
-								{component.__typename === 'ComponentJournalEmphasis' && (
+								{component.__typename === 'journal.emphasis' && (
 									<SectionJournalEmphasis body={component.emphasisBody} />
 								)}
-								{component.__typename === 'ComponentJournalQuote' && (
+								{component.__typename === 'journal.quote' && (
 									<SectionJournalQuote quote={component.quote} />
 								)}
-								{component.__typename === 'ComponentJournalList' && (
+								{component.__typename === 'journal.list' && (
 									<SectionJournalList list={component.list} />
 								)}
-								{component.__typename === 'ComponentJournalConclusion' && (
+								{component.__typename === 'journal.conclusion' && (
 									<SectionJournalConclusion
 										item={component.conclusion}
 										journalArticle={journalArticle}
 									/>
 								)}
 								{component.__typename ===
-									'ComponentJournalJournalRecommendedProgram' && (
+									'journal.journal-recommended-program' && (
 									<SectionJournalRecommendedProgram
 										recommendedProgram={component.recommendedProgram}
 									/>
 								)}
 								{component.__typename ===
-									'ComponentJournalJournalRecommendedArticles' && (
+									'journal.journal-recommended-articles' && (
 									<SectionJournalRecommendedArticles
 										journalRecommendedArticles={
 											component.journalRecommendedArticles
@@ -281,8 +280,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 										currentJournalArticleSlug={currentJournalArticleSlug}
 									/>
 								)}
-								{component.__typename ===
-									'ComponentJournalReadAlsoArticles' && (
+								{component.__typename === 'journal.read-also-articles' && (
 									<SectionJournalReadMoreArticles
 										title={component.journalReadAlsoArticles?.title}
 										articles={component.journalReadAlsoArticles?.articles?.filter(
@@ -298,19 +296,19 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 									/>
 								)}
 								{component.__typename ===
-									'ComponentJournalJournalArticleRecommendedProgramsSection' && (
+									'journal.journal-article-recommended-programs-section' && (
 									<SectionJournalRecommendedPrograms
 										recommendedProgramsSection={
 											component.recommendedProgramsSection
 										}
 									/>
 								)}
-								{component.__typename === 'ComponentJournalJournalTable' && (
+								{component.__typename === 'journal.journal-table' && (
 									<SectionJournalTable
 										htmlTableBody={component.htmlTableBody}
 									/>
 								)}
-								{component.__typename === 'ComponentJournalFormPdfMaterials' &&
+								{component.__typename === 'journal.form-pdf-materials' &&
 									isUrlsPdf && (
 										<SectionJournalForm
 											pdfMaterials={journalArticle.pdfMaterials}

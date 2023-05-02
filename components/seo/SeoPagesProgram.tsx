@@ -18,7 +18,7 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
 		program?.category.type === 'mini' && at.blended
 			? `${program?.metaTitle} mini blended`
 			: program?.category.type === 'mba' && at.blended
-			? `${program?.metaTitle.replace('online', 'blended')}`
+			? `${program?.metaTitle?.replace('online', 'blended')}`
 			: program?.metaTitle
 
 	const metaDescription =

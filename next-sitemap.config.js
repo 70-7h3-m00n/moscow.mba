@@ -36,7 +36,15 @@ module.exports = {
 			{
 				userAgent: '*',
 				allow: ['/*.css', '/*.js', '/*.jpg', '/*.png', '/*.gif'],
-				disallow: ['/promo*', '*?', '/*en-US', '/*kk_KZ', '*/ru/', '/*uz_UZ']
+				disallow: [
+					'*utm',
+					'/promo*',
+					'*?',
+					'/*en-US',
+					'/*kk_KZ',
+					'*/ru/',
+					'/*uz_UZ'
+				]
 			}
 		]
 	}
