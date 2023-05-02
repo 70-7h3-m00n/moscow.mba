@@ -34,11 +34,13 @@ const JumbotronProgram = ({ program }) => {
 	}
 	const isDigitalTransformation = useContext(DigitalTransformationContext)
 
-	const notActive = false
+	const isActive = false
+
+	// const isActive = program?.isActive !== false
 
 	return (
 		<section className={stls.container}>
-			{notActive && (
+			{isActive && (
 				<div className={stls.disabled}>
 					<div className={stls.description}>
 						<svg
@@ -206,12 +208,13 @@ const JumbotronProgram = ({ program }) => {
 							</li>
 						</ul>
 					</div>
-					<InfoRectangle
-						type={program?.category?.type ?? 'executive'}
-						format={program?.studyFormat}
-						studyDurationMonths={program?.duration?.minStudyMonths}
-						notActive={notActive}
-					/>
+					{!isActive && (
+						<InfoRectangle
+							type={program?.category?.type ?? 'executive'}
+							format={program?.studyFormat}
+							studyDurationMonths={program?.duration?.minStudyMonths}
+						/>
+					)}
 				</div>
 			</div>
 		</section>
