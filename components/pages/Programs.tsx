@@ -152,7 +152,7 @@ const PagePrograms = ({ mbaTypeOfProgram, mbaFormat }) => {
 							/>
 						)}
 						<div className={stls.programs}>
-							{programCards.map((program, idx) => {
+							{programCards?.map((program, idx) => {
 								return (
 									<CardProgram
 										key={program?._id || program?.id}

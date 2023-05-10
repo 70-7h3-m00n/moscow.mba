@@ -14,6 +14,7 @@ const CardProgram = ({ program }) => {
 
 	const type = program?.category.type
 	const format = program?.studyFormat
+	const isActive = program?.isActive
 
 	return (
 		<Link href={`/programs/${type}/${format}/${program?.slug}`}>

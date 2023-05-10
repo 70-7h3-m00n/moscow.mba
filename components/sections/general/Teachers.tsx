@@ -322,7 +322,7 @@ const Teachers = ({
 												'They have passed Moscow Academy’s multi-stage verification and have teaching accreditation'
 											) : (
 												<>
-													Прошли многоэтапную проверку специалистов академии
+													Прошли многоэтапную проверку специалистами академии
 													<br />и имеют аккредитацию на преподавание
 												</>
 											)}
