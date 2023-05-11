@@ -1,5 +1,5 @@
 import stls from '@/styles/components/sections/UpToDateContent.module.sass'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import cn from 'classnames'
 import { useAt } from '@/hooks/index'
 import { Wrapper } from '@/components/layout'

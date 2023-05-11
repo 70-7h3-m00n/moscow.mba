@@ -116,7 +116,9 @@ const SectionJournalHeroArticle = ({
 			}>
 			<Wrapper classNames={[stls.wrapper]}>
 				<div className={stls.content}>
-					<Link href={`${routesFront.journal}/${latestArticle.slug}`}>
+					<Link
+						legacyBehavior
+						href={`${routesFront.journal}/${latestArticle.slug}`}>
 						<a className={cn(stls.link, stls.leftRightContainer)}>
 							<div className={stls.left}>
 								<ImgJournalArticle

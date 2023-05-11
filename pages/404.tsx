@@ -2,7 +2,7 @@ import stls from '@/styles/pages/Page404.module.sass'
 import { useAt } from '@/hooks/index'
 import srcDesktop from '@/public/assets/images/404/404.png'
 import srcMobile from '@/public/assets/images/404/404mobile.png'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 import Popup from 'reactjs-popup'
 import { PopupForm } from '@/components/popups'
@@ -39,21 +39,21 @@ const Page404 = () => {
 				</p>
 				<p className={stls.paragraph}>Вот несколько полезных ссылок:</p>
 				<div className={stls.buttonBox}>
-					<Link href='/programs/mba'>
+					<Link href='/programs/mba' legacyBehavior>
 						<button className={stls.button}>MBA</button>
 					</Link>
-					<Link href='/programs/mini'>
+					<Link href='/programs/mini' legacyBehavior>
 						<button className={stls.button}>MINI MBA</button>
 					</Link>
-					<Link href='/programs/profession/'>
+					<Link href='/programs/profession/' legacyBehavior>
 						<button className={stls.button}>Профессии</button>
 					</Link>
-					<Link href='programs/course/'>
+					<Link href='programs/course/' legacyBehavior>
 						<button className={stls.button}>Курсы</button>
 					</Link>
 				</div>
 				<div className={stls.buttonBoxBottom}>
-					<Link href='/'>
+					<Link href='/' legacyBehavior>
 						<button className={stls.homepageLink}>ВЕРНУТЬСЯ НА ГЛАВНУЮ</button>
 					</Link>
 					<Popup

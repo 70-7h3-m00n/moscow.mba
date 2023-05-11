@@ -111,28 +111,24 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 					<h4 className={stls.title}>Тип программы</h4>
 					<div className={stls.content}>
 						<Link href={`/programs/mini/${mbaFormat}`}>
-							<a>
-								<span
-									className={cn({
-										[stls.circle]: true,
-										[stls.active]: at.mini
-									})}></span>{' '}
-								Mini MBA
-							</a>
+							<span
+								className={cn({
+									[stls.circle]: true,
+									[stls.active]: at.mini
+								})}></span>{' '}
+							Mini MBA
 						</Link>
 
 						<Link href={`/programs/mba/${mbaFormat}`}>
-							<a>
-								<span
-									className={cn({
-										[stls.circle]: true,
-										[stls.active]: at.mba
-									})}></span>{' '}
-								MBA
-							</a>
+							<span
+								className={cn({
+									[stls.circle]: true,
+									[stls.active]: at.mba
+								})}></span>{' '}
+							MBA
 						</Link>
 
-						<Link href={`/programs/profession/online`}>
+						<Link legacyBehavior href={`/programs/profession/online`}>
 							<a
 								onClick={() => {
 									setCurStudyField(null)
@@ -147,7 +143,7 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 							</a>
 						</Link>
 
-						<Link href={`/programs/course/online`}>
+						<Link legacyBehavior href={`/programs/course/online`}>
 							<a
 								onClick={() => {
 									setCurStudyField(null)
@@ -163,6 +159,7 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 						</Link>
 
 						<Link
+							legacyBehavior
 							href='/programs/international-business-law'
 							{...(at.en ? { locale: 'ru' } : undefined)}>
 							<a
@@ -174,6 +171,7 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 							</a>
 						</Link>
 						<Link
+							legacyBehavior
 							href='/programs/executive'
 							{...(at.en ? { locale: 'ru' } : undefined)}>
 							<a className={stls.highlight}>
@@ -200,7 +198,9 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 								BLENDED (с очными модулями)
 							</a>
 						) : (
-							<Link href={`/programs/${mbaTypeOfProgram}/blended`}>
+							<Link
+								legacyBehavior
+								href={`/programs/${mbaTypeOfProgram}/blended`}>
 								<a
 									className={cn({
 										[stls.inactiveLink]: at.profession || at.course
@@ -217,17 +217,15 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 						)}
 
 						<Link href={`/programs/${mbaTypeOfProgram}/online`}>
-							<a>
-								<span
-									className={cn({
-										[stls.circle]: true,
-										[stls.active]: at.online
-									})}></span>{' '}
-								ONLINE (дистанционно){' '}
-								<span className={stls.discount50}>
-									<Discount />
-								</span>
-							</a>
+							<span
+								className={cn({
+									[stls.circle]: true,
+									[stls.active]: at.online
+								})}></span>{' '}
+							ONLINE (дистанционно){' '}
+							<span className={stls.discount50}>
+								<Discount />
+							</span>
 						</Link>
 					</div>
 				</li>

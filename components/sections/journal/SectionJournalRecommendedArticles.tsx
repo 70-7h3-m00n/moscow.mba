@@ -44,6 +44,7 @@ const SectionJournalRecommendedArticles = ({
 						)
 						.map((article, idx) => (
 							<Link
+								legacyBehavior
 								href={`${routesFront.root}${routesFront.journal}/${article.slug}`}
 								key={`${article.title}_${idx}`}>
 								<a className={stls.link}>

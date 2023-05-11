@@ -111,7 +111,7 @@ const CardJournalArticleLegacy = ({
 	}
 
 	return (
-		<Link href={`${routesFront.journal}/${slug}`}>
+		<Link legacyBehavior href={`${routesFront.journal}/${slug}`}>
 			<a
 				className={
 					cn(stls.container, getClassNames({ classNames })) || undefined

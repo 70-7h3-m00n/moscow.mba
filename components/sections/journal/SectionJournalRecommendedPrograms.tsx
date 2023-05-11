@@ -59,6 +59,7 @@ const SectionJournalRecommendedPrograms = ({
 							</div>
 							<div className={stls.linkProgram}>
 								<Link
+									legacyBehavior
 									href={`${routesFront.root}${routesFront.programs}/${program.categorySlug}/${program.studyFormatSlug}/${program.slug}`}>
 									<a className={stls.link}>
 										{recommendedProgramsSection?.btnVal}

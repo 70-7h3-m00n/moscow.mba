@@ -1,7 +1,7 @@
 import stls from '@/styles/components/sections/JumbotronProgram.module.sass'
 import cn from 'classnames'
 import Popup from 'reactjs-popup'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Until from '@/components/costs/Until'
 import {
 	Breadcrumbs,

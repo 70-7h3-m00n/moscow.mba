@@ -1,6 +1,6 @@
 import stls from '@/styles/components/sections/Diploma.module.sass'
 import { useContext, useState } from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import cn from 'classnames'
 import Popup from 'reactjs-popup'
 import { base64pixel } from '@/config/index'

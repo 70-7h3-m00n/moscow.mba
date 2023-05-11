@@ -3,7 +3,7 @@ import { TypeLibTeacher, TypeLibTeachers } from '@/types/index'
 import { useState, useContext, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import cn from 'classnames'
 import Popup from 'reactjs-popup'
 import { routesFront, base64pixel, contactData } from '@/config/index'
@@ -509,6 +509,7 @@ const Teachers = ({
 									className={stls.teachersListItem}>
 									{atStandAlonePage || at.about ? (
 										<Link
+											legacyBehavior
 											href={`${routesFront.teachers}/${
 												teacher?.slug || 'teacher'
 											}`}>
@@ -551,6 +552,7 @@ const Teachers = ({
 										display: 'none'
 									}}>
 									<Link
+										legacyBehavior
 										href={`${routesFront.teachers}/${
 											teacher?.slug || 'teacher'
 										}`}>
@@ -688,7 +690,7 @@ const Teachers = ({
 									)}
 								</Popup>
 							) : at.about ? (
-								<Link href={routesFront.teachers}>
+								<Link legacyBehavior href={routesFront.teachers}>
 									<a className={cn('button', stls.btnShowMore)}>
 										Посмотреть всех
 									</a>
