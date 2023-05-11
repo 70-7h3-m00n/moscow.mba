@@ -1,7 +1,8 @@
 import stls from '@/styles/components/sections/journal/SectionJournalForm.module.sass'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { useState } from 'react'
 import cn from 'classnames'
+import { ImgTemplate } from '@/components/images'
 
 import { IconLoader } from '@/components/icons'
 import { FormJournalArticle } from '@/components/forms'
@@ -56,6 +57,7 @@ const SectionJournalForm = ({
 					objectFit='cover'
 					layout='fill'
 					className={stls.backgroundImage}
+					alt='Journal Picture'
 				/>
 				{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
 				{/* <div className={stls.mockupPicture}>
@@ -65,23 +67,23 @@ const SectionJournalForm = ({
 					windowWidth > 768 ? (
 						<div className={stls.lineForm}>
 							{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
-							<Image src={lineForm} />
+							<ImgTemplate src={lineForm} />
 						</div>
 					) : (
 						<div className={stls.lineFormPhone}>
 							{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
-							<Image src={lineFormPhone} />
+							<ImgTemplate src={lineFormPhone} />
 						</div>
 					)
 				) : (
 					<div className={stls.lineForm}>
 						{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
-						<Image src={lineForm} />
+						<ImgTemplate src={lineForm} />
 					</div>
 				)}
 				<div className={stls.folderForm}>
 					{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
-					<Image src={folderForm} className={stls.folderFormPicture} />
+					<ImgTemplate src={folderForm} className={stls.folderFormPicture} />
 				</div>
 				<div className={openLoader || open ? stls.formContent : ''}>
 					<p className={stls.title}>{formPdfMaterials?.title}</p>
@@ -90,7 +92,7 @@ const SectionJournalForm = ({
 							<div key={`${file?.name}-${idx}`} className={stls.pdfFile}>
 								<div className={stls.pdfFilePicture}>
 									{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
-									<Image src={pdfImage} width={30} height={38} />
+									<ImgTemplate src={pdfImage} width={30} height={38} />
 								</div>
 								<span className={stls.pdfFileName} key={`${file.name}_${idx}`}>
 									{file.name}
@@ -110,7 +112,7 @@ const SectionJournalForm = ({
 							<span className={stls.submitText}>{'скачать'}</span>
 							<div className={stls.pdfIcon}>
 								{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
-								<Image src={pdfIcon} />
+								<ImgTemplate src={pdfIcon} />
 							</div>
 						</FormJournalArticle>
 					</div>

@@ -14,9 +14,10 @@ const CardProgram = ({ program }) => {
 
 	const type = program?.category.type
 	const format = program?.studyFormat
+	const isActive = program?.isActive
 
 	return (
-		<Link href={`/programs/${type}/${format}/${program?.slug}`}>
+		<Link legacyBehavior href={`/programs/${type}/${format}/${program?.slug}`}>
 			<a className={stls.container}>
 				<div className={stls.IconArrowTopRightContainer}>
 					<IconArrowTopRight classNames={[stls.IconArrowTopRight]} />

@@ -103,7 +103,7 @@ const FilterTypeProgram = () => {
 						</label>
 					</div>
 				))}
-				<Link href='/programs/executive'>
+				<Link legacyBehavior href='/programs/executive'>
 					<a className={stls.highlight}>
 						Executive MBA <span className={stls.premium}>Premium</span>
 					</a>

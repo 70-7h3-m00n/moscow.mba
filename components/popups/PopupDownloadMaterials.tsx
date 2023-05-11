@@ -12,40 +12,45 @@ import lineDownload from '@/public/assets/images/journal/lineDownload.png'
 import ellipse from '@/public/assets/images/journal/ellipse.svg'
 
 type TypeSectionPopupCoursesOnTopicProps = {
-  handlePopupGetMaterials: () => void
-  handlePopupDownloadMaterials: () => void
+	handlePopupGetMaterials: () => void
+	handlePopupDownloadMaterials: () => void
 } & TypeClassNames
 
 const PopupDownloadMaterials = ({
-  classNames,
-  handlePopupGetMaterials,
-  handlePopupDownloadMaterials
+	classNames,
+	handlePopupGetMaterials,
+	handlePopupDownloadMaterials
 }: TypeSectionPopupCoursesOnTopicProps) => (
-  <div
-    className={
-      cn([stls.popupDownloadMaterials], getClassNames({ classNames })) ||
-      undefined
-    }>
-    <button className={stls.btn} onClick={handlePopupGetMaterials}>
-      <div className={stls.lineDownload}>
-        <Image src={lineDownload} />
-      </div>
-      <div className={stls.content}>
-        <div className={stls.bookDownload}>
-          <Image src={bookDownload} width={80} height={92} />
-          <div className={stls.ellipse}>
-            <Image src={ellipse} />
-          </div>
-        </div>
-        <div className={stls.textContent}>{'Скачать полезные материалы'}</div>
-      </div>
-    </button>
-    <div className={stls.buttonClosed}>
-      <button
-        className={stls.closed}
-        onClick={handlePopupDownloadMaterials}></button>
-    </div>
-  </div>
+	<div
+		className={
+			cn([stls.popupDownloadMaterials], getClassNames({ classNames })) ||
+			undefined
+		}>
+		<button className={stls.btn} onClick={handlePopupGetMaterials}>
+			<div className={stls.lineDownload}>
+				<Image src={lineDownload} alt='Download' />
+			</div>
+			<div className={stls.content}>
+				<div className={stls.bookDownload}>
+					<Image
+						src={bookDownload}
+						width={80}
+						height={92}
+						alt='Book download'
+					/>
+					<div className={stls.ellipse}>
+						<Image src={ellipse} alt='ellipse' />
+					</div>
+				</div>
+				<div className={stls.textContent}>{'Скачать полезные материалы'}</div>
+			</div>
+		</button>
+		<div className={stls.buttonClosed}>
+			<button
+				className={stls.closed}
+				onClick={handlePopupDownloadMaterials}></button>
+		</div>
+	</div>
 )
 
 export default PopupDownloadMaterials

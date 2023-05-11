@@ -13,7 +13,7 @@ const CardProgram = ({ professionLayout, program, number, type, format }) => {
 		program?.study_field?.slug?.trim() === 'accounting-analysis-and-audit'
 
 	return (
-		<Link href={`/programs/${type}/${format}/${program?.slug}`}>
+		<Link legacyBehavior href={`/programs/${type}/${format}/${program?.slug}`}>
 			<a className={stls.container}>
 				<div className={stls.IconArrowTopRightContainer}>
 					<IconArrowTopRight classNames={[stls.IconArrowTopRight]} />

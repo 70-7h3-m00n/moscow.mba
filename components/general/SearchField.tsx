@@ -96,6 +96,7 @@ const SearchField = () => {
 										key={program?.id || `SearchField__filteredPrograms-${idx}`}
 										className={stls.listItem}>
 										<Link
+											legacyBehavior
 											href={`/programs/${program?.category?.type}/${program?.studyFormat}/${program?.slug}`}>
 											<a className={stls.listItemLink}>
 												<p className={stls.p}>

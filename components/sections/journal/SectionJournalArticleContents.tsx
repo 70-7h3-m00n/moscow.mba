@@ -69,7 +69,7 @@ const SectionJournalArticleContents = ({
 					<ul>
 						{textLinkTitle?.map((item, idx) => (
 							<li key={`${item}_${idx}`} className={stls.item}>
-								<Link href={`#${slugify(item)}`}>
+								<Link legacyBehavior href={`#${slugify(item)}`}>
 									<a>{item}</a>
 								</Link>
 							</li>

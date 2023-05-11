@@ -5,7 +5,7 @@ import {
 	TypeLibJournalPdfMaterials
 } from '@/types/index'
 import { useState, Fragment } from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import cn from 'classnames'
 import { getClassNames } from '@/helpers/index'
 import { FormJournalArticle } from '@/components/forms'
@@ -44,18 +44,33 @@ const PopupGetMaterials = ({
 				{!openLoader ? (
 					<div className={stls.pdfPopupGetMaterials}>
 						{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
-						<Image src={pdfPopupGetMaterials} width={190} height={230} />
+						<Image
+							src={pdfPopupGetMaterials}
+							width={190}
+							height={230}
+							alt='download'
+						/>
 					</div>
 				) : (
 					''
 				)}
 				<div className={stls.topLinePopupGetMaterials}>
 					{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
-					<Image src={linePopupGetMaterials} width={246} height={246} />
+					<Image
+						src={linePopupGetMaterials}
+						width={246}
+						height={246}
+						alt='download'
+					/>
 				</div>
 				<div className={stls.bottomLinePopupGetMaterials}>
 					{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
-					<Image src={linePopupGetMaterials} width={246} height={246} />
+					<Image
+						src={linePopupGetMaterials}
+						width={246}
+						height={246}
+						alt='download'
+					/>
 				</div>
 				<button
 					className={stls.closed}
@@ -72,7 +87,12 @@ const PopupGetMaterials = ({
 								<div key={`${file?.name}-${idx}`} className={stls.pdfFile}>
 									<div className={stls.pdfFilePicture}>
 										{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
-										<Image src={pdfImage} width={30} height={38} />
+										<Image
+											src={pdfImage}
+											width={30}
+											height={38}
+											alt='download'
+										/>
 									</div>
 									<span
 										className={stls.pdfFileName}

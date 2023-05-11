@@ -1,6 +1,6 @@
 import stls from '@/styles/components/images/ImgTemplate.module.sass'
 import { TypeClassNames, TypeImg } from '@/types/index'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import cn from 'classnames'
 import { base64pixel } from '@/config/index'
 import { getClassNames } from '@/helpers/index'

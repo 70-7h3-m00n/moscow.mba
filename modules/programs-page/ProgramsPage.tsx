@@ -26,7 +26,7 @@ const ProgramsPage = () => {
 			<section className={stls.heroProgram}>
 				<Image
 					src={heroProgramPicture}
-					alt='Студенты ставит лайк'
+					alt='Студент ставит лайк'
 					layout='fill'
 					objectFit='cover'
 				/>

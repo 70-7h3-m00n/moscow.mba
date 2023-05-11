@@ -73,7 +73,7 @@ const WebinarCards = ({ timeframe }) => {
 			title: 'Digital аналитика процессов организации',
 			portrait: '/assets/images/speakers/speaker-9.jpg',
 			speaker: 'Максим Захаров',
-			date: new Date(2021, 3, 4, 17, 0),
+			date: new Date(2021, 8, 4, 17, 0),
 			dur: '40:00'
 		}
 	]

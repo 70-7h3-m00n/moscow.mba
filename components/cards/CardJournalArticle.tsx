@@ -40,7 +40,7 @@ const CardJournalArticle = ({
 			className={
 				cn(stls.container, getClassNames({ classNames })) || undefined
 			}>
-			<Link href={`${routesFront.journal}/${article.slug}`}>
+			<Link legacyBehavior href={`${routesFront.journal}/${article.slug}`}>
 				<a className={cn(stls.link)}>
 					<ImgJournalArticle
 						src={imgSrc}

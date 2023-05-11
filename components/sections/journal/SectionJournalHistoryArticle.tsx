@@ -28,7 +28,7 @@ const SectionJournalHistoryArticle = ({
 				}>
 				<Wrapper column>
 					<div className={stls.row}>
-						<Link href={routesFront.home}>
+						<Link legacyBehavior href={routesFront.home}>
 							<a className={stls.title}>{'Главная'}</a>
 						</Link>
 						<span className={cn(stls.slug, stls.withDot)}>{'Журнал'}</span>
@@ -46,10 +46,10 @@ const SectionJournalHistoryArticle = ({
 			}>
 			<Wrapper column>
 				<div className={stls.row}>
-					<Link href={routesFront.home}>
+					<Link legacyBehavior href={routesFront.home}>
 						<a className={cn(stls.title, stls.item)}>{'Главная'}</a>
 					</Link>
-					<Link href={routesFront.journal}>
+					<Link legacyBehavior href={routesFront.journal}>
 						<a className={cn(stls.title, stls.withDot, stls.item)}>
 							{'Журнал'}
 						</a>
