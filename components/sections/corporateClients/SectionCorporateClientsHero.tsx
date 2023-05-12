@@ -27,8 +27,8 @@ const SectionCorporateClientsHero = ({
 			content: 'Программ MBA и курсов'
 		},
 		{
-			title: '2022',
-			content: <>Актуальные программы 2022&nbsp;года</>
+			title: '2023',
+			content: <>Актуальные программы 2023&nbsp;года</>
 		},
 		{
 			title: '2000+',

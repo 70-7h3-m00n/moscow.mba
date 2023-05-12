@@ -177,7 +177,7 @@ const Footer = () => {
 				</div>
 				<div className={stls.bottom}>
 					<div className={stls.copyright}>
-						&copy; Moscow Business Academy, 2022
+						&copy; Moscow Business Academy, 2023
 					</div>
 					<a
 						href='/legaldocuments/oferta.pdf'
