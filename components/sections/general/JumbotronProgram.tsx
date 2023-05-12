@@ -72,7 +72,9 @@ const JumbotronProgram = ({ program }) => {
 						<p>Курс временно недоступен. Находится в разработке</p>
 					</div>
 					<div className={stls.buttonBoxBottom}>
-						<Link href='/programs/mini/online'>
+						<Link
+							className={stls.buttonBoxBottomLink}
+							href='/programs/mini/online'>
 							<button className={stls.homepageLink}>
 								К&nbsp;ДОСТУПНЫМ&nbsp;КУРСАМ
 							</button>
