@@ -100,7 +100,7 @@ const Programs = () => {
 									</span>
 								</div>
 								<div className='prog-status'>
-									{at.en ? 'Newest programs of' : 'Актуальные программы'} 2022{' '}
+									{at.en ? 'Newest programs of' : 'Актуальные программы'} 2023{' '}
 									{at.en ? '' : 'года'}
 								</div>
 							</div>
@@ -277,7 +277,7 @@ const Programs = () => {
 									</span>
 								</div>
 								<div className='prog-status'>
-									{at.en ? 'Newest programs of' : 'Актуальные программы'} 2022{' '}
+									{at.en ? 'Newest programs of' : 'Актуальные программы'} 2023{' '}
 									{at.en ? '' : 'года'}
 								</div>
 							</div>
