@@ -52,9 +52,9 @@ const UpToDateContent = ({ withBottomLine = false }) => {
 				<div className={stls.section}>
 					<ul className={stls.list}>
 						<li>
-							<div className={stls.number}>2022 {at.en ? 'year' : 'год'}</div>
+							<div className={stls.number}>2023 {at.en ? 'year' : 'год'}</div>
 							<p>
-								{at.en ? 'The newest program of' : 'Новейшая программа'} 2022{' '}
+								{at.en ? 'The newest program of' : 'Новейшая программа'} 2023{' '}
 								{at.en ? '' : 'года'}
 							</p>
 						</li>

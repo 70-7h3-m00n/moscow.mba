@@ -72,7 +72,9 @@ const JumbotronProgram = ({ program }) => {
 						<p>Курс временно недоступен. Находится в разработке</p>
 					</div>
 					<div className={stls.buttonBoxBottom}>
-						<Link href='/programs/mini/online'>
+						<Link
+							className={stls.buttonBoxBottomLink}
+							href='/programs/mini/online'>
 							<button className={stls.homepageLink}>
 								К&nbsp;ДОСТУПНЫМ&nbsp;КУРСАМ
 							</button>
@@ -185,8 +187,8 @@ const JumbotronProgram = ({ program }) => {
 						</div>
 						<ul className={stls.list}>
 							<li className={stls.item}>
-								<div className={stls.number}>2022</div>
-								<p>Новейшая программа 2022 года</p>
+								<div className={stls.number}>2023</div>
+								<p>Новейшая программа 2023 года</p>
 							</li>
 							<li className={stls.separator}></li>
 
