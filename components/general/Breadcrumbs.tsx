@@ -140,8 +140,7 @@ const Breadcrumbs = ({ programChunkData = {} }) => {
 				if (userViewingCourse) return courseRoute
 
 				idx === 0
-					? (acc.label[router.locale] +=
-							curr[0].toUpperCase() + curr.slice(1) + ' MBA ')
+					? (acc.label[router.locale] += curr.toUpperCase() + ' ')
 					: (acc.label[router.locale] += curr.toUpperCase())
 
 				return acc

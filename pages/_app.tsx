@@ -146,6 +146,7 @@ function MyApp({ Component, pageProps, router }) {
 					name='viewport'
 					content='width=device-width, initial-scale=1, maximum-scale=1'
 				/>
+				<meta name='yandex-verification' content='bb38cec966287609' />
 				{!dev && pixelArray.includes(router.state?.asPath) && (
 					<script
 						type='text/javascript'
