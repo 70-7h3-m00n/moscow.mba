@@ -17,13 +17,22 @@ const PageProgramsMiniBlendedProgram = ({ program, programs }) => {
 	)
 }
 
-export const getStaticProps: GetStaticProps = async context =>
-	await handleGetStaticProps({
+export const getStaticProps: GetStaticProps = async context => {
+	const data = await handleGetStaticProps({
 		page: routesFront.program,
 		context,
 		type: 'mini',
 		format: 'blended'
 	})
+
+	if (!data.props?.programs?.find(prog => prog.slug === context.params.slug)) {
+		return {
+			notFound: true
+		}
+	} else {
+		return data
+	}
+}
 
 export const getStaticPaths: GetStaticPaths = async () =>
 	await handleGetStaticPaths({

@@ -7,29 +7,38 @@ import { BlendedProgram } from '@/components/pages'
 import { SeoOrganizationJsonLd, SeoPagesProgram } from '@/components/seo'
 
 const PageProgramsMbaBlendedProgram = ({ program, programs }) => {
-  usePageHandleContext({ programs, program })
+	usePageHandleContext({ programs, program })
 
-  return (
-    <>
-      <SeoPagesProgram program={program} />
-      <BlendedProgram program={program} teachers={program?.teachers} />
-    </>
-  )
+	return (
+		<>
+			<SeoPagesProgram program={program} />
+			<BlendedProgram program={program} teachers={program?.teachers} />
+		</>
+	)
 }
 
-export const getStaticProps: GetStaticProps = async context =>
-  await handleGetStaticProps({
-    page: routesFront.program,
-    context,
-    type: 'mba',
-    format: 'blended'
-  })
+export const getStaticProps: GetStaticProps = async context => {
+	const data = await handleGetStaticProps({
+		page: routesFront.program,
+		context,
+		type: 'mba',
+		format: 'blended'
+	})
+
+	if (!data.props?.programs?.find(prog => prog.slug === context.params.slug)) {
+		return {
+			notFound: true
+		}
+	} else {
+		return data
+	}
+}
 
 export const getStaticPaths: GetStaticPaths = async () =>
-  await handleGetStaticPaths({
-    page: routesFront.program,
-    type: 'mba',
-    format: 'blended'
-  })
+	await handleGetStaticPaths({
+		page: routesFront.program,
+		type: 'mba',
+		format: 'blended'
+	})
 
 export default PageProgramsMbaBlendedProgram

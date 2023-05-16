@@ -6,29 +6,38 @@ import { ProfessionOnlineProgram } from '@/components/pages'
 import { SeoOrganizationJsonLd, SeoPagesProgram } from '@/components/seo'
 
 const PageProgramsProfessionOnlineProgram = ({ program, programs }) => {
-  usePageHandleContext({ programs, program })
+	usePageHandleContext({ programs, program })
 
-  return (
-    <>
-      <SeoPagesProgram program={program} />
-      <ProfessionOnlineProgram program={program} teachers={program?.teachers} />
-    </>
-  )
+	return (
+		<>
+			<SeoPagesProgram program={program} />
+			<ProfessionOnlineProgram program={program} teachers={program?.teachers} />
+		</>
+	)
 }
 
-export const getStaticProps: GetStaticProps = async context =>
-  await handleGetStaticProps({
-    page: routesFront.program,
-    context,
-    type: 'profession',
-    format: 'online'
-  })
+export const getStaticProps: GetStaticProps = async context => {
+	const data = await handleGetStaticProps({
+		page: routesFront.program,
+		context,
+		type: 'profession',
+		format: 'online'
+	})
+
+	if (!data.props?.programs?.find(prog => prog.slug === context.params.slug)) {
+		return {
+			notFound: true
+		}
+	} else {
+		return data
+	}
+}
 
 export const getStaticPaths: GetStaticPaths = async () =>
-  await handleGetStaticPaths({
-    page: routesFront.program,
-    type: 'profession',
-    format: 'online'
-  })
+	await handleGetStaticPaths({
+		page: routesFront.program,
+		type: 'profession',
+		format: 'online'
+	})
 
 export default PageProgramsProfessionOnlineProgram
