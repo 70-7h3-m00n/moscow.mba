@@ -48,6 +48,7 @@ import {
 	PopupGetMaterials
 } from '@/components/popups'
 import { SeoOrganizationJsonLd } from '@/components/seo'
+import { BtnScrollTop } from '@/components/btns'
 
 type TypeJournalArticleProps = {
 	journalArticle: TypeLibJournalArticle
@@ -395,6 +396,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 							: ''
 						: ''}
 				</aside>
+				<BtnScrollTop />
 			</Wrapper>
 		</>
 	)

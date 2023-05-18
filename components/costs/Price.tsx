@@ -70,10 +70,10 @@ const Price = ({
 				online: setPrice(174900)
 			},
 			profession: {
-				online: setPrice(39000)
+				online: setPrice(38900)
 			},
 			course: {
-				online: setPrice(39000)
+				online: setPrice(38900)
 			},
 			mbl: {
 				online: setPrice(174900)
