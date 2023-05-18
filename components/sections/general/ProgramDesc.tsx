@@ -12,7 +12,6 @@ const ProgramDesc = () => {
 		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
 	}
 	const isDigitalTransformation = useContext(DigitalTransformationContext)
-	console.log(isDigitalTransformation)
 
 	return (
 		<section className={stls.container}>
