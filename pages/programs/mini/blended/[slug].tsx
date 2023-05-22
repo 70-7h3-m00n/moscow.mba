@@ -27,7 +27,10 @@ export const getStaticProps: GetStaticProps = async context => {
 
 	if (!data.props?.programs?.find(prog => prog.slug === context.params.slug)) {
 		return {
-			notFound: true
+			redirect: {
+				destination: '/404',
+				permanent: false
+			}
 		}
 	} else {
 		return data
