@@ -8,10 +8,10 @@ import {
 	InfoRectangle,
 	MainInfo
 } from './widgets'
-import heroProgramPicture from '@/public/assets/images/heroProgram.jpg'
 import { ConfigProgramsProvider, useConfigProgramsContext } from './fractals'
 import { ProgramsQty, ProgramSubjects } from '@/components/general'
 import { IconCheckCircle } from '@/components/icons'
+import ProgramsHero from '@/components/general/ProgramsHero'
 
 const ProgramsPage = () => {
 	const { configPrograms } = useConfigProgramsContext()
@@ -23,21 +23,7 @@ const ProgramsPage = () => {
 					<Breadcrumbs />
 				</div>
 			</section>
-			<section className={stls.heroProgram}>
-				<Image
-					src={heroProgramPicture}
-					alt='Студент ставит лайк'
-					layout='fill'
-					objectFit='cover'
-				/>
-				<div className={stls.heroProgramContainer}>
-					<p className={stls.ourPrograms}>
-						Наши программы — это бизнес-образование международного уровня,
-						которое ежегодно получают тысячи предпринимателей, топ-менеджеров и
-						узкопрофильных специалистов.
-					</p>
-				</div>
-			</section>
+			<ProgramsHero />
 			<section className={stls.generalContainer}>
 				<div className={stls.container}>
 					<div className={stls.filtersContainer}>
