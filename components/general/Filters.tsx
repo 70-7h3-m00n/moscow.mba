@@ -108,7 +108,7 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 					<SearchField />
 				</li>
 				<li>
-					<h4 className={stls.title}>Тип программы</h4>
+					<h4 className={stls.title}>Формат обучения</h4>
 					<div className={stls.content}>
 						<Link href={`/programs/mini/${mbaFormat}`}>
 							<span
@@ -181,7 +181,6 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 					</div>
 				</li>
 				<li>
-					<h4 className={stls.title}>Формат обучения</h4>
 					<div className={stls.content}>
 						{at.profession || at.course ? (
 							<a

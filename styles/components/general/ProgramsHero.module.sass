@@ -1,0 +1,32 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.heroProgram
+    position: relative
+    margin-top: f.px(-68)
+    margin-bottom: f.px(68)
+
+.heroProgramContainer
+    position: relative
+    margin-right: auto
+    margin-left: auto
+    padding-top: f.px(130)
+    padding-bottom: f.px(130)
+    padding-left: 10px
+    padding-right: 10px
+    width: 1310px
+    @include m.media(desktop)
+        width: 1000px
+    @include m.media(laptop, tablet)
+        width: 710px
+    @include m.media(tablet, phone)
+        width: 100%
+
+.ourPrograms
+    position: relative
+    font-weight: 400
+    font-size: f.px(24)
+    line-height: 120%
+    color: #FFFFFF
+    max-width: f.px(850)
