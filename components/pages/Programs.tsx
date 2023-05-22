@@ -20,6 +20,7 @@ import Filters from '@/components/general/Filters'
 import CardProgram from '@/components/cards/CardProgram'
 // import { IconCheckCircle } from '@/components/icons'
 import IconCheckCircle from '@/components/icons/IconCheckCircle'
+import ProgramsHero from '../general/ProgramsHero'
 
 const PagePrograms = ({ mbaTypeOfProgram, mbaFormat }) => {
 	const { programs, curStudyField } = useContext(ContextStaticProps)
@@ -74,14 +75,22 @@ const PagePrograms = ({ mbaTypeOfProgram, mbaFormat }) => {
 					<Breadcrumbs />
 				</div>
 			</section>
+			<ProgramsHero />
 			<div className={stls.generalContainer}>
-				<h1 className={stls.title}>
-					ПРОГРАММЫ <span>ОБУЧЕНИЯ</span>
-				</h1>
 				<div className={stls.container}>
 					<Filters mbaTypeOfProgram={mbaTypeOfProgram} mbaFormat={mbaFormat} />
 					<div className={stls.content}>
 						<div className={stls.programMainInfo}>
+							<h1 className={stls.title}>
+								ПРОГРАММЫ <span>ОБУЧЕНИЯ</span>
+							</h1>
+							{!at.profession && !at.course && (
+								<InfoRectangle
+									programPage={true}
+									type={mbaTypeOfProgram}
+									format={mbaFormat}
+								/>
+							)}
 							<div className={stls.subtitle}>
 								<h2>
 									{at.mini
@@ -144,13 +153,6 @@ const PagePrograms = ({ mbaTypeOfProgram, mbaFormat }) => {
 								</div>
 							)}
 						</div>
-						{!at.profession && !at.course && (
-							<InfoRectangle
-								programPage={true}
-								type={mbaTypeOfProgram}
-								format={mbaFormat}
-							/>
-						)}
 						<div className={stls.programs}>
 							{programCards?.map((program, idx) => {
 								return (
