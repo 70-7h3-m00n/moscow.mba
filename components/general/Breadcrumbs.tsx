@@ -139,9 +139,11 @@ const Breadcrumbs = ({ programChunkData = {} }) => {
 				if (userViewingProfession) return professionRoute
 				if (userViewingCourse) return courseRoute
 
-				idx === 0
-					? (acc.label[router.locale] += curr.toUpperCase() + ' ')
-					: (acc.label[router.locale] += curr.toUpperCase())
+				if (curr) {
+					idx === 0
+						? (acc.label[router.locale] += curr.toUpperCase() + ' ')
+						: (acc.label[router.locale] += curr.toUpperCase())
+				}
 
 				return acc
 			},
