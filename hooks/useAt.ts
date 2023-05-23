@@ -33,7 +33,10 @@ const useAt = () => {
 
 	// Make getSplitedPath from the query parameters
 	function makeSplittedPath(): string[] {
-		if (pathname === '/programs') {
+		if (
+			pathname === '/programs' &&
+			router.asPath.split('/')[0] !== query.locale
+		) {
 			const {} = extractQueryParameters()
 			const result = [
 				'programs',
@@ -46,13 +49,13 @@ const useAt = () => {
 		}
 	}
 
-	console.log(makeSplittedPath())
-
 	// const getSplitedPath = pathname
 	// 	.split('/')
 	// 	.filter(item => item !== '' && item !== '[url]')
 
 	const getSplitedPath = makeSplittedPath()
+
+	// console.log(getSplitedPath)
 
 	const getProgramTitle = asPath.split('/')[4]
 
