@@ -43,7 +43,7 @@ const SectionJournalRecommendedPrograms = ({
 					))}
 				</div>
 				<div className={stls.programs}>
-					{recommendedProgramsSection?.programs.map((program, idx) => (
+					{recommendedProgramsSection?.programs?.map((program, idx) => (
 						<div key={`${program?.title}_${idx}`} className={stls.program}>
 							<div className={stls.iconProgram}>
 								<ImgJournalArticleRecommended

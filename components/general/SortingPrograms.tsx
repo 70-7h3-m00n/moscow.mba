@@ -26,16 +26,16 @@ const SortingPrograms = () => {
 						<path
 							d='M5 1V15'
 							stroke='#FF3535'
-							stroke-width='2'
-							stroke-linecap='round'
-							stroke-linejoin='round'
+							strokeWidth='2'
+							strokeLinecap='round'
+							strokeLinejoin='round'
 						/>
 						<path
 							d='M9 11L5 15L1 11'
 							stroke='#FF3535'
-							stroke-width='2'
-							stroke-linecap='round'
-							stroke-linejoin='round'
+							strokeWidth='2'
+							strokeLinecap='round'
+							strokeLinejoin='round'
 						/>
 					</svg>
 					<svg
@@ -49,15 +49,15 @@ const SortingPrograms = () => {
 							d='M5 1V15'
 							stroke='#FF3535'
 							stroke-width='2'
-							stroke-linecap='round'
-							stroke-linejoin='round'
+							strokeLinecap='round'
+							strokeLinejoin='round'
 						/>
 						<path
 							d='M9 11L5 15L1 11'
 							stroke='#FF3535'
-							stroke-width='2'
-							stroke-linecap='round'
-							stroke-linejoin='round'
+							strokeWidth='2'
+							strokeLinecap='round'
+							strokeLinejoin='round'
 						/>
 					</svg>
 				</div>
@@ -79,9 +79,9 @@ const SortingPrograms = () => {
 						xmlns='http://www.w3.org/2000/svg'>
 						<path
 							d='M13 7L7 1L1 7'
-							stroke-width='2'
-							stroke-linecap='round'
-							stroke-linejoin='round'
+							strokeWidth='2'
+							strokeLinecap='round'
+							strokeLinejoin='round'
 							className={`${stls.starPath} ${
 								isActiveModal ? stls.starPathActive : ''
 							}`}
