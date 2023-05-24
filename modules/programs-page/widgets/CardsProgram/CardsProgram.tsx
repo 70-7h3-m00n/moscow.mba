@@ -4,9 +4,13 @@ import { CardProgram } from './fractals'
 const CardsProgram = () => {
 	const { renderPrograms } = usePrograms()
 
+	const programs = [...renderPrograms].filter(
+		program => program?.slug !== 'executive'
+	)
+
 	return (
 		<>
-			{renderPrograms?.map((program, idx) => {
+			{programs?.map((program, idx) => {
 				return (
 					<CardProgram key={program?._id || program?.id} program={program} />
 				)

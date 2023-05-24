@@ -123,20 +123,20 @@ function MyApp({ Component, pageProps, router }) {
 
 	const pixelArray = [
 		'/programs/mba/online/corporate-governance-and-strategy-of-business-development',
-		'/programs/mba/online/construction-management',
-		'/programs/mba/online/project-management',
-		'/programs/mba/online/health-administration',
-		'/programs/mini/online/hotel-management',
 		'/programs/mini/online/construction-management',
-		'/programs/mini/online/sales-director',
-		'/programs/mini/online/small-business-management',
-		'/programs/mini/online/marketing-management',
-		'/programs/mini/online/human-resource',
-		'/programs/mini/online/project-management',
+		'/programs/mba/online/construction-management',
 		'/programs/mini/online/health-administration',
-		'/programs/mini/online/financial-management',
+		'/programs/mba/online/health-administration',
+		'/programs/mini/online/project-management',
+		'/programs/mba/online/project-management',
+		'/programs/mini/online/hotel-management',
+		'/programs/mini/online/sales-director',
 		'/programs/profession/online/komercheski-director',
-		'/programs/profession/online/personnel-management'
+		'/programs/profession/online/personnel-management',
+		'/programs/mini/online/small-business-management',
+		'/programs/mini/online/financial-management',
+		'/programs/mini/online/marketing-management',
+		'/programs/mini/online/human-resource'
 	]
 
 	return (

@@ -8,6 +8,10 @@ import { SeoOrganizationJsonLd, SeoPagesProgram } from '@/components/seo'
 const PageProgramsCourseOnlineProgram = ({ program, programs }) => {
 	usePageHandleContext({ programs, program })
 
+	// useEffect(() => {
+	// 	invalidRouter && router.push('/404')
+	// }, [])
+
 	return (
 		<>
 			<SeoPagesProgram program={program} />
