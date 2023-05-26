@@ -14,6 +14,15 @@ import {
 } from '@/components/icons'
 import Popup from 'reactjs-popup'
 import { PopupForm } from '../popups'
+import Image from 'next/image'
+import { ImageContainer } from '../general'
+import licenseP1 from '@/public/legaldocuments/license-p1.jpg'
+import IconDzen from '../icons/IconDzen'
+import IconMir from '../icons/IconMir'
+import IconVisa from '../icons/IconVisa'
+import IconMasterCard from '../icons/IconMasterCard'
+import IconJCB from '../icons/IconJCB'
+import IconAmericanExpress from '../icons/IconAmericanExpress'
 
 const Footer = () => {
 	const contactInfo = contactData()
@@ -68,20 +77,25 @@ const Footer = () => {
 
 						<ul className={stls.socialsList}>
 							<li className={stls.socialItem}>
-								<a className={stls.socialLink} href='#!' aria-label='MBA VK'>
+								<Link
+									className={stls.socialLink}
+									href='https://vk.com/moscow_mba'
+									aria-label='MBA VK'
+									target='_blank'>
 									<IconVk />
-								</a>
+								</Link>
 							</li>
 							<li className={stls.socialItem}>
-								<a
+								<Link
 									className={stls.socialLink}
-									href='#!'
-									aria-label='MBA Telegram'>
+									href='https://t.me/mbamoscow'
+									aria-label='MBA Telegram'
+									target='_blank'>
 									<IconTelegramAlt />
-								</a>
+								</Link>
 							</li>
 							<li className={cn(stls.socialItem, stls.socialItemWhatsApp)}>
-								<a
+								<Link
 									className={stls.socialLink}
 									// href='https://api.whatsapp.com/send?phone=89258088389text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C!'
 									href='https://api.whatsapp.com/send?phone=79258088389&text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C.%20%D0%AF%20%D0%BF%D0%BE%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%83'
@@ -89,125 +103,146 @@ const Footer = () => {
 									target='_blank'
 									rel='noopener noreferrer'>
 									<IconWhatsappAlt />
-								</a>
+								</Link>
 							</li>
 							<li className={stls.socialItem}>
-								<a
+								<Link
 									className={stls.socialLink}
-									href='#!'
-									aria-label='MBA Telegram'>
-									<IconTelegramAlt />
-								</a>
+									href='https://dzen.ru/moscow_business_academy'
+									aria-label='MBA Dzen'
+									target='_blank'>
+									<IconDzen />
+								</Link>
 							</li>
+							<li></li>
 						</ul>
 					</div>
 					<div className={stls.links}>
 						{!at.promo && (
-							<ul className={stls.linksList}>
-								<li className={stls.linkItem}>
-									<Link
-										href='/programs/mini/online'
-										{...(at.en ? { locale: 'ru' } : undefined)}>
-										MBA Mini
-									</Link>
-								</li>
-								<li className={stls.linkItem}>
-									<Link
-										href='/programs/mba/online'
-										{...(at.en ? { locale: 'ru' } : undefined)}>
-										MBA
-									</Link>
-								</li>
-								<li className={stls.linkItem}>
-									<Link
-										href='/programs/executive'
-										{...(at.en ? { locale: 'ru' } : undefined)}>
-										Executive MBA
-									</Link>
-								</li>
-								<li className={stls.linkItem}>
-									<Link
-										href='/programs/profession/online'
-										{...(at.en ? { locale: 'ru' } : undefined)}>
-										Профессии
-									</Link>
-								</li>
-								<li className={stls.linkItem}>
-									<Link
-										href='/programs/course/online'
-										{...(at.en ? { locale: 'ru' } : undefined)}>
-										Курсы
-									</Link>
-								</li>
-								<li className={stls.linkItem}>
-									<Link href='/about'>{at.en ? 'About' : 'Об академии'}</Link>
-								</li>
-								<li className={stls.linkItem}>
-									<Link
-										legacyBehavior
-										href='/teachers'
-										{...(at.en ? { locale: 'ru' } : undefined)}>
-										<a className={stls.link}>
+							<>
+								<ul className={stls.linksList}>
+									<li className={stls.linkItem}>
+										<Link
+											href='/programs/mini/online'
+											{...(at.en ? { locale: 'ru' } : undefined)}>
+											MBA Mini
+										</Link>
+									</li>
+									<li className={stls.linkItem}>
+										<Link
+											href='/programs/mba/online'
+											{...(at.en ? { locale: 'ru' } : undefined)}>
+											MBA
+										</Link>
+									</li>
+									<li className={stls.linkItem}>
+										<Link
+											href='/programs/executive'
+											{...(at.en ? { locale: 'ru' } : undefined)}>
+											Executive MBA
+										</Link>
+									</li>
+									<li className={stls.linkItem}>
+										<Link href='/programs/profession/online'>
+											{at.en ? 'Professions' : 'Профессии'}
+										</Link>
+									</li>
+									<li className={stls.linkItem}>
+										<Link href='/programs/course/online'>
+											{at.en ? 'Courses' : 'Курсы'}
+										</Link>
+									</li>
+									<li className={stls.linkItem}>
+										<Link href='/about'>{at.en ? 'About' : 'Об академии'}</Link>
+									</li>
+									<li className={stls.linkItem}>
+										<Link
+											href='/teachers'
+											{...(at.en ? { locale: 'ru' } : undefined)}>
 											{at.en ? 'Experts' : 'Эксперты'}
-										</a>
-									</Link>
-								</li>
-								<li className={stls.linkItem}>
-									<Link
-										legacyBehavior
-										href='/webinars'
-										{...(at.en ? { locale: 'ru' } : undefined)}>
-										<a className={stls.link}>
+										</Link>
+									</li>
+									<li className={stls.linkItem}>
+										<Link
+											href='/teachers'
+											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{at.en
+												? 'Subscribe to the newsletter'
+												: 'Подписка на рассылку'}
+										</Link>
+									</li>
+									<li className={stls.linkItem}>
+										<Link
+											href='/webinars'
+											{...(at.en ? { locale: 'ru' } : undefined)}>
 											{at.en ? 'Webinars' : 'Вебинары'}
-										</a>
-									</Link>
-								</li>
-								<li className={stls.linkItem}>
-									<Link legacyBehavior href='/contact'>
-										<a className={stls.link}>
+										</Link>
+									</li>
+									<li className={stls.linkItem}>
+										<Link href='/contact'>
 											{at.en ? 'Contact' : 'Контакты'}
-										</a>
-									</Link>
-								</li>
-								<li className={stls.linkItem}>
-									<Link
-										legacyBehavior
-										href='/legal'
-										{...(at.en ? { locale: 'ru' } : undefined)}>
-										<a className={stls.link}>
+										</Link>
+									</li>
+									<li className={stls.linkItem}>
+										<Link
+											href='/journal'
+											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{at.en ? 'Journal' : 'Журнал'}
+										</Link>
+									</li>
+									<li className={stls.linkItem}>
+										<Link
+											href='/payment'
+											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{at.en ? 'Payment' : 'Оплата'}
+										</Link>
+									</li>
+									<li className={stls.linkItem}>
+										<Link
+											href='/legal'
+											{...(at.en ? { locale: 'ru' } : undefined)}>
 											{at.en ? 'Legal' : 'Сведения об организации'}
-										</a>
-									</Link>
-								</li>
-								<li className={stls.linkItem}>
-									<Link
-										legacyBehavior
-										href='/journal'
-										{...(at.en ? { locale: 'ru' } : undefined)}>
-										<a className={stls.link}>{at.en ? 'Journal' : 'Журнал'}</a>
-									</Link>
-								</li>
-								<li className={stls.linkItem}>
-									<Link
-										legacyBehavior
-										href='/payment'
-										{...(at.en ? { locale: 'ru' } : undefined)}>
-										<a className={stls.link}>{at.en ? 'Payment' : 'Оплата'}</a>
-									</Link>
-								</li>
-								<li className={stls.linkItem}>
-									<Link
-										legacyBehavior
-										href={routesFront.corporateClients}
-										{...(at.en ? { locale: 'ru' } : undefined)}>
-										<a className={stls.link}>
+										</Link>
+									</li>
+									<li className={stls.linkItem}>
+										<Link
+											href={routesFront.corporateClients}
+											{...(at.en ? { locale: 'ru' } : undefined)}>
 											{at.en
 												? 'Corporate education'
 												: 'Корпоративное обучение для бизнеса'}
-										</a>
-									</Link>
-								</li>
-							</ul>
+										</Link>
+									</li>
+									<li>
+										<Link href='https://islod.obrnadzor.gov.ru/rlic/details/2df11621-2d30-4173-9389-2fecc24a7639/'>
+											<Image
+												className={stls.licenseImage}
+												src={licenseP1}
+												width={111}
+												height={162}
+												alt='Лицензия компании'
+											/>
+											<p className={stls.license}>
+												Государственная лицензия №041221
+											</p>
+										</Link>
+									</li>
+								</ul>
+								<div className={stls.linksListBottom}>
+									<p className={stls.companyDescription}>
+										Автономная некоммерческая организация дополнительного
+										профессионального образования «Московская бизнес академия»,
+										ИНН 9725034765
+									</p>
+									<div className={stls.paymentMethods}>
+										<IconMir />
+										<IconMasterCard />
+										<IconVisa />
+										<IconJCB />
+										<IconAmericanExpress />
+									</div>
+								</div>
+							</>
 						)}
 					</div>
 				</div>

@@ -28,7 +28,7 @@
 
 .top
   display: flex
-  padding: 48px 0 52px
+  padding: 48px 0 0
   @include m.media(laptop, tablet, phone)
     display: block
     padding-top: 0
@@ -37,7 +37,7 @@
 .contactDetails
   width: 380px
   flex-shrink: 0
-  margin-right: 103px
+  margin-right: 59px
   position: relative
   z-index: 3
   padding-right: 20px
@@ -137,6 +137,9 @@
   font-weight: 700
   font-size: 15px
   line-height: 120%
+  transition: transform 0.3s ease-in-out
+  &:hover
+    transform: scale(1.02)
   
 
 .email
@@ -156,8 +159,8 @@
   flex-wrap: wrap
   align-items: flex-start
   align-content: flex-start
-  max-height: 254px
-  margin: 0 -40px 67px
+  max-height: 280px
+  margin: 0 -40px 56px
   @include m.media(desktop, laptop, tablet)
     font-size: 18px
     margin: 0 -20px 60px
@@ -173,8 +176,8 @@
 
 .linkItem
   margin-bottom: 20px
-  padding: 0 40px
-  width: 33.333%
+  padding: 0 25px
+  width: 25%
   transition: all .3s ease-out
   @include m.media(desktop, laptop, tablet)
     padding: 0 20px
@@ -255,3 +258,32 @@
 .socialItemWhatsApp
   @include m.media(laptop, desktop, widescreen)
     display: block
+
+.licenseImage
+  margin-bottom: 15px
+  transition: transform 0.3s ease-in-out
+  &:hover
+    transform: scale(1.02)
+
+.license
+  max-width: 200px
+  font-style: normal
+  font-weight: 400
+  font-size: 16px
+  line-height: 120%
+
+.linksListBottom
+  display: flex
+  align-items: flex-end
+
+.companyDescription
+  margin-left: -15px
+  margin-right: 60px
+  font-weight: 300
+  font-size: 16px
+  line-height: 120%
+  color: #808080
+
+.paymentMethods
+  display: flex
+  gap: 16px
