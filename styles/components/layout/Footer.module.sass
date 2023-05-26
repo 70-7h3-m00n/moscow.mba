@@ -28,7 +28,7 @@
 
 .top
   display: flex
-  padding: 87px 0 52px
+  padding: 48px 0 52px
   @include m.media(laptop, tablet, phone)
     display: block
     padding-top: 0
@@ -66,6 +66,11 @@
       top: 0
       right: 50%
       margin-right: -51vw
+  a
+    display: flex
+    align-items: center
+    gap: 12px
+    margin-bottom: 26px
 
 .links
   flex-grow: 1
@@ -122,6 +127,17 @@
     margin-bottom: 13px
   @include m.media(phone)
     font-size: 30px
+  a
+    margin-bottom: 0
+
+.btn.pointer
+  display: inline-block
+  padding: 19px 43px
+  border: 1px solid #FF3535
+  font-weight: 700
+  font-size: 15px
+  line-height: 120%
+  
 
 .email
   font-size: 20px
@@ -159,6 +175,7 @@
   margin-bottom: 20px
   padding: 0 40px
   width: 33.333%
+  transition: all .3s ease-out
   @include m.media(desktop, laptop, tablet)
     padding: 0 20px
   @include m.media(tablet, phone)
@@ -170,6 +187,8 @@
     height: 30px
     @include m.media(tablet, phone)
       display: none
+  &:hover
+    color: #ff3535
 
 .link
   transition: all .3s ease-out
@@ -190,8 +209,11 @@
 .location
   align-items: center
   display: flex
-  line-height: 1.2
   margin-right: 20px
+  margin-bottom: 26px
+  font-weight: 300
+  font-size: 15px
+  line-height: 120%
   @include m.media(phone)
     margin-right: 0
     margin-bottom: 25px
@@ -203,8 +225,7 @@
 .socialsList
   margin-left: auto
   display: flex
-  @include m.media(laptop, desktop, widescreen)
-    display: none
+
 
 .socialItem
   margin-left: -1px
@@ -216,7 +237,7 @@
   text-align: center
   height: 50px
   border: 1px solid #ffffff
-  width: 94px
+  width: 88px
   transition: all .3s ease-out
   position: relative
   @include m.media(desktop, laptop, tablet, phone)
@@ -233,4 +254,4 @@
 
 .socialItemWhatsApp
   @include m.media(laptop, desktop, widescreen)
-    display: none
+    display: block

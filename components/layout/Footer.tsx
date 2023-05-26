@@ -7,8 +7,13 @@ import {
 	IconLocation,
 	IconVk,
 	IconTelegramAlt,
-	IconWhatsappAlt
+	IconWhatsappAlt,
+	IconLogo,
+	IconLogoTitle,
+	IconMobilePhone
 } from '@/components/icons'
+import Popup from 'reactjs-popup'
+import { PopupForm } from '../popups'
 
 const Footer = () => {
 	const contactInfo = contactData()
@@ -19,58 +24,123 @@ const Footer = () => {
 			<div className={stls.generalContainer}>
 				<div className={stls.top}>
 					<div className={stls.contactDetails}>
+						<Link className={stls.logoWrapper} href={routesFront.home}>
+							<IconLogo />
+							<IconLogoTitle color='#fff' />
+						</Link>
 						<div className={stls.telephone}>
 							<a href={contactInfo.ru.tels[0].href}>
 								{contactInfo.ru.tels[0].val}
 							</a>
+						</div>
+						<div>
+							<Popup
+								trigger={
+									<a className={`${stls.btn} ${stls.pointer}`}>
+										{at.en ? <>CALLBACK</> : <>ОБРАТНЫЙ&nbsp;ЗВОНОК</>}
+									</a>
+								}
+								modal
+								lockScroll
+								nested
+								closeOnDocumentClick>
+								{/* @ts-expect-error  */}
+								{close => (
+									<PopupForm
+										title={at.en ? 'Get consultation' : 'Получите консультацию'}
+										closePopUpForm={close}
+										formName='Заявка с модальной формы "Хочу консультацию"'
+									/>
+								)}
+							</Popup>
 						</div>
 						<div className={stls.email}>
 							<a href={contactInfo.ru.email.mailTo}>
 								{contactInfo.ru.email.val}
 							</a>
 						</div>
+						<div className={stls.location}>
+							<IconLocation />
+							<span>
+								{contactInfo.ru.address.city}, {contactInfo.ru.address.street}
+							</span>
+						</div>
+
+						<ul className={stls.socialsList}>
+							<li className={stls.socialItem}>
+								<a className={stls.socialLink} href='#!' aria-label='MBA VK'>
+									<IconVk />
+								</a>
+							</li>
+							<li className={stls.socialItem}>
+								<a
+									className={stls.socialLink}
+									href='#!'
+									aria-label='MBA Telegram'>
+									<IconTelegramAlt />
+								</a>
+							</li>
+							<li className={cn(stls.socialItem, stls.socialItemWhatsApp)}>
+								<a
+									className={stls.socialLink}
+									// href='https://api.whatsapp.com/send?phone=89258088389text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C!'
+									href='https://api.whatsapp.com/send?phone=79258088389&text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C.%20%D0%AF%20%D0%BF%D0%BE%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%83'
+									aria-label='MBA Whatsapp'
+									target='_blank'
+									rel='noopener noreferrer'>
+									<IconWhatsappAlt />
+								</a>
+							</li>
+							<li className={stls.socialItem}>
+								<a
+									className={stls.socialLink}
+									href='#!'
+									aria-label='MBA Telegram'>
+									<IconTelegramAlt />
+								</a>
+							</li>
+						</ul>
 					</div>
 					<div className={stls.links}>
 						{!at.promo && (
 							<ul className={stls.linksList}>
 								<li className={stls.linkItem}>
 									<Link
-										legacyBehavior
 										href='/programs/mini/online'
 										{...(at.en ? { locale: 'ru' } : undefined)}>
-										<a className={stls.link}>MBA Mini</a>
+										MBA Mini
 									</Link>
 								</li>
 								<li className={stls.linkItem}>
 									<Link
-										legacyBehavior
 										href='/programs/mba/online'
 										{...(at.en ? { locale: 'ru' } : undefined)}>
-										<a className={stls.link}>MBA</a>
+										MBA
 									</Link>
 								</li>
 								<li className={stls.linkItem}>
 									<Link
-										legacyBehavior
 										href='/programs/executive'
 										{...(at.en ? { locale: 'ru' } : undefined)}>
-										<a className={stls.link}>Executive MBA</a>
+										Executive MBA
 									</Link>
 								</li>
 								<li className={stls.linkItem}>
 									<Link
-										legacyBehavior
 										href='/programs/profession/online'
 										{...(at.en ? { locale: 'ru' } : undefined)}>
-										<a className={stls.link}>Профессии</a>
+										Профессии
 									</Link>
 								</li>
 								<li className={stls.linkItem}>
-									<Link legacyBehavior href='/about'>
-										<a className={stls.link}>
-											{at.en ? 'About' : 'Об академии'}
-										</a>
+									<Link
+										href='/programs/course/online'
+										{...(at.en ? { locale: 'ru' } : undefined)}>
+										Курсы
 									</Link>
+								</li>
+								<li className={stls.linkItem}>
+									<Link href='/about'>{at.en ? 'About' : 'Об академии'}</Link>
 								</li>
 								<li className={stls.linkItem}>
 									<Link
@@ -139,40 +209,6 @@ const Footer = () => {
 								</li>
 							</ul>
 						)}
-						<div className={stls.contacts}>
-							<div className={stls.location}>
-								<IconLocation />
-								<span>
-									{contactInfo.ru.address.city}, {contactInfo.ru.address.street}
-								</span>
-							</div>
-							<ul className={stls.socialsList}>
-								{/* <li className={stls.socialItem}>
-                  <a className={stls.socialLink} href='#!' aria-label='MBA VK'>
-                    <IconVk />
-                  </a>
-                </li>
-                <li className={stls.socialItem}>
-                  <a
-                    className={stls.socialLink}
-                    href='#!'
-                    aria-label='MBA Telegram'>
-                    <IconTelegramAlt />
-                  </a>
-                </li> */}
-								<li className={cn(stls.socialItem, stls.socialItemWhatsApp)}>
-									<a
-										className={stls.socialLink}
-										// href='https://api.whatsapp.com/send?phone=89258088389text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C!'
-										href='https://api.whatsapp.com/send?phone=79258088389&text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C.%20%D0%AF%20%D0%BF%D0%BE%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%83'
-										aria-label='MBA Whatsapp'
-										target='_blank'
-										rel='noopener noreferrer'>
-										<IconWhatsappAlt />
-									</a>
-								</li>
-							</ul>
-						</div>
 					</div>
 				</div>
 				<div className={stls.bottom}>

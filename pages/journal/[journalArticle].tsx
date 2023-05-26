@@ -413,4 +413,19 @@ export const getStaticProps: GetStaticProps = async context => {
 	})
 }
 
+// export const getStaticProps: GetStaticProps = async context => {
+// 	const data = await handleGetStaticProps({
+// 		page: routesFront?.journalArticles,
+// 		context
+// 	})
+
+// 	if (!data.props?.programs?.find(prog => prog.slug === context.params.slug)) {
+// 		return {
+// 			notFound: true
+// 		}
+// 	} else {
+// 		return data
+// 	}
+// }
+
 export default PageJournalArticle

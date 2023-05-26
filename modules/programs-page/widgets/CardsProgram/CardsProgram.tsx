@@ -4,7 +4,7 @@ import { CardProgram } from './fractals'
 const CardsProgram = () => {
 	const { renderPrograms } = usePrograms()
 
-	const programs = [...renderPrograms].filter(
+	const programs = renderPrograms?.filter(
 		program => program?.slug !== 'executive'
 	)
 

@@ -64,29 +64,31 @@ const Page404 = () => {
 					<Link href='/' legacyBehavior>
 						<button className={stls.homepageLink}>ВЕРНУТЬСЯ НА ГЛАВНУЮ</button>
 					</Link>
-					<Popup
-						trigger={
-							<a className={stls.link}>
-								{at.en ? (
-									<>GET&nbsp;CONSULTATION</>
-								) : (
-									<>ПОЛУЧИТЬ&nbsp;КОНСУЛЬТАЦИЮ</>
-								)}
-							</a>
-						}
-						modal
-						lockScroll
-						nested
-						closeOnDocumentClick>
-						{/* @ts-expect-error  */}
-						{close => (
-							<PopupForm
-								title={at.en ? 'Get consultation' : 'Получите консультацию'}
-								closePopUpForm={close}
-								formName='Заявка со страницы 404 "Получить консультацию'
-							/>
-						)}
-					</Popup>
+					<>
+						<Popup
+							trigger={
+								<a className={stls.link}>
+									{at.en ? (
+										<>GET&nbsp;CONSULTATION</>
+									) : (
+										<>ПОЛУЧИТЬ&nbsp;КОНСУЛЬТАЦИЮ</>
+									)}
+								</a>
+							}
+							modal
+							lockScroll
+							nested
+							closeOnDocumentClick>
+							{/* @ts-expect-error  */}
+							{close => (
+								<PopupForm
+									title={at.en ? 'Get consultation' : 'Получите консультацию'}
+									closePopUpForm={close}
+									formName='Заявка со страницы 404 "Получить консультацию'
+								/>
+							)}
+						</Popup>
+					</>
 				</div>
 			</div>
 		</div>
