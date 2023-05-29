@@ -13,7 +13,11 @@ import {
 import { FormAlpha } from '@/components/forms'
 import { Until } from '@/components/costs'
 
-const JumbotronCta = ({ programTitle = null, programId = null }) => {
+const JumbotronCta = ({
+	programTitle = null,
+	programId = null,
+	sale = null
+}) => {
 	const at = useAt()
 
 	const [open, setOpen] = useState(false)
@@ -59,6 +63,12 @@ const JumbotronCta = ({ programTitle = null, programId = null }) => {
 								</li>
 								<li className={stls.desktopLinkBorder}></li>
 								<li className={stls.linkItem}>{at.en ? 'Courses' : 'Курсы'}</li>
+								{sale && (
+									<li className={stls.sale}>
+										<span className={stls.red}>30 ДНЕЙ БЕСПЛАТНО! </span>
+										НЕ ПОНРАВИТСЯ - ВЕРНЁМ ДЕНЬГИ
+									</li>
+								)}
 							</ul>
 
 							<ul className={stls.mobileLinksList}>
