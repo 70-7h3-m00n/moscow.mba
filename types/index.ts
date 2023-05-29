@@ -137,3 +137,7 @@ export type { default as TypePageTeachersProps } from '@/types/page/teachers/pro
 export type { default as TypePageTeacherPropsQuery } from '@/types/page/teachers/queries/TypePageTeacherPropsQuery'
 export type { default as TypePageTeachersPropsQuery } from '@/types/page/teachers/queries/TypePageTeachersPropsQuery'
 export type { default as TypePageTeachersTeacherPathsQuery } from '@/types/page/teachers/queries/TypePageTeachersTeacherPathsQuery'
+// Page/sitemap/props
+export type { default as TypePageSitemapProps } from '@/types/page/sitemap/props/TypePageSitemapProps'
+// Page/sitemap/queries
+export type { default as TypePageSitemapPropsQuery } from '@/types/page/sitemap/queries/TypePageSitemapPropsQuery'

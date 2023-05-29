@@ -8,7 +8,8 @@ import {
 	TypePageProgramsProps,
 	TypePagePromoProps,
 	TypePageTeachersProps,
-	TypePageTeacherProps
+	TypePageTeacherProps,
+	TypePageSitemapProps
 } from '@/types/index'
 import { routesFront, revalidate } from '@/config/index'
 import {
@@ -21,6 +22,7 @@ import {
 	getStaticPropsPageJournalArticles,
 	getStaticPropsPageJournalArticle
 } from '@/lib/index'
+import getStaticPropsSitemap from '../getStaticProps/getStaticPropsSitemap'
 
 type TypeHandleGetStaticPropsProps = {
 	page?: TypeRoutesFront[keyof TypeRoutesFront]
@@ -46,6 +48,7 @@ const handleGetStaticProps = async ({
 		| TypePagePromoProps
 		| TypePageTeachersProps
 		| TypePageTeacherProps
+		| TypePageSitemapProps
 		| null
 	revalidate: number | boolean
 }> => {
@@ -95,6 +98,9 @@ const handleGetStaticProps = async ({
 
 			case routesFront.promo:
 				return await getStaticPropsPagePromo({ context })
+
+			case routesFront.sitemap:
+				return await getStaticPropsSitemap({ context })
 
 			default:
 				return await getStaticPropsDefault({ context })

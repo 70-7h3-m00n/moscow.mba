@@ -114,7 +114,6 @@ const Footer = () => {
 									<IconDzen />
 								</Link>
 							</li>
-							<li></li>
 						</ul>
 					</div>
 					<div className={stls.links}>
@@ -213,8 +212,17 @@ const Footer = () => {
 												: 'Корпоративное обучение для бизнеса'}
 										</Link>
 									</li>
-									<li>
-										<Link href='https://islod.obrnadzor.gov.ru/rlic/details/2df11621-2d30-4173-9389-2fecc24a7639/'>
+									<li className={stls.linkItem}>
+										<Link
+											href={'/sitemap'}
+											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{at.en ? 'Sitemap' : 'Карта сайта'}
+										</Link>
+									</li>
+									<li className={stls.liLicense}>
+										<Link
+											target='_blank'
+											href='https://islod.obrnadzor.gov.ru/rlic/details/2df11621-2d30-4173-9389-2fecc24a7639/'>
 											<Image
 												className={stls.licenseImage}
 												src={licenseP1}
@@ -223,16 +231,84 @@ const Footer = () => {
 												alt='Лицензия компании'
 											/>
 											<p className={stls.license}>
-												Государственная лицензия №041221
+												{at.en
+													? 'State License №041221'
+													: 'Государственная лицензия №041221'}
 											</p>
 										</Link>
 									</li>
 								</ul>
+								<div className={stls.mobileLicense}>
+									<Link
+										target='_blank'
+										href='https://islod.obrnadzor.gov.ru/rlic/details/2df11621-2d30-4173-9389-2fecc24a7639/'>
+										<Image
+											className={stls.licenseImage}
+											src={licenseP1}
+											width={111}
+											height={162}
+											alt='Лицензия компании'
+										/>
+										<p className={stls.license}>
+											{at.en
+												? 'State License №041221'
+												: 'Государственная лицензия №041221'}
+										</p>
+									</Link>
+									<div className={stls.locationPhone}>
+										<IconLocation />
+										<span>
+											{contactInfo.ru.address.city},{' '}
+											{contactInfo.ru.address.street}
+										</span>
+									</div>
+									<ul className={stls.socialsListMobile}>
+										<li className={stls.socialItem}>
+											<Link
+												className={stls.socialLink}
+												href='https://vk.com/moscow_mba'
+												aria-label='MBA VK'
+												target='_blank'>
+												<IconVk />
+											</Link>
+										</li>
+										<li className={stls.socialItem}>
+											<Link
+												className={stls.socialLink}
+												href='https://t.me/mbamoscow'
+												aria-label='MBA Telegram'
+												target='_blank'>
+												<IconTelegramAlt />
+											</Link>
+										</li>
+										<li
+											className={cn(stls.socialItem, stls.socialItemWhatsApp)}>
+											<Link
+												className={stls.socialLink}
+												// href='https://api.whatsapp.com/send?phone=89258088389text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C!'
+												href='https://api.whatsapp.com/send?phone=79258088389&text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C.%20%D0%AF%20%D0%BF%D0%BE%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%83'
+												aria-label='MBA Whatsapp'
+												target='_blank'
+												rel='noopener noreferrer'>
+												<IconWhatsappAlt />
+											</Link>
+										</li>
+										<li className={stls.socialItem}>
+											<Link
+												className={stls.socialLink}
+												href='https://dzen.ru/moscow_business_academy'
+												aria-label='MBA Dzen'
+												target='_blank'>
+												<IconDzen />
+											</Link>
+										</li>
+									</ul>
+								</div>
 								<div className={stls.linksListBottom}>
 									<p className={stls.companyDescription}>
-										Автономная некоммерческая организация дополнительного
-										профессионального образования «Московская бизнес академия»,
-										ИНН 9725034765
+										{at.en
+											? 'Autonomous Non-Profit Organization of Additional Professional Education "Moscow Business Academy", INN 9725034765.'
+											: 'Автономная некоммерческая организация дополнительного профессионального образования "Московская бизнес академия", ИНН 9725034765'}
 									</p>
 									<div className={stls.paymentMethods}>
 										<IconMir />
