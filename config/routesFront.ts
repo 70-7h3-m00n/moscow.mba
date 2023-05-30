@@ -32,6 +32,7 @@ const routesFront: TypeRoutesFront = {
 	review: '/reviews/[review]',
 	teachers: '/teachers',
 	teachersTeacher: '/teachers/[teacher]',
+	sitemap: '/sitemap',
 	assetsImgsIconsManifestIcon512: '/assets/images/icons/manifest-icon-512.png'
 }
 

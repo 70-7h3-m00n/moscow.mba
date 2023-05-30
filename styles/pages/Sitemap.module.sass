@@ -1,0 +1,53 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/utils/funcs' as f
+
+.container
+  margin: 30px auto 30px
+  padding-left: 10px
+  padding-right: 10px
+  width: 1310px
+  font-size: 20px
+  @include m.media(desktop)
+    width: 1000px
+  @include m.media(laptop, tablet)
+    width: 710px
+  @include m.media(tablet, phone)
+    width: 100%
+  &::before,
+  &::after
+    content: ' '
+    display: table
+  &::after
+    clear: both
+
+.mainTitle
+  font-size: 40px
+
+.linkTitle
+  font-size: 30px
+  font-weight: bold
+  margin-bottom: 15px
+  h3
+    font-size: 30px
+    font-weight: bold
+    margin-bottom: 15px
+
+.list
+  > li
+    margin-bottom: 10px
+
+.span
+  border-radius: 20px
+  padding: 3px 8px
+  font-size: 14px
+  color: #fff
+  background-color: #ff3535
+
+.link
+  :hover
+    color: #ff3535
+
+.item
+  display: flex
+  gap: 5px

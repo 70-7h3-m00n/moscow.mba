@@ -29,6 +29,7 @@ type TypeRoutesFront = {
 	reviews: '/reviews'
 	review: '/reviews/[review]'
 	teachersTeacher: '/teachers/[teacher]'
+	sitemap: '/sitemap'
 	assetsImgsIconsManifestIcon512: '/assets/images/icons/manifest-icon-512.png'
 }
 
