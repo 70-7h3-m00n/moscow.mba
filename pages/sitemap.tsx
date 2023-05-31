@@ -22,24 +22,34 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 							</Link>
 						</li>
 						<li>
-							<Link href='/about'>Об академии</Link>
+							<Link className={stls.link} href='/about'>
+								Об академии
+							</Link>
 						</li>
 						<li>
-							<Link href='/legal'>Сведения об организации</Link>
+							<Link className={stls.link} href='/legal'>
+								Сведения об организации
+							</Link>
 						</li>
 						<li>
-							<Link href='/corporate-clients'>
+							<Link className={stls.link} href='/corporate-clients'>
 								Корпоративное обучение для бизнеса
 							</Link>
 						</li>
 						<li>
-							<Link href='/payment'>Способы оплаты</Link>
+							<Link className={stls.link} href='/payment'>
+								Способы оплаты
+							</Link>
 						</li>
 						<li>
-							<Link href='/contact'>Контакты</Link>
+							<Link className={stls.link} href='/contact'>
+								Контакты
+							</Link>
 						</li>
 						<li>
-							<Link href='/webinars'>Вебинары</Link>
+							<Link className={stls.link} href='/webinars'>
+								Вебинары
+							</Link>
 						</li>
 					</ul>
 				</li>
@@ -48,12 +58,12 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 					<Link className={stls.linkTitle} href='/programs'>
 						<h2>Программы</h2>
 					</Link>
+					<Link
+						className={stls.linkTitle}
+						href={'https://moscow.mba/programs?filterTypeProgram=mba'}>
+						<h3>MBA</h3>
+					</Link>
 					<ul className={stls.list}>
-						<Link
-							className={stls.linkTitle}
-							href={'https://moscow.mba/programs?filterTypeProgram=mba'}>
-							<h3>MBA</h3>
-						</Link>
 						{programs
 							?.filter(program => program.category.type === 'mba')
 							?.sort((a, b) => a.title.localeCompare(b.title))
@@ -70,12 +80,12 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 								</li>
 							))}
 					</ul>
+					<Link
+						className={stls.linkTitle}
+						href={'https://moscow.mba/programs?filterTypeProgram=mini'}>
+						<h3>Mini MBA</h3>
+					</Link>
 					<ul className={stls.list}>
-						<Link
-							className={stls.linkTitle}
-							href={'https://moscow.mba/programs?filterTypeProgram=mini'}>
-							<h3>Mini MBA</h3>
-						</Link>
 						{programs
 							?.filter(program => program.category.type === 'mini')
 							?.sort((a, b) => a.title.localeCompare(b.title))
@@ -92,12 +102,12 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 								</li>
 							))}
 					</ul>
+					<Link
+						className={stls.linkTitle}
+						href={'https://moscow.mba/programs?filterTypeProgram=course'}>
+						<h3>Курсы</h3>
+					</Link>
 					<ul className={stls.list}>
-						<Link
-							className={stls.linkTitle}
-							href={'https://moscow.mba/programs?filterTypeProgram=course'}>
-							<h3>Курсы</h3>
-						</Link>
 						{programs
 							?.filter(program => program.category.type === 'course')
 							?.sort((a, b) => a.title.localeCompare(b.title))
@@ -114,16 +124,12 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 								</li>
 							))}
 					</ul>
+					<Link
+						className={stls.linkTitle}
+						href={'https://moscow.mba/programs?filterTypeProgram=profession'}>
+						<h3>Профессии</h3>
+					</Link>
 					<ul className={stls.list}>
-						<Link href={'/programs'}>
-							<Link
-								className={stls.linkTitle}
-								href={
-									'https://moscow.mba/programs?filterTypeProgram=profession'
-								}>
-								<h3>Профессии</h3>
-							</Link>
-						</Link>
 						{programs
 							?.filter(program => program.category.type === 'profession')
 							?.sort((a, b) => a.title.localeCompare(b.title))

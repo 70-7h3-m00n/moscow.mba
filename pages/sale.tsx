@@ -1,4 +1,4 @@
-import stls from '@/styles/pages/promo/Index.module.sass'
+import stls from '@/styles/pages/sale/Index.module.sass'
 import { GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import truncate from 'truncate'
