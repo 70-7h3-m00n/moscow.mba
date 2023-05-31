@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router'
 
+///////
+
 const setLastDayOfMonth = (currentDate: Date) => {
-	currentDate.setMonth(currentDate.getMonth() + 1)
-	currentDate.setDate(0)
+	currentDate.setMonth(currentDate.getMonth() + 1, 0)
 }
 
 const setNextDay = (currentDate: Date, currentDay: number) =>
