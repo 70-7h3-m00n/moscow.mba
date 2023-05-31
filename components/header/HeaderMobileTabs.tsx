@@ -33,9 +33,7 @@ const HeaderMobileTabs = ({
 				<Wrapper classNames={[stls.wrapper]}>
 					<ul className={stls.links}>
 						{/* TODO: onClick should be on the button, not on li */}
-						<li
-							onClick={() => setOpenMenu(true)}
-							className={cn(stls.link, stls.bold)}>
+						<li onClick={() => setOpenMenu(true)} className={stls.link}>
 							{at.en ? 'Programs' : 'Программы'}
 						</li>
 						{links.map((item, idx) => (

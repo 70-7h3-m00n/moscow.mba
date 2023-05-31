@@ -68,6 +68,7 @@ const useAt = () => {
 			getSplitedPath[0] === 'teachers' && (!!getSplitedPath?.[1] || false),
 		legal: getSplitedPath[0] === 'legal' && !getSplitedPath[1],
 		promo: getSplitedPath[0] === 'promo',
+		sale: getSplitedPath[0] === 'sale',
 		mini:
 			// extractQueryParameters().filterTypeProgram === 'mini' ||
 			getSplitedPath[1] === 'mini',
