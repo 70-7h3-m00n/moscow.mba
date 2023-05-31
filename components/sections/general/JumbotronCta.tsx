@@ -81,6 +81,12 @@ const JumbotronCta = ({
 									</Link>
 								</li>
 							</ul>
+							{sale && (
+								<p className={stls.mobileSale}>
+									<span className={stls.red}>30 ДНЕЙ БЕСПЛАТНО! </span>
+									НЕ ПОНРАВИТСЯ - ВЕРНЁМ ДЕНЬГИ
+								</p>
+							)}
 							<h1 className={stls.title}>
 								{at.en ? 'Concur' : 'Получите'}{' '}
 								<span className={stls.red}>

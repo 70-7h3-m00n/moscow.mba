@@ -126,28 +126,29 @@ const InfoRectangle = ({
 		]
 	}
 
-	const typeOfContent = at.index || at.promo ? 'academyInfo' : 'programInfo'
+	const typeOfContent =
+		at.index || at.promo || at.sale ? 'academyInfo' : 'programInfo'
 
 	return (
 		<>
 			<ul
 				className={cn(stls.container, {
 					[stls.programsPageContainer]: programPage,
-					[stls.academyInfoContainer]: at.index || at.promo,
+					[stls.academyInfoContainer]: at.index || at.promo || at.sale,
 					[stls.notActive]: notActive
 				})}>
 				{infoRectangleContent[typeOfContent].map((item, idx) => (
 					<li
 						key={idx + item.itemDetail}
 						className={cn(stls.item, {
-							[stls.academyInfoItem]: at.index || at.promo
+							[stls.academyInfoItem]: at.index || at.promo || at.sale
 						})}>
 						{item.itemTitle && (
 							<div className={stls.itemTitle}>{item.itemTitle}</div>
 						)}
 						<div
 							className={cn(stls.itemDetail, {
-								[stls.academyInfoItemDetail]: at.index || at.promo
+								[stls.academyInfoItemDetail]: at.index || at.promo || at.sale
 							})}>
 							{item.itemDetail}
 						</div>
