@@ -13,6 +13,11 @@ import {
 	IconLogoTitle,
 	IconMobilePhone
 } from '@/components/icons'
+import Popup from 'reactjs-popup'
+import { PopupForm } from '../popups'
+import IconSearch from '../icons/IconSearch'
+import IconUser from '../icons/IconUser'
+import { SearchField } from '../general'
 
 const HeaderInformation = ({ classNames = [], handleMenu, openMenu }) => {
 	const at = useAt()
@@ -68,6 +73,25 @@ const HeaderInformation = ({ classNames = [], handleMenu, openMenu }) => {
 						<IconMobilePhone large fill={'#000'} />
 					</a>
 				</div>
+				<Popup
+					trigger={
+						<a className={stls.link}>
+							{at.en ? <>CALLBACK</> : <>ОБРАТНЫЙ&nbsp;ЗВОНОК</>}
+						</a>
+					}
+					modal
+					lockScroll
+					nested
+					closeOnDocumentClick>
+					{/* @ts-expect-error  */}
+					{close => (
+						<PopupForm
+							title={at.en ? 'Get consultation' : 'Получите консультацию'}
+							closePopUpForm={close}
+							formName='Заявка с шапки страницы Получить консультацию'
+						/>
+					)}
+				</Popup>
 				{at.index || at.about || at.contact ? <BtnChangeLang /> : null}
 				{!at.promo && (
 					<div
@@ -80,6 +104,10 @@ const HeaderInformation = ({ classNames = [], handleMenu, openMenu }) => {
 						<i className={stls.line} />
 					</div>
 				)}
+				<SearchField header />
+				<Link href={'https://lms.moscow.mba/'} className={stls.linkUser}>
+					<IconUser classNames={[stls.iconUserAtBtn]} color='#262626' />
+				</Link>
 			</Wrapper>
 		</div>
 	)

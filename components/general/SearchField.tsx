@@ -11,8 +11,9 @@ import { Wrapper } from '@/components/layout'
 import { FormAlpha } from '@/components/forms'
 import { IconSearch, IconClose } from '@/components/icons'
 import useDecodedInput from '@/hooks/useDecodedInput'
+import cn from 'classnames'
 
-const SearchField = () => {
+const SearchField = ({ header = false }) => {
 	const at = useAt()
 	const { clearInput, handleInput, searchTerm, decodedEnInput } =
 		useDecodedInput('')
@@ -22,11 +23,11 @@ const SearchField = () => {
 
 	const [open, setOpen] = useState(false)
 	const [openLoader, setOpenLoader] = useState(false)
-	const programsNotBlended = programs.filter(
+	const programsNotBlended = programs?.filter(
 		program => program.studyFormat !== 'blended'
 	)
 
-	const filteredPrograms = programsNotBlended.filter(
+	const filteredPrograms = programsNotBlended?.filter(
 		program =>
 			(decodedEnInput &&
 				program?.title?.toLowerCase().includes(decodedEnInput)) ||
@@ -38,12 +39,22 @@ const SearchField = () => {
 		inputIsFocused && document.getElementById('SearchField-input')?.focus()
 	}, [inputIsFocused])
 
+	// classNames(
+	// 	stls.btn,
+	// 	{
+	// 		[stls.btnHeader]: header})
+
 	return (
 		<>
 			<Popup
 				trigger={() => (
-					<button className={stls.btn}>
-						<IconSearch classNames={[stls.iconSearchAtBtn]} /> Поиск
+					<button
+						className={cn({
+							[stls.btn]: !header,
+							[stls.btnHeader]: header
+						})}>
+						<IconSearch classNames={[stls.iconSearchAtBtn]} />{' '}
+						{!header && `Поиск`}
 					</button>
 				)}
 				modal
@@ -91,7 +102,7 @@ const SearchField = () => {
 								)}
 							</div>
 							<ul className={stls.list}>
-								{filteredPrograms.map((program, idx) => (
+								{filteredPrograms?.map((program, idx) => (
 									<li
 										key={program?.id || `SearchField__filteredPrograms-${idx}`}
 										className={stls.listItem}>
