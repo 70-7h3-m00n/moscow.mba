@@ -15,10 +15,10 @@ const Header = () => {
 	const handleMenu = (value: boolean) => {
 		if (value) {
 			openMenu()
-			// showOverlay()
+			showOverlay()
 		} else {
 			closeMenu()
-			// hideOverlay()
+			hideOverlay()
 		}
 	}
 
@@ -27,11 +27,11 @@ const Header = () => {
 			<div>
 				<HeaderTop handleMenu={handleMenu} openMenu={menuIsOpen} />
 			</div>
-			{/* {menuIsOpen && (
-        <div className={stls.menu}>
-          <HeaderMenu programs={programs} handleMenu={handleMenu} />
-        </div>
-      )} */}
+			{menuIsOpen && (
+				<div className={stls.menu}>
+					<HeaderMenu programs={programs} handleMenu={handleMenu} />
+				</div>
+			)}
 		</header>
 	)
 }
