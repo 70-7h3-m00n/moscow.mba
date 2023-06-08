@@ -15,7 +15,6 @@ import {
 } from '@/components/icons'
 import Popup from 'reactjs-popup'
 import { PopupForm } from '../popups'
-import IconSearch from '../icons/IconSearch'
 import IconUser from '../icons/IconUser'
 import { SearchField } from '../general'
 
@@ -73,6 +72,17 @@ const HeaderInformation = ({ classNames = [], handleMenu, openMenu }) => {
 						<IconMobilePhone large fill={'#000'} />
 					</a>
 				</div>
+				{!at.promo && (
+					<div
+						className={cn(stls.burger, {
+							[stls.opened]: openMenu
+						})}
+						onClick={() => handleMenu(!openMenu)}>
+						<i className={stls.line} />
+						<i className={stls.line} />
+						<i className={stls.line} />
+					</div>
+				)}
 				<Popup
 					trigger={
 						<a className={stls.link}>
@@ -92,22 +102,13 @@ const HeaderInformation = ({ classNames = [], handleMenu, openMenu }) => {
 						/>
 					)}
 				</Popup>
-				{at.index || at.about || at.contact ? <BtnChangeLang /> : null}
-				{!at.promo && (
-					<div
-						className={cn(stls.burger, {
-							[stls.opened]: openMenu
-						})}
-						onClick={() => handleMenu(!openMenu)}>
-						<i className={stls.line} />
-						<i className={stls.line} />
-						<i className={stls.line} />
-					</div>
-				)}
-				<SearchField header />
-				<Link href={'https://lms.moscow.mba/'} className={stls.linkUser}>
-					<IconUser classNames={[stls.iconUserAtBtn]} color='#262626' />
-				</Link>
+				<div className={stls.linkWrapper}>
+					{at.index || at.about || at.contact ? <BtnChangeLang /> : null}
+					<SearchField header />
+					<Link href={'https://lms.moscow.mba/'} className={stls.linkUser}>
+						<IconUser classNames={[stls.iconUserAtBtn]} color='#262626' />
+					</Link>
+				</div>
 			</Wrapper>
 		</div>
 	)
