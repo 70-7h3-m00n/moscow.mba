@@ -131,6 +131,8 @@
   text-decoration-line: underline
   text-transform: uppercase
   color: #FF3535
+  @include m.media(phone, tablet, laptop, desktop)
+    display: none
 
 .linkUser
   width: 24px
@@ -138,3 +140,17 @@
   padding: 0
   border: none
   background-color: transparent
+
+.linkWrapper
+  display: flex
+  align-items: center
+  gap: 10px
+  @include m.media(phone, tablet, laptop)
+    display: none
+  svg
+    &:hover
+      rect
+        fill: #FF3535
+      path
+        fill: #FF3535
+        stroke: #FF3535 
