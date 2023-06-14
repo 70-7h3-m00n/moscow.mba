@@ -109,7 +109,7 @@ const SearchField = ({ header = false }) => {
 										<Link
 											legacyBehavior
 											href={`/programs/${program?.category?.type}/${program?.studyFormat}/${program?.slug}`}>
-											<a className={stls.listItemLink}>
+											<a onClick={close} className={stls.listItemLink}>
 												<p className={stls.p}>
 													<Highlighter
 														highlightClassName={stls.highlight}
