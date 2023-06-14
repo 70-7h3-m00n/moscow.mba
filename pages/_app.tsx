@@ -137,7 +137,8 @@ function MyApp({ Component, pageProps, router }) {
 		'/programs/mini/online/small-business-management',
 		'/programs/mini/online/financial-management',
 		'/programs/mini/online/marketing-management',
-		'/programs/mini/online/human-resource'
+		'/programs/mini/online/human-resource',
+		'/'
 	]
 
 	return (
