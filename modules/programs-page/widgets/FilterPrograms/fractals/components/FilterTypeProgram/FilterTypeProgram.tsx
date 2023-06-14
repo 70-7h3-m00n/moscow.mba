@@ -40,7 +40,15 @@ const FilterTypeProgram = () => {
 					)
 				})
 			} else {
-				setQueryURI({ ...configPrograms })
+				if (
+					configPrograms.sorting === 'default' &&
+					configPrograms.filterTypeProgram === 'all' &&
+					configPrograms.filterTrainingFormat === 'online'
+				) {
+					setQueryURI(null)
+				} else {
+					setQueryURI({ ...configPrograms })
+				}
 			}
 		}
 	}, [configPrograms])
