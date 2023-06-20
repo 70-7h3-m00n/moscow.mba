@@ -5,57 +5,59 @@ const useAt = () => {
 
 	const router = useRouter()
 
-	// Taking query parameters from the URI
-	function extractQueryParameters(): {
-		sorting: null | string
-		filterTypeProgram: null | string
-		filterTrainingFormat: null | string
-		filterDuration: null | string
-		filterDirection: null | string
-	} {
-		const queryParameters = {
-			sorting: null,
-			filterTypeProgram: null,
-			filterTrainingFormat: null,
-			filterDuration: null,
-			filterDirection: null
-		}
-		const queryString = router.asPath.split('?')[1]
-		if (queryString) {
-			const parameterPairs = queryString.split('&')
-			for (const parameterPair of parameterPairs) {
-				const [key, value] = parameterPair.split('=')
-				queryParameters[key] = value
-			}
-		}
-		return queryParameters
-	}
+	// // Taking query parameters from the URI
+	// function extractQueryParameters(): {
+	// 	sorting: null | string
+	// 	filterTypeProgram: null | string
+	// 	filterTrainingFormat: null | string
+	// 	filterDuration: null | string
+	// 	filterDirection: null | string
+	// } {
+	// 	const queryParameters = {
+	// 		sorting: null,
+	// 		filterTypeProgram: null,
+	// 		filterTrainingFormat: null,
+	// 		filterDuration: null,
+	// 		filterDirection: null
+	// 	}
+	// 	const queryString = router.asPath.split('?')[1]
+	// 	if (queryString) {
+	// 		const parameterPairs = queryString.split('&')
+	// 		for (const parameterPair of parameterPairs) {
+	// 			const [key, value] = parameterPair.split('=')
+	// 			queryParameters[key] = value
+	// 		}
+	// 	}
+	// 	return queryParameters
+	// }
 
-	// Make getSplitedPath from the query parameters
-	function makeSplittedPath(): string[] {
-		if (
-			pathname === '/programs' &&
-			router.asPath.split('/')[0] !== query.locale
-		) {
-			const {} = extractQueryParameters()
-			const result = [
-				'programs',
-				extractQueryParameters().filterTypeProgram,
-				extractQueryParameters().filterTrainingFormat
-			]
-			return result
-		} else {
-			return pathname.split('/').filter(item => item !== '' && item !== '[url]')
-		}
-	}
+	// // Make getSplitedPath from the query parameters
+	// function makeSplittedPath(): string[] {
+	// 	if (
+	// 		pathname === '/programs' &&
+	// 		router.asPath.split('/')[0] !== query.locale
+	// 	) {
+	// 		const {} = extractQueryParameters()
+	// 		const result = [
+	// 			'programs',
+	// 			extractQueryParameters().filterTypeProgram,
+	// 			extractQueryParameters().filterTrainingFormat
+	// 		]
+	// 		return result
+	// 	} else {
+	// 		return pathname.split('/').filter(item => item !== '' && item !== '[url]')
+	// 	}
+	// }
 
-	// const getSplitedPath = pathname
-	// 	.split('/')
-	// 	.filter(item => item !== '' && item !== '[url]')
+	// // const getSplitedPath = pathname
+	// // 	.split('/')
+	// // 	.filter(item => item !== '' && item !== '[url]')
 
-	const getSplitedPath = makeSplittedPath()
+	// const getSplitedPath = makeSplittedPath()
 
-	// console.log(getSplitedPath)
+	const getSplitedPath = pathname
+		.split('/')
+		.filter(item => item !== '' && item !== '[url]')
 
 	const getProgramTitle = asPath.split('/')[4]
 
@@ -69,26 +71,14 @@ const useAt = () => {
 		legal: getSplitedPath[0] === 'legal' && !getSplitedPath[1],
 		promo: getSplitedPath[0] === 'promo',
 		sale: getSplitedPath[0] === 'sale',
-		mini:
-			// extractQueryParameters().filterTypeProgram === 'mini' ||
-			getSplitedPath[1] === 'mini',
-		mba:
-			// extractQueryParameters().filterTypeProgram === 'mba' ||
-			getSplitedPath[1] === 'mba',
-		course:
-			// extractQueryParameters().filterTypeProgram === 'course' ||
-			getSplitedPath[1] === 'course',
-		profession:
-			// extractQueryParameters().filterTypeProgram === 'profession' ||
-			getSplitedPath[1] === 'profession',
+		mini: getSplitedPath[1] === 'mini',
+		mba: getSplitedPath[1] === 'mba',
+		course: getSplitedPath[1] === 'course',
+		profession: getSplitedPath[1] === 'profession',
 		executive: getSplitedPath[1] === 'executive',
 		programs: getSplitedPath[0] === 'programs' && !getSplitedPath[3],
-		online:
-			// extractQueryParameters().filterTrainingFormat === 'online' ||
-			getSplitedPath[2] === 'online',
-		blended:
-			// extractQueryParameters().filterTrainingFormat === 'blended' ||
-			getSplitedPath[2] === 'blended',
+		online: getSplitedPath[2] === 'online',
+		blended: getSplitedPath[2] === 'blended',
 		webinars: getSplitedPath[0] === 'webinars',
 		webinarsUpcoming:
 			getSplitedPath[0] === 'webinars' && getSplitedPath[1] === 'upcoming',

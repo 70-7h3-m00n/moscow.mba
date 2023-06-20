@@ -39,24 +39,16 @@ const Page404 = () => {
 				</p>
 				<p className={stls.paragraph}>Вот несколько полезных ссылок:</p>
 				<div className={stls.buttonBox}>
-					<Link
-						href='/programs?sorting=default&filterTypeProgram=mba&filterTrainingFormat=online'
-						legacyBehavior>
+					<Link href='/programs/mba' legacyBehavior>
 						<button className={stls.button}>MBA</button>
 					</Link>
-					<Link
-						href='/programs?sorting=default&filterTypeProgram=mini&filterTrainingFormat=online'
-						legacyBehavior>
+					<Link href='/programs/mini' legacyBehavior>
 						<button className={stls.button}>MINI MBA</button>
 					</Link>
-					<Link
-						href='/programs?sorting=default&filterTypeProgram=profession&filterTrainingFormat=online'
-						legacyBehavior>
+					<Link href='/programs/profession/' legacyBehavior>
 						<button className={stls.button}>Профессии</button>
 					</Link>
-					<Link
-						href='/programs?sorting=default&filterTypeProgram=course&filterTrainingFormat=online'
-						legacyBehavior>
+					<Link href='/programs/course/' legacyBehavior>
 						<button className={stls.button}>Курсы</button>
 					</Link>
 				</div>

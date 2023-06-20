@@ -25,8 +25,9 @@
 
 .infoRectangleOldPrice
   position: relative
-  font-size: 16px
-  font-weight: 300
+  font-size: 20px
+  font-weight: 500
+  margin-right: 12px
   &::after
     content: ''
     width: 110%
@@ -41,9 +42,8 @@
     transform: rotate(9deg)
 
 .infoRectangleNewPrice
-  font-size: 20px
-  font-weight: 500
-  margin-right: 8px
+  font-size: 16px
+  font-weight: 300
   &::after
     display: none
   @include m.media(phone)

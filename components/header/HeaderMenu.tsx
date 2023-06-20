@@ -47,23 +47,23 @@ const HeaderMenu = ({ programs, handleMenu }) => {
 
 	const tabs = [
 		{
-			href: '/programs?sorting=default&filterTypeProgram=mini&filterTrainingFormat=online',
+			href: '/programs/mini/online',
 			val: 'Mini MBA'
 		},
 		{
-			href: '/programs?sorting=default&filterTypeProgram=mba&filterTrainingFormat=online',
+			href: '/programs/mba/online',
 			val: 'MBA'
 		},
 		{
-			href: '/programs?sorting=default&filterTypeProgram=profession&filterTrainingFormat=online',
+			href: '/programs/profession/online',
 			val: at.en ? 'Professions' : 'Профессии'
 		},
 		{
-			href: '/programs?sorting=default&filterTypeProgram=course&filterTrainingFormat=online',
+			href: '/programs/course/online',
 			val: at.en ? 'Courses' : 'Курсы'
 		},
 		{
-			href: '/programs?sorting=default&filterTypeProgram=all&filterTrainingFormat=online',
+			href: '/programs/mini/online',
 			val: at.en ? 'All programs' : 'Все программы'
 		}
 	]
