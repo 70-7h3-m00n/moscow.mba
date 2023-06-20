@@ -11,7 +11,11 @@ const PageProgramsMiniOnlineProgram = ({ program, programs }) => {
 	return (
 		<>
 			<SeoPagesProgram program={program} />
-			<OnlineProgram program={program} teachers={program?.teachers} />
+			<OnlineProgram
+				program={program}
+				programs={programs}
+				teachers={program?.teachers}
+			/>
 		</>
 	)
 }

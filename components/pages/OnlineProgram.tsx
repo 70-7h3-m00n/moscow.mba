@@ -46,7 +46,7 @@ import Pros from '@/components/sections/general/Pros'
 import React from 'react'
 import { DigitalTransformationContext } from '@/context/index'
 
-const PageOnlineProgram = ({ program, teachers }) => {
+const PageOnlineProgram = ({ program, programs, teachers }) => {
 	const router = useRouter()
 
 	// TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA
@@ -66,7 +66,7 @@ const PageOnlineProgram = ({ program, teachers }) => {
 			{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
 			<DigitalTransformationContext.Provider
 				value={setIsdigitalTransformation()}>
-				<JumbotronProgram program={program} />
+				<JumbotronProgram program={program} programs={programs} />
 				<ProgramGoal data={program} />
 				<WhatWillYouLearn data={program} />
 				<ProgramDesc />

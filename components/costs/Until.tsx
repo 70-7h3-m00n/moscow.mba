@@ -1,14 +1,12 @@
 import { useRouter } from 'next/router'
 
-///////
-
 const setLastDayOfMonth = (currentDate: Date) => {
 	currentDate.setMonth(currentDate.getMonth() + 1, 0)
 }
 
 const setNextDay = (currentDate: Date, currentDay: number) =>
 	currentDay <= 20
-		? currentDate.setDate(currentDay <= 13 ? 13 : 20)
+		? currentDate.setDate(currentDay <= 10 ? 10 : 20)
 		: setLastDayOfMonth(currentDate)
 
 const Until = ({ preposition = true, executive = false }) => {
