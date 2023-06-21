@@ -2,7 +2,7 @@ import stls from '@/styles/components/general/InfoRectangle.module.sass'
 import cn from 'classnames'
 import { useAt } from '@/hooks/index'
 // import { Wrapper } from '@/components/layout'
-import { PopupInfo } from '@/components/popups'
+import { PopupInfo, PopupDuration } from '@/components/popups'
 import { Until, TrainingPeriod, Price } from '@/components/costs'
 import { getRenderTime } from '@/helpers/index'
 
@@ -12,7 +12,8 @@ const InfoRectangle = ({
 	programPage = false,
 	type = null,
 	format = null,
-	studyDurationMonths = null
+	studyDurationMonths = null,
+	studyDurationHours = null
 }) => {
 	const at = useAt()
 	const isDiscounted =
@@ -21,6 +22,8 @@ const InfoRectangle = ({
 		(at.profession && at.online) ||
 		(at.course && at.online) ||
 		at.mbl
+
+	const durationHours = at.mini ? 1260 : at.mba ? 3420 : studyDurationHours
 
 	const date = new Date()
 	const month = date.toLocaleString('default', { month: 'long' })
@@ -32,28 +35,10 @@ const InfoRectangle = ({
 			{
 				itemTitle: 'Курс обновлен',
 				itemDetail: `${monthUpperCase} ${year} года`
-				// itemDetail: <TrainingPeriod period={studyDurationMonths} type={type} />
 			},
 			{
 				itemTitle: 'Рассрочка',
 				itemDetail: 'Рассрочка 0%'
-				// at.online
-				// 	? at.en
-				// 		? 'Remotely'
-				// 		: 'Дистанционно'
-				// 	: at.blended
-				// 	? at.en
-				// 		? 'Half in-person'
-				// 		: 'С очными модулями'
-				// 	: at.executive
-				// 	? at.en
-				// 		? 'In person'
-				// 		: 'Очно'
-				// 	: at.mbl
-				// 	? at.en
-				// 		? 'Remotely'
-				// 		: 'Дистанционно'
-				// 	: ''
 			},
 			{
 				itemTitle: 'Старт',
@@ -62,7 +47,6 @@ const InfoRectangle = ({
 				)
 			},
 			{
-				// itemTitle: 'Стоимость:',
 				itemTitle: (
 					<PopupInfo
 						title={'Диплом'}
@@ -82,36 +66,17 @@ const InfoRectangle = ({
 					/>
 				),
 				itemDetail: 'Заносится в ФРДО'
-				// (
-				// 	// <Price
-				// 	//   discount={isDiscounted}
-				// 	//   type={type}
-				// 	//   format={format}
-				// 	//   renderedByComponent='InfoRectangle'
-				// 	// />
-
-				// 	// 'Заносится в ФРДО'
-				// 	<PopupInfo
-				// 		title={'Заносится в ФРДО'}
-				// 		content={{
-				// 			title: 'ФРДО — ',
-				// 			subtitle: 'Федеральный реестр сведений документов об образовании',
-				// 			description: 'Цели Федерального реестра:',
-				// 			items: [
-				// 				'Ликвидация оборота поддельных документов государственного образца об образовании',
-				// 				'Обеспечение ведомств и работодателей достоверной информацией о квалификации претендентов на\n' +
-				// 					'трудоустройство',
-				// 				'Сокращение числа нарушений и коррупции в образовательных учреждениях',
-				// 				'Повышение качества образования за счет обеспечения общественности достоверной информацией о выпускниках'
-				// 			]
-				// 		}}
-				// 	/>
-				// )
 			}
 		],
 		programInfo: [
 			{
-				itemTitle: 'Срок обучения',
+				itemTitle: (
+					<PopupDuration
+						title={'Срок обучения'}
+						duration={durationHours}
+						classNames={stls.popupInfo}
+					/>
+				),
 				itemDetail: <TrainingPeriod period={studyDurationMonths} type={type} />
 			},
 			{

@@ -1,0 +1,31 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+
+.container
+  display: flex
+
+.trigger
+  position: relative
+  svg
+    position: absolute
+    top: -15px
+    left: -135px
+
+.content
+  display: flex
+  min-width: 270px
+  padding: 20px
+  background-color: #fff
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
+  @include m.media(tablet, phone)
+    width: 100%
+    padding: 30px
+    flex-direction: column
+
+.text
+  margin-right: 5px
+  font-weight: 500
+
+.time
+  display: flex
+

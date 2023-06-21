@@ -27,4 +27,6 @@ export { default as handleSubmitFormArticle } from '@/helpers/general/handleSubm
 
 // ./ruCases
 export { default as ruCaseMonth } from '@/helpers/ruCases/ruCaseMonth'
+export { default as ruCaseFromMonth } from '@/helpers/ruCases/ruCaseFromMonth'
 export { default as ruCaseProgram } from '@/helpers/ruCases/ruCaseProgram'
+export { default as ruCaseHours } from '@/helpers/ruCases/ruCaseHours'
