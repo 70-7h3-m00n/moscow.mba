@@ -2,6 +2,7 @@
 export { default as PopupForm } from '@/components/popups/PopupForm'
 export { default as PopupImage } from '@/components/popups/PopupImage'
 export { default as PopupInfo } from '@/components/popups/PopupInfo'
+export { default as PopupDuration } from '@/components/popups/PopupDuration'
 export { default as PopupLearnMore } from '@/components/popups/PopupLearnMore'
 export { default as PopupLoader } from '@/components/popups/PopupLoader'
 export { default as PopupReview } from '@/components/popups/PopupReview'

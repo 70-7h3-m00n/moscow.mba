@@ -36,8 +36,6 @@ const JumbotronProgram = ({ program, programs = null }) => {
 	}
 	const isDigitalTransformation = useContext(DigitalTransformationContext)
 
-	const placesLeft = 7
-
 	// Toggle Switch
 	const [toggleSwitch, setToggleSwitch] = useState(at.mini)
 
@@ -66,6 +64,8 @@ const JumbotronProgram = ({ program, programs = null }) => {
 		console.log(toggleSwitch)
 		router.push(alternativeLink)
 	}
+
+	console.log('program?.duration: ', program?.duration)
 
 	return (
 		<section className={stls.container}>
@@ -260,6 +260,7 @@ const JumbotronProgram = ({ program, programs = null }) => {
 							type={program?.category?.type ?? 'executive'}
 							format={program?.studyFormat}
 							studyDurationMonths={program?.duration?.minStudyMonths}
+							studyDurationHours={program?.duration?.studyHours}
 						/>
 					)}
 				</div>

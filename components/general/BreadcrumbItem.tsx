@@ -9,8 +9,6 @@ const BreadcrumbItem = ({
 }) => {
 	let linkRef = linkPath
 
-	if (linkPath === '/programs') linkRef += '/mini/online'
-
 	const lastBreadcrumbItem = itemIndex === listLength - 1
 
 	if (lastBreadcrumbItem)

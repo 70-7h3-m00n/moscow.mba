@@ -63,7 +63,7 @@ const HeaderMenu = ({ programs, handleMenu }) => {
 			val: at.en ? 'Courses' : 'Курсы'
 		},
 		{
-			href: '/programs/mini/online',
+			href: '/programs',
 			val: at.en ? 'All programs' : 'Все программы'
 		}
 	]
