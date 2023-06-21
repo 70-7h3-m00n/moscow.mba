@@ -2,7 +2,7 @@ import stls from '@/styles/components/sections/JumbotronProgram.module.sass'
 import cn from 'classnames'
 import Popup from 'reactjs-popup'
 import Image from 'next/legacy/image'
-import Until from '@/components/costs/Until'
+import { Until, PlacesLeft } from '@/components/costs/'
 import {
 	Breadcrumbs,
 	JumbotronLabel,
@@ -13,11 +13,13 @@ import Discount from '@/components/costs/Discount'
 import { useAt } from '@/hooks/index'
 import { IconCheckCircleAlt } from '@/components/icons'
 import Loan from '@/components/costs/Loan'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { DigitalTransformationContext } from '@/context/index'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-const JumbotronProgram = ({ program }) => {
+const JumbotronProgram = ({ program, programs = null }) => {
+	const router = useRouter()
 	const at = useAt()
 	const isDiscounted =
 		(at.mini && at.online) ||
@@ -34,7 +36,36 @@ const JumbotronProgram = ({ program }) => {
 	}
 	const isDigitalTransformation = useContext(DigitalTransformationContext)
 
-	// const isActive = program.isActive
+	// Toggle Switch
+	const [toggleSwitch, setToggleSwitch] = useState(at.mini)
+
+	const currentSlug = router.query.slug
+
+	const alternativeType = at.mba ? 'mini' : at.mini ? 'mba' : null
+	const alternativeStydyFormat = at.online ? 'online' : 'blended'
+
+	const alternativeProgram =
+		programs &&
+		programs?.filter(
+			prog =>
+				prog.slug === currentSlug &&
+				prog.category.type === alternativeType &&
+				prog.studyFormat === alternativeStydyFormat &&
+				prog.isActive
+		)
+
+	const alternativeLink =
+		alternativeProgram &&
+		alternativeProgram[0] &&
+		`/programs/${alternativeType}/${alternativeStydyFormat}/${currentSlug}`
+
+	const handleToggleSwitch = event => {
+		setToggleSwitch(event.target.checked)
+		console.log(toggleSwitch)
+		router.push(alternativeLink)
+	}
+
+	console.log('program?.duration: ', program?.duration)
 
 	return (
 		<section className={stls.container}>
@@ -90,7 +121,7 @@ const JumbotronProgram = ({ program }) => {
 								<PopupForm
 									title={at.en ? 'Get consultation' : 'Получите консультацию'}
 									closePopUpForm={close}
-									formName='Заявка со страницы 404 "Получить консультацию'
+									formName='Заявка со страницы недоступного курса'
 								/>
 							)}
 						</Popup>
@@ -111,7 +142,7 @@ const JumbotronProgram = ({ program }) => {
 				<div className={stls.content}>
 					<Breadcrumbs programChunkData={program} />
 					<div className={stls.contentTop}>
-						{(at.online || at.mbl) && (
+						{/* {(at.online || at.mbl) && (
 							<div className={cn(stls.discountSticker, stls.leftCorner)}>
 								<div className={stls.discountAmount}>
 									<Discount />
@@ -120,9 +151,25 @@ const JumbotronProgram = ({ program }) => {
 									<Until />
 								</span>
 							</div>
-						)}
+						)} */}
 						<div className={stls.label}>
-							<JumbotronLabel />
+							<div className={stls.leftContainer}>
+								<JumbotronLabel />
+								<div className={stls.placesLeft}>
+									Осталось мест: <PlacesLeft />
+								</div>
+							</div>
+							{!!alternativeLink && (
+								<label className={stls.switch}>
+									<input
+										className={stls.input}
+										type='checkbox'
+										defaultChecked={toggleSwitch}
+										onChange={handleToggleSwitch}
+									/>
+									<span className={stls.slider}></span>
+								</label>
+							)}
 						</div>
 					</div>
 					<div className={stls.flexContainer}>
@@ -203,7 +250,7 @@ const JumbotronProgram = ({ program }) => {
 							<li className={stls.separator}></li>
 
 							<li className={stls.item}>
-								<div className={stls.number}>1000+</div>
+								<div className={stls.number}>2000+</div>
 								<p>студентов по всему миру</p>
 							</li>
 						</ul>
@@ -213,6 +260,7 @@ const JumbotronProgram = ({ program }) => {
 							type={program?.category?.type ?? 'executive'}
 							format={program?.studyFormat}
 							studyDurationMonths={program?.duration?.minStudyMonths}
+							studyDurationHours={program?.duration?.studyHours}
 						/>
 					)}
 				</div>

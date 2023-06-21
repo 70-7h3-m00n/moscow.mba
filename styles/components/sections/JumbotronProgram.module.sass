@@ -142,11 +142,26 @@
 .contentTop
   margin-bottom: 32px
   @include m.media(desktop, laptop, tablet, phone)
-    display: inline-flex
     align-items: center
     position: relative
   @include m.media(phone)
     margin-bottom: 25px
+
+.leftContainer
+  display: flex
+  align-items: center
+  gap: 20px
+  @include m.media(tablet, phone)
+    flex-direction: column
+    align-items: start
+  @include m.media(phone)
+    width: 50%
+ 
+.placesLeft
+  font-weight: 500
+  font-size: 16px
+  line-height: 120%
+  text-transform: none
 
 .discountSticker
   display: flex
@@ -210,7 +225,8 @@
   font-size: 35px
 
 .label
-  margin-right: 140px
+  display: flex
+  justify-content: space-between
   font-size: 14px
   text-transform: uppercase
   font-weight: 400
@@ -220,9 +236,8 @@
   @include m.media(widescreen)
     padding-bottom: 35px
   @include m.media(tablet, phone)
-    margin-right: 120px
+    margin-right: 0
   @include m.media(phone)
-    margin-right: 110px
     font-size: 12px
   span
     display: inline-block
@@ -230,6 +245,77 @@
     text-align: center
     border: 1px solid #ffffff
     border-radius: 80px
+    @include m.media(phone)
+      padding: 13px 15px
+
+/*------ TOGGLE SWITCH ---------*/
+.switch
+  position: relative
+  display: inline-block
+  width: 230px
+  height: 44px
+  span
+    border: none
+  input
+    display: none
+  @include m.media(phone)
+    width: 168px
+
+.slider
+  position: absolute
+  cursor: pointer
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: #ff3535
+  -webkit-transition: .4s
+  transition: .4s
+  border-radius: 34px
+  &:before
+    position: absolute
+    content: ""
+    height: 34px
+    width: 34px
+    left: 5px
+    bottom: 5px
+    background-color: white
+    -webkit-transition: .4s
+    transition: .4s
+    border-radius: 50%
+  &:after
+    content: 'MINI MBA'
+    color: white
+    display: block
+    position: absolute
+    transform: translate(-50%,-50%)
+    top: 50%
+    left: 50%
+    font-weight: 400
+    font-size: 14px
+    line-height: 120%
+    letter-spacing: 0.1em
+    @include m.media(phone)
+      font-size: 12px
+
+.input:checked + .slider
+  background-color: #3C3C3C
+
+.input:focus + .slider
+  box-shadow: 0 0 1px #ff3535
+
+
+.input:checked + .slider:before
+  -webkit-transform: translateX(26px)
+  -ms-transform: translateX(26px)
+  transform: translateX(185px)
+  @include m.media(phone)
+    transform: translateX(120px)
+
+.input:checked + .slider:after
+  content: 'MBA ONLINE'
+
+/*--------- END --------*/
 
 .flexContainer
   display: flex

@@ -47,12 +47,12 @@ import SectionCheckPros from '@/components/sections/general/SectionCheckPros'
 import ECTSStandard from '@/components/sections/general/ECTSStandard'
 import GetStudyPlan from '@/components/sections/general/GetStudyPlan'
 
-const PageBlendedProgram = ({ program, teachers }) => {
+const PageBlendedProgram = ({ program, programs = null, teachers }) => {
 	const router = useRouter()
 
 	return (
 		<>
-			<JumbotronProgram program={program} />
+			<JumbotronProgram program={program} programs={programs} />
 			<ProgramGoal data={program} />
 			<WhatWillYouLearn data={program} />
 			<ProgramDesc />

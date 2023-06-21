@@ -7,7 +7,13 @@ module.exports = {
 	sitemapSize: 7000,
 	generateRobotsTxt: true,
 	generateIndexSitemap: false,
-	exclude: ['/payment', '/promo*', '*?'],
+	exclude: [
+		'/payment',
+		'/promo*',
+		'*?',
+		'/programs/professional/blended',
+		'/programs/profession/online/personnel-management-hr-administration'
+	],
 	// alternateRefs: [
 	//   {
 	//     href: 'https://moscow.mba/en-US',
@@ -43,7 +49,38 @@ module.exports = {
 					'/*en-US',
 					'/*kk_KZ',
 					'*/ru/',
-					'/*uz_UZ'
+					'/*uz_UZ',
+					'/promo*',
+					'*?',
+					'/*en-US',
+					'/*kk_KZ',
+					'*/ru/',
+					'/*uz_UZ',
+					'/dklfjhgkjdhsfgkljsdk;lfh',
+					'/sdgasdgasd',
+					'/programs/profession...1437331992',
+					'/f/f',
+					'/programs/course/online/nalogovoe-',
+					'/programs/mba/online/crisis-managemen',
+					'/programs/null/online/information-technology-management',
+					'/jkjkjk',
+					'/program%D0%B2%D0%B2',
+					'/%D0%BE%D0%BB%D0%BE%D0%BB%D0%BE%D0%BB',
+					'/programs/professional/blended/crisis-management',
+					'/programs/mba/online/corporate-governance-and-strategy-of-business-development',
+					'/programsm_',
+					'/programs/mini/online/security-',
+					'/journal/stati/investiczii',
+					'/programs/professional/online/605dd10fdc947d5f1c95e68a',
+					'/programs/mini/blended/6062f5857757eb02b87abc0a',
+					'/programs/mini/blended/6062f5857757eb02b87abc07',
+					'/jkj',
+					'/programs/p',
+					'/programs/mini/online/project-m',
+					'/programs/profession/online/Internal%20audit-and-control',
+					'/programs/mini/online/bG9naXN0aW',
+					'/programs/professional/blended',
+					'/programs/profession/online/personnel-management-hr-administration'
 				]
 			}
 		]

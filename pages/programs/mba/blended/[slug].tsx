@@ -12,7 +12,11 @@ const PageProgramsMbaBlendedProgram = ({ program, programs }) => {
 	return (
 		<>
 			<SeoPagesProgram program={program} />
-			<BlendedProgram program={program} teachers={program?.teachers} />
+			<BlendedProgram
+				program={program}
+				programs={programs}
+				teachers={program?.teachers}
+			/>
 		</>
 	)
 }

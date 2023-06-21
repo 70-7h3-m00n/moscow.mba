@@ -160,17 +160,6 @@ const Price = ({
 
 	return (
 		<>
-			<i
-				className={
-					discount
-						? getPriceClass('new', renderedByComponent)
-						: getPriceClass('simple', renderedByComponent)
-				}>
-				{programPriceKzUzConsidered
-					? toNumberWithSpaces(programPriceKzUzConsidered) +
-					  ` ${currencySymbol}`
-					: splitMonths(price?.[isDiscounted]?.[type]?.[format])}
-			</i>
 			{discount && (
 				<i
 					className={cn(getPriceClass('old', renderedByComponent), {
@@ -184,6 +173,17 @@ const Price = ({
 						: splitMonths(price?.regular?.[type]?.[format] || 0)}
 				</i>
 			)}
+			<i
+				className={
+					discount
+						? getPriceClass('new', renderedByComponent)
+						: getPriceClass('simple', renderedByComponent)
+				}>
+				{programPriceKzUzConsidered
+					? toNumberWithSpaces(programPriceKzUzConsidered) +
+					  ` ${currencySymbol}`
+					: splitMonths(price?.[isDiscounted]?.[type]?.[format])}
+			</i>
 		</>
 	)
 }
