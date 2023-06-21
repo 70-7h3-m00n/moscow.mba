@@ -15,18 +15,14 @@ const HeaderNav = ({ links, handleMenu, openMenu, classNames = [] }) => {
 			<Wrapper>
 				<div className={stls.menu}>
 					<div
-						className={cn(
-							stls.toggle
-							// {[stls.opened]: openMenu}
-						)}
-						// onClick={() => handleMenu(!openMenu)}
-					>
+						className={cn(stls.toggle, { [stls.opened]: openMenu })}
+						onClick={() => handleMenu(!openMenu)}>
 						<div className={stls.icon}>
 							<i className={stls.line} />
 							<i className={stls.line} />
 						</div>
-						{/* <span>{at.en ? 'Programs' : 'Программы'}</span> */}
-						<Link href={'/programs'}>{at.en ? 'Programs' : 'Программы'}</Link>
+						<span>{at.en ? 'Programs' : 'Программы'}</span>
+						{/* <Link href={'/programs'}>{at.en ? 'Programs' : 'Программы'}</Link> */}
 					</div>
 				</div>
 				<ul className={stls.list}>
