@@ -106,16 +106,37 @@ const InfoRectangle = ({
 				)
 			},
 			{
-				itemTitle: 'Стоимость:',
-				itemDetail: (
-					<Price
-						discount={isDiscounted}
-						type={type}
-						format={format}
-						renderedByComponent='InfoRectangle'
+				itemTitle: (
+					<PopupInfo
+						title={'Диплом'}
+						content={{
+							title: 'ФРДО — ',
+							subtitle: 'Федеральный реестр сведений документов об образовании',
+							description: 'Цели Федерального реестра:',
+							items: [
+								'Ликвидация оборота поддельных документов государственного образца об образовании',
+								'Обеспечение ведомств и работодателей достоверной информацией о квалификации претендентов на\n' +
+									'трудоустройство',
+								'Сокращение числа нарушений и коррупции в образовательных учреждениях',
+								'Повышение качества образования за счет обеспечения общественности достоверной информацией о выпускниках'
+							]
+						}}
+						classNames={stls.popupInfo}
 					/>
-				)
+				),
+				itemDetail: 'Заносится в ФРДО'
 			}
+			// {
+			// 	itemTitle: 'Стоимость:',
+			// 	itemDetail: (
+			// 		<Price
+			// 			discount={isDiscounted}
+			// 			type={type}
+			// 			format={format}
+			// 			renderedByComponent='InfoRectangle'
+			// 		/>
+			// 	)
+			// }
 		],
 		academyInfo: [
 			{
