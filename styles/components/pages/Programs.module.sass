@@ -159,3 +159,12 @@ section.jumbotronPrograms
     //   .slick-active button
     //     background: #ff3535
     //     color: #fff
+
+  .sortingContainer
+    position: relative
+    display: flex
+    justify-content: flex-end
+    @include m.media(desktop, widescreen)
+        grid-column: 2/3
+    @include m.media(phone, tablet, laptop)
+        justify-content: flex-start

@@ -1,5 +1,5 @@
-import usePrograms from '@/hooks/usePrograms'
 import stls from '@/styles/components/general/SortingPrograms.module.sass'
+import usePrograms from '@/hooks/usePrograms'
 import { useState } from 'react'
 
 const SortingPrograms = () => {

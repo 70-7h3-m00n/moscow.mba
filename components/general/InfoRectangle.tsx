@@ -72,7 +72,7 @@ const InfoRectangle = ({
 			{
 				itemTitle: (
 					<PopupDuration
-						title={'Срок обучения'}
+						title={'Срок обучения:'}
 						duration={durationHours}
 						classNames={stls.popupInfo}
 					/>

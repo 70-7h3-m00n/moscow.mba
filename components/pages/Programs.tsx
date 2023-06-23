@@ -1,28 +1,23 @@
 import stls from '@/styles/components/pages/Programs.module.sass'
-import { useContext, useEffect } from 'react'
-import { NextSeo } from 'next-seo'
-import truncate from 'truncate'
+import { FC, useContext } from 'react'
 import { useAt } from '@/hooks/index'
 import { ContextStaticProps } from '@/context/index'
-// import {
-//   Breadcrumbs,
-//   InfoRectangle,
-//   ProgramSubjects,
-//   ProgramsQty,
-//   Filters
-// } from '@/components/general'
 import Breadcrumbs from '@/components/general/Breadcrumbs'
 import InfoRectangle from '@/components/general/InfoRectangle'
 import ProgramSubjects from '@/components/general/ProgramSubjects'
 import ProgramsQty from '@/components/general/ProgramsQty'
 import Filters from '@/components/general/Filters'
-// import { CardProgram } from '@/components/cards'
 import CardProgram from '@/components/cards/CardProgram'
-// import { IconCheckCircle } from '@/components/icons'
 import IconCheckCircle from '@/components/icons/IconCheckCircle'
 import ProgramsHero from '../general/ProgramsHero'
+import { SortingPrograms } from '../general'
 
-const PagePrograms = ({ mbaTypeOfProgram, mbaFormat }) => {
+interface Props {
+	mbaTypeOfProgram: any
+	mbaFormat: any
+}
+
+const PagePrograms: FC<Props> = ({ mbaTypeOfProgram, mbaFormat }) => {
 	const { programs, curStudyField } = useContext(ContextStaticProps)
 
 	const at = useAt()
@@ -39,34 +34,6 @@ const PagePrograms = ({ mbaTypeOfProgram, mbaFormat }) => {
 					program => program?.study_field?.name === curStudyField
 			  )
 			: programsFiltered
-
-	// const studyFieldsFiltered = Array.from(
-	//   new Set(programsFiltered.map(program => program.study_field.name))
-	// )
-
-	// const studyFieldsFiltered =
-	//   (at.profession || at.course) &&
-	//   studyFields?.filter((studyField, idx) => {
-	//     return programsFiltered.some(
-	//       program =>
-	//         program?.study_field?.name?.toLowerCase() ===
-	//         studyField?.toLowerCase()
-	//     )
-	//   })
-
-	// useEffect(() => {
-	//   if (at.profession || at.course) {
-	//     setCurStudyField(studyFields?.[0] || null)
-	//   } else {
-	//     setCurStudyField(null)
-	//   }
-	// }, [
-	//   at.profession,
-	//   at.course,
-	//   setCurStudyField,
-	//   studyFields
-	//   // studyFieldsFiltered
-	// ])
 
 	return (
 		<>
@@ -120,38 +87,25 @@ const PagePrograms = ({ mbaTypeOfProgram, mbaFormat }) => {
 									: ''}
 							</p>
 
-							{at.profession ? (
+							{at.profession && (
 								<div className={stls.desc}>
 									Программа профессиональной переподготовки разработана для
 									специалистов и руководителей, которые хотят систематизировать
 									имеющиеся знания или познакомиться с ключевыми аспектами новой
 									для себя сферы управленческой деятельности
 								</div>
-							) : at.course ? (
+							)}
+							{at.course && (
 								<div className={stls.desc}>
 									Программа повышения квалификации разработана для специалистов
 									и руководителей, которые хотят систематизировать имеющиеся
 									знания или познакомиться с ключевыми аспектами новой для себя
 									сферы управленческой деятельности
 								</div>
-							) : (
-								<div className={stls.counters}>
-									<div className={stls.counter}>
-										<IconCheckCircle />
-										<span>
-											<ProgramSubjects subjects='base' />
-											&nbsp;дисциплин об управлениии
-										</span>
-									</div>
-									<div className={stls.counter}>
-										<IconCheckCircle />
-										<span>
-											<ProgramSubjects subjects='specialty' />
-											&nbsp;дисциплин специализации
-										</span>
-									</div>
-								</div>
 							)}
+						</div>
+						<div className={stls.sortingContainer}>
+							<SortingPrograms />
 						</div>
 						<div className={stls.programs}>
 							{programCards?.map((program, idx) => {

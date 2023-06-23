@@ -7,6 +7,7 @@ import { routesFront } from '@/config/index'
 // import { Programs } from '@/components/pages'
 import { ProgramsPage } from 'modules'
 import { SeoPagesPrograms } from '@/components/seo'
+import { Programs } from '@/components/pages'
 
 const PagePrograms = ({ programs }) => {
 	usePageHandleContext({ programs })
@@ -14,8 +15,8 @@ const PagePrograms = ({ programs }) => {
 	return (
 		<>
 			<SeoPagesPrograms />
-			{/* <Programs mbaTypeOfProgram={'mini'} mbaFormat={'online'} /> */}
-			<ProgramsPage />
+			<Programs mbaTypeOfProgram={'mini'} mbaFormat={'online'} />
+			{/* <ProgramsPage /> */}
 		</>
 	)
 }

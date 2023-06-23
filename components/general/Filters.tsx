@@ -22,6 +22,15 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 
 	const at = useAt()
 
+	const allPrograms =
+		at.programs &&
+		!at.course &&
+		!at.executive &&
+		!at.mba &&
+		!at.mbl &&
+		!at.mini &&
+		!at.profession
+
 	const handleLinkClick = e => {
 		if (at.profession || at.course) e.preventDefault()
 	}
@@ -110,6 +119,14 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 				<li>
 					<h4 className={stls.title}>Формат обучения</h4>
 					<div className={stls.content}>
+						<Link href={`/programs`}>
+							<span
+								className={cn({
+									[stls.circle]: true,
+									[stls.active]: allPrograms
+								})}></span>{' '}
+							Все программы
+						</Link>
 						<Link href={`/programs/mini/${mbaFormat}`}>
 							<span
 								className={cn({
