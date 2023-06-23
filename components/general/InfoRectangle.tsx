@@ -13,7 +13,8 @@ const InfoRectangle = ({
 	type = null,
 	format = null,
 	studyDurationMonths = null,
-	studyDurationHours = null
+	studyDurationHours = null,
+	programPrice = null
 }) => {
 	const at = useAt()
 	const isDiscounted =
@@ -105,38 +106,39 @@ const InfoRectangle = ({
 					<Until preposition={false} executive={at.executive && false} />
 				)
 			},
-			{
-				itemTitle: (
-					<PopupInfo
-						title={'Диплом'}
-						content={{
-							title: 'ФРДО — ',
-							subtitle: 'Федеральный реестр сведений документов об образовании',
-							description: 'Цели Федерального реестра:',
-							items: [
-								'Ликвидация оборота поддельных документов государственного образца об образовании',
-								'Обеспечение ведомств и работодателей достоверной информацией о квалификации претендентов на\n' +
-									'трудоустройство',
-								'Сокращение числа нарушений и коррупции в образовательных учреждениях',
-								'Повышение качества образования за счет обеспечения общественности достоверной информацией о выпускниках'
-							]
-						}}
-						classNames={stls.popupInfo}
-					/>
-				),
-				itemDetail: 'Заносится в ФРДО'
-			}
 			// {
-			// 	itemTitle: 'Стоимость:',
-			// 	itemDetail: (
-			// 		<Price
-			// 			discount={isDiscounted}
-			// 			type={type}
-			// 			format={format}
-			// 			renderedByComponent='InfoRectangle'
+			// 	itemTitle: (
+			// 		<PopupInfo
+			// 			title={'Диплом'}
+			// 			content={{
+			// 				title: 'ФРДО — ',
+			// 				subtitle: 'Федеральный реестр сведений документов об образовании',
+			// 				description: 'Цели Федерального реестра:',
+			// 				items: [
+			// 					'Ликвидация оборота поддельных документов государственного образца об образовании',
+			// 					'Обеспечение ведомств и работодателей достоверной информацией о квалификации претендентов на\n' +
+			// 						'трудоустройство',
+			// 					'Сокращение числа нарушений и коррупции в образовательных учреждениях',
+			// 					'Повышение качества образования за счет обеспечения общественности достоверной информацией о выпускниках'
+			// 				]
+			// 			}}
+			// 			classNames={stls.popupInfo}
 			// 		/>
-			// 	)
+			// 	),
+			// 	itemDetail: 'Заносится в ФРДО'
 			// }
+			{
+				itemTitle: 'Стоимость:',
+				itemDetail: (
+					<Price
+						discount={isDiscounted}
+						type={type}
+						format={format}
+						renderedByComponent='InfoRectangle'
+						programPrice={programPrice}
+					/>
+				)
+			}
 		],
 		academyInfo: [
 			{
