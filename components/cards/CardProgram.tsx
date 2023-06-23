@@ -9,9 +9,6 @@ import { IconArrowTopRight } from '@/components/icons'
 const CardProgram = ({ professionLayout, program, number, type, format }) => {
 	const at = useAt()
 
-	const studyFieldIsAccounting =
-		program?.study_field?.slug?.trim() === 'accounting-analysis-and-audit'
-
 	return (
 		<Link legacyBehavior href={`/programs/${type}/${format}/${program?.slug}`}>
 			<a className={stls.container}>
@@ -42,11 +39,7 @@ const CardProgram = ({ professionLayout, program, number, type, format }) => {
 							discount={!at.blended}
 							type={type}
 							format={format}
-							programPrice={
-								studyFieldIsAccounting
-									? 59000
-									: (at.profession || at.course) && program?.price
-							}
+							programPrice={(at.profession || at.course) && program?.price}
 							renderedByComponent='CardProgram'
 						/>
 					</div>

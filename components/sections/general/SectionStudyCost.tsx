@@ -32,9 +32,6 @@ const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
 
 	const isDiscounted = at.online || at.mbl
 
-	const studyFieldIsAccounting =
-		program?.study_field?.slug?.trim() === 'accounting-analysis-and-audit'
-
 	{
 		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
 	}
@@ -181,11 +178,7 @@ const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
 									discount={isDiscounted}
 									type={program?.category?.type}
 									format={program?.studyFormat}
-									programPrice={
-										studyFieldIsAccounting
-											? 59000
-											: (at.profession || at.course) && program?.price
-									}
+									programPrice={(at.profession || at.course) && program?.price}
 									variant='SectionStudyCost'
 								/>
 							)}
