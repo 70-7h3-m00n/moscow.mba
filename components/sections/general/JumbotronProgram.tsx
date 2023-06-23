@@ -28,9 +28,6 @@ const JumbotronProgram = ({ program, programs = null }) => {
 		(at.course && at.online) ||
 		at.mbl
 
-	const studyFieldIsAccounting =
-		program?.study_field?.slug?.trim() === 'accounting-analysis-and-audit'
-
 	{
 		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
 	}
@@ -222,9 +219,7 @@ const JumbotronProgram = ({ program, programs = null }) => {
 												type={program?.category?.type}
 												format={program?.studyFormat}
 												notComparingPrices
-												programPrice={
-													studyFieldIsAccounting ? 59000 : program?.price
-												}
+												programPrice={program?.price}
 											/>{' '}
 											на 12 мес.
 										</p>
@@ -261,6 +256,7 @@ const JumbotronProgram = ({ program, programs = null }) => {
 							format={program?.studyFormat}
 							studyDurationMonths={program?.duration?.minStudyMonths}
 							studyDurationHours={program?.duration?.studyHours}
+							programPrice={program?.price}
 						/>
 					)}
 				</div>

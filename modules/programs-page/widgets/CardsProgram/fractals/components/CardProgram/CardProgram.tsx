@@ -9,9 +9,6 @@ import { IconArrowTopRight } from '@/components/icons'
 const CardProgram = ({ program }) => {
 	const at = useAt()
 
-	const studyFieldIsAccounting =
-		program?.study_field?.slug?.trim() === 'accounting-analysis-and-audit'
-
 	const type = program?.category.type
 	const format = program?.studyFormat
 	const isActive = program?.isActive
@@ -46,11 +43,7 @@ const CardProgram = ({ program }) => {
 							discount={!at.blended}
 							type={type}
 							format={format}
-							programPrice={
-								studyFieldIsAccounting
-									? 59000
-									: (at.profession || at.course) && program?.price
-							}
+							programPrice={(at.profession || at.course) && program?.price}
 							renderedByComponent='CardProgram'
 						/>
 					</div>
