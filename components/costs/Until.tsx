@@ -7,7 +7,8 @@ const setLastDayOfMonth = (currentDate: Date) => {
 const setNextDay = (currentDate: Date, currentDay: number) =>
 	currentDay <= 20
 		? currentDate.setDate(currentDay <= 10 ? 10 : 20)
-		: setLastDayOfMonth(currentDate)
+		: // : setLastDayOfMonth(currentDate)
+		  currentDate.setDate(29)
 
 const Until = ({ preposition = true, executive = false }) => {
 	const { locale } = useRouter()
