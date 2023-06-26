@@ -7,6 +7,7 @@ import { useAt } from '@/hooks/index'
 import { ContextStaticProps } from '@/context/index'
 import Discount from '@/components/costs/Discount'
 import { SearchField } from '@/components/general'
+import FilterDuration from './FilterDuration'
 
 const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 	const { programs, curStudyField, setCurStudyField } =
@@ -109,6 +110,14 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 		curStudyField,
 		isNavigated
 	])
+
+	// const activeProgress = '#FB4D3E'
+	// const inactiveProgress = '#EFEFEF'
+	// const styleInput = {
+	// 	background: `linear-gradient(90deg, ${activeProgress} 0% ${
+	// 		progres + '%'
+	// 	},   ${inactiveProgress} ${progres + '%'} 100%)`
+	// }
 
 	return (
 		<>
@@ -244,6 +253,9 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 							</span>
 						</Link>
 					</div>
+				</li>
+				<li>
+					<FilterDuration />
 				</li>
 				{(at.profession || at.course) && studyFieldsFiltered && (
 					<li>
