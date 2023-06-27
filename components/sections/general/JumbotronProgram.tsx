@@ -62,8 +62,6 @@ const JumbotronProgram = ({ program, programs = null }) => {
 		router.push(alternativeLink)
 	}
 
-	console.log('program?.duration: ', program?.duration)
-
 	return (
 		<section className={stls.container}>
 			{!program?.isActive && (

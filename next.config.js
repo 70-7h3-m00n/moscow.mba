@@ -160,6 +160,11 @@ module.exports = {
 				destination:
 					'/journal/postroenie-shablona-biznes-modelej-plyusy-metoda-ostervaldera-1',
 				permanent: true
+			},
+			{
+				source: '/programs/mbl/online/international-business-law',
+				destination: '/programs/international-business-law',
+				permanent: true
 			}
 		]
 	}
