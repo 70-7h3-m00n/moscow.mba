@@ -18,7 +18,7 @@ const ContextStaticProps = createContext<{
 	setCurStudyField: Dispatch<any>
 	setStudyFields: Dispatch<any>
 	setStudyFieldsWithSlugs: Dispatch<any>
-	setSortings: Dispatch<any>
+	setSorting: Dispatch<any>
 	setDuration: Dispatch<any>
 }>({
 	programs: [],
@@ -37,7 +37,7 @@ const ContextStaticProps = createContext<{
 	setCurStudyField: () => {},
 	setStudyFields: () => {},
 	setStudyFieldsWithSlugs: () => {},
-	setSortings: () => {},
+	setSorting: () => {},
 	setDuration: () => {}
 })
 

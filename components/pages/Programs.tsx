@@ -1,5 +1,5 @@
 import stls from '@/styles/components/pages/Programs.module.sass'
-import { FC, useContext } from 'react'
+import { FC, useContext, useState } from 'react'
 import { useAt } from '@/hooks/index'
 import { ContextStaticProps } from '@/context/index'
 import Breadcrumbs from '@/components/general/Breadcrumbs'
@@ -12,9 +12,36 @@ import IconCheckCircle from '@/components/icons/IconCheckCircle'
 import ProgramsHero from '../general/ProgramsHero'
 import { SortingPrograms } from '../general'
 
+export enum FilterTypeProgramEnum {
+	all = 'all',
+	mini = 'mini',
+	mba = 'mba',
+	profession = 'profession',
+	course = 'course'
+}
+
+export enum FilterFormatTrainingEnum {
+	online = 'online',
+	blended = 'blended'
+}
+
+export enum FiltersEnum {
+	filterTypeProgram = 'filterTypeProgram',
+	filterTrainingFormat = 'filterTrainingFormat',
+	filterDuration = 'filterDuration',
+	filterDirection = 'filterDirection'
+}
+
+type TConfigPrograms = {
+	sorting?: string
+	filterTypeProgram?: keyof typeof FilterTypeProgramEnum | string
+	filterDuration?: number
+	filterDirection?: string
+}
+
 interface Props {
-	mbaTypeOfProgram: any
-	mbaFormat: any
+	mbaTypeOfProgram: keyof typeof FilterTypeProgramEnum
+	mbaFormat: keyof typeof FilterFormatTrainingEnum
 }
 
 const PagePrograms: FC<Props> = ({ mbaTypeOfProgram, mbaFormat }) => {

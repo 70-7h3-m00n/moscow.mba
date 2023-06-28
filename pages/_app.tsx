@@ -14,12 +14,16 @@ import { dev, gtmId, routesFront } from '@/config/index'
 import { Header, Main, WrapperPage, Footer } from '@/components/layout'
 import { MenuState, OverlayState, ContextStaticProps } from '@/context/index'
 import { filledUpFormWithoutSubmission } from '../helpers'
-import Script from 'next/script'
 
 function MyApp({ Component, pageProps, router }) {
 	const [programs, setPrograms] = useState(pageProps.programs || null)
 	const [program, setProgram] = useState(pageProps.program || null)
+	const [renderPrograms, setRenderPrograms] = useState(
+		pageProps.programs || null
+	)
 	const [curStudyField, setCurStudyField] = useState(null)
+	const [sorting, setSorting] = useState(null)
+	const [duration, setDuration] = useState(null)
 	const [studyFields, setStudyFields] = useState(
 		programs?.length > 0
 			? Array.from(
@@ -264,17 +268,21 @@ function MyApp({ Component, pageProps, router }) {
 					programs,
 					program,
 					configPrograms: [],
-					renderPrograms: [],
+					renderPrograms,
 					curStudyField,
 					studyFields,
 					studyFieldsWithSlugs,
+					sorting,
+					duration,
 					setPrograms,
 					setProgram,
 					setConfigPrograms: () => {},
-					setRenderPrograms: () => {},
+					setRenderPrograms,
 					setCurStudyField,
 					setStudyFields,
-					setStudyFieldsWithSlugs
+					setStudyFieldsWithSlugs,
+					setSorting,
+					setDuration
 				}}>
 				<OverlayState>
 					<MenuState>

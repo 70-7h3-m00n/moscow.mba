@@ -1,6 +1,7 @@
 import stls from '@/styles/components/general/SortingPrograms.module.sass'
 import usePrograms from '@/hooks/usePrograms'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { ContextStaticProps } from '@/context/index'
 
 const SortingPrograms = () => {
 	const [isActiveModal, setIsActiveModal] = useState(false)
@@ -9,7 +10,10 @@ const SortingPrograms = () => {
 		{ name: 'byNovelty', text: 'По новизне' },
 		{ name: 'byAlphabet', text: 'По алфавиту от А до Я' }
 	]
+
 	const { configPrograms, handlerSetConfigPrograms } = usePrograms()
+
+	const { renderPrograms, setRenderPrograms } = useContext(ContextStaticProps)
 
 	return (
 		<div className={stls.sortingPrograms}>
@@ -48,7 +52,7 @@ const SortingPrograms = () => {
 						<path
 							d='M5 1V15'
 							stroke='#FF3535'
-							stroke-width='2'
+							strokeWidth='2'
 							strokeLinecap='round'
 							strokeLinejoin='round'
 						/>
