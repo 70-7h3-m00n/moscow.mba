@@ -31,7 +31,7 @@ const SectionCorporateClientsHero = ({
 			content: <>Актуальные программы 2023&nbsp;года</>
 		},
 		{
-			title: '2000+',
+			title: '9000+',
 			content: 'Студентов по всему миру'
 		},
 		{
