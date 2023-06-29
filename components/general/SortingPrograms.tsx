@@ -10,10 +10,7 @@ const SortingPrograms = () => {
 		{ name: 'byNovelty', text: 'По новизне' },
 		{ name: 'byAlphabet', text: 'По алфавиту от А до Я' }
 	]
-
 	const { configPrograms, handlerSetConfigPrograms } = usePrograms()
-
-	const { renderPrograms, setRenderPrograms } = useContext(ContextStaticProps)
 
 	return (
 		<div className={stls.sortingPrograms}>
@@ -105,7 +102,7 @@ const SortingPrograms = () => {
 								onChange={e =>
 									handlerSetConfigPrograms({ sorting: e.target.value })
 								}
-								checked={configPrograms.sorting === item.name}
+								checked={configPrograms?.sorting === item.name}
 							/>
 							<label className={stls.labelModalSorting} htmlFor={item.name}>
 								{item.text}

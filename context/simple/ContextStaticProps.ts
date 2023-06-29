@@ -9,8 +9,7 @@ const ContextStaticProps = createContext<{
 	curStudyField: any
 	studyFields: any
 	studyFieldsWithSlugs: any
-	sorting: any
-	duration: any
+	programsSettings: any
 	setPrograms: Dispatch<any>
 	setRenderPrograms: Dispatch<any>
 	setConfigPrograms: Dispatch<any>
@@ -18,8 +17,7 @@ const ContextStaticProps = createContext<{
 	setCurStudyField: Dispatch<any>
 	setStudyFields: Dispatch<any>
 	setStudyFieldsWithSlugs: Dispatch<any>
-	setSorting: Dispatch<any>
-	setDuration: Dispatch<any>
+	setProgramsSettings: Dispatch<any>
 }>({
 	programs: [],
 	renderPrograms: [],
@@ -28,8 +26,7 @@ const ContextStaticProps = createContext<{
 	curStudyField: null,
 	studyFields: null,
 	studyFieldsWithSlugs: null,
-	sorting: null,
-	duration: null,
+	programsSettings: null,
 	setPrograms: () => {},
 	setRenderPrograms: () => {},
 	setConfigPrograms: () => {},
@@ -37,8 +34,7 @@ const ContextStaticProps = createContext<{
 	setCurStudyField: () => {},
 	setStudyFields: () => {},
 	setStudyFieldsWithSlugs: () => {},
-	setSorting: () => {},
-	setDuration: () => {}
+	setProgramsSettings: () => {}
 })
 
 export default ContextStaticProps

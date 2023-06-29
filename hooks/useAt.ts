@@ -76,6 +76,10 @@ const useAt = () => {
 		course: getSplitedPath[1] === 'course',
 		profession: getSplitedPath[1] === 'profession',
 		executive: getSplitedPath[1] === 'executive',
+		allPrograms:
+			getSplitedPath[0] === 'programs' &&
+			!getSplitedPath[2] &&
+			!getSplitedPath[3],
 		programs: getSplitedPath[0] === 'programs' && !getSplitedPath[3],
 		online: getSplitedPath[2] === 'online',
 		blended: getSplitedPath[2] === 'blended',

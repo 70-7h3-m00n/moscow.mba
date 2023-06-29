@@ -8,20 +8,20 @@ import { ContextStaticProps } from '@/context/index'
 import Discount from '@/components/costs/Discount'
 import { SearchField } from '@/components/general'
 import FilterDuration from './FilterDuration'
+import usePrograms from '@/hooks/usePrograms'
 
 const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
-	const { programs, curStudyField, setCurStudyField } =
-		useContext(ContextStaticProps)
-
+	const at = useAt()
 	const router = useRouter()
 
+	const { programs, curStudyField, setCurStudyField } =
+		useContext(ContextStaticProps)
+	const { configPrograms, handlerSetConfigPrograms } = usePrograms()
+
+	const [isNavigated, setIsNavigated] = useState(false)
 	const [defaultStudyFieldIsSet, setDefaultStudyFieldIsSet] = useState(false)
 	// const [searchTermIsAppliedtoUrl, setSearchTermIsAppliedtoUrl] =
 	//   useState(false)
-
-	const [isNavigated, setIsNavigated] = useState(false)
-
-	const at = useAt()
 
 	const allPrograms =
 		at.programs &&

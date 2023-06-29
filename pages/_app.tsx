@@ -22,8 +22,8 @@ function MyApp({ Component, pageProps, router }) {
 		pageProps.programs || null
 	)
 	const [curStudyField, setCurStudyField] = useState(null)
-	const [sorting, setSorting] = useState(null)
-	const [duration, setDuration] = useState(null)
+	const [programsSettings, setProgramsSettings] = useState(null)
+	const [configPrograms, setConfigPrograms] = useState({ sorting: 'byDefault' })
 	const [studyFields, setStudyFields] = useState(
 		programs?.length > 0
 			? Array.from(
@@ -267,22 +267,20 @@ function MyApp({ Component, pageProps, router }) {
 				value={{
 					programs,
 					program,
-					configPrograms: [],
+					configPrograms,
 					renderPrograms,
 					curStudyField,
 					studyFields,
 					studyFieldsWithSlugs,
-					sorting,
-					duration,
+					programsSettings,
 					setPrograms,
 					setProgram,
-					setConfigPrograms: () => {},
+					setConfigPrograms,
 					setRenderPrograms,
 					setCurStudyField,
 					setStudyFields,
 					setStudyFieldsWithSlugs,
-					setSorting,
-					setDuration
+					setProgramsSettings
 				}}>
 				<OverlayState>
 					<MenuState>

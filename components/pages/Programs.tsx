@@ -1,5 +1,5 @@
 import stls from '@/styles/components/pages/Programs.module.sass'
-import { FC, useContext, useState } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
 import { useAt } from '@/hooks/index'
 import { ContextStaticProps } from '@/context/index'
 import Breadcrumbs from '@/components/general/Breadcrumbs'
@@ -11,6 +11,7 @@ import CardProgram from '@/components/cards/CardProgram'
 import IconCheckCircle from '@/components/icons/IconCheckCircle'
 import ProgramsHero from '../general/ProgramsHero'
 import { SortingPrograms } from '../general'
+import usePrograms from '@/hooks/usePrograms'
 
 export enum FilterTypeProgramEnum {
 	all = 'all',
@@ -45,11 +46,13 @@ interface Props {
 }
 
 const PagePrograms: FC<Props> = ({ mbaTypeOfProgram, mbaFormat }) => {
-	const { programs, curStudyField } = useContext(ContextStaticProps)
-
 	const at = useAt()
+	const { curStudyField, renderPrograms } = useContext(ContextStaticProps)
 
-	const programsFiltered = programs?.filter(
+	const { configPrograms, handlerSetConfigPrograms } = usePrograms()
+	console.log('configPrograms: ', configPrograms)
+
+	const programsFiltered = renderPrograms?.filter(
 		program =>
 			program?.studyFormat === mbaFormat &&
 			program?.category?.type === mbaTypeOfProgram
