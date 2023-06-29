@@ -9,6 +9,24 @@ type TSeoPagesProgram = {
 	canonical?: string
 }
 
+const changeCanonicalLinkFrom = [
+	`${routesFront.root}${routesFront.programs}/course/online/gosudarstvenoe-i-municipalnoe-upravlenie`,
+	`${routesFront.root}${routesFront.programs}/course/online/upravlenie-it-slysboy-predpriatia`,
+	`${routesFront.root}${routesFront.programs}/course/online/upravlenie-logistikoy-i-zepjmi-postavok`,
+	`${routesFront.root}${routesFront.programs}/mba/online/bank-management`,
+	`${routesFront.root}${routesFront.programs}/mba/online/consulting-management`,
+	`${routesFront.root}${routesFront.programs}/mba/online/fitness-management`
+]
+
+const changeCanonicalLinkTo = [
+	`${routesFront.root}${routesFront.programs}/mini/online/urban-management`,
+	`${routesFront.root}${routesFront.programs}/profession/online/upravlenie-it-slysboy-predpriatia`,
+	`${routesFront.root}${routesFront.programs}/mini/online/logistics-management`,
+	`${routesFront.root}${routesFront.programs}/mini/online/bank-management`,
+	`${routesFront.root}${routesFront.programs}/mini/online/consulting-management`,
+	`${routesFront.root}${routesFront.programs}/mini/online/fitness-management`
+]
+
 const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
 	const at = useAt()
 
@@ -30,10 +48,16 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
 			? `${program?.metaDescription} MBA online`
 			: program?.metaDescription
 
-	const cannonialFallback =
+	const cannonicalCheck =
 		program?.category?.slug && program?.studyFormat && program?.slug
 			? `${routesFront.root}${routesFront.programs}/${program.category?.slug}/${program?.studyFormat}/${program?.slug}`
 			: `${routesFront.root}${routesFront.programs}`
+
+	const cannonialFallback = changeCanonicalLinkFrom.includes(cannonicalCheck)
+		? changeCanonicalLinkTo[
+				changeCanonicalLinkFrom.findIndex(el => el === cannonicalCheck)
+		  ]
+		: cannonicalCheck
 
 	const seoParams = {
 		title: program?.metaTitle

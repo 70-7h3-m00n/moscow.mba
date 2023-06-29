@@ -98,9 +98,9 @@ const PagePrograms = ({ mbaTypeOfProgram, mbaFormat }) => {
 										: at.mba
 										? `MBA ${mbaFormat}`
 										: at.profession
-										? 'Профессии'
+										? 'Профессиональная переподготовка'
 										: at.course
-										? 'Курсы'
+										? 'Повышение квалификации'
 										: 'Программы'}
 								</h2>
 								<span className={stls.qtPrograms}>

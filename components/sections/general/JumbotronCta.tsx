@@ -149,7 +149,7 @@ const JumbotronCta = ({
 
 							<li className={stls.prosItem}>
 								<div className={stls.prosStatsNumber}>
-									{at.index ? '9000+' : '2000+'}
+									{at.index ? '9000+' : '9000+'}
 								</div>
 								<p>
 									{at.index
