@@ -4,8 +4,11 @@ export const LIST_FILTER_TYPE_PROGRAM = [
 	{ value: FilterTypeProgramEnum.all, text: 'Все программы' },
 	{ value: FilterTypeProgramEnum.mini, text: ' Mini MBA' },
 	{ value: FilterTypeProgramEnum.mba, text: 'MBA' },
-	{ value: FilterTypeProgramEnum.profession, text: 'Профессии' },
-	{ value: FilterTypeProgramEnum.course, text: 'Курсы' }
+	{
+		value: FilterTypeProgramEnum.profession,
+		text: 'Проф. переподготовка'
+	},
+	{ value: FilterTypeProgramEnum.course, text: 'Повышение квалификации' }
 ]
 
 export const LIST_FILTER_TRAINING_PROGRAM = [

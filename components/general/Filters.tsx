@@ -139,7 +139,7 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 										[stls.circle]: true,
 										[stls.active]: at.profession
 									})}></span>{' '}
-								Профессии
+								Проф. переподготовка
 							</a>
 						</Link>
 
@@ -154,7 +154,7 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 										[stls.circle]: true,
 										[stls.active]: at.course
 									})}></span>{' '}
-								Курсы
+								Повышение квалификации
 							</a>
 						</Link>
 

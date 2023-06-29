@@ -24,11 +24,11 @@ const CardProgram = ({ professionLayout, program, number, type, format }) => {
 							: at.profession
 							? at.en
 								? 'Profession'
-								: 'Профессия'
+								: 'ПП'
 							: at.course
 							? at.en
 								? 'Course'
-								: 'Курс'
+								: 'ПК'
 							: ''}
 					</span>
 				</div>
