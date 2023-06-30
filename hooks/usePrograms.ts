@@ -9,10 +9,23 @@ export enum FilterTypeProgramEnum {
 	course = 'course'
 }
 
+export enum FilterFormatTrainingEnum {
+	online = 'online',
+	blended = 'blended'
+}
+
 export enum SortingEnum {
 	default = 'default',
 	novelty = 'novelty',
 	alphabet = 'alphabet'
+}
+
+type TConfigPrograms = {
+	sorting?: string
+	filterTypeProgram?: keyof typeof FilterTypeProgramEnum | string
+	filterTrainingFormat?: keyof typeof FilterFormatTrainingEnum | string
+	filterDuration?: number
+	filterDirection?: string
 }
 
 type TMinMaxDuration = {
@@ -28,8 +41,11 @@ const usePrograms = () => {
 		null
 	)
 
-	const handlerSetConfigPrograms = props => {
-		setConfigPrograms(props)
+	const handlerSetConfigPrograms = (props: TConfigPrograms) => {
+		setConfigPrograms(configPrograms => ({
+			...configPrograms,
+			...props
+		}))
 	}
 
 	const fitlerAll = programs => programs && [...programs]
