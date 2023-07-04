@@ -6,19 +6,21 @@ import { usePageHandleContext } from '@/hooks/index'
 import { routesFront } from '@/config/index'
 import { Programs } from '@/components/pages'
 import { SeoPagesPrograms } from '@/components/seo'
+import { ProgramsPage } from 'modules'
 
 const PageProgramsCourse = ({ programs }) => {
-  usePageHandleContext({ programs })
+	usePageHandleContext({ programs })
 
-  return (
-    <>
-      <SeoPagesPrograms />
-      <Programs mbaTypeOfProgram={'course'} mbaFormat={'online'} />
-    </>
-  )
+	return (
+		<>
+			<SeoPagesPrograms />
+			{/* <Programs mbaTypeOfProgram={'course'} mbaFormat={'online'} /> */}
+			<ProgramsPage />
+		</>
+	)
 }
 
 export const getStaticProps: GetStaticProps = async context =>
-  await handleGetStaticProps({ page: routesFront.programs, context })
+	await handleGetStaticProps({ page: routesFront.programs, context })
 
 export default PageProgramsCourse

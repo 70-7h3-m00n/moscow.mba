@@ -7,45 +7,68 @@ import {
 	FiltersEnum
 } from 'modules/programs-page/fractals'
 import stls from './FilterTrainingFormat.module.sass'
+import useAt from '@/hooks/useAt'
 
 const FilterTrainingFormat = () => {
+	const at = useAt()
 	const { configPrograms, handlerSetConfigPrograms, router } =
 		useConfigProgramsContext()
 
+	// if URL is loaded and query TrainingFormat is not empty change configPrograms
 	useEffect(() => {
 		if (router.isReady) {
-			if (router.query?.[FiltersEnum.filterTrainingFormat]) {
-				const isFilterInURL = Object.keys(FilterFormatTrainingEnum).includes(
-					router.query?.[FiltersEnum.filterTrainingFormat]
-				)
+			// console.log(`at =>>>>>>>>>>>>>>>>>>>`, at)
+			const trainingFormat = at.blended
+				? FilterFormatTrainingEnum.blended
+				: FilterFormatTrainingEnum.online
+			handlerSetConfigPrograms({
+				[FiltersEnum.filterTrainingFormat]: trainingFormat
+			})
 
-				const isCourceAndProfession =
-					router.query?.[FiltersEnum.filterTypeProgram] ===
-						FilterTypeProgramEnum.course ||
-					router.query?.[FiltersEnum.filterTypeProgram] ===
-						FilterTypeProgramEnum.profession
+			// if (router.query?.[FiltersEnum.filterTrainingFormat]) {
+			//  const isFilterInURL = Object.keys(FilterFormatTrainingEnum).includes(
+			//   router.query?.[FiltersEnum.filterTrainingFormat]
+			//  )
 
-				isFilterInURL &&
-					handlerSetConfigPrograms({
-						[FiltersEnum.filterTrainingFormat]: isCourceAndProfession
-							? FilterFormatTrainingEnum.online
-							: router.query?.[FiltersEnum.filterTrainingFormat]
-					})
-			}
+			//  const isCourceAndProfession =
+			//   router.query?.[FiltersEnum.filterTypeProgram] ===
+			//    FilterTypeProgramEnum.course ||
+			//   router.query?.[FiltersEnum.filterTypeProgram] ===
+			//    FilterTypeProgramEnum.profession ||
+			//   at.course ||
+			//   at.profession
+
+			//  isFilterInURL &&
+			//   handlerSetConfigPrograms({
+			//    [FiltersEnum.filterTrainingFormat]: isCourceAndProfession
+			//     ? FilterFormatTrainingEnum.online
+			//     : router.query?.[FiltersEnum.filterTrainingFormat]
+			//   })
+			// }
 		}
 	}, [router.isReady])
 
+	// if training format is changed set to configPrograms
 	const handlerOnChange = e => {
-		handlerSetConfigPrograms({
-			[FiltersEnum.filterTrainingFormat]: e.target.value
-		})
+		// handlerSetConfigPrograms({
+		//  [FiltersEnum.filterTrainingFormat]: e.target.value
+		// })
+		at.allPrograms
+			? handlerSetConfigPrograms({
+					[FiltersEnum.filterTrainingFormat]: e.target.value
+			  })
+			: router.push(
+					`/programs/${configPrograms.filterTypeProgram}/${e.target.value}`
+			  )
 	}
 
 	const isCourceAndProfession =
 		configPrograms?.[FiltersEnum.filterTypeProgram] ===
 			FilterTypeProgramEnum.course ||
 		configPrograms?.[FiltersEnum.filterTypeProgram] ===
-			FilterTypeProgramEnum.profession
+			FilterTypeProgramEnum.profession ||
+		at.course ||
+		at.profession
 
 	return (
 		<div className={stls.FilterTrainingFormat}>
@@ -54,7 +77,7 @@ const FilterTrainingFormat = () => {
 				<div
 					key={item.value}
 					className={`${stls.itemFilterTrainingFormat} ${
-						!(item.value === FilterFormatTrainingEnum.online) &&
+						!(item.value === FilterFormatTrainingEnum.online && at.online) &&
 						isCourceAndProfession
 							? stls.inputFilterTrainingDisabled
 							: ''
@@ -67,13 +90,13 @@ const FilterTrainingFormat = () => {
 						onChange={e => handlerOnChange(e)}
 						checked={item.value === configPrograms.filterTrainingFormat}
 						disabled={
-							!(item.value === FilterFormatTrainingEnum.online) &&
+							!(item.value === FilterFormatTrainingEnum.online && at.online) &&
 							isCourceAndProfession
 						}
 					/>
 					<label
 						className={`${stls.labelModalSorting} ${
-							!(item.value === FilterFormatTrainingEnum.online) &&
+							!(item.value === FilterFormatTrainingEnum.online && at.online) &&
 							isCourceAndProfession
 								? stls.labelModalSortingDisable
 								: ''
