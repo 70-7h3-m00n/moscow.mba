@@ -6,6 +6,7 @@ import { usePageHandleContext } from '@/hooks/index'
 import { routesFront } from '@/config/index'
 import { Programs } from '@/components/pages'
 import { SeoPagesPrograms } from '@/components/seo'
+import { ProgramsPage } from 'modules'
 
 const PageProgramsMbaOnline = ({ programs }) => {
 	usePageHandleContext({ programs })
@@ -13,7 +14,8 @@ const PageProgramsMbaOnline = ({ programs }) => {
 	return (
 		<>
 			<SeoPagesPrograms />
-			<Programs mbaTypeOfProgram={'mba'} mbaFormat={'online'} />
+			{/* <Programs mbaTypeOfProgram={'mba'} mbaFormat={'online'} /> */}
+			<ProgramsPage />
 		</>
 	)
 }

@@ -151,7 +151,7 @@ const JumbotronProgram = ({ program, programs = null }) => {
 							<div className={stls.leftContainer}>
 								<JumbotronLabel />
 								<div className={stls.placesLeft}>
-									Осталось мест: <PlacesLeft />
+									Осталось мест: <PlacesLeft uniqueKey={program?.id} />
 								</div>
 							</div>
 							{!!alternativeLink && (
