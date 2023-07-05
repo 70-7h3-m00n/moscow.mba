@@ -1,6 +1,7 @@
-import Image from 'next/image'
 import stls from './ProgramsPage.module.sass'
 import Breadcrumbs from '@/components/general/Breadcrumbs'
+import { ConfigProgramsProvider } from './fractals'
+import ProgramsHero from '@/components/general/ProgramsHero'
 import {
 	CardsProgram,
 	FilterPrograms,
@@ -8,14 +9,8 @@ import {
 	InfoRectangle,
 	MainInfo
 } from './widgets'
-import { ConfigProgramsProvider, useConfigProgramsContext } from './fractals'
-import { ProgramsQty, ProgramSubjects } from '@/components/general'
-import { IconCheckCircle } from '@/components/icons'
-import ProgramsHero from '@/components/general/ProgramsHero'
 
 const ProgramsPage = () => {
-	const { configPrograms } = useConfigProgramsContext()
-
 	return (
 		<ConfigProgramsProvider>
 			<section className={stls.jumbotronPrograms}>

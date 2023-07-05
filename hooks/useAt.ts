@@ -3,58 +3,6 @@ import { useRouter } from 'next/router'
 const useAt = () => {
 	const { pathname, asPath, locale, query } = useRouter()
 
-	const router = useRouter()
-
-	// // Taking query parameters from the URI
-	// function extractQueryParameters(): {
-	// 	sorting: null | string
-	// 	filterTypeProgram: null | string
-	// 	filterTrainingFormat: null | string
-	// 	filterDuration: null | string
-	// 	filterDirection: null | string
-	// } {
-	// 	const queryParameters = {
-	// 		sorting: null,
-	// 		filterTypeProgram: null,
-	// 		filterTrainingFormat: null,
-	// 		filterDuration: null,
-	// 		filterDirection: null
-	// 	}
-	// 	const queryString = router.asPath.split('?')[1]
-	// 	if (queryString) {
-	// 		const parameterPairs = queryString.split('&')
-	// 		for (const parameterPair of parameterPairs) {
-	// 			const [key, value] = parameterPair.split('=')
-	// 			queryParameters[key] = value
-	// 		}
-	// 	}
-	// 	return queryParameters
-	// }
-
-	// // Make getSplitedPath from the query parameters
-	// function makeSplittedPath(): string[] {
-	// 	if (
-	// 		pathname === '/programs' &&
-	// 		router.asPath.split('/')[0] !== query.locale
-	// 	) {
-	// 		const {} = extractQueryParameters()
-	// 		const result = [
-	// 			'programs',
-	// 			extractQueryParameters().filterTypeProgram,
-	// 			extractQueryParameters().filterTrainingFormat
-	// 		]
-	// 		return result
-	// 	} else {
-	// 		return pathname.split('/').filter(item => item !== '' && item !== '[url]')
-	// 	}
-	// }
-
-	// // const getSplitedPath = pathname
-	// // 	.split('/')
-	// // 	.filter(item => item !== '' && item !== '[url]')
-
-	// const getSplitedPath = makeSplittedPath()
-
 	const getSplitedPath = pathname
 		.split('/')
 		.filter(item => item !== '' && item !== '[url]')
@@ -77,6 +25,10 @@ const useAt = () => {
 		profession: getSplitedPath[1] === 'profession',
 		executive: getSplitedPath[1] === 'executive',
 		programs: getSplitedPath[0] === 'programs' && !getSplitedPath[3],
+		allPrograms:
+			getSplitedPath[0] === 'programs' &&
+			!getSplitedPath[1] &&
+			!getSplitedPath[2],
 		online: getSplitedPath[2] === 'online',
 		blended: getSplitedPath[2] === 'blended',
 		webinars: getSplitedPath[0] === 'webinars',

@@ -8,31 +8,52 @@ import {
 	FiltersEnum
 } from 'modules/programs-page/fractals'
 import stls from './FilterTypeProgram.module.sass'
+import useAt from '@/hooks/useAt'
 
 const FilterTypeProgram = () => {
+	const at = useAt()
 	const { configPrograms, handlerSetConfigPrograms, router, setQueryURI } =
 		useConfigProgramsContext()
 	const [isShowFilter, setIsShowFilter] = useState(true)
 
+	// if URI is loaded and there is 'filterTypeProgram' in it set configProgram
 	useEffect(() => {
-		if (router.isReady) {
-			if (router.query?.[FiltersEnum.filterTypeProgram]) {
-				const isFilterInURL = Object.keys(FilterTypeProgramEnum).includes(
-					router.query?.[FiltersEnum.filterTypeProgram]
-				)
+		if (at.programs && router.isReady) {
+			const typeOfProgram = at.mba
+				? FilterTypeProgramEnum.mba
+				: at.mini
+				? FilterTypeProgramEnum.mini
+				: at.profession
+				? FilterTypeProgramEnum.profession
+				: at.course
+				? FilterTypeProgramEnum.course
+				: FilterTypeProgramEnum.all
 
-				isFilterInURL &&
-					handlerSetConfigPrograms({
-						[FiltersEnum.filterTypeProgram]:
-							router.query?.[FiltersEnum.filterTypeProgram]
-					})
-			}
+			handlerSetConfigPrograms({
+				[FiltersEnum.filterTypeProgram]: typeOfProgram
+			})
+
+			// if (router.query?.[FiltersEnum.filterTypeProgram]) {
+			//  const isFilterInURL = Object.keys(FilterTypeProgramEnum).includes(
+			//   router.query?.[FiltersEnum.filterTypeProgram]
+			//  )
+
+			//  isFilterInURL &&
+			//   handlerSetConfigPrograms({
+			//    [FiltersEnum.filterTypeProgram]:
+			//     router.query?.[FiltersEnum.filterTypeProgram]
+			//   })
+			// }
 		}
 	}, [router.isReady])
 
+	// if URI is loaded and there is 'filterDirection' set configPrograms
 	useEffect(() => {
 		if (router.isReady) {
-			if (configPrograms?.[FiltersEnum.filterDirection]) {
+			if (
+				configPrograms?.[FiltersEnum.filterDirection] &&
+				configPrograms?.[FiltersEnum.filterDirection] !== 'all'
+			) {
 				setQueryURI({
 					...configPrograms,
 					[FiltersEnum.filterDirection]: encodeURIComponent(
@@ -40,35 +61,42 @@ const FilterTypeProgram = () => {
 					)
 				})
 			} else {
-				if (
-					configPrograms.sorting === 'default' &&
-					configPrograms.filterTypeProgram === 'all' &&
-					configPrograms.filterTrainingFormat === 'online'
-				) {
+				if (configPrograms.sorting === 'default') {
 					setQueryURI(null)
 				} else {
-					setQueryURI({ ...configPrograms })
+					setQueryURI({
+						...configPrograms
+					})
 				}
 			}
 		}
 	}, [configPrograms])
 
+	// if type program radio button is clicked set configPrograms new type
 	const handlerOnChange = e => {
 		if (
 			e.target.value === FilterTypeProgramEnum.course ||
 			e.target.value === FilterTypeProgramEnum.profession
 		) {
-			handlerSetConfigPrograms({
-				[FiltersEnum.filterTypeProgram]: e.target.value,
-				[FiltersEnum.filterTrainingFormat]: FilterFormatTrainingEnum.online
-			})
+			router.push(`/programs/${e.target.value}/online`)
+			// handlerSetConfigPrograms({
+			//  [FiltersEnum.filterTypeProgram]: e.target.value,
+			//  [FiltersEnum.filterTrainingFormat]: FilterFormatTrainingEnum.online
+			// })
+		} else if (e.target.value === FilterTypeProgramEnum.all) {
+			router.push(`/programs`)
+			// handlerSetConfigPrograms({
+			//  [FiltersEnum.filterTypeProgram]: e.target.value
+			// })
 		} else {
-			handlerSetConfigPrograms({
-				[FiltersEnum.filterTypeProgram]: e.target.value
-			})
+			router.push(
+				`/programs/${e.target.value}/${configPrograms.filterTrainingFormat}`
+			)
+			// handlerSetConfigPrograms({
+			//  [FiltersEnum.filterTypeProgram]: e.target.value
+			// })
 		}
 	}
-
 	return (
 		<div className={stls.filterTypeProgram}>
 			<p
