@@ -75,7 +75,6 @@ module.exports = {
 					'/programs/mini/blended/6062f5857757eb02b87abc0a',
 					'/programs/mini/blended/6062f5857757eb02b87abc07',
 					'/jkj',
-					'/programs/p',
 					'/programs/profession/online/Internal%20audit-and-control',
 					'/programs/mini/online/bG9naXN0aW',
 					'/programs/professional/blended',

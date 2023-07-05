@@ -7,7 +7,7 @@ import {
 import stls from './FilterDirection.module.sass'
 
 const FilterDirection = () => {
-	const { uniqueDirections } = usePrograms()
+	const { uniqueDirections, minMaxDuration } = usePrograms()
 	const {
 		configPrograms,
 		handlerSetConfigPrograms,
@@ -16,7 +16,7 @@ const FilterDirection = () => {
 	} = useConfigProgramsContext()
 	const [isFullDirection, setIsFullDirection] = useState(false)
 
-	const showInitiallyDirection = 2
+	const showInitiallyDirection = 1
 
 	useEffect(() => {
 		if (router.isReady) {
@@ -28,11 +28,11 @@ const FilterDirection = () => {
 				handlerSetConfigPrograms({
 					[FiltersEnum.filterDirection]: isFilterInURL
 						? decodeURIComponent(router.query?.[FiltersEnum.filterDirection])
-						: uniqueDirections?.[0]
+						: 'all'
 				})
 			} else {
 				handlerSetConfigPrograms({
-					[FiltersEnum.filterDirection]: uniqueDirections?.[0]
+					[FiltersEnum.filterDirection]: 'all'
 				})
 			}
 		}
@@ -51,6 +51,24 @@ const FilterDirection = () => {
 	return (
 		<div className={stls.filterDirection}>
 			<p className={stls.filterTitle}>Направление</p>
+			<div
+				key={'all'}
+				className={`${stls.itemFilterDirection} ${
+					isFullDirection ? stls.itemFilterDirectionActive : ''
+				}`}>
+				<input
+					type='radio'
+					name={FiltersEnum.filterDirection}
+					value={'all'}
+					id={'all'}
+					onChange={e => handlerOnChange(e)}
+					checked={configPrograms?.[FiltersEnum.filterDirection] === 'all'}
+					className={stls.inputNotActive}
+				/>
+				<label className={stls.labelModalSorting} htmlFor={'all'}>
+					{'Все направления'}
+				</label>
+			</div>
 			{uniqueDirections?.map(item => (
 				<div
 					key={item}

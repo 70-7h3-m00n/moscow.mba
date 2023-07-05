@@ -40,8 +40,8 @@ export const usePrograms = () => {
 			)
 
 			setMinMaxDuration(() => ({
-				minDuration: minDuration,
-				maxDuration: maxDuration
+				minDuration: Math.floor(minDuration),
+				maxDuration: Math.ceil(maxDuration)
 			}))
 
 			return programs?.filter(
@@ -84,6 +84,10 @@ export const usePrograms = () => {
 			FilterTypeProgramEnum.profession === configPrograms?.filterTypeProgram
 		) {
 			setUniqueDirections(filterUniqueDirections(programs))
+
+			if (configPrograms?.filterDirection === 'all') {
+				return programs
+			}
 
 			return programs.filter(
 				program =>
