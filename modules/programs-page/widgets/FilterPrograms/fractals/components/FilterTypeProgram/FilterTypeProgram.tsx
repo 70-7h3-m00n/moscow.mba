@@ -50,7 +50,10 @@ const FilterTypeProgram = () => {
 	// if URI is loaded and there is 'filterDirection' set configPrograms
 	useEffect(() => {
 		if (router.isReady) {
-			if (configPrograms?.[FiltersEnum.filterDirection]) {
+			if (
+				configPrograms?.[FiltersEnum.filterDirection] &&
+				configPrograms?.[FiltersEnum.filterDirection] !== 'all'
+			) {
 				setQueryURI({
 					...configPrograms,
 					[FiltersEnum.filterDirection]: encodeURIComponent(
@@ -58,14 +61,12 @@ const FilterTypeProgram = () => {
 					)
 				})
 			} else {
-				if (
-					configPrograms.sorting === 'default' &&
-					configPrograms.filterTypeProgram === 'all' &&
-					configPrograms.filterTrainingFormat === 'online'
-				) {
+				if (configPrograms.sorting === 'default') {
 					setQueryURI(null)
 				} else {
-					setQueryURI({ ...configPrograms })
+					setQueryURI({
+						...configPrograms
+					})
 				}
 			}
 		}

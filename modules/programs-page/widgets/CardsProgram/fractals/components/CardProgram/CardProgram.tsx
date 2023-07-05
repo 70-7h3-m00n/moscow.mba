@@ -5,13 +5,21 @@ import { ruCaseMonth } from '@/helpers/index'
 import TrainingPeriod from '@/components/costs/TrainingPeriod'
 import Price from '@/components/costs/Price'
 import { IconArrowTopRight } from '@/components/icons'
+import {
+	FilterFormatTrainingEnum,
+	useConfigProgramsContext
+} from 'modules/programs-page/fractals'
 
 const CardProgram = ({ program }) => {
 	const at = useAt()
+	const { configPrograms } = useConfigProgramsContext()
 
 	const type = program?.category.type
 	const format = program?.studyFormat
-	const isActive = program?.isActive
+
+	const isAllProgramsBlendedPage =
+		at.allPrograms &&
+		configPrograms.filterTrainingFormat === FilterFormatTrainingEnum.blended
 
 	return (
 		<Link legacyBehavior href={`/programs/${type}/${format}/${program?.slug}`}>
@@ -40,7 +48,7 @@ const CardProgram = ({ program }) => {
 				<div className={stls.bottomContainer}>
 					<div>
 						<Price
-							discount={!at.blended}
+							discount={!at.blended && !isAllProgramsBlendedPage}
 							type={type}
 							format={format}
 							programPrice={(at.profession || at.course) && program?.price}
