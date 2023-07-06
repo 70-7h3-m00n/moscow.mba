@@ -74,7 +74,11 @@ module.exports = {
 					'/programs/profession/online/Internal%20audit-and-control',
 					'/programs/mini/online/bG9naXN0aW',
 					'/programs/professional/blended',
-					'/programs/profession/online/personnel-management-hr-administration'
+					'/programs/profession/online/personnel-management-hr-administration',
+					'/programs/mba/online/crisis-manageme',
+					'/programs/mini/online/security-',
+					'/programs/mba/online/corporate-governance-and-strategy-of-business-development',
+					'/programs/course/online/nalogovoe-'
 				]
 			}
 		]

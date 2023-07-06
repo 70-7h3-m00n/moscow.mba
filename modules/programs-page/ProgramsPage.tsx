@@ -9,6 +9,7 @@ import {
 	InfoRectangle,
 	MainInfo
 } from './widgets'
+import { Reviews } from '@/components/sections'
 
 const ProgramsPage = () => {
 	return (
@@ -41,6 +42,7 @@ const ProgramsPage = () => {
 					</div>
 				</div>
 			</section>
+			<Reviews />
 		</ConfigProgramsProvider>
 	)
 }
