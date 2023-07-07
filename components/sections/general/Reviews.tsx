@@ -3,8 +3,14 @@ import Image from 'next/legacy/image'
 import Popup from 'reactjs-popup'
 import PopupReview from '@/components/popups/PopupReview'
 import { Wrapper } from '@/components/layout'
+import VideoReviews from './VideoReviews'
+import useAt from '@/hooks/useAt'
+import cn from 'classnames'
 
 const Reviews = () => {
+	const at = useAt()
+	const singleProgramPage = at.programChunk
+
 	const reviews = [
 		{
 			id: 'reviewModal-1',
@@ -45,52 +51,58 @@ const Reviews = () => {
 	]
 	return (
 		<>
-			<section className={stls.container}>
-				<Wrapper classNames={[stls.wrapper]}>
+			<div
+				className={cn(stls.reviewsContainer, {
+					[stls.singleProgramPage]: singleProgramPage
+				})}>
+				<VideoReviews singleProgramPage={singleProgramPage} />
+				<section className={stls.container}>
 					<div className={stls.titleContainer}>
-						<h2>Что о нас говорят</h2>
+						<h2>{singleProgramPage && 'Отзывы'}</h2>
 					</div>
-					<div className={stls.list}>
-						{reviews.map((review, idx) => {
-							return (
-								<div className={stls.item} key={review.id}>
-									<div className={stls.avatar}>
-										<Image
-											src={`/assets/images/reviews/${review.picUrl}`}
-											alt={review.name}
-											width={187}
-											height={187}
-										/>
-									</div>
-									<div>
-										<div className={stls.excerptContainer}>
-											<p className={stls.excerpt}>
-												{review.excerpt + ' '}
-												<Popup
-													trigger={<a className={stls.link}>Читать</a>}
-													modal
-													lockScroll
-													nested
-													closeOnDocumentClick>
-													{/* @ts-expect-error  */}
-													{close => (
-														<PopupReview
-															closePopUp={close}
-															review={reviews[idx]}
-														/>
-													)}
-												</Popup>
-											</p>
+					<Wrapper classNames={[stls.wrapper]}>
+						<div className={stls.list}>
+							{reviews.map((review, idx) => {
+								return (
+									<div className={stls.item} key={review.id}>
+										<div className={stls.avatar}>
+											<Image
+												src={`/assets/images/reviews/${review.picUrl}`}
+												alt={review.name}
+												width={187}
+												height={187}
+											/>
 										</div>
-										<div className={stls.name}>{review.name}</div>
-										<div className={stls.job}>{review.profession}</div>
+										<div>
+											<div className={stls.excerptContainer}>
+												<p className={stls.excerpt}>
+													{review.excerpt + ' '}
+													<Popup
+														trigger={<a className={stls.link}>Читать</a>}
+														modal
+														lockScroll
+														nested
+														closeOnDocumentClick>
+														{/* @ts-expect-error  */}
+														{close => (
+															<PopupReview
+																closePopUp={close}
+																review={reviews[idx]}
+															/>
+														)}
+													</Popup>
+												</p>
+											</div>
+											<div className={stls.name}>{review.name}</div>
+											<div className={stls.job}>{review.profession}</div>
+										</div>
 									</div>
-								</div>
-							)
-						})}
-					</div>
-				</Wrapper>
-			</section>
+								)
+							})}
+						</div>
+					</Wrapper>
+				</section>
+			</div>
 		</>
 	)
 }

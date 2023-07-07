@@ -46,6 +46,7 @@ import SectionStudyCost from '@/components/sections/general/SectionStudyCost'
 import SectionCheckPros from '@/components/sections/general/SectionCheckPros'
 import ECTSStandard from '@/components/sections/general/ECTSStandard'
 import GetStudyPlan from '@/components/sections/general/GetStudyPlan'
+import { VideoReviews } from '../sections'
 
 const PageBlendedProgram = ({ program, programs = null, teachers }) => {
 	const router = useRouter()
