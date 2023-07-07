@@ -10,7 +10,6 @@ import cn from 'classnames'
 const Reviews = () => {
 	const at = useAt()
 	const singleProgramPage = at.programChunk
-	console.log('singleProgramPage: ', singleProgramPage)
 
 	const reviews = [
 		{
@@ -52,15 +51,15 @@ const Reviews = () => {
 	]
 	return (
 		<>
-			<div className={stls.titleContainer}>
-				<h2>{singleProgramPage ? 'Почему нас выбирают' : 'Отзывы'}</h2>
-			</div>
 			<div
 				className={cn(stls.reviewsContainer, {
 					[stls.singleProgramPage]: singleProgramPage
 				})}>
 				<VideoReviews singleProgramPage={singleProgramPage} />
 				<section className={stls.container}>
+					<div className={stls.titleContainer}>
+						<h2>{singleProgramPage && 'Отзывы'}</h2>
+					</div>
 					<Wrapper classNames={[stls.wrapper]}>
 						<div className={stls.list}>
 							{reviews.map((review, idx) => {
