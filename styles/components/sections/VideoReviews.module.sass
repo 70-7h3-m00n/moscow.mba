@@ -14,10 +14,17 @@
 .wrapper 
   overflow-x: scroll
   overflow-y: hidden
+  overflow: -moz-scrollbars-none
+  &::-webkit-scrollbar
+    width: 0
+
+.title-container
+  margin-bottom: f.px(60)
 
 .reviewsList
   display: flex
   justify-content: space-between
+  gap: 30px
 
 .previewWrapper
   cursor: pointer
