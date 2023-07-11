@@ -39,7 +39,7 @@ export default function VideoReviews({
 										alt='youtube preview image'
 										src={`//img.youtube.com/vi/${review.link}/hqdefault.jpg`}
 										width='190'
-										height='340'
+										height='345'
 									/>
 									<div className={stls.openPopupLink}>
 										<span
