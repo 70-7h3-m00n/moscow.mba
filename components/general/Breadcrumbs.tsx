@@ -95,7 +95,7 @@ const homeRoute = mainRoutes.find(route => route.path === '/')
 
 const professionRoute = {
 	label: {
-		ru: 'Профессия',
+		ru: 'Проф. переподготовка',
 		'en-US': 'Profession'
 	},
 	path: '/programs/profession/online'
@@ -103,7 +103,7 @@ const professionRoute = {
 
 const courseRoute = {
 	label: {
-		ru: 'Курс',
+		ru: 'Повышение квалификации',
 		'en-US': 'Course'
 	},
 	path: '/programs/course/online'

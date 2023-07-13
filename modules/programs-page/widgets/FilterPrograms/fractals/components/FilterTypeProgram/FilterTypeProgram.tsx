@@ -78,23 +78,29 @@ const FilterTypeProgram = () => {
 			e.target.value === FilterTypeProgramEnum.course ||
 			e.target.value === FilterTypeProgramEnum.profession
 		) {
-			router.push(`/programs/${e.target.value}/online`)
-			// handlerSetConfigPrograms({
-			//  [FiltersEnum.filterTypeProgram]: e.target.value,
-			//  [FiltersEnum.filterTrainingFormat]: FilterFormatTrainingEnum.online
-			// })
+			router.push(
+				{
+					pathname: `/programs/${e.target.value}/online`
+				},
+				undefined,
+				{ scroll: false }
+			)
 		} else if (e.target.value === FilterTypeProgramEnum.all) {
-			router.push(`/programs`)
-			// handlerSetConfigPrograms({
-			//  [FiltersEnum.filterTypeProgram]: e.target.value
-			// })
+			router.push(
+				{
+					pathname: `/programs`
+				},
+				undefined,
+				{ scroll: false }
+			)
 		} else {
 			router.push(
-				`/programs/${e.target.value}/${configPrograms.filterTrainingFormat}`
+				{
+					pathname: `/programs/${e.target.value}/${configPrograms.filterTrainingFormat}`
+				},
+				undefined,
+				{ scroll: false }
 			)
-			// handlerSetConfigPrograms({
-			//  [FiltersEnum.filterTypeProgram]: e.target.value
-			// })
 		}
 	}
 	return (

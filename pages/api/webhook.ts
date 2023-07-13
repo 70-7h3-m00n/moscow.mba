@@ -158,37 +158,34 @@ const webhook = async (
 
 	if (utm?.source === 'salid' && utm?.medium === 'offer1234') {
 		const clientId = req?.body?.status?.[0]?.account_id // где взять?
-		console.log('clientId: ', clientId)
 		const orderId = req?.body?.status?.[0]?.id
-		console.log('orderId: ', orderId)
 		const orderSumm = req?.body?.status?.[0]?.price
-		console.log('orderSumm: ', orderSumm)
 
 		const leadStatus = req?.body?.status?.[0]?.status_id
-		console.log('leadStatus: ', leadStatus)
 
 		const regPostback = `https://salid.ru/postback/ads.php?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
 		const newOrderPostback = `https://salid.ru/postback/ads.php?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
 		const payedOrderPostback = `https://salid.ru/postback/ads.php?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
 
-		// const regPostback = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
-		// const newOrderPostback = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
-		// const payedOrderPostback = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
+		const webhook = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6`
 
 		try {
 			// Postback registration
 			if (leadStatus === LeadStatusCode.Register) {
 				await axios.get(regPostback)
+				await axios.get(webhook + `?cel=registration`)
 			}
 
 			// Postback new order
 			if (leadStatus === LeadStatusCode.NewOrder) {
 				await axios.get(newOrderPostback)
+				await axios.get(webhook + `?cel=order`)
 			}
 
 			// Postback payed order
 			if (leadStatus === LeadStatusCode.PaidOrder) {
 				await axios.get(payedOrderPostback)
+				await axios.get(webhook + `?cel=sale`)
 			}
 		} catch (e) {
 			console.error(e)
