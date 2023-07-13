@@ -1,0 +1,42 @@
+import stls from '@/styles/components/inputs/InputPhone.module.sass'
+import cn from 'classnames'
+import { useAt } from '@/hooks/index'
+
+const InputPhone = ({ register, errors, width = '25' }) => {
+	const at = useAt()
+	return (
+		<div className={`input-block width-${width}`}>
+			<input
+				type='tel'
+				aria-label={at.en ? 'Promo code' : 'Промокод'}
+				{...register('phone', {
+					minLength: {
+						value: 3,
+						message: `*${
+							at.en ? 'Promo code is too short' : 'Промокод слишком короткий'
+						}`
+					},
+					maxLength: {
+						value: 10,
+						message: `*${
+							at.en ? 'Promo code is too long' : 'Промокод слишком длинный'
+						}`
+					}
+				})}
+				onFocus={e => e.target.classList.add('texted')}
+				onBlur={e =>
+					e.target.value === '' ? e.target.classList.remove('texted') : ''
+				}
+			/>
+			<div
+				className={cn({
+					'input-placeholder': true
+				})}>
+				{at.en ? 'Promo code' : 'Промокод'}
+			</div>
+			<p className='inpt-err-msg'>{errors.phone && errors.phone.message}</p>
+		</div>
+	)
+}
+
+export default InputPhone

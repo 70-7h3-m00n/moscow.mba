@@ -129,14 +129,24 @@ const webhook = async (
 	req: NextApiRequest,
 	res: NextApiResponse<TypeNextApiResponseLeadData | Error>
 ) => {
-	const customFields = req?.body?.status?.[0]?.custom_fields
+	const webhook = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6`
+	let currentLead
+
+	if (req?.body?.hasOwnProperty('status')) {
+		currentLead = req?.body?.leads?.status?.[0]
+	} else if (req?.body?.hasOwnProperty('add')) {
+		currentLead = req?.body?.leads?.add?.[0]
+	} else {
+		await axios.get(webhook + '?wrong=data')
+		res.status(200).json({ msg: 'wrong data from crm' })
+	}
 
 	const utm: {
 		source: string | null
 		medium: string | null
 		term: string | null
 		campaign: string | null
-	} = customFields?.reduce(
+	} = currentLead?.custom_fields?.reduce(
 		(acc, customField) => {
 			if (customField.name === 'Источник')
 				acc.source = customField?.values?.[0]?.value || null
@@ -157,17 +167,14 @@ const webhook = async (
 	)
 
 	if (utm?.source === 'salid' && utm?.medium === 'offer1234') {
-		const clientId = req?.body?.status?.[0]?.account_id // где взять?
-		const orderId = req?.body?.status?.[0]?.id
-		const orderSumm = req?.body?.status?.[0]?.price
-
-		const leadStatus = req?.body?.status?.[0]?.status_id
+		const clientId = currentLead?.account_id // где взять?
+		const orderId = currentLead?.id
+		const orderSumm = currentLead?.price
+		const leadStatus = currentLead?.status_id
 
 		const regPostback = `https://salid.ru/postback/ads.php?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
 		const newOrderPostback = `https://salid.ru/postback/ads.php?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
 		const payedOrderPostback = `https://salid.ru/postback/ads.php?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
-
-		const webhook = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6`
 
 		try {
 			// Postback registration
@@ -213,3 +220,94 @@ export default webhook
 // 57209378 - Рассрочка от академии
 // 143 - Некоррект
 // 142 - Успешно реализовано
+
+const x = {
+	add: [
+		{
+			id: '30307415',
+			name: 'Новая заявка с moscow.mba',
+			status_id: '42100270',
+			price: '0',
+			responsible_user_id: '8283409',
+			last_modified: '1689256448',
+			modified_user_id: '0',
+			created_user_id: '0',
+			date_create: '1689256449',
+			pipeline_id: '4542166',
+			tags: [{ id: '55515', name: 'новаязаявка' }],
+			account_id: '29638927',
+			custom_fields: [
+				{
+					id: '432373',
+					name: 'roistat',
+					values: [{ value: '139919' }],
+					code: 'ROISTAT'
+				},
+				{
+					id: '715391',
+					name: 'Ссылка на сайт',
+					values: [
+						{
+							value:
+								'https://moscow.mba/promo?utm_source=salid&amp;utm_medium=offer1234&amp;utm_campaign=wm112233&amp;utm_term=423432345654345423456743'
+						}
+					]
+				},
+				{
+					id: '1363223',
+					name: 'Yandex metrics ID',
+					values: [{ value: '1680699095677241273' }]
+				}
+			],
+			created_at: '1689256449',
+			updated_at: '1689256448'
+		}
+	]
+}
+
+//30307415
+
+const y = {
+	status: [
+		{
+			id: '30307415',
+			name: 'Новая заявка с moscow.mba',
+			status_id: '41893093',
+			old_status_id: '42100270',
+			price: '0',
+			responsible_user_id: '8854162',
+			last_modified: '1689256781',
+			modified_user_id: '8421298',
+			created_user_id: '0',
+			date_create: '1689256449',
+			pipeline_id: '4542166',
+			tags: [{ id: '55515', name: 'новаязаявка' }],
+			account_id: '29638927',
+			custom_fields: [
+				{
+					id: '432373',
+					name: 'roistat',
+					values: [{ value: '139919' }],
+					code: 'ROISTAT'
+				},
+				{
+					id: '715391',
+					name: 'Ссылка на сайт',
+					values: [
+						{
+							value:
+								'https://moscow.mba/promo?utm_source=salid&amp;utm_medium=offer1234&amp;utm_campaign=wm112233&amp;utm_term=423432345654345423456743'
+						}
+					]
+				},
+				{
+					id: '1363223',
+					name: 'Yandex metrics ID',
+					values: [{ value: '1680699095677241273' }]
+				}
+			],
+			created_at: '1689256449',
+			updated_at: '1689256781'
+		}
+	]
+}
