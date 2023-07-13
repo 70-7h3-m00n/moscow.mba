@@ -129,16 +129,14 @@ const webhook = async (
 	req: NextApiRequest,
 	res: NextApiResponse<TypeNextApiResponseLeadData | Error>
 ) => {
-	const customFields = req?.body?.leads?.status?.[0]?.custom_fields
-
-	// const customFields = data.status?.[0].custom_fields
+	const customFields = req?.body?.status?.[0]?.custom_fields
 
 	const utm: {
 		source: string | null
 		medium: string | null
 		term: string | null
 		campaign: string | null
-	} = customFields.reduce(
+	} = customFields?.reduce(
 		(acc, customField) => {
 			if (customField.name === 'Источник')
 				acc.source = customField?.values?.[0]?.value || null
@@ -158,20 +156,24 @@ const webhook = async (
 		}
 	)
 
-	if (utm.source === 'salid' && utm.medium === 'offer1234') {
-		const clientId = req?.body?.['leads[status][0][account_id]'] // где взять?
-		const orderId = req?.body?.['leads[status][0][id]']
-		const orderSumm = req?.body?.['leads[status][0][price]']
+	if (utm?.source === 'salid' && utm?.medium === 'offer1234') {
+		const clientId = req?.body?.status?.[0]?.account_id // где взять?
+		console.log('clientId: ', clientId)
+		const orderId = req?.body?.status?.[0]?.id
+		console.log('orderId: ', orderId)
+		const orderSumm = req?.body?.status?.[0]?.price
+		console.log('orderSumm: ', orderSumm)
 
-		const leadStatus = req?.body?.['leads[status][0][status_id]']
+		const leadStatus = req?.body?.status?.[0]?.status_id
+		console.log('leadStatus: ', leadStatus)
 
-		// const regPostback = `https://salid.ru/postback/ads.php?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
-		// const newOrderPostback = `https://salid.ru/postback/ads.php?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
-		// const payedOrderPostback = `https://salid.ru/postback/ads.php?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
+		const regPostback = `https://salid.ru/postback/ads.php?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
+		const newOrderPostback = `https://salid.ru/postback/ads.php?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
+		const payedOrderPostback = `https://salid.ru/postback/ads.php?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
 
-		const regPostback = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
-		const newOrderPostback = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
-		const payedOrderPostback = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
+		// const regPostback = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
+		// const newOrderPostback = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
+		// const payedOrderPostback = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6?offer=${utm.medium}&webmaster=${utm.campaign}&clickid=${utm.term}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
 
 		try {
 			// Postback registration
@@ -188,19 +190,19 @@ const webhook = async (
 			if (leadStatus === LeadStatusCode.PaidOrder) {
 				await axios.get(payedOrderPostback)
 			}
-
-			res.status(200).json({ msg: 'success' })
 		} catch (e) {
 			console.error(e)
 		}
 	}
+
+	res.status(200).json({ msg: JSON.stringify(req.body) })
 }
 
 export default webhook
 
 // 30248107
 
-// AMO CRM id's of status codes
+// AMO CRM status codes id
 // 42100270 - Необработано
 // 42292828 - Дубли
 // 41893090 - Первый диалог
