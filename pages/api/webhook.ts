@@ -120,7 +120,7 @@ type TypeNextApiResponseLeadData = {
 }
 
 enum LeadStatusCode {
-	Register = '41893090', // Первый диалог
+	Register = '42100270', // Необработано
 	NewOrder = '41893093', // Отправлено КП
 	PaidOrder = '142' // Успешно реализовано
 }
@@ -187,12 +187,13 @@ const webhook = async (
 				await axios.get(payedOrderPostback)
 				await axios.get(webhook + `?cel=sale`)
 			}
+			res.status(200).json({ msg: 'success' })
 		} catch (e) {
 			console.error(e)
 		}
 	}
 
-	res.status(200).json({ msg: JSON.stringify(req.body) })
+	res.status(200).json({ msg: 'api webhook' })
 }
 
 export default webhook
