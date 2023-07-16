@@ -26,6 +26,7 @@
     "next-pwa": "^5.5.4",
     "next-secure-headers": "^2.2.0",
     "next-seo": "^5.4.0",
+    "ngrok": "^5.0.0-beta.2",
     "nodemailer": "^6.7.6",
     "nprogress": "^0.2.0",
     "qs": "^6.11.0",
