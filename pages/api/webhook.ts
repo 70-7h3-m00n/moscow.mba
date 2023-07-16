@@ -16,67 +16,65 @@ const webhook = async (
 	req: NextApiRequest,
 	res: NextApiResponse<TypeNextApiResponseLeadData | Error>
 ) => {
-	const webhook = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6`
+	if (req.body) {
+		const webhook = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6`
+		const entries = Object.values(req?.body)
+		const utmTermIndex = entries?.findIndex(ell => ell === 'Ключевое слово')
+		const utmTerm = utmTermIndex > 0 && entries?.[utmTermIndex + 1]
+		const utmCampaighIndex = entries?.findIndex(ell => ell === 'Название РК')
+		const utmCampaign = utmCampaighIndex > 0 && entries?.[utmCampaighIndex + 1]
+		const isUTMSourceSalid = entries.some(el => el === 'salid')
+		const isUTMMediumOffer = entries.some(el => el === 'offer1234')
 
-	let responseSent = false
+		if (isUTMSourceSalid && isUTMMediumOffer) {
+			const clientId =
+				req?.body?.['leads[status][0][account_id]'] ||
+				req?.body?.['leads[add][0][account_id]']
+			const orderId =
+				req?.body?.['leads[status][0][id]'] || req?.body?.['leads[add][0][id]']
+			const orderSumm =
+				req?.body?.['leads[status][0][price]'] ||
+				req?.body?.['leads[add][0][price]']
+			const leadStatus =
+				req?.body?.['leads[status][0][status_id]'] ||
+				req?.body?.['leads[add][0][status_id]']
 
-	const entries = Object.values(req?.body)
-	const utmTermIndex = entries?.findIndex(ell => ell === 'Ключевое слово')
-	const utmTerm = utmTermIndex > 0 && entries?.[utmTermIndex + 1]
-	const utmCampaighIndex = entries?.findIndex(ell => ell === 'Название РК')
-	const utmCampaign = utmCampaighIndex > 0 && entries?.[utmCampaighIndex + 1]
-	const isUTMSourceSalid = entries.some(el => el === 'salid')
-	const isUTMMediumOffer = entries.some(el => el === 'offer1234')
+			const regPostback = `https://salid.ru/postback/ads.php?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
+			const newOrderPostback = `https://salid.ru/postback/ads.php?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
+			const payedOrderPostback = `https://salid.ru/postback/ads.php?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
 
-	if (isUTMSourceSalid && isUTMMediumOffer) {
-		const clientId =
-			req?.body?.['leads[status][0][account_id]'] ||
-			req?.body?.['leads[add][0][account_id]']
-		const orderId =
-			req?.body?.['leads[status][0][id]'] || req?.body?.['leads[add][0][id]']
-		const orderSumm =
-			req?.body?.['leads[status][0][price]'] ||
-			req?.body?.['leads[add][0][price]']
-		const leadStatus =
-			req?.body?.['leads[status][0][status_id]'] ||
-			req?.body?.['leads[add][0][status_id]']
+			try {
+				// Postback registration
+				if (leadStatus === LeadStatusCode.Register) {
+					await axios.get(regPostback)
+					await axios.get(
+						webhook +
+							`?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
+					)
+				}
 
-		const regPostback = `https://salid.ru/postback/ads.php?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
-		const newOrderPostback = `https://salid.ru/postback/ads.php?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
-		const payedOrderPostback = `https://salid.ru/postback/ads.php?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
+				// Postback new order
+				if (leadStatus === LeadStatusCode.NewOrder) {
+					await axios.get(newOrderPostback)
+					await axios.get(
+						webhook +
+							`?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
+					)
+				}
 
-		try {
-			// Postback registration
-			if (leadStatus === LeadStatusCode.Register) {
-				await axios.get(regPostback)
-				await axios.get(
-					webhook +
-						`?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
-				)
+				// Postback payed order
+				if (leadStatus === LeadStatusCode.PaidOrder) {
+					await axios.get(payedOrderPostback)
+					await axios.get(
+						webhook +
+							`?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
+					)
+				}
+
+				res.status(200).json({ msg: 'success' })
+			} catch (e) {
+				console.error(e)
 			}
-
-			// Postback new order
-			if (leadStatus === LeadStatusCode.NewOrder) {
-				await axios.get(newOrderPostback)
-				await axios.get(
-					webhook +
-						`?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
-				)
-			}
-
-			// Postback payed order
-			if (leadStatus === LeadStatusCode.PaidOrder) {
-				await axios.get(payedOrderPostback)
-				await axios.get(
-					webhook +
-						`?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
-				)
-			}
-			console.log('ok')
-
-			res.status(200).json({ msg: 'success' })
-		} catch (e) {
-			console.error(e)
 		}
 	}
 }
