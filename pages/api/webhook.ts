@@ -19,14 +19,21 @@ const webhook = async (
 	if (req.body) {
 		const webhook = `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6`
 		const entries = Object.values(req?.body)
+
+		const isUTMSourceSalid = entries.some(el => el === 'salid')
 		const utmTermIndex = entries?.findIndex(ell => ell === 'Ключевое слово')
 		const utmTerm = utmTermIndex > 0 && entries?.[utmTermIndex + 1]
-		const utmCampaighIndex = entries?.findIndex(ell => ell === 'Название РК')
-		const utmCampaign = utmCampaighIndex > 0 && entries?.[utmCampaighIndex + 1]
-		const isUTMSourceSalid = entries.some(el => el === 'salid')
-		const isUTMMediumOffer = entries.some(el => el === 'offer1234')
+		const utmCampaignIndex = entries?.findIndex(ell => ell === 'Название РК')
+		const utmCampaign = utmCampaignIndex > 0 && entries?.[utmCampaignIndex + 1]
+		const utmMediumIndex = entries?.findIndex(ell => ell === 'Тип трафика')
+		const utmMedium = utmMediumIndex > 0 && entries?.[utmMediumIndex + 1]
 
-		if (isUTMSourceSalid && isUTMMediumOffer) {
+		// utm_source (Источник) - salid
+		// utm_medium (Тип трафика) - offer38812
+		// utm_campaign (Название РК) - wm997278
+		// utm_term (Ключевое слово) - 423432345654345423456743
+
+		if (isUTMSourceSalid) {
 			const clientId =
 				req?.body?.['leads[status][0][account_id]'] ||
 				req?.body?.['leads[add][0][account_id]']
@@ -39,9 +46,9 @@ const webhook = async (
 				req?.body?.['leads[status][0][status_id]'] ||
 				req?.body?.['leads[add][0][status_id]']
 
-			const regPostback = `https://salid.ru/postback/ads.php?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
-			const newOrderPostback = `https://salid.ru/postback/ads.php?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
-			const payedOrderPostback = `https://salid.ru/postback/ads.php?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
+			const regPostback = `https://salid.ru/postback/ads.php?offer=${utmMedium}&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
+			const newOrderPostback = `https://salid.ru/postback/ads.php?offer=${utmMedium}&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
+			const payedOrderPostback = `https://salid.ru/postback/ads.php?offer=${utmMedium}&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
 
 			try {
 				// Postback registration
@@ -49,7 +56,7 @@ const webhook = async (
 					await axios.get(regPostback)
 					await axios.get(
 						webhook +
-							`?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
+							`?offer=${utmMedium}&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
 					)
 				}
 
@@ -58,7 +65,7 @@ const webhook = async (
 					await axios.get(newOrderPostback)
 					await axios.get(
 						webhook +
-							`?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
+							`?offer=${utmMedium}&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
 					)
 				}
 
@@ -67,7 +74,7 @@ const webhook = async (
 					await axios.get(payedOrderPostback)
 					await axios.get(
 						webhook +
-							`?offer=offer1234&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
+							`?offer=${utmMedium}&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=sale`
 					)
 				}
 
@@ -81,7 +88,7 @@ const webhook = async (
 
 export default webhook
 
-// 30248107
+// 30363279
 
 // AMO CRM status codes id
 // 42100270 - Необработано
