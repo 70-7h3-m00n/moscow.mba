@@ -39,12 +39,14 @@ const webhook = async (
 				req?.body?.['leads[add][0][account_id]']
 			const orderId =
 				req?.body?.['leads[status][0][id]'] || req?.body?.['leads[add][0][id]']
-			const orderSumm =
-				req?.body?.['leads[status][0][price]'] ||
-				req?.body?.['leads[add][0][price]']
 			const leadStatus =
 				req?.body?.['leads[status][0][status_id]'] ||
 				req?.body?.['leads[add][0][status_id]']
+			const orderSumm =
+				Number(
+					req?.body?.['leads[status][0][price]'] ||
+						req?.body?.['leads[add][0][price]']
+				) || 1
 
 			const regPostback = `https://salid.ru/postback/ads.php?offer=${utmMedium}&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&klient=mba&cel=registration`
 			const newOrderPostback = `https://salid.ru/postback/ads.php?offer=${utmMedium}&webmaster=${utmCampaign}&clickid=${utmTerm}&id_polzovatelya=${clientId}&id_zakaza=${orderId}&summa_zakaza=${orderSumm}&klient=mba&cel=order`
