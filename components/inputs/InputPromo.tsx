@@ -2,14 +2,14 @@ import stls from '@/styles/components/inputs/InputPhone.module.sass'
 import cn from 'classnames'
 import { useAt } from '@/hooks/index'
 
-const InputPhone = ({ register, errors, width = '25' }) => {
+const InputPromo = ({ register, errors, width = '25' }) => {
 	const at = useAt()
 	return (
 		<div className={`input-block width-${width}`}>
 			<input
-				type='tel'
+				type='text'
 				aria-label={at.en ? 'Promo code' : 'Промокод'}
-				{...register('phone', {
+				{...register('promo', {
 					minLength: {
 						value: 3,
 						message: `*${
@@ -34,9 +34,9 @@ const InputPhone = ({ register, errors, width = '25' }) => {
 				})}>
 				{at.en ? 'Promo code' : 'Промокод'}
 			</div>
-			<p className='inpt-err-msg'>{errors.phone && errors.phone.message}</p>
+			<p className='inpt-err-msg'>{errors.promo && errors?.promo?.message}</p>
 		</div>
 	)
 }
 
-export default InputPhone
+export default InputPromo

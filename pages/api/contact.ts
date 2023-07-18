@@ -18,6 +18,7 @@ const contact = async (req, res) => {
 	let {
 		name,
 		phone,
+		promo,
 		email,
 		vk,
 		contactWay,
@@ -30,13 +31,14 @@ const contact = async (req, res) => {
 		ymUid,
 		formName
 	} = req.body
+	console.log('req.body: ', req.body)
 
 	if (name?.includes('@')) {
 		email = name
 		name = ''
 	}
 
-	const promocode = null
+	// const promocode = null
 
 	// geoip2 init
 	const geoip2 = new WebServiceClient('550199', process.env.GEO2_APIKEY, {
@@ -70,44 +72,44 @@ const contact = async (req, res) => {
 		? roistatCookie[0].trim().split('=')[1]
 		: null
 
-	const getUserLocation = async () => {
-		try {
-			const res = await geoip2.city(ip.toString())
-			const output = {
-				continent: {
-					code: res.continent.code,
-					names: {
-						ru: res.continent.names.ru,
-						en: res.continent.names.en
-					}
-				},
-				country: {
-					code: res.country.isoCode,
-					names: {
-						ru: res.country.names.ru,
-						en: res.country.names.en
-					}
-				},
-				city: {
-					names: {
-						en: res.city.names.en,
-						ru: res.city.names.ru
-					}
-				},
-				coordinates: {
-					accuracyRadius: res.location.accuracyRadius,
-					latitude: res.location.latitude,
-					longitude: res.location.longitude
-				},
-				timeZone: res.location.timeZone,
-				postalCode: res.postal.code
-			}
-			return output
-		} catch (err) {
-			console.log(err)
-			return null
-		}
-	}
+	// const getUserLocation = async () => {
+	// 	try {
+	// 		const res = await geoip2.city(ip.toString())
+	// 		const output = {
+	// 			continent: {
+	// 				code: res.continent.code,
+	// 				names: {
+	// 					ru: res.continent.names.ru,
+	// 					en: res.continent.names.en
+	// 				}
+	// 			},
+	// 			country: {
+	// 				code: res.country.isoCode,
+	// 				names: {
+	// 					ru: res.country.names.ru,
+	// 					en: res.country.names.en
+	// 				}
+	// 			},
+	// 			city: {
+	// 				names: {
+	// 					en: res.city.names.en,
+	// 					ru: res.city.names.ru
+	// 				}
+	// 			},
+	// 			coordinates: {
+	// 				accuracyRadius: res.location.accuracyRadius,
+	// 				latitude: res.location.latitude,
+	// 				longitude: res.location.longitude
+	// 			},
+	// 			timeZone: res.location.timeZone,
+	// 			postalCode: res.postal.code
+	// 		}
+	// 		return output
+	// 	} catch (err) {
+	// 		console.log(err)
+	// 		return null
+	// 	}
+	// }
 
 	// const locationData = await getUserLocation()
 	const locationData = null
@@ -121,7 +123,7 @@ const contact = async (req, res) => {
 		phone: phone || '',
 		email: email || '',
 		vk: vk || null,
-		promocode: promocode || null,
+		promocode: promo || null,
 		contactWay: contactWay || null,
 		contactMethod: contactMethod || null,
 		question: question || null,
@@ -436,7 +438,7 @@ const contact = async (req, res) => {
 			from: 'lead@moscow.mba',
 			to: `${
 				dev
-					? 'nova@ipo.msk.ru, novailoveyou3@gmail.com'
+					? 'brdima92@yandex.ru, brdima@mail.ru, brdima92@gmail.com'
 					: 'mba.academy@yandex.ru, leads@moscow.mba'
 			}`,
 			subject, // Subject line

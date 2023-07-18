@@ -23,6 +23,7 @@ type TypeFormValues = {
 	name: string
 	phone: string
 	email: string
+	promo?: string
 }
 
 const FormAlpha = ({
