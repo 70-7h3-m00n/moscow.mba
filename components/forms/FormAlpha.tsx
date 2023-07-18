@@ -91,7 +91,7 @@ const FormAlpha = ({
 				<InputName register={register} errors={errors} width={width} />
 				<InputPhone register={register} errors={errors} width={width} />
 				<InputEmail register={register} errors={errors} width={width} />
-				{/* <InputPromo register={register} errors={errors} width={width} /> */}
+				<InputPromo register={register} errors={errors} width={width} />
 				<InputSubmit errors={errors} alpha={alpha} width={width} />
 			</div>
 			{policyPrivacy && (
