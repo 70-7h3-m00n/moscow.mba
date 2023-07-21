@@ -420,7 +420,7 @@ const contact = async (req, res) => {
 
 	const transporter = nodemailer.createTransport({
 		host: process.env.SMTP_HOST,
-		port: 587,
+		port: Number(process.env.SMTP_PORT),
 		secure: false, // true for 465, false for other ports
 		logger: true,
 		debug: true,
@@ -435,12 +435,8 @@ const contact = async (req, res) => {
 
 	try {
 		const emailRes = await transporter.sendMail({
-			from: 'lead@moscow.mba',
-			to: `${
-				dev
-					? 'brdima92@yandex.ru, brdima@mail.ru, brdima92@gmail.com'
-					: 'mba.academy@yandex.ru, leads@moscow.mba'
-			}`,
+			from: process.env.SMTP_FROM,
+			to: `${dev ? process.env.SMTP_TO_DEV : process.env.SMTP_TO_PROD}`,
 			subject, // Subject line
 			text: `
       ${name}, \n
