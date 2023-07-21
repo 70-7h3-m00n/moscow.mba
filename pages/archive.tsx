@@ -18,7 +18,9 @@ const Archive: NextPage<TypePageJournalArticlesProps> = ({ programs }) => {
 							<Link
 								className={stls.link}
 								href={`/programs/${program.category.type}/${program.studyFormat}/${program.slug}`}>
-								<p className={stls.linkParagraph}>{program.title}</p>
+								<p className={stls.linkParagraph}>
+									{program.title} : {program.category.type}
+								</p>
 							</Link>
 							{program.studyFormat === 'online' && (
 								<span className={stls.span}>ONLINE</span>

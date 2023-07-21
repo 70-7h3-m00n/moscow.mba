@@ -7,8 +7,8 @@ const setLastDayOfMonth = (currentDate: Date) => {
 }
 
 const setNextDay = (currentDate: Date, currentDay: number) =>
-	currentDay <= 20
-		? currentDate.setDate(currentDay <= 11 ? 11 : 20) // changed 10 to 11
+	currentDay <= 22
+		? currentDate.setDate(currentDay <= 11 ? 11 : 22) // changed 10 to 11
 		: setLastDayOfMonth(currentDate)
 
 const Until = ({ preposition = true, executive = false }) => {
