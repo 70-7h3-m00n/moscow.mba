@@ -1,15 +1,15 @@
 import { TGeneralRoute, TGeneralWindowDataLayer } from '@/types/index'
 
 type TypeFilledUpFormWithoutSubmissionProps = {
-  url: string
+	url: string
 }
 
 const filledUpFormWithoutSubmission = ({
-  url
+	url
 }: TypeFilledUpFormWithoutSubmissionProps) =>
-  (window as TGeneralWindowDataLayer).dataLayer?.push({
-    event: 'filledUpFormWithoutSubmission',
-    page: url
-  })
+	(window as TGeneralWindowDataLayer).dataLayer?.push({
+		event: 'filledUpFormWithoutSubmission',
+		page: url
+	})
 
 export default filledUpFormWithoutSubmission

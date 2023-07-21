@@ -161,13 +161,20 @@ const Footer = () => {
 											{at.en ? 'Experts' : 'Эксперты'}
 										</Link>
 									</li>
-									<li className={stls.linkItem}>
+									{/* <li className={stls.linkItem}>
 										<Link
 											href='/teachers'
 											{...(at.en ? { locale: 'ru' } : undefined)}>
 											{at.en
 												? 'Subscribe to the newsletter'
 												: 'Подписка на рассылку'}
+										</Link>
+									</li> */}
+									<li className={stls.linkItem}>
+										<Link
+											href='/archive'
+											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{at.en ? 'Archived programs' : 'Архивные программы'}
 										</Link>
 									</li>
 									<li className={stls.linkItem}>
