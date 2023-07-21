@@ -1382,6 +1382,12 @@ div.popup-content.pdf-popup-content {
 	color: #fff;
 }
 
+.loader-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .loader-content p {
 	margin-top: 30px;
 }
