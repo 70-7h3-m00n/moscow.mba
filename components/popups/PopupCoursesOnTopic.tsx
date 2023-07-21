@@ -29,6 +29,8 @@ const PopupCoursesOnTopic = ({
 	//If there are no programs, then do not render the component
 	if (!recommendedPrograms || recommendedPrograms?.length === 0) return null
 
+	console.log('=>>>>>>>>>>>>>>>>>>>>', recommendedPrograms?.[0])
+
 	return (
 		<>
 			<div className={stls.wrapper} onClick={handlePopupCoursesOnTopic}></div>
