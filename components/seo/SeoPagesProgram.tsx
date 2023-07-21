@@ -15,7 +15,8 @@ const changeCanonicalLinkFrom = [
 	`${routesFront.root}${routesFront.programs}/course/online/upravlenie-logistikoy-i-zepjmi-postavok`,
 	`${routesFront.root}${routesFront.programs}/mba/online/bank-management`,
 	`${routesFront.root}${routesFront.programs}/mba/online/consulting-management`,
-	`${routesFront.root}${routesFront.programs}/mba/online/fitness-management`
+	`${routesFront.root}${routesFront.programs}/mba/online/fitness-management`,
+	`${routesFront.root}${routesFront.programs}/mba/online/digital-transformation`
 ]
 
 const changeCanonicalLinkTo = [
@@ -24,7 +25,8 @@ const changeCanonicalLinkTo = [
 	`${routesFront.root}${routesFront.programs}/mini/online/logistics-management`,
 	`${routesFront.root}${routesFront.programs}/mini/online/bank-management`,
 	`${routesFront.root}${routesFront.programs}/mini/online/consulting-management`,
-	`${routesFront.root}${routesFront.programs}/mini/online/fitness-management`
+	`${routesFront.root}${routesFront.programs}/mini/online/fitness-management`,
+	`${routesFront.root}${routesFront.programs}/mini/online/digital-transformation`
 ]
 
 const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
