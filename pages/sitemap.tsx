@@ -18,35 +18,35 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 						<li>
 							{' '}
 							<Link className={stls.linkTitle} href='/'>
-								<h3>Главная</h3>
+								<h3 className={stls.linkTitleText}>Главная</h3>
 							</Link>
 						</li>
-						<li>
+						<li className={stls.innerListItem}>
 							<Link className={stls.link} href='/about'>
 								Об академии
 							</Link>
 						</li>
-						<li>
+						<li className={stls.innerListItem}>
 							<Link className={stls.link} href='/legal'>
 								Сведения об организации
 							</Link>
 						</li>
-						<li>
+						<li className={stls.innerListItem}>
 							<Link className={stls.link} href='/corporate-clients'>
 								Корпоративное обучение для бизнеса
 							</Link>
 						</li>
-						<li>
+						<li className={stls.innerListItem}>
 							<Link className={stls.link} href='/payment'>
 								Способы оплаты
 							</Link>
 						</li>
-						<li>
+						<li className={stls.innerListItem}>
 							<Link className={stls.link} href='/contact'>
 								Контакты
 							</Link>
 						</li>
-						<li>
+						<li className={stls.innerListItem}>
 							<Link className={stls.link} href='/webinars'>
 								Вебинары
 							</Link>
@@ -56,7 +56,7 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 
 				<li>
 					<Link className={stls.linkTitle} href='/programs'>
-						<h2>Программы</h2>
+						<h2 className={stls.linkTitleText}>Программы</h2>
 					</Link>
 					<Link
 						className={stls.linkTitle}
