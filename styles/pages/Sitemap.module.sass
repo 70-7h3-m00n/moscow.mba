@@ -3,11 +3,11 @@
 @use '@/styles/utils/funcs' as f
 
 .container
-  margin: 30px auto 30px
+  margin: 56px auto 30px
   padding-left: 10px
   padding-right: 10px
   width: 1310px
-  font-size: 20px
+  font-size: 18px
   @include m.media(desktop)
     width: 1000px
   @include m.media(laptop, tablet)
@@ -22,20 +22,33 @@
     clear: both
 
 .mainTitle
-  font-size: 40px
+  margin-bottom: 54px
+  font-size: 62px
 
 .linkTitle
   font-size: 30px
   font-weight: bold
-  margin-bottom: 15px
   h3
     font-size: 30px
     font-weight: bold
-    margin-bottom: 15px
+    margin-bottom: 30px
 
 .list
-  > li
-    margin-bottom: 10px
+  border-top: 1px solid #e6e6e6
+  padding-top: 40px
+  > li.innerListItem
+    position: relative
+    margin-bottom: 20px
+    padding-left: 20px
+    &::before
+      content: ''
+      position: absolute
+      left: 0
+      top: 50%
+      width: 5px
+      height: 5px
+      border-radius: 60px
+      background-color: #FF3535
 
 .span
   border-radius: 20px
