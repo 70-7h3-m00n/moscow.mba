@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 import moment from 'moment'
 import { WebServiceClient } from '@maxmind/geoip2-node'
 import { createLeadBackApi } from '@/helpers/index'
+import axios from 'axios'
 
 // ! pay close attention working with this file
 // * 2022.10.18 we've expirienced a week of lost leads, this is critical and should never accure ever again
@@ -418,6 +419,22 @@ const contact = async (req, res) => {
 
 	// const testAccount = await nodemailer.createTestAccount()
 
+	// F5 BEGIN
+	// try {
+	//   const f5 = await axios.request({
+	//     method: 'POST',
+	//     maxBodyLength: Infinity,
+	//     url: `https://tglk.ru/in/YMNnks9zDCEBwoR5`,
+	//     headers: {
+	//       'Content-Type': 'application/json'
+	//     },
+	//     data
+	//   })
+	// } catch (e) {
+	//   console.error(e)
+	// }
+	//  F5 END
+
 	const transporter = nodemailer.createTransport({
 		host: process.env.SMTP_HOST,
 		port: Number(process.env.SMTP_PORT),
@@ -456,3 +473,48 @@ const contact = async (req, res) => {
 }
 
 export default contact
+
+const example = {
+	ip: '52.59.207.213',
+	method: 'POST',
+	user_agent: 'axios/0.24.0',
+	get: {},
+	post: {
+		id: 'b473469c-3459-4cdd-a277-d2698f4cbf67',
+		date: '21-07-2023',
+		time: '12:30:39',
+		utc: 'GMT+0',
+		name: 'Павел ',
+		phone: '+7(925)298-68-80',
+		email: 'pavel_bogatiriov@mail.ru',
+		vk: null,
+		promocode: null,
+		contactway: null,
+		contactmethod: null,
+		question: null,
+		rootpath: 'https://mitu.institute',
+		leadpage:
+			'https://mitu.institute/programs/bakalavriat/menedzhment/predprinimatelstvo',
+		ip: '91.227.191.107',
+		cityen: null,
+		cityru: null,
+		countrycode: null,
+		countryen: null,
+		countryru: null,
+		continentcode: null,
+		continenten: null,
+		continentru: null,
+		accuracyradius: null,
+		latitude: null,
+		longitude: null,
+		timezone: null,
+		postalcode: null,
+		programtitle: 'Предпринимательство',
+		utmsource: '""',
+		utmmedium: null,
+		utmcampaign: null,
+		utmcontent: null,
+		utmterm: null,
+		cluid: null
+	}
+}

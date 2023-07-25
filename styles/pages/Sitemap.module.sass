@@ -25,21 +25,34 @@
   margin-bottom: 54px
   font-size: 62px
 
+.mainItem
+  border-top: 1px solid c.$nu
+  padding-top: 40px
+  padding-bottom: 40px
+
 .linkTitle
   font-size: 30px
   font-weight: bold
   h3
-    font-size: 30px
-    font-weight: bold
     margin-bottom: 30px
+    padding-left: 30px
+    font-size: 24px
 
-.list
-  border-top: 1px solid #e6e6e6
-  padding-top: 40px
-  > li.innerListItem
+h2.nestedTitle
+  font-size: 30px
+
+h3.nestedTitle
+  font-size: 24px
+
+.nestedList
+  padding-left: 30px
+  &:not(:last-child)
+    margin-bottom: 30px
+  > li.nestedListItem
     position: relative
-    margin-bottom: 20px
     padding-left: 20px
+    &:not(:last-child)
+      margin-bottom: 20px
     &::before
       content: ''
       position: absolute
@@ -48,18 +61,21 @@
       width: 5px
       height: 5px
       border-radius: 60px
-      background-color: #FF3535
+      background-color: c.$alpha
 
 .span
   border-radius: 20px
   padding: 3px 8px
   font-size: 14px
-  color: #fff
-  background-color: #ff3535
+  color: c.$psi
+  background-color: c.$alpha
 
 .link
-  :hover
-    color: #ff3535
+  line-height: 140%
+  &:not(:only-child)
+    margin-right: 15px
+  &:hover
+    color: c.$alpha
 
 .item
   display: flex
