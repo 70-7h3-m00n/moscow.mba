@@ -24,12 +24,12 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 		},
 		{
 			type: 'course',
-			title: 'Курсы',
+			title: 'Повышение квалификации',
 			url: `${routesFront.root}${routesFront.programsCoursesOnline}`
 		},
 		{
 			type: 'profession',
-			title: 'Профессии',
+			title: 'Профессиональная переподготовка',
 			url: `${routesFront.root}${routesFront.programsProfessionOnline}`
 		}
 	]
