@@ -1,7 +1,7 @@
 import stls from '@/styles/components/cards/CardProgram.module.sass'
 import Link from 'next/link'
 import { useAt } from '@/hooks/index'
-import { ruCaseMonth } from '@/helpers/index'
+import { ruCaseHours, ruCaseMonth } from '@/helpers/index'
 import TrainingPeriod from '@/components/costs/TrainingPeriod'
 import Price from '@/components/costs/Price'
 import { IconArrowTopRight } from '@/components/icons'
@@ -9,8 +9,11 @@ import {
 	FilterFormatTrainingEnum,
 	useConfigProgramsContext
 } from 'modules/programs-page/fractals'
+import TrainingPeriodHours from '@/components/costs/TrainingPeriodHours'
 
 const CardProgram = ({ program }) => {
+	// console.log('program from CardProgram=>>>>>>>>>>>', program)
+
 	const at = useAt()
 	const { configPrograms } = useConfigProgramsContext()
 
@@ -62,6 +65,14 @@ const CardProgram = ({ program }) => {
 							}`
 						) : (
 							<TrainingPeriod type={type} />
+						)}
+						<span className={stls.durationSeparator}> </span>
+						{program?.duration?.studyHours ? (
+							`${program?.duration?.studyHours} ${
+								at.en ? 'hours' : ruCaseHours(+program?.duration?.studyHours)
+							}`
+						) : (
+							<TrainingPeriodHours type={type} />
 						)}
 					</div>
 				</div>
