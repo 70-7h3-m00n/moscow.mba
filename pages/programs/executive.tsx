@@ -7,89 +7,89 @@ import { studyFormats, routesFront } from '@/config/index'
 import { handleGetStaticProps } from '@/lib/index'
 import { usePageHandleContext } from '@/hooks/index'
 import {
-  JumbotronProgram,
-  AboutExecutive,
-  ResultsExecutive,
-  InPersonWithExperts,
-  ModulesAbroad,
-  WhoStudies,
-  ProgramsModules,
-  ContactUs,
-  Accreditation,
-  Teachers,
-  Rules,
-  ExecutiveRequirements,
-  Students,
-  Reviews,
-  SectionStudyCost,
-  Qna
+	JumbotronProgram,
+	AboutExecutive,
+	ResultsExecutive,
+	InPersonWithExperts,
+	ModulesAbroad,
+	WhoStudies,
+	ProgramsModules,
+	ContactUs,
+	Accreditation,
+	Teachers,
+	Rules,
+	ExecutiveRequirements,
+	Students,
+	Reviews,
+	SectionStudyCost,
+	Qna
 } from '@/components/sections'
 import { SeoPagesProgram } from '@/components/seo'
 
 const PageProgramsExecutive = ({ program, programs }) => {
-  usePageHandleContext({ programs, program })
+	usePageHandleContext({ programs, program })
 
-  const id = uuidv4()
-  const programBlended =
-    (program && {
-      ...program,
-      studyFormat: studyFormats.blended,
-      id,
-      _id: id
-    }) ||
-    null
+	const id = uuidv4()
+	const programBlended =
+		(program && {
+			...program,
+			studyFormat: studyFormats.blended,
+			id,
+			_id: id
+		}) ||
+		null
 
-  return (
-    <>
-      <SeoPagesProgram
-        program={programBlended}
-        canonical={`${routesFront.root}${routesFront.programsExecutive}`}
-      />
-      <JumbotronProgram program={programBlended && programBlended} />
-      <AboutExecutive />
-      <ResultsExecutive />
-      <InPersonWithExperts />
-      <ModulesAbroad />
-      <WhoStudies />
-      <ProgramsModules program={programBlended && programBlended} />
-      <ContactUs
-        programId={programBlended?._id}
-        programTitle={programBlended?.title}
-        title={'Получите консультацию'}
-        titleNewStr={'по программе обучени'}
-      />
-      <Accreditation />
-      <Teachers
-        programId={programBlended?._id}
-        programTitle={programBlended?.title}
-        teachers={programBlended?.teachers}
-      />
-      <Rules prices={{ lowerPrice: '600 000', higherPrice: '2 000 000' }} />
-      <ExecutiveRequirements />
-      <Students />
-      <Reviews />
-      <SectionStudyCost />
-      <Qna
-        programId={programBlended?._id}
-        programTitle={programBlended?.title}
-      />
-      <ContactUs
-        programId={programBlended?._id}
-        programTitle={programBlended?.title}
-        title={'Не знаете что выбрать?'}
-        titleNewStr={'Получите консультацию по программам MBA'}
-      />
-    </>
-  )
+	return (
+		<>
+			<SeoPagesProgram
+				program={programBlended}
+				canonical={`${routesFront.root}${routesFront.programsExecutive}`}
+			/>
+			<JumbotronProgram program={programBlended && programBlended} />
+			<AboutExecutive />
+			<ResultsExecutive />
+			<InPersonWithExperts />
+			<ModulesAbroad />
+			<WhoStudies />
+			<ProgramsModules program={programBlended && programBlended} />
+			<ContactUs
+				programId={programBlended?._id}
+				programTitle={programBlended?.title}
+				title={'Получите консультацию'}
+				titleNewStr={'по программе обучения'}
+			/>
+			<Accreditation />
+			<Teachers
+				programId={programBlended?._id}
+				programTitle={programBlended?.title}
+				teachers={programBlended?.teachers}
+			/>
+			<Rules prices={{ lowerPrice: '600 000', higherPrice: '2 000 000' }} />
+			<ExecutiveRequirements />
+			<Students />
+			<Reviews />
+			<SectionStudyCost />
+			<Qna
+				programId={programBlended?._id}
+				programTitle={programBlended?.title}
+			/>
+			<ContactUs
+				programId={programBlended?._id}
+				programTitle={programBlended?.title}
+				title={'Не знаете что выбрать?'}
+				titleNewStr={'Получите консультацию по программам MBA'}
+			/>
+		</>
+	)
 }
 
 export const getStaticProps: GetStaticProps = async context =>
-  await handleGetStaticProps({
-    page: routesFront.program,
-    context,
-    format: 'blended',
-    type: 'executive',
-    slug: 'executive'
-  })
+	await handleGetStaticProps({
+		page: routesFront.program,
+		context,
+		format: 'blended',
+		type: 'executive',
+		slug: 'executive'
+	})
 
 export default PageProgramsExecutive
