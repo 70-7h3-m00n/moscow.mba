@@ -1,4 +1,4 @@
-const ruCaseMonth = (qty: number) => {
+const ruCaseHours = (qty: number) => {
 	const num = qty % 10
 
 	if (qty === 0) return 'часов'
@@ -20,4 +20,4 @@ const ruCaseMonth = (qty: number) => {
 	return ''
 }
 
-export default ruCaseMonth
+export default ruCaseHours
