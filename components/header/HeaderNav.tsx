@@ -4,9 +4,11 @@ import cn from 'classnames'
 import { getClassNames } from '@/helpers/index'
 import { useAt } from '@/hooks/index'
 import { Wrapper } from '@/components/layout'
+import { useRouter } from 'next/router'
 
 const HeaderNav = ({ links, handleMenu, openMenu, classNames = [] }) => {
 	const at = useAt()
+	const router = useRouter()
 	return (
 		<div
 			className={
@@ -16,7 +18,8 @@ const HeaderNav = ({ links, handleMenu, openMenu, classNames = [] }) => {
 				<div className={stls.menu}>
 					<div
 						className={cn(stls.toggle, { [stls.opened]: openMenu })}
-						onClick={() => handleMenu(!openMenu)}>
+						// onClick={() => handleMenu(!openMenu)}
+						onClick={() => router.push('/programs')}>
 						<div className={stls.icon}>
 							<i className={stls.line} />
 							<i className={stls.line} />

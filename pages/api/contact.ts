@@ -463,7 +463,7 @@ const contact = async (req, res) => {
 	const html = createEmailBody()
 
 	// const testAccount = await nodemailer.createTestAccount()
-
+	// console.log(data)
 	// F5 BEGIN
 	try {
 		const f5 = await axios.request({
@@ -475,10 +475,27 @@ const contact = async (req, res) => {
 			},
 			data
 		})
+		console.log('=>>>>>>>>>>>>>>>>>>>>>', f5)
 	} catch (e) {
 		console.error(e)
 	}
 	//  F5 END
+
+	// TEST BEGIN
+	try {
+		const test = await axios.request({
+			method: 'POST',
+			maxBodyLength: Infinity,
+			url: `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6`,
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			data
+		})
+	} catch (e) {
+		console.error(e)
+	}
+	//  TEST END
 
 	const transporter = nodemailer.createTransport({
 		host: process.env.SMTP_HOST,
