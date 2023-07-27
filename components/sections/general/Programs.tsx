@@ -62,7 +62,9 @@ const Programs = () => {
 									legacyBehavior
 									href='/programs/profession/online'
 									{...(at.en ? { locale: 'ru' } : undefined)}>
-									<a>Профессии</a>
+									<a>
+										{at.en ? 'Profession' : 'Профессиональная переподготовка'}
+									</a>
 								</Link>
 							</li>
 							<li>
@@ -70,7 +72,7 @@ const Programs = () => {
 									legacyBehavior
 									href='/programs/course/online'
 									{...(at.en ? { locale: 'ru' } : undefined)}>
-									<a>Курсы</a>
+									<a>{at.en ? 'Course' : 'Повышение квалификации'}</a>
 								</Link>
 							</li>
 							<li>
