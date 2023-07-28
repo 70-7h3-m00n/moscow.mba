@@ -41,6 +41,9 @@ const contact = async (req, res) => {
 
 	// const promocode = null
 
+	// TODO: add google user ID
+	const gclUid = null
+
 	// geoip2 init
 	const geoip2 = new WebServiceClient('550199', process.env.GEO2_APIKEY, {
 		host: 'geolite.info'
@@ -193,6 +196,7 @@ const contact = async (req, res) => {
 		postalCode: (locationData && locationData.postalCode) || null,
 		programTitle: programTitle || null,
 		ymUid: ymUid || null,
+		gclUid: gclUid || null,
 		utmSource: (utms && utms.utm_source) || referer || null,
 		utmMedium: (utms && utms.utm_medium) || null,
 		utmCampaign: (utms && utms.utm_campaign) || null,
