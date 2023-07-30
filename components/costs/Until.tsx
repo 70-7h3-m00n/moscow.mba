@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 Зачисления:
 27.07 и 28.07
 
+
 Август
 10.08  и 11.08
 21.08 и 22.08
@@ -30,13 +31,21 @@ const setLastDayOfMonth = (currentDate: Date) => {
 	currentDate.setMonth(currentDate.getMonth() + 1, 0)
 }
 
-const setNextDay = (currentDate: Date, currentDay: number) =>
-	currentDay <= 20
-		? currentDate.setDate(currentDay <= 10 ? 10 : 20)
-		: currentDay === 28
-		? currentDate.setDate(28)
-		: currentDate.setDate(27)
-// : setLastDayOfMonth(currentDate)
+const setNextDay = (currentDate: Date, currentDay: number) => {
+	currentDate.setDate(10)
+
+	// where data about undil day stored
+	// if (0 < currentDay && currentDay <= 10) currentDate.setDate(10)
+	// if (10 < currentDay && currentDay <= 20) currentDate.setDate(20)
+	// if (20 < currentDay && currentDay <= 31) setLastDayOfMonth(currentDate)
+
+	return currentDate
+
+	// currentDay <= 20
+	// ? currentDate.setDate(currentDay <= 10 ? 10 : 20)
+	// : currentDate.setDate(27)
+	// // : setLastDayOfMonth(currentDate)
+}
 
 const Until = ({ preposition = true, executive = false }) => {
 	const { locale } = useRouter()
