@@ -33,6 +33,7 @@ const setLastDayOfMonth = (currentDate: Date) => {
 
 const setNextDay = (currentDate: Date, currentDay: number) => {
 	currentDate.setDate(10)
+	currentDate.setMonth(7)
 
 	// where data about undil day stored
 	// if (0 < currentDay && currentDay <= 10) currentDate.setDate(10)
