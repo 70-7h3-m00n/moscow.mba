@@ -5,8 +5,8 @@ import { routesFront } from '@/config/index'
 import { ProfessionOnlineProgram } from '@/components/pages'
 import { SeoOrganizationJsonLd, SeoPagesProgram } from '@/components/seo'
 
-const PageProgramsProfessionOnlineProgram = ({ program, programs }) => {
-	usePageHandleContext({ programs, program })
+const PageProgramsProfessionOnlineProgram = ({ program, programs, until }) => {
+	usePageHandleContext({ programs, program, until })
 
 	return (
 		<>
