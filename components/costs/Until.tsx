@@ -1,4 +1,5 @@
 import { ContextStaticProps } from '@/context/index'
+import useAt from '@/hooks/useAt'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 
@@ -32,6 +33,7 @@ function findNearestFutureDate(datesArray) {
 }
 
 const Until = ({ preposition = true, executive = false }) => {
+	const at = useAt()
 	const { until } = useContext(ContextStaticProps)
 	const { locale } = useRouter()
 	const currentDate = new Date()
@@ -71,7 +73,7 @@ const Until = ({ preposition = true, executive = false }) => {
 
 	return (
 		<>
-			{nearestFutureDate.toLocaleString([locale], {
+			{nearestFutureDate.toLocaleString([at.en ? 'en-US' : 'ru'], {
 				day: 'numeric',
 				month: 'long'
 			})}
