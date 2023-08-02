@@ -38,27 +38,27 @@ const lessThan: TypeLessThan = [
 	{
 		type: 'liniar',
 		sec: 60,
-		label: 'Меньше минуты назад'
+		label: 'Менее минуты назад'
 	},
 	{
 		type: 'liniar',
 		sec: 60 * 5,
-		label: 'Меньше пяти минут назад'
+		label: 'Менее пяти минут назад'
 	},
 	{
 		type: 'liniar',
 		sec: 3600,
-		label: 'Меньше часа назад'
+		label: 'Менее часа назад'
 	},
 	{
 		type: 'liniar',
 		sec: 3600 * 2,
-		label: 'Меньше двух часов назад'
+		label: 'Менее двух часов назад'
 	},
 	{
 		type: 'liniar',
 		sec: 3600 * 3,
-		label: 'Меньше трех часов назад'
+		label: 'Менее трех часов назад'
 	},
 	{
 		type: 'nonLiniar',
@@ -73,7 +73,7 @@ const lessThan: TypeLessThan = [
 	{
 		type: 'nonLiniar',
 		days: -2,
-		label: 'Меньше двух дней назад'
+		label: 'Менее двух дней назад'
 	}
 ]
 
@@ -101,7 +101,10 @@ const CardJournalArticleLegacy = ({
 
 	const getTime = () =>
 		article
-			? getRenderTime({ timestamp: article?.createdAt, options: cardOptions })
+			? getRenderTime({
+					timestamp: article?.publicationDate ?? article?.createdAt,
+					options: cardOptions
+			  })
 			: null
 
 	const time = getTime()
@@ -148,7 +151,7 @@ const CardJournalArticleLegacy = ({
 						<div className={stls.date}>
 							<GeneralJournalArticleCreatedAtLegacy
 								time={time}
-								timestamp={article?.createdAt}
+								timestamp={article?.publicationDate ?? article?.createdAt}
 							/>
 						</div>
 					</div>

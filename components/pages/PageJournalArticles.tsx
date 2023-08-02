@@ -16,9 +16,10 @@ const PageJournalArticles = () => {
 
 	// Saving those categories that have articles.
 	// Сохранение тех категорий, которые имеют статьи.
-	const existenceCategory = categories.filter(category =>
-		articles.some(article => article.journalCategory.title === category.title)
-	)
+	const existenceCategory =
+		categories?.filter(category =>
+			articles.some(article => article.journalCategory.title === category.title)
+		) || []
 
 	const [filterAllCategoriesButtons, setfilterAllCategoriesButtons] =
 		useState(true)
@@ -32,11 +33,13 @@ const PageJournalArticles = () => {
 		category => category.state === true
 	)
 
-	const filteredArticles = articles.filter(article =>
-		appliedCategories.some(
-			appliedCategory => appliedCategory.title === article.journalCategory.title
-		)
-	)
+	const filteredArticles =
+		articles?.filter(article =>
+			appliedCategories.some(
+				appliedCategory =>
+					appliedCategory.title === article.journalCategory.title
+			)
+		) || []
 	const sizeArticles = filteredArticles.length
 
 	// Output of all existing articles by clicking on the "all articles" button

@@ -27,27 +27,27 @@ const GeneralJournalArticleCreatedAt = ({
 		{
 			type: 'liniar',
 			sec: 60,
-			label: 'Меньше минуты назад'
+			label: 'Менее минуты назад'
 		},
 		{
 			type: 'liniar',
 			sec: 60 * 5,
-			label: 'Меньше пяти минут назад'
+			label: 'Менее пяти минут назад'
 		},
 		{
 			type: 'liniar',
 			sec: 3600,
-			label: 'Меньше часа назад'
+			label: 'Менее часа назад'
 		},
 		{
 			type: 'liniar',
 			sec: 3600 * 2,
-			label: 'Меньше двух часов назад'
+			label: 'Менее двух часов назад'
 		},
 		{
 			type: 'liniar',
 			sec: 3600 * 3,
-			label: 'Меньше трех часов назад'
+			label: 'Менее трех часов назад'
 		},
 		{
 			type: 'nonLiniar',
@@ -62,7 +62,7 @@ const GeneralJournalArticleCreatedAt = ({
 		{
 			type: 'nonLiniar',
 			days: -2,
-			label: 'Меньше двух дней назад'
+			label: 'Менее двух дней назад'
 		}
 	]
 
@@ -79,7 +79,9 @@ const GeneralJournalArticleCreatedAt = ({
 			className={
 				cn(stls.container, getClassNames({ classNames })) || undefined
 			}>
-			<time className={stls.time} dateTime={timestamp}>{time}</time>
+			<time className={stls.time} dateTime={timestamp}>
+				{time}
+			</time>
 		</div>
 	)
 }
