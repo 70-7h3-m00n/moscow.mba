@@ -42,7 +42,7 @@ import SectionIPAR from '@/components/sections/general/SectionIPAR'
 
 const CourseOnlineProgram = ({ program, teachers }) => {
 	const data = program
-	console.log('program: ', program)
+	// console.log('program: ', program)
 	const router = useRouter()
 
 	const studyFieldIsAccounting =

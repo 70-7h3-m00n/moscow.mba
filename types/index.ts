@@ -30,6 +30,7 @@ export type { default as TypePrograms } from '@/types/general/TypePrograms'
 export type { default as TypeProgramsDefault } from '@/types/general/TypeProgramsDefault'
 export type { default as TypeRoutesFront } from '@/types/general/TypeRoutesFront'
 export type { default as TypeStudyFormat } from '@/types/general/TypeStudyFormat'
+export type { default as TypeLibUntil } from '@/types/lib/general/TypeLibUntil'
 
 // Lib/general
 export type { default as TypeLibPicture } from '@/types/lib/general/TypeLibPicture'

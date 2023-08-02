@@ -16,6 +16,8 @@ const ContextStaticProps = createContext<{
 	setCurStudyField: Dispatch<any>
 	setStudyFields: Dispatch<any>
 	setStudyFieldsWithSlugs: Dispatch<any>
+	until: any
+	setUntil: Dispatch<any>
 }>({
 	programs: [],
 	renderPrograms: [],
@@ -30,7 +32,9 @@ const ContextStaticProps = createContext<{
 	setProgram: () => {},
 	setCurStudyField: () => {},
 	setStudyFields: () => {},
-	setStudyFieldsWithSlugs: () => {}
+	setStudyFieldsWithSlugs: () => {},
+	until: {},
+	setUntil: () => {}
 })
 
 export default ContextStaticProps

@@ -19,6 +19,7 @@ import Script from 'next/script'
 function MyApp({ Component, pageProps, router }) {
 	const [programs, setPrograms] = useState(pageProps.programs || null)
 	const [program, setProgram] = useState(pageProps.program || null)
+	const [until, setUntil] = useState(pageProps.until || null)
 	const [curStudyField, setCurStudyField] = useState(null)
 	const [studyFields, setStudyFields] = useState(
 		programs?.length > 0
@@ -274,7 +275,9 @@ function MyApp({ Component, pageProps, router }) {
 					setRenderPrograms: () => {},
 					setCurStudyField,
 					setStudyFields,
-					setStudyFieldsWithSlugs
+					setStudyFieldsWithSlugs,
+					until,
+					setUntil: () => {}
 				}}>
 				<OverlayState>
 					<MenuState>

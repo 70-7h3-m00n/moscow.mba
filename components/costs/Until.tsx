@@ -1,63 +1,79 @@
+import { ContextStaticProps } from '@/context/index'
+import useAt from '@/hooks/useAt'
 import { useRouter } from 'next/router'
+import { useContext } from 'react'
 
-// need to take Until date from Strapi, if there's no date count it
-
-/*
-По зачислениям:
-Зачисления:
-27.07 и 28.07
-
-
-Август
-10.08  и 11.08
-21.08 и 22.08
-30.08 и 31.08
-
-Сентябрь
-11.09 и 12.09
-20.09 и 21.09  10
-28.09 и 29.09  20 - 31
-
-Октябрь
-10.10 и 11.10
-19.10 и 20.10
-30.10 и 31.10
-
-На 27.07 сейчас самое первое дело перенести, т.к. это будет мотиватором для КЛ оставить больше заявок на этой неделе, а нам возможность быстрее их закрыть.
-Парные дни - т.к. один день зачисляем, на второй идет дозачисление.
-Остальные дни были из расчета выходных дней.
-*/
-const setLastDayOfMonth = (currentDate: Date) => {
+const setLastDayOfMonth = (currentDate: Date): Date => {
 	currentDate.setMonth(currentDate.getMonth() + 1, 0)
+	return currentDate
 }
 
-const setNextDay = (currentDate: Date, currentDay: number) => {
-	currentDate.setDate(10)
-	currentDate.setMonth(7)
-
-	// where data about undil day stored
-	// if (0 < currentDay && currentDay <= 10) currentDate.setDate(10)
-	// if (10 < currentDay && currentDay <= 20) currentDate.setDate(20)
-	// if (20 < currentDay && currentDay <= 31) setLastDayOfMonth(currentDate)
-
+const setNextDay = (currentDate: Date, currentDay: number): Date => {
+	if (0 < currentDay && currentDay <= 10) {
+		currentDate.setDate(10)
+	} else if (10 < currentDay && currentDay <= 20) {
+		currentDate.setDate(20)
+	} else if (20 < currentDay && currentDay <= 31) {
+		currentDate = setLastDayOfMonth(currentDate)
+	}
 	return currentDate
+}
 
-	// currentDay <= 20
-	// ? currentDate.setDate(currentDay <= 10 ? 10 : 20)
-	// : currentDate.setDate(27)
-	// // : setLastDayOfMonth(currentDate)
+function findNearestFutureDate(datesArray) {
+	let nearestDate = Infinity
+	let nearestDiff = Infinity
+	for (const dateTimestamp of datesArray) {
+		const diff = dateTimestamp - Date.now()
+		if (diff >= 0 && diff < nearestDiff) {
+			nearestDate = dateTimestamp
+			nearestDiff = diff
+		}
+	}
+	return new Date(nearestDate)
 }
 
 const Until = ({ preposition = true, executive = false }) => {
+	const at = useAt()
+	const { until } = useContext(ContextStaticProps)
 	const { locale } = useRouter()
 	const currentDate = new Date()
 	const currentDay = currentDate.getDate()
+	const currentYear = currentDate.getFullYear()
 
-	setNextDay(currentDate, currentDay)
+	const untilArray =
+		until?.map((month, idx) => {
+			const {
+				First,
+				FirstOneMoreDay,
+				Second,
+				SecondOneMoreDay,
+				Third,
+				ThirdOneMoreDay
+			} = month
+			return [
+				new Date(currentYear, idx, First),
+				FirstOneMoreDay ? new Date(currentYear, idx, First + 1) : null,
+				new Date(currentYear, idx, Second),
+				SecondOneMoreDay ? new Date(currentYear, idx, Second + 1) : null,
+				new Date(currentYear, idx, Third),
+				ThirdOneMoreDay ? new Date(currentYear, idx, Third + 1) : null
+			]
+		}) || []
+
+	const untilMillisecondsArray = untilArray
+		?.flat()
+		?.map(date => Date.parse(date))
+		?.filter(date => !!date)
+		?.sort((a, b) => a - b)
+
+	const nearestFutureDate: Date =
+		untilArray.length === 0
+			? setNextDay(currentDate, currentDay)
+			: findNearestFutureDate(untilMillisecondsArray)
 
 	return (
 		<>
-			{currentDate.toLocaleString(['ru-RU', 'en-US'], {
+			{nearestFutureDate.toLocaleString([at.en ? 'en-US' : 'ru'], {
 				day: 'numeric',
 				month: 'long'
 			})}
