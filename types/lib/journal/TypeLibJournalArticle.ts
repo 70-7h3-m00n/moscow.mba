@@ -39,6 +39,7 @@ type TypeLibJournalArticle = {
 	picture: TypeLibPicture | null
 	shortDescription: string | null
 	createdAt: string | null
+	publicationDate?: string | null
 	recommendedPrograms?: TypeLibJournalRecommendedPrograms
 	articleBody?:
 		| {
