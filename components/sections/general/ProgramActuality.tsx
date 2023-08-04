@@ -11,11 +11,15 @@ const ProgramActuality = ({ data }) => {
 				<div className={stls.contentBox}>
 					<h2 className={stls.title}>Актуальность</h2>
 					<div className={stls.actualText}>
-						{data?.actualInformation?.paragraph}
+						{data?.actualInformation?.paragraph
+							? data?.actualInformation?.paragraph
+							: 'Цифровая трансформация — основной вектор деятельности коммерческих организаций в век информационных технологий и повсеместного внедрения систем искусственного интеллекта. Компаниям приходится адаптироваться к постоянным изменениям на рынке, анализировать цифровые тренды, трансформировать бизнес-процессы для сохранения устойчивых конкурентных позиций.'}
 					</div>
 					<div className={stls.bottomBox}>
 						<p className={stls.actualDescription}>
-							{data?.actualInformation?.description}
+							{data?.actualInformation?.description
+								? data?.actualInformation?.description
+								: 'После прохождения переподготовки в области цифровых трансформаций, студенты получают диплом по востребованной специальности и перспективы карьерного роста. Наши выпускники становятся кандидатами на должность CDTO (директора по цифровизации) в ведущих организациях.'}
 						</p>
 						<Image src={src} width={191} height={155} alt='Группа студентов' />
 					</div>
