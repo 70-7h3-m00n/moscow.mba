@@ -1,8 +1,6 @@
 import stls from '@/styles/components/images/sections/ImgPlanet.module.sass'
 
 export default function ImgDonut({ width, height, color = '#FFCCCC' }) {
-	// colors
-	// #FFCCCC
 	return (
 		<svg
 			// width='515'
