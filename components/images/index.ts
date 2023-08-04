@@ -21,6 +21,8 @@ export { default as ImgDiscountDecoration } from '@/components/images/newyears/I
 export { default as ImgStickyBottomDecoration } from '@/components/images/newyears/ImgStickyBottomDecoration'
 // ./sections
 export { default as ImgStudentsDuringConference } from '@/components/images/sections/ImgStudentsDuringConference'
+export { default as ImgPlanet } from '@/components/images/sections/ImgPlanet'
+export { default as ImgDonut } from '@/components/images/sections/ImgDonut'
 // ./teachers
 export { default as ImgTeachersTeacher } from '@/components/images/teachers/ImgTeachersTeacher'
 // ./

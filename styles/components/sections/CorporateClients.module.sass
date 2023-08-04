@@ -23,7 +23,6 @@
       margin-bottom: f.px(60)
 
 .title
-  max-width: 722px
   p
     margin-top: -6px
     line-height: 1.2
@@ -81,3 +80,43 @@
   margin-bottom: 30px
   @include m.media(tablet, phone)
     font-size: 15px
+
+.employmentList
+  display: flex
+  flex-wrap: wrap
+  gap: 60px 30px
+  margin: 50px 0
+  li
+    display: flex
+    width: 47%
+
+.itemBox
+  p.itemItile
+    margin-bottom: 10px
+    font-size: 24px
+    font-weight: 500
+    line-height: 120%
+  p.itemText
+    font-size: 16px
+    font-weight: 300
+    line-height: 120%
+
+.circle
+  width: 57px
+  height: 57px
+  border-radius: 50%
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  background: #ff3535
+  flex-shrink: 0
+  margin-right: 43px
+  @include m.media(tablet, phone)
+    margin-right: 30px
+  @include m.media(phone)
+    width: 40px
+    height: 40px
+    margin-right: 20px
+    img
+      width: 20px

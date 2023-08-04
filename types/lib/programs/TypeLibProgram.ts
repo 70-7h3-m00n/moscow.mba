@@ -45,6 +45,10 @@ type TypeLibProgram = {
 		diplomaProtection: boolean | null
 	} | null
 	goal?: string | null
+	actualInformation: {
+		paragraph: string | null
+		description: string | null
+	}
 	description?: string | null
 	baseSubjects?: {
 		string: string | null

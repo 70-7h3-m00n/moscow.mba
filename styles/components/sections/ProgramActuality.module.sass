@@ -1,0 +1,93 @@
+@use '@/styles/utils/mixin' as m
+
+.container
+  position: relative
+  border-bottom: 1px solid #e6e6e6
+  margin-bottom: 122px
+  @include m.media(laptop)
+    margin-bottom: 80px
+  @include m.media(tablet, phone)
+    margin-bottom: 60px
+
+.content
+  position: relative
+  padding-bottom: 130px
+  z-index: 2
+  &::before
+    content: ''
+    height: 2px
+    background: #ff3535
+    width: 169px
+    left: 389px
+    position: absolute
+    z-index: 3
+    bottom: 0
+    @include m.media(desktop, laptop, tablet, phone)
+      left: 10px
+  @include m.media(laptop)
+    padding-bottom: 80px 
+  @include m.media(tablet, phone)
+    padding-bottom: 60px 
+  @include m.media(desktop, laptop, tablet, phone)
+    padding-left: 10px
+
+.contentBox
+  position: relative
+  padding: 90px 109px 64px 220px
+  border: 1px solid #E6E6E6
+  overflow: hidden
+
+.actualText 
+  margin-bottom: 33px
+  font-size: 20px
+  font-weight: 500
+  line-height: 1.3
+  @include m.media(desktop)
+    font-size: 19px
+  @include m.media(laptop)
+    font-size: 18px
+  @include m.media(tablet, phone)
+    font-size: 16px
+  @include m.media(phone)
+    font-size: 15px
+
+.bottomBox
+  display: flex
+  gap: 20px
+
+.actualDescription
+  line-height: 1.3
+  font-size: 20px
+  max-width: 850px
+  @include m.media(desktop)
+    font-size: 19px
+  @include m.media(laptop)
+    font-size: 18px
+  @include m.media(tablet, phone)
+    font-size: 16px
+  @include m.media(phone)
+    font-size: 15px
+
+
+.imagesBox
+  width: 191px
+  height: 155px
+
+.planetLeft
+  position: absolute
+  top: 80px
+  left: -150px
+  z-index: -1
+
+.planetRight
+  position: absolute
+  top: -30px
+  right: -30px
+  z-index: -1
+  transform: rotate(-50deg)
+
+.donut
+  position: absolute
+  bottom: -30px
+  right: -200px
+  z-index: -1

@@ -223,17 +223,16 @@ const HowProcessGoes = () => {
 					) : (
 						<h2 className={stls.title}>Как проходит процесс обучения</h2>
 					)}
-					{at.profession ||
-						(at.course && (
-							<div className={stls.studentPhoto}>
-								<Image
-									src={studentPhoto}
-									height={337}
-									width={506}
-									alt={'Студент академии сидит перед ноутбуком'}
-								/>
-							</div>
-						))}
+					{(isDigitalTransformation || at.profession || at.course) && (
+						<div className={stls.studentPhoto}>
+							<Image
+								src={studentPhoto}
+								height={337}
+								width={506}
+								alt={'Студент академии сидит перед ноутбуком'}
+							/>
+						</div>
+					)}
 				</div>
 				<div className={stls.infoContainer}>
 					<ul className={stls.tabsList}>
