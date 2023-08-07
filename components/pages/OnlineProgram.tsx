@@ -43,64 +43,16 @@ import SectionStudyCost from '@/components/sections/general/SectionStudyCost'
 import SectionCheckPros from '@/components/sections/general/SectionCheckPros'
 import Accreditation from '@/components/sections/general/Accreditation'
 import Pros from '@/components/sections/general/Pros'
-import React from 'react'
+import React, { useState } from 'react'
 import { DigitalTransformationContext } from '@/context/index'
 import {
 	ProgramActuality,
 	ProgramDevelopedStandard,
+	ProgramsModulesAccordion,
 	RecommendedPrograms,
 	WhoItIsFor
 } from '../sections'
-
-const journalReadAlsoArticles = {
-	title: ' ЧИТАЙТЕ ТАКЖЕ',
-	articles: [
-		{
-			title: 'Как выстроить эффективный отдел интернет-маркетинга?',
-			slug: 'kak-vystroit-effektivnyj-otdel-internet-marketinga',
-			createdAt: null,
-			picture: {
-				url: 'https://res.cloudinary.com/npomba/image/upload/v1665939422/Otdel_internet_marketinga_f90b3dbb25.png',
-				width: 3840,
-				height: 2160,
-				alt: null
-			}
-		},
-		{
-			title: 'KPI маркетолога — как внедрить и использовать в своих интересах ',
-			slug: 'kpi-marketologa-kak-vnedrit-i-ispolzovat-v-svoih-interesah',
-			createdAt: null,
-			picture: {
-				url: 'https://res.cloudinary.com/npomba/image/upload/v1665930548/KPI_marketologa_bb548c5853.png',
-				width: 3840,
-				height: 2160,
-				alt: null
-			}
-		},
-		{
-			title: 'Директор по маркетингу. Плюсы и минусы профессии',
-			slug: 'direktor-po-marketingu-plyusy-i-minusy-professii',
-			createdAt: null,
-			picture: {
-				url: 'https://res.cloudinary.com/npomba/image/upload/v1671015529/imgonline_com_ua_Compress_By_Size_j_AZFH_Vh_Ql_YU_a60240fe32.jpg',
-				width: 3840,
-				height: 2160,
-				alt: null
-			}
-		},
-		{
-			title: 'Директор по маркетингу - как им стать?',
-			slug: 'direktor-po-marketingu-kak-im-stat',
-			createdAt: null,
-			picture: {
-				url: 'https://res.cloudinary.com/npomba/image/upload/v1673265944/imgonline_com_ua_Compress_By_Size_5r_L_Qx_C_Dz_Alj_M_Rm_3af1e224a2.jpg',
-				width: 3840,
-				height: 2160,
-				alt: null
-			}
-		}
-	]
-}
+import { AccordionsContainer } from '../general'
 
 const PageOnlineProgram = ({ program, programs, teachers }) => {
 	const router = useRouter()
@@ -136,7 +88,11 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 				)}
 				<Pros format={'online'} />
 				<HowProcessGoes />
-				<ProgramsModules program={program} />
+				{isDigitalTransformation ? (
+					<ProgramsModulesAccordion program={program} />
+				) : (
+					<ProgramsModules program={program} />
+				)}
 				{/* <ECTSStandard /> */}
 				<GetStudyPlan />
 				<Teachers

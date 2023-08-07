@@ -70,6 +70,7 @@ export { default as ProgramGoal } from '@/components/sections/general/ProgramGoa
 export { default as ProgramActuality } from '@/components/sections/general/ProgramActuality'
 export { default as Programs } from '@/components/sections/general/Programs'
 export { default as ProgramsModules } from '@/components/sections/general/ProgramsModules'
+export { default as ProgramsModulesAccordion } from '@/components/sections/general/ProgramsModulesAccordion'
 export { default as Pros } from '@/components/sections/general/Pros'
 export { default as Qna } from '@/components/sections/general/Qna'
 export { default as ResultsExecutive } from '@/components/sections/general/ResultsExecutive'
