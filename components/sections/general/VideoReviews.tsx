@@ -25,7 +25,7 @@ export default function VideoReviews({
 			})}>
 			<Wrapper classNames={[stls.wrapper]}>
 				<div className={stls.titleContainer}>
-					<h2 className={stls.title}>{'Видеоотзывы'}</h2>
+					<h2 className={stls.title}>Видеоотзывы</h2>
 				</div>
 				<div className={stls.reviewsList}>
 					{youtubeReviews.map((review, idx) => (
