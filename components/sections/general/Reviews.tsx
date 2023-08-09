@@ -105,7 +105,7 @@ const Reviews = () => {
 				<VideoReviews singleProgramPage={singleProgramPage} />
 				<section className={stls.container}>
 					<div className={stls.titleContainer}>
-						<h2>{singleProgramPage && 'Почему нас выбирают'}</h2>
+						<h2>Почему нас выбирают</h2>
 					</div>
 					<Wrapper classNames={[stls.wrapper]}>
 						<div className={stls.list}>

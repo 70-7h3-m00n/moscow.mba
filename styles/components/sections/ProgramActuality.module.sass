@@ -36,6 +36,8 @@
   padding: 90px 109px 64px 220px
   border: 1px solid #E6E6E6
   overflow: hidden
+  @include m.media(tablet, phone)
+    padding: 60px 15px
 
 .actualText 
   margin-bottom: 33px
@@ -54,6 +56,10 @@
 .bottomBox
   display: flex
   gap: 20px
+  @include m.media(tablet, phone)
+    flex-direction: column
+    img
+      align-self: end
 
 .actualDescription
   line-height: 1.3

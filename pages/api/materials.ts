@@ -49,13 +49,9 @@ const materials = async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		await transporter.sendMail({
 			// todo: make sure there is a design for the email
-			from: 'info@moscow.mba',
-			to: `${
-				dev
-					? // ? 'nova@ipo.msk.ru, novailoveyou3@gmail.com'
-					  'baurinanton2013@yandex.ru'
-					: data.values.email
-			}`,
+			from: process.env.SMTP_PDF_MATERIALS_LOGIN,
+			// to: `${dev ? 'brdima@mail.ru' : data.values.email}`,
+			to: data.values.email,
 			subject, // Subject line
 			text: 'Подборка файлов от Московской Бизнес Академии',
 			attachments: normilizeAttachments

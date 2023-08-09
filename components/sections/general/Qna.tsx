@@ -10,7 +10,7 @@ import { clickedAskQuestion } from '@/helpers/index'
 import { useContext } from 'react'
 import { DigitalTransformationContext } from '@/context/index'
 
-const Qna = ({ programId, programTitle }) => {
+const Qna = ({ programId = null, programTitle = null }) => {
 	const at = useAt()
 	const router = useRouter()
 	{

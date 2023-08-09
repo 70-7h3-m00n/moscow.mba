@@ -24,10 +24,10 @@ const ProgramActuality = ({ data }) => {
 						<Image src={src} width={191} height={155} alt='Группа студентов' />
 					</div>
 					<div className={stls.planetLeft}>
-						<ImgPlanet width='341' height='341' />
+						<ImgPlanet idx='282_31' width='341' height='341' />
 					</div>
 					<div className={stls.planetRight}>
-						<ImgPlanet width='157' height='157' color='#D9D9D9' />
+						<ImgPlanet idx='282_32' width='157' height='157' color='#D9D9D9' />
 					</div>
 					<div className={stls.donut}>
 						<ImgDonut width='515' height='320' />
