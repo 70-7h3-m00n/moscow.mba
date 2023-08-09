@@ -43,7 +43,7 @@ import SectionStudyCost from '@/components/sections/general/SectionStudyCost'
 import SectionCheckPros from '@/components/sections/general/SectionCheckPros'
 import Accreditation from '@/components/sections/general/Accreditation'
 import Pros from '@/components/sections/general/Pros'
-import React, { useState } from 'react'
+import React from 'react'
 import { DigitalTransformationContext } from '@/context/index'
 import {
 	ProgramActuality,
@@ -52,16 +52,17 @@ import {
 	RecommendedPrograms,
 	WhoItIsFor
 } from '../sections'
-import { AccordionsContainer } from '../general'
 
 const PageOnlineProgram = ({ program, programs, teachers }) => {
 	const router = useRouter()
 
 	// TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA
-	const isDigitalTransformation =
-		program?.category?.slug === 'mini' &&
-		program?.studyFormat === 'online' &&
-		program?.slug === 'digital-transformation'
+	// const isDigitalTransformation =
+	// 	program?.category?.slug === 'mini' &&
+	// 	program?.studyFormat === 'online' &&
+	// 	program?.slug === 'digital-transformation'
+
+	const isDigitalTransformation = null
 
 	const setIsdigitalTransformation = () => {
 		if (isDigitalTransformation) return true

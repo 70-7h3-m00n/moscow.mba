@@ -9,7 +9,7 @@ import {
 	InfoRectangle,
 	MainInfo
 } from './widgets'
-import { Reviews } from '@/components/sections'
+import { ContactUs, HowProcessGoes, Qna, Reviews } from '@/components/sections'
 
 const ProgramsPage = () => {
 	return (
@@ -43,6 +43,13 @@ const ProgramsPage = () => {
 				</div>
 			</section>
 			<Reviews />
+			<HowProcessGoes />
+			<Qna />
+			<ContactUs
+				title={''}
+				titleNewStr={'Получите консультацию по программам MBA'}
+				overlapsFooter
+			/>
 		</ConfigProgramsProvider>
 	)
 }
