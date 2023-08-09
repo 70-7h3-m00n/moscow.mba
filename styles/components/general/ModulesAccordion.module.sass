@@ -1,0 +1,124 @@
+@use '@/styles/utils/mixin' as m
+
+.container
+  position: relative
+  margin-bottom: 5px
+  padding: 20px 33px 20px 92px
+  border-left: 2px solid #ff3535
+  background: #f7f7f7
+  cursor: pointer
+  transition: all .3s ease-out
+  -webkit-tap-highlight-color: transparent
+  &:hover
+    background: #f2f2f2
+  @include m.media(tablet, phone)
+    padding-left: 58px
+    padding-right: 25px
+
+.equalPadding
+  padding: 20px 53px
+  @include m.media(tablet, phone)
+    padding: 20px 23px
+  .title
+    padding-left: 32px
+
+.opened
+  .title
+    color: #ff3535
+  .content
+    display: block
+    @include m.media(desktop, widescreen, laptop)
+      padding-bottom: 40px
+    @include m.media(tablet, phone)
+      padding-bottom: 20px
+  .imageContent
+    display: grid
+  .plus
+    i
+      background: #ff3535
+      &:nth-of-type(2)
+        transform: rotate(-180deg)
+
+.plus
+  position: absolute
+  left: 50px
+  top: 24px
+  width: 20px
+  height: 20px
+  @include m.media(tablet, phone)
+    left: 20px
+    top: 20px
+  i
+    background: #d9d9d9
+    display: block
+    width: 20px
+    height: 2px
+    border-radius: 5px
+    position: absolute
+    left: 0
+    top: 50%
+    margin-top: -1px
+    transition: all .3s ease-out
+    &:nth-of-type(2)
+      transform: rotate(-90deg)
+
+.moduleContainer
+  display: flex
+
+.moduleCounter
+  display: flex
+  gap: 5px
+  min-width: 130px
+  font-size: 20px
+  line-height: 1.3
+  transition: all .3s ease-out
+  @include m.media(tablet, phone)
+    min-width: auto
+    gap: 2px
+  span
+    font-weight: 400
+    color: #808080
+    @include m.media(tablet, phone)
+      font-size: 15px
+  svg
+    margin-right: 20px
+    width: 75px
+    height: 16px
+    translate: 0 10px
+    @include m.media(tablet, phone)
+      width: 60px
+      height: 12px
+      translate: 0 7px
+
+.moduleTitle
+  font-size: 20px
+  font-weight: 400
+  line-height: 130%
+  @include m.media(tablet, phone)
+    font-size: 15px
+
+.content
+  font-size: 15px
+  line-height: 1.3
+  padding-top: 16px
+  padding-bottom: 12px
+  display: none
+  @include m.media(tablet, phone)
+    font-size: 16px
+
+.imageContent
+  padding-top: 56px
+  grid-template-columns: repeat(3, 1fr)
+  row-gap: 50px
+  @include m.media(desktop)
+    grid-template-columns: repeat(2, 1fr)
+  @include m.media(laptop, tablet, phone)
+    justify-items: center
+    grid-template-columns: 1fr
+    row-gap: 30px
+    padding-top: 47px
+
+.mb,
+.olItem
+  &:not(:last-child)
+    margin-bottom: 20px

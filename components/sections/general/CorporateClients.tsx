@@ -6,11 +6,31 @@ import { base64pixel } from '@/config/index'
 import { Wrapper } from '@/components/layout'
 import { useContext } from 'react'
 import { DigitalTransformationContext } from '@/context/index'
+import { IconCheck, IconCheckCircle } from '@/components/icons'
 
 type TCorporateClients = {
 	variant?: 'page-corporate-clients'
 	partnershipTitle?: boolean
 }
+
+const employmentData = [
+	{
+		title: 'Оформите резюме',
+		text: 'Научитесь выгодно презентовать свои сильные стороны и узнаете правильную структуру резюме'
+	},
+	{
+		title: 'Узнаете, как найти работу',
+		text: 'Познакомитесь с площадками для поиска работы и поймете как найти самые лучшие вакансии'
+	},
+	{
+		title: 'Научитесь работать на себя',
+		text: 'Узнаете, где искать заказчиков, как выстраивать с ними	коммуникацию и защитить свои права'
+	},
+	{
+		title: 'Подготовитесь к собеседованию',
+		text: 'Расскажем, как подготовиться к собеседованию в компаниях-партнёрах'
+	}
+]
 
 const CorporateClients = ({
 	variant,
@@ -30,25 +50,24 @@ const CorporateClients = ({
 		</h3>
 	) : (
 		<>
-			<h2>
-				{at.en ? 'Corporate' : 'Корпоративные'} <br />
-				{at.en ? 'clients in Russia' : 'клиенты в России'}
-			</h2>
+			{isDigitalTransformation ? (
+				<h2>
+					{at.en ? 'We help with employment' : 'Мы помогаем в трудоустройстве'}
+				</h2>
+			) : (
+				<h2>
+					{at.en ? 'Corporate' : 'Корпоративные'} <br />
+					{at.en ? 'clients in Russia' : 'клиенты в России'}
+				</h2>
+			)}
 			{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
-			{variant !== 'page-corporate-clients' &&
-				(isDigitalTransformation ? (
-					<p>
-						{at.en
-							? 'The experience of our teachers is used by many leading companies in Russia and CIS countries. Our experience will be useful not only to the giants of the industrial, mining industry, large network operators, but also to medium and small businesses'
-							: 'Опыт наших преподавателей используют многие ведущие компании России и стран СНГ. Наш опыт будет полезен не только гигантам промышленной, добывающей индустрии, крупным сетевикам, но и среднему и малому бизнесу'}
-					</p>
-				) : (
-					<p>
-						{at.en
-							? "Our experts' experience is used by many leading companies in Russia and CIS. Nevertheless it's valuable not only for large-scale, but also for startups and medium-scale companies"
-							: 'Опыт наших экспертов используют многие ведущие компании России и стран СНГ. Наш опыт будет полезен не только гигантам промышленной, добывающей индустрии, крупным сетевикам, но и среднему и малому бизнесу'}
-					</p>
-				))}
+			{variant !== 'page-corporate-clients' && !isDigitalTransformation && (
+				<p>
+					{at.en
+						? "Our experts' experience is used by many leading companies in Russia and CIS. Nevertheless it's valuable not only for large-scale, but also for startups and medium-scale companies"
+						: 'Опыт наших экспертов используют многие ведущие компании России и стран СНГ. Наш опыт будет полезен не только гигантам промышленной, добывающей индустрии, крупным сетевикам, но и среднему и малому бизнесу'}
+				</p>
+			)}
 		</>
 	)
 
@@ -62,6 +81,21 @@ const CorporateClients = ({
 							variant === 'page-corporate-clients'
 					})}>
 					<div className={stls.title}>{title}</div>
+				</div>
+				<div className={stls.listContainer}>
+					<ul className={stls.employmentList}>
+						{employmentData.map((el, idx) => (
+							<li key={idx}>
+								<div className={stls.circle}>
+									<IconCheck />
+								</div>
+								<div className={stls.itemBox}>
+									<p className={stls.itemItile}>{el.title}</p>
+									<p className={stls.itemText}>{el.text}</p>
+								</div>
+							</li>
+						))}
+					</ul>
 				</div>
 				<div className={stls.slider}>
 					<ul className={stls.list}>

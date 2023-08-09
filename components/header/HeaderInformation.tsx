@@ -36,7 +36,7 @@ const HeaderInformation = ({ classNames = [], handleMenu, openMenu }) => {
 						onClick={() => handleMenu(false)}
 						aria-label={companyName}>
 						<div className={stls.picture}>
-							<IconLogo />
+							<IconLogo idx='1' />
 						</div>
 						<div>
 							<IconLogoTitle />

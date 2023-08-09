@@ -1,0 +1,108 @@
+@use 'sass:math'
+@use 'sass:color'
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/shared/journal' as j
+
+
+
+.container
+  position: relative
+  margin-bottom: 122px
+  @include m.media(laptop)
+    margin-bottom: 80px
+  @include m.media(tablet, phone)
+    margin-bottom: 60px
+
+.content
+  position: relative
+  z-index: 2
+ 
+  @include m.media(laptop)
+    padding-bottom: 80px
+    
+  @include m.media(tablet, phone)
+    padding-bottom: 60px
+   
+  @include m.media(desktop, laptop, tablet, phone)
+    padding-left: 10px
+
+.title
+  margin-bottom: 30px
+
+.list
+  display: flex
+  gap: f.px(30)
+  @include m.media(phone, tablet)
+    flex-direction: column
+    gap: f.px(40)
+    padding-bottom: f.px(8)
+  overflow-x: auto
+  overflow-y: hidden
+  &::-webkit-scrollbar
+    @include m.media(phone, tablet)
+      min-width: f.px(5)
+      max-width: f.px(5)
+      min-height: f.px(5)
+      max-height: f.px(5)
+    @include m.media(laptop, desktop, widescreen)
+      display: none
+  &::-webkit-scrollbar-track 
+    @include m.dye(bgc, c.$nu)
+  &::-webkit-scrollbar-thumb 
+    @include m.dye(bgc, c.$tau)
+    &:hover
+      @include m.dye(bgc, color.adjust(c.$tau, $lightness: -10%))
+
+.listItem
+  display: flex
+  a
+    width: 450px
+
+.arrows
+  display: flex
+  justify-content: center
+  align-items: center
+  order: 2
+  gap: f.px(30)
+  margin-top: f.px(65)
+
+.arrowBtn
+  display: flex
+  justify-content: center
+  align-items: center
+  min-width: f.px(24)
+  max-width: f.px(24)
+  min-height: f.px(24)
+  max-height: f.px(24)
+  margin: 0
+  padding: 0
+  border-color: transparent
+  background-color: transparent
+  cursor: pointer
+  appearance: none
+  @include m.media(tablet, laptop, desktop, widescreen)
+    &:hover
+      & .IconArrowLeft
+        & svg
+          @include m.dye(fill, c.$alpha)
+  &[data-scroll='0']
+    cursor: not-allowed
+    & .IconArrowLeft
+        & svg
+          @include m.dye(fill, c.$upsilon)
+
+.arrowBtnRight
+  transform: rotate(180deg)
+
+.IconArrowLeft
+  display: flex
+  justify-content: center
+  align-items: center
+  max-width: f.px(6)
+  min-width: f.px(6)
+  min-height: f.px(12)
+  max-height: f.px(12)
+  & svg
+    transition: fill 0.15s ease-in-out

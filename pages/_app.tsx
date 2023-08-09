@@ -66,7 +66,7 @@ function MyApp({ Component, pageProps, router }) {
 			const urlUtmsArr = router.asPath.split('?')[1]
 
 			urlUtmsArr &&
-				urlUtmsArr.split('&').forEach(utm => {
+				urlUtmsArr?.split('&')?.forEach(utm => {
 					utms[utm.split('=')[0]] = utm.split('=')[1]
 				})
 			sessionStorage.setItem('utms', JSON.stringify(utms))

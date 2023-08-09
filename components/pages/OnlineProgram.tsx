@@ -45,18 +45,27 @@ import Accreditation from '@/components/sections/general/Accreditation'
 import Pros from '@/components/sections/general/Pros'
 import React from 'react'
 import { DigitalTransformationContext } from '@/context/index'
+import {
+	ProgramActuality,
+	ProgramDevelopedStandard,
+	ProgramsModulesAccordion,
+	RecommendedPrograms,
+	WhoItIsFor
+} from '../sections'
 
 const PageOnlineProgram = ({ program, programs, teachers }) => {
 	const router = useRouter()
 
 	// TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA
+	// const isDigitalTransformation =
+	// 	program?.category?.slug === 'mini' &&
+	// 	program?.studyFormat === 'online' &&
+	// 	program?.slug === 'digital-transformation'
+
+	const isDigitalTransformation = null
+
 	const setIsdigitalTransformation = () => {
-		if (
-			program?.category?.slug === 'mini' &&
-			program?.studyFormat === 'online' &&
-			program?.slug === 'digital-transformation'
-		)
-			return true
+		if (isDigitalTransformation) return true
 
 		return false
 	}
@@ -68,11 +77,23 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 				value={setIsdigitalTransformation()}>
 				<JumbotronProgram program={program} programs={programs} />
 				<ProgramGoal data={program} />
+				{isDigitalTransformation && <ProgramActuality data={program} />}
 				<WhatWillYouLearn data={program} />
-				<ProgramDesc />
+				{isDigitalTransformation ? (
+					<>
+						<WhoItIsFor program={program} />
+						<ProgramDevelopedStandard />
+					</>
+				) : (
+					<ProgramDesc />
+				)}
 				<Pros format={'online'} />
 				<HowProcessGoes />
-				<ProgramsModules program={program} />
+				{isDigitalTransformation ? (
+					<ProgramsModulesAccordion program={program} />
+				) : (
+					<ProgramsModules program={program} />
+				)}
 				{/* <ECTSStandard /> */}
 				<GetStudyPlan />
 				<Teachers
@@ -80,12 +101,24 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 					programTitle={program?.title}
 					teachers={teachers}
 				/>
-				<UpToDateContent withBottomLine />
-				<CorporateClients />
-				<Accreditation />
-				<Diploma />
-				<Students />
-				<Reviews />
+				{isDigitalTransformation ? (
+					<>
+						<Students />
+						<Reviews />
+						<Accreditation />
+						<CorporateClients />
+						<Diploma />
+					</>
+				) : (
+					<>
+						<UpToDateContent withBottomLine />
+						<CorporateClients />
+						<Accreditation />
+						<Diploma />
+						<Students />
+						<Reviews />
+					</>
+				)}
 				<SectionStudyCost />
 				<SectionCheckPros />
 				<Qna programId={program?._id} programTitle={program?.title} />
@@ -94,8 +127,9 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 					programTitle={program?.title}
 					title={''}
 					titleNewStr={'Получите консультацию по программам MBA'}
-					overlapsFooter
+					// overlapsFooter
 				/>
+				{isDigitalTransformation && <RecommendedPrograms programs={programs} />}
 			</DigitalTransformationContext.Provider>
 		</>
 	)

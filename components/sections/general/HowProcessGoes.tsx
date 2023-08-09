@@ -66,6 +66,49 @@ const HowProcessGoes = () => {
 							]
 						}
 				  ] //TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA
+				: at.programs
+				? [
+						{
+							tabTitle:
+								'Продолжительность обучения составляет от 2 до 18 месяцев',
+							stepTitle: '',
+							listItems: [
+								'Продолжительность обучения составляет от 2 до 18 месяцев'
+							]
+						},
+						{
+							tabTitle:
+								'Мы не только оставляем доступ к курсам, чтобы вы могли вернуться к знаниям, когда возникает потребность, но и обновляем контент, чтобы у вас была самая актуальная информация',
+							stepTitle: '',
+							listItems: [
+								'Мы не только оставляем доступ к курсам, чтобы вы могли вернуться к знаниям, когда возникает потребность, но и обновляем контент, чтобы у вас была самая актуальная информация'
+							]
+						},
+						{
+							tabTitle:
+								'Рассказываем как внедрить техники и инструменты из обучения в свою сферу. Помогаем с трудоустройством',
+							stepTitle: '',
+							listItems: [
+								'Рассказываем как внедрить техники и инструменты из обучения в свою сферу. Помогаем с трудоустройством'
+							]
+						},
+						{
+							tabTitle:
+								'По окончании обучения выдается диплом международного образца, который признается в Европе и заносится в ФРДО',
+							stepTitle: '',
+							listItems: [
+								'По окончании обучения выдается диплом международного образца, который признается в Европе и заносится в ФРДО'
+							]
+						},
+						{
+							tabTitle:
+								'Благодаря онлайн-формату вы можете пройти программу с экспертами сразу из нескольких топовых бизнес-школ, не мешая текущей занятости',
+							stepTitle: '',
+							listItems: [
+								'Благодаря онлайн-формату вы можете пройти программу с экспертами сразу из нескольких топовых бизнес-школ, не мешая текущей занятости'
+							]
+						}
+				  ]
 				: [
 						{
 							tabTitle: 'Поступление',
@@ -125,10 +168,10 @@ const HowProcessGoes = () => {
 		Array.from({ length: processSteps.length }, () => 0)
 	)
 	const stepsRefs = useRef(
-		processSteps.map(() => React.createRef<HTMLDivElement>())
+		processSteps?.map(() => React.createRef<HTMLDivElement>())
 	)
 	const tabsRefs = useRef(
-		processSteps.map(() => React.createRef<HTMLLIElement>())
+		processSteps?.map(() => React.createRef<HTMLLIElement>())
 	)
 
 	const scrollIntoViewTabs = (idx: number) =>
@@ -145,14 +188,14 @@ const HowProcessGoes = () => {
 
 	const handleIntersectDesktopSteps: IntersectionObserverCallback = useCallback(
 		entries => {
-			entries.map(entry => {
+			entries?.map(entry => {
 				if (entry.isIntersecting) {
 					const stepIdx = processSteps.findIndex(
 						step => step.stepTitle === entry.target.children.item(2).textContent
 					)
 					const increment = 0.1
 					setScrolledData(prevArray =>
-						prevArray.map((prevValue, idx) =>
+						prevArray?.map((prevValue, idx) =>
 							idx === stepIdx
 								? !prevValue
 									? increment
@@ -170,7 +213,7 @@ const HowProcessGoes = () => {
 
 	const handleIntersectPhoneSteps: IntersectionObserverCallback = useCallback(
 		entries => {
-			entries.map(entry => {
+			entries?.map(entry => {
 				if (entry.isIntersecting) {
 					const stepTitle = entry.target.children.item(2).textContent
 					const currentActiveStep = processSteps.findIndex(
@@ -220,24 +263,28 @@ const HowProcessGoes = () => {
 				<div className={stls.titleContainer}>
 					{isDigitalTransformation ? (
 						<h2 className={stls.title}>Как проходит учебный процесс</h2>
+					) : at.programs ? (
+						<h2 className={stls.title}>Преимущества</h2>
 					) : (
 						<h2 className={stls.title}>Как проходит процесс обучения</h2>
 					)}
-					{at.profession ||
-						(at.course && (
-							<div className={stls.studentPhoto}>
-								<Image
-									src={studentPhoto}
-									height={337}
-									width={506}
-									alt={'Студент академии сидит перед ноутбуком'}
-								/>
-							</div>
-						))}
+					{(isDigitalTransformation ||
+						at.profession ||
+						at.course ||
+						at.programs) && (
+						<div className={stls.studentPhoto}>
+							<Image
+								src={studentPhoto}
+								height={337}
+								width={506}
+								alt={'Студент академии сидит перед ноутбуком'}
+							/>
+						</div>
+					)}
 				</div>
 				<div className={stls.infoContainer}>
 					<ul className={stls.tabsList}>
-						{processSteps.map((step, idx) => (
+						{processSteps?.map((step, idx) => (
 							<li
 								key={step.tabTitle + idx}
 								ref={tabsRefs.current[idx]}
@@ -258,7 +305,7 @@ const HowProcessGoes = () => {
 						))}
 					</ul>
 					<div className={stls.stepsWrap}>
-						{processSteps.map((step, idx) => (
+						{processSteps?.map((step, idx) => (
 							<div
 								key={idx + step.tabTitle}
 								ref={stepsRefs.current[idx]}
@@ -275,7 +322,7 @@ const HowProcessGoes = () => {
 								<div className={stls.processStepNumber}>{idx + 1}</div>
 								<div className={stls.processStepTitle}>{step.stepTitle}</div>
 								<ul className={stls.list}>
-									{step.listItems.map((item, idx) => (
+									{step.listItems?.map((item, idx) => (
 										<li key={item + idx} className={stls.listItem}>
 											{item}
 										</li>

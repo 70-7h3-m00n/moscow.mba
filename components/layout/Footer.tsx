@@ -34,7 +34,7 @@ const Footer = () => {
 				<div className={stls.top}>
 					<div className={stls.contactDetails}>
 						<Link className={stls.logoWrapper} href={routesFront.home}>
-							<IconLogo />
+							<IconLogo idx='2' />
 							<IconLogoTitle color='#fff' />
 						</Link>
 						<div className={stls.telephone}>
