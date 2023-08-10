@@ -22,8 +22,8 @@ const IconYoutube = ({
 				xmlns='http://www.w3.org/2000/svg'
 				aria-label={'Youtube'}>
 				<path
-					fill-rule='evenodd'
-					clip-rule='evenodd'
+					fillRule='evenodd'
+					clipRule='evenodd'
 					d='M3.08185 0H16.9182C18.6202 0 20 1.3798 20 3.08185V16.9182C20 18.6202 18.6202 20 16.9182 20H3.08185C1.3798 20 0 18.6202 0 16.9182V3.08185C0 1.3798 1.3798 0 3.08185 0Z'
 					fill={fillOuter}
 				/>
