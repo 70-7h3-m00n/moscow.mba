@@ -12,11 +12,10 @@ const ReviewsSource = () => {
 	const sourceRatings = [
 		4.5, 5, 5, 4.2, 4, 5, 4.3, 5, 4.8, 5, 5, 5, 5, 4.8, 5, 5
 	]
-	const logosArr = createImgsArr(logos)
-		.map((logo, idx) => ({
-			...logo,
-			rating: sourceRatings[idx]
-		}))
+	const logosArr = createImgsArr(logos).map((logo, idx) => ({
+		...logo,
+		rating: sourceRatings[idx]
+	}))
 
 	const [shownSources, showMoreSources] = useReducer<Reducer<number, void>>(
 		prev => {

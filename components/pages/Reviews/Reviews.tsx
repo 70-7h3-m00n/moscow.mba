@@ -1,3 +1,4 @@
+import { VideoReviews } from '@/components/sections'
 import {
 	ClientList,
 	ReviewsBreadcrumbs,
@@ -14,7 +15,8 @@ const Reviews = () => {
 			<ReviewsBreadcrumbs />
 			<Statistic />
 			<ReviewScreens />
-			<ClientList />
+			{/* <ClientList /> */}
+			<VideoReviews darkBackground />
 			<ReviewsSource />
 			<SocialMedia />
 			<WhereStudentsWorks />
