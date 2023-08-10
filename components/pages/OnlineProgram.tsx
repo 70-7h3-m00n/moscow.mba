@@ -106,7 +106,7 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 					<>
 						<Students />
 						<TextReviews />
-						<VideoReviews singleProgramPage />
+						<VideoReviews darkBackground />
 						<Accreditation />
 						<CorporateClients />
 						<Diploma />
