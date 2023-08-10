@@ -24,9 +24,7 @@ const GetStudyPlan = () => {
 			<Wrapper classNames={[stls.wrapper]}>
 				<div className={stls.content}>
 					{isDigitalTransformation ? (
-						<h4 className={stls.title}>
-							Оставьте заявку на полный учебный план
-						</h4>
+						<p className={stls.title}>Оставьте заявку на полный учебный план</p>
 					) : (
 						<h4 className={stls.title}>Получите полный учебный план</h4>
 					)}

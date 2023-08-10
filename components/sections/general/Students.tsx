@@ -19,9 +19,7 @@ const Students = () => {
 							Вы станете частью эффективного нетворкинга{' '}
 							{!at.profession && !at.course && 'по всему миру'}
 						</div>
-						<h4 className={stls.stats}>
-							Согласно опросу 2000 наших студентов:
-						</h4>
+						<p className={stls.stats}>Согласно опросу 2000 наших студентов:</p>
 						<ul className={stls.list}>
 							<li className={stls.item}>
 								<CircularProgressbarWithChildren

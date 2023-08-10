@@ -25,7 +25,7 @@ import truncate from 'truncate'
 //   ECTSStandard
 // } from '@/components/sections'
 import JumbotronProgram from '@/components/sections/general/JumbotronProgram'
-import Reviews from '@/components/sections/general/Reviews'
+import TextReviews from '@/components/sections/general/TextReviews'
 import ProgramGoal from '@/components/sections/general/ProgramGoal'
 import WhatWillYouLearn from '@/components/sections/general/WhatWillYouLearn'
 import ProgramDesc from '@/components/sections/general/ProgramDesc'
@@ -50,6 +50,7 @@ import {
 	ProgramDevelopedStandard,
 	ProgramsModulesAccordion,
 	RecommendedPrograms,
+	VideoReviews,
 	WhoItIsFor
 } from '../sections'
 
@@ -57,12 +58,12 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 	const router = useRouter()
 
 	// TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA
+	const isDigitalTransformation = null
+
 	// const isDigitalTransformation =
 	// 	program?.category?.slug === 'mini' &&
 	// 	program?.studyFormat === 'online' &&
 	// 	program?.slug === 'digital-transformation'
-
-	const isDigitalTransformation = null
 
 	const setIsdigitalTransformation = () => {
 		if (isDigitalTransformation) return true
@@ -104,7 +105,8 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 				{isDigitalTransformation ? (
 					<>
 						<Students />
-						<Reviews />
+						<TextReviews />
+						<VideoReviews singleProgramPage />
 						<Accreditation />
 						<CorporateClients />
 						<Diploma />
@@ -116,7 +118,7 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 						<Accreditation />
 						<Diploma />
 						<Students />
-						<Reviews />
+						<TextReviews />
 					</>
 				)}
 				<SectionStudyCost />

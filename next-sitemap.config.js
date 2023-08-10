@@ -57,17 +57,7 @@ module.exports = {
 					'*/ru/',
 					'/*uz_UZ',
 					'/%20policyf',
-					'/oferta.pdf',
-					'https://lms.moscow.mba/contact',
-					'https://lms.moscow.mba/legal/about',
-					'https://lms.moscow.mba/teachers',
-					'https://lms.moscow.mba/programs/mini/online',
-					'https://lms.moscow.mba/legal',
-					'https://lms.moscow.mba/programs/executive',
-					'https://lms.moscow.mba/about',
-					'https://lms.moscow.mba/webinars',
-					'https://lms.moscow.mba/programs/industry/online',
-					'https://lms.moscow.mba/programs/professional/online'
+					'/oferta.pdf'
 				]
 			}
 		]

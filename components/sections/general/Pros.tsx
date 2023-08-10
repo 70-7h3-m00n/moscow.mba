@@ -48,9 +48,9 @@ const Pros = ({ format = 'online' }) => {
 									<IconCheck stroke={'#FF3535'} />
 								</div>
 								<div>
-									<h5 className={stls.itemTitle}>
+									<h3 className={stls.itemTitle}>
 										Учитесь из любой точки мира
-									</h5>
+									</h3>
 									<p>
 										Обучение проходит на нашей образовательной платформе. Всё
 										собрано в личном кабинете: здесь удобно смотреть расписание,
@@ -64,9 +64,9 @@ const Pros = ({ format = 'online' }) => {
 									<IconCheck stroke={'#FF3535'} />
 								</div>
 								<div>
-									<h5 className={stls.itemTitle}>
+									<h3 className={stls.itemTitle}>
 										Онлайн-формат даёт возможность учиться у лучших
-									</h5>
+									</h3>
 									{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
 									{isDigitalTransformation ? (
 										<p>
@@ -94,9 +94,9 @@ const Pros = ({ format = 'online' }) => {
 									{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
 									{isDigitalTransformation ? (
 										<>
-											<h5 className={stls.itemTitle}>
+											<h3 className={stls.itemTitle}>
 												Получаете престижные документы о прохождении подготовки
-											</h5>
+											</h3>
 											<p>
 												Дипломы MBA mini online не отличаются от тех, которые
 												получают студенты очных программ. Вы будете проходить те
@@ -106,9 +106,9 @@ const Pros = ({ format = 'online' }) => {
 										</>
 									) : (
 										<>
-											<h5 className={stls.itemTitle}>
+											<h3 className={stls.itemTitle}>
 												Получаете престижные дипломы
-											</h5>
+											</h3>
 											<p>
 												{at.mini
 													? 'Дипломы MBA mini online'
@@ -132,9 +132,9 @@ const Pros = ({ format = 'online' }) => {
 									{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
 									{isDigitalTransformation ? (
 										<>
-											<h5 className={stls.itemTitle}>
+											<h3 className={stls.itemTitle}>
 												Общайтесь с преподавателями online
-											</h5>
+											</h3>
 											<p>
 												На MBA mini online у Вас есть возможность задавать
 												вопросы преподавателям во время видео-встреч, а также
@@ -143,13 +143,13 @@ const Pros = ({ format = 'online' }) => {
 										</>
 									) : (
 										<>
-											<h5 className={stls.itemTitle}>
+											<h3 className={stls.itemTitle}>
 												Общайтесь с{' '}
 												{at.profession || at.course
 													? 'преподавателями'
 													: 'экспертами'}{' '}
 												online
-											</h5>
+											</h3>
 											<p>
 												На{' '}
 												{at.profession || at.course
@@ -208,9 +208,9 @@ const Pros = ({ format = 'online' }) => {
 									<IconCheck stroke={'#FF3535'} />
 								</div>
 								<div>
-									<h5 className={stls.itemTitle}>
+									<h3 className={stls.itemTitle}>
 										Учитесь из любой точки мира
-									</h5>
+									</h3>
 									<p>
 										Обучение проходит на нашей образовательной платформе. Всё
 										собрано в личном кабинете: здесь удобно смотреть расписание,
@@ -224,9 +224,9 @@ const Pros = ({ format = 'online' }) => {
 									<IconCheck stroke={'#FF3535'} />
 								</div>
 								<div>
-									<h5 className={stls.itemTitle}>
+									<h3 className={stls.itemTitle}>
 										Онлайн-формат даёт возможность учиться у лучших
-									</h5>
+									</h3>
 									<p>
 										Благодаря онлайн-формату Вы можете пройти программу с
 										экспертами сразу из нескольких топовых бизнес-школ мира. Мы
@@ -240,9 +240,9 @@ const Pros = ({ format = 'online' }) => {
 									<IconCheck stroke={'#FF3535'} />
 								</div>
 								<div>
-									<h5 className={stls.itemTitle}>
+									<h3 className={stls.itemTitle}>
 										Общайтесь с экспертами online
-									</h5>
+									</h3>
 									<p>
 										На MBA{' '}
 										{at.mini
