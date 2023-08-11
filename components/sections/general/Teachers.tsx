@@ -299,7 +299,7 @@ const Teachers = ({
 										<IconCheck />
 									</div>
 									<div>
-										<h5>{at.en ? 'Practitioners' : 'Практикующие эксперты'}</h5>
+										<h3>{at.en ? 'Practitioners' : 'Практикующие эксперты'}</h3>
 										<p>
 											{at.profession || at.course ? (
 												at.en ? (
@@ -323,11 +323,11 @@ const Teachers = ({
 										<IconCheck />
 									</div>
 									<div>
-										<h5>
+										<h3>
 											{at.en
 												? 'Multi-stage verification'
 												: 'Прошли многоэтапную проверку'}
-										</h5>
+										</h3>
 										<p>
 											{at.en ? (
 												'They have passed Moscow Academy’s multi-stage verification and have teaching accreditation'
@@ -345,7 +345,7 @@ const Teachers = ({
 										<IconCheck />
 									</div>
 									<div>
-										<h5>
+										<h3>
 											{at.profession || at.course
 												? at.en
 													? 'Rich teaching experience'
@@ -353,7 +353,7 @@ const Teachers = ({
 												: at.en
 												? 'International teaching experience'
 												: 'Международный опыт преподавания'}
-										</h5>
+										</h3>
 										<p>
 											{at.profession || at.course
 												? at.en

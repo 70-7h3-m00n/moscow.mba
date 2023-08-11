@@ -14,14 +14,14 @@ const youtubeReviews = [
 ]
 
 export default function VideoReviews({
-	singleProgramPage
+	darkBackground
 }: {
-	singleProgramPage?: boolean
+	darkBackground?: boolean
 }) {
 	return (
 		<section
 			className={cn(stls.container, {
-				[stls.singleProgramPage]: singleProgramPage
+				[stls.singleProgramPage]: darkBackground
 			})}>
 			<div className={stls.titleContainer}>
 				<h2>{'Видеоотзывы'}</h2>
@@ -44,7 +44,7 @@ export default function VideoReviews({
 									<div className={stls.openPopupLink}>
 										<span
 											className={cn(stls.openPopupText, {
-												[stls.singleProgramPage]: singleProgramPage
+												[stls.singleProgramPage]: darkBackground
 											})}>
 											Смотреть отзыв
 										</span>

@@ -1,4 +1,4 @@
-import stls from '@/styles/components/sections/Reviews.module.sass'
+import stls from '@/styles/components/sections/TextReviews.module.sass'
 import Image from 'next/legacy/image'
 import Popup from 'reactjs-popup'
 import PopupReview from '@/components/popups/PopupReview'
@@ -9,7 +9,7 @@ import cn from 'classnames'
 import { useContext } from 'react'
 import { DigitalTransformationContext } from '@/context/index'
 
-const Reviews = () => {
+const TextReviews = () => {
 	const at = useAt()
 	const singleProgramPage = at.programChunk
 	const isDigitalTransformation = useContext(DigitalTransformationContext)
@@ -102,7 +102,6 @@ const Reviews = () => {
 				className={cn(stls.reviewsContainer, {
 					[stls.singleProgramPage]: singleProgramPage
 				})}>
-				<VideoReviews singleProgramPage={singleProgramPage} />
 				<section className={stls.container}>
 					<div className={stls.titleContainer}>
 						<h2>Почему нас выбирают</h2>
@@ -154,4 +153,4 @@ const Reviews = () => {
 	)
 }
 
-export default Reviews
+export default TextReviews

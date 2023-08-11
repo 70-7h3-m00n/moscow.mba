@@ -9,7 +9,13 @@ import {
 	InfoRectangle,
 	MainInfo
 } from './widgets'
-import { ContactUs, HowProcessGoes, Qna, Reviews } from '@/components/sections'
+import {
+	ContactUs,
+	HowProcessGoes,
+	Qna,
+	Reviews,
+	VideoReviews
+} from '@/components/sections'
 
 const ProgramsPage = () => {
 	return (
@@ -42,6 +48,7 @@ const ProgramsPage = () => {
 					</div>
 				</div>
 			</section>
+			<VideoReviews />
 			<Reviews />
 			<HowProcessGoes />
 			<Qna />

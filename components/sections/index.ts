@@ -74,7 +74,7 @@ export { default as ProgramsModulesAccordion } from '@/components/sections/gener
 export { default as Pros } from '@/components/sections/general/Pros'
 export { default as Qna } from '@/components/sections/general/Qna'
 export { default as ResultsExecutive } from '@/components/sections/general/ResultsExecutive'
-export { default as Reviews } from '@/components/sections/general/Reviews'
+export { default as Reviews } from '@/components/sections/general/TextReviews'
 export { default as VideoReviews } from '@/components/sections/general/VideoReviews'
 export { default as Rules } from '@/components/sections/general/Rules'
 export { default as RecommendedPrograms } from '@/components/sections/general/RecommendedPrograms'

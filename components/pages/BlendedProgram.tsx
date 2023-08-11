@@ -25,7 +25,7 @@ import truncate from 'truncate'
 //   ECTSStandard,
 //   GetStudyPlan
 // } from '@/components/sections'
-import Reviews from '@/components/sections/general/Reviews'
+import Reviews from '@/components/sections/general/TextReviews'
 import JumbotronProgram from '@/components/sections/general/JumbotronProgram'
 import ProgramGoal from '@/components/sections/general/ProgramGoal'
 import WhatWillYouLearn from '@/components/sections/general/WhatWillYouLearn'

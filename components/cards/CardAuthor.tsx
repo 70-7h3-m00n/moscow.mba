@@ -31,9 +31,9 @@ const CardAuthor = ({
 			{quote?.portrait?.url && (
 				<div className={stls.image}>
 					<Image
-						src={quote?.portrait.url || undefined}
-						width={quote?.portrait.width && 48}
-						height={quote?.portrait.height && 48}
+						src={quote?.portrait.url}
+						width={quote?.portrait.width || 48}
+						height={quote?.portrait.height || 48}
 						alt={quote?.portrait.alt || 'Фото'}
 						className={stls.img}
 					/>
