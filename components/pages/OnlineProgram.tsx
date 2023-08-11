@@ -58,12 +58,12 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 	const router = useRouter()
 
 	// TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA
-	const isDigitalTransformation = null
+	// const isDigitalTransformation = null
 
-	// const isDigitalTransformation =
-	// 	program?.category?.slug === 'mini' &&
-	// 	program?.studyFormat === 'online' &&
-	// 	program?.slug === 'digital-transformation'
+	const isDigitalTransformation =
+		program?.category?.slug === 'mini' &&
+		program?.studyFormat === 'online' &&
+		program?.slug === 'digital-transformation'
 
 	const setIsdigitalTransformation = () => {
 		if (isDigitalTransformation) return true
@@ -106,7 +106,7 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 					<>
 						<Students />
 						<TextReviews />
-						<VideoReviews singleProgramPage />
+						<VideoReviews darkBackground />
 						<Accreditation />
 						<CorporateClients />
 						<Diploma />

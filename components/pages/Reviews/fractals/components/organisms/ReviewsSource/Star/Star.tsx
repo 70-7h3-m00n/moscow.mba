@@ -21,14 +21,14 @@ const Star = ({ classNames, fill = '#D9D9D9', style, rating, id }: Props) => {
 				xmlns='http://www.w3.org/2000/svg'>
 				<defs>
 					<linearGradient id={`gradient_${id}`}>
-						<stop offset='0' stop-color={rating ? '#FF3535' : '#D9D9D9'} />
+						<stop offset='0' stopColor={rating ? '#FF3535' : '#D9D9D9'} />
 						{rating && (
 							<>
-								<stop offset={rating} stop-color='#FF3535' />
-								<stop offset={rating} stop-color='#D9D9D9' />
+								<stop offset={rating} stopColor='#FF3535' />
+								<stop offset={rating} stopColor='#D9D9D9' />
 							</>
 						)}
-						<stop offset={1} stop-color='#D9D9D9' />
+						<stop offset={1} stopColor='#D9D9D9' />
 					</linearGradient>
 				</defs>
 				<path
