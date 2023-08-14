@@ -299,7 +299,9 @@ const Teachers = ({
 										<IconCheck />
 									</div>
 									<div>
-										<h3>{at.en ? 'Practitioners' : 'Практикующие эксперты'}</h3>
+										<p className={stls.detailTitle}>
+											{at.en ? 'Practitioners' : 'Практикующие эксперты'}
+										</p>
 										<p>
 											{at.profession || at.course ? (
 												at.en ? (
@@ -323,11 +325,11 @@ const Teachers = ({
 										<IconCheck />
 									</div>
 									<div>
-										<h3>
+										<p className={stls.detailTitle}>
 											{at.en
 												? 'Multi-stage verification'
 												: 'Прошли многоэтапную проверку'}
-										</h3>
+										</p>
 										<p>
 											{at.en ? (
 												'They have passed Moscow Academy’s multi-stage verification and have teaching accreditation'
@@ -345,7 +347,7 @@ const Teachers = ({
 										<IconCheck />
 									</div>
 									<div>
-										<h3>
+										<p className={stls.detailTitle}>
 											{at.profession || at.course
 												? at.en
 													? 'Rich teaching experience'
@@ -353,7 +355,7 @@ const Teachers = ({
 												: at.en
 												? 'International teaching experience'
 												: 'Международный опыт преподавания'}
-										</h3>
+										</p>
 										<p>
 											{at.profession || at.course
 												? at.en
