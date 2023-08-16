@@ -9,7 +9,7 @@ const WebinarCards = ({ timeframe }) => {
 			title: 'Сквозная аналитика в Российском ретейле',
 			portrait: '/assets/images/speakers/speaker-1.jpg',
 			speaker: 'Эдуард Тихонов',
-			date: new Date(2021, 7, 4, 17, 0),
+			date: new Date(2023, 11, 17, 17, 0),
 			dur: '40:00'
 		},
 		{
@@ -17,7 +17,7 @@ const WebinarCards = ({ timeframe }) => {
 			title: 'Power BI: изучаем азы работы с данными',
 			portrait: '/assets/images/speakers/speaker-2.jpg',
 			speaker: 'Антон Гвоздев',
-			date: new Date(2021, 7, 7, 19, 0),
+			date: new Date(2023, 11, 7, 19, 0),
 			dur: '40:00'
 		},
 		{
@@ -25,7 +25,7 @@ const WebinarCards = ({ timeframe }) => {
 			title: 'Как монетизировать свои soft и hard skills',
 			portrait: '/assets/images/speakers/speaker-3.jpg',
 			speaker: 'Сергей Морозов',
-			date: new Date(2021, 6, 4, 17, 0),
+			date: new Date(2023, 11, 4, 17, 0),
 			dur: '40:00'
 		},
 		{
@@ -33,7 +33,7 @@ const WebinarCards = ({ timeframe }) => {
 			title: 'Методы монетизации цифровых продуктов',
 			portrait: '/assets/images/speakers/speaker-4.jpg',
 			speaker: 'Дарья Демидова',
-			date: new Date(2021, 6, 7, 19, 0),
+			date: new Date(2023, 10, 7, 19, 0),
 			dur: '40:00'
 		},
 		{
@@ -41,7 +41,7 @@ const WebinarCards = ({ timeframe }) => {
 			title: 'Как управлять удаленной командой',
 			portrait: '/assets/images/speakers/speaker-5.jpg',
 			speaker: 'Елена Колосова',
-			date: new Date(2021, 5, 4, 17, 0),
+			date: new Date(2023, 10, 4, 17, 0),
 			dur: '40:00'
 		},
 		{
@@ -49,15 +49,15 @@ const WebinarCards = ({ timeframe }) => {
 			title: 'Разработка инвестиционной стратегии стартапа',
 			portrait: '/assets/images/speakers/speaker-6.jpg',
 			speaker: 'Александр Бойко',
-			date: new Date(2021, 5, 7, 19, 0),
+			date: new Date(2023, 9, 7, 19, 0),
 			dur: '40:00'
 		},
 		{
 			id: '23fb2240-7450-4243-bf17-7182c5e9fcfe',
-			title: 'Кризисный менеджмент в 2021 году',
+			title: 'Кризисный менеджмент в 2023 году',
 			portrait: '/assets/images/speakers/speaker-7.jpg',
 			speaker: 'Светлана Назарова',
-			date: new Date(2021, 4, 4, 17, 0),
+			date: new Date(2023, 9, 4, 17, 0),
 			dur: '40:00'
 		},
 		{
@@ -65,7 +65,7 @@ const WebinarCards = ({ timeframe }) => {
 			title: 'Как пандемия повлияла на бизнес-процессы в е-commerce?',
 			portrait: '/assets/images/speakers/speaker-8.jpg',
 			speaker: 'Даниил Виль',
-			date: new Date(2021, 4, 7, 19, 0),
+			date: new Date(2023, 8, 7, 19, 0),
 			dur: '40:00'
 		},
 		{
@@ -73,7 +73,7 @@ const WebinarCards = ({ timeframe }) => {
 			title: 'Digital аналитика процессов организации',
 			portrait: '/assets/images/speakers/speaker-9.jpg',
 			speaker: 'Максим Захаров',
-			date: new Date(2021, 8, 4, 17, 0),
+			date: new Date(2023, 8, 4, 17, 0),
 			dur: '40:00'
 		}
 	]
@@ -104,7 +104,7 @@ const WebinarCards = ({ timeframe }) => {
 	return (
 		<div className={stls.list}>
 			{cards
-				.sort((a, b) => a.date.getMonth() - b.date.getMonth())
+				.sort((a, b) => a.date.getTime() - b.date.getTime())
 				.map(card => {
 					const month = months.filter(
 						(str, idx) => idx === card.date.getMonth()
