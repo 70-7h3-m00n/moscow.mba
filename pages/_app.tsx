@@ -263,9 +263,11 @@ function MyApp({ Component, pageProps, router }) {
                 s = d.createElement('script'); s.async = 1; s.id = i; s.src = u;
                 p = d.getElementsByTagName('script')[0]; p.parentNode.insertBefore(s, p);
             }(window, document, '//widgets.mango-office.ru/widgets/mango.js', 'mango-js', 'mgo'));
-            mgo({calltracking: {id: 30791, elements: [{"numberText":"78005002747"}]}});
+            mgo({calltracking: {id: 30791, elements: [{"numberText":"78005002747"},{"numberText":"74951490020"}]}});
 						`
 					}}
+
+					// 74951490020
 				/>
 			</Head>
 			<DefaultSeo {...SEO} />
