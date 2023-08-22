@@ -7,14 +7,10 @@
 .container
   padding: f.px(50) 0
   margin-bottom: 0
-  &.singleProgramPage
-    padding: f.px(100) 0
+  &.darkBackground
+    padding: f.px(60) 0
     background-color: #2D2C2A
     margin-bottom: f.px(130)
-
-.singleProgramPage > .titleContainer > h2
-  color: #fff
-
 
 .wrapper 
   overflow-x: scroll
@@ -26,19 +22,20 @@
 .title-container
   margin-bottom: f.px(60)
 
-.titleContainer
-  h2
-    margin-left: 220px
-    @include m.media(tablet, phone)
-      margin-left: 10px
-
 .title
-  color: #fff
+  color: #2D2C2A
+  &.darkBackground
+    color: #fff
 
 .reviewsList
   display: flex
   justify-content: space-between
   gap: 30px
+  overflow-x: scroll
+  overflow-y: hidden
+  overflow: -moz-scrollbars-none
+  &::-webkit-scrollbar
+    width: 0
 
 .previewWrapper
   cursor: pointer
@@ -52,7 +49,7 @@
 
 .openPopupText
   user-select: none
-  &.singleProgramPage
+  &.darkBackground
     color: #fff
 
 .openPopupLink

@@ -55,6 +55,8 @@ $stick-height: calc(100% - 48px)
 
 .tabsList
   display: none
+
+.tabsList:not(.programsPage)
   @include m.media(tablet, phone)
     display: flex
     overflow-x: auto
@@ -92,7 +94,7 @@ $stick-height: calc(100% - 48px)
     color: #ff3535
     border-bottom-color: #ff3535
 
-.stepsWrap
+.stepsWrap:not(.programsPage)
   @include m.media(tablet, phone)
     display: flex
     overflow-x: auto
@@ -112,6 +114,7 @@ $stick-height: calc(100% - 48px)
     background: #d9d9d9
     position: absolute
     height: $stick-height
+  &::before, .redStick
     @include m.media(tablet, phone)
       display: none
   .redStick
@@ -125,6 +128,11 @@ $stick-height: calc(100% - 48px)
       display: none
   @include m.media(widescreen, desktop, laptop)
     display: block !important
+  &.processStep
+    display: block !important
+
+
+.processStep:not(.programsPage)
   @include m.media(tablet, phone)
     display: flex
     flex-direction: column
@@ -142,6 +150,8 @@ $stick-height: calc(100% - 48px)
   line-height: 1.2
   margin-bottom: 14px
   max-width: 350px
+
+.processStepTitle:not(.programsPage)
   @include m.media(tablet, phone)
     display: none
 
@@ -162,12 +172,16 @@ $stick-height: calc(100% - 48px)
   font-weight: 500
   font-size: 24px
   line-height: 1.2
+
+.processStepNumber:not(.programsPage)
   @include m.media(tablet, phone)
     display: none
 
 .list
   max-width: 546px
   line-height: 1.2
+
+.list:not(.programsPage)
   @include m.media(tablet, phone)
     max-width: 100%
 
@@ -203,8 +217,5 @@ $stick-height: calc(100% - 48px)
 .studentPhoto
   width: 506px
   height: 337px
-  @include m.media(desktop)
-    width: 336px
-    height: 224px
-  @include m.media(laptop, tablet, phone)
+  @include m.media(desktop, laptop, tablet, phone)
     display: none

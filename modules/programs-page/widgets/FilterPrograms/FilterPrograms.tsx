@@ -10,7 +10,8 @@ import {
 	FilterTypeProgramEnum,
 	FiltersEnum
 } from '../../fractals'
-import { SearchField } from '../../../../components/general'
+// import { SearchField } from '../../../../components/general'
+import { SearchField } from '../SearchField'
 import stls from './FilterPrograms.module.sass'
 
 const FilterPrograms = () => {

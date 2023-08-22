@@ -32,6 +32,12 @@ const HeaderMenu = ({ programs, handleMenu }) => {
 			locale: at.en ? 'ru' : undefined
 		},
 		{
+			href: '/journal',
+			val: at.en ? 'Journal' : 'Журнал',
+			red: at.journal,
+			locale: at.en ? 'ru' : undefined
+		},
+		{
 			href: '/contact',
 			val: at.en ? 'Contact' : 'Контакты',
 			red: at.contact,
