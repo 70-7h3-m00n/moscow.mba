@@ -160,7 +160,7 @@ const HowProcessGoes = () => {
 							]
 						}
 				  ],
-		[at.course, at.profession, isDigitalTransformation]
+		[at.course, at.profession, at.programs, isDigitalTransformation]
 	)
 
 	const [activeStep, setActiveStep] = useState<number>(null)
@@ -283,7 +283,7 @@ const HowProcessGoes = () => {
 					)}
 				</div>
 				<div className={stls.infoContainer}>
-					<ul className={stls.tabsList}>
+					<ul className={cn(stls.tabsList, at.programs && stls.programsPage)}>
 						{processSteps?.map((step, idx) => (
 							<li
 								key={step.tabTitle + idx}
@@ -304,24 +304,40 @@ const HowProcessGoes = () => {
 							</li>
 						))}
 					</ul>
-					<div className={stls.stepsWrap}>
+					<div className={cn(stls.stepsWrap, at.programs && stls.programsPage)}>
 						{processSteps?.map((step, idx) => (
 							<div
 								key={idx + step.tabTitle}
 								ref={stepsRefs.current[idx]}
 								className={cn(
 									stls.processStep,
-									idx === activeStep && stls.activeProcessStep
+									idx === activeStep && stls.activeProcessStep,
+									at.programs && stls.programsPage
 								)}>
 								<span
-									className={stls.redStick}
+									className={cn(
+										stls.redStick,
+										at.programs && stls.programsPage
+									)}
 									style={{
 										height: `calc(${Number(scrolledData[idx]) * 100}% - 48px)`
 									}}
 								/>
-								<div className={stls.processStepNumber}>{idx + 1}</div>
-								<div className={stls.processStepTitle}>{step.stepTitle}</div>
-								<ul className={stls.list}>
+								<div
+									className={cn(
+										stls.processStepNumber,
+										at.programs && stls.programsPage
+									)}>
+									{idx + 1}
+								</div>
+								<div
+									className={cn(
+										stls.processStepTitle,
+										at.programs && stls.programsPage
+									)}>
+									{step.stepTitle}
+								</div>
+								<ul className={cn(stls.list, at.programs && stls.programsPage)}>
 									{step.listItems?.map((item, idx) => (
 										<li key={item + idx} className={stls.listItem}>
 											{item}

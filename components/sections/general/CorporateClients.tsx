@@ -13,25 +13,6 @@ type TCorporateClients = {
 	partnershipTitle?: boolean
 }
 
-const employmentData = [
-	{
-		title: 'Оформите резюме',
-		text: 'Научитесь выгодно презентовать свои сильные стороны и узнаете правильную структуру резюме'
-	},
-	{
-		title: 'Узнаете, как найти работу',
-		text: 'Познакомитесь с площадками для поиска работы и поймете как найти самые лучшие вакансии'
-	},
-	{
-		title: 'Научитесь работать на себя',
-		text: 'Узнаете, где искать заказчиков, как выстраивать с ними	коммуникацию и защитить свои права'
-	},
-	{
-		title: 'Подготовитесь к собеседованию',
-		text: 'Расскажем, как подготовиться к собеседованию в компаниях-партнёрах'
-	}
-]
-
 const CorporateClients = ({
 	variant,
 	partnershipTitle = false
@@ -50,16 +31,12 @@ const CorporateClients = ({
 		</h3>
 	) : (
 		<>
-			{isDigitalTransformation ? (
-				<h2>
-					{at.en ? 'We help with employment' : 'Мы помогаем в трудоустройстве'}
-				</h2>
-			) : (
+			{
 				<h2>
 					{at.en ? 'Corporate' : 'Корпоративные'} <br />
 					{at.en ? 'clients in Russia' : 'клиенты в России'}
 				</h2>
-			)}
+			}
 			{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
 			{variant !== 'page-corporate-clients' && !isDigitalTransformation && (
 				<p>
@@ -82,21 +59,7 @@ const CorporateClients = ({
 					})}>
 					<div className={stls.title}>{title}</div>
 				</div>
-				<div className={stls.listContainer}>
-					<ul className={stls.employmentList}>
-						{employmentData.map((el, idx) => (
-							<li key={idx}>
-								<div className={stls.circle}>
-									<IconCheck />
-								</div>
-								<div className={stls.itemBox}>
-									<p className={stls.itemItile}>{el.title}</p>
-									<p className={stls.itemText}>{el.text}</p>
-								</div>
-							</li>
-						))}
-					</ul>
-				</div>
+
 				<div className={stls.slider}>
 					<ul className={stls.list}>
 						<li className={stls.listItem}>

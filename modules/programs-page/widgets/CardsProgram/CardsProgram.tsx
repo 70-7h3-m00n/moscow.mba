@@ -5,7 +5,9 @@ const CardsProgram = () => {
 	const { renderPrograms } = usePrograms()
 
 	const programs = renderPrograms?.filter(
-		program => program?.slug !== 'executive'
+		program =>
+			program?.slug !== 'executive' &&
+			program?.slug !== 'international-business-law'
 	)
 
 	return (

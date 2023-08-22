@@ -1,72 +1,72 @@
 @use '@/styles/utils/mixin' as m
 
 .container
-  margin: 0 0 59px 0
-  width: calc(50% - 30px)
-  border-top: 1px solid rgba(0, 0, 0, 0.11)
-  padding-top: 30px
-  padding-right: 10px
-  position: relative
-  display: flex
-  align-items: flex-start
-  @include m.media(laptop, desktop, widescreen)
-    &:nth-child(odd)
-      margin-right: 30px
-  @include m.media(laptop, tablet, phone)
-    display: block
-  @include m.media(tablet, phone)
-    border-top: none
-    padding-top: 0
-    width: 100%
-    margin: 0 0 10px
-    padding-right: 0
-  &::before
-    content: ''
-    width: 145px
-    background: #ff3535
-    height: 2px
-    position: absolute
-    left: 0
-    top: -1px
-    position: absolute
-    @include m.media(tablet, phone)
-      display: none
+  // margin: 0 0 59px 0
+  // width: calc(50% - 30px)
+  // border-top: 1px solid rgba(0, 0, 0, 0.11)
+  // padding-top: 30px
+  // padding-right: 10px
+  // position: relative
+  // display: flex
+  // align-items: flex-start
+  // @include m.media(laptop, desktop, widescreen)
+  //   &:nth-child(odd)
+  //     margin-right: 30px
+  // @include m.media(laptop, tablet, phone)
+  display: block
+  // @include m.media(laptop, tablet, phone, tablet, phone)
+  border-top: none
+  padding-top: 0
+  width: 100%
+  margin: 0 0 10px
+  padding-right: 0
+  // &::before
+  //   content: ''
+  //   width: 145px
+  //   background: #ff3535
+  //   height: 2px
+  //   position: absolute
+  //   left: 0
+  //   top: -1px
+  //   position: absolute
+  //   @include m.media(tablet, phone)
+  //     display: none
 
 .module
-  flex-shrink: 0
-  width: 190px
-  font-size: 32px
-  font-weight: 400
-  line-height: 1.2
-  margin-right: 30px
-  @include m.media(desktop)
-    width: 162px
-  @include m.media(laptop, tablet, phone)
-    width: 100%
-    margin-right: 0
-    margin-bottom: 20px
-  @include m.media(tablet, phone)
-    background: #f7f7f7
-    cursor: pointer
-    font-weight: 300
-    font-size: 18px
-    margin-bottom: 0
-    display: flex
-    align-items: center
-    height: 52px
-    padding: 5px 20px
-    transition: all 0.3s ease-out
-    &:hover
-      background: #f2f2f2
+  // flex-shrink: 0
+  // width: 190px
+  // font-size: 32px
+  // font-weight: 400
+  // line-height: 1.2
+  // margin-right: 30px
+  // @include m.media(desktop)
+    // width: 162px
+  // @include m.media(laptop, tablet, phone)
+  width: 100%
+  margin-right: 0
+  margin-bottom: 20px
+  // @include m.media(tablet, phone)
+  background: #f7f7f7
+  cursor: pointer
+  font-weight: 300
+  font-size: 18px
+  margin-bottom: 0
+  display: flex
+  align-items: center
+  height: 52px
+  padding: 5px 20px
+  transition: all 0.3s ease-out
+  &:hover
+    background: #f2f2f2
   &.opened
-    @include m.media(tablet, phone)
-      color: #fff
-      background: #ff3535
-      .plus
-        i
-          background: #fff
-          &:nth-of-type(2)
-            transform: rotate(-180deg)
+    // @include m.media(tablet, phone)
+    color: #fff
+    background: #ff3535
+    .plus
+      i
+        background: #fff
+        &:nth-of-type(2)
+          transform: rotate(-180deg)
 
 .fadeOutEffect
   position: relative
@@ -82,41 +82,41 @@
   //     pointer-events: none
 
 .plus
-  @include m.media(tablet, phone)
-    flex-shrink: 0
+  // @include m.media(tablet, phone)
+  flex-shrink: 0
+  display: block
+  margin-right: 22px
+  width: 20px
+  height: 20px
+  position: relative
+  margin-top: 2px
+  i
+    background: #d9d9d9
     display: block
-    margin-right: 22px
     width: 20px
-    height: 20px
-    position: relative
-    margin-top: 2px
-    i
-      background: #d9d9d9
-      display: block
-      width: 20px
-      height: 2px
-      border-radius: 5px
-      position: absolute
-      left: 0
-      top: 50%
-      margin-top: -1px
-      transition: all 0.3s ease-out
-      &:nth-of-type(2)
-        transform: rotate(-90deg)
+    height: 2px
+    border-radius: 5px
+    position: absolute
+    left: 0
+    top: 50%
+    margin-top: -1px
+    transition: all 0.3s ease-out
+    &:nth-of-type(2)
+      transform: rotate(-90deg)
 
 .content
   padding-top: 7px
   max-width: 382px
   background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 97.09%)
-  @include m.media(widescreen, desktop, laptop)
-    display: block !important
-  @include m.media(tablet, phone)
-    display: none
-    padding-top: 15px
-    padding-bottom: 20px
-    max-width: 100%
-    &.show
-      display: block
+  // @include m.media(widescreen, desktop, laptop)
+  //   display: block !important
+  // @include m.media(tablet, phone)
+  display: none
+  padding-top: 15px
+  padding-bottom: 20px
+  max-width: 100%
+  &.show
+    display: block
 
 .title
   font-style: normal

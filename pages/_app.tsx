@@ -266,8 +266,6 @@ function MyApp({ Component, pageProps, router }) {
             mgo({calltracking: {id: 30791, elements: [{"numberText":"78005002747"},{"numberText":"74951490020"}]}});
 						`
 					}}
-
-					// 74951490020
 				/>
 			</Head>
 			<DefaultSeo {...SEO} />
