@@ -103,10 +103,10 @@ const TextReviews = () => {
 					[stls.singleProgramPage]: singleProgramPage
 				})}>
 				<section className={stls.container}>
-					<div className={stls.titleContainer}>
-						<h2>Почему нас выбирают</h2>
-					</div>
 					<Wrapper classNames={[stls.wrapper]}>
+						<div className={stls.titleContainer}>
+							<h2>Почему нас выбирают</h2>
+						</div>
 						<div className={stls.list}>
 							{reviewsList.map((review, idx) => {
 								return (

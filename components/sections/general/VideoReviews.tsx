@@ -1,19 +1,10 @@
 import stls from '@/styles/components/sections/VideoReviews.module.sass'
-import { IconMoreThan } from '@/components/icons'
+import { IconClose, IconMoreThan } from '@/components/icons'
 import { Wrapper } from '@/components/layout'
 import Popup from 'reactjs-popup'
 import cn from 'classnames'
-
-/* 
-YepZyc2QXiQ
-91Cf9J5lvuA
-Nd5j75rHEao
-9mBEwFulTe0
-h_O1YvDnDag
-ACs29UKz45E
-0-VNApWtm5c
-qdALkFNAog4
-*/
+import useWindowWidth from '@/hooks/useWindowWidth'
+import { useEffect, useState } from 'react'
 
 const youtubeReviews = [
 	{ link: 'YepZyc2QXiQ' },
@@ -36,15 +27,31 @@ export default function VideoReviews({
 }: {
 	darkBackground?: boolean
 }) {
+	const widthWindow = useWindowWidth()
+	const [isMobile, setIsMobile] = useState(false)
+
+	useEffect(() => {
+		if (widthWindow <= 767) {
+			setIsMobile(true)
+		} else {
+			setIsMobile(false)
+		}
+	}, [widthWindow])
+
 	return (
 		<section
 			className={cn(stls.container, {
-				[stls.singleProgramPage]: darkBackground
+				[stls.darkBackground]: darkBackground
 			})}>
-			<div className={stls.titleContainer}>
-				<h2>{'Видеоотзывы'}</h2>
-			</div>
 			<Wrapper classNames={[stls.wrapper]}>
+				<div className={stls.titleContainer}>
+					<h2
+						className={cn(stls.title, {
+							[stls.darkBackground]: darkBackground
+						})}>
+						{'Видеоотзывы'}
+					</h2>
+				</div>
 				<div className={stls.reviewsList}>
 					{youtubeReviews.map((review, idx) => (
 						<Popup
@@ -62,7 +69,7 @@ export default function VideoReviews({
 									<div className={stls.openPopupLink}>
 										<span
 											className={cn(stls.openPopupText, {
-												[stls.singleProgramPage]: darkBackground
+												[stls.darkBackground]: darkBackground
 											})}>
 											Смотреть отзыв
 										</span>
@@ -76,13 +83,18 @@ export default function VideoReviews({
 							closeOnDocumentClick>
 							{/* @ts-expect-error  */}
 							{close => (
-								<iframe
-									height='728'
-									width='410'
-									src={`https://www.youtube.com/embed/${review.link}`}
-									title='YouTube video player'
-									allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-								/>
+								<>
+									<iframe
+										height={isMobile ? '568' : '728'}
+										width={isMobile ? '320' : '410'}
+										src={`https://www.youtube.com/embed/${review.link}`}
+										title='YouTube video player'
+										allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+									/>
+									<button className='mfp-close' type='button' onClick={close}>
+										<IconClose stroke='#fff' />
+									</button>
+								</>
 							)}
 						</Popup>
 					))}

@@ -46,6 +46,7 @@ import Pros from '@/components/sections/general/Pros'
 import React from 'react'
 import { DigitalTransformationContext } from '@/context/index'
 import {
+	HelpWithEmployment,
 	ProgramActuality,
 	ProgramDevelopedStandard,
 	ProgramsModulesAccordion,
@@ -108,6 +109,7 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 						<TextReviews />
 						<VideoReviews darkBackground />
 						<Accreditation />
+						<HelpWithEmployment />
 						<CorporateClients />
 						<Diploma />
 					</>
