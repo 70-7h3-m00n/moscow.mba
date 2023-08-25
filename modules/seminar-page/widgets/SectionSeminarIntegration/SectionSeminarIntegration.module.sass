@@ -22,6 +22,8 @@
   font-size: f.px(35)
   font-weight: 700
   line-height: 1.2
+  @include m.media(tablet, phone)
+    font-size: f.px(24)
 
 .description
   max-width: f.px(600)
@@ -39,3 +41,6 @@
   background-color: c.$psi
   &:hover
     transform: scale(1.04)
+  @include m.media(phone)
+    width: 100%
+    text-align: center

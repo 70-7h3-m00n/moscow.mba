@@ -1,12 +1,10 @@
 import stls from './SectionSeminarPriceCalculator.module.sass'
 import React, { useState } from 'react'
 import { Wrapper } from '@/components/layout'
-import { BtnAlpha } from '@/components/btns'
 import {
 	GeneralStickerDiscount,
 	LeadLoaderThankyou
 } from '@/components/general'
-import { SectionSeminarPriceCalculatorForm } from './fractals'
 import { FormAlpha } from '@/components/forms'
 import { formatDate } from '@/helpers/index'
 import { NextPage } from 'next'

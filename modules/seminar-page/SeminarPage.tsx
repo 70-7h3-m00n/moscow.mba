@@ -25,7 +25,6 @@ const SeminarPage = () => {
 
 	return (
 		<>
-			{/* add breadcrumbs & progress bar */}
 			<SectionSeminarTitle title={seminar?.title} />
 			<SectionSeminarSpecification seminar={seminar} />
 			<SectionSeminarDescription description={seminar?.description} />

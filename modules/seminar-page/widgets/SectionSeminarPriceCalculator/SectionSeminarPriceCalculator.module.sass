@@ -5,18 +5,12 @@
 .wrapper
   z-index: 2
   overflow: hidden
-  padding-top: f.px(80)
-  padding-right: f.px(133)
-  padding-bottom: f.px(65)
-  padding-left: f.px(80)
+  padding: f.px(80) f.px(133) f.px(65) f.px(80)
   margin-bottom: f.px(100)
   position: relative
   background-color: c.$sigma
-  // input
-  //   color: c.$omega
-  //   border-bottom: 1px solid c.$omega
-  // & div.input-placeholder
-  //   color: black !important
+  @include m.media(tablet, phone)
+    padding: f.px(20) f.px(10)
 
 .form
   input
@@ -30,6 +24,8 @@
   font-size: f.px(48)
   font-weight: 700
   line-height: 1.2
+  @include m.media(tablet, phone)
+    font-size: f.px(32)
 
 .seminarDate
   margin-bottom: f.px(50)
@@ -55,15 +51,21 @@
   line-height: 1.2
   .new
     font-size: f.px(32)
+    @include m.media(tablet, phone)
+      font-size: f.px(24)
   .old
     font-size: f.px(24)
     color: c.$tau
     text-decoration-line: line-through
+    @include m.media(tablet, phone)
+      font-size: f.px(18)
 
 
 .stickerDiscount
   position: absolute
   top: f.px(90)
   right: f.px(80)
+  @include m.media(laptop)
+    top: f.px(180)
 
 
