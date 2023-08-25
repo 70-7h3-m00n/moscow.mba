@@ -91,7 +91,10 @@ export default function VideoReviews({
 										title='YouTube video player'
 										allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
 									/>
-									<button className='mfp-close' type='button' onClick={close}>
+									<button
+										className={cn('mfp-close', stls.closeButton)}
+										type='button'
+										onClick={close}>
 										<IconClose stroke='#fff' />
 									</button>
 								</>

@@ -1,0 +1,26 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.wrapper
+  z-index: 2
+  overflow: hidden
+  padding-left: f.px(120)
+  padding-right: f.px(340)
+  margin-bottom: f.px(65)
+  position: relative
+  @include m.media(desktop, laptop, tablet, phone)
+    padding-left: f.px(10)
+    padding-right: f.px(10)
+  a
+    display: inline-block
+    padding: f.px(20) f.px(30)
+    font-size: f.px(14)
+    font-weight: 500
+    line-height: 1.2
+    letter-spacing: f.px(1.4)
+    text-transform: uppercase
+    color: c.$psi
+    background-color: c.$alpha
+    &:hover
+      transform: scale(1.03)

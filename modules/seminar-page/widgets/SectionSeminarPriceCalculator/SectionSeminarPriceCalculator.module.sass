@@ -1,0 +1,71 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.wrapper
+  z-index: 2
+  overflow: hidden
+  padding: f.px(80) f.px(133) f.px(65) f.px(80)
+  margin-bottom: f.px(100)
+  position: relative
+  background-color: c.$sigma
+  @include m.media(tablet, phone)
+    padding: f.px(20) f.px(10)
+
+.form
+  input
+    color: c.$omega
+    border-bottom: 1px solid c.$omega
+  div
+    color: black !important
+
+.title
+  margin-bottom: f.px(20)
+  font-size: f.px(48)
+  font-weight: 700
+  line-height: 1.2
+  @include m.media(tablet, phone)
+    font-size: f.px(32)
+
+.seminarDate
+  margin-bottom: f.px(50)
+  font-size: f.px(16)
+  font-weight: 500
+  line-height: 1.2
+  span
+    font-weight: 400
+    color: c.$tau
+  
+.seminarPriceTitle
+  margin-bottom: f.px(10)
+  font-size: f.px(20)
+  font-weight: 500
+  line-height: 1.2
+
+.currentPriceWrapper
+  display: flex
+  align-items: flex-end
+  gap: f.px(30)
+  margin-bottom: f.px(36)
+  font-weight: 500
+  line-height: 1.2
+  .new
+    font-size: f.px(32)
+    @include m.media(tablet, phone)
+      font-size: f.px(24)
+  .old
+    font-size: f.px(24)
+    color: c.$tau
+    text-decoration-line: line-through
+    @include m.media(tablet, phone)
+      font-size: f.px(18)
+
+
+.stickerDiscount
+  position: absolute
+  top: f.px(90)
+  right: f.px(80)
+  @include m.media(laptop)
+    top: f.px(180)
+
+

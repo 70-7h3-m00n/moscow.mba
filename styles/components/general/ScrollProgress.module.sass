@@ -1,0 +1,22 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/utils/mixin/media' as bp
+
+.scrollProgress
+    position: sticky
+    top: 0
+    z-index: 10
+    overflow: hidden
+    height: 4px
+
+.scrollProgressBar
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 4px
+    transform: translateX(-100%)
+    transition: transform 0.1s ease-out
+    @include m.dye(bgc, c.$alpha)
+

@@ -1,0 +1,5 @@
+export { InputEmail } from './inputs'
+export { InputName } from './inputs'
+export { InputPhone } from './inputs'
+export { InputPromo } from './inputs'
+export { InputSubmit } from './inputs'

@@ -1,0 +1,10 @@
+@use '@/styles/utils/mixin' as m
+
+.list
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -15px -13px
+  @include m.media(laptop)
+    margin-bottom: 0
+  @include m.media(tablet, phone)
+    margin: 0 -5px 15px
