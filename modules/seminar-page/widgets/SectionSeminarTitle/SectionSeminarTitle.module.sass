@@ -1,0 +1,20 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.wrapper
+  z-index: 2
+  overflow: hidden
+  padding-top: f.px(126)
+  padding-left: f.px(120)
+  padding-right: f.px(340)
+  margin-bottom: f.px(35)
+  position: relative
+  @include m.media(desktop, laptop, tablet, phone)
+    padding-left: f.px(10)
+    padding-right: f.px(10)
+
+.title
+  font-size: f.px(48)
+  font-weight: 700
+  line-height: 1.2

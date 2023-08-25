@@ -40,7 +40,7 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 		{ title: 'Корпоративное обучение для бизнеса', href: '/corporate-clients' },
 		{ title: 'Способы оплаты', href: '/payment' },
 		{ title: 'Контакты', href: '/contact' },
-		{ title: 'Вебинары', href: '/webinars' }
+		{ title: 'Семинары', href: '/seminars' }
 	]
 
 	// Функция для создания элемента списка ссылок

@@ -17,8 +17,8 @@ const HeaderTop = ({ handleMenu, openMenu }) => {
 			locale: at.en ? 'ru' : undefined
 		},
 		{
-			href: '/webinars',
-			val: at.en ? 'Webinars' : 'Вебинары',
+			href: '/seminars',
+			val: at.en ? 'Seminars' : 'Семинары',
 			red: at.webinars,
 			locale: at.en ? 'ru' : undefined
 		},

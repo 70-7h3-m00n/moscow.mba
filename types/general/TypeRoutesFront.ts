@@ -13,6 +13,8 @@ type TypeRoutesFront = {
 	webinars: '/webinars'
 	webinarsArchive: '/webinars/archive'
 	webinarsUpcoming: '/webinars/upcoming'
+	seminars: '/seminars'
+	seminar: '/seminar/[slug]'
 	programs: '/programs'
 	program: '/programs/[type]/[format]/[slug]'
 	programsExecutive: '/programs/executive'

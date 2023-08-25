@@ -1,0 +1,33 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.wrapper
+  z-index: 2
+  overflow: hidden
+  padding-left: f.px(120)
+  padding-right: f.px(340)
+  margin-bottom: f.px(50)
+  position: relative
+  @include m.media(desktop, laptop, tablet, phone)
+    padding-left: f.px(10)
+    padding-right: f.px(10)
+
+.title
+  margin-bottom: f.px(35)
+  font-size: f.px(36)
+  font-weight: 700
+  line-height: 1.2
+
+.list
+  padding-left: 20px
+
+.item
+  font-size: f.px(18)
+  font-weight: 400
+  line-height: 1.4
+  list-style: disc outside
+  &:not(:last-child)
+    margin-bottom: f.px(20)
+  &::marker
+    color: c.$alpha

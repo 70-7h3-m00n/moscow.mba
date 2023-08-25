@@ -5,7 +5,9 @@ import {
 	TypeLibJournalArticle,
 	TypeLibPrograms,
 	TypeLibProgram,
-	TypeLibUntil
+	TypeLibUntil,
+	TypeLibSeminars,
+	TypeLibSeminarCategories
 } from '@/types/index'
 import { useContext, useEffect } from 'react'
 import { ContextStaticProps } from '@/context/index'
@@ -21,6 +23,8 @@ type TypeUsePageHandleContextProps = {
 	readonly gspContextParamsJournalCategoryTag?: string | null
 	readonly gspContextParamsJournalCategoryTagArticle?: string | null
 	readonly until?: TypeLibUntil | null
+	readonly seminars?: TypeLibSeminars | null
+	readonly seminarCategories?: TypeLibSeminarCategories | null
 }
 
 const usePageHandleContext = ({
