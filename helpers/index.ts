@@ -24,6 +24,7 @@ export { default as onSubmitFormArticle } from '@/helpers/general/onSubmitFormAr
 export { default as toNumberWithSpaces } from '@/helpers/general/toNumberWithSpaces'
 export { default as getRenderTime } from '@/helpers/general/getRenderTime'
 export { default as handleSubmitFormArticle } from '@/helpers/general/handleSubmitFormArticle'
+export { default as formatDate } from '@/helpers/general/formatDate'
 
 // ./ruCases
 export { default as ruCaseMonth } from '@/helpers/ruCases/ruCaseMonth'

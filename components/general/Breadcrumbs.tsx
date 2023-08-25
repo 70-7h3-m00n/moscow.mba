@@ -42,6 +42,13 @@ const mainRoutes = [
 	},
 	{
 		label: {
+			ru: 'Семинары',
+			'en-US': 'Seminars'
+		},
+		path: '/seminars'
+	},
+	{
+		label: {
 			ru: 'Ближайшие вебинары',
 			'en-US': 'Upcoming webinars'
 		},

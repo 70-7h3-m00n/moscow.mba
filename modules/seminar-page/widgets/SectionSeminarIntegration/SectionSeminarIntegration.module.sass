@@ -1,0 +1,41 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.wrapper
+  z-index: 2
+  overflow: hidden
+  padding: f.px(80) f.px(400) f.px(80) f.px(80)
+  margin-bottom: f.px(35)
+  position: relative
+  color: c.$psi
+  background-color: c.$chi
+  @include m.media(desktop, laptop, tablet, phone)
+    padding-left: f.px(10)
+    padding-right: f.px(10)
+
+.logo
+  margin-bottom: f.px(30)
+
+.title
+  margin-bottom: f.px(20)
+  font-size: f.px(35)
+  font-weight: 700
+  line-height: 1.2
+
+.description
+  max-width: f.px(600)
+  margin-bottom: f.px(40)
+
+.btn
+  display: inline-block
+  padding: f.px(19) f.px(31)
+  font-size: f.px(15)
+  font-weight: 400
+  line-height: 1.2
+  letter-spacing: f.px(1.5)
+  text-transform: uppercase
+  color: c.$chi
+  background-color: c.$psi
+  &:hover
+    transform: scale(1.04)

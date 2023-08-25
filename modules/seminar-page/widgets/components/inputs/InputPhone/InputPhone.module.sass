@@ -1,0 +1,15 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/utils/mixin/media' as bp
+@use '@/styles/layout/inputs' as i
+
+.input
+  @include i.input
+
+input.input
+  border-bottom: 1px solid c.$omega
+  color: c.$omega
+
+div.placeholder
+  color: c.$omega !important

@@ -9,7 +9,9 @@ import {
 	TypePagePromoProps,
 	TypePageTeachersProps,
 	TypePageTeacherProps,
-	TypePageSitemapProps
+	TypePageSitemapProps,
+	TypePageSeminarProps,
+	TypePageSeminarsProps
 } from '@/types/index'
 import { routesFront, revalidate } from '@/config/index'
 import {
@@ -20,7 +22,9 @@ import {
 	getStaticPropsProgram,
 	getStaticPropsPagePromo,
 	getStaticPropsPageJournalArticles,
-	getStaticPropsPageJournalArticle
+	getStaticPropsPageJournalArticle,
+	getStaticPropsPageSeminars,
+	getStaticPropsPageSeminar
 } from '@/lib/index'
 import getStaticPropsSitemap from '../getStaticProps/getStaticPropsSitemap'
 
@@ -49,6 +53,8 @@ const handleGetStaticProps = async ({
 		| TypePageTeachersProps
 		| TypePageTeacherProps
 		| TypePageSitemapProps
+		| TypePageSeminarProps
+		| TypePageSeminarsProps
 		| null
 	revalidate: number | boolean
 }> => {
@@ -71,6 +77,12 @@ const handleGetStaticProps = async ({
 
 			case routesFront.teachersTeacher:
 				return await getStaticPropsTeacher({ context })
+
+			case routesFront.seminars:
+				return await getStaticPropsPageSeminars({ context })
+
+			case routesFront.seminar:
+				return await getStaticPropsPageSeminar({ context })
 
 			case routesFront.webinarsArchive:
 				return await getStaticPropsDefault({ context })

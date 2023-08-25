@@ -22,8 +22,11 @@ const ProgramsHero = () => {
 			<Image
 				src={isMobile ? heroProgramPictureMobile : heroProgramPictureDesktop}
 				alt='Студент ставит лайк'
-				layout='fill'
-				objectFit='cover'
+				fill
+				placeholder='blur'
+				style={{
+					objectFit: 'cover'
+				}}
 			/>
 			<div className={stls.heroProgramContainer}>
 				<p className={stls.ourPrograms}>

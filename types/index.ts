@@ -89,6 +89,12 @@ export type { default as TypeLibPrograms } from '@/types/lib/programs/TypeLibPro
 export type { default as TypeLibTeacher } from '@/types/lib/teachers/TypeLibTeacher'
 export type { default as TypeLibTeachers } from '@/types/lib/teachers/TypeLibTeachers'
 
+// Lib/seminars
+export type { default as TypeLibSeminar } from '@/types/lib/seminars/TypeLibSeminar'
+export type { default as TypeLibSeminars } from '@/types/lib/seminars/TypeLibSeminars'
+export type { default as TypeLibSeminarCategory } from '@/types/lib/seminars/TypeLibSeminarCategory'
+export type { default as TypeLibSeminarCategories } from '@/types/lib/seminars/TypeLibSeminarCategories'
+
 // Page/default/props
 export type { default as TypePageDefaultProps } from '@/types/page/default/props/TypePageDefaultProps'
 // Page/default/queries
@@ -142,3 +148,10 @@ export type { default as TypePageTeachersTeacherPathsQuery } from '@/types/page/
 export type { default as TypePageSitemapProps } from '@/types/page/sitemap/props/TypePageSitemapProps'
 // Page/sitemap/queries
 export type { default as TypePageSitemapPropsQuery } from '@/types/page/sitemap/queries/TypePageSitemapPropsQuery'
+// page/seminars/props
+export type { default as TypePageSeminarProps } from '@/types/page/seminar/props/TypePageSeminarProps'
+export type { default as TypePageSeminarsProps } from '@/types/page/seminars/props/TypePageSeminarsProps'
+// page/seminars/paths
+export type { default as TypePageSeminarPaths } from '@/types/page/seminar/paths/TypePageSeminarPaths'
+// page/seminars/queries
+export type { default as TypePageSeminarsPropsQuery } from '@/types/page/seminars/queries/TypePageSeminarsPropsQuery'

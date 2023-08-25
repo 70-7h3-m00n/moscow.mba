@@ -1,0 +1,66 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/utils/mixin/media' as bp
+
+$styrene: 'Styrene', Arial, Tahoma, sans-serif
+$transition: all 0.3s ease-out
+
+.container
+
+  .inputs-flex
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-start
+    justify-content: space-between
+    margin: 0 -15px
+    .input-block
+      margin-left: 15px
+      margin-right: 15px
+      width: calc(100% - 30px)
+
+    .width-50
+      width: calc(50% - 30px)
+
+    .width-33
+      width: calc(33.333% - 30px)
+
+    .width-25
+      width: calc(25% - 30px)
+
+  .input-block
+    position: relative
+    margin-bottom: 25px
+  
+  .button 
+    height: 56px
+    padding: 5px 20px
+    max-width: 260px
+    width: 100%
+  
+  .personal-data 
+    margin-top: 6px
+    font-size: 13px
+    font-weight: 400
+    line-height: 1.2
+    color: #b30000
+    & a
+      color: #fff
+      &:hover 
+        text-decoration: underline
+
+@media screen and (max-width: 1019px)
+  .container
+    .inputs-flex .width-33,
+    .inputs-flex .width-25
+      width: calc(50% - 30px)
+    .button
+      max-width: 100%
+
+@media screen and (max-width: 767px)
+  .container
+    .inputs-flex
+      .width-50,
+      .width-33,
+      .width-25
+        width: calc(100% - 30px)
