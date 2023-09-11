@@ -31,6 +31,7 @@ const useAt = () => {
 			!getSplitedPath[2],
 		online: getSplitedPath[2] === 'online',
 		blended: getSplitedPath[2] === 'blended',
+		seminars: getSplitedPath[0] === 'seminars',
 		webinars: getSplitedPath[0] === 'webinars',
 		webinarsUpcoming:
 			getSplitedPath[0] === 'webinars' && getSplitedPath[1] === 'upcoming',
