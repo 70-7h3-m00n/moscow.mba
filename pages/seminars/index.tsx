@@ -16,7 +16,7 @@ import {
 } from 'react'
 
 export const contextStaticPropsSeminars = createContext<{
-	seminars: TypeLibSeminars | []
+	seminars: TypeLibSeminars
 	setSeminars: Dispatch<SetStateAction<TypeLibSeminars>>
 	seminarCategories: TypeLibSeminarCategories
 	setseminarCategories: Dispatch<SetStateAction<TypeLibSeminarCategories>>
