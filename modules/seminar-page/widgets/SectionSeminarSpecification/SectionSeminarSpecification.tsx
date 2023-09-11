@@ -8,7 +8,7 @@ import { formatDate, ruCaseHours } from '@/helpers/index'
 
 const SectionSeminarSpecification: NextPage<{ seminar: TypeLibSeminar }> = ({
 	seminar
-}) => {
+}): JSX.Element => {
 	const { time, date } = formatDate(seminar?.date)
 
 	const categoryName = seminar?.category?.categoryName || ''
@@ -26,6 +26,7 @@ const SectionSeminarSpecification: NextPage<{ seminar: TypeLibSeminar }> = ({
 										width={38}
 										height={38}
 										alt={author?.name}
+										style={{ objectFit: 'cover' }}
 									/>
 								</div>
 								<p>Спикер: {author?.name}</p>
