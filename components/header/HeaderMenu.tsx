@@ -26,9 +26,9 @@ const HeaderMenu = ({ programs, handleMenu }) => {
 			locale: at.en ? 'ru' : undefined
 		},
 		{
-			href: '/webinars',
-			val: at.en ? 'Webinars' : 'Вебинары',
-			red: at.webinars,
+			href: '/seminars',
+			val: at.en ? 'Seminars' : 'Семинары',
+			red: at.seminars,
 			locale: at.en ? 'ru' : undefined
 		},
 		{

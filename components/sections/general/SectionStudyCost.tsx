@@ -47,7 +47,9 @@ const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
 					<h2 className={stls.title}>
 						{at.en ? 'Study Cost' : 'Стоимость обучения'}
 					</h2>
-					<GeneralStickerDiscount classNames={[stls.stickerDiscount]} />
+					{!at.executive && (
+						<GeneralStickerDiscount classNames={[stls.stickerDiscount]} />
+					)}
 				</div>
 				<div className={stls.content}>
 					<div className={stls.left}>
@@ -209,10 +211,12 @@ const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
 							)}
 						</Popup>
 
-						<p className={stls.btwP}>
-							*согласно опросу за 2020 год, 93% наших студентов окупили обучение
-							уже на 2-й месяц
-						</p>
+						{!at.executive && (
+							<p className={stls.btwP}>
+								*согласно опросу за 2020 год, 93% наших студентов окупили
+								обучение уже на 2-й месяц
+							</p>
+						)}
 					</div>
 				</div>
 			</Wrapper>

@@ -391,6 +391,7 @@ h2 {
 		font-weight: 500;
 		font-size: 20px;
 		margin-bottom: 4px;
+		margin-right: 5px;
 		display: flex;
 		position: relative;
 		display: inline-block;
@@ -407,7 +408,7 @@ h2 {
 		background: $red;
 		color: #fff;
 		text-align: center;
-		left: 100%;
+		left: 145%;
 		top: 50%;
 		margin-top: -36px;
 		margin-left: 40px;
@@ -898,6 +899,7 @@ h2 {
 
 	.program-options-block .discount {
 		margin-left: 20px;
+		left: 110%;
 	}
 
 	.program-tabs-content .prog-time {
@@ -995,6 +997,7 @@ h2 {
 	.program-options-block {
 		.discount {
 			margin-top: -30px;
+			left: 145%;
 		}
 
 		.info-list {
@@ -1129,6 +1132,7 @@ h2 {
 	.program-options-block {
 		.discount {
 			margin-top: -20px;
+			top: 10%;
 		}
 
 		.info-list {
