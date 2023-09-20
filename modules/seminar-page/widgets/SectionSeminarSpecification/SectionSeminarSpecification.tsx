@@ -2,13 +2,12 @@ import { Wrapper } from '@/components/layout'
 import stls from './SectionSeminarSpecification.module.sass'
 import Image from 'next/image'
 import { IconSeminarLocation } from '@/components/icons'
-import { NextPage } from 'next'
-import { TypeLibSeminar } from '@/types/index'
 import { formatDate, ruCaseHours } from '@/helpers/index'
+import SectionSeminarSpecificationProps from './SectionSeminarSpecification.props'
 
-const SectionSeminarSpecification: NextPage<{ seminar: TypeLibSeminar }> = ({
+const SectionSeminarSpecification = ({
 	seminar
-}): JSX.Element => {
+}: SectionSeminarSpecificationProps) => {
 	const { time, date } = formatDate(seminar?.date)
 
 	const categoryName = seminar?.category?.categoryName || ''

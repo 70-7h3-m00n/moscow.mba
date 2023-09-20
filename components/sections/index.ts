@@ -90,3 +90,5 @@ export { default as WebinarCards } from '@/components/sections/general/WebinarCa
 export { default as WhatWillYouLearn } from '@/components/sections/general/WhatWillYouLearn'
 export { default as WhoItIsFor } from '@/components/sections/general/WhoItIsFor'
 export { default as WhoStudies } from '@/components/sections/general/WhoStudies'
+export { default as SectionHero } from '@/components/sections/general/SectionHero/SectionHero'
+export { default as SectionDownloadForm } from '@/components/sections/general/SectionDownloadForm/SectionDownloadForm'

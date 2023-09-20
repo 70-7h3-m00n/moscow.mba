@@ -1,4 +1,6 @@
 @use '@/styles/utils/mixin' as m
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/utils/funcs' as f
 
 .wrapper
   z-index: 2
@@ -7,6 +9,8 @@
   padding-top: 19px
   margin-bottom: 69px
   position: relative
+  &.partner
+    padding-left: 0
   @include m.media(desktop, laptop, tablet, phone)
     padding-left: 10px
   @include m.media(tablet, phone)
@@ -29,6 +33,16 @@
     margin-top: 0 !important
   @include m.media(phone)
     font-size: 18px
+  &.partner
+    position: relative
+    width: 100%
+    margin-bottom: f.px(30)
+    font-size: 45px
+    font-weight: 700
+    line-height: 1.2
+    text-transform: lowercase
+    &::first-letter
+      text-transform: uppercase
 
 .flexContainer
   display: flex
@@ -52,6 +66,8 @@
     font-size: 16px
   @include m.media(phone)
     font-size: 15px
+  &.partner
+    width: 40%
 
 .desc
   margin-bottom: 20px
@@ -62,6 +78,17 @@
   margin: 0 -25px
   p
     line-height: 1.2
+  &.partner
+    gap: f.px(40) f.px(25)
+    padding: f.px(40) f.px(36) f.px(40) f.px(43)
+    background-color: c.$alpha
+    color: c.$psi
+    &>*
+      width: 45%
+      margin: 0
+    & p
+
+
 
 .listItem
   width: 50%

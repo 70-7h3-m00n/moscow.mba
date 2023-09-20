@@ -4,18 +4,21 @@ import cn from 'classnames'
 import { useAt } from '@/hooks/index'
 import { base64pixel } from '@/config/index'
 import { Wrapper } from '@/components/layout'
-import { useContext } from 'react'
+import { DetailedHTMLProps, HTMLAttributes, useContext } from 'react'
 import { DigitalTransformationContext } from '@/context/index'
 import { IconCheck, IconCheckCircle } from '@/components/icons'
 
-type TCorporateClients = {
+interface TCorporateClients
+	extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
 	variant?: 'page-corporate-clients'
 	partnershipTitle?: boolean
 }
 
 const CorporateClients = ({
+	className,
 	variant,
-	partnershipTitle = false
+	partnershipTitle = false,
+	...rest
 }: TCorporateClients) => {
 	const at = useAt()
 	{
@@ -29,6 +32,12 @@ const CorporateClients = ({
 				? 'We are partnered with large companies:'
 				: 'Мы сотрудничаем с крупными организациями:'}
 		</h3>
+	) : at.job ? (
+		<h2 className={stls.job}>{at.en ? 'Employers' : 'Работодатели'}</h2>
+	) : at.partner ? (
+		<h2 className={stls.job}>
+			{at.en ? 'Our employers' : 'Наши работодатели'}
+		</h2>
 	) : (
 		<>
 			{
@@ -38,22 +47,24 @@ const CorporateClients = ({
 				</h2>
 			}
 			{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
-			{variant !== 'page-corporate-clients' && !isDigitalTransformation && (
-				<p>
-					{at.en
-						? "Our experts' experience is used by many leading companies in Russia and CIS. Nevertheless it's valuable not only for large-scale, but also for startups and medium-scale companies"
-						: 'Опыт наших экспертов используют многие ведущие компании России и стран СНГ. Наш опыт будет полезен не только гигантам промышленной, добывающей индустрии, крупным сетевикам, но и среднему и малому бизнесу'}
-				</p>
-			)}
+			{variant !== 'page-corporate-clients' &&
+				!isDigitalTransformation &&
+				!at.job && (
+					<p>
+						{at.en
+							? "Our experts' experience is used by many leading companies in Russia and CIS. Nevertheless it's valuable not only for large-scale, but also for startups and medium-scale companies"
+							: 'Опыт наших экспертов используют многие ведущие компании России и стран СНГ. Наш опыт будет полезен не только гигантам промышленной, добывающей индустрии, крупным сетевикам, но и среднему и малому бизнесу'}
+					</p>
+				)}
 		</>
 	)
 
 	return (
-		<section className={stls.container}>
+		<section className={cn(stls.container, className)} {...rest}>
 			<Wrapper classNames={[stls.wrapper]}>
 				<div
 					className={cn(stls.titleContainer, {
-						[stls.noPaddingLeft]: partnershipTitle,
+						[stls.noPaddingLeft]: partnershipTitle || at.job || at.partner,
 						[stls.variantPageCorporateClients]:
 							variant === 'page-corporate-clients'
 					})}>

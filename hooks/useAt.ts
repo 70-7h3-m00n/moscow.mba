@@ -19,6 +19,8 @@ const useAt = () => {
 		legal: getSplitedPath[0] === 'legal' && !getSplitedPath[1],
 		promo: getSplitedPath[0] === 'promo',
 		sale: getSplitedPath[0] === 'sale',
+		job: getSplitedPath[0] === 'job',
+		partner: getSplitedPath[0] === 'partner',
 		mini: getSplitedPath[1] === 'mini',
 		mba: getSplitedPath[1] === 'mba',
 		course: getSplitedPath[1] === 'course',
