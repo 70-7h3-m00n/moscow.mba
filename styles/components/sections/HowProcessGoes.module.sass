@@ -8,11 +8,19 @@ $stick-height: calc(100% - 48px)
   @include m.media(laptop, tablet, phone)
     margin-bottom: 80px
   border-bottom: 1px solid #e6e6e6
- 
+  &.job
+    margin-bottom: 50px
+    border-bottom: none
+    & > .content::before
+      display: none
+
+
 .content
   display: flex
   align-items: flex-start
   padding-bottom: 130px
+  &.job
+    padding-bottom: 0
   @include m.media(laptop, tablet, phone)
     padding-bottom: 80px
     display: block
@@ -27,6 +35,12 @@ $stick-height: calc(100% - 48px)
     @include m.media(tablet, phone)
       display: none
 
+.noBottomPadding
+  padding-bottom: 0
+
+.content:has(.job)::before
+  display: none
+
 .titleContainer
   position: sticky
   top: 50px
@@ -39,12 +53,17 @@ $stick-height: calc(100% - 48px)
   margin-right: 26px
   margin-top: -14px
   margin-bottom: 57px
- 
+  &.job
+    margin-bottom: 30px
+
   @include m.media(desktop)
     width: 360px
   @include m.media(laptop, tablet, phone)
     width: 100%
     margin-bottom: 32px
+
+.jobParagraph
+  margin-bottom: 35px
 
 .infoContainer
   flex-grow: 1
@@ -121,6 +140,8 @@ $stick-height: calc(100% - 48px)
     height: 0
     background: #ff3535
     transition: height .2s linear
+    &.job
+      background: #000
   &:nth-last-of-type(1)
     padding-bottom: 0
     margin-bottom: 0
@@ -172,6 +193,8 @@ $stick-height: calc(100% - 48px)
   font-weight: 500
   font-size: 24px
   line-height: 1.2
+  &.job
+    background: #000
 
 .processStepNumber:not(.programsPage)
   @include m.media(tablet, phone)
@@ -180,6 +203,10 @@ $stick-height: calc(100% - 48px)
 .list
   max-width: 546px
   line-height: 1.2
+  &.job
+    margin-bottom: 30px
+  &.partners
+    margin-bottom: 100px
 
 .list:not(.programsPage)
   @include m.media(tablet, phone)
@@ -212,7 +239,6 @@ $stick-height: calc(100% - 48px)
     line-height: 1.2
     &::before
       content: none
-
 
 .studentPhoto
   width: 506px

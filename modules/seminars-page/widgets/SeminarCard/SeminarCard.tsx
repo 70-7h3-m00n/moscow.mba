@@ -1,10 +1,10 @@
 import stls from './SeminarCard.module.sass'
 import cn from 'classnames'
 import Image from 'next/image'
-import PopupForm from '@/components/popups/PopupForm'
-import Popup from 'reactjs-popup'
 import { IconBell } from '@/components/icons'
 import routesFront from '@/config/routesFront'
+import Link from 'next/link'
+import { ruCaseHours } from '@/helpers/index'
 
 const SeminarCard = ({
 	title,
@@ -20,8 +20,8 @@ const SeminarCard = ({
 }) => {
 	return (
 		<>
-			<a
-				href={`${routesFront.root}/${routesFront.seminars}/${slug}`}
+			<Link
+				href={`${routesFront.root}${routesFront.seminars}/${slug}`}
 				className={cn(stls.container, {
 					[stls.disabled]: disabled
 				})}
@@ -51,9 +51,9 @@ const SeminarCard = ({
 							Спикер: <span className={stls.name}>{speaker}</span>
 						</div>
 					</div>
-					<div className={stls.duration}>{dur}</div>
+					<div className={stls.duration}>{`${dur} ${ruCaseHours(dur)}`}</div>
 				</div>
-			</a>
+			</Link>
 		</>
 	)
 }

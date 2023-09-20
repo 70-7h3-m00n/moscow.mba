@@ -11,7 +11,12 @@ import {
 import PopupForm from '@/components/popups/PopupForm'
 import Discount from '@/components/costs/Discount'
 import { useAt } from '@/hooks/index'
-import { IconCheckCircleAlt } from '@/components/icons'
+import {
+	IconCheckCircleAlt,
+	IconCross,
+	IconCrossThin,
+	IconPatrikeev
+} from '@/components/icons'
 import Loan from '@/components/costs/Loan'
 import { useContext, useState } from 'react'
 import { DigitalTransformationContext } from '@/context/index'
@@ -21,6 +26,9 @@ import { useRouter } from 'next/router'
 const JumbotronProgram = ({ program, programs = null }) => {
 	const router = useRouter()
 	const at = useAt()
+
+	const isDigitalLaw = router.query.slug === 'zifrovoe-pravo'
+
 	const isDiscounted =
 		(at.mini && at.online) ||
 		(at.mba && at.online) ||
@@ -171,11 +179,24 @@ const JumbotronProgram = ({ program, programs = null }) => {
 						<div className={stls.descContainer}>
 							<h1
 								className={cn({
-									[stls.smallerTitle]: at.profession || at.course
+									[stls.smallerTitle]: at.profession || at.course,
+									[stls.digitalLaw]: isDigitalLaw
 								})}>
 								{program?.title}
 							</h1>
+							{isDigitalLaw && (
+								<div className={stls.digitalLawContainer}>
+									<IconCrossThin />
+									<IconPatrikeev />
+								</div>
+							)}
 							<div className={stls.desc}>
+								{isDigitalLaw && (
+									<p className={cn(stls.paragraph, stls.digitalLaw)}>
+										Курс разработан в партнерстве с дистанционным юридическим
+										сервисом “ПАТРИКЕЕВ И ПАРТНЕРЫ”
+									</p>
+								)}
 								{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
 								{isDigitalTransformation
 									? 'Оставьте заявку на консультацию по программе, чтобы узнать возможные варианты скидок и требования к поступлению'

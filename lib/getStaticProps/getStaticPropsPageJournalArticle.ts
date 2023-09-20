@@ -32,8 +32,8 @@ const getStaticPropsPageJournalArticle = async ({
 
 	return {
 		props: {
-			...data,
-			programs: createBlended(data?.programs)
+			...data
+			// programs: createBlended(data?.programs)
 		},
 		revalidate: revalidate.default
 	}

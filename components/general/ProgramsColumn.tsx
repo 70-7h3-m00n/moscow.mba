@@ -13,6 +13,7 @@ import {
 	IconClock,
 	IconArrowLeft
 } from '@/components/icons'
+import { ruCaseSubjects } from '@/helpers/index'
 
 const ProgramsColumn = ({ data, id, type }) => {
 	const at = useAt()
@@ -114,7 +115,7 @@ const ProgramsColumn = ({ data, id, type }) => {
 						<IconPaperCorner classNames={[stls.iconBottom]} />
 						<span>
 							<ProgramSubjects type='mba' subjects='base' />{' '}
-							{at.en ? 'management subjects' : 'дисциплин об управлении'}
+							{at.en ? 'management subjects' : `дисциплин об управлении`}
 						</span>
 					</div>
 					<div className={stls.itemBottom}>
