@@ -1,0 +1,43 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/shared/journal' as j
+
+.wrapper
+  overflow: hidden
+
+.title
+  margin-bottom: f.px(60)
+
+.grid
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: f.px(30)
+  font-size: f.px(20)
+  line-height: 1.3
+
+.item
+  display: grid
+  grid-template-columns: 1fr auto
+  gap: f.px(30)
+  align-items: center
+  padding: f.px(40)
+  background-color: c.$nu
+
+.imageWrapper
+  overflow: hidden
+  border-radius: 50%
+  width: f.px(70)
+  height: f.px(70)
+
+.ellipse
+  position: absolute
+  z-index: -1
+
+.left
+  top: f.px(60)
+  left: f.px(-150)
+
+.right
+  top: f.px(0)
+  right: f.px(-214)

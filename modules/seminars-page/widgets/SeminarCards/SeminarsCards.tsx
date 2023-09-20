@@ -8,27 +8,6 @@ import { contextStaticPropsSeminars } from 'pages/seminars'
 const SeminarCards = ({ timeframe }) => {
 	const { seminars, seminarCategories } = useContext(contextStaticPropsSeminars)
 
-	const t = {
-		id: 2,
-		title: 'Digital аналитика процессов организации',
-		date: '2023-08-31T09:00:00.000Z',
-		duration: 24,
-		slug: 'digital-analitika-proczessov-organizaczii',
-		category: 'маркетинг',
-		authors: [
-			{
-				name: 'Светлана Назарова',
-				portrait:
-					'https://res.cloudinary.com/npomba/image/upload/v1692863897/speaker_7_18542d9513.jpg'
-			},
-			{
-				name: 'Максим Захаров',
-				portrait:
-					'https://res.cloudinary.com/npomba/image/upload/v1690201959/happy_young_waiter_holding_glass_of_champagne_and_towel_171337_5290_1_78847a80ec.png'
-			}
-		]
-	}
-
 	const months = [
 		'янв',
 		'фев',
@@ -83,7 +62,7 @@ const SeminarCards = ({ timeframe }) => {
 							date={date}
 							hours={hours}
 							minutes={minutes}
-							dur={`${card.duration}:00`}
+							dur={card.duration}
 							disabled={disabled}
 							slug={card.slug}
 						/>

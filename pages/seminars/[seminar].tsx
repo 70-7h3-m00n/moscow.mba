@@ -18,7 +18,6 @@ import {
 	useState
 } from 'react'
 import usePageHandleContext from '@/hooks/usePageHandleContext'
-import useAt from '@/hooks/useAt'
 
 const initialState: TypeLibSeminar = {
 	id: null,

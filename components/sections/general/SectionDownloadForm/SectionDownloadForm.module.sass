@@ -1,0 +1,51 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.container
+  margin-bottom: f.px(90)
+
+.wrapper
+  z-index: 2
+  overflow: hidden
+  padding: f.px(100) f.px(220) f.px(60)
+  position: relative
+  background-color: c.$alpha
+  color: c.$psi
+  @include m.media(desktop, laptop, tablet, phone)
+    padding-left: f.px(10)
+    padding-right: f.px(10)
+
+.title
+  font-size: f.px(36)
+
+.paragraph
+  width: f.px(570)
+  margin-bottom: f.px(30)
+  font-size: f.px(16)
+  line-height: 1.2
+  &.partner
+    width: f.px(435)
+  a
+    font-weight: 500
+    &:hover
+      text-decoration: underline
+
+.linksWrapper
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: f.px(30)
+  a
+    display: inline-block
+    padding: f.px(20) f.px(60)
+    text-align: center
+    font-size: f.px(15)
+    font-weight: 700
+    line-height: 1.2
+    letter-spacing: f.px(1.5)
+    text-transform: uppercase
+    color: c.$chi
+    background-color: c.$psi
+    transition: transform .2s ease-in-out
+    &:hover
+      transform: scale(1.05)

@@ -5,9 +5,13 @@ import Image from 'next/legacy/image'
 import { Wrapper } from '@/components/layout'
 import { useContext } from 'react'
 import { DigitalTransformationContext } from '@/context/index'
+import { useRouter } from 'next/router'
 
 const ProgramDesc = () => {
+	const router = useRouter()
 	const at = useAt()
+
+	const isDigitalLaw = router.query.slug === 'zifrovoe-pravo'
 	{
 		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
 	}
@@ -68,7 +72,7 @@ const ProgramDesc = () => {
 					</div>
 				</div>
 				<div className={stls.imageContainer}>
-					{!at.profession && !at.course && !at.promo && (
+					{!at.profession && !at.course && !at.promo && !isDigitalLaw && (
 						<Image
 							src='/assets/images/top_path_pic_1.jpg'
 							alt='Слушатели на конференции'
@@ -76,10 +80,18 @@ const ProgramDesc = () => {
 							height={503}
 						/>
 					)}
-					{(at.profession || at.course || at.promo) && (
+					{(at.profession || (at.course && !isDigitalLaw) || at.promo) && (
 						<Image
 							src='/assets/images/handsome-business-man.jpg'
 							alt='Слушатели на конференции'
+							width={503}
+							height={503}
+						/>
+					)}
+					{isDigitalLaw && (
+						<Image
+							src='/assets/images/patrikeev.jpg'
+							alt='Эксперт Патрикеев'
 							width={503}
 							height={503}
 						/>
