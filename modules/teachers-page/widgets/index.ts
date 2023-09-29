@@ -1,0 +1,5 @@
+export { TeachersHero } from './TeachersHero/TeachersHero'
+export { TeacherCard } from './TeacherCard/TeacherCard'
+export { TeachersList } from './TeachersList/TeachersList'
+export { TeachersSearch } from './TeachersSearch/TeachersSearch'
+export { TeachersSearchList } from './TeachersSearchList/TeachersSearchList'

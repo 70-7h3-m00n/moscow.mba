@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Popup from 'reactjs-popup'
 import { useWindowWidth } from '@/hooks/index'
 import { IconInfoDuration } from '@/components/icons'
-import { ruCaseHours } from '@/helpers/index'
+import { ruCase } from '@/helpers/index'
 import { useAt } from '@/hooks/index'
 
 type PopupDurationPropsType = {
@@ -46,7 +46,7 @@ const PopupDuration: React.FC<PopupDurationPropsType> = ({
 				<div className={stls.content}>
 					<span className={stls.text}>Длительность:</span>
 					<span className={stls.time}>
-						{duration} {ruCaseHours(duration)}
+						{duration} {ruCase(duration, ['час', 'часа', 'часов'])}
 					</span>
 				</div>
 			</Popup>

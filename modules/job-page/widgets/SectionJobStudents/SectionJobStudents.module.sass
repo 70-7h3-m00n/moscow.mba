@@ -18,6 +18,9 @@
   display: grid
   grid-template-columns: repeat(3, f.px(330))
   justify-content: space-evenly
+  @include m.media(phone, tablet, laptop)
+    grid-template-columns: 1fr
+    gap: 30px
 
 .ellipse
   position: absolute
@@ -26,7 +29,17 @@
 .left
   bottom: f.px(40)
   left: f.px(-150)
+  @include m.media(phone, tablet)
+    width: 66px
+    height: 66px
+    top: 416px
+    left: -24px
 
 .right
   top: f.px(132)
   right: f.px(-214)
+  @include m.media(phone, tablet)
+    width: 120px
+    height: 120px
+    top: 72px
+    right: -38px

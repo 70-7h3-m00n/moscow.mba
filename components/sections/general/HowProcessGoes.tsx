@@ -335,12 +335,32 @@ const HowProcessGoes = ({ partners = false }) => {
 					) : partners ? (
 						<>
 							<h2 className={cn(stls.title, stls.job)}>Этапы работы</h2>
-							<p className={stls.jobParagraph}>Для работодателей</p>
+							<div className={stls.jobContainer}>
+								<Image
+									className={stls.jobImg}
+									width={38}
+									height={38}
+									alt='Student'
+									src={candidatePhoto}
+									style={{ objectFit: 'cover' }}
+								/>
+								<p className={stls.jobParagraph}>Для работодателей</p>
+							</div>
 						</>
 					) : at.job ? (
 						<>
 							<h2 className={cn(stls.title, stls.job)}>Этапы работы</h2>
-							<p className={stls.jobParagraph}>Для кандидатов</p>
+							<div className={stls.jobContainer}>
+								<Image
+									className={stls.jobImg}
+									width={38}
+									height={38}
+									alt='Student'
+									src={studentPhoto}
+									style={{ objectFit: 'cover' }}
+								/>
+								<p className={stls.jobParagraph}>Для кандидатов</p>
+							</div>
 						</>
 					) : (
 						<h2 className={stls.title}>Как проходит процесс обучения</h2>
@@ -361,7 +381,12 @@ const HowProcessGoes = ({ partners = false }) => {
 					)}
 				</div>
 				<div className={stls.infoContainer}>
-					<ul className={cn(stls.tabsList, at.programs && stls.programsPage)}>
+					<ul
+						className={cn(
+							stls.tabsList,
+							at.programs && stls.programsPage,
+							at.job && stls.job
+						)}>
 						{processSteps?.map((step, idx) => (
 							<li
 								key={step.tabTitle + idx}
@@ -382,7 +407,12 @@ const HowProcessGoes = ({ partners = false }) => {
 							</li>
 						))}
 					</ul>
-					<div className={cn(stls.stepsWrap, at.programs && stls.programsPage)}>
+					<div
+						className={cn(
+							stls.stepsWrap,
+							at.programs && stls.programsPage,
+							at.job && stls.job
+						)}>
 						{processSteps?.map((step, idx) => (
 							<div
 								key={idx + step.tabTitle}
@@ -390,7 +420,8 @@ const HowProcessGoes = ({ partners = false }) => {
 								className={cn(
 									stls.processStep,
 									idx === activeStep && stls.activeProcessStep,
-									at.programs && stls.programsPage
+									at.programs && stls.programsPage,
+									at.job && stls.job
 								)}>
 								<span
 									className={cn(
@@ -406,7 +437,8 @@ const HowProcessGoes = ({ partners = false }) => {
 									className={cn(
 										stls.processStepNumber,
 										at.programs && stls.programsPage,
-										partners && stls.job
+										partners && stls.partners,
+										at.job && stls.job
 									)}>
 									{idx + 1}
 								</div>
@@ -425,7 +457,9 @@ const HowProcessGoes = ({ partners = false }) => {
 										partners && stls.partners
 									)}>
 									{step.listItems?.map((item, idx) => (
-										<li key={item + idx} className={stls.listItem}>
+										<li
+											key={item + idx}
+											className={(stls.listItem, at.job && stls.job)}>
 											{item}
 										</li>
 									))}

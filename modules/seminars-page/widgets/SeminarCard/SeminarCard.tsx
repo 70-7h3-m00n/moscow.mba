@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { IconBell } from '@/components/icons'
 import routesFront from '@/config/routesFront'
 import Link from 'next/link'
-import { ruCaseHours } from '@/helpers/index'
+import { ruCase } from '@/helpers/index'
 
 const SeminarCard = ({
 	title,
@@ -51,7 +51,11 @@ const SeminarCard = ({
 							Спикер: <span className={stls.name}>{speaker}</span>
 						</div>
 					</div>
-					<div className={stls.duration}>{`${dur} ${ruCaseHours(dur)}`}</div>
+					<div className={stls.duration}>{`${dur} ${ruCase(dur, [
+						'час',
+						'часа',
+						'часов'
+					])}`}</div>
 				</div>
 			</Link>
 		</>

@@ -13,7 +13,6 @@ import {
 	IconClock,
 	IconArrowLeft
 } from '@/components/icons'
-import { ruCaseSubjects } from '@/helpers/index'
 
 const ProgramsColumn = ({ data, id, type }) => {
 	const at = useAt()

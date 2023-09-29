@@ -10,55 +10,57 @@ import { Wrapper } from '@/components/layout'
 import { Breadcrumbs } from '@/components/general'
 import { Teachers } from '@/components/sections'
 import { SeoOrganizationJsonLd } from '@/components/seo'
+import { TeachersPage } from 'modules'
 
 const PageTeachers = ({ programs, teachers }) => {
-  usePageHandleContext({ programs })
+	usePageHandleContext({ programs })
 
-  const at = useAt()
+	const at = useAt()
 
-  const seoParams = {
-    title: `Российские и зарубежные эксперты • MBA - ${companyName}`,
-    desc: truncate(
-      'Перенимайте уникальный опыт международных экспертов, адаптированный под рынок РФ',
-      120
-    ),
-    canonical: `${routesFront.root}${routesFront.teachers}`
-  }
+	const seoParams = {
+		title: `Российские и зарубежные эксперты • MBA - ${companyName}`,
+		desc: truncate(
+			'Перенимайте уникальный опыт международных экспертов, адаптированный под рынок РФ',
+			120
+		),
+		canonical: `${routesFront.root}${routesFront.teachers}`
+	}
 
-  return (
-    <>
-      <NextSeo
-        title={seoParams.title}
-        description={seoParams.desc}
-        canonical={seoParams.canonical}
-        openGraph={{
-          url: seoParams.canonical,
-          title: seoParams.title,
-          description: seoParams.desc,
-          images: [
-            {
-              url: `${routesFront.root}${routesFront.assetsImgsIconsManifestIcon512}`,
-              width: 512,
-              height: 512,
-              alt: companyName,
-              type: 'image/png'
-            }
-          ],
-          site_name: companyName
-        }}
-      />
-      <SeoOrganizationJsonLd />
-      <section className={breadcrumbsStls.jumbotronGeneral}>
-        <Wrapper>
-          <Breadcrumbs />
-        </Wrapper>
-      </section>
-      <Teachers atStandAlonePage teachers={teachers} />
-    </>
-  )
+	return (
+		<>
+			<NextSeo
+				title={seoParams.title}
+				description={seoParams.desc}
+				canonical={seoParams.canonical}
+				openGraph={{
+					url: seoParams.canonical,
+					title: seoParams.title,
+					description: seoParams.desc,
+					images: [
+						{
+							url: `${routesFront.root}${routesFront.assetsImgsIconsManifestIcon512}`,
+							width: 512,
+							height: 512,
+							alt: companyName,
+							type: 'image/png'
+						}
+					],
+					site_name: companyName
+				}}
+			/>
+			<SeoOrganizationJsonLd />
+			<section className={breadcrumbsStls.jumbotronGeneral}>
+				<Wrapper>
+					<Breadcrumbs />
+				</Wrapper>
+			</section>
+			<Teachers atStandAlonePage teachers={teachers} />
+			{/* <TeachersPage atStandAlonePage teachers={teachers} /> */}
+		</>
+	)
 }
 
 export const getStaticProps: GetStaticProps = async context =>
-  await handleGetStaticProps({ page: routesFront.teachers, context })
+	await handleGetStaticProps({ page: routesFront.teachers, context })
 
 export default PageTeachers

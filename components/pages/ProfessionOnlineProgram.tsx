@@ -42,7 +42,6 @@ import SectionIPAR from '@/components/sections/general/SectionIPAR'
 
 const ProfessionOnlineProgram = ({ program, teachers }) => {
 	const data = program
-
 	const studyFieldIsAccounting =
 		program?.study_field?.slug?.trim() === 'accounting-analysis-and-audit'
 
