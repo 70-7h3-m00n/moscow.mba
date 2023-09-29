@@ -48,7 +48,7 @@ const SortingPrograms = () => {
 						<path
 							d='M5 1V15'
 							stroke='#FF3535'
-							stroke-width='2'
+							strokeWidth='2'
 							strokeLinecap='round'
 							strokeLinejoin='round'
 						/>

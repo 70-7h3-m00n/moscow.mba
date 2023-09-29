@@ -1,7 +1,7 @@
 import stls from '@/styles/components/general/ProgramsQty.module.sass'
 import cn from 'classnames'
 import { useAt } from '@/hooks/index'
-import { ruCaseProgram } from '@/helpers/index'
+import { ruCase } from '@/helpers/index'
 
 const ProgramsQty = ({
 	programs,
@@ -27,7 +27,9 @@ const ProgramsQty = ({
 				[stls.headerContainer]: isInsideHeader
 			})}>
 			<span>{ProgramsQty} </span>
-			{at.en ? 'programs' : ruCaseProgram(ProgramsQty)}
+			{at.en
+				? 'programs'
+				: ruCase(ProgramsQty, ['программа', 'программы', 'программ'])}
 		</span>
 	)
 }

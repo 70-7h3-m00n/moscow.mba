@@ -2,7 +2,6 @@
 @use '@/styles/utils/funcs' as f
 @use '@/styles/themes/default/colors' as c
 
-
 .container
   position: relative
   z-index: 5
@@ -36,24 +35,31 @@
   overflow: hidden
   padding: f.px(90) f.px(250) f.px(90) f.px(0)
   position: relative
-  &.partner
-    padding: f.px(220) f.px(155) f.px(220) f.px(75)
   @include m.media(desktop, laptop, tablet, phone)
     padding-left: f.px(10)
     padding-right: f.px(10)
-
+  &.partner
+    padding: f.px(220) f.px(155) f.px(220) f.px(75)
+    @include m.media(tablet, phone)
+      padding: f.px(90) f.px(15)
 
 .title
   margin-bottom: f.px(30)
-  font-size: 45px
+  font-size: f.px(45)
   font-weight: 700
   line-height: 1
   color: c.$psi
+  @include m.media(tablet, phone)
+    font-size: 25px
   &.partner
-    font-size: 55px
+    font-size: f.px(55)
+    @include m.media(tablet, phone)
+      font-size: 25px
 
 .paragraph
   font-size: f.px(20)
   font-weight: 300
   line-height: 1.3
   color: c.$psi
+  @include m.media(tablet, phone)
+    font-size: 15px

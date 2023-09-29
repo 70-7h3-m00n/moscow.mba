@@ -3,6 +3,16 @@ import useAt from '@/hooks/useAt'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 
+type UntilType = {
+	First: number
+	FirstOneMoreDay: boolean
+	Second: number
+	SecondOneMoreDay: boolean
+	Third: number
+	ThirdOneMoreDay: boolean
+	id: number
+}[]
+
 const setLastDayOfMonth = (currentDate: Date): Date => {
 	currentDate.setMonth(currentDate.getMonth() + 1, 0)
 	return currentDate
@@ -35,13 +45,14 @@ function findNearestFutureDate(datesArray) {
 const Until = ({ preposition = true, executive = false }) => {
 	const at = useAt()
 	const { until } = useContext(ContextStaticProps)
+	const untilDates: UntilType = until
 	const { locale } = useRouter()
 	const currentDate = new Date()
 	const currentDay = currentDate.getDate()
 	const currentYear = currentDate.getFullYear()
 
 	const untilArray =
-		until?.map((month, idx) => {
+		untilDates?.map((month, idx) => {
 			const {
 				First,
 				FirstOneMoreDay,
@@ -62,7 +73,7 @@ const Until = ({ preposition = true, executive = false }) => {
 
 	const untilMillisecondsArray = untilArray
 		?.flat()
-		?.map(date => Date.parse(date))
+		?.map(date => new Date(date).setHours(23, 0, 0, 0))
 		?.filter(date => !!date)
 		?.sort((a, b) => a - b)
 

@@ -8,7 +8,7 @@ import {
 	ContextStaticProps,
 	DigitalTransformationContext
 } from '@/context/index'
-import { getClassNames, ruCaseMonth } from '@/helpers/index'
+import { getClassNames, ruCase } from '@/helpers/index'
 import { GeneralStickerDiscount } from '@/components/general'
 import { Loan, Price, TrainingPeriod, Until } from '@/components/costs'
 import { Wrapper } from '@/components/layout'
@@ -60,7 +60,11 @@ const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
 										`${program?.duration?.minStudyMonths} ${
 											at.en
 												? 'month'
-												: ruCaseMonth(program?.duration?.minStudyMonths)
+												: ruCase(program?.duration?.minStudyMonths, [
+														'месяц',
+														'месяца',
+														'месяцев'
+												  ])
 										}`
 									) : (
 										<TrainingPeriod

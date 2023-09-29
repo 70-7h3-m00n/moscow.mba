@@ -14,8 +14,13 @@
 
 .title 
   margin-bottom: f.px(30)
+  @include m.media(phone, tablet)
+    &>span
+      color: c.$alpha
 
 .paragraph
   font-size: f.px(20)
   font-weight: 300
   line-height: 1.3
+  @include m.media (phone, tablet)
+    font-size: 15px

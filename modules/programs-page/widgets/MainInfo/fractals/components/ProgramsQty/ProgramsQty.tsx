@@ -1,4 +1,4 @@
-import { ruCaseProgram } from '@/helpers/index'
+import { ruCase } from '@/helpers/index'
 import useAt from '@/hooks/useAt'
 import stls from './ProgramsQty.module.sass'
 
@@ -9,7 +9,11 @@ const ProgramsQty = ({ renderPrograms }) => {
 	return (
 		<div className={stls.programsQty}>
 			<span>{programsCount} </span>
-			<span>{at.en ? 'programs' : ruCaseProgram(programsCount)}</span>
+			<span>
+				{at.en
+					? 'programs'
+					: ruCase(programsCount, ['программа', 'программы', 'программ'])}
+			</span>
 		</div>
 	)
 }

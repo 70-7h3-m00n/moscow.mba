@@ -12,20 +12,28 @@
   position: relative
   background-color: c.$alpha
   color: c.$psi
-  @include m.media(desktop, laptop, tablet, phone)
+  @include m.media(laptop)
     padding-left: f.px(10)
     padding-right: f.px(10)
+  @include m.media(phone, tablet)
+    padding: 45px 14px 100px 14px
 
 .title
   font-size: f.px(36)
+  @include m.media(phone, tablet)
+    font-size: 25px
 
 .paragraph
   width: f.px(570)
   margin-bottom: f.px(30)
   font-size: f.px(16)
   line-height: 1.2
+  @include m.media(phone, tablet)
+    width: 100%
+    font-size: 16px
   &.partner
     width: f.px(435)
+
   a
     font-weight: 500
     &:hover
@@ -35,6 +43,8 @@
   display: grid
   grid-template-columns: repeat(2, 1fr)
   gap: f.px(30)
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr
   a
     display: inline-block
     padding: f.px(20) f.px(60)
@@ -49,3 +59,8 @@
     transition: transform .2s ease-in-out
     &:hover
       transform: scale(1.05)
+    &:active
+      transform: scale(1.05)
+    @include m.media(phone, tablet)
+      width: 100%
+      padding: 13px 15px  

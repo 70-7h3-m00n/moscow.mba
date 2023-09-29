@@ -8,52 +8,52 @@ const IconPatrikeev = () => {
 			height='35'
 			viewBox='0 0 167 35'
 			fill='none'>
-			<g clip-path='url(#clip0_574_4657)'>
+			<g clipPath='url(#clip0_574_4657)'>
 				<path
-					fill-rule='evenodd'
-					clip-rule='evenodd'
+					fillRule='evenodd'
+					clipRule='evenodd'
 					d='M37.0001 3.5H0.00012207V0.5H37.0001V3.5Z'
 					fill='#5F84FF'
 				/>
 				<path
-					fill-rule='evenodd'
-					clip-rule='evenodd'
+					fillRule='evenodd'
+					clipRule='evenodd'
 					d='M16.0001 33.5H2.00012V30.5H16.0001V33.5Z'
 					fill='#5F84FF'
 				/>
 				<path
-					fill-rule='evenodd'
-					clip-rule='evenodd'
+					fillRule='evenodd'
+					clipRule='evenodd'
 					d='M34.0001 33.5H20.0001V30.5H34.0001V33.5Z'
 					fill='#5F84FF'
 				/>
 				<path
-					fill-rule='evenodd'
-					clip-rule='evenodd'
+					fillRule='evenodd'
+					clipRule='evenodd'
 					d='M34.0001 8.5H2.00012V5.5H34.0001V8.5Z'
 					fill='#5F84FF'
 				/>
 				<path
-					fill-rule='evenodd'
-					clip-rule='evenodd'
+					fillRule='evenodd'
+					clipRule='evenodd'
 					d='M5.00012 31.5V10.5H8.00012V31.5H5.00012Z'
 					fill='#5F84FF'
 				/>
 				<path
-					fill-rule='evenodd'
-					clip-rule='evenodd'
+					fillRule='evenodd'
+					clipRule='evenodd'
 					d='M10.0001 31.5V12.5H13.0001V31.5H10.0001Z'
 					fill='#5F84FF'
 				/>
 				<path
-					fill-rule='evenodd'
-					clip-rule='evenodd'
+					fillRule='evenodd'
+					clipRule='evenodd'
 					d='M23.0001 31.5V12.5H26.0001V31.5H23.0001Z'
 					fill='#5F84FF'
 				/>
 				<path
-					fill-rule='evenodd'
-					clip-rule='evenodd'
+					fillRule='evenodd'
+					clipRule='evenodd'
 					d='M28.0001 31.5V10.5H31.0001V31.5H28.0001Z'
 					fill='#5F84FF'
 				/>
