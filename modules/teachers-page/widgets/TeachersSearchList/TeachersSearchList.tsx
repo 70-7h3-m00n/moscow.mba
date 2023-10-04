@@ -20,6 +20,7 @@ export function TeachersSearchList({ programId, programTitle }) {
 	const contactInfo = contactData()
 	const { program } = useContext(ContextStaticProps)
 	const { state, dispatch } = useTeachersSearch()
+
 	const {
 		searchTerm,
 		shownTeachersCount,
@@ -28,16 +29,13 @@ export function TeachersSearchList({ programId, programTitle }) {
 		showMoreTeachersAddedNum
 	} = state
 
+
 	const handleOnClick = () =>
 		dispatch({
 			type: ACTION.SET_SHOWN_TEACHERS_COUNT,
 			payload: shownTeachersCount + showMoreTeachersAddedNum
 		})
 
-	console.log('UITeachers.length =>>>>>>>>>>', UITeachers.length)
-	console.log('searchTerm =>>>>>>>>>>', searchTerm)
-	console.log('shownTeachersCount =>>>>>>>>', shownTeachersCount)
-	console.log('teachers =>>>>>>>>', teachers)
 
 	return (
 		<>
@@ -164,8 +162,10 @@ export function TeachersSearchList({ programId, programTitle }) {
 						</Link>
 					) : (
 						UITeachers.length >= 8 &&
+
 						!searchTerm &&
 						teachers && (
+
 							<button
 								className={cn('button', stls.btnShowMore, {
 									[stls.atTeachers]: at.teachers

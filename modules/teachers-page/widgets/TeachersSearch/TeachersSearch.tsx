@@ -4,25 +4,31 @@ import TeachersSearchProps from './props'
 
 import useAt from '@/hooks/useAt'
 import { IconClose, IconSearch } from '@/components/icons'
+
 import { useContext, useEffect, useState } from 'react'
+
 import { ContextStaticProps } from '@/context/index'
 import { useRouter } from 'next/router'
 import { useTeachersSearch } from 'modules/teachers-page/fractals/context/context'
 import { ACTION } from 'modules/teachers-page/fractals/context/reducer'
 import { TeachersSearchItem } from './widgets/TeachersSearchItem/TeachersSearchItem'
+
 import { TeachersSearchLink } from './widgets/TeachersSearchLink/TeachersSearchLink'
+
 
 export const TeachersSearch = ({}: TeachersSearchProps) => {
 	const at = useAt()
 	const router = useRouter()
 	const { programs } = useContext(ContextStaticProps)
 	const { state, dispatch } = useTeachersSearch()
+
 	const {
 		searchTerm,
 		searchTermIsAppliedtoUrl,
 		searchInputIsFocused,
 		teachers
 	} = state
+
 
 	const handleSearch = e => {
 		dispatch({
@@ -78,6 +84,7 @@ export const TeachersSearch = ({}: TeachersSearchProps) => {
 				}
 			})
 		}
+
 	}, [
 		state.isInputClose,
 		router,
@@ -146,6 +153,7 @@ export const TeachersSearch = ({}: TeachersSearchProps) => {
 					</div>
 					{searchTerm && searchInputIsFocused && (
 						<ul className={stls.searchResults}>
+
 							{teachers
 								?.filter(teacher =>
 									teacher.name?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -156,6 +164,7 @@ export const TeachersSearch = ({}: TeachersSearchProps) => {
 										teacher={teacher}
 									/>
 								))}
+
 							{programs
 								?.filter(program => program.studyFormat === 'online')
 								?.filter(program =>

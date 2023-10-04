@@ -383,10 +383,12 @@ const HowProcessGoes = ({ partners = false }) => {
 				</div>
 				<div className={stls.infoContainer}>
 					<ul
+
 						className={cn(stls.tabsList, {
 							[stls.programsPage]: at.programs,
 							[stls.job]: at.job
 						})}>
+
 						{processSteps?.map((step, idx) => (
 							<li
 								key={step.tabTitle + idx}
@@ -407,19 +409,23 @@ const HowProcessGoes = ({ partners = false }) => {
 						))}
 					</ul>
 					<div
+
 						className={cn(stls.stepsWrap, {
 							[stls.programsPage]: at.programs,
 							[stls.job]: at.job
 						})}>
+
+
 						{processSteps?.map((step, idx) => (
 							<div
 								key={idx + step.tabTitle}
 								ref={stepsRefs.current[idx]}
+
 								className={cn(stls.processStep, {
 									[stls.activeProcessStep]: idx === activeStep,
 									[stls.programsPage]: at.programs,
 									[stls.job]: at.job
-								})}>
+
 								<span
 									className={cn(stls.redStick, {
 										[stls.programsPage]: at.programs,
@@ -430,11 +436,14 @@ const HowProcessGoes = ({ partners = false }) => {
 									}}
 								/>
 								<div
+
 									className={cn(stls.processStepNumber, {
 										[stls.programsPage]: at.programs,
 										[stls.partners]: partners,
 										[stls.job]: at.job
 									})}>
+
+
 									{idx + 1}
 								</div>
 								<div
@@ -452,7 +461,9 @@ const HowProcessGoes = ({ partners = false }) => {
 									{step.listItems?.map((item, idx) => (
 										<li
 											key={item + idx}
+
 											className={cn(stls.listItem, { [stls.job]: at.job })}>
+
 											{item}
 										</li>
 									))}
