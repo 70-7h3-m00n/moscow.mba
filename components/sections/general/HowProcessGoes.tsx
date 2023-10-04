@@ -326,7 +326,8 @@ const HowProcessGoes = ({ partners = false }) => {
 				[stls.job]: at.job,
 				[stls.partners]: partners
 			})}>
-			<Wrapper classNames={[stls.content, partners && stls.noBottomPadding]}>
+			<Wrapper
+				classNames={[stls.content, { [stls.noBottomPadding]: partners }]}>
 				<div className={stls.titleContainer}>
 					{isDigitalTransformation ? (
 						<h2 className={stls.title}>Как проходит учебный процесс</h2>
@@ -335,12 +336,32 @@ const HowProcessGoes = ({ partners = false }) => {
 					) : partners ? (
 						<>
 							<h2 className={cn(stls.title, stls.job)}>Этапы работы</h2>
-							<p className={stls.jobParagraph}>Для работодателей</p>
+							<div className={stls.jobContainer}>
+								<Image
+									className={stls.jobImg}
+									width={38}
+									height={38}
+									alt='Student'
+									src={candidatePhoto}
+									style={{ objectFit: 'cover' }}
+								/>
+								<p className={stls.jobParagraph}>Для работодателей</p>
+							</div>
 						</>
 					) : at.job ? (
 						<>
 							<h2 className={cn(stls.title, stls.job)}>Этапы работы</h2>
-							<p className={stls.jobParagraph}>Для кандидатов</p>
+							<div className={stls.jobContainer}>
+								<Image
+									className={stls.jobImg}
+									width={38}
+									height={38}
+									alt='Student'
+									src={studentPhoto}
+									style={{ objectFit: 'cover' }}
+								/>
+								<p className={stls.jobParagraph}>Для кандидатов</p>
+							</div>
 						</>
 					) : (
 						<h2 className={stls.title}>Как проходит процесс обучения</h2>
@@ -361,7 +382,11 @@ const HowProcessGoes = ({ partners = false }) => {
 					)}
 				</div>
 				<div className={stls.infoContainer}>
-					<ul className={cn(stls.tabsList, at.programs && stls.programsPage)}>
+					<ul
+						className={cn(stls.tabsList, {
+							[stls.programsPage]: at.programs,
+							[stls.job]: at.job
+						})}>
 						{processSteps?.map((step, idx) => (
 							<li
 								key={step.tabTitle + idx}
@@ -373,59 +398,61 @@ const HowProcessGoes = ({ partners = false }) => {
 									scrollIntoViewSteps(idx)
 								}}>
 								<a
-									className={cn(
-										stls.tabLink,
-										idx === activeStep && stls.activeTabLink
-									)}>
+									className={cn(stls.tabLink, {
+										[stls.activeTabLink]: idx === activeStep
+									})}>
 									{step.tabTitle}
 								</a>
 							</li>
 						))}
 					</ul>
-					<div className={cn(stls.stepsWrap, at.programs && stls.programsPage)}>
+					<div
+						className={cn(stls.stepsWrap, {
+							[stls.programsPage]: at.programs,
+							[stls.job]: at.job
+						})}>
 						{processSteps?.map((step, idx) => (
 							<div
 								key={idx + step.tabTitle}
 								ref={stepsRefs.current[idx]}
-								className={cn(
-									stls.processStep,
-									idx === activeStep && stls.activeProcessStep,
-									at.programs && stls.programsPage
-								)}>
+								className={cn(stls.processStep, {
+									[stls.activeProcessStep]: idx === activeStep,
+									[stls.programsPage]: at.programs,
+									[stls.job]: at.job
+								})}>
 								<span
-									className={cn(
-										stls.redStick,
-										at.programs && stls.programsPage,
-										partners && stls.job
-									)}
+									className={cn(stls.redStick, {
+										[stls.programsPage]: at.programs,
+										[stls.job]: partners
+									})}
 									style={{
 										height: `calc(${Number(scrolledData[idx]) * 100}% - 48px)`
 									}}
 								/>
 								<div
-									className={cn(
-										stls.processStepNumber,
-										at.programs && stls.programsPage,
-										partners && stls.job
-									)}>
+									className={cn(stls.processStepNumber, {
+										[stls.programsPage]: at.programs,
+										[stls.partners]: partners,
+										[stls.job]: at.job
+									})}>
 									{idx + 1}
 								</div>
 								<div
-									className={cn(
-										stls.processStepTitle,
-										at.programs && stls.programsPage
-									)}>
+									className={cn(stls.processStepTitle, {
+										[stls.programsPage]: at.programs
+									})}>
 									{step.stepTitle}
 								</div>
 								<ul
-									className={cn(
-										stls.list,
-										at.programs && stls.programsPage,
-										at.job && stls.job,
-										partners && stls.partners
-									)}>
+									className={cn(stls.list, {
+										[stls.programsPage]: at.programs,
+										[stls.job]: at.job,
+										[stls.partners]: partners
+									})}>
 									{step.listItems?.map((item, idx) => (
-										<li key={item + idx} className={stls.listItem}>
+										<li
+											key={item + idx}
+											className={cn(stls.listItem, { [stls.job]: at.job })}>
 											{item}
 										</li>
 									))}

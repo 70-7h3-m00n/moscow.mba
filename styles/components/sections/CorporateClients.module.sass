@@ -29,7 +29,9 @@
     margin-bottom: 56px
   &>.job
     margin-bottom: f.px(100)
-
+    @include m.media(phone, tablet)
+      font-size: 25px
+      margin-bottom: f.px(36)
 
 .slider
   position: relative

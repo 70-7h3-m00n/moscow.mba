@@ -1,0 +1,498 @@
+@use 'sass:math'
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.container
+  position: relative
+  overflow: hidden
+  z-index: 3
+  color: #b3b3b3
+  padding: 126px 0 100px
+  margin-bottom: 140px
+  background: #2d2c2a
+  &.standalonePage
+    color: #333
+    padding-top: 50px
+    padding-bottom: 50px
+    margin-bottom: 0
+    background-color: #fff
+  @include m.media(laptop)
+    padding: 90px 0 40px
+    margin-bottom: 80px
+  @include m.media(tablet, phone)
+    margin-bottom: 60px
+    padding-top: 60px
+    padding-bottom: 30px
+
+.wrapper
+  display: block
+
+.titleProfession
+  @include m.media(phone, tablet)
+    margin-bottom: 30px
+  @include m.media(laptop, desktop, widescreen)
+    margin-bottom: 89px
+
+.standalonePage
+  .titlePl
+    color: #333
+  .content h2,
+  .content h3,
+  .content h5,
+  .teachersItem .name
+    color: #2d2c2a
+  .detailImage .pic2
+    border-color: #fff
+  &::after
+    background-color: #fff
+
+.content
+  position: relative
+  z-index: 2
+  padding-right: 500px
+  @include m.media(desktop)
+    padding-right: 435px
+  @include m.media(laptop, tablet, phone)
+    padding-right: 0
+  h2
+    margin-right: -160px
+    color: #fff
+    @include m.media(laptop, tablet, phone)
+      margin-right: 0
+
+.teachersPros
+  font-weight: bold
+  font-size: 36px
+  line-height: 1.2
+  margin-bottom: 52px
+  max-width: 22ch
+  @include m.media(laptop, tablet, phone)
+    font-size: 32px
+    margin-bottom: 40px
+  @include m.media(tablet)
+    font-size: 28px
+  @include m.media(phone)
+    font-size: 24px
+  @include m.dye(c, c.$psi)
+
+.h3
+  @include m.media(phone, tablet)
+    font-size: f.px(24)
+  @include m.media(laptop, desktop, widescreen)
+    font-size: f.px(30)
+  font-weight: 500
+  line-height: 120%
+  @include m.dye(c, c.$chi)
+
+.searchGroup
+  position: relative
+  margin-top: f.px(30)
+  max-width: f.px(520)
+
+.searchInputGroup
+  position: relative
+
+.searchIcon
+  position: absolute
+  top: 50%
+  right: f.px(15)
+  transform: translateY(-50%)
+  max-width: f.px(18)
+  & path,
+  & rect
+    @include m.dye(fill, c.$omicron)
+  &.searchIconSearthTermIsApplied
+    & path
+      @include m.dye(stroke, c.$psi)
+
+.search
+  width: 100%
+  text-overflow: ellipsis
+  padding-top: f.px(15)
+  padding-right: f.px(30+18)
+  padding-bottom: f.px(15)
+  padding-left: f.px(15)
+  border: 0
+  outline: none
+  font-family: 'Styrene', Arial, Tahoma, sans-serif
+  font-size: f.px(16)
+  font-weight: 500
+  line-height: 120%
+  @include m.dye(bgc, c.$sigma)
+  @include m.dye(c, c.$chi)
+  &::placeholder
+    font-weight: 400
+    font-size: f.px(14)
+    line-height: 140%
+    @include m.dye(c, c.$omicron)
+  &.searchTermIsAppliedtoUrl
+    cursor: pointer
+    @include m.dye(bgc, c.$alpha)
+    @include m.dye(c, c.$psi)
+
+.text
+  margin-bottom: 36px
+  line-height: 1.2
+  margin-top: -5px
+
+.detailList
+  line-height: 1.2
+  min-height: 380px
+  margin-bottom: 29px
+  @include m.media(laptop, tablet, phone)
+    min-height: 1px
+    margin-bottom: 70px
+  @include m.media(phone)
+    margin-bottom: 60px
+  li
+    display: flex
+    align-items: flex-start
+    margin-bottom: 30px
+    &:nth-child(3)
+      margin-right: 30px
+    @include m.media(phone)
+      margin-bottom: 20px
+  .detailTitle
+    color: #fff
+    font-weight: 500
+    font-size: 24px
+    margin-bottom: 10px
+    @include m.media(tablet, phone)
+      font-size: 20px
+    @include m.media(phone)
+      font-size: 18px
+      margin-bottom: 5px
+
+.standalonePage .detailTitle
+  color: #2d2c2a
+
+.detailListProfession
+  min-height: auto
+  @include m.media(phone, tablet)
+    margin-bottom: 60px
+  @include m.media(laptop, desktop, widescreen)
+    margin-bottom: 89px
+
+.circle
+  width: 57px
+  height: 57px
+  border-radius: 50%
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  background: #ff3535
+  flex-shrink: 0
+  margin-right: 43px
+  @include m.media(tablet, phone)
+    margin-right: 30px
+  @include m.media(phone)
+    width: 40px
+    height: 40px
+    margin-right: 20px
+    img
+      width: 20px
+
+.btn
+  margin-bottom: 30px
+  text-align: center
+  @include m.media(phone)
+    button
+      width: 100%
+
+.teachersList
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -35px
+  margin-top: f.px(60)
+  @include m.media(desktop, laptop)
+    margin: 0 -15px
+    margin-top: f.px(60)
+  @include m.media(tablet, phone)
+    margin: 0 -8px
+    margin-top: f.px(60)
+  @include m.media(phone)
+    display: block
+    margin-bottom: 40px
+  &.teachersListEmpty
+    margin: 0
+  & .teachersListItem
+    display: flex
+    margin-bottom: f.px(60)
+    padding: 0 35px
+    width: 25%
+    @include m.media(desktop, laptop)
+      padding: 0 15px
+    @include m.media(phone, tablet, laptop)
+      margin-bottom: f.px(30)
+    @include m.media(tablet, phone)
+      padding: 0 8px
+    @include m.media(laptop, tablet)
+      width: 33.333%
+    @include m.media(phone)
+      width: 100%
+      margin-bottom: 15px
+      padding-top: 15px
+      & + .teachersListItem
+        border-top: 1px solid
+        @include m.dye(borderc, c.$nu)
+
+.teachersListProfession
+  // margin-top: 63px
+  margin-top: 0
+
+.twoImages
+  position: relative
+  max-width: 500px
+  .image
+    border-radius: 50%
+    overflow: hidden
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      display: block
+  .pic1
+    width: 100%
+  .pic2
+    width: 100%
+    position: relative
+    z-index: 3
+    border: 7px solid #f7f7f7
+    box-sizing: content-box
+    margin-top: -67px
+    margin-left: -56px
+
+.detailImage
+  width: 425px
+  position: absolute
+  z-index: -1
+  right: 0
+  top: 59px
+  @include m.media(desktop)
+    width: 380px
+  @include m.media(laptop, tablet, phone)
+    max-width: 425px
+    position: static
+    top: 0
+  &.twoImages
+    @include m.media(laptop, tablet, phone)
+      width: auto
+      margin: 0 auto 30px
+      max-width: 425px
+      box-sizing: content-box
+      padding-left: 50px
+  .pic2
+    width: 236px
+    border: 10px solid #2d2c2a
+    margin-top: -140px
+    @include m.media(phone)
+      width: 160px
+      margin-top: -100px
+      border-width: 5px
+  .pic1AtProfession
+    width: 344px
+  .pic2AtProfession
+    width: 199px
+
+.detailImageAtProfession
+  width: 385px
+  right: -80px
+
+.teachersItem
+  line-height: 1.2
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  min-height: 100%
+  @include m.media(phone)
+    display: flex
+    align-items: flex-start
+  .image
+    margin-bottom: 17px
+    display: block
+    transition: all 0.3s ease-out
+    // &:hover
+    //   opacity: 0.8
+    // }
+    @include m.media(phone)
+      flex-shrink: 0
+      margin-right: 25px
+      margin-bottom: 0
+      width: 143px
+    img
+      max-width: 100%
+      max-height: 322px
+  & .description
+    font-size: 13px
+    margin-bottom: 20px
+    @include m.media(phone)
+      margin-bottom: 15px
+
+.teachersItemWrapper
+  @include m.media(phone)
+    display: flex
+
+.a
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+.teachersItemContent
+  display: flex
+  flex-direction: column
+  @include m.media(phone)
+    justify-content: space-between
+
+.link
+  display: inline-block
+  color: #fff
+  transition: all 0.3s ease-out
+  &:hover
+    color: #ff3535
+  span
+    margin-right: 10px
+  img
+    flex-shrink: 0
+    position: relative
+    top: 1px
+
+.name
+  font-weight: 500
+  font-size: 20px
+  text-transform: capitalize
+  color: #fff
+  margin-bottom: 13px
+  @include m.media(tablet)
+    font-size: 18px
+  @include m.media(phone)
+    font-size: 16px
+    margin-bottom: 5px
+
+.bio
+  display: flex
+  align-items: center
+  @include m.media(phone)
+    margin-top: f.px(36)
+    margin-bottom: f.px(11)
+
+.bioP
+  font-size: f.px(16)
+  font-weight: 300
+  line-height: 120%
+  @include m.dye(c, c.$psi)
+  &.atStandAlonePage
+    @include m.dye(c, c.$omega)
+
+.icon
+  max-width: f.px(8)
+  max-height: f.px(10)
+  margin-left: f.px(10)
+  transform: translateY(f.px(-2))
+
+.breakLine
+  display: inline
+  @include m.media(widescreen, desktop)
+    display: block
+
+.sectionPl
+  position: relative
+  z-index: 2
+  padding-left: 200px
+  @include m.media(desktop, laptop, tablet, phone)
+    padding-left: 0
+
+.titlePl
+  position: absolute
+  left: 0
+  width: 220px
+  //padding-right: 20px
+  text-transform: uppercase
+  font-weight: bold
+  font-size: 20px
+  line-height: 1.3
+  color: #808080
+  margin-top: 9px
+  @include m.media(desktop)
+    position: static
+    width: auto
+    padding-right: 0
+    margin-bottom: 20px
+    margin-top: 0 !important
+  @include m.media(laptop, tablet, phone)
+    display: none
+
+.nothingFound
+  @include m.media(phone, tablet)
+    margin-top: f.px(30)
+    padding: f.px(49) f.px(25)
+  @include m.media(laptop, desktop, widescreen)
+    margin-top: f.px(60)
+    padding: f.px(100) 17%
+  border: 1px solid
+  @include m.dye(borderc, c.$nu)
+
+.nothingFoundTitle
+  @include m.media(phone, tablet)
+    margin-bottom: f.px(8)
+    font-size: f.px(20)
+  @include m.media(laptop, desktop, widescreen)
+    margin-bottom: f.px(18)
+    font-size: f.px(30)
+  font-weight: 500
+  line-height: 120%
+
+.nothingFoundP
+  @include m.media(phone, tablet)
+    font-size: f.px(13)
+  font-weight: 300
+  line-height: 120%
+
+.nothingFoundLink
+  display: inline-block
+  font-weight: 500
+
+.getAllTeachers
+  @include m.media(phone, tablet, laptop)
+    @include m.flex($jc: center, $ai: center, $fd: column)
+  @include m.media(desktop, widescreen)
+    @include m.flex($jc: center, $ai: center)
+  width: calc(100% - 70px)
+  margin-left: 35px
+  padding: 78px 15px
+  background-color: #383838
+  color: #fff
+
+.getAllTeachersTitle
+  line-height: 120%
+  @include m.media(phone, tablet, laptop)
+    margin-bottom: 20px
+    font-size: 24px
+    font-weight: 500
+  @include m.media(desktop, widescreen)
+    max-width: 20ch
+    margin-right: 71px
+    font-size: 36px
+    font-weight: 700
+
+.getAllTeachersBtn
+  margin-bottom: 0
+  @include m.media(phone)
+    width: 100%
+    & button
+      width: 100%
+
+.phone
+  @include m.media(tablet, laptop, desktop, widescreen)
+    display: none
+
+.tabletLaptopDesktopWidescreen
+  @include m.media(phone)
+    display: none
+
+.btnShowMore
+  // margin-top: f.px(15)
+  // &.atTeachers
+  //   @include m.media(laptop, desktop, widescreen)
+  //     display: none

@@ -80,7 +80,9 @@ const ReviewScreens = () => {
 					{Array.from({ length: reviewsArr.length }, (_v, idx) => (
 						<div
 							key={`dot${idx}`}
-							className={cn(stls.dots, activeReview === idx && stls.activeDot)}
+							className={cn(stls.dots, {
+								[stls.activeDot]: activeReview === idx
+							})}
 							onClick={() => {
 								setActiveReview(idx)
 								imgWrappRefs.current[idx].current?.scrollIntoView({

@@ -12,7 +12,7 @@ const IconCrossThin = () => {
 				y2='-1.5'
 				transform='matrix(-0.707107 -0.707107 -0.707107 0.707107 37.0001 36.5)'
 				stroke='white'
-				stroke-width='3'
+				strokeWidth='3'
 			/>
 			<line
 				x1='1.93934'
@@ -20,7 +20,7 @@ const IconCrossThin = () => {
 				x2='35.9393'
 				y2='1.43934'
 				stroke='white'
-				stroke-width='3'
+				strokeWidth='3'
 			/>
 		</svg>
 	)

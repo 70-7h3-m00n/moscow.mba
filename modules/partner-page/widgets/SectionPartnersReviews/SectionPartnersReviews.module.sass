@@ -8,6 +8,9 @@
 
 .title
   margin-bottom: f.px(60)
+  @include m.media(phone, tablet)
+    margin-bottom: 30px
+    font-size: 25px
 
 .grid
   display: grid
@@ -15,6 +18,9 @@
   gap: f.px(30)
   font-size: f.px(20)
   line-height: 1.3
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr
+    gap: 35px
 
 .item
   display: grid
@@ -23,16 +29,36 @@
   align-items: center
   padding: f.px(40)
   background-color: c.$nu
+  @include m.media(phone, tablet)
+    padding: 0
+    background-color: transparent
+    &>p
+      font-size: 15px
+      font-weight: 400
+      line-height: 1.3
 
 .imageWrapper
   overflow: hidden
   border-radius: 50%
   width: f.px(70)
   height: f.px(70)
+  & svg
+    display: none
+  @include m.media(phone, tablet)
+    width: 33px
+    height: 33px
+    padding: 5px
+    background-color: c.$alpha
+    & svg
+      display: block
+    &>img
+      display: none
 
 .ellipse
   position: absolute
   z-index: -1
+  @include m.media(phone, tablet)
+    display: none
 
 .left
   top: f.px(60)

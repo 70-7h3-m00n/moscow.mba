@@ -1,10 +1,11 @@
 import stls from './SectionPartnersReviews.module.sass'
 import cn from 'classnames'
-import SectionPartnersReviewsProps from './SectionPartnersReviews.props'
+import SectionPartnersReviewsProps from './props'
 
 import { Wrapper } from '@/components/layout'
 import Image from 'next/image'
 import { IconGeometricEllipse } from '@/components/icons'
+import IconUser from '@/components/icons/IconUser'
 
 export default function SectionPartnersReviews({
 	data,
@@ -25,6 +26,7 @@ export default function SectionPartnersReviews({
 									height={70}
 									alt={'Partner image'}
 								/>
+								<IconUser color='#fff' />
 							</div>
 							<p className={stls.variantDescription}>{item.review}</p>
 						</li>

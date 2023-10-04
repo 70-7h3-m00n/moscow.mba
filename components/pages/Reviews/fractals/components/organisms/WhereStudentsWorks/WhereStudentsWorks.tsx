@@ -65,10 +65,9 @@ const WhereStudentsWorks = () => {
 					{Array.from({ length: clientsArr.length / 4 }, (_v, idx) => (
 						<div
 							key={`slide${idx + 1}`}
-							className={cn(
-								stls.sticks,
-								activeSlide === idx + 1 && stls.activeStick
-							)}
+							className={cn(stls.sticks, {
+								[stls.activeStick]: activeSlide === idx + 1
+							})}
 							onClick={() => {
 								setActiveSlide(idx + 1)
 								idx + 1 === 1

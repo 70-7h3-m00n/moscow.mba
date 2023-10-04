@@ -10,7 +10,12 @@
   margin-bottom: 69px
   position: relative
   &.partner
-    padding-left: 0
+    padding-left: 75px
+    padding-right: 75px
+    @include m.media(phone, tablet)
+      margin-bottom: 0
+      padding-left: f.px(15)
+      padding-right: f.px(15)
   @include m.media(desktop, laptop, tablet, phone)
     padding-left: 10px
   @include m.media(tablet, phone)
@@ -19,7 +24,6 @@
 .title
   position: absolute
   left: 0
-  width: 220px
   padding-right: 20px
   text-transform: uppercase
   font-weight: bold
@@ -43,6 +47,8 @@
     text-transform: lowercase
     &::first-letter
       text-transform: uppercase
+    @include m.media(phone, tablet)
+      font-size: 25px
 
 .flexContainer
   display: flex
@@ -68,6 +74,9 @@
     font-size: 15px
   &.partner
     width: 40%
+    @include m.media(phone, tablet, laptop)
+      width: 100%
+      margin-bottom: f.px(60)
 
 .desc
   margin-bottom: 20px
@@ -79,14 +88,18 @@
   p
     line-height: 1.2
   &.partner
-    gap: f.px(40) f.px(25)
-    padding: f.px(40) f.px(36) f.px(40) f.px(43)
-    background-color: c.$alpha
-    color: c.$psi
-    &>*
-      width: 45%
-      margin: 0
-    & p
+    @include m.media(desktop, laptop, widescreen)
+      gap: f.px(40) f.px(25)
+      padding: f.px(40) f.px(36) f.px(40) f.px(43)
+      background-color: c.$alpha
+      color: c.$psi
+      &>*
+        width: 45%
+        margin: 0
+      & p
+    @include m.media(phone, tablet)
+      span
+        color: c.$alpha
 
 
 
@@ -100,6 +113,7 @@
     margin-bottom: 35px
 
 .number
+  display: flex
   font-weight: bold
   font-size: 72px
   margin-bottom: 17px
@@ -109,3 +123,6 @@
   @include m.media(phone)
     font-size: 30px
     margin-bottom: 10px
+
+.years
+  margin-right: 10px

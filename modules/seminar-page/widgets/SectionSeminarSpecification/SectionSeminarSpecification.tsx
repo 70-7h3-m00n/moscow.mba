@@ -2,7 +2,7 @@ import { Wrapper } from '@/components/layout'
 import stls from './SectionSeminarSpecification.module.sass'
 import Image from 'next/image'
 import { IconSeminarLocation } from '@/components/icons'
-import { formatDate, ruCaseHours } from '@/helpers/index'
+import { formatDate, ruCase } from '@/helpers/index'
 import SectionSeminarSpecificationProps from './SectionSeminarSpecification.props'
 
 const SectionSeminarSpecification = ({
@@ -41,7 +41,7 @@ const SectionSeminarSpecification = ({
 				</div>
 				<div className={stls.duration}>
 					Продолжительность и формат обучения: {seminar?.duration} академических{' '}
-					{ruCaseHours(+seminar?.duration)} очно или онлайн
+					{ruCase(+seminar?.duration, ['час', 'часа', 'часов'])} очно или онлайн
 				</div>
 				<div className={stls.address}>
 					<IconSeminarLocation />
