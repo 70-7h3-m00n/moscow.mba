@@ -1,6 +1,6 @@
 import stls from './SectionCooperationVariants.module.sass'
 import cn from 'classnames'
-import SectionCooperationVariantsProps from './SectionCooperationVariants.props'
+import SectionCooperationVariantsProps from './props'
 
 import { Wrapper } from '@/components/layout'
 import Link from 'next/link'

@@ -1,6 +1,6 @@
 import stls from './SectionPartnersReviews.module.sass'
 import cn from 'classnames'
-import SectionPartnersReviewsProps from './SectionPartnersReviews.props'
+import SectionPartnersReviewsProps from './props'
 
 import { Wrapper } from '@/components/layout'
 import Image from 'next/image'

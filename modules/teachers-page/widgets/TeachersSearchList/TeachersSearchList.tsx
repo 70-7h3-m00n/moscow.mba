@@ -20,14 +20,22 @@ export function TeachersSearchList({ programId, programTitle }) {
 	const contactInfo = contactData()
 	const { program } = useContext(ContextStaticProps)
 	const { state, dispatch } = useTeachersSearch()
-	const { searchTerm, shownTeachersCount, UITeachers, teachers } = state
-	const showMoreTeachersAddedNum = 12
+
+	const {
+		searchTerm,
+		shownTeachersCount,
+		UITeachers,
+		teachers,
+		showMoreTeachersAddedNum
+	} = state
+
 
 	const handleOnClick = () =>
 		dispatch({
 			type: ACTION.SET_SHOWN_TEACHERS_COUNT,
 			payload: shownTeachersCount + showMoreTeachersAddedNum
 		})
+
 
 	return (
 		<>
@@ -154,7 +162,10 @@ export function TeachersSearchList({ programId, programTitle }) {
 						</Link>
 					) : (
 						UITeachers.length >= 8 &&
-						!searchTerm && (
+
+						!searchTerm &&
+						teachers && (
+
 							<button
 								className={cn('button', stls.btnShowMore, {
 									[stls.atTeachers]: at.teachers

@@ -33,10 +33,9 @@ const ReviewsSource = () => {
 					{logosArr.map(({ alt, src, rating }, idx) => (
 						<div
 							key={alt}
-							className={cn(
-								stls.logosWrapp,
-								shownSources < idx + 1 && stls.hidden
-							)}>
+							className={cn(stls.logosWrapp, {
+								[stls.hidden]: shownSources < idx + 1
+							})}>
 							<ImgTemplate
 								src={src}
 								alt={alt}
@@ -62,10 +61,9 @@ const ReviewsSource = () => {
 					)}
 				</div>
 				<div
-					className={cn(
-						stls.button,
-						logosArr.length === shownSources && stls.hidden
-					)}>
+					className={cn(stls.button, {
+						[stls.hidden]: logosArr.length === shownSources
+					})}>
 					<BtnArticlesShowMore onClick={showMoreSources} />
 				</div>
 			</Wrapper>
