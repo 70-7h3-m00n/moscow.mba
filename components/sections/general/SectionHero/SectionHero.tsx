@@ -18,8 +18,8 @@ export default function SectionHero({
 			<div className={stls.image}>
 				<Image src={data.src} alt={data.title} fill />
 			</div>
-			<Wrapper classNames={[stls.wrapper, at.partner && stls.partner]}>
-				<h2 className={cn(stls.title, at.partner && stls.partner)}>
+			<Wrapper classNames={[stls.wrapper, { [stls.partner]: at.partner }]}>
+				<h2 className={cn(stls.title, { [stls.partner]: at.partner })}>
 					{data.title}
 				</h2>
 				<p className={stls.paragraph}>{data.description}</p>

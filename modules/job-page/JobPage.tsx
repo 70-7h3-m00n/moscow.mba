@@ -1,3 +1,5 @@
+import stls from './JobPage.module.sass'
+
 import {
 	CorporateClients,
 	SectionDownloadForm,
@@ -8,7 +10,7 @@ import { SectionJobSteps } from './widgets/SectionJobSteps'
 import { SectionJobStudents } from './widgets/SectionJobStudents'
 import { JobData } from './widgets/data/JobData'
 import { StudentsData } from './widgets/data/StudentsData'
-import { jobEmail, jobLinks } from './widgets/data/DownloadForm'
+import { jobLinks } from './widgets/data/DownloadForm'
 
 export default function JobPage() {
 	return (
@@ -20,7 +22,7 @@ export default function JobPage() {
 			<SectionJobSteps data={JobData} />
 			<SectionJobStudents students={StudentsData} />
 			<CorporateClients />
-			<SectionDownloadForm mail={jobEmail} downloadLinks={jobLinks} />
+			<SectionDownloadForm downloadLinks={jobLinks} />
 		</>
 	)
 }

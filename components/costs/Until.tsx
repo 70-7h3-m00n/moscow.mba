@@ -33,10 +33,10 @@ function findNearestFutureDate(datesArray) {
 	let nearestDate = Infinity
 	let nearestDiff = Infinity
 	for (const dateTimestamp of datesArray) {
-		const diff = dateTimestamp - Date.now()
-		if (diff >= 0 && diff < nearestDiff) {
+		const difference = dateTimestamp - Date.now()
+		if (difference >= 0 && difference < nearestDiff) {
 			nearestDate = dateTimestamp
-			nearestDiff = diff
+			nearestDiff = difference
 		}
 	}
 	return new Date(nearestDate)

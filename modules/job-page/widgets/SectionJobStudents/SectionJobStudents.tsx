@@ -1,6 +1,6 @@
 import stls from './SectionJobStudents.module.sass'
 import cn from 'classnames'
-import SectionJobStudentsProps from './SectionJobStudents.props'
+import SectionJobStudentsProps from './props'
 
 import { Wrapper } from '@/components/layout'
 import SectionJobStudentCard from './components/SectionJobStudentCard/SectionJobStudentCard'

@@ -1,6 +1,6 @@
 import stls from './SectionJobSteps.module.sass'
 import cn from 'classnames'
-import SectionJobStepsProps from './SectionJobSteps.props'
+import SectionJobStepsProps from './props'
 
 import { Wrapper } from '@/components/layout'
 import { HowProcessGoes } from '@/components/sections'

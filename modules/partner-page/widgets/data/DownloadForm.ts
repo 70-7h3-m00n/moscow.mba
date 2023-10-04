@@ -1,12 +1,6 @@
 export const partnerLinks = [
 	{
 		title: 'АНКЕТА ПАРТНËРА',
-		src: '/jobdocuments/employer-form.pdf'
+		src: 'https://forms.gle/WgYnn7w6TDmj8Av77'
 	}
 ]
-
-export const partnerEmail = {
-	address: 'rabota@moscow.mba',
-	subject: '🤝 Хочу с вами сотрудничать',
-	body: 'Добрый день, Московская Бизнес Академия. Анкета партнёра во вложении'
-}

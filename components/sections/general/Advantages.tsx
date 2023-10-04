@@ -180,10 +180,9 @@ const Advantages = () => {
 									scrollIntoViewSteps(idx)
 								}}>
 								<a
-									className={cn(
-										stls.tabLink,
-										idx === activeStep && stls.activeTabLink
-									)}>
+									className={cn(stls.tabLink, {
+										[stls.activeTabLink]: idx === activeStep
+									})}>
 									{step.tabTitle}
 								</a>
 							</li>
@@ -194,10 +193,9 @@ const Advantages = () => {
 							<div
 								key={idx + step.tabTitle}
 								ref={stepsRefs.current[idx]}
-								className={cn(
-									stls.processStep,
-									idx === activeStep && stls.activeProcessStep
-								)}>
+								className={cn(stls.processStep, {
+									[stls.activeProcessStep]: idx === activeStep
+								})}>
 								<span
 									className={stls.redStick}
 									style={{

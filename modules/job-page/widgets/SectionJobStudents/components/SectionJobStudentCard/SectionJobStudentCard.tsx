@@ -1,6 +1,6 @@
 import stls from './SectionJobStudentCard.module.sass'
 import cn from 'classnames'
-import SectionJobStudentCardProps from './SectionJobStudentCard.props'
+import SectionJobStudentCardProps from './props'
 
 import Image from 'next/image'
 

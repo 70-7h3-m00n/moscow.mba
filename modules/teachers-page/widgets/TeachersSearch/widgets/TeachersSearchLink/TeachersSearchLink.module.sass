@@ -1,0 +1,54 @@
+@use 'sass:math'
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.searchResults
+  position: absolute
+  z-index: 3
+  top: f.px(49)
+  left: 0
+  min-width: 100%
+  max-width: 100%
+  margin: 0
+  padding: 0
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.06)
+
+.searchResult
+  display: flex
+  border-right: 1px solid
+  border-bottom: 1px solid
+  border-left: 1px solid
+  @include m.dye(bgc, c.$psi)
+  @include m.dye(borderc, rgba(c.$chi, .1))
+
+.searchResultLink
+  display: flex
+  @include m.media(phone, tablet)
+    flex-direction: column
+    align-items: flex-start
+  @include m.media(laptop, desktop, widescreen)
+    justify-content: space-between
+    align-items: center
+  font-family: 'Styrene', Arial, Tahoma, sans-serif
+  font-weight: 300
+  line-height: 120%
+  flex-basis: 100%
+  padding: f.px(23) f.px(15)
+  transition: color .15s ease-in-out
+  @include m.dye(c, c.$chi)
+  @include m.media(tablet, laptop, desktop, widescreen)
+    &:hover
+      @include m.dye(c, c.$alpha)
+      & .searchResultLabel
+        @include m.dye(border, c.$alpha)
+        @include m.dye(c, c.$alpha)
+
+.searchResultTitle
+  margin: 0
+  @include m.media(phone, tablet)
+    order: 2
+    font-size: f.px(14)
+  @include m.media(laptop, desktop, widescreen)
+    font-size: f.px(15)
+  line-height: 120%

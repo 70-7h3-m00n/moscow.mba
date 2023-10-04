@@ -7,7 +7,7 @@ import {
 	SectionHero
 } from '@/components/sections'
 import { data } from './widgets/data/PartnerData'
-import { partnerEmail, partnerLinks } from './widgets/data/DownloadForm'
+import { partnerLinks } from './widgets/data/DownloadForm'
 import SectionCooperationVariants from './widgets/SectionCooperationVariants/SectionCooperationVariants'
 import { Variants } from './widgets/data/Variants'
 import SectionPartnersReviews from './widgets/SectionPartnersReviews/SectionPartnersReviews'
@@ -29,7 +29,6 @@ export default function PartnerPage() {
 			/>
 			<SectionDownloadForm
 				className={stls.downloadForm}
-				mail={partnerEmail}
 				downloadLinks={partnerLinks}
 			/>
 		</>

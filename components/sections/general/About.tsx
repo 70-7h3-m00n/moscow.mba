@@ -13,11 +13,18 @@ const About = ({ className, ...rest }: AboutProps) => {
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.wrapper, at.partner && stls.partner]}>
-				<div className={cn(stls.title, at.partner && stls.partner)}>
-					{at.en ? 'About' : 'Об академии'}
-				</div>
+				{!at.partner && (
+					<div className={cn(stls.title, { [stls.partner]: at.partner })}>
+						{at.en ? 'About' : 'Об академии'}
+					</div>
+				)}
 				<div className={stls.flexContainer}>
-					<div className={cn(stls.titleDesc, at.partner && stls.partner)}>
+					<div className={cn(stls.titleDesc, { [stls.partner]: at.partner })}>
+						{at.partner && (
+							<div className={cn(stls.title, { [stls.partner]: at.partner })}>
+								{at.en ? 'About' : 'Об академии'}
+							</div>
+						)}
 						<p className={stls.desc}>
 							{at.en
 								? 'Moscow Business Academy is one of the leading business schools in CIS countries. It is also among the few of them who export our domestic MBA to the West and work in the global market'
@@ -29,10 +36,10 @@ const About = ({ className, ...rest }: AboutProps) => {
 								: 'Ежегодно сотни топ-менеджеров и владельцев компаний получают здесь образование международного уровня и завязывают новые знакомства'}
 						</p>
 					</div>
-					<ul className={cn(stls.list, at.partner && stls.partner)}>
+					<ul className={cn(stls.list, { [stls.partner]: at.partner })}>
 						<li className={stls.listItem}>
 							<div className={stls.number}>
-								<span className={stls.years}>11</span>
+								<span>11</span>
 								{at.en ? ' yrs' : ' лет'}
 							</div>
 							<p>{at.en ? 'on the market' : 'на рынке образования'}</p>

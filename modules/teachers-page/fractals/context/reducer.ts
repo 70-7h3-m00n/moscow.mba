@@ -57,6 +57,7 @@ export type TypeTeachersReducer = {
 	UITeachers: TypeLibTeachers
 	teachers: TypeLibTeachers
 	searchInputIsFocused: boolean
+	showMoreTeachersAddedNum: number
 }
 
 export const teachersReducer = (

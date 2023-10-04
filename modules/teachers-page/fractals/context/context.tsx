@@ -1,4 +1,3 @@
-import useAt from '@/hooks/useAt'
 import { TypeLibTeachers } from '@/types/index'
 import React, { createContext, useContext, useEffect, useReducer } from 'react'
 import {
@@ -26,7 +25,8 @@ export const TeachersReducerInitialState: TypeTeachersReducer = {
 	shownTeachersCount: 8,
 	UITeachers: [],
 	teachers: [],
-	searchInputIsFocused: null
+	searchInputIsFocused: null,
+	showMoreTeachersAddedNum: 12
 }
 
 const TeachersSearchContext = createContext<
@@ -37,8 +37,6 @@ export const TeachersSearchProvider: React.FC<TeachersSearchProviderProps> = ({
 	children,
 	teachersProps
 }) => {
-	const at = useAt()
-
 	const [state, dispatch] = useReducer(
 		teachersReducer,
 		TeachersReducerInitialState
@@ -55,7 +53,9 @@ export const TeachersSearchProvider: React.FC<TeachersSearchProviderProps> = ({
 			type: ACTION.SET_INITIAL_TEACHERS,
 			payload: { teachersProps, UITeachers }
 		})
-	}, [teachersProps, UITeachers])
+	}, [teachersProps, state.shownTeachersCount])
+
+	//UITeachers error
 
 	return (
 		<TeachersSearchContext.Provider
