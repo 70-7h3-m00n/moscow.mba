@@ -383,10 +383,12 @@ const HowProcessGoes = ({ partners = false }) => {
 				</div>
 				<div className={stls.infoContainer}>
 					<ul
+
 						className={cn(stls.tabsList, {
 							[stls.programsPage]: at.programs,
 							[stls.job]: at.job
 						})}>
+
 						{processSteps?.map((step, idx) => (
 							<li
 								key={step.tabTitle + idx}
@@ -407,10 +409,12 @@ const HowProcessGoes = ({ partners = false }) => {
 						))}
 					</ul>
 					<div
+
 						className={cn(stls.stepsWrap, {
 							[stls.programsPage]: at.programs,
 							[stls.job]: at.job
 						})}>
+
 						<>
 							{processSteps?.map((step, idx) => (
 								<>
@@ -465,6 +469,7 @@ const HowProcessGoes = ({ partners = false }) => {
 								</>
 							))}
 						</>
+
 					</div>
 				</div>
 			</Wrapper>

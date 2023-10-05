@@ -39,7 +39,7 @@ const About = ({ className, ...rest }: AboutProps) => {
 					<ul className={cn(stls.list, { [stls.partner]: at.partner })}>
 						<li className={stls.listItem}>
 							<div className={stls.number}>
-								<span>11</span>
+								<span className={stls.years}>11</span>
 								{at.en ? ' yrs' : ' лет'}
 							</div>
 							<p>{at.en ? 'on the market' : 'на рынке образования'}</p>

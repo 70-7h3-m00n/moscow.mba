@@ -54,8 +54,10 @@ const PageTeachers = ({ programs, teachers }) => {
 					<Breadcrumbs />
 				</Wrapper>
 			</section>
+
 			{/* <Teachers atStandAlonePage teachers={teachers} /> */}
 			<TeachersPage atStandAlonePage teachers={teachers} />
+
 		</>
 	)
 }
