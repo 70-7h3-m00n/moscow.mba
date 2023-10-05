@@ -16,6 +16,7 @@ const JumbotronMain = () => {
 					src='/assets/images/jumbotron_1.jpg'
 					layout='fill'
 					alt={'Студенты обучаются'}
+					priority
 				/>
 			</div>
 			<div className={stls.generalContainer}>
