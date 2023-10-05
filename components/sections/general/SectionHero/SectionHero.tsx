@@ -16,7 +16,7 @@ export default function SectionHero({
 	return (
 		<section className={cn(stls.container, className)} {...rest}>
 			<div className={stls.image}>
-				<Image src={data.src} alt={data.title} fill />
+				<Image src={data.src} alt={data.title} fill priority />
 			</div>
 			<Wrapper classNames={[stls.wrapper, { [stls.partner]: at.partner }]}>
 				<h2 className={cn(stls.title, { [stls.partner]: at.partner })}>
