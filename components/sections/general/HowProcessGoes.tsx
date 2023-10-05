@@ -415,61 +415,61 @@ const HowProcessGoes = ({ partners = false }) => {
 							[stls.job]: at.job
 						})}>
 
+						<>
+							{processSteps?.map((step, idx) => (
+								<>
+									<div
+										key={idx + step.tabTitle}
+										ref={stepsRefs.current[idx]}
+										className={cn(stls.processStep, {
+											[stls.activeProcessStep]: idx === activeStep,
+											[stls.programsPage]: at.programs,
+											[stls.job]: at.job
+										})}>
+										<span
+											className={cn(stls.redStick, {
+												[stls.programsPage]: at.programs,
+												[stls.job]: partners
+											})}
+											style={{
+												height: `calc(${
+													Number(scrolledData[idx]) * 100
+												}% - 48px)`
+											}}
+										/>
+										<div
+											className={cn(stls.processStepNumber, {
+												[stls.programsPage]: at.programs,
+												[stls.partners]: partners,
+												[stls.job]: at.job
+											})}>
+											{idx + 1}
+										</div>
+										<div
+											className={cn(stls.processStepTitle, {
+												[stls.programsPage]: at.programs
+											})}>
+											{step.stepTitle}
+										</div>
+										<ul
+											className={cn(stls.list, {
+												[stls.programsPage]: at.programs,
+												[stls.job]: at.job,
+												[stls.partners]: partners
+											})}>
+											{step.listItems?.map((item, idx) => (
+												<li
+													key={item + idx}
+													className={cn(stls.listItem, { [stls.job]: at.job })}>
+													{item}
+												</li>
+											))}
+										</ul>
+									</div>
+								</>
+							))}
+						</>
 
-						{processSteps?.map((step, idx) => (
-							<div
-								key={idx + step.tabTitle}
-								ref={stepsRefs.current[idx]}
-
-								className={cn(stls.processStep, {
-									[stls.activeProcessStep]: idx === activeStep,
-									[stls.programsPage]: at.programs,
-									[stls.job]: at.job
-
-								<span
-									className={cn(stls.redStick, {
-										[stls.programsPage]: at.programs,
-										[stls.job]: partners
-									})}
-									style={{
-										height: `calc(${Number(scrolledData[idx]) * 100}% - 48px)`
-									}}
-								/>
-								<div
-
-									className={cn(stls.processStepNumber, {
-										[stls.programsPage]: at.programs,
-										[stls.partners]: partners,
-										[stls.job]: at.job
-									})}>
-
-
-									{idx + 1}
-								</div>
-								<div
-									className={cn(stls.processStepTitle, {
-										[stls.programsPage]: at.programs
-									})}>
-									{step.stepTitle}
-								</div>
-								<ul
-									className={cn(stls.list, {
-										[stls.programsPage]: at.programs,
-										[stls.job]: at.job,
-										[stls.partners]: partners
-									})}>
-									{step.listItems?.map((item, idx) => (
-										<li
-											key={item + idx}
-
-											className={cn(stls.listItem, { [stls.job]: at.job })}>
-
-											{item}
-										</li>
-									))}
-								</ul>
-							</div>
-						))}
 					</div>
 				</div>
 			</Wrapper>
