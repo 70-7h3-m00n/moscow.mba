@@ -1,0 +1,34 @@
+@use 'sass:math'
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.nothingFound
+  @include m.media(phone, tablet)
+    margin-top: f.px(30)
+    padding: f.px(49) f.px(25)
+  @include m.media(laptop, desktop, widescreen)
+    margin-top: f.px(60)
+    padding: f.px(100) 17%
+  border: 1px solid
+  @include m.dye(borderc, c.$nu)
+
+.nothingFoundTitle
+  @include m.media(phone, tablet)
+    margin-bottom: f.px(8)
+    font-size: f.px(20)
+  @include m.media(laptop, desktop, widescreen)
+    margin-bottom: f.px(18)
+    font-size: f.px(30)
+  font-weight: 500
+  line-height: 120%
+
+.nothingFoundP
+  @include m.media(phone, tablet)
+    font-size: f.px(13)
+  font-weight: 300
+  line-height: 120%
+
+.nothingFoundLink
+  display: inline-block
+  font-weight: 500

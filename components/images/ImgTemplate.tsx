@@ -36,7 +36,8 @@ const ImgTemplate = ({
 					getClassNames({ classNames })
 				) || undefined
 			}
-			title={title}>
+			title={title}
+		>
 			<span
 				className={cn({
 					[stls.faded]: faded,
@@ -44,14 +45,14 @@ const ImgTemplate = ({
 					[stls.filterAlt]: filterAlt,
 					[stls.darken]: darken,
 					[stls.isHidden]: !faded && !filter && !filterAlt && !darken
-				})}></span>
+				})}
+			></span>
 			{src && (
 				<Image
 					src={src}
 					alt={alt}
 					title={title}
 					className={stls.img}
-					placeholder='blur'
 					blurDataURL={base64pixel}
 					aria-label={title || alt}
 					{...imageProps}

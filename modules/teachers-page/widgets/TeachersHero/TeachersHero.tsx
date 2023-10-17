@@ -7,7 +7,7 @@ import { DigitalTransformationContext } from '@/context/index'
 import Image from 'next/image'
 import base64pixel from '@/config/base64pixel'
 import { IconCheck } from '@/components/icons'
-import TeachersHeroProps from './props'
+import { TeachersHeroProps } from './types'
 
 export const TeachersHero = ({}: TeachersHeroProps) => {
 	const at = useAt()
@@ -20,7 +20,8 @@ export const TeachersHero = ({}: TeachersHeroProps) => {
 				<h2
 					className={cn({
 						[stls.titleProfession]: at.profession || at.course
-					})}>
+					})}
+				>
 					{at.profession || at.course ? (
 						at.en ? (
 							''
@@ -63,18 +64,21 @@ export const TeachersHero = ({}: TeachersHeroProps) => {
 						[stls.twoImages]: true,
 						[stls.detailImage]: true,
 						[stls.detailImageAtProfession]: at.profession || at.course
-					})}>
+					})}
+				>
 					<div
 						className={cn({
 							[stls.image]: true,
 							[stls.pic1]: true,
 							[stls.pic1AtProfession]: at.profession || at.course
-						})}>
+						})}
+					>
 						<Image
+							priority
 							src={'/assets/images/speaker_1.jpg'}
 							alt={at.en ? 'Expert during a talk' : 'Спикер на сцене даёт речь'}
 							width={425}
-							height={422}
+							height={425}
 							placeholder='blur'
 							blurDataURL={base64pixel}
 							style={{
@@ -87,7 +91,8 @@ export const TeachersHero = ({}: TeachersHeroProps) => {
 							[stls.image]: true,
 							[stls.pic2]: true,
 							[stls.pic2AtProfession]: at.profession || at.course
-						})}>
+						})}
+					>
 						<Image
 							src={'/assets/images/speaker_2.jpg'}
 							alt={at.en ? 'Expert during a talk' : 'Спикер на сцене даёт речь'}
@@ -105,7 +110,8 @@ export const TeachersHero = ({}: TeachersHeroProps) => {
 					className={cn({
 						[stls.detailList]: true,
 						[stls.detailListProfession]: at.profession || at.course
-					})}>
+					})}
+				>
 					<li>
 						<div className={stls.circle}>
 							<IconCheck />

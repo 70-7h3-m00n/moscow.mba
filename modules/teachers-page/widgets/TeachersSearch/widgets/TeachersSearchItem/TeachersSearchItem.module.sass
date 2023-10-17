@@ -52,24 +52,3 @@
   @include m.media(laptop, desktop, widescreen)
     font-size: f.px(15)
   line-height: 120%
-
-.searchResultLabel
-  flex-shrink: 0
-  @include m.media(phone, tablet)
-    order: 1
-    margin-bottom: f.px(10)
-    padding: f.px(7)
-    border-radius: f.px(18)
-    font-size: f.px(10)
-  @include m.media(laptop, desktop, widescreen)
-    margin-left: f.px(15)
-    padding: f.px(9) f.px(18)
-    border-radius: f.px(80)
-    font-size: f.px(12)
-  border: 1px solid
-  @include m.dye(border, c.$chi)
-  line-height: 120%
-  letter-spacing: 0.1em
-  text-transform: uppercase
-  transition: color .15s ease-in-out  
-  @include m.dye(c, c.$chi)

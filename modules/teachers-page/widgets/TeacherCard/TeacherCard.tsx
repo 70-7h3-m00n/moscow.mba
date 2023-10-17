@@ -5,14 +5,14 @@ import base64pixel from '@/config/base64pixel'
 import useAt from '@/hooks/useAt'
 import Image from 'next/image'
 import { IconMoreThan } from '@/components/icons'
-import TeacherCardProps from './props'
+import { TeacherCardProps } from './types'
 import { MoreInfoIcon } from './widgets/MoreInfoIcon'
+import { useTeachersSearch } from 'modules/teachers-page/fractals/context/context'
 
-export const TeacherCard = ({
-	teacher,
-	atStandAlonePage
-}: TeacherCardProps) => {
+export const TeacherCard = ({ teacher }: TeacherCardProps) => {
 	const at = useAt()
+	const { state } = useTeachersSearch()
+	const { atStandAlonePage } = state
 
 	const TeachersDescription = ({ mobile = false }: { mobile?: boolean }) => {
 		return (
@@ -23,11 +23,13 @@ export const TeacherCard = ({
 					{
 						[stls.atStandAlonePage]: atStandAlonePage
 					}
-				)}>
+				)}
+			>
 				<p
 					className={cn(stls.bioP, {
 						[stls.atStandAlonePage]: atStandAlonePage
-					})}>
+					})}
+				>
 					<MoreInfoIcon atStandAlonePage />
 				</p>
 				<IconMoreThan classNames={[stls.icon]} />

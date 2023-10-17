@@ -11,7 +11,8 @@ export const ACTION = {
 	SET_EMPTY_INPUT: 'SET_EMPTY_INPUT' as const,
 	APPLY_SEARCH_TERM_TO_URL: 'APPLY_SEARCH_TERM_TO_URL' as const,
 	SET_SEARCH_TERM_INPUT_FOCUSED: 'SET_SEARCH_TERM_INPUT_FOCUSED' as const,
-	SET_HANDLE_ON_FOCUS: 'SET_HANDLE_ON_FOCUS' as const
+	SET_HANDLE_ON_FOCUS: 'SET_HANDLE_ON_FOCUS' as const,
+	SET_INITIAL_PROPS: 'SET_INITIAL_PROPS' as const
 }
 
 export type TeachersSearchAction =
@@ -34,9 +35,16 @@ export type TeachersSearchAction =
 			payload: { teachersProps: TypeLibTeachers; UITeachers: TypeLibTeachers }
 	  }
 	| {
+			type: typeof ACTION.SET_INITIAL_PROPS
+			payload: {
+				programTitle: string
+				programId: string | number
+				atStandAlonePage: boolean
+			}
+	  }
+	| {
 			type: typeof ACTION.SET_EMPTY_INPUT
 			payload: {
-				searchTerm: string
 				searchTermIsApplied: boolean
 				setInputClose: boolean
 			}
@@ -59,7 +67,9 @@ export type TypeTeachersReducer = {
 	searchInputIsFocused: boolean
 
 	showMoreTeachersAddedNum: number
-
+	programTitle: string
+	programId: string | number
+	atStandAlonePage: boolean
 }
 
 export const teachersReducer = (
@@ -93,6 +103,13 @@ export const teachersReducer = (
 				teachers: action.payload.teachersProps,
 				UITeachers: action.payload.UITeachers
 			}
+		case ACTION.SET_INITIAL_PROPS:
+			return {
+				...state,
+				programTitle: action.payload.programTitle,
+				programId: action.payload.programId,
+				atStandAlonePage: action.payload.atStandAlonePage
+			}
 		case ACTION.APPLY_SEARCH_TERM_TO_URL:
 			return {
 				...state,
@@ -102,7 +119,7 @@ export const teachersReducer = (
 		case ACTION.SET_EMPTY_INPUT:
 			return {
 				...state,
-				searchTerm: action.payload.searchTerm,
+				searchTerm: '',
 				searchTermIsAppliedtoUrl: action.payload.searchTermIsApplied,
 				setInputClose: action.payload.setInputClose
 			}
