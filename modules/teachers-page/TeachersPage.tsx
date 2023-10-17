@@ -1,6 +1,6 @@
 import stls from './TeachersPage.module.sass'
 import cn from 'classnames'
-import TeachersPageProps from './props'
+import { TeachersPageProps } from './types'
 
 import { Wrapper } from '@/components/layout'
 import { TeachersSearchProvider } from './fractals/context/context'
@@ -18,19 +18,22 @@ const TeachersPage = ({
 	teachers = null
 }: TeachersPageProps) => {
 	return (
-		<TeachersSearchProvider teachersProps={teachers}>
+		<TeachersSearchProvider
+			programTitle={programTitle}
+			programId={programId}
+			atStandAlonePage={atStandAlonePage}
+			teachersProps={teachers}
+		>
 			<section
 				className={cn(stls.container, {
 					[stls.standalonePage]: atStandAlonePage
-				})}>
+				})}
+			>
 				<Wrapper column>
 					<TeachersHero />
 					<TeachersSearch />
-					<TeachersList atStandAlonePage={atStandAlonePage} />
-					<TeachersSearchList
-						programTitle={programTitle}
-						programId={programId}
-					/>
+					<TeachersList />
+					<TeachersSearchList />
 				</Wrapper>
 			</section>
 		</TeachersSearchProvider>

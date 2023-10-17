@@ -1,4 +1,3 @@
-
 import useAt from '@/hooks/useAt'
 
 import { TypeLibTeachers } from '@/types/index'
@@ -10,15 +9,19 @@ import {
 	teachersReducer
 } from './reducer'
 import { useUITeachers } from '../hooks/useUITeachers/useUITeachers'
+import { useRouter } from 'next/router'
 
 interface TeachersSearchContextType {
 	state: TypeTeachersReducer
 	dispatch: React.Dispatch<TeachersSearchAction>
 }
 
-interface TeachersSearchProviderProps {
+export interface TeachersSearchProviderProps {
 	children: React.ReactNode
 	teachersProps: TypeLibTeachers
+	programTitle: string
+	programId: string | number
+	atStandAlonePage: boolean
 }
 
 export const TeachersReducerInitialState: TypeTeachersReducer = {
@@ -30,25 +33,30 @@ export const TeachersReducerInitialState: TypeTeachersReducer = {
 	teachers: [],
 
 	searchInputIsFocused: null,
-	showMoreTeachersAddedNum: 12
-
+	showMoreTeachersAddedNum: 12,
+	programTitle: null,
+	programId: null,
+	atStandAlonePage: null
 }
 
-const TeachersSearchContext = createContext<
+export const TeachersSearchContext = createContext<
 	TeachersSearchContextType | undefined
 >(undefined)
 
 export const TeachersSearchProvider: React.FC<TeachersSearchProviderProps> = ({
 	children,
-	teachersProps
+	teachersProps,
+	programTitle,
+	programId,
+	atStandAlonePage
 }) => {
-
 	const at = useAt()
 
 	const [state, dispatch] = useReducer(
 		teachersReducer,
 		TeachersReducerInitialState
 	)
+	const router = useRouter()
 
 	const UITeachers = useUITeachers({
 		teachers: teachersProps,
@@ -58,19 +66,25 @@ export const TeachersSearchProvider: React.FC<TeachersSearchProviderProps> = ({
 
 	useEffect(() => {
 		dispatch({
+			type: ACTION.SET_INITIAL_PROPS,
+			payload: { programTitle, programId, atStandAlonePage }
+		})
+	}, [atStandAlonePage, programId, programTitle])
+
+	useEffect(() => {
+		dispatch({
 			type: ACTION.SET_INITIAL_TEACHERS,
 			payload: { teachersProps, UITeachers }
 		})
-
-	}, [teachersProps, UITeachers])
-
+	}, [state.shownTeachersCount, router.query.q, UITeachers.length])
 
 	return (
 		<TeachersSearchContext.Provider
 			value={{
 				state,
 				dispatch
-			}}>
+			}}
+		>
 			{children}
 		</TeachersSearchContext.Provider>
 	)

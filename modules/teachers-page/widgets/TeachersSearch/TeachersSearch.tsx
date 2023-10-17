@@ -1,20 +1,15 @@
 import stls from '../../TeachersPage.module.sass'
 import cn from 'classnames'
-import TeachersSearchProps from './props'
+import { TeachersSearchProps } from './types'
 
 import useAt from '@/hooks/useAt'
 import { IconClose, IconSearch } from '@/components/icons'
-
-import { useContext, useEffect, useState } from 'react'
-
+import { useContext, useEffect } from 'react'
 import { ContextStaticProps } from '@/context/index'
 import { useRouter } from 'next/router'
 import { useTeachersSearch } from 'modules/teachers-page/fractals/context/context'
 import { ACTION } from 'modules/teachers-page/fractals/context/reducer'
-import { TeachersSearchItem } from './widgets/TeachersSearchItem/TeachersSearchItem'
-
-import { TeachersSearchLink } from './widgets/TeachersSearchLink/TeachersSearchLink'
-
+import { ProgramSearchItem, TeachersSearchItem } from './widgets'
 
 export const TeachersSearch = ({}: TeachersSearchProps) => {
 	const at = useAt()
@@ -29,7 +24,6 @@ export const TeachersSearch = ({}: TeachersSearchProps) => {
 		teachers
 	} = state
 
-
 	const handleSearch = e => {
 		dispatch({
 			type: ACTION.APPLY_SEARCH_TERM_TO_URL,
@@ -41,7 +35,6 @@ export const TeachersSearch = ({}: TeachersSearchProps) => {
 		dispatch({
 			type: ACTION.SET_EMPTY_INPUT,
 			payload: {
-				searchTerm: '',
 				searchTermIsApplied: false,
 				setInputClose: true
 			}
@@ -75,7 +68,7 @@ export const TeachersSearch = ({}: TeachersSearchProps) => {
 	}
 
 	useEffect(() => {
-		if (!state.isInputClose && !state.searchTerm && router.query.q) {
+		if (router.query.q && router.query.q !== '') {
 			dispatch({
 				type: ACTION.APPLY_SEARCH_TERM_TO_URL,
 				payload: {
@@ -84,14 +77,7 @@ export const TeachersSearch = ({}: TeachersSearchProps) => {
 				}
 			})
 		}
-
-	}, [
-		state.isInputClose,
-		router,
-		state.searchTerm,
-		state.shownTeachersCount,
-		dispatch
-	])
+	}, [router])
 
 	return (
 		<>
@@ -115,12 +101,14 @@ export const TeachersSearch = ({}: TeachersSearchProps) => {
 									maxWidth: 'max-content'
 							  }
 							: {}
-					}>
+					}
+				>
 					<div className={stls.searchInputGroup}>
 						<div
 							className={cn(stls.searchIcon, {
 								[stls.searchIconSearthTermIsApplied]: searchTermIsAppliedtoUrl
-							})}>
+							})}
+						>
 							{searchTerm ? (
 								<IconClose
 									style={{ cursor: 'pointer' }}
@@ -153,13 +141,12 @@ export const TeachersSearch = ({}: TeachersSearchProps) => {
 					</div>
 					{searchTerm && searchInputIsFocused && (
 						<ul className={stls.searchResults}>
-
 							{teachers
 								?.filter(teacher =>
 									teacher.name?.toLowerCase().includes(searchTerm.toLowerCase())
 								)
 								?.map((teacher, idx) => (
-									<TeachersSearchLink
+									<TeachersSearchItem
 										key={`Teachers_searchResults_${teacher?.name}-${idx}`}
 										teacher={teacher}
 									/>
@@ -174,7 +161,7 @@ export const TeachersSearch = ({}: TeachersSearchProps) => {
 								)
 								.filter((_, idx) => idx < 10)
 								.map((program, idx) => (
-									<TeachersSearchItem
+									<ProgramSearchItem
 										key={`Teachers_searchResults_${program?.title}-${idx}`}
 										program={program}
 									/>
