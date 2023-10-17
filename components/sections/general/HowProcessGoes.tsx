@@ -417,9 +417,8 @@ const HowProcessGoes = ({ partners = false }) => {
 
 						<>
 							{processSteps?.map((step, idx) => (
-								<>
+								<React.Fragment key={idx + step.tabTitle}>
 									<div
-										key={idx + step.tabTitle}
 										ref={stepsRefs.current[idx]}
 										className={cn(stls.processStep, {
 											[stls.activeProcessStep]: idx === activeStep,
@@ -466,7 +465,7 @@ const HowProcessGoes = ({ partners = false }) => {
 											))}
 										</ul>
 									</div>
-								</>
+								</React.Fragment>
 							))}
 						</>
 

@@ -30,9 +30,15 @@ const SearchField = ({ header = false }) => {
 	const filteredPrograms = programsNotBlended?.filter(
 		program =>
 			(decodedEnInput &&
-				program?.title?.toLowerCase().includes(decodedEnInput)) ||
+				program?.title
+					?.toLowerCase()
+					?.replace(/-/g, ' ')
+					.includes(decodedEnInput)) ||
 			(searchTerm &&
-				program?.title?.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
+				program?.title
+					?.toLowerCase()
+					?.replace(/-/g, ' ')
+					.includes(searchTerm.toLocaleLowerCase()))
 	)
 
 	useEffect(() => {
@@ -52,7 +58,8 @@ const SearchField = ({ header = false }) => {
 						className={cn({
 							[stls.btn]: !header,
 							[stls.btnHeader]: header
-						})}>
+						})}
+					>
 						<IconSearch classNames={[stls.iconSearchAtBtn]} />{' '}
 						{!header && `Поиск`}
 					</button>
@@ -65,7 +72,8 @@ const SearchField = ({ header = false }) => {
 				onOpen={() => setInputIsFocused(true)}
 				onClose={() => setInputIsFocused(false)}
 				position={'top center'}
-				className='popup-SearchField'>
+				className='popup-SearchField'
+			>
 				{/* @ts-expect-error  */}
 				{(close: MouseEventHandler) => (
 					<div className={stls.popupContainer}>
@@ -93,7 +101,8 @@ const SearchField = ({ header = false }) => {
 									<a
 										href='#!'
 										onClick={clearInput}
-										className={stls.iconClearBtn}>
+										className={stls.iconClearBtn}
+									>
 										<IconClose
 											classNames={[stls.iconClear]}
 											stroke={colors.alpha}
@@ -105,10 +114,12 @@ const SearchField = ({ header = false }) => {
 								{filteredPrograms?.map((program, idx) => (
 									<li
 										key={program?.id || `SearchField__filteredPrograms-${idx}`}
-										className={stls.listItem}>
+										className={stls.listItem}
+									>
 										<Link
 											legacyBehavior
-											href={`/programs/${program?.category?.type}/${program?.studyFormat}/${program?.slug}`}>
+											href={`/programs/${program?.category?.type}/${program?.studyFormat}/${program?.slug}`}
+										>
 											<a onClick={close} className={stls.listItemLink}>
 												<p className={stls.p}>
 													<Highlighter

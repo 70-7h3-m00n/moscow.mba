@@ -12,8 +12,6 @@ import {
 import TrainingPeriodHours from '@/components/costs/TrainingPeriodHours'
 
 const CardProgram = ({ program }) => {
-	// console.log('program from CardProgram=>>>>>>>>>>>', program)
-
 	const at = useAt()
 	const { configPrograms } = useConfigProgramsContext()
 

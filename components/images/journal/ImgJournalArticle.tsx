@@ -45,7 +45,12 @@ const ImgJournalArticle = ({
 
 	return (
 		<>
-			<ImgTemplate classNames={classNames} {...params} darken={darken} />
+			<ImgTemplate
+				classNames={classNames}
+				{...params}
+				darken={darken}
+				priority
+			/>
 		</>
 	)
 }
