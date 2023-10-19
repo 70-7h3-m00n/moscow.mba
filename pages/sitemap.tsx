@@ -29,7 +29,7 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 		},
 		{
 			type: 'profession',
-			title: 'Профессиональная переподготовка',
+			title: 'Профессии',
 			url: `${routesFront.root}${routesFront.programsProfessionOnline}`
 		}
 	]
@@ -57,7 +57,8 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 		<li className={stls.nestedListItem} key={program._id}>
 			<Link
 				className={stls.link}
-				href={`${routesFront.programs}/${program.category.type}/${program.studyFormat}/${program.slug}`}>
+				href={`${routesFront.programs}/${program.category.type}/${program.studyFormat}/${program.slug}`}
+			>
 				{program.title}
 			</Link>
 			{program.studyFormat === 'online' && (
@@ -71,7 +72,8 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 		<React.Fragment key={type.type}>
 			<Link
 				className={stls.linkTitle}
-				href={`${routesFront.programs}/${type.type}`}>
+				href={`${routesFront.programs}/${type.type}`}
+			>
 				<h3>{type.title}</h3>
 			</Link>
 			<ul className={stls.nestedList}>
@@ -88,7 +90,8 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 		<li className={stls.nestedListItem} key={article.slug}>
 			<Link
 				className={stls.link}
-				href={`/journal/${article.slug}`}>{`${article.title}`}</Link>
+				href={`/journal/${article.slug}`}
+			>{`${article.title}`}</Link>
 		</li>
 	)
 

@@ -43,7 +43,8 @@ const Programs = () => {
 										headerMenuTabs: true,
 										'active-tab': isMini
 									})}
-									onClick={handleSetMini}>
+									onClick={handleSetMini}
+								>
 									Mini MBA
 								</a>
 							</li>
@@ -53,7 +54,8 @@ const Programs = () => {
 										headerMenuTabs: true,
 										'active-tab': isMba
 									})}
-									onClick={handleSetMba}>
+									onClick={handleSetMba}
+								>
 									MBA
 								</a>
 							</li>
@@ -61,17 +63,17 @@ const Programs = () => {
 								<Link
 									legacyBehavior
 									href='/programs/profession/online'
-									{...(at.en ? { locale: 'ru' } : undefined)}>
-									<a>
-										{at.en ? 'Profession' : 'Профессиональная переподготовка'}
-									</a>
+									{...(at.en ? { locale: 'ru' } : undefined)}
+								>
+									<a>{at.en ? 'Profession' : 'Профессии'}</a>
 								</Link>
 							</li>
 							<li>
 								<Link
 									legacyBehavior
 									href='/programs/course/online'
-									{...(at.en ? { locale: 'ru' } : undefined)}>
+									{...(at.en ? { locale: 'ru' } : undefined)}
+								>
 									<a>{at.en ? 'Course' : 'Повышение квалификации'}</a>
 								</Link>
 							</li>
@@ -79,7 +81,8 @@ const Programs = () => {
 								<Link
 									legacyBehavior
 									href='/programs/mini/online'
-									{...(at.en ? { locale: 'ru' } : undefined)}>
+									{...(at.en ? { locale: 'ru' } : undefined)}
+								>
 									<a>{at.en ? 'All programs' : 'Все программы'}</a>
 								</Link>
 							</li>
@@ -90,7 +93,8 @@ const Programs = () => {
 							className={cn({
 								'program-tabs-content': true,
 								visible: isMini
-							})}>
+							})}
+						>
 							<div className='top-info'>
 								<div className='prog-time'>
 									<i>
@@ -115,14 +119,16 @@ const Programs = () => {
 								<li>
 									<a
 										className={cn({ active: isMiniOnline })}
-										onClick={() => setIsMiniOnline(true)}>
+										onClick={() => setIsMiniOnline(true)}
+									>
 										ONLINE
 									</a>
 								</li>
 								<li>
 									<a
 										className={cn({ active: !isMiniOnline })}
-										onClick={() => setIsMiniOnline(false)}>
+										onClick={() => setIsMiniOnline(false)}
+									>
 										BLENDED
 									</a>
 								</li>
@@ -132,7 +138,8 @@ const Programs = () => {
 									className={cn({
 										'program-options-block': true,
 										show: isMiniOnline
-									})}>
+									})}
+								>
 									<div className='name'>
 										{at.en ? 'ONLINE' : 'Формат ONLINE'}
 
@@ -186,7 +193,8 @@ const Programs = () => {
 														<Link
 															legacyBehavior
 															href={`/programs/${item.category.type}/${item.studyFormat}/${item.slug}`}
-															{...(at.en ? { locale: 'ru' } : undefined)}>
+															{...(at.en ? { locale: 'ru' } : undefined)}
+														>
 															<a className={stls.link}>
 																{at.en
 																	? item?.slug?.split('-').join(' ') ||
@@ -204,7 +212,8 @@ const Programs = () => {
 									className={cn({
 										'program-options-block': true,
 										show: !isMiniOnline
-									})}>
+									})}
+								>
 									<div className='name'>
 										{at.en ? 'BLENDED' : 'Формат BLENDED'}
 									</div>
@@ -247,7 +256,8 @@ const Programs = () => {
 														<Link
 															legacyBehavior
 															href={`/programs/${item.category.type}/${item.studyFormat}/${item.slug}`}
-															{...(at.en ? { locale: 'ru' } : undefined)}>
+															{...(at.en ? { locale: 'ru' } : undefined)}
+														>
 															<a className={stls.link}>
 																{at.en
 																	? item?.slug?.split('-').join(' ') ||
@@ -267,7 +277,8 @@ const Programs = () => {
 							className={cn({
 								'program-tabs-content': true,
 								visible: isMba
-							})}>
+							})}
+						>
 							<div className='top-info'>
 								<div className='prog-time'>
 									<i>
@@ -292,14 +303,16 @@ const Programs = () => {
 								<li>
 									<a
 										className={cn({ active: isMbaOnline })}
-										onClick={() => setIsMbaOnline(true)}>
+										onClick={() => setIsMbaOnline(true)}
+									>
 										ONLINE
 									</a>
 								</li>
 								<li>
 									<a
 										className={cn({ active: !isMbaOnline })}
-										onClick={() => setIsMbaOnline(false)}>
+										onClick={() => setIsMbaOnline(false)}
+									>
 										BLENDED
 									</a>
 								</li>
@@ -309,7 +322,8 @@ const Programs = () => {
 									className={cn({
 										'program-options-block': true,
 										show: isMbaOnline
-									})}>
+									})}
+								>
 									<div className='name'>
 										{at.en ? 'ONLINE' : 'Формат ONLINE'}
 										<div className='discount'>
@@ -362,7 +376,8 @@ const Programs = () => {
 														<Link
 															legacyBehavior
 															href={`/programs/${item.category.type}/${item.studyFormat}/${item.slug}`}
-															{...(at.en ? { locale: 'ru' } : undefined)}>
+															{...(at.en ? { locale: 'ru' } : undefined)}
+														>
 															<a className={stls.link}>
 																{at.en
 																	? item?.slug?.split('-').join(' ') ||
@@ -378,7 +393,8 @@ const Programs = () => {
 											<Link
 												legacyBehavior
 												href={`/programs/international-business-law`}
-												{...(at.en ? { locale: 'ru' } : undefined)}>
+												{...(at.en ? { locale: 'ru' } : undefined)}
+											>
 												<a>Магистр международного бизнес-права</a>
 											</Link>
 										</li>
@@ -388,7 +404,8 @@ const Programs = () => {
 									className={cn({
 										'program-options-block': true,
 										show: !isMbaOnline
-									})}>
+									})}
+								>
 									<div className='name'>
 										{at.en ? 'BLENDED' : 'Формат BLENDED'}
 									</div>
@@ -431,7 +448,8 @@ const Programs = () => {
 														<Link
 															legacyBehavior
 															href={`/programs/${item.category.type}/${item.studyFormat}/${item.slug}`}
-															{...(at.en ? { locale: 'ru' } : undefined)}>
+															{...(at.en ? { locale: 'ru' } : undefined)}
+														>
 															<a className={stls.link}>
 																{at.en
 																	? item?.slug?.split('-').join(' ') ||

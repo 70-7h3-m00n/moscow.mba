@@ -6,7 +6,7 @@ export const LIST_FILTER_TYPE_PROGRAM = [
 	{ value: FilterTypeProgramEnum.mba, text: 'MBA' },
 	{
 		value: FilterTypeProgramEnum.profession,
-		text: 'Проф. переподготовка'
+		text: 'Профессии'
 	},
 	{ value: FilterTypeProgramEnum.course, text: 'Повышение квалификации' }
 ]

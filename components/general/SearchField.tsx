@@ -134,9 +134,9 @@ const SearchField = ({ header = false }) => {
 													{program?.category?.type === 'mini'
 														? 'Mini MBA'
 														: program?.category?.type === 'profession'
-														? 'Профессия'
+														? 'Профессии'
 														: program?.category?.type === 'course'
-														? 'Курс'
+														? 'Повышение квалификации'
 														: program?.category?.type === 'executive'
 														? 'Executive MBA'
 														: 'MBA'}

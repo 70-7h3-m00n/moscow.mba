@@ -102,7 +102,7 @@ const homeRoute = mainRoutes.find(route => route.path === '/')
 
 const professionRoute = {
 	label: {
-		ru: 'Проф. переподготовка',
+		ru: 'Профессии',
 		'en-US': 'Profession'
 	},
 	path: '/programs/profession/online'
@@ -191,7 +191,8 @@ const Breadcrumbs = ({ programChunkData = {} }) => {
 
 	return (
 		<div
-			className={[stls.breadcrumbsOuter, stls.jumbotronBreadcrumbs].join(' ')}>
+			className={[stls.breadcrumbsOuter, stls.jumbotronBreadcrumbs].join(' ')}
+		>
 			<Wrapper>
 				<ul className={stls.breadcrumbs}>
 					{breadcrumbsList.map((route, idx) => (

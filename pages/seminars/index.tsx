@@ -30,6 +30,8 @@ export const contextStaticPropsSeminars = createContext<{
 const PageSeminars = ({ programs, seminars, seminarCategories }) => {
 	usePageHandleContext({ programs })
 
+	console.log('=>>>>>>>>>>>.', seminars)
+
 	const at = useAt()
 
 	const [seminarsState, setSeminarsState] = useState<TypeLibSeminars | []>([])
@@ -76,7 +78,8 @@ const PageSeminars = ({ programs, seminars, seminarCategories }) => {
 					setSeminars: setSeminarsState,
 					seminarCategories: seminarCategoriesState,
 					setseminarCategories: setSeminarsCategoriesState
-				}}>
+				}}
+			>
 				<SeminarsPage />
 			</contextStaticPropsSeminars.Provider>
 		</>

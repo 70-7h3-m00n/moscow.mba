@@ -115,7 +115,8 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 								className={cn({
 									[stls.circle]: true,
 									[stls.active]: at.mini
-								})}></span>{' '}
+								})}
+							></span>{' '}
 							Mini MBA
 						</Link>
 
@@ -124,7 +125,8 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 								className={cn({
 									[stls.circle]: true,
 									[stls.active]: at.mba
-								})}></span>{' '}
+								})}
+							></span>{' '}
 							MBA
 						</Link>
 
@@ -133,13 +135,15 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 								onClick={() => {
 									setCurStudyField(null)
 									setIsNavigated(true)
-								}}>
+								}}
+							>
 								<span
 									className={cn({
 										[stls.circle]: true,
 										[stls.active]: at.profession
-									})}></span>{' '}
-								Проф. переподготовка
+									})}
+								></span>{' '}
+								Профессии
 							</a>
 						</Link>
 
@@ -148,12 +152,14 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 								onClick={() => {
 									setCurStudyField(null)
 									setIsNavigated(true)
-								}}>
+								}}
+							>
 								<span
 									className={cn({
 										[stls.circle]: true,
 										[stls.active]: at.course
-									})}></span>{' '}
+									})}
+								></span>{' '}
 								Повышение квалификации
 							</a>
 						</Link>
@@ -161,19 +167,22 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 						<Link
 							legacyBehavior
 							href='/programs/international-business-law'
-							{...(at.en ? { locale: 'ru' } : undefined)}>
+							{...(at.en ? { locale: 'ru' } : undefined)}
+						>
 							<a
 								className={cn({
 									[stls.highlight]: true,
 									[stls.mbl]: true
-								})}>
+								})}
+							>
 								MBL
 							</a>
 						</Link>
 						<Link
 							legacyBehavior
 							href='/programs/executive'
-							{...(at.en ? { locale: 'ru' } : undefined)}>
+							{...(at.en ? { locale: 'ru' } : undefined)}
+						>
 							<a className={stls.highlight}>
 								Executive MBA <span className={stls.premium}>Premium</span>
 							</a>
@@ -188,28 +197,33 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 								className={cn({
 									[stls.inactiveLink]: at.profession || at.course
 								})}
-								onClick={e => handleLinkClick(e)}>
+								onClick={e => handleLinkClick(e)}
+							>
 								<span
 									className={cn({
 										[stls.circle]: true,
 										[stls.active]: at.blended
-									})}></span>{' '}
+									})}
+								></span>{' '}
 								BLENDED (с очными модулями)
 							</a>
 						) : (
 							<Link
 								legacyBehavior
-								href={`/programs/${mbaTypeOfProgram}/blended`}>
+								href={`/programs/${mbaTypeOfProgram}/blended`}
+							>
 								<a
 									className={cn({
 										[stls.inactiveLink]: at.profession || at.course
 									})}
-									onClick={e => handleLinkClick(e)}>
+									onClick={e => handleLinkClick(e)}
+								>
 									<span
 										className={cn({
 											[stls.circle]: true,
 											[stls.active]: at.blended
-										})}></span>{' '}
+										})}
+									></span>{' '}
 									BLENDED (с очными модулями)
 								</a>
 							</Link>
@@ -220,7 +234,8 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 								className={cn({
 									[stls.circle]: true,
 									[stls.active]: at.online
-								})}></span>{' '}
+								})}
+							></span>{' '}
 							ONLINE (дистанционно){' '}
 							<span className={stls.discount50}>
 								<Discount />
@@ -236,13 +251,15 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 								<button
 									key={`field-btn-${idx}`}
 									className={stls.fieldButton}
-									onClick={() => handleSetCurStudyField(field)}>
+									onClick={() => handleSetCurStudyField(field)}
+								>
 									<>
 										<span
 											className={cn({
 												[stls.circle]: true,
 												[stls.active]: field === curStudyField
-											})}></span>
+											})}
+										></span>
 										{field}
 									</>
 								</button>

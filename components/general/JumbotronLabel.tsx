@@ -8,7 +8,7 @@ const JumbotronLabel = () => {
 		: at.mba
 		? 'MBA'
 		: at.profession
-		? 'Проф. переподготовка'
+		? 'Профессия'
 		: at.course
 		? 'Повышение квалификации'
 		: at.executive
