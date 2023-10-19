@@ -40,34 +40,6 @@ const PagePrograms = ({ mbaTypeOfProgram, mbaFormat }) => {
 			  )
 			: programsFiltered
 
-	// const studyFieldsFiltered = Array.from(
-	//   new Set(programsFiltered.map(program => program.study_field.name))
-	// )
-
-	// const studyFieldsFiltered =
-	//   (at.profession || at.course) &&
-	//   studyFields?.filter((studyField, idx) => {
-	//     return programsFiltered.some(
-	//       program =>
-	//         program?.study_field?.name?.toLowerCase() ===
-	//         studyField?.toLowerCase()
-	//     )
-	//   })
-
-	// useEffect(() => {
-	//   if (at.profession || at.course) {
-	//     setCurStudyField(studyFields?.[0] || null)
-	//   } else {
-	//     setCurStudyField(null)
-	//   }
-	// }, [
-	//   at.profession,
-	//   at.course,
-	//   setCurStudyField,
-	//   studyFields
-	//   // studyFieldsFiltered
-	// ])
-
 	return (
 		<>
 			<section className={stls.jumbotronPrograms}>
@@ -98,7 +70,7 @@ const PagePrograms = ({ mbaTypeOfProgram, mbaFormat }) => {
 										: at.mba
 										? `MBA ${mbaFormat}`
 										: at.profession
-										? 'Профессиональная переподготовка'
+										? 'Профессии'
 										: at.course
 										? 'Повышение квалификации'
 										: 'Программы'}

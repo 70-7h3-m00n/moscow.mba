@@ -52,7 +52,8 @@ const Footer = () => {
 								modal
 								lockScroll
 								nested
-								closeOnDocumentClick>
+								closeOnDocumentClick
+							>
 								{/* @ts-expect-error  */}
 								{close => (
 									<PopupForm
@@ -81,7 +82,8 @@ const Footer = () => {
 									className={stls.socialLink}
 									href='https://vk.com/moscow_mba'
 									aria-label='MBA VK'
-									target='_blank'>
+									target='_blank'
+								>
 									<IconVk />
 								</Link>
 							</li>
@@ -90,7 +92,8 @@ const Footer = () => {
 									className={stls.socialLink}
 									href='https://t.me/mbamoscow'
 									aria-label='MBA Telegram'
-									target='_blank'>
+									target='_blank'
+								>
 									<IconTelegramAlt />
 								</Link>
 							</li>
@@ -101,7 +104,8 @@ const Footer = () => {
 									href='https://api.whatsapp.com/send?phone=79258088389&text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C.%20%D0%AF%20%D0%BF%D0%BE%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%83'
 									aria-label='MBA Whatsapp'
 									target='_blank'
-									rel='noopener noreferrer'>
+									rel='noopener noreferrer'
+								>
 									<IconWhatsappAlt />
 								</Link>
 							</li>
@@ -110,7 +114,8 @@ const Footer = () => {
 									className={stls.socialLink}
 									href='https://dzen.ru/moscow_business_academy'
 									aria-label='MBA Dzen'
-									target='_blank'>
+									target='_blank'
+								>
 									<IconDzen />
 								</Link>
 							</li>
@@ -123,21 +128,24 @@ const Footer = () => {
 									<li className={stls.linkItem}>
 										<Link
 											href='/programs/mini/online'
-											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{...(at.en ? { locale: 'ru' } : undefined)}
+										>
 											MBA Mini
 										</Link>
 									</li>
 									<li className={stls.linkItem}>
 										<Link
 											href='/programs/mba/online'
-											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{...(at.en ? { locale: 'ru' } : undefined)}
+										>
 											MBA
 										</Link>
 									</li>
 									<li className={stls.linkItem}>
 										<Link
 											href='/programs/executive'
-											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{...(at.en ? { locale: 'ru' } : undefined)}
+										>
 											Executive MBA
 										</Link>
 									</li>
@@ -157,7 +165,8 @@ const Footer = () => {
 									<li className={stls.linkItem}>
 										<Link
 											href='/teachers'
-											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{...(at.en ? { locale: 'ru' } : undefined)}
+										>
 											{at.en ? 'Experts' : 'Эксперты'}
 										</Link>
 									</li>
@@ -173,14 +182,16 @@ const Footer = () => {
 									<li className={stls.linkItem}>
 										<Link
 											href='/archive'
-											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{...(at.en ? { locale: 'ru' } : undefined)}
+										>
 											{at.en ? 'Archived programs' : 'Архивные программы'}
 										</Link>
 									</li>
 									<li className={stls.linkItem}>
 										<Link
 											href='/seminars'
-											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{...(at.en ? { locale: 'ru' } : undefined)}
+										>
 											{at.en ? 'Seminars' : 'Семинары'}
 										</Link>
 									</li>
@@ -192,28 +203,32 @@ const Footer = () => {
 									<li className={stls.linkItem}>
 										<Link
 											href='/journal'
-											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{...(at.en ? { locale: 'ru' } : undefined)}
+										>
 											{at.en ? 'Journal' : 'Журнал'}
 										</Link>
 									</li>
 									<li className={stls.linkItem}>
 										<Link
 											href='/payment'
-											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{...(at.en ? { locale: 'ru' } : undefined)}
+										>
 											{at.en ? 'Payment' : 'Оплата'}
 										</Link>
 									</li>
 									<li className={stls.linkItem}>
 										<Link
 											href='/legal'
-											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{...(at.en ? { locale: 'ru' } : undefined)}
+										>
 											{at.en ? 'Legal' : 'Сведения об организации'}
 										</Link>
 									</li>
 									<li className={stls.linkItem}>
 										<Link
 											href={routesFront.corporateClients}
-											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{...(at.en ? { locale: 'ru' } : undefined)}
+										>
 											{at.en
 												? 'Corporate education'
 												: 'Корпоративное обучение для бизнеса'}
@@ -222,14 +237,16 @@ const Footer = () => {
 									<li className={stls.linkItem}>
 										<Link
 											href={'/sitemap'}
-											{...(at.en ? { locale: 'ru' } : undefined)}>
+											{...(at.en ? { locale: 'ru' } : undefined)}
+										>
 											{at.en ? 'Sitemap' : 'Карта сайта'}
 										</Link>
 									</li>
 									<li className={stls.liLicense}>
 										<Link
 											target='_blank'
-											href='https://islod.obrnadzor.gov.ru/rlic/details/2df11621-2d30-4173-9389-2fecc24a7639/'>
+											href='https://islod.obrnadzor.gov.ru/rlic/details/2df11621-2d30-4173-9389-2fecc24a7639/'
+										>
 											<Image
 												className={stls.licenseImage}
 												src={licenseP1}
@@ -248,7 +265,8 @@ const Footer = () => {
 								<div className={stls.mobileLicense}>
 									<Link
 										target='_blank'
-										href='https://islod.obrnadzor.gov.ru/rlic/details/2df11621-2d30-4173-9389-2fecc24a7639/'>
+										href='https://islod.obrnadzor.gov.ru/rlic/details/2df11621-2d30-4173-9389-2fecc24a7639/'
+									>
 										<Image
 											className={stls.licenseImage}
 											src={licenseP1}
@@ -275,7 +293,8 @@ const Footer = () => {
 												className={stls.socialLink}
 												href='https://vk.com/moscow_mba'
 												aria-label='MBA VK'
-												target='_blank'>
+												target='_blank'
+											>
 												<IconVk />
 											</Link>
 										</li>
@@ -284,19 +303,22 @@ const Footer = () => {
 												className={stls.socialLink}
 												href='https://t.me/mbamoscow'
 												aria-label='MBA Telegram'
-												target='_blank'>
+												target='_blank'
+											>
 												<IconTelegramAlt />
 											</Link>
 										</li>
 										<li
-											className={cn(stls.socialItem, stls.socialItemWhatsApp)}>
+											className={cn(stls.socialItem, stls.socialItemWhatsApp)}
+										>
 											<Link
 												className={stls.socialLink}
 												// href='https://api.whatsapp.com/send?phone=89258088389text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C!'
 												href='https://api.whatsapp.com/send?phone=79258088389&text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C.%20%D0%AF%20%D0%BF%D0%BE%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%83'
 												aria-label='MBA Whatsapp'
 												target='_blank'
-												rel='noopener noreferrer'>
+												rel='noopener noreferrer'
+											>
 												<IconWhatsappAlt />
 											</Link>
 										</li>
@@ -305,7 +327,8 @@ const Footer = () => {
 												className={stls.socialLink}
 												href='https://dzen.ru/moscow_business_academy'
 												aria-label='MBA Dzen'
-												target='_blank'>
+												target='_blank'
+											>
 												<IconDzen />
 											</Link>
 										</li>
@@ -336,13 +359,15 @@ const Footer = () => {
 					<a
 						href='/legaldocuments/oferta.pdf'
 						target='_blank'
-						className={stls.legalLink}>
+						className={stls.legalLink}
+					>
 						{at.en ? 'Offer Contract' : 'Договор Оферты'}
 					</a>
 					<a
 						href='/legaldocuments/NDA.pdf'
 						target='_blank'
-						className={stls.legalLink}>
+						className={stls.legalLink}
+					>
 						{at.en ? 'Privacy Policy' : 'Политика конфиденциальности'}
 					</a>
 				</div>

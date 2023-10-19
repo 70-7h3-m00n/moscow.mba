@@ -3,7 +3,7 @@ import '@/styles/app.sass'
 import 'reactjs-popup/dist/index.css'
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
-import Router, { useRouter } from 'next/router'
+import Router from 'next/router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import TagManager from 'react-gtm-module'
@@ -14,7 +14,6 @@ import { dev, gtmId, routesFront } from '@/config/index'
 import { Header, Main, WrapperPage, Footer } from '@/components/layout'
 import { MenuState, OverlayState, ContextStaticProps } from '@/context/index'
 import { filledUpFormWithoutSubmission } from '../helpers'
-import Script from 'next/script'
 
 function MyApp({ Component, pageProps, router }) {
 	const [programs, setPrograms] = useState(pageProps.programs || null)
@@ -123,25 +122,6 @@ function MyApp({ Component, pageProps, router }) {
 		console.log = () => undefined
 	}
 
-	const pixelArray = [
-		'/programs/mba/online/corporate-governance-and-strategy-of-business-development',
-		'/programs/mini/online/construction-management',
-		'/programs/mba/online/construction-management',
-		'/programs/mini/online/health-administration',
-		'/programs/mba/online/health-administration',
-		'/programs/mini/online/project-management',
-		'/programs/mba/online/project-management',
-		'/programs/mini/online/hotel-management',
-		'/programs/mini/online/sales-director',
-		'/programs/profession/online/komercheski-director',
-		'/programs/profession/online/personnel-management',
-		'/programs/mini/online/small-business-management',
-		'/programs/mini/online/financial-management',
-		'/programs/mini/online/marketing-management',
-		'/programs/mini/online/human-resource',
-		'/'
-	]
-
 	return (
 		<>
 			<Head>
@@ -236,27 +216,6 @@ function MyApp({ Component, pageProps, router }) {
 							})();`
 					}}
 				/>
-				{!dev && pixelArray.includes(router.state?.asPath) && (
-					<script
-						type='text/javascript'
-						dangerouslySetInnerHTML={{
-							__html: `(function (d, w) {
-								var n = d.getElementsByTagName('script')[0],
-									s = d.createElement('script')
-								s.type = 'text/javascript'
-								s.async = true
-								s.src =
-									'https://qoopler.ru/index.php?ref=' +
-									d.referrer +
-									'&page=' +
-									encodeURIComponent(w.location.href)
-								n.parentNode.insertBefore(s, n)
-							})(document, window)`
-						}}
-					>
-						{' '}
-					</script>
-				)}
 				{!dev && (
 					<script
 						type='text/javascript'

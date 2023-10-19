@@ -67,7 +67,8 @@ const ProgramsList = ({ data, id, type }) => {
 							pathname: studyFieldLink,
 							query: { curStudyField: encodedStudyFieldTitle }
 						}}
-						{...(at.en ? { locale: 'ru' } : undefined)}>
+						{...(at.en ? { locale: 'ru' } : undefined)}
+					>
 						<a className={stls.listTitle} onClick={handleLinkClick}>
 							{key.title}
 						</a>
@@ -79,7 +80,8 @@ const ProgramsList = ({ data, id, type }) => {
 									<Link
 										legacyBehavior
 										href={`/programs/${item.category.type}/${item.studyFormat}/${item.slug}`}
-										{...(at.en ? { locale: 'ru' } : undefined)}>
+										{...(at.en ? { locale: 'ru' } : undefined)}
+									>
 										<a onClick={handleLinkClick}>
 											{at.en
 												? item?.slug?.split('-').join(' ') || item?.title
@@ -97,7 +99,8 @@ const ProgramsList = ({ data, id, type }) => {
 											pathname: studyFieldLink,
 											query: { curStudyField: encodedStudyFieldTitle }
 										}}
-										{...(at.en ? { locale: 'ru' } : undefined)}>
+										{...(at.en ? { locale: 'ru' } : undefined)}
+									>
 										<a className={stls.link} onClick={handleLinkClick}>
 											{at.en ? 'View all' : 'Посмотреть все'}
 											<IconArrowLeft classNames={[stls.IconArrowLeft]} />
@@ -122,16 +125,8 @@ const ProgramsList = ({ data, id, type }) => {
 						: type === 'course'
 						? at.en
 							? 'Courses'
-							: 'Курсы'
+							: 'Повышение квалификации'
 						: null}
-					<div className={stls.itemDiscount}>
-						<div className={stls.itemDiscountAmount}>
-							<Discount />
-						</div>
-						<span>
-							<Until />
-						</span>
-					</div>
 				</div>
 				<p className={stls.programDesc}>
 					{type === 'profession'
@@ -146,17 +141,6 @@ const ProgramsList = ({ data, id, type }) => {
 				</p>
 			</div>
 			<div className={stls.bottomInfo}>
-				{/* <div className={stls.bottomTitle}>
-          {type === 'profession'
-            ? at.en
-              ? 'Professions'
-              : 'Профессии'
-            : type === 'course'
-            ? at.en
-              ? 'Courses'
-              : 'Курсы'
-            : null}
-        </div> */}
 				{(!at.profession || !at.course) && (
 					<div className={stls.itemBottom}>
 						<IconClock classNames={[stls.iconBottom]} />
