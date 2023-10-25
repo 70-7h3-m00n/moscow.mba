@@ -66,7 +66,7 @@ const HeaderMenu = ({ programs, handleMenu }) => {
 		},
 		{
 			href: '/programs/course/online',
-			val: at.en ? 'Courses' : 'Повышение квалификации'
+			val: at.en ? 'Courses' : 'Курсы'
 		},
 		{
 			href: '/programs',

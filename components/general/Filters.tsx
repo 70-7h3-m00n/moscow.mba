@@ -160,7 +160,7 @@ const Filters = ({ mbaTypeOfProgram, mbaFormat }) => {
 										[stls.active]: at.course
 									})}
 								></span>{' '}
-								Повышение квалификации
+								Курсы
 							</a>
 						</Link>
 

@@ -16,7 +16,7 @@ type TypeLibSeminar = {
 	duration: number | null
 	title: string | null
 	slug: string | null
-	category: TypeLibSeminarCategory | null
+	seminar_categories: string[] | null
 	authors: Author[] | null
 	address: string | null
 	price: number | null

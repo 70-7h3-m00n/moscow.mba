@@ -1,8 +1,6 @@
 @use '@/styles/utils/mixin' as m
 
 .container
-  margin: 0 15px 60px
-  width: calc(33.333% - 30px)
   border: 1px solid #e6e6e6
   background: #fff
   transition: all .3s ease-out
@@ -24,23 +22,6 @@
         opacity: 1
     .title
       color: #ff3535
-  @include m.media(laptop, tablet, phone)
-    width: calc(50% - 30px)
-    margin-bottom: 30px
-    min-height: 300px
-  @include m.media(tablet, phone)
-    margin: 0 5px 15px
-    width: calc(50% - 10px)
-    padding: 28px 18px
-    min-height: 215px
-  @include m.media(phone)
-    width: calc(100% - 10px)
-  &.disabled
-    background: #f7f7f7
-    opacity: 0.7
-    pointer-events: none
-    .bell
-      display: none
 
 .bell
   transition: all .3s ease-out

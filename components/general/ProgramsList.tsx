@@ -125,7 +125,7 @@ const ProgramsList = ({ data, id, type }) => {
 						: type === 'course'
 						? at.en
 							? 'Courses'
-							: 'Повышение квалификации'
+							: 'Курсы'
 						: null}
 				</div>
 				<p className={stls.programDesc}>

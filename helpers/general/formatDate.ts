@@ -9,7 +9,7 @@ const formatDate = (date: string | Date) => {
 	const formattedDate = new Intl.DateTimeFormat('ru-RU', {
 		day: 'numeric',
 		month: 'long'
-	}).format(currentDate)
+	})
 
 	return { time: formattedTime, date: formattedDate }
 }

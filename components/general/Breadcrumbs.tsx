@@ -110,7 +110,7 @@ const professionRoute = {
 
 const courseRoute = {
 	label: {
-		ru: 'Повышение квалификации',
+		ru: 'Курсы',
 		'en-US': 'Course'
 	},
 	path: '/programs/course/online'

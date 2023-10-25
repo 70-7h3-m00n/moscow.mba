@@ -25,7 +25,7 @@ const initialState: TypeLibSeminar = {
 	duration: null,
 	title: null,
 	slug: null,
-	category: null,
+	seminar_categories: null,
 	authors: null,
 	address: null,
 	price: null,
@@ -92,7 +92,8 @@ const PageSeminar: NextPage<TypePageSeminarProps> = ({ programs, seminar }) => {
 				value={{
 					seminar: seminarState,
 					setSeminar: setSeminarState
-				}}>
+				}}
+			>
 				<SeminarPage />
 			</ContextStaticPropsSeminar.Provider>
 		</>
