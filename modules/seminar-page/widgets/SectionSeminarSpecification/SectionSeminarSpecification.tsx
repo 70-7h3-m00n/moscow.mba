@@ -36,8 +36,8 @@ const SectionSeminarSpecification = ({
 						{/* <span>{currentDate}</span> <span>{time}</span> */}
 					</div>
 					{seminar?.seminar_categories?.map(c => (
-						<div className={stls.eventCategory} key={c}>
-							{c.charAt(0).toUpperCase() + c.substring(1)}
+						<div className={stls.eventCategory} key={c.name}>
+							{c.name.charAt(0).toUpperCase() + c.name.substring(1)}
 						</div>
 					))}
 				</div>
