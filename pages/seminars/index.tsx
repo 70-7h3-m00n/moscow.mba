@@ -81,8 +81,32 @@ const PageSeminars = ({
 			(a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
 		)
 
+		const filteredSeminarCategories = seminars
+			?.filter(sem => new Date(sem.date) > new Date())
+			?.reduce((uniqueCategories, seminar) => {
+				seminar.seminar_categories.forEach(category => {
+					const existingCategory = uniqueCategories.find(
+						cat => cat.slug === category.slug
+					)
+					if (!existingCategory) {
+						uniqueCategories.push({
+							id: category.id,
+							categoryName:
+								category.name.charAt(0).toUpperCase() + category.name.slice(1),
+							slug: category.slug
+						})
+					}
+				})
+				return uniqueCategories
+			}, [])
+		const categories = [
+			{ id: 'all', categoryName: 'Все семинары', slug: 'all' },
+			...filteredSeminarCategories
+		]
+		console.log('categories: ', categories)
+
 		setSeminarsState(sortedSeminars)
-		setSeminarsCategoriesState(seminarCategories)
+		setSeminarsCategoriesState(categories)
 		setShowSeminars(sortedSeminars)
 	}, [])
 
@@ -90,7 +114,9 @@ const PageSeminars = ({
 		const filteredCategorySeminars =
 			selectedCategory === 'all'
 				? seminars
-				: seminars.filter(s => s.seminar_categories.includes(selectedCategory))
+				: seminars.filter(s =>
+						s.seminar_categories?.map(c => c.slug)?.includes(selectedCategory)
+				  )
 
 		const filteredSeminars = filteredCategorySeminars.filter(seminar => {
 			const seminarDate = new Date(seminar.date)

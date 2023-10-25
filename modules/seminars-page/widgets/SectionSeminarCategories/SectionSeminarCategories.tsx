@@ -13,11 +13,6 @@ const SectionSeminarCategories = ({}: SectionSeminarCategoriesProps) => {
 		setSelectedCategory
 	} = useContext(contextStaticPropsSeminars)
 
-	const categories = [
-		{ id: 'all', categoryName: 'Все семинары', slug: 'all' },
-		...seminarCategories
-	]
-
 	const handlerCategory = (selectedSeminarCategory: string) => {
 		setSelectedCategory(selectedSeminarCategory)
 	}
@@ -25,7 +20,7 @@ const SectionSeminarCategories = ({}: SectionSeminarCategoriesProps) => {
 	return (
 		<>
 			<ul className={stls.categoryList}>
-				{categories.map(category => (
+				{seminarCategories.map(category => (
 					<li className={stls.categoryItem} key={category.id}>
 						<button
 							className={cn(stls.categoryBtn, {
@@ -33,8 +28,8 @@ const SectionSeminarCategories = ({}: SectionSeminarCategoriesProps) => {
 							})}
 							onClick={() => handlerCategory(category.slug)}
 						>
-							{category.categoryName.charAt(0).toUpperCase() +
-								category.categoryName.slice(1).toLowerCase()}
+							{category.categoryName?.charAt(0).toUpperCase() +
+								category.categoryName?.slice(1).toLowerCase()}
 						</button>
 					</li>
 				))}
