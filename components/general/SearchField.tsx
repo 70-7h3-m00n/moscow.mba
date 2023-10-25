@@ -136,7 +136,7 @@ const SearchField = ({ header = false }) => {
 														: program?.category?.type === 'profession'
 														? 'Профессии'
 														: program?.category?.type === 'course'
-														? 'Повышение квалификации'
+														? 'Курсы'
 														: program?.category?.type === 'executive'
 														? 'Executive MBA'
 														: 'MBA'}

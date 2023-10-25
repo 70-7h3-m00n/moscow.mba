@@ -37,11 +37,11 @@ const CardProgram = ({ program }) => {
 							: type === 'profession'
 							? at.en
 								? 'Profession'
-								: 'ПП'
+								: 'Профессия'
 							: type === 'course'
 							? at.en
 								? 'Course'
-								: 'ПК'
+								: 'Курс'
 							: ''}
 					</span>
 				</div>

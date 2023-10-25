@@ -1,1 +1,1 @@
-export { default as SeminarsPage } from './SeminarsPage'
+export { default as Seminars } from './SeminarsPage'

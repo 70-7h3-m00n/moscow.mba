@@ -1,10 +1,19 @@
 @use '@/styles/utils/mixin' as m
 
 .list
-  display: flex
-  flex-wrap: wrap
-  margin: 0 -15px -13px
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  gap: 30px 30px
   @include m.media(laptop)
-    margin-bottom: 0
-  @include m.media(tablet, phone)
-    margin: 0 -5px 15px
+    grid-template-columns: repeat(2, 1fr)
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr
+
+.calendar
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  padding-bottom: 20px
+  border: 1px solid #e6e6e6
+  min-height: 335px

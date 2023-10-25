@@ -8,9 +8,9 @@ import SectionSeminarSpecificationProps from './SectionSeminarSpecification.prop
 const SectionSeminarSpecification = ({
 	seminar
 }: SectionSeminarSpecificationProps) => {
-	const { time, date } = formatDate(seminar?.date)
+	// const { time, date: currentDate } = formatDate(seminar?.date)
 
-	const categoryName = seminar?.category?.categoryName || ''
+	const categoryName = seminar?.seminar_categories || ''
 
 	return (
 		<section className={stls.container}>
@@ -33,11 +33,13 @@ const SectionSeminarSpecification = ({
 						))}
 					</div>
 					<div className={stls.eventDate}>
-						{date}, <span>{time}</span>
+						{/* <span>{currentDate}</span> <span>{time}</span> */}
 					</div>
-					<div className={stls.eventCategory}>
-						{categoryName.charAt(0).toUpperCase() + categoryName.substring(1)}
-					</div>
+					{seminar?.seminar_categories?.map(c => (
+						<div className={stls.eventCategory} key={c}>
+							{c.charAt(0).toUpperCase() + c.substring(1)}
+						</div>
+					))}
 				</div>
 				<div className={stls.duration}>
 					Продолжительность и формат обучения: {seminar?.duration} академических{' '}

@@ -24,7 +24,7 @@ const Sitemap: NextPage<TypePageJournalArticlesProps> = ({
 		},
 		{
 			type: 'course',
-			title: 'Повышение квалификации',
+			title: 'Курсы',
 			url: `${routesFront.root}${routesFront.programsCoursesOnline}`
 		},
 		{

@@ -74,7 +74,7 @@ const Programs = () => {
 									href='/programs/course/online'
 									{...(at.en ? { locale: 'ru' } : undefined)}
 								>
-									<a>{at.en ? 'Course' : 'Повышение квалификации'}</a>
+									<a>{at.en ? 'Course' : 'Курсы'}</a>
 								</Link>
 							</li>
 							<li>

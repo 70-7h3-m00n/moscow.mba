@@ -21,7 +21,7 @@ const Archive: NextPage<TypePageJournalArticlesProps> = ({ programs }) => {
 		},
 		{
 			type: 'course',
-			title: 'Повышение квалификации',
+			title: 'Курсы',
 			url: `${routesFront.root}${routesFront.programsCoursesOnline}`
 		},
 		{
@@ -36,7 +36,8 @@ const Archive: NextPage<TypePageJournalArticlesProps> = ({ programs }) => {
 		<li className={stls.nestedListItem} key={program._id}>
 			<Link
 				className={stls.link}
-				href={`${routesFront.programs}/${program.category.type}/${program.studyFormat}/${program.slug}`}>
+				href={`${routesFront.programs}/${program.category.type}/${program.studyFormat}/${program.slug}`}
+			>
 				{program.title}
 			</Link>
 			{program.studyFormat === 'online' && (
@@ -50,7 +51,8 @@ const Archive: NextPage<TypePageJournalArticlesProps> = ({ programs }) => {
 		<React.Fragment key={type.type}>
 			<Link
 				className={stls.linkTitle}
-				href={`${routesFront.programs}/${type.type}`}>
+				href={`${routesFront.programs}/${type.type}`}
+			>
 				<h3>{type.title}</h3>
 			</Link>
 			<ul className={stls.nestedList}>

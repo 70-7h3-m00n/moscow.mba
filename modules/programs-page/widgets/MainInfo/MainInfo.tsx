@@ -22,9 +22,9 @@ const MainInfo = () => {
 						? `MBA ${configPrograms.filterTrainingFormat}`
 						: configPrograms.filterTypeProgram ===
 						  FilterTypeProgramEnum.profession
-						? 'Профессиональная переподготовка'
+						? 'Профессии'
 						: configPrograms.filterTypeProgram === FilterTypeProgramEnum.course
-						? 'Повышение квалификации'
+						? 'Курсы'
 						: 'Все программы'}
 				</h2>
 				<ProgramsQty renderPrograms={renderPrograms} />

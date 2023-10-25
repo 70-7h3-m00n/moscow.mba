@@ -1,6 +1,6 @@
 export { ProgramsPage } from './programs-page'
 export { SeminarPage } from './seminar-page'
-export { SeminarsPage } from './seminars-page'
+export { Seminars } from './seminars-page'
 export { JobPage } from './job-page'
 export { PartnerPage } from './partner-page'
 export { TeachersPage } from './teachers-page'

@@ -8,7 +8,7 @@ export const LIST_FILTER_TYPE_PROGRAM = [
 		value: FilterTypeProgramEnum.profession,
 		text: 'Профессии'
 	},
-	{ value: FilterTypeProgramEnum.course, text: 'Повышение квалификации' }
+	{ value: FilterTypeProgramEnum.course, text: 'Курсы' }
 ]
 
 export const LIST_FILTER_TRAINING_PROGRAM = [

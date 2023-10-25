@@ -6,7 +6,7 @@ import {
 	LeadLoaderThankyou
 } from '@/components/general'
 import { FormAlpha } from '@/components/forms'
-import { formatDate } from '@/helpers/index'
+// import { formatDate } from '@/helpers/index'
 import { NextPage } from 'next'
 import { TypeLibSeminar } from '@/types/index'
 import useAt from '@/hooks/useAt'
@@ -19,7 +19,7 @@ const SectionSeminarPriceCalculator: NextPage<{ seminar: TypeLibSeminar }> = ({
 	const [open, setOpen] = useState(false)
 	const [openLoader, setOpenLoader] = useState(false)
 
-	const { date, time } = formatDate(seminar?.date)
+	// const { date, time } = formatDate(seminar?.date)
 
 	const prices = PriceDiscount(seminar?.price, 30)
 
@@ -27,9 +27,7 @@ const SectionSeminarPriceCalculator: NextPage<{ seminar: TypeLibSeminar }> = ({
 		<section className={stls.container}>
 			<Wrapper classNames={[stls.wrapper]}>
 				<h3 className={stls.title}>Зарегистрироваться на семинар</h3>
-				<p className={stls.seminarDate}>
-					{date}, <span>{time}</span>
-				</p>
+				<p className={stls.seminarDate}>{/* {date}, <span>{time}</span> */}</p>
 				<div className={stls.seminarPriceWrapper}>
 					{Object.entries(prices).map((price, idx) => (
 						<React.Fragment key={idx}>
