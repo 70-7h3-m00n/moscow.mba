@@ -82,9 +82,12 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 			>
 				<JumbotronProgram program={program} programs={programs} />
 				<ProgramGoal data={program} />
-				{isMiniMBAProgram && <ProgramActuality data={program} />}
+				{program?.actualInformation?.paragraph &&
+					program?.actualInformation?.description && (
+						<ProgramActuality data={program} />
+					)}
 				<WhatWillYouLearn data={program} />
-				{isMiniMBAProgram ? (
+				{program?.whoIsFor?.length > 0 ? (
 					<>
 						<WhoItIsFor program={program} />
 						<ProgramDevelopedStandard />
