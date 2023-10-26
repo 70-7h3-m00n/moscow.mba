@@ -103,7 +103,6 @@ const PageSeminars = ({
 			{ id: 'all', categoryName: 'Все семинары', slug: 'all' },
 			...filteredSeminarCategories
 		]
-		console.log('categories: ', categories)
 
 		setSeminarsState(sortedSeminars)
 		setSeminarsCategoriesState(categories)

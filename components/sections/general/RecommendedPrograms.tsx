@@ -1,13 +1,6 @@
 import stls from '@/styles/components/sections/RecommendedPrograms.module.sass'
-import {
-	TypeClassNames,
-	TypeLibJournalArticle,
-	TypeLibJournalReadMoreArticles
-} from '@/types/index'
-import Link from 'next/link'
 import cn from 'classnames'
-import { routesFront } from '@/config/index'
-import { getClassNames } from '@/helpers/index'
+
 import { CardProgram } from '../../../modules/programs-page/widgets/CardsProgram/fractals/components/CardProgram/index'
 import { Wrapper } from '@/components/layout'
 import { MouseEvent, useRef, useState } from 'react'
@@ -73,7 +66,8 @@ const RecommendedPrograms = ({ programs }) => {
 						aria-label={translations.ariaLabelBtnLeft}
 						title={translations.ariaLabelBtnLeft}
 						onClick={e => handleOnClick({ e, dir: 'left' })}
-						data-scroll={dataScrollLeft}>
+						data-scroll={dataScrollLeft}
+					>
 						<IconArrowLeft classNames={[stls.IconArrowLeft]} />
 					</button>
 					<button
@@ -81,7 +75,8 @@ const RecommendedPrograms = ({ programs }) => {
 						aria-label={translations.ariaLabelBtnRight}
 						title={translations.ariaLabelBtnRight}
 						onClick={e => handleOnClick({ e, dir: 'right' })}
-						data-scroll={dataScrollRight}>
+						data-scroll={dataScrollRight}
+					>
 						<IconArrowLeft classNames={[stls.IconArrowLeft]} />
 					</button>
 				</div>

@@ -66,6 +66,8 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 		program?.studyFormat === 'online' &&
 		program?.slug === 'digital-transformation'
 
+	const isMiniMBAProgram = program?.category?.slug === 'mini'
+
 	const setIsdigitalTransformation = () => {
 		if (isDigitalTransformation) return true
 
@@ -76,12 +78,13 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 		<>
 			{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
 			<DigitalTransformationContext.Provider
-				value={setIsdigitalTransformation()}>
+				value={setIsdigitalTransformation()}
+			>
 				<JumbotronProgram program={program} programs={programs} />
 				<ProgramGoal data={program} />
-				{isDigitalTransformation && <ProgramActuality data={program} />}
+				{isMiniMBAProgram && <ProgramActuality data={program} />}
 				<WhatWillYouLearn data={program} />
-				{isDigitalTransformation ? (
+				{isMiniMBAProgram ? (
 					<>
 						<WhoItIsFor program={program} />
 						<ProgramDevelopedStandard />
@@ -91,7 +94,7 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 				)}
 				<Pros format={'online'} />
 				<HowProcessGoes />
-				{isDigitalTransformation ? (
+				{isMiniMBAProgram ? (
 					<ProgramsModulesAccordion program={program} />
 				) : (
 					<ProgramsModules program={program} />
@@ -103,7 +106,7 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 					programTitle={program?.title}
 					teachers={teachers}
 				/>
-				{isDigitalTransformation ? (
+				{isMiniMBAProgram ? (
 					<>
 						<Students />
 						<TextReviews />
@@ -131,9 +134,8 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 					programTitle={program?.title}
 					title={''}
 					titleNewStr={'Получите консультацию по программам MBA'}
-					// overlapsFooter
 				/>
-				{isDigitalTransformation && <RecommendedPrograms programs={programs} />}
+				{isMiniMBAProgram && <RecommendedPrograms programs={programs} />}
 			</DigitalTransformationContext.Provider>
 		</>
 	)

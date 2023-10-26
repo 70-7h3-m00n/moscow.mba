@@ -10,20 +10,18 @@ import {
 	DigitalTransformationContext
 } from '@/context/index'
 import { Wrapper } from '@/components/layout'
+import useAt from '@/hooks/useAt'
 
 const GetStudyPlan = () => {
+	const at = useAt()
 	const router = useRouter()
 	const { program } = useContext(ContextStaticProps)
-	{
-		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
-	}
-	const isDigitalTransformation = useContext(DigitalTransformationContext)
 
 	return (
 		<section className={stls.container}>
 			<Wrapper classNames={[stls.wrapper]}>
 				<div className={stls.content}>
-					{isDigitalTransformation ? (
+					{at.mini ? (
 						<p className={stls.title}>Оставьте заявку на полный учебный план</p>
 					) : (
 						<h4 className={stls.title}>Получите полный учебный план</h4>
@@ -42,7 +40,8 @@ const GetStudyPlan = () => {
 							clickedGetFullStudyPlan({
 								url: `${routesFront.root}${router.asPath}`
 							})
-						}}>
+						}}
+					>
 						{/* @ts-expect-error  */}
 						{close => (
 							<PopupForm

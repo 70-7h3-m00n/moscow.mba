@@ -1,13 +1,12 @@
 import stls from '@/styles/components/sections/Accreditation.module.sass'
+import cn from 'classnames'
+
 import Image from 'next/legacy/image'
 import { base64pixel } from '@/config/index'
 import { useAt } from '@/hooks/index'
-import cn from 'classnames'
 import { Wrapper } from '@/components/layout'
 import { IconPaperCorner } from '@/components/icons'
 import { ImgLogoEcicel, ImgLogoRabo, ImgLogoMde } from '@/components/images'
-import { useContext } from 'react'
-import { DigitalTransformationContext } from '@/context/index'
 
 const Accreditation = () => {
 	const at = useAt()
@@ -20,7 +19,8 @@ const Accreditation = () => {
 
 	return (
 		<section
-			className={cn(stls.container, { [stls.atExecutive]: at.executive })}>
+			className={cn(stls.container, { [stls.atExecutive]: at.executive })}
+		>
 			<Wrapper classNames={[stls.wrapper]}>
 				<div className={stls.image}>
 					<Image
@@ -85,7 +85,8 @@ const Accreditation = () => {
 						href='https://islod.obrnadzor.gov.ru/rlic/details/2df11621-2d30-4173-9389-2fecc24a7639/'
 						target='_blank'
 						rel='noopener noreferrer'
-						className={stls.link}>
+						className={stls.link}
+					>
 						<div className={stls.iconContainer}>
 							<IconPaperCorner />
 						</div>

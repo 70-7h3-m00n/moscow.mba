@@ -1,10 +1,11 @@
+import stls from './FilterDirection.module.sass'
+
 import { useEffect, useState } from 'react'
 import {
 	useConfigProgramsContext,
 	usePrograms,
 	FiltersEnum
 } from 'modules/programs-page/fractals'
-import stls from './FilterDirection.module.sass'
 
 const FilterDirection = () => {
 	const { uniqueDirections, minMaxDuration } = usePrograms()

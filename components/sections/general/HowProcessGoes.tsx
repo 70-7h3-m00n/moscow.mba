@@ -2,25 +2,17 @@ import stls from '@/styles/components/sections/HowProcessGoes.module.sass'
 import cn from 'classnames'
 
 import Image from 'next/image'
-import React, {
-	useCallback,
-	useMemo,
-	useRef,
-	useContext,
-	useState
-} from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { useAt, useScrollObserver } from '@/hooks/index'
 import { Wrapper } from '@/components/layout'
 import studentPhoto from '@/public/assets/images/student-using-laptop.jpg'
 import candidatePhoto from '@/public/assets/images/student-girl.jpg'
-import { DigitalTransformationContext } from '@/context/index'
 
 const HowProcessGoes = ({ partners = false }) => {
 	const at = useAt()
-	const isDigitalTransformation = useContext(DigitalTransformationContext)
 
 	const stepsData = {
-		digitalTransformation: [
+		mini: [
 			{
 				tabTitle: 'Поступление',
 				stepTitle: 'Поступление',
@@ -204,8 +196,8 @@ const HowProcessGoes = ({ partners = false }) => {
 
 	const processSteps = useMemo(
 		() =>
-			isDigitalTransformation
-				? stepsData.digitalTransformation
+			at.mini
+				? stepsData.mini
 				: at.programs
 				? stepsData.programs
 				: partners
@@ -213,17 +205,7 @@ const HowProcessGoes = ({ partners = false }) => {
 				: at.job
 				? stepsData.job
 				: stepsData.default,
-		[
-			at.job,
-			at.programs,
-			isDigitalTransformation,
-			partners,
-			stepsData.default,
-			stepsData.digitalTransformation,
-			stepsData.job,
-			stepsData.partners,
-			stepsData.programs
-		]
+		[at.mini, at.job, at.programs, partners]
 	)
 
 	const [activeStep, setActiveStep] = useState<number>(null)
@@ -325,11 +307,13 @@ const HowProcessGoes = ({ partners = false }) => {
 			className={cn(stls.container, {
 				[stls.job]: at.job,
 				[stls.partners]: partners
-			})}>
+			})}
+		>
 			<Wrapper
-				classNames={[stls.content, { [stls.noBottomPadding]: partners }]}>
+				classNames={[stls.content, { [stls.noBottomPadding]: partners }]}
+			>
 				<div className={stls.titleContainer}>
-					{isDigitalTransformation ? (
+					{at.mini ? (
 						<h2 className={stls.title}>Как проходит учебный процесс</h2>
 					) : at.programs ? (
 						<h2 className={stls.title}>Преимущества</h2>
@@ -366,11 +350,7 @@ const HowProcessGoes = ({ partners = false }) => {
 					) : (
 						<h2 className={stls.title}>Как проходит процесс обучения</h2>
 					)}
-					{(isDigitalTransformation ||
-						at.job ||
-						at.profession ||
-						at.course ||
-						at.programs) && (
+					{(at.mini || at.job || at.profession || at.course || at.programs) && (
 						<div className={stls.studentPhoto}>
 							<Image
 								src={partners ? candidatePhoto : studentPhoto}
@@ -383,12 +363,11 @@ const HowProcessGoes = ({ partners = false }) => {
 				</div>
 				<div className={stls.infoContainer}>
 					<ul
-
 						className={cn(stls.tabsList, {
 							[stls.programsPage]: at.programs,
 							[stls.job]: at.job
-						})}>
-
+						})}
+					>
 						{processSteps?.map((step, idx) => (
 							<li
 								key={step.tabTitle + idx}
@@ -398,23 +377,24 @@ const HowProcessGoes = ({ partners = false }) => {
 									setActiveStep(idx)
 									scrollIntoViewTabs(idx)
 									scrollIntoViewSteps(idx)
-								}}>
+								}}
+							>
 								<a
 									className={cn(stls.tabLink, {
 										[stls.activeTabLink]: idx === activeStep
-									})}>
+									})}
+								>
 									{step.tabTitle}
 								</a>
 							</li>
 						))}
 					</ul>
 					<div
-
 						className={cn(stls.stepsWrap, {
 							[stls.programsPage]: at.programs,
 							[stls.job]: at.job
-						})}>
-
+						})}
+					>
 						<>
 							{processSteps?.map((step, idx) => (
 								<React.Fragment key={idx + step.tabTitle}>
@@ -424,7 +404,8 @@ const HowProcessGoes = ({ partners = false }) => {
 											[stls.activeProcessStep]: idx === activeStep,
 											[stls.programsPage]: at.programs,
 											[stls.job]: at.job
-										})}>
+										})}
+									>
 										<span
 											className={cn(stls.redStick, {
 												[stls.programsPage]: at.programs,
@@ -441,13 +422,15 @@ const HowProcessGoes = ({ partners = false }) => {
 												[stls.programsPage]: at.programs,
 												[stls.partners]: partners,
 												[stls.job]: at.job
-											})}>
+											})}
+										>
 											{idx + 1}
 										</div>
 										<div
 											className={cn(stls.processStepTitle, {
 												[stls.programsPage]: at.programs
-											})}>
+											})}
+										>
 											{step.stepTitle}
 										</div>
 										<ul
@@ -455,11 +438,13 @@ const HowProcessGoes = ({ partners = false }) => {
 												[stls.programsPage]: at.programs,
 												[stls.job]: at.job,
 												[stls.partners]: partners
-											})}>
+											})}
+										>
 											{step.listItems?.map((item, idx) => (
 												<li
 													key={item + idx}
-													className={cn(stls.listItem, { [stls.job]: at.job })}>
+													className={cn(stls.listItem, { [stls.job]: at.job })}
+												>
 													{item}
 												</li>
 											))}
@@ -468,7 +453,6 @@ const HowProcessGoes = ({ partners = false }) => {
 								</React.Fragment>
 							))}
 						</>
-
 					</div>
 				</div>
 			</Wrapper>

@@ -1,3 +1,5 @@
+import stls from './FilterPrograms.module.sass'
+
 import { useState } from 'react'
 import {
 	FilterDuration,
@@ -10,9 +12,7 @@ import {
 	FilterTypeProgramEnum,
 	FiltersEnum
 } from '../../fractals'
-// import { SearchField } from '../../../../components/general'
 import { SearchField } from '../SearchField'
-import stls from './FilterPrograms.module.sass'
 
 const FilterPrograms = () => {
 	const { configPrograms } = useConfigProgramsContext()
@@ -36,13 +36,15 @@ const FilterPrograms = () => {
 				className={`${stls.handlerFilterIsShow} ${
 					isShowFilters ? stls.handlerFilterShow : ''
 				}`}
-				onClick={() => setIsShowFilters(isShowFilters => !isShowFilters)}>
+				onClick={() => setIsShowFilters(isShowFilters => !isShowFilters)}
+			>
 				<svg
 					width='20'
 					height='7'
 					viewBox='0 0 20 7'
 					fill='none'
-					xmlns='http://www.w3.org/2000/svg'>
+					xmlns='http://www.w3.org/2000/svg'
+				>
 					<path
 						d='M11 6H1'
 						strokeWidth='2'
@@ -68,21 +70,24 @@ const FilterPrograms = () => {
 				<div
 					className={`${stls.filter} ${stls.filterMobile} ${
 						isShowFilters ? stls.filterShowMobile : ''
-					}`}>
+					}`}
+				>
 					<FilterTrainingFormat />
 				</div>
 				<div
 					className={`${stls.filter} ${stls.filterMobile} ${
 						isShowFilters ? stls.filterShowMobile : ''
-					}`}>
+					}`}
+				>
 					{isCourseAndProfession && <FilterDuration />}
 				</div>
-				<div
+				{/* <div
 					className={`${stls.filter} ${stls.filterMobile} ${
 						isShowFilters ? stls.filterShowMobile : ''
-					}`}>
+					}`}
+				>
 					{isCourseAndProfession && <FilterDirection />}
-				</div>
+				</div> */}
 			</div>
 		</div>
 	)

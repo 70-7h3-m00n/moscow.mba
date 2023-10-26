@@ -1,4 +1,5 @@
 import stls from './ProgramsPage.module.sass'
+
 import Breadcrumbs from '@/components/general/Breadcrumbs'
 import { ConfigProgramsProvider } from './fractals'
 import ProgramsHero from '@/components/general/ProgramsHero'
@@ -16,6 +17,7 @@ import {
 	Reviews,
 	VideoReviews
 } from '@/components/sections'
+import { FilterCategory } from './widgets/FilterPrograms/fractals'
 
 const ProgramsPage = () => {
 	return (
@@ -34,6 +36,7 @@ const ProgramsPage = () => {
 					<h1 className={stls.title}>
 						ПРОГРАММЫ <span>ОБУЧЕНИЯ</span>
 					</h1>
+					<FilterCategory />
 					<div className={stls.infoRectangle}>
 						<InfoRectangle programPage={true} />
 					</div>

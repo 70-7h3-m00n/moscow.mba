@@ -1,29 +1,29 @@
 import stls from '@/styles/components/sections/general/SectionStudyCost.module.sass'
+import cn from 'classnames'
+
 import { TypeClassNames } from '@/types/index'
 import { useContext, MouseEventHandler } from 'react'
-import cn from 'classnames'
 import Popup from 'reactjs-popup'
 import { useAt } from '@/hooks/index'
-import {
-	ContextStaticProps,
-	DigitalTransformationContext
-} from '@/context/index'
+import { ContextStaticProps } from '@/context/index'
 import { getClassNames, ruCase } from '@/helpers/index'
 import { GeneralStickerDiscount } from '@/components/general'
 import { Loan, Price, TrainingPeriod, Until } from '@/components/costs'
 import { Wrapper } from '@/components/layout'
 import { PopupForm } from '@/components/popups'
 import { BtnAlpha } from '@/components/btns'
+import { getYear } from 'date-fns'
 
 type TypeSectionStudyCostProps = TypeClassNames
 
 const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
 	const at = useAt()
+	const currentYear = getYear(new Date())
 	const { program } = useContext(ContextStaticProps)
 
 	const pros = [
 		'Практические домашние задания',
-		'Современная программа 2023 года',
+		`Современная программа ${currentYear} года`,
 		'Интерактивные онлайн-семинары',
 		'Карьерные консультации',
 		'Дипломы заносятся в ФРДО',
@@ -32,16 +32,12 @@ const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
 
 	const isDiscounted = at.online || at.mbl
 
-	{
-		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
-	}
-	const isDigitalTransformation = useContext(DigitalTransformationContext)
-
 	return (
 		<section
 			className={
 				cn([stls.container], getClassNames({ classNames })) || undefined
-			}>
+			}
+		>
 			<Wrapper column classNames={[stls.wrapper]}>
 				<div className={stls.heading}>
 					<h2 className={stls.title}>
@@ -113,7 +109,7 @@ const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
 							</p>
 						</div>
 						{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
-						{isDigitalTransformation ? (
+						{at.mini ? (
 							<ul className={stls.pros}>
 								<li className={stls.proItem}>
 									<p className={stls.pro}>
@@ -156,7 +152,7 @@ const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
 								Успех в карьере напрямую связывают с&nbsp;получением образования
 							</p>
 							{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
-							{isDigitalTransformation ? (
+							{at.mini ? (
 								<p className={stls.p}>
 									Приобретите актуальные знания, увеличьте свой доход и
 									продвинетесь по карьерной лестнице!
@@ -196,7 +192,8 @@ const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
 							modal
 							lockScroll
 							nested
-							closeOnDocumentClick>
+							closeOnDocumentClick
+						>
 							{/* @ts-expect-error  */}
 							{(close: MouseEventHandler) => (
 								<PopupForm

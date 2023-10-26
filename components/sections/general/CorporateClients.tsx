@@ -1,12 +1,11 @@
 import stls from '@/styles/components/sections/CorporateClients.module.sass'
-import Image from 'next/image'
 import cn from 'classnames'
+
+import Image from 'next/image'
 import { useAt } from '@/hooks/index'
 import { base64pixel } from '@/config/index'
 import { Wrapper } from '@/components/layout'
-import { DetailedHTMLProps, HTMLAttributes, useContext } from 'react'
-import { DigitalTransformationContext } from '@/context/index'
-import { IconCheck, IconCheckCircle } from '@/components/icons'
+import { DetailedHTMLProps, HTMLAttributes } from 'react'
 
 interface TCorporateClients
 	extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
@@ -21,10 +20,6 @@ const CorporateClients = ({
 	...rest
 }: TCorporateClients) => {
 	const at = useAt()
-	{
-		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
-	}
-	const isDigitalTransformation = useContext(DigitalTransformationContext)
 
 	const title = partnershipTitle ? (
 		<h3 className={stls.partnershipTitle}>
@@ -47,15 +42,13 @@ const CorporateClients = ({
 				</h2>
 			}
 			{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
-			{variant !== 'page-corporate-clients' &&
-				!isDigitalTransformation &&
-				!at.job && (
-					<p>
-						{at.en
-							? "Our experts' experience is used by many leading companies in Russia and CIS. Nevertheless it's valuable not only for large-scale, but also for startups and medium-scale companies"
-							: 'Опыт наших экспертов используют многие ведущие компании России и стран СНГ. Наш опыт будет полезен не только гигантам промышленной, добывающей индустрии, крупным сетевикам, но и среднему и малому бизнесу'}
-					</p>
-				)}
+			{variant !== 'page-corporate-clients' && !at.mini && !at.job && (
+				<p>
+					{at.en
+						? "Our experts' experience is used by many leading companies in Russia and CIS. Nevertheless it's valuable not only for large-scale, but also for startups and medium-scale companies"
+						: 'Опыт наших экспертов используют многие ведущие компании России и стран СНГ. Наш опыт будет полезен не только гигантам промышленной, добывающей индустрии, крупным сетевикам, но и среднему и малому бизнесу'}
+				</p>
+			)}
 		</>
 	)
 
@@ -67,7 +60,8 @@ const CorporateClients = ({
 						[stls.noPaddingLeft]: partnershipTitle || at.job || at.partner,
 						[stls.variantPageCorporateClients]:
 							variant === 'page-corporate-clients'
-					})}>
+					})}
+				>
 					<div className={stls.title}>{title}</div>
 				</div>
 
