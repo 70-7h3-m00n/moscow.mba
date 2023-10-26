@@ -15,7 +15,6 @@ const ProgramDesc = () => {
 	{
 		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
 	}
-	const isDigitalTransformation = useContext(DigitalTransformationContext)
 
 	return (
 		<section className={stls.container}>
@@ -23,7 +22,8 @@ const ProgramDesc = () => {
 				<div
 					className={cn(stls.content, {
 						[stls.smallPl]: at.profession || at.course || at.promo
-					})}>
+					})}
+				>
 					{!at.profession && !at.course && !at.promo && (
 						<div className={stls.left}>
 							<p className={stls.label}>О&nbsp;программе</p>
@@ -46,11 +46,9 @@ const ProgramDesc = () => {
 						</h2>
 						<div className={stls.desc}>
 							{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
-							{isDigitalTransformation
-								? 'Программа Mini MBA Online является усеченной версией полуторагодового курса MBA. На курсе Mini MBA Вы сможете повысить свою квалификацию в более интенсивном темпе, за счет сокращения учебного плана до ключевых модулей по специальности'
-								: at.mini &&
-								  at.online &&
-								  'Программа Mini MBA Online является усеченной версией полуторагодового курса MBA. На курсе Mini MBA Вы сможете повысить свою квалификацию более интенсивно и освоите только ключевые модули длинной программы'}
+							{at.mini &&
+								at.online &&
+								'Программа Mini MBA Online является усеченной версией полуторагодового курса MBA. На курсе Mini MBA Вы сможете повысить свою квалификацию в более интенсивном темпе, за счет сокращения учебного плана до ключевых модулей по специальности'}
 							{at.mba &&
 								at.online &&
 								'MBA Online — престижная программа высокого уровня, на которой Вы углубленно изучите менеджмент, маркетинг, финансы, получите востребованные soft skills и расширите карьерные возможности'}

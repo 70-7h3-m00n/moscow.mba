@@ -12,7 +12,6 @@ const Pros = ({ format = 'online' }) => {
 	{
 		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
 	}
-	const isDigitalTransformation = useContext(DigitalTransformationContext)
 	if (format === 'online') {
 		return (
 			<section className={stls.container}>
@@ -68,7 +67,7 @@ const Pros = ({ format = 'online' }) => {
 										Онлайн-формат даёт возможность учиться у лучших
 									</h3>
 									{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
-									{isDigitalTransformation ? (
+									{at.mini ? (
 										<p>
 											Благодаря онлайн-формату Вы будете учиться у ведущих
 											специалистов сразу из нескольких топовых бизнес-школ мира.
@@ -92,35 +91,28 @@ const Pros = ({ format = 'online' }) => {
 								</div>
 								<div>
 									{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
-									{isDigitalTransformation ? (
-										<>
-											<h3 className={stls.itemTitle}>
-												Получаете престижные документы о прохождении подготовки
-											</h3>
-											<p>
-												Дипломы MBA mini online не отличаются от тех, которые
-												получают студенты очных программ. Вы будете проходить те
-												же учебные дисциплины с теми же спикерами, получите все
-												необходимые знания и навыки в более интенсивном темпе
-											</p>
-										</>
+									<h3 className={stls.itemTitle}>
+										{at.mini
+											? 'Получаете престижные документы о прохождении подготовки'
+											: 'Получаете престижные дипломы'}
+									</h3>
+									{at.mini ? (
+										<p>
+											Дипломы MBA mini online не отличаются от тех, которые
+											получают студенты очных программ. Вы будете проходить те
+											же учебные дисциплины с теми же спикерами, получите все
+											необходимые знания и навыки в более интенсивном темпе
+										</p>
 									) : (
-										<>
-											<h3 className={stls.itemTitle}>
-												Получаете престижные дипломы
-											</h3>
-											<p>
-												{at.mini
-													? 'Дипломы MBA mini online'
-													: at.mba
-													? 'Дипломы MBA online'
-													: at.executive
-													? 'Дипломы MBA executive online'
-													: 'Дипломы дистанционных программ'}{' '}
-												не отличаются от дипломов очных программ за счет того,
-												что преподают те же спикеры по тем же учебным программам
-											</p>
-										</>
+										<p>
+											{at.mba
+												? 'Дипломы MBA online'
+												: at.executive
+												? 'Дипломы MBA executive online'
+												: 'Дипломы дистанционных программ'}{' '}
+											не отличаются от дипломов очных программ за счет того, что
+											преподают те же спикеры по тем же учебным программам
+										</p>
 									)}
 								</div>
 							</li>
@@ -130,7 +122,7 @@ const Pros = ({ format = 'online' }) => {
 								</div>
 								<div>
 									{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
-									{isDigitalTransformation ? (
+									{at.mini ? (
 										<>
 											<h3 className={stls.itemTitle}>
 												Общайтесь с преподавателями online

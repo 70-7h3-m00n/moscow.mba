@@ -1,4 +1,5 @@
 import stls from '@/styles/components/sections/ProgramActuality.module.sass'
+
 import { Wrapper } from '@/components/layout'
 import Image from 'next/image'
 import src from '@/public/assets/images/Group.png'

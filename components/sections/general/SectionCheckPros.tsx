@@ -1,13 +1,12 @@
 import stls from '@/styles/components/sections/general/SectionCheckPros.module.sass'
-import { TypeClassNames } from '@/types/index'
 import cn from 'classnames'
+
+import { TypeClassNames } from '@/types/index'
 import { useAt } from '@/hooks/index'
 import { getClassNames } from '@/helpers/index'
 import { contactData } from '@/config/index'
 import { Wrapper } from '@/components/layout'
 import { IconCheck } from '@/components/icons'
-import { useContext } from 'react'
-import { DigitalTransformationContext } from '@/context/index'
 
 type TypeSectionCheckProsProps = TypeClassNames
 
@@ -49,19 +48,15 @@ const SectionCheckPros = ({ classNames }: TypeSectionCheckProsProps) => {
 		}
 	]
 
-	{
-		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
-	}
-	const isDigitalTransformation = useContext(DigitalTransformationContext)
-
 	return (
 		<section
 			className={
 				cn([stls.container], getClassNames({ classNames })) || undefined
-			}>
+			}
+		>
 			<Wrapper column classNames={[stls.wrapper]}>
 				{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
-				{isDigitalTransformation ? (
+				{at.mini ? (
 					<ul className={stls.pros}>
 						<li className={stls.pro}>
 							<div className={stls.icon}>

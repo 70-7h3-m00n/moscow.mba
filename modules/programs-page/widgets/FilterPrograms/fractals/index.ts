@@ -1,4 +1,5 @@
 export {
+	FilterCategory,
 	FilterDirection,
 	FilterDuration,
 	FilterTrainingFormat,

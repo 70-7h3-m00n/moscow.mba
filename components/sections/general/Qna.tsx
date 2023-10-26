@@ -1,4 +1,5 @@
 import stls from '@/styles/components/sections/Qna.module.sass'
+
 import { useRouter } from 'next/router'
 import Popup from 'reactjs-popup'
 import { routesFront } from '@/config/index'
@@ -7,16 +8,10 @@ import PopupForm from '@/components/popups/PopupForm'
 import { AccordionsContainer } from '@/components/general'
 import { Wrapper } from '@/components/layout'
 import { clickedAskQuestion } from '@/helpers/index'
-import { useContext } from 'react'
-import { DigitalTransformationContext } from '@/context/index'
 
 const Qna = ({ programId = null, programTitle = null }) => {
 	const at = useAt()
 	const router = useRouter()
-	{
-		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
-	}
-	const isDigitalTransformation = useContext(DigitalTransformationContext)
 
 	const qna = at.profession
 		? [
@@ -118,7 +113,7 @@ const Qna = ({ programId = null, programTitle = null }) => {
 				}
 		  ]
 
-	const qnaDigitalTransformation = [
+	const qnaMini = [
 		{
 			title: 'Можно ли закончить обучение экстерном?',
 			content:
@@ -181,7 +176,8 @@ const Qna = ({ programId = null, programTitle = null }) => {
 								clickedAskQuestion({
 									url: `${routesFront.root}${router.asPath}`
 								})
-							}}>
+							}}
+						>
 							{/* @ts-expect-error  */}
 							{close => (
 								<PopupForm
@@ -196,9 +192,7 @@ const Qna = ({ programId = null, programTitle = null }) => {
 					</div>
 					<div className={stls.content}>
 						<AccordionsContainer
-							accordionsItems={
-								isDigitalTransformation ? qnaDigitalTransformation : qna
-							}
+							accordionsItems={at.mini ? qnaMini : qna}
 							firstAccordionActive={false}
 							closeAll={false}
 							setCloseAll={() => {}}

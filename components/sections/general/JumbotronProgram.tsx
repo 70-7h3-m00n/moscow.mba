@@ -39,7 +39,6 @@ const JumbotronProgram = ({ program, programs = null }) => {
 	{
 		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
 	}
-	const isDigitalTransformation = useContext(DigitalTransformationContext)
 
 	// Toggle Switch
 	const [toggleSwitch, setToggleSwitch] = useState(at.mini)
@@ -80,7 +79,8 @@ const JumbotronProgram = ({ program, programs = null }) => {
 							height='24'
 							viewBox='0 0 24 24'
 							fill='none'
-							xmlns='http://www.w3.org/2000/svg'>
+							xmlns='http://www.w3.org/2000/svg'
+						>
 							<g clipPath='url(#clip0_3431_1802)'>
 								<path
 									d='M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z'
@@ -108,7 +108,8 @@ const JumbotronProgram = ({ program, programs = null }) => {
 					<div className={stls.buttonBoxBottom}>
 						<Link
 							className={stls.buttonBoxBottomLink}
-							href='/programs/mini/online'>
+							href='/programs/mini/online'
+						>
 							<button className={stls.homepageLink}>
 								К&nbsp;ДОСТУПНЫМ&nbsp;КУРСАМ
 							</button>
@@ -118,7 +119,8 @@ const JumbotronProgram = ({ program, programs = null }) => {
 							modal
 							lockScroll
 							nested
-							closeOnDocumentClick>
+							closeOnDocumentClick
+						>
 							{/* @ts-expect-error  */}
 							{close => (
 								<PopupForm
@@ -181,7 +183,8 @@ const JumbotronProgram = ({ program, programs = null }) => {
 								className={cn({
 									[stls.smallerTitle]: at.profession || at.course,
 									[stls.digitalLaw]: isDigitalLaw
-								})}>
+								})}
+							>
 								{program?.title}
 							</h1>
 							{isDigitalLaw && (
@@ -198,7 +201,7 @@ const JumbotronProgram = ({ program, programs = null }) => {
 									</p>
 								)}
 								{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
-								{isDigitalTransformation
+								{at.mini
 									? 'Оставьте заявку на консультацию по программе, чтобы узнать возможные варианты скидок и требования к поступлению'
 									: at.profession || at.course
 									? program?.description
@@ -210,7 +213,8 @@ const JumbotronProgram = ({ program, programs = null }) => {
 									modal
 									lockScroll
 									nested
-									closeOnDocumentClick>
+									closeOnDocumentClick
+								>
 									{/* @ts-expect-error  */}
 									{close => (
 										<PopupForm

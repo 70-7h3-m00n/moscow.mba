@@ -1,11 +1,11 @@
 import stls from '@/styles/components/sections/ContactUs.module.sass'
 import cn from 'classnames'
-import { ReactNode, useContext, useState } from 'react'
+
+import { ReactNode, useState } from 'react'
 import { useAt } from '@/hooks/index'
 import { LeadLoaderThankyou } from '@/components/general'
 import { FormAlpha } from '@/components/forms'
 import { Wrapper } from '@/components/layout'
-import { DigitalTransformationContext } from '@/context/index'
 
 type TContactUsProps = {
 	programTitle?: string | ReactNode
@@ -37,20 +37,17 @@ const ContactUs = ({
 	const [open, setOpen] = useState(false)
 	const [openLoader, setOpenLoader] = useState(false)
 
-	{
-		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
-	}
-	const isDigitalTransformation = useContext(DigitalTransformationContext)
-
 	return (
 		<section
 			className={cn(stls.container, {
 				[stls.overlapsFooter]: overlapsFooter
-			})}>
+			})}
+		>
 			<Wrapper
 				classNames={[
 					cn(stls.wrapper, { [stls.overlapsFooter]: overlapsFooter })
-				]}>
+				]}
+			>
 				<LeadLoaderThankyou
 					open={open}
 					setOpen={setOpen}
@@ -62,7 +59,8 @@ const ContactUs = ({
 				<h2
 					className={cn(stls.title, {
 						[stls.titleMaxWidthHalf]: titleMaxWidth === 'half'
-					})}>
+					})}
+				>
 					{title}
 					{titleNewStr && (
 						<>
@@ -70,8 +68,8 @@ const ContactUs = ({
 						</>
 					)}
 				</h2>
-				{/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */}
-				{isDigitalTransformation ? (
+
+				{at.mini ? (
 					<div className={stls.desc}>
 						{at.en
 							? 'Leave a request for a consultation and find out the exact cost of training, possible discount options and admission requirements'

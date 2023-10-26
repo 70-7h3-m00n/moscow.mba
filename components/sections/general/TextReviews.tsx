@@ -1,20 +1,17 @@
 import stls from '@/styles/components/sections/TextReviews.module.sass'
+
 import Image from 'next/legacy/image'
 import Popup from 'reactjs-popup'
 import PopupReview from '@/components/popups/PopupReview'
 import { Wrapper } from '@/components/layout'
-import VideoReviews from './VideoReviews'
 import useAt from '@/hooks/useAt'
 import cn from 'classnames'
-import { useContext } from 'react'
-import { DigitalTransformationContext } from '@/context/index'
 
 const TextReviews = () => {
 	const at = useAt()
 	const singleProgramPage = at.programChunk
-	const isDigitalTransformation = useContext(DigitalTransformationContext)
 
-	const reviewsDigitalTransformation = [
+	const reviewsMini = [
 		{
 			id: 'reviewModal-1',
 			name: 'Мария Алтухова',
@@ -92,16 +89,15 @@ const TextReviews = () => {
 		}
 	]
 
-	const reviewsList = isDigitalTransformation
-		? reviewsDigitalTransformation
-		: reviews
+	const reviewsList = at.mini ? reviewsMini : reviews
 
 	return (
 		<>
 			<div
 				className={cn(stls.reviewsContainer, {
 					[stls.singleProgramPage]: singleProgramPage
-				})}>
+				})}
+			>
 				<section className={stls.container}>
 					<Wrapper classNames={[stls.wrapper]}>
 						<div className={stls.titleContainer}>
@@ -128,7 +124,8 @@ const TextReviews = () => {
 														modal
 														lockScroll
 														nested
-														closeOnDocumentClick>
+														closeOnDocumentClick
+													>
 														{/* @ts-expect-error  */}
 														{close => (
 															<PopupReview

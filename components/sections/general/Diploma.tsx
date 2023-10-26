@@ -1,14 +1,14 @@
 import stls from '@/styles/components/sections/Diploma.module.sass'
-import { useContext, useState } from 'react'
-import Image from 'next/legacy/image'
 import cn from 'classnames'
+
+import { useState } from 'react'
+import Image from 'next/legacy/image'
 import Popup from 'reactjs-popup'
 import { base64pixel } from '@/config/index'
 import { useAt } from '@/hooks/index'
 import { Wrapper } from '@/components/layout'
 import { Pagination } from '@/components/general'
 import PopupImage from '@/components/popups/PopupImage'
-import { DigitalTransformationContext } from '@/context/index'
 
 const Diploma = ({ darkBackground = false }) => {
 	const at = useAt()
@@ -53,7 +53,8 @@ const Diploma = ({ darkBackground = false }) => {
 							modal
 							lockScroll
 							nested
-							closeOnDocumentClick>
+							closeOnDocumentClick
+						>
 							{/* @ts-expect-error  */}
 							{close => (
 								<PopupImage
@@ -93,7 +94,8 @@ const Diploma = ({ darkBackground = false }) => {
 							modal
 							lockScroll
 							nested
-							closeOnDocumentClick>
+							closeOnDocumentClick
+						>
 							{/* @ts-expect-error  */}
 							{close => (
 								<PopupImage
@@ -135,7 +137,8 @@ const Diploma = ({ darkBackground = false }) => {
 							modal
 							lockScroll
 							nested
-							closeOnDocumentClick>
+							closeOnDocumentClick
+						>
 							{/* @ts-expect-error  */}
 							{close => (
 								<PopupImage
@@ -175,7 +178,8 @@ const Diploma = ({ darkBackground = false }) => {
 							modal
 							lockScroll
 							nested
-							closeOnDocumentClick>
+							closeOnDocumentClick
+						>
 							{/* @ts-expect-error  */}
 							{close => (
 								<PopupImage
@@ -236,17 +240,14 @@ const Diploma = ({ darkBackground = false }) => {
 		) : (
 			diplomaPaginationImages[currentDiploma].image
 		)
-	{
-		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
-	}
-	const isDigitalTransformation = useContext(DigitalTransformationContext)
 
 	return (
 		<section
 			className={cn(stls.container, {
 				[stls.noMobileMb]: at.profession || at.course,
 				[stls.darkBg]: darkBackground
-			})}>
+			})}
+		>
 			<Wrapper classNames={[stls.wrapper]}>
 				<div className={stls.imageContainer}>
 					{renderPaginationAndTitle()}
@@ -273,7 +274,7 @@ const Diploma = ({ darkBackground = false }) => {
 							</>
 						)}
 					</div>
-					{isDigitalTransformation
+					{at.mini
 						? (at.online || at.promo || at.mbl) && (
 								<div className={stls.note}>
 									Ваш итоговый документ не будет отличаться от дипломов, которые
