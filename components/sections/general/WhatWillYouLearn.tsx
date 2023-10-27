@@ -1,6 +1,6 @@
 import stls from '@/styles/components/sections/WhatWillYouLearn.module.sass'
 import cn from 'classnames'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import { base64pixel } from '@/config/index'
 import { Wrapper } from '@/components/layout'
 
@@ -18,6 +18,10 @@ const WhatWillYouLearn = ({ data = null }) => {
 		'Корпоративные клиенты'
 	]
 
+	const photo = data?.whatWillYouLearnPhoto
+		? data?.whatWillYouLearnPhoto
+		: '/assets/images/learning_pic_1.jpg'
+
 	const list = data ? data.whatWillYouLearn : aboutAcademy
 
 	return (
@@ -27,7 +31,8 @@ const WhatWillYouLearn = ({ data = null }) => {
 					<div
 						className={cn(stls.floatLeft, {
 							[stls.smallPl]: !data
-						})}>
+						})}
+					>
 						<h2 className={stls.title}>
 							{data ? (
 								<>
@@ -42,12 +47,13 @@ const WhatWillYouLearn = ({ data = null }) => {
 						</h2>
 						<div className={stls.image}>
 							<Image
-								src='/assets/images/learning_pic_1.jpg'
+								src={photo}
 								width='651'
 								height='389'
 								alt='Слушатели во время конференции'
 								placeholder='blur'
 								blurDataURL={base64pixel}
+								style={{ objectFit: 'cover' }}
 							/>
 						</div>
 					</div>
@@ -58,7 +64,8 @@ const WhatWillYouLearn = ({ data = null }) => {
 									return (
 										<li
 											key={(item.string || item.toString()) + idx}
-											className={stls.item}>
+											className={stls.item}
+										>
 											{item.string || item.toString()}
 										</li>
 									)
