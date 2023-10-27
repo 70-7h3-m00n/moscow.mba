@@ -92,10 +92,12 @@ const CourseAccordion = ({
 					style={{ ...initialStyles, ...transitionStyles[state] }}
 					className={cn(stls.container, {
 						[stls.opened]: activeAccordion
-					})}>
+					})}
+				>
 					<div
 						className={stls.mainInfoContainer}
-						onClick={e => handleAccordionClick(e)}>
+						onClick={e => handleAccordionClick(e)}
+					>
 						<span className={stls.accordionLabel}>Курс MBA</span>
 						<ul className={stls.courseMainInfoList}>
 							<li className={stls.courseMainInfoItem}>
@@ -117,13 +119,15 @@ const CourseAccordion = ({
 						className={cn({
 							[stls.additionalInfoContainer]: true,
 							['openedAdditionalInfo']: activeAccordion
-						})}>
+						})}
+					>
 						<p className={stls.listTitle}>Чему научитесь:</p>
 						<ul className={stls.whatWillLearnList}>
 							{course?.whatWillYouLearn?.map((item, idx) => (
 								<li
 									key={`whatWillYouLearn-${idx}`}
-									className={stls.whatWillLearnItem}>
+									className={stls.whatWillLearnItem}
+								>
 									{item.string || item}
 								</li>
 							))}
@@ -153,7 +157,8 @@ const CourseAccordion = ({
 							modal
 							lockScroll
 							nested
-							closeOnDocumentClick>
+							closeOnDocumentClick
+						>
 							{/* @ts-expect-error  */}
 							{(close: any) => (
 								<PopupForm

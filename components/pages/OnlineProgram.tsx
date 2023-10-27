@@ -82,10 +82,7 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 			>
 				<JumbotronProgram program={program} programs={programs} />
 				<ProgramGoal data={program} />
-				{program?.actualInformation?.paragraph &&
-					program?.actualInformation?.description && (
-						<ProgramActuality data={program} />
-					)}
+				{program?.actualInformation && <ProgramActuality data={program} />}
 				<WhatWillYouLearn data={program} />
 				{program?.whoIsFor?.length > 0 ? (
 					<>
@@ -95,7 +92,7 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 				) : (
 					<ProgramDesc />
 				)}
-				<Pros format={'online'} />
+				<Pros data={program} format={'online'} />
 				<HowProcessGoes />
 				{isMiniMBAProgram ? (
 					<ProgramsModulesAccordion program={program} />

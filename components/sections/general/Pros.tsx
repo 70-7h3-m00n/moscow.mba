@@ -1,14 +1,16 @@
 import stls from '@/styles/components/sections/Pros.module.sass'
 import cn from 'classnames'
 import { useAt } from '@/hooks/index'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import { IconCheck } from '@/components/icons'
 import { Wrapper } from '@/components/layout'
-import { useContext } from 'react'
-import { DigitalTransformationContext } from '@/context/index'
 
-const Pros = ({ format = 'online' }) => {
+const Pros = ({ data = null, format = 'online' }) => {
 	const at = useAt()
+
+	const photo = data?.prosPhoto
+		? data?.prosPhoto
+		: '/assets/images/advantages_pic_1.jpg'
 	{
 		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
 	}
@@ -161,10 +163,11 @@ const Pros = ({ format = 'online' }) => {
 						</ul>
 						<div className={stls.imageRight}>
 							<Image
-								src='/assets/images/advantages_pic_1.jpg'
+								src={photo}
 								alt='Студент MBA'
 								width={357}
 								height={558}
+								style={{ objectFit: 'cover' }}
 							/>
 						</div>
 					</div>
@@ -187,10 +190,11 @@ const Pros = ({ format = 'online' }) => {
 						<div className={stls.imageLeft}>
 							<div className={stls.imageContainer}>
 								<Image
-									src='/assets/images/advantages_pic_1.jpg'
+									src={photo}
 									alt='Студент MBA'
 									width={265}
 									height={317}
+									style={{ objectFit: 'cover' }}
 								/>
 							</div>
 						</div>
