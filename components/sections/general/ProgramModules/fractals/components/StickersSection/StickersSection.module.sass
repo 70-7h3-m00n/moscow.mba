@@ -1,0 +1,8 @@
+@use '@/styles/utils/mixin' as m
+  
+.sticker
+  display: flex
+  flex-wrap: wrap
+  @include m.media(tablet, phone)
+    display: block
+    margin: 0

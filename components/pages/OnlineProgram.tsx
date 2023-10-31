@@ -30,7 +30,7 @@ import ProgramGoal from '@/components/sections/general/ProgramGoal'
 import WhatWillYouLearn from '@/components/sections/general/WhatWillYouLearn'
 import ProgramDesc from '@/components/sections/general/ProgramDesc'
 import HowProcessGoes from '@/components/sections/general/HowProcessGoes'
-import ProgramsModules from '@/components/sections/general/ProgramsModules'
+import ProgramsModules from '@/components/sections/general/ProgramModules/ProgramsModules'
 import GetStudyPlan from '@/components/sections/general/GetStudyPlan'
 import ContactUs from '@/components/sections/general/ContactUs'
 import Qna from '@/components/sections/general/Qna'
@@ -92,7 +92,7 @@ const PageOnlineProgram = ({ program, programs, teachers }) => {
 				) : (
 					<ProgramDesc />
 				)}
-				<Pros data={program} format={'online'} />
+				<Pros format={'online'} />
 				<HowProcessGoes />
 				{isMiniMBAProgram ? (
 					<ProgramsModulesAccordion program={program} />

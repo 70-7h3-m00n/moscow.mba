@@ -140,7 +140,7 @@ const Price = ({
 					).map((el, idx, array) => {
 						return (array.length - idx) % 3 === 0 ? ' ' + el : el
 					})}
-					<span className={stls.currency}>&#8381;/мес.</span>
+					<span className={stls.currency}>&#8381;/мес</span>
 				</>
 			)
 		} else {
@@ -153,7 +153,8 @@ const Price = ({
 			<span
 				className={cn(stls.executive, {
 					[stls.SectionStudyCost]: renderedByComponent === 'SectionStudyCost'
-				})}>
+				})}
+			>
 				{price[isDiscounted].executive} {currencySymbol}
 			</span>
 		)
@@ -164,7 +165,8 @@ const Price = ({
 				<i
 					className={cn(getPriceClass('old', renderedByComponent), {
 						[stls.SectionStudyCost]: renderedByComponent === 'SectionStudyCost'
-					})}>
+					})}
+				>
 					{programPriceKzUzConsidered
 						? toNumberWithSpaces(
 								Math.ceil(((programPriceKzUzConsidered / 45) * 100) / 1000) *
@@ -178,7 +180,8 @@ const Price = ({
 					discount
 						? getPriceClass('new', renderedByComponent)
 						: getPriceClass('simple', renderedByComponent)
-				}>
+				}
+			>
 				{programPriceKzUzConsidered
 					? toNumberWithSpaces(programPriceKzUzConsidered) +
 					  ` ${currencySymbol}`

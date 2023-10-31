@@ -6,7 +6,9 @@
   display: flex
   flex-wrap: wrap
   gap: 15px
-  margin-bottom: 65px
+  margin-bottom: 15px
+  @include m.media(tablet, phone, laptop)
+    gap: 10px
 
 .categoryBtn
   padding: 8px 15px 10px
@@ -17,6 +19,8 @@
   font-size: 18px
   font-weight: 400
   background: none
+  @include m.media(tablet, phone, laptop)
+    font-size: .875rem
 
 .active
   border: 1.229px solid #FF3535

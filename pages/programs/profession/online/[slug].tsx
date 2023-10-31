@@ -11,7 +11,11 @@ const PageProgramsProfessionOnlineProgram = ({ program, programs, until }) => {
 	return (
 		<>
 			<SeoPagesProgram program={program} />
-			<ProfessionOnlineProgram program={program} teachers={program?.teachers} />
+			<ProfessionOnlineProgram
+				program={program}
+				programs={programs}
+				teachers={program?.teachers}
+			/>
 		</>
 	)
 }

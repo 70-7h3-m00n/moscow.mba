@@ -26,17 +26,20 @@ const HeaderInformation = ({ classNames = [], handleMenu, openMenu }) => {
 		<div
 			className={
 				cn([stls.container], getClassNames({ classNames })) || undefined
-			}>
+			}
+		>
 			<Wrapper>
 				<Link
 					legacyBehavior
-					href={at.promo ? routesFront.promo : routesFront.home}>
+					href={at.promo ? routesFront.promo : routesFront.home}
+				>
 					<a
 						className={stls.logo}
 						onClick={() => handleMenu(false)}
-						aria-label={companyName}>
+						aria-label={companyName}
+					>
 						<div className={stls.picture}>
-							<IconLogo idx='1' />
+							<IconLogo />
 						</div>
 						<div>
 							<IconLogoTitle />
@@ -77,7 +80,8 @@ const HeaderInformation = ({ classNames = [], handleMenu, openMenu }) => {
 						className={cn(stls.burger, {
 							[stls.opened]: openMenu
 						})}
-						onClick={() => handleMenu(!openMenu)}>
+						onClick={() => handleMenu(!openMenu)}
+					>
 						<i className={stls.line} />
 						<i className={stls.line} />
 						<i className={stls.line} />
@@ -92,7 +96,8 @@ const HeaderInformation = ({ classNames = [], handleMenu, openMenu }) => {
 					modal
 					lockScroll
 					nested
-					closeOnDocumentClick>
+					closeOnDocumentClick
+				>
 					{/* @ts-expect-error  */}
 					{close => (
 						<PopupForm

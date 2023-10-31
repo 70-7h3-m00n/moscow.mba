@@ -29,23 +29,29 @@ const ProgramsPage = () => {
 			</section>
 			<ProgramsHero />
 			<section className={stls.generalContainer}>
-				<div className={stls.container}>
-					<div className={stls.filtersContainer}>
-						<FilterPrograms />
-					</div>
+				<div>
 					<h1 className={stls.title}>
 						ПРОГРАММЫ <span>ОБУЧЕНИЯ</span>
 					</h1>
-					<FilterCategory />
 					<div className={stls.infoRectangle}>
-						<InfoRectangle programPage={true} />
+						<InfoRectangle
+							className={stls.infoRectangleWidth}
+							programPage={true}
+						/>
 					</div>
 					<div className={stls.mainInfo}>
 						<MainInfo />
 					</div>
+					<FilterCategory />
 					<div className={stls.sortingContainer}>
 						<SortingPrograms />
 					</div>
+				</div>
+				<div className={stls.container}>
+					<div className={stls.filtersContainer}>
+						<FilterPrograms />
+					</div>
+
 					<div className={stls.programs}>
 						<CardsProgram />
 					</div>
@@ -54,10 +60,13 @@ const ProgramsPage = () => {
 			<VideoReviews />
 			<Reviews />
 			<HowProcessGoes />
-			<Qna />
+			<Qna firstAccordionActive />
 			<ContactUs
 				title={''}
-				titleNewStr={'Получите консультацию по программам MBA'}
+				titleNewStr={'Получите бесплатную консультацию'}
+				desc={
+					'Оставьте заявку и получите бесплатную консультацию, узнайте их точную стоимость, возможные варианты скидок и требования к поступлению'
+				}
 				overlapsFooter
 			/>
 		</ConfigProgramsProvider>

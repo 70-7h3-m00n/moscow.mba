@@ -24,35 +24,11 @@ const FilterTrainingFormat = () => {
 			handlerSetConfigPrograms({
 				[FiltersEnum.filterTrainingFormat]: trainingFormat
 			})
-
-			// if (router.query?.[FiltersEnum.filterTrainingFormat]) {
-			//  const isFilterInURL = Object.keys(FilterFormatTrainingEnum).includes(
-			//   router.query?.[FiltersEnum.filterTrainingFormat]
-			//  )
-
-			//  const isCourceAndProfession =
-			//   router.query?.[FiltersEnum.filterTypeProgram] ===
-			//    FilterTypeProgramEnum.course ||
-			//   router.query?.[FiltersEnum.filterTypeProgram] ===
-			//    FilterTypeProgramEnum.profession ||
-			//   at.course ||
-			//   at.profession
-
-			//  isFilterInURL &&
-			//   handlerSetConfigPrograms({
-			//    [FiltersEnum.filterTrainingFormat]: isCourceAndProfession
-			//     ? FilterFormatTrainingEnum.online
-			//     : router.query?.[FiltersEnum.filterTrainingFormat]
-			//   })
-			// }
 		}
 	}, [router.isReady])
 
 	// if training format is changed set to configPrograms
 	const handlerOnChange = e => {
-		// handlerSetConfigPrograms({
-		//  [FiltersEnum.filterTrainingFormat]: e.target.value
-		// })
 		at.allPrograms
 			? handlerSetConfigPrograms({
 					[FiltersEnum.filterTrainingFormat]: e.target.value
@@ -81,7 +57,8 @@ const FilterTrainingFormat = () => {
 						isCourceAndProfession
 							? stls.inputFilterTrainingDisabled
 							: ''
-					}`}>
+					}`}
+				>
 					<input
 						type='radio'
 						name={FiltersEnum.filterTrainingFormat}
@@ -101,8 +78,12 @@ const FilterTrainingFormat = () => {
 								? stls.labelModalSortingDisable
 								: ''
 						}`}
-						htmlFor={item.value}>
+						htmlFor={item.value}
+					>
 						{item.text}
+						{item.value === FilterFormatTrainingEnum.online && (
+							<span className={stls.sale}>-45%</span>
+						)}
 					</label>
 				</div>
 			))}

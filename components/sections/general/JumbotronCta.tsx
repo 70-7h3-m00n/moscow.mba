@@ -76,7 +76,8 @@ const JumbotronCta = ({
 									<Link
 										legacyBehavior
 										href='/programs'
-										{...(at.en ? { locale: 'ru' } : undefined)}>
+										{...(at.en ? { locale: 'ru' } : undefined)}
+									>
 										<a>{at.en ? 'MBA Programs' : 'Программы MBA'}</a>
 									</Link>
 								</li>
@@ -100,7 +101,9 @@ const JumbotronCta = ({
 								<span className={stls.red}>
 									{at.en ? `${discount} discount` : `Скидка ${discount}`}
 								</span>{' '}
-								{at.en ? 'on all ONLINE programs' : 'на все программы ONLINE'}{' '}
+								{at.en
+									? 'on all ONLINE programs'
+									: 'на все программы ONLINE до'}{' '}
 								<Until preposition={true} />!
 							</div>
 							<div className={stls.descForm}>

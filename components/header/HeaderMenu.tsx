@@ -15,6 +15,11 @@ const HeaderMenu = ({ programs, handleMenu }) => {
 	const at = useAt()
 	const links = [
 		{
+			href: '/programs',
+			val: at.en ? 'Programs' : 'Программы',
+			red: at.programs
+		},
+		{
 			href: '/about',
 			val: at.en ? 'About' : 'Об академии',
 			red: at.about

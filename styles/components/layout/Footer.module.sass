@@ -220,16 +220,18 @@
 .location
   align-items: center
   display: flex
-  margin-right: 20px
+  margin-right: 10px
   margin-bottom: 26px
   font-weight: 300
   font-size: 15px
   line-height: 120%
+  &:hover
+    text-decoration: underline
+
   @include m.media(phone, tablet)
     display: none
   svg
     flex-shrink: 0
-    margin-right: 10px
     filter: invert(58%) sepia(3%) saturate(7%) hue-rotate(348deg) brightness(86%) contrast(85%)
 
 .locationPhone

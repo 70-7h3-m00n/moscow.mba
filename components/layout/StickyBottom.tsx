@@ -1,5 +1,6 @@
 import stls from '@/styles/components/layout/StickyBottom.module.sass'
 import cn from 'classnames'
+
 import { useEffect, useContext } from 'react'
 import Link from 'next/link'
 import Popup from 'reactjs-popup'
@@ -53,7 +54,8 @@ const StickyBottom = ({
 				'sticky-bottom-part': true,
 				show: true,
 				[stls.overlay]: overlayIsShown
-			})}>
+			})}
+		>
 			<div className={stls.content}>
 				<p className={stls.p}>
 					<strong>
@@ -61,14 +63,15 @@ const StickyBottom = ({
 					</strong>
 					<span className={stls.responsiveSpace}>&nbsp;</span>
 					<br className={stls.responsiveBr} />
-					{at.en ? 'to all Online programs' : 'на все Online программы'}{' '}
+					{at.en ? 'to all Online programs' : 'на все Online программы до'}{' '}
 					<Until />!
 				</p>
 				<div className={stls.btns}>
 					<Link
 						legacyBehavior
 						href='/programs/mini/online'
-						{...(at.en ? { locale: 'ru' } : undefined)}>
+						{...(at.en ? { locale: 'ru' } : undefined)}
+					>
 						<a className={stls.btn}>
 							{at.en ? <>VIEW&nbsp;PROGRAMS</> : <>СМОТРЕТЬ&nbsp;ПРОГРАММЫ</>}
 						</a>
@@ -87,7 +90,8 @@ const StickyBottom = ({
 						modal
 						lockScroll
 						nested
-						closeOnDocumentClick>
+						closeOnDocumentClick
+					>
 						{/* @ts-expect-error  */}
 						{close => (
 							<PopupForm
@@ -108,7 +112,8 @@ const StickyBottom = ({
 							modal
 							lockScroll
 							nested
-							closeOnDocumentClick>
+							closeOnDocumentClick
+						>
 							{/* @ts-expect-error  */}
 							{close => <PopupLearnMore close={close} />}
 						</Popup>
@@ -116,18 +121,21 @@ const StickyBottom = ({
 
 					<a
 						className={`${stls.pointer} close-bottom-module-btn ${stls.crossIn}`}
-						onClick={closeStickyModule}>
+						onClick={closeStickyModule}
+					>
 						<IconCross />
 					</a>
 				</div>
 				<a
 					className={`${stls.pointer} close-bottom-module-btn ${stls.crossOut}`}
-					onClick={closeStickyModule}>
+					onClick={closeStickyModule}
+				>
 					<IconCross />
 				</a>
 				<a
 					className={`${stls.pointer} ${stls.crossTop}`}
-					onClick={closeStickyModule}>
+					onClick={closeStickyModule}
+				>
 					<IconClose />
 				</a>
 			</div>

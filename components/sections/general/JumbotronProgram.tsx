@@ -244,7 +244,7 @@ const JumbotronProgram = ({ program, programs = null }) => {
 												notComparingPrices
 												programPrice={program?.price}
 											/>{' '}
-											на 12 мес.
+											на 12 мес
 										</p>
 									</div>
 								)}

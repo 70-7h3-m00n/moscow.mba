@@ -123,14 +123,16 @@
     display: block
 
 .link
+  font-family: 'MazzardM', Arial, Tahoma, sans-serif
+  letter-spacing: 1.5px
   font-weight: 500
   font-size: 15px
   line-height: 120%
   text-align: center
-  letter-spacing: 0.1em
   text-decoration-line: underline
   text-transform: uppercase
   color: #FF3535
+  transform: translateY(10px)
   @include m.media(phone, tablet, laptop, desktop)
     display: none
 
@@ -145,6 +147,7 @@
   display: flex
   align-items: center
   gap: 10px
+  transform: translateY(7px)
   @include m.media(phone, tablet, laptop)
     display: none
   svg

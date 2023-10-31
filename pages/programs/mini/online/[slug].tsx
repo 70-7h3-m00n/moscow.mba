@@ -3,7 +3,7 @@ import { handleGetStaticPaths, handleGetStaticProps } from '@/lib/index'
 import { usePageHandleContext } from '@/hooks/index'
 import { routesFront } from '@/config/index'
 import { OnlineProgram } from '@/components/pages'
-import { SeoOrganizationJsonLd, SeoPagesProgram } from '@/components/seo'
+import { SeoPagesProgram } from '@/components/seo'
 
 const PageProgramsMiniOnlineProgram = ({ program, programs }) => {
 	usePageHandleContext({ programs, program })

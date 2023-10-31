@@ -1,0 +1,20 @@
+@use '@/styles/utils/mixin' as m
+
+.container
+  @include m.media(phone, tablet ,laptop)
+    margin: 0 0 78px 0
+  @include m.media(desktop, widescreen)
+    margin: 0 0 73px 0
+  .h3
+    font-weight: bold
+    font-size: 24px
+    line-height: 1.2
+    margin-bottom: 30px
+    @include m.media(tablet, phone)
+      font-size: 28px
+  &.smallMb
+    margin-bottom: 80px
+
+.wrapper
+  overflow: hidden
+

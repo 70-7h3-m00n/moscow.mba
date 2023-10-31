@@ -5,9 +5,13 @@ import { PopupInfo } from '@/components/popups'
 import { Until } from '@/components/costs'
 import { useConfigProgramsContext } from 'modules/programs-page/fractals'
 import { FilterTypeProgramEnum } from 'modules/programs-page/fractals/enums'
+import { HTMLAttributes } from 'react'
 
 // TODO:: improve styles for rectangle. It's content is not vertically centered on tablet & laptop, it goes full width on smaller screen but should have padding left & right
-const InfoRectangle = ({ programPage = false }) => {
+const InfoRectangle = ({
+	className,
+	programPage = false
+}: HTMLAttributes<HTMLUListElement> & { programPage?: boolean }) => {
 	const at = useAt()
 	const date = new Date()
 	const currentMonth = date.getMonth()
@@ -98,23 +102,26 @@ const InfoRectangle = ({ programPage = false }) => {
 
 	return (
 		<ul
-			className={cn(stls.container, {
+			className={cn(className, stls.container, {
 				[stls.programsPageContainer]: programPage,
 				[stls.academyInfoContainer]: at.index || at.promo
-			})}>
+			})}
+		>
 			{infoRectangleContent[typeOfContent].map((item, idx) => (
 				<li
 					key={idx + item.itemDetail}
 					className={cn(stls.item, {
 						[stls.academyInfoItem]: at.index || at.promo
-					})}>
+					})}
+				>
 					{item.itemTitle && (
 						<div className={stls.itemTitle}>{item.itemTitle}</div>
 					)}
 					<div
 						className={cn(stls.itemDetail, {
 							[stls.academyInfoItemDetail]: at.index || at.promo
-						})}>
+						})}
+					>
 						{item.itemDetail}
 					</div>
 				</li>

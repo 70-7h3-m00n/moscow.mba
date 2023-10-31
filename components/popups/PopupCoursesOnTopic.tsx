@@ -37,18 +37,24 @@ const PopupCoursesOnTopic = ({
 			<div
 				className={
 					cn([stls.container], getClassNames({ classNames })) || undefined
-				}>
+				}
+			>
 				<div className={stls.buttonClosed}>
 					<button
 						className={stls.closed}
-						onClick={handlePopupCoursesOnTopic}></button>
+						onClick={handlePopupCoursesOnTopic}
+					></button>
 				</div>
 				<div className={stls.category}>
 					<span className={stls.categoryItem}>{'Курсы по теме'}</span>
 				</div>
 				<div className={stls.programs}>
 					{recommendedPrograms?.map((program, idx) => (
-						<div className={stls.program} key={`${program.title}_${idx}`}>
+						<Link
+							href={`${routesFront.programs}/${program?.categorySlug}/${program?.studyFormatSlug}/${program?.slug}`}
+							className={stls.program}
+							key={`${program.title}_${idx}`}
+						>
 							<div className={stls.iconProgram}>
 								<ImgJournalArticleRecommended
 									icon={program.icon}
@@ -62,13 +68,9 @@ const PopupCoursesOnTopic = ({
 								<p className={stls.nameProgram}>{program.title}</p>
 							</div>
 							<div className={stls.linkProgram}>
-								<Link
-									legacyBehavior
-									href={`${routesFront.programs}/${program?.categorySlug}/${program?.studyFormatSlug}/${program?.slug}`}>
-									<a className={stls.link}>Узнать больше</a>
-								</Link>
+								<p className={stls.link}>Узнать больше</p>
 							</div>
-						</div>
+						</Link>
 					))}
 				</div>
 				<div className={stls.bottom}>

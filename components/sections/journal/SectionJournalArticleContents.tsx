@@ -32,6 +32,16 @@ const SectionJournalArticleContents = ({
 
 	if (journalArticle?.articleBody.length === 0) return null
 
+	const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+		e.preventDefault()
+		const href = e.currentTarget.href
+		const targetId = href.replace(/.*\#/, '')
+		const elem = document.getElementById(targetId)
+		elem?.scrollIntoView({
+			behavior: 'smooth'
+		})
+	}
+
 	return (
 		<section
 			className={
@@ -42,7 +52,8 @@ const SectionJournalArticleContents = ({
 						: stls.popup,
 					getClassNames({ classNames })
 				) || undefined
-			}>
+			}
+		>
 			<div className={stls.accordion}>
 				<div className={stls.accordionTitle} onClick={handleShowList}>
 					<span className={stls.title}>Содержание</span>
@@ -54,7 +65,8 @@ const SectionJournalArticleContents = ({
 							height='8'
 							viewBox='0 0 14 8'
 							fill='none'
-							xmlns='http://www.w3.org/2000/svg'>
+							xmlns='http://www.w3.org/2000/svg'
+						>
 							<path
 								d='M13 7L7 1L1 7'
 								stroke={isList ? '#FF3535' : '#262626'}
@@ -69,8 +81,8 @@ const SectionJournalArticleContents = ({
 					<ul>
 						{textLinkTitle?.map((item, idx) => (
 							<li key={`${item}_${idx}`} className={stls.item}>
-								<Link legacyBehavior href={`#${slugify(item)}`}>
-									<a>{item}</a>
+								<Link href={`#${slugify(item)}`} onClick={handleScroll}>
+									{item}
 								</Link>
 							</li>
 						))}

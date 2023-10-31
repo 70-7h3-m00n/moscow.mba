@@ -9,7 +9,11 @@ import { AccordionsContainer } from '@/components/general'
 import { Wrapper } from '@/components/layout'
 import { clickedAskQuestion } from '@/helpers/index'
 
-const Qna = ({ programId = null, programTitle = null }) => {
+const Qna = ({
+	programId = null,
+	programTitle = null,
+	firstAccordionActive = false
+}) => {
 	const at = useAt()
 	const router = useRouter()
 
@@ -193,7 +197,7 @@ const Qna = ({ programId = null, programTitle = null }) => {
 					<div className={stls.content}>
 						<AccordionsContainer
 							accordionsItems={at.mini ? qnaMini : qna}
-							firstAccordionActive={false}
+							firstAccordionActive={firstAccordionActive}
 							closeAll={false}
 							setCloseAll={() => {}}
 						/>

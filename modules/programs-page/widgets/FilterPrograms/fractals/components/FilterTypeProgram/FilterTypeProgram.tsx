@@ -1,16 +1,17 @@
+import stls from './FilterTypeProgram.module.sass'
+import { FilterTypeProgramType } from './types'
+
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import {
 	useConfigProgramsContext,
 	LIST_FILTER_TYPE_PROGRAM,
-	FilterFormatTrainingEnum,
 	FilterTypeProgramEnum,
 	FiltersEnum
 } from 'modules/programs-page/fractals'
-import stls from './FilterTypeProgram.module.sass'
 import useAt from '@/hooks/useAt'
 
-const FilterTypeProgram = () => {
+const FilterTypeProgram = ({}: FilterTypeProgramType) => {
 	const at = useAt()
 	const { configPrograms, handlerSetConfigPrograms, router, setQueryURI } =
 		useConfigProgramsContext()
@@ -32,18 +33,6 @@ const FilterTypeProgram = () => {
 			handlerSetConfigPrograms({
 				[FiltersEnum.filterTypeProgram]: typeOfProgram
 			})
-
-			// if (router.query?.[FiltersEnum.filterTypeProgram]) {
-			//  const isFilterInURL = Object.keys(FilterTypeProgramEnum).includes(
-			//   router.query?.[FiltersEnum.filterTypeProgram]
-			//  )
-
-			//  isFilterInURL &&
-			//   handlerSetConfigPrograms({
-			//    [FiltersEnum.filterTypeProgram]:
-			//     router.query?.[FiltersEnum.filterTypeProgram]
-			//   })
-			// }
 		}
 	}, [router.isReady])
 
@@ -107,16 +96,19 @@ const FilterTypeProgram = () => {
 		<div className={stls.filterTypeProgram}>
 			<p
 				className={stls.filterTitle}
-				onClick={() => setIsShowFilter(isShowFilter => !isShowFilter)}>
-				Тип программы <span className={stls.sale}>-45%</span>
+				onClick={() => setIsShowFilter(isShowFilter => !isShowFilter)}
+			>
+				Тип программы
 				<span
-					className={`${stls.circle} ${isShowFilter ? stls.isShowCircle : ''}`}>
+					className={`${stls.circle} ${isShowFilter ? stls.isShowCircle : ''}`}
+				>
 					<svg
 						width='14'
 						height='8'
 						viewBox='0 0 14 8'
 						fill='none'
-						xmlns='http://www.w3.org/2000/svg'>
+						xmlns='http://www.w3.org/2000/svg'
+					>
 						<path
 							d='M13 7L7 1L1 7'
 							stroke='white'

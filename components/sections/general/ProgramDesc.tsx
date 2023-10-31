@@ -7,9 +7,13 @@ import { useContext } from 'react'
 import { DigitalTransformationContext } from '@/context/index'
 import { useRouter } from 'next/router'
 
-const ProgramDesc = () => {
+const ProgramDesc = ({ data = null }) => {
 	const router = useRouter()
 	const at = useAt()
+
+	const photo = data?.prosPhoto
+		? data?.prosPhoto
+		: '/assets/images/handsome-business-man.jpg'
 
 	const isDigitalLaw = router.query.slug === 'zifrovoe-pravo'
 	{
@@ -78,7 +82,15 @@ const ProgramDesc = () => {
 							height={503}
 						/>
 					)}
-					{(at.profession || (at.course && !isDigitalLaw) || at.promo) && (
+					{at.profession && (
+						<Image
+							src={photo}
+							alt='Слушатели на конференции'
+							width={503}
+							height={503}
+						/>
+					)}
+					{((at.course && !isDigitalLaw) || at.promo) && (
 						<Image
 							src='/assets/images/handsome-business-man.jpg'
 							alt='Слушатели на конференции'

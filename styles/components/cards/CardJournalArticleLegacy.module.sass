@@ -53,6 +53,12 @@
   font-weight: 500
   line-height: 120%
   transition-duration: 300ms
+  height: 4.8em
+  width: 200px
+  overflow: hidden
+  display: -webkit-box
+  -webkit-box-orient: vertical
+  -webkit-line-clamp: 4
   @include m.dye(c, c.$chi)
   @include m.media(phone, tablet)
     margin-top: f.px(10)
@@ -61,6 +67,8 @@
   @include m.media(laptop, desktop, widescreen)
     margin-bottom: f.px(25)
     font-size: f.px(18)
+
+
 
 .bottomBottom
   display: flex
