@@ -1,6 +1,7 @@
-import Link from 'next/link'
+import stls from '@/styles/components/cards/CardJournalArticleLegacy.module.sass'
 import cn from 'classnames'
 
+import Link from 'next/link'
 import {
 	TypeClassNames,
 	TypeLibJournalArticle,
@@ -12,7 +13,7 @@ import {
 	TypeContextJournalCategory,
 	TypeContextJournalFilterButtons
 } from '@/types/context/journal/TypeContextJournal'
-
+import truncate from 'truncate'
 import bp from '@/config/breakpoints'
 import { routesFront } from '@/config/index'
 
@@ -20,8 +21,6 @@ import { getClassNames, getImageHeight, getRenderTime } from '@/helpers/index'
 
 import { GeneralJournalArticleCreatedAtLegacy } from '@/components/general'
 import { ImgJournalArticle } from '@/components/images'
-
-import stls from '@/styles/components/cards/CardJournalArticleLegacy.module.sass'
 
 type TypeCardJournalArticleLegacyProps = {
 	article: TypeLibJournalArticle | null
@@ -118,7 +117,8 @@ const CardJournalArticleLegacy = ({
 			<a
 				className={
 					cn(stls.container, getClassNames({ classNames })) || undefined
-				}>
+				}
+			>
 				<div className={stls.article}>
 					<div className={stls.top}>
 						<ImgJournalArticle
@@ -143,7 +143,8 @@ const CardJournalArticleLegacy = ({
 								<span
 									className={stls.category}
 									onClick={e => handleClickCategory(e, category)}
-									key={`${category.title}_${idx}`}>
+									key={`${category.title}_${idx}`}
+								>
 									{category.title}
 								</span>
 							))}

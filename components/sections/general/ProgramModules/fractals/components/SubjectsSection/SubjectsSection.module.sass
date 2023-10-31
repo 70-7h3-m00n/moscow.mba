@@ -1,0 +1,27 @@
+@use '@/styles/utils/mixin' as m
+  
+.list
+  display: flex
+  flex-wrap: wrap
+  margin-bottom: 20px
+  @include m.media(tablet, phone)
+    display: block
+    margin: 0
+    margin-bottom: 30px
+  @include m.media(widescreen, desktop, laptop)
+    position: relative
+
+.pl
+  position: relative
+  z-index: 2
+  padding-left: 220px
+  @include m.media(desktop, laptop, tablet, phone)
+    padding-left: 0
+
+.h3
+  font-weight: bold
+  font-size: 24px
+  line-height: 1.2
+  margin-bottom: 30px
+  @include m.media(tablet, phone)
+    font-size: 28px

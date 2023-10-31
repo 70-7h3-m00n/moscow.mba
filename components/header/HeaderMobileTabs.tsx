@@ -1,7 +1,8 @@
 import stls from '@/styles/components/header/HeaderMobileTabs.module.sass'
+import cn from 'classnames'
+
 import Link from 'next/link'
 import { useAt } from '@/hooks/index'
-import cn from 'classnames'
 import React, { useState } from 'react'
 import { IconLocation } from '@/components/icons'
 import contactData from '@/config/contactData'
@@ -32,17 +33,12 @@ const HeaderMobileTabs = ({
 			<div className={stls.content}>
 				<Wrapper classNames={[stls.wrapper]}>
 					<ul className={stls.links}>
-						{/* TODO: onClick should be on the button, not on li */}
-						<li onClick={() => setOpenMenu(true)} className={stls.link}>
+						{/* <li onClick={() => setOpenMenu(true)} className={stls.link}>
 							{at.en ? 'Programs' : 'Программы'}
-						</li>
+						</li> */}
 						{links.map((item, idx) => (
 							<Link legacyBehavior href={item.href} key={item.href + idx}>
-								<a
-									className={cn(stls.link, {
-										[stls.last]: idx === tabs.length
-									})}
-									onClick={() => handleMenu(false)}>
+								<a className={cn(stls.link)} onClick={() => handleMenu(false)}>
 									{item.val}
 								</a>
 							</Link>
@@ -67,7 +63,8 @@ const HeaderMobileTabs = ({
 			<div
 				className={cn(stls.content, stls.menuPrograms, {
 					[stls.opened]: openMenu
-				})}>
+				})}
+			>
 				<button className={stls.btn} onClick={() => setOpenMenu(false)}>
 					<Wrapper classNames={[stls.wrapperTitle]}>
 						<span />
@@ -83,7 +80,8 @@ const HeaderMobileTabs = ({
 									<Link legacyBehavior href={item.href} key={item.href + idx}>
 										<a
 											className={cn(stls.link, stls.last)}
-											onClick={() => handleMenu(false)}>
+											onClick={() => handleMenu(false)}
+										>
 											{item.val}
 										</a>
 									</Link>
@@ -94,7 +92,8 @@ const HeaderMobileTabs = ({
 										key={item.href + idx}
 										className={stls.link}
 										data-tab={`#header-podmenu-${idx + 1}`}
-										onClick={e => clickHandle(e)}>
+										onClick={e => clickHandle(e)}
+									>
 										{item.val}
 									</span>
 								)
@@ -106,7 +105,8 @@ const HeaderMobileTabs = ({
 			<div
 				className={cn(stls.content, stls.programslist, {
 					[stls.opened]: openProg
-				})}>
+				})}
+			>
 				<button className={stls.btn} onClick={() => setOpenProg(false)}>
 					<Wrapper classNames={[stls.wrapperTitle]}>
 						<span />
@@ -118,7 +118,8 @@ const HeaderMobileTabs = ({
 				</Wrapper>
 				<button
 					className={cn(stls.btn, stls.bottom)}
-					onClick={() => setOpenProg(false)}>
+					onClick={() => setOpenProg(false)}
+				>
 					<Wrapper classNames={[stls.wrapperTitle]}>
 						<span />
 						{at.en ? 'to programs' : 'к программам'}

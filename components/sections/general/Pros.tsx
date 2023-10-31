@@ -5,12 +5,10 @@ import Image from 'next/image'
 import { IconCheck } from '@/components/icons'
 import { Wrapper } from '@/components/layout'
 
-const Pros = ({ data = null, format = 'online' }) => {
+const Pros = ({ format = 'online' }) => {
 	const at = useAt()
 
-	const photo = data?.prosPhoto
-		? data?.prosPhoto
-		: '/assets/images/advantages_pic_1.jpg'
+	const photo = '/assets/images/advantages_pic_1.jpg'
 	{
 		/* TODO: Test, TemporarySolution: Текстовый шаблон страницы курсов MINI MBA */
 	}

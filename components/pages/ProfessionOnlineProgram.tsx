@@ -26,7 +26,7 @@ import WhoItIsFor from '@/components/sections/general/WhoItIsFor'
 import WhatWillYouLearn from '@/components/sections/general/WhatWillYouLearn'
 import ProgramDesc from '@/components/sections/general/ProgramDesc'
 import HowProcessGoes from '@/components/sections/general/HowProcessGoes'
-import ProgramsModules from '@/components/sections/general/ProgramsModules'
+import ProgramsModules from '@/components/sections/general/ProgramModules/ProgramsModules'
 import ContactUs from '@/components/sections/general/ContactUs'
 import Qna from '@/components/sections/general/Qna'
 import Teachers from '@/components/sections/general/Teachers'
@@ -39,8 +39,16 @@ import Pros from '@/components/sections/general/Pros'
 import GetStudyPlan from '@/components/sections/general/GetStudyPlan'
 import ProgramDevelopedStandard from '@/components/sections/general/ProgramDevelopedStandard'
 import SectionIPAR from '@/components/sections/general/SectionIPAR'
+import {
+	Accreditation,
+	ProgramActuality,
+	ProgramGoal,
+	RecommendedPrograms,
+	Students
+} from '../sections'
+import TextReviews from '../sections/general/TextReviews'
 
-const ProfessionOnlineProgram = ({ program, teachers }) => {
+const ProfessionOnlineProgram = ({ program, programs, teachers }) => {
 	const data = program
 	const studyFieldIsAccounting =
 		program?.study_field?.slug?.trim() === 'accounting-analysis-and-audit'
@@ -48,24 +56,29 @@ const ProfessionOnlineProgram = ({ program, teachers }) => {
 	return (
 		<>
 			<JumbotronProgram program={data} />
+			{data?.goal && <ProgramGoal data={program} />}
+			{program?.actualInformation && <ProgramActuality data={program} />}
 			<WhatWillYouLearn data={data} />
-			<ProgramDesc />
+			<ProgramDesc data={data} />
+			<WhoItIsFor program={program} />
 			<ProgramDevelopedStandard />
 			{studyFieldIsAccounting && <SectionIPAR />}
-
-			<WhoItIsFor program={program} />
 			<Pros format={'online'} />
 			<HowProcessGoes />
 			<ProgramsModules program={data} smallerMb />
+			<HelpWithEmployment />
+			{/* add bonus modules */}
 			<GetStudyPlan />
+			<Diploma />
 			<Teachers
 				programId={data?._id}
 				programTitle={data?.title}
 				teachers={program?.teachers}
 			/>
-			<HelpWithEmployment />
+			<Students />
+			<TextReviews />
+			<Accreditation />
 			<CorporateClients partnershipTitle />
-			<Diploma />
 			<SectionStudyCost />
 			<SectionCheckPros />
 			<Qna programId={data?._id} programTitle={data?.title} />
@@ -74,8 +87,8 @@ const ProfessionOnlineProgram = ({ program, teachers }) => {
 				programTitle={data?.title}
 				title={'Не знаете что выбрать?'}
 				titleNewStr={'Получите консультацию по программам'}
-				overlapsFooter
 			/>
+			<RecommendedPrograms programs={programs} />
 		</>
 	)
 }

@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
 import stls from './SortingPrograms.module.sass'
+
+import { useEffect, useState } from 'react'
 import {
 	LIST_SORTING,
 	SortingsEnum,
@@ -37,14 +38,16 @@ const SortingPrograms = () => {
 		<div className={stls.sortingPrograms}>
 			<button
 				className={stls.sortingButton}
-				onClick={() => setIsActiveModal(isActiveModal => !isActiveModal)}>
+				onClick={() => setIsActiveModal(isActiveModal => !isActiveModal)}
+			>
 				<div className={stls.stars}>
 					<svg
 						width='10'
 						height='16'
 						viewBox='0 0 10 16'
 						fill='none'
-						xmlns='http://www.w3.org/2000/svg'>
+						xmlns='http://www.w3.org/2000/svg'
+					>
 						<path
 							d='M5 1V15'
 							stroke='#FF3535'
@@ -66,7 +69,8 @@ const SortingPrograms = () => {
 						viewBox='0 0 10 16'
 						fill='none'
 						xmlns='http://www.w3.org/2000/svg'
-						className={stls.starRotate}>
+						className={stls.starRotate}
+					>
 						<path
 							d='M5 1V15'
 							stroke='#FF3535'
@@ -86,19 +90,22 @@ const SortingPrograms = () => {
 				<p
 					className={`${stls.titleSort} ${
 						isActiveModal ? stls.titleSortActive : ''
-					}`}>
+					}`}
+				>
 					Сортировка
 				</p>
 				<div
 					className={`${stls.starDirection} ${
 						isActiveModal ? stls.starDirectionActive : ''
-					}`}>
+					}`}
+				>
 					<svg
 						width='14'
 						height='8'
 						viewBox='0 0 14 8'
 						fill='none'
-						xmlns='http://www.w3.org/2000/svg'>
+						xmlns='http://www.w3.org/2000/svg'
+					>
 						<path
 							d='M13 7L7 1L1 7'
 							strokeWidth='2'

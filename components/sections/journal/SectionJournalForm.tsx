@@ -1,7 +1,8 @@
 import stls from '@/styles/components/sections/journal/SectionJournalForm.module.sass'
+import cn from 'classnames'
+
 import Image from 'next/legacy/image'
 import { useState } from 'react'
-import cn from 'classnames'
 import { ImgTemplate } from '@/components/images'
 
 import { IconLoader } from '@/components/icons'
@@ -47,9 +48,8 @@ const SectionJournalForm = ({
 
 	return (
 		<div
-			className={
-				cn(stls.container, getClassNames({ classNames })) || undefined
-			}>
+			className={cn(stls.container, getClassNames({ classNames })) || undefined}
+		>
 			<div className={stls.form}>
 				{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
 				<Image
@@ -87,12 +87,19 @@ const SectionJournalForm = ({
 				</div>
 				<div className={openLoader || open ? stls.formContent : ''}>
 					<p className={stls.title}>{formPdfMaterials?.title}</p>
-					<div className={stls.pdfFiles}>
+					<div
+						className={cn(stls.pdfFiles, { [stls.pdfFilesHorizontal]: true })}
+					>
 						{pdfMaterials.map((file, idx) => (
 							<div key={`${file?.name}-${idx}`} className={stls.pdfFile}>
 								<div className={stls.pdfFilePicture}>
 									{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
-									<ImgTemplate src={pdfImage} width={30} height={38} />
+									<ImgTemplate
+										className={stls.imgTemplate}
+										src={pdfImage}
+										width={30}
+										height={38}
+									/>
 								</div>
 								<span className={stls.pdfFileName} key={`${file.name}_${idx}`}>
 									{file.name}
@@ -108,7 +115,8 @@ const SectionJournalForm = ({
 							classNames={[stls.submitButton]}
 							formName={formName}
 							emailIsRequired
-							pdfMaterials={pdfMaterials}>
+							pdfMaterials={pdfMaterials}
+						>
 							<span className={stls.submitText}>{'скачать'}</span>
 							<div className={stls.pdfIcon}>
 								{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
@@ -126,7 +134,8 @@ const SectionJournalForm = ({
 						</p>
 						<button
 							className={stls.formComplitedClosed}
-							onClick={() => setOpen(open => !open)}>
+							onClick={() => setOpen(open => !open)}
+						>
 							{'Вернуться назад'}
 						</button>
 					</div>

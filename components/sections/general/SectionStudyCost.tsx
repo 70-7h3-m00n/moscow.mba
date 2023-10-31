@@ -214,8 +214,8 @@ const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
 
 						{!at.executive && (
 							<p className={stls.btwP}>
-								*согласно опросу за 2020 год, 93% наших студентов окупили
-								обучение уже на 2-й месяц
+								*согласно опросу за {currentYear} год, 93% наших студентов
+								окупили обучение уже на 2-й месяц
 							</p>
 						)}
 					</div>

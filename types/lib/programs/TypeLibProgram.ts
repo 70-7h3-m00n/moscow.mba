@@ -26,6 +26,7 @@ type TypeLibProgram = {
 	duration?: {
 		minStudyMonths: string | number | null
 		studyHours?: string | number | null
+		practicalLessons?: string | number | null
 	} | null
 	whatWillYouLearn?:
 		| {

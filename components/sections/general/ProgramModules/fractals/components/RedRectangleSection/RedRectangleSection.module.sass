@@ -1,0 +1,42 @@
+@use '@/styles/utils/mixin' as m
+  
+.redRectangle
+  display: inline-flex
+  align-items: center
+  background: #ff3535
+  margin-bottom: 42px
+  padding: 16px 30px
+  color: #fff
+  line-height: 1.2
+  margin-top: 8px
+  @include m.media(tablet, phone)
+    flex-wrap: wrap
+    padding: 20px 40px 38px
+  @include m.media(phone)
+    align-items: flex-start
+  .redItem
+    display: flex
+    align-items: center
+    padding: 0 13px
+    @include m.media(phone)
+      display: block
+  .p
+    max-width: 200px
+
+.profession
+  gap: 20px
+  @include m.media(phone)
+    gap: 0
+
+.number
+  font-size: 52px
+  flex-shrink: 0
+  margin-right: 11px
+  display: flex
+  justify-content: center
+  align-items: center
+  @include m.media(phone)
+    min-height: 62px
+    justify-content: flex-start
+    margin-right: 0
+    margin-bottom: 5px

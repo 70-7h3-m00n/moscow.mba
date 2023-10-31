@@ -68,10 +68,21 @@
 	@include m.media(phone, tablet)
 		margin-bottom: f.px(30)
 
+div.pdfFilesHorizontal
+	max-width: 100%
+	flex-wrap: nowrap
+	& > *
+		flex-basis: 50%
+
+.imgTemplate
+	flex-shrink: 0
+
 .pdfFile
 	display: flex
 	align-items: center
 	justify-content: center
+	& > div
+		flex-shrink: 0
 
 .pdfFilePicture
 
