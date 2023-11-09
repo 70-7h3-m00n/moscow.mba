@@ -1,0 +1,88 @@
+@use '@/styles/utils/mixin' as m
+
+.container
+  margin-bottom: 122px
+  @include m.media(laptop)
+    margin-bottom: 80px
+  @include m.media(tablet, phone)
+    margin-bottom: 60px
+    padding: 0 15px 60px 15px
+
+.content
+  display: grid
+  grid-template-columns: auto 1fr
+  row-gap: 60px
+  column-gap: 140px
+  padding: 60px
+  border: 1px solid #E6E6E6
+  @include m.media(laptop, tablet, phone)
+    grid-template-columns: 1fr
+    row-gap: 35px
+    padding: 15px
+
+.actualTextBlock
+  font-size: 20px
+  line-height: 1.3
+  @include m.media(laptop, tablet, phone)
+    h2
+      font-size: 32px
+    p
+      font-size: 15px
+      line-height: 1.3
+
+.descriptionBox
+  position: relative
+  grid-column: span 2
+  padding: 60px
+  line-height: 1.3
+  color: #FFF
+  background-color: #FF3535
+  transition: all .5s ease-in-out
+  @include m.media(laptop, tablet, phone)
+    grid-row: 2 / 3
+    grid-column: span 1
+    padding: 30px 20px
+    line-height: 1.3
+    font-weight: 400
+  &::before
+    content: ""
+    position: absolute
+    top: 0
+    right: 0
+    border-style: solid
+    border-width: 0 40px 40px 0
+    border-color: #CD1800 #fff
+    transition: all ease .5s
+  &:hover::before
+    border-width: 0 50px 50px 0
+    border-color: #CD1800 #fff
+
+.twoImages
+  position: relative
+  max-width: 500px
+  margin-right: 70px
+  width: 286px
+  z-index: -1
+  right: 0
+  @include m.media(phone)
+    width: 80%
+  .image
+    border-radius: 50%
+    overflow: hidden
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      display: block
+  .pic1
+    width: 100%
+    aspect-ratio: 1
+  .pic2
+    position: absolute
+    width: 155px
+    aspect-ratio: 1
+    border: 10px solid #fff
+    top: 50%
+    right: -50%
+    z-index: 3
+    transform: translate(-50%, -50%)

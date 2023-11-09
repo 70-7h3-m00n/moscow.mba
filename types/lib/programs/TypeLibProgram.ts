@@ -27,6 +27,7 @@ type TypeLibProgram = {
 		minStudyMonths: string | number | null
 		studyHours?: string | number | null
 		practicalLessons?: string | number | null
+		workshops?: string | number | null
 	} | null
 	whatWillYouLearn?:
 		| {
@@ -34,12 +35,6 @@ type TypeLibProgram = {
 		  }[]
 		| null
 	picture?: TypeLibPicture | null
-	specializedSubjects?:
-		| {
-				string: string | null
-				title: string | null
-		  }[]
-		| null
 	specializedSubjectsAddons?: {
 		Practice: boolean | null
 		OfflineModule: boolean | null
@@ -49,12 +44,31 @@ type TypeLibProgram = {
 	actualInformation: {
 		paragraph: string | null
 		description: string | null
+		firstPhoto: string | null
+		secondPhoto: string | null
 	}
 	description?: string | null
-	baseSubjects?: {
-		string: string | null
-		title: string | null
-	}[]
+	baseSubjects?:
+		| {
+				string: string | null
+				title: string | null
+				skills: { title: string | null }[]
+		  }[]
+		| null
+	specializedSubjects?:
+		| {
+				string: string | null
+				title: string | null
+				skills: { title: string | null }[]
+		  }[]
+		| null
+	bonusSubjects?:
+		| {
+				string: string | null
+				title: string | null
+				skills: { title: string | null }[]
+		  }[]
+		| null
 	subjectsStickerType?: string | null
 	programModulesCounters?: {
 		leftCounter: string | null
@@ -81,6 +95,7 @@ type TypeLibProgram = {
 		  }[]
 		| null
 	teachers?: TypeLibTeachers | null
+	prosPhoto?: string | null
 	// TODO
 }
 

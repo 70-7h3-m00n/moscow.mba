@@ -163,7 +163,7 @@ const Price = ({
 		<>
 			{discount && (
 				<i
-					className={cn(getPriceClass('old', renderedByComponent), {
+					className={cn('price', getPriceClass('old', renderedByComponent), {
 						[stls.SectionStudyCost]: renderedByComponent === 'SectionStudyCost'
 					})}
 				>
@@ -176,11 +176,12 @@ const Price = ({
 				</i>
 			)}
 			<i
-				className={
+				className={cn(
+					'price',
 					discount
 						? getPriceClass('new', renderedByComponent)
 						: getPriceClass('simple', renderedByComponent)
-				}
+				)}
 			>
 				{programPriceKzUzConsidered
 					? toNumberWithSpaces(programPriceKzUzConsidered) +

@@ -13,50 +13,55 @@ export const RedRectangleSection = ({
 	program
 }: RedRectangleSectionType) => {
 	const at = useAt()
+	const currentYear = getYear(new Date())
+	const { studyHours, practicalLessons, workshops, minStudyMonths } =
+		program?.duration
 
 	const professionRectangleData = [
 		{
-			number: program?.duration?.studyHours || null,
-			description: 'часов видео-лекций'
+			title: `${studyHours} часов` || null,
+			description: 'Видео-уроков'
 		},
 		{
-			number: program?.duration?.minStudyMonths || null,
-			description: `${ruCase(+program?.duration?.minStudyMonths, [
-				'месяц',
-				'месяца',
-				'месяцев'
-			])} обучения`
+			title: practicalLessons,
+			description: 'Практических занятий'
 		},
 		{
-			number: program?.duration?.practicalLessons || null,
-			description: 'практических занятий'
+			title: workshops,
+			description: 'Воркшопов'
 		},
 		{
-			number: ' ',
-			description: (
-				<>
-					обновлено в <span className={stls.number}>{getYear(new Date())}</span>
-				</>
-			)
+			title:
+				`${minStudyMonths} ${ruCase(+minStudyMonths, [
+					'месяц',
+					'месяца',
+					'месяцев'
+				])}` || null,
+			description: `Продолжительность обучения`
+		},
+
+		{
+			title: `${currentYear} год`,
+			description: 'Дата обновления'
 		}
 	]
 
 	return (
 		<ul
-			className={cn(className, stls.redRectangle, {
+			className={cn(className, stls.rectangle, {
 				[stls.profession]: at.profession
 			})}
 		>
 			{!at.profession && (
 				<li className={stls.redItem}>
-					<div className={stls.number}>
+					<div className={stls.title}>
 						{at.executive ? (
 							<ProgramSubjects subjects='base' />
 						) : (
 							program && program?.baseSubjects?.length
 						)}
 					</div>
-					<p className={stls.p}>
+					<p className={stls.description}>
 						{program?.programModulesCounters?.leftCounter ===
 						'specializedlAcademicDisciplines'
 							? 'профильных дисциплин'
@@ -74,28 +79,32 @@ export const RedRectangleSection = ({
 				<li className={stls.redItem}>
 					{program?.programModulesCounters?.rightCounter === 'icon' ? (
 						<>
-							<div className={stls.number}>
-								<IconCheckCircleAltDim />
+							<div className={stls.title}>
+								<IconCheckCircleAltDim className={stls.iconCheck} />
 							</div>
-							<p className={stls.p}>Практика и защита дипломной работы</p>
+							<p className={stls.description}>
+								Практика и защита дипломной работы
+							</p>
 						</>
 					) : !at.profession &&
 					  program?.programModulesCounters?.rightCounter ===
 							'specializedlAcademicDisciplines' ? (
 						<>
-							<div className={stls.number}>
+							<div className={stls.title}>
 								{program?.specializedSubjects?.length}
 							</div>
-							<p className={stls.p}>дисциплин специализации</p>
+							<p className={stls.description}>дисциплин специализации</p>
 						</>
 					) : !at.profession &&
 					  program?.programModulesCounters?.rightCounter ===
 							'practiceAndExam' ? (
 						<>
-							<div className={stls.number}>
+							<div className={stls.title}>
 								<IconCheckCircleAltDim />
 							</div>
-							<p className={stls.p}>Практика и защита дипломной работы</p>{' '}
+							<p className={stls.description}>
+								Практика и защита дипломной работы
+							</p>{' '}
 						</>
 					) : (
 						''
@@ -106,10 +115,10 @@ export const RedRectangleSection = ({
 				<>
 					{professionRectangleData.map(
 						(item, idx) =>
-							item.number && (
-								<li className={stls.redItem} key={idx}>
-									<div className={stls.number}>{item.number}</div>
-									<p className={stls.p}>{item.description}</p>
+							item.title && (
+								<li className={stls.item} key={idx}>
+									<p className={stls.title}>{item.title}</p>
+									<p className={stls.description}>{item.description}</p>
 								</li>
 							)
 					)}

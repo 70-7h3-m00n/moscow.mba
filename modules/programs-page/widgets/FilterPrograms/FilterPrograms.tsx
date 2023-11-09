@@ -1,11 +1,11 @@
 import stls from './FilterPrograms.module.sass'
+import cn from 'classnames'
 
 import { useState } from 'react'
 import {
 	FilterDuration,
 	FilterTrainingFormat,
-	FilterTypeProgram,
-	FilterDirection
+	FilterTypeProgram
 } from './fractals'
 import {
 	useConfigProgramsContext,
@@ -75,11 +75,17 @@ const FilterPrograms = () => {
 					<FilterTrainingFormat />
 				</div>
 				<div
-					className={`${stls.filter} ${stls.filterMobile} ${
-						isShowFilters ? stls.filterShowMobile : ''
-					}`}
+				// className={`${stls.filter} ${stls.filterMobile} ${
+				// 	isShowFilters ? stls.filterShowMobile : ''
+				// }`}
 				>
-					{isCourseAndProfession && <FilterDuration />}
+					{isCourseAndProfession && (
+						<FilterDuration
+							className={cn(stls.filter, stls.filterMobile, {
+								[stls.filterShowMobile]: isShowFilters
+							})}
+						/>
+					)}
 				</div>
 				{/* <div
 					className={`${stls.filter} ${stls.filterMobile} ${

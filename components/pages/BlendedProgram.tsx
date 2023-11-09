@@ -26,26 +26,26 @@ import truncate from 'truncate'
 //   GetStudyPlan
 // } from '@/components/sections'
 import Reviews from '@/components/sections/general/TextReviews'
-import JumbotronProgram from '@/components/sections/general/JumbotronProgram'
+import JumbotronProgram from '@/components/sections/general/JumbotronProgram/JumbotronProgram'
 import ProgramGoal from '@/components/sections/general/ProgramGoal'
 import WhatWillYouLearn from '@/components/sections/general/WhatWillYouLearn'
 import ProgramDesc from '@/components/sections/general/ProgramDesc'
-import HowProcessGoes from '@/components/sections/general/HowProcessGoes'
+import HowProcessGoes from '@/components/sections/general/HowProcessGoes/HowProcessGoes'
 import ProgramsModules from '@/components/sections/general/ProgramModules/ProgramsModules'
 import ContactUs from '@/components/sections/general/ContactUs'
 import Qna from '@/components/sections/general/Qna'
 import Students from '@/components/sections/general/Students'
-import Teachers from '@/components/sections/general/Teachers'
+import TeachersLegacy from '@/components/sections/general/Teachers/TeachersLegacy'
 import UpToDateContent from '@/components/sections/general/UpToDateContent'
-import Diploma from '@/components/sections/general/Diploma'
+import Diploma from '@/components/sections/general/Diploma/Diploma'
 import CorporateClients from '@/components/sections/general/CorporateClients'
 import Accreditation from '@/components/sections/general/Accreditation'
-import Pros from '@/components/sections/general/Pros'
+import Pros from '@/components/sections/general/Pros/Pros'
 import BlendedMetups from '@/components/sections/general/BlendedMetups'
-import SectionStudyCost from '@/components/sections/general/SectionStudyCost'
+import SectionStudyCost from '@/components/sections/general/SectionStudyCost/SectionStudyCost'
 import SectionCheckPros from '@/components/sections/general/SectionCheckPros'
 import ECTSStandard from '@/components/sections/general/ECTSStandard'
-import GetStudyPlan from '@/components/sections/general/GetStudyPlan'
+import GetStudyPlan from '@/components/sections/general/GetStudyPlan/GetStudyPlan'
 import { VideoReviews } from '../sections'
 
 const PageBlendedProgram = ({ program, programs = null, teachers }) => {
@@ -58,12 +58,12 @@ const PageBlendedProgram = ({ program, programs = null, teachers }) => {
 			<WhatWillYouLearn data={program} />
 			<ProgramDesc />
 			<BlendedMetups />
-			<Pros format={'blended'} />
+			<Pros program={program} format={'blended'} />
 			<HowProcessGoes />
 			<ProgramsModules program={program} />
 			{/* <ECTSStandard /> */}
 			<GetStudyPlan />
-			<Teachers
+			<TeachersLegacy
 				programId={program?._id}
 				programTitle={program?.title}
 				teachers={teachers}

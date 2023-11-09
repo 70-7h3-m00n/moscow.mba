@@ -1,10 +1,10 @@
 const ui = {
-  currentlySymbols: {
-    rub: 'Р.',
-    rubAlt: 'Р',
-    kzt: '₸',
-    uzm: 'сум'
-  }
+	currentlySymbols: {
+		rub: '₽',
+		rubAlt: '₽',
+		kzt: '₸',
+		uzm: 'сум'
+	}
 }
 
 export default ui

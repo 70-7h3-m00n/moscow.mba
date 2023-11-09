@@ -23,25 +23,25 @@ import truncate from 'truncate'
 //   Pros,
 //   GetStudyPlan
 // } from '@/components/sections'
-import JumbotronProgram from '@/components/sections/general/JumbotronProgram'
+import JumbotronProgram from '@/components/sections/general/JumbotronProgram/JumbotronProgram'
 import Reviews from '@/components/sections/general/TextReviews'
 import ProgramGoal from '@/components/sections/general/ProgramGoal'
 import WhatWillYouLearn from '@/components/sections/general/WhatWillYouLearn'
 import ProgramDesc from '@/components/sections/general/ProgramDesc'
-import HowProcessGoes from '@/components/sections/general/HowProcessGoes'
+import HowProcessGoes from '@/components/sections/general/HowProcessGoes/HowProcessGoes'
 import ProgramsModules from '@/components/sections/general/ProgramModules/ProgramsModules'
 import ContactUs from '@/components/sections/general/ContactUs'
 import Qna from '@/components/sections/general/Qna'
 import Students from '@/components/sections/general/Students'
-import Teachers from '@/components/sections/general/Teachers'
+import Teachers from '@/components/sections/general/Teachers/TeachersLegacy'
 import UpToDateContent from '@/components/sections/general/UpToDateContent'
-import Diploma from '@/components/sections/general/Diploma'
+import Diploma from '@/components/sections/general/Diploma/Diploma'
 import CorporateClients from '@/components/sections/general/CorporateClients'
-import SectionStudyCost from '@/components/sections/general/SectionStudyCost'
+import SectionStudyCost from '@/components/sections/general/SectionStudyCost/SectionStudyCost'
 import SectionCheckPros from '@/components/sections/general/SectionCheckPros'
 import Accreditation from '@/components/sections/general/Accreditation'
-import Pros from '@/components/sections/general/Pros'
-import GetStudyPlan from '@/components/sections/general/GetStudyPlan'
+import Pros from '@/components/sections/general/Pros/Pros'
+import GetStudyPlan from '@/components/sections/general/GetStudyPlan/GetStudyPlan'
 
 const PageOnlineProgram = ({ program, teachers }) => {
 	const router = useRouter()
@@ -52,7 +52,7 @@ const PageOnlineProgram = ({ program, teachers }) => {
 			<ProgramGoal data={program} />
 			<WhatWillYouLearn data={program} />
 			<ProgramDesc />
-			<Pros format={'online'} />
+			<Pros program={program} format={'online'} />
 			<HowProcessGoes />
 			<ProgramsModules program={program} />
 			<GetStudyPlan />

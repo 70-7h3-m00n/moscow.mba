@@ -23,7 +23,7 @@ const PlacesLeft = ({ uniqueKey }) => {
 				? Math.floor((divisible + 5) / 3)
 				: 10
 
-		setPlaces(placesLeft)
+		setPlaces(placesLeft + 10)
 	}, [places])
 
 	return <>{places}</>

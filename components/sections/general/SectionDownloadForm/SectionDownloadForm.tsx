@@ -1,15 +1,15 @@
 import stls from './SectionDownloadForm.module.sass'
 import cn from 'classnames'
-import SectionDownloadFormProps from './SectionDownloadForm.props'
+import { SectionDownloadFormProps } from './types'
 
 import { Wrapper } from '@/components/layout'
 import useAt from '@/hooks/useAt'
 
-export default function SectionDownloadForm({
+export const SectionDownloadForm = ({
 	downloadLinks,
 	className,
 	...rest
-}: SectionDownloadFormProps) {
+}: SectionDownloadFormProps) => {
 	const at = useAt()
 
 	return (

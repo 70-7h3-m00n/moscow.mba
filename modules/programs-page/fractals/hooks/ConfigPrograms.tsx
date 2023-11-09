@@ -28,7 +28,13 @@ type TConfigProgramContext = {
 }
 
 const ConfigProgramsContext = React.createContext<TConfigProgramContext>({
-	configPrograms: {},
+	configPrograms: {
+		sorting: 'default',
+		filterTypeProgram: 'all',
+		filterTrainingFormat: 'online',
+		filterDirection: 'all',
+		filterDuration: 0
+	},
 	handlerSetConfigPrograms: () => {},
 	handlerDeleteConfigPrograms: () => {},
 	router: null,
@@ -84,7 +90,8 @@ export const ConfigProgramsProvider = ({ children }) => {
 				router: router,
 				handlerDeleteConfigPrograms: handlerDeleteConfigPrograms,
 				setQueryURI: setQueryURI
-			}}>
+			}}
+		>
 			{children}
 		</ConfigProgramsContext.Provider>
 	)

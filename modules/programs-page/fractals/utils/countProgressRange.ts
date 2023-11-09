@@ -1,4 +1,4 @@
-export const countProgressRange = (value, min, max) => {
+export const countProgressRange = (value: number, min: number, max: number) => {
 	const countProgress = ((value - min) / (max - min)) * 100
 
 	if (isNaN(countProgress)) {

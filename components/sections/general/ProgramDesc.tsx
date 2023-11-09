@@ -11,8 +11,8 @@ const ProgramDesc = ({ data = null }) => {
 	const router = useRouter()
 	const at = useAt()
 
-	const photo = data?.prosPhoto
-		? data?.prosPhoto
+	const photo = data?.programDescPhoto
+		? data?.programDescPhoto
 		: '/assets/images/handsome-business-man.jpg'
 
 	const isDigitalLaw = router.query.slug === 'zifrovoe-pravo'

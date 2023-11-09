@@ -24,6 +24,7 @@
   & em
     font-style: italic
   display: flex
+  align-items: baseline
   font-size: f.px(18)
   font-weight: normal
   line-height: 140%
@@ -45,11 +46,18 @@
       @include m.dye(bgc, c.$alpha)
 
 .idx
-  counter-increment: list
-  min-width: f.px(25) // todo: this is not dynamic and not based on the length of the number in counter & this should be made dynamic
-  // margin-right: f.px(10)
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 38px
+  min-width: 38px
+  height: 38px
+  margin-right: 15px
+  border-radius: 50px
   font-weight: 500
-  @include m.dye(c, c.$alpha)
+  color: #fff
+  background-color: #ff3535
+  counter-increment: list
 
 .text
   & .br
