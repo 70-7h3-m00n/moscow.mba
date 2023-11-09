@@ -1,0 +1,117 @@
+@use '@/styles/utils/mixin' as m
+
+.container
+  margin: 0 10px
+  
+.wrapper 
+  background: #ff3535
+  margin-bottom: 130px
+  display: flex
+  padding: 149px 82px
+  color: #fff
+  max-width: 1290px
+  @include m.media(desktop)
+    padding: 120px 50px
+  @include m.media(laptop, tablet, phone)
+    display: block
+    padding: 60px 50px
+    margin-bottom: 80px
+  @include m.media(tablet, phone)
+    margin: 0 0 60px
+    padding: 60px 10px
+  &.darkBg
+    background-color: #2D2C2A
+  &.noMobileMb
+    @include m.media(tablet, phone)
+      margin-bottom: 0
+
+.imageContainer
+  display: flex
+  flex-direction: column
+  @include m.media(laptop, tablet, phone)
+    flex-direction: column-reverse
+
+.paginationContainer
+  margin-bottom: 31px
+
+.imageTitle
+  margin-bottom: 12px
+  font-size: 16px
+  font-weight: 400
+  @include m.media(tablet, phone)
+    margin-bottom: 20px
+
+.image
+  width: 532px
+  flex-shrink: 0
+  margin-right: 94px
+  @include m.media(desktop)
+    margin-right: 50px
+    width: 460px
+  @include m.media(desktop)
+    margin-right: 50px
+    width: 460px
+  @include m.media(laptop, tablet, phone)
+    margin-right: 0
+
+    width: auto
+    max-width: 100%
+  @include m.media(laptop)
+    margin-bottom: 25px
+  @include m.media(tablet, phone)
+    margin-bottom: 15px
+  img
+    max-width: 100%
+
+.content
+  flex-grow: 1
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+
+.desc
+  line-height: 1.2
+  margin-bottom: 30px
+  margin-top: -4px
+
+.note
+  margin-top: auto
+  opacity: 0.56
+  font-size: 13px
+  font-weight: 300
+  max-width: 368px
+  line-height: 120%
+  color: #FFF3F5
+
+.professionPage
+  .wrapper
+    display: flex
+    flex-direction: column-reverse
+    padding: 149px 82px
+    @include m.media(phone, tablet)
+      flex-direction: column-reverse
+      padding: 60px 15px
+  .desc
+    max-width: 650px
+  .note
+    display: none
+  .image
+    width: 100%
+  .professionNote
+    grid-column: span 2
+    margin-top: 20px
+    font-size: 13px
+    font-weight: 400
+    line-height: 1.2
+    opacity: .56
+    @include m.media(phone, tablet)
+      grid-column: span 1
+
+.diplomaWrapper
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 30px
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr
+    .professionAcademyDiploma
+      grid-row: 2 / span 1 

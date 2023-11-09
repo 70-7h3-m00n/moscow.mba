@@ -2,22 +2,20 @@
 
 .container
   position: absolute
-  z-index: 5
-  height: 112px
-  display: flex
-  left: 50%
-  transform: translateX(-50%)
-  max-width: 1080px
-  align-items: center
-  justify-content: space-between
-  bottom: -56px
-  background: #ff3535
   padding: 5px 35px
+  height: 112px
+  left: 0
+  right: 0
+  bottom: -56px
+
+  display: flex
+  justify-content: space-between
+  align-items: center
   line-height: 1.2
-  width: 100%
-  margin-left: 100px
-  // margin-bottom: 64px
+  background: #ff3535
+  z-index: 5
   @include m.media(desktop, laptop, tablet, phone)
+    left: 0
     margin-left: 0
     width: 100%
     flex-wrap: wrap
@@ -25,14 +23,10 @@
     min-height: 112px
     padding: 30px
     justify-content: space-evenly
-  @include m.media(desktop, laptop, tablet, phone)
-    flex-wrap: wrap
-    height: auto
-    min-height: 112px
-    padding: 30px
   @include m.media(laptop)
     bottom: -120px
   @include m.media(tablet, phone)
+ 
     padding-left: 40px
     padding-right: 20px
     bottom: -139px

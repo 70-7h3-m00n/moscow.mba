@@ -1,0 +1,265 @@
+@use '@/styles/utils/mixin' as m
+
+$stick-height: calc(100% - 48px)
+
+.container
+  position: relative
+  margin-bottom: 130px
+  @include m.media(laptop, tablet, phone)
+    margin-bottom: 80px
+  border-bottom: 1px solid #e6e6e6
+  &.job
+    margin-bottom: 50px
+    border-bottom: none
+    @include m.media(phone, tablet)
+      margin-bottom: 0
+    & > .content::before
+      display: none
+
+
+.content
+  display: flex
+  align-items: flex-start
+  gap: 20px
+  padding-bottom: 130px
+  &.job
+    padding-bottom: 0
+  @include m.media(laptop, tablet, phone)
+    padding-bottom: 80px
+    display: block
+  &::before
+    content: ''
+    height: 2px
+    background: #ff3535
+    width: 169px
+    position: absolute
+    z-index: 3
+    bottom: 0
+    @include m.media(tablet, phone)
+      display: none
+
+.noBottomPadding
+  padding-bottom: 0
+
+.content:has(.job)::before
+  display: none
+
+.titleContainer
+  position: sticky
+  top: 50px
+  @include m.media(laptop, tablet, phone)
+    position: static
+
+.title
+  width: 547px
+  flex-shrink: 0
+  margin-right: 26px
+  margin-top: -14px
+  margin-bottom: 57px
+  &.job
+    margin-bottom: 30px
+
+  @include m.media(desktop)
+    width: 360px
+  @include m.media(laptop, tablet, phone)
+    width: 100%
+    margin-bottom: 32px
+
+.jobContainer
+  display: flex
+  align-items: center
+  gap: 20px
+  margin-bottom: 35px
+
+.jobImg
+  border-radius: 50%
+  @include m.media(desktop, widescreen)
+    display: none
+
+.infoContainer
+  flex-grow: 1
+  @include m.media(laptop)
+    padding-top: 20px
+  @include m.media(tablet, phone)
+    padding-top: 0
+
+.tabsList
+  display: none
+
+.tabsList:not(.programsPage):not(.job)
+  @include m.media(tablet, phone)
+    display: flex
+    overflow-x: auto
+    margin-right: -10px
+    border-bottom: 1px solid rgba(38, 38, 38, 0.11)
+    margin-bottom: 20px
+    scroll-snap-type: x mandatory
+    &::-webkit-scrollbar
+      background: transparent
+      height: 0
+    &::-webkit-scrollbar-thumb
+      background: transparent
+      height: 0
+
+.tabItem
+  margin: 0 10px
+  scroll-snap-align: center
+  scroll-snap-stop: always
+  &:first-child
+    margin-left: 0
+  &:last-child
+    padding-right: 10px
+
+.tabLink
+  white-space: nowrap
+  padding-top: 10px
+  padding-bottom: 20px
+  display: block
+  transition: all .3s ease-out
+  font-weight: 500
+  font-size: 16px
+  line-height: 1.2
+  border-bottom: 2px solid transparent
+  &.activeTabLink
+    color: #ff3535
+    border-bottom-color: #ff3535
+
+.stepsWrap:not(.programsPage):not(.job)
+  @include m.media(tablet, phone)
+    display: flex
+    overflow-x: auto
+    scroll-snap-type: x mandatory
+
+.processStep
+  padding-left: 87px
+  position: relative
+  padding-top: 4px
+  padding-bottom: 18px
+  margin-bottom: 10px
+  &::before, .redStick
+    content: ''
+    left: 18px
+    top: calc(100% - $stick-height)
+    width: 1px
+    background: #d9d9d9
+    position: absolute
+    height: $stick-height
+  &::before, .redStick
+    @include m.media(tablet, phone)
+      display: none
+  .redStick
+    height: 0
+    background: #ff3535
+    transition: height .2s linear
+    &.job
+      background: #000
+  &:nth-last-of-type(1)
+    padding-bottom: 0
+    margin-bottom: 0
+    &::before, .redStick
+      display: none
+  @include m.media(widescreen, desktop, laptop)
+    display: block !important
+  &.processStep
+    display: block !important
+
+
+.processStep:not(.programsPage)
+  @include m.media(tablet, phone)
+    display: flex
+    flex-direction: column
+    flex-shrink: 0
+    overflow: hidden
+    width: 100%
+    scroll-snap-align: start
+    scroll-snap-stop: always
+    padding: 0
+    margin: 0
+
+.processStep.job
+  padding-top: 5px
+  padding-left: 60px
+  font-weight: bold
+
+.processStepTitle
+  font-weight: 500
+  font-size: 24px
+  line-height: 1.2
+  margin-bottom: 14px
+  max-width: 350px
+
+.processStepTitle:not(.programsPage)
+  @include m.media(tablet, phone)
+    display: none
+
+.processStepNumber
+  width: 38px
+  height: 38px
+  background: #ff3535
+  position: absolute
+  top: 0
+  left: 0
+  border-radius: 50%
+  display: flex
+  align-items: center
+  justify-content: center
+  padding-bottom: 2px
+  text-align: center
+  color: #fff
+  font-weight: 500
+  font-size: 24px
+  line-height: 1.2
+  &.partners
+    background: #000
+
+.processStepNumber:not(.programsPage):not(.job)
+  @include m.media(tablet, phone)
+    display: none
+
+.list
+  max-width: 546px
+  line-height: 1.2
+  &.job
+    margin-bottom: 30px
+  &.partners
+    margin-bottom: 100px
+    @include m.media (phone, tablet)
+      margin-bottom: 30px
+
+.list:not(.programsPage)
+  @include m.media(tablet, phone)
+    max-width: 100%
+
+.listItem
+  margin-bottom: 10px
+  padding-left: 20px
+  position: relative
+  padding-left: 30px
+  @include m.media(tablet, phone)
+    padding-left: 20px
+  &::before
+    content: ''
+    width: 5px
+    height: 5px
+    position: absolute
+    left: 0
+    top: 8px
+    background: #ff3535
+    border-radius: 50%
+    @include m.media(tablet, phone)
+      top: 7px
+  &:last-child
+    margin-bottom: 0 !important
+  &:only-child:not(.job)
+    translate: 0 -15px
+    font-size: 20px
+    font-weight: 500
+    line-height: 1.2
+    &::before
+      content: none
+
+.studentPhoto
+  width: 506px
+  height: 337px
+  @include m.media(laptop, tablet, phone)
+    display: none

@@ -1,0 +1,86 @@
+@use '@/styles/utils/mixin' as m
+
+.sectionContainer
+  padding-bottom: 60px
+  @include m.media(tablet, phone)
+    padding-top: 60px
+
+.title
+  width: 65%
+  margin-bottom: 60px
+  @include m.media(laptop)
+    width: 100%
+  @include m.media(tablet, phone)
+    width: 80%
+    margin-bottom: 30px
+
+.clientsList
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  @include m.media( tablet,phone)
+    overflow-x: scroll
+    scroll-snap-type: x mandatory
+    display: grid
+    justify-content: start
+    margin-bottom: 33px
+    margin-right: 5px
+    margin-left: 5px
+    grid: auto-flow / repeat(4, 50%)
+    -ms-overflow-style: none
+    scrollbar-width: none
+    &::-webkit-scrollbar
+      display: none
+
+.listItems
+  flex-basis: 25%
+  padding: 3%
+  display: flex
+  justify-content: center
+  align-items: center
+  border: 1px solid #E6E6E6
+  border-top: none
+  border-left: none
+  &:nth-of-type(4n + 4)
+    border-right: none
+  &:nth-of-type(n + 5)
+    border-bottom: none
+  @include m.media( tablet,phone)
+    flex-basis: 50%
+    &:nth-of-type(2n)
+      border-right: none
+
+.listItem1
+  scroll-snap-align: end
+
+.listItem2, .listItem6
+  @include m.media( tablet,phone)
+    margin-right: 5px
+
+.listItem3
+  scroll-snap-align: start
+
+.switch
+  display: flex
+  justify-content: center
+  gap: 9px
+  @include m.media(widescreen, desktop, laptop)
+    display: none
+
+.sticks
+  width: 35px
+  height: 1px
+  background-color: #E6E6E6
+  cursor: pointer
+
+.activeStick
+  height: 2px
+  background-color: #FF3535
+
+.isBorderLeft
+  border-left: 1px solid #E6E6E6
+
+.professionTitle
+  font-size: 15px
+  font-weight: 500
+  line-height: 1.2

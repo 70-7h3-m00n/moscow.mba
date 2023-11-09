@@ -1,0 +1,42 @@
+@use 'sass:math'
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/shared/journal' as j
+
+.container
+  padding: f.px(50) 0
+  margin-bottom: 0
+  &.darkBackground
+    padding: f.px(60) 0
+    background-color: #2D2C2A
+    margin-bottom: f.px(130)
+
+.wrapper 
+  overflow-x: scroll
+  overflow-y: hidden
+  overflow: -moz-scrollbars-none
+  &::-webkit-scrollbar
+    width: 0
+
+.title-container
+  margin-bottom: f.px(60)
+
+.title
+  color: #2D2C2A
+  &.darkBackground
+    color: #fff
+
+.reviewsList
+  display: flex
+  justify-content: space-between
+  gap: 30px
+  overflow-x: scroll
+  overflow-y: hidden
+  overflow: -moz-scrollbars-none
+  &::-webkit-scrollbar
+    width: 0
+
+
+
+

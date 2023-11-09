@@ -8,9 +8,8 @@ import { handleGetStaticProps } from '@/lib/index'
 import { usePageHandleContext, useAt } from '@/hooks/index'
 import { Wrapper } from '@/components/layout'
 import { Breadcrumbs } from '@/components/general'
-import { Teachers } from '@/components/sections'
 import { SeoOrganizationJsonLd } from '@/components/seo'
-import { TeachersPage } from 'modules'
+import { Teachers } from 'modules'
 
 const PageTeachers = ({ programs, teachers }) => {
 	usePageHandleContext({ programs })
@@ -54,10 +53,7 @@ const PageTeachers = ({ programs, teachers }) => {
 					<Breadcrumbs />
 				</Wrapper>
 			</section>
-
-			{/* <Teachers atStandAlonePage teachers={teachers} /> */}
-			<TeachersPage atStandAlonePage teachers={teachers} />
-
+			<Teachers atStandAlonePage teachers={teachers} />
 		</>
 	)
 }

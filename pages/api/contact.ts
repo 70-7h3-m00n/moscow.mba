@@ -32,7 +32,6 @@ const contact = async (req, res) => {
 		ymUid,
 		formName
 	} = req.body
-	console.log('req.body: ', req.body)
 
 	if (name?.includes('@')) {
 		email = name
@@ -479,7 +478,6 @@ const contact = async (req, res) => {
 			},
 			data
 		})
-		console.log('=>>>>>>>>>>>>>>>>>>>>>', f5)
 	} catch (e) {
 		console.error(e)
 	}

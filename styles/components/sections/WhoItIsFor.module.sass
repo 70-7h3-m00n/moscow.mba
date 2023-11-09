@@ -16,14 +16,16 @@
     max-width: 100%
   @include m.media(tablet, phone)
     font-size: 32px
-    margin-bottom: 0
 
 .itemsContainer
   display: flex
   flex-wrap: wrap
+  gap: 67px
   @include m.media(laptop, tablet, phone)
+    gap: 35px
     padding-bottom: 60px
-    border-bottom: solid 1px #e6e6e6
+  @include m.media(tablet, phone)
+    flex-direction: column
   &.noBottomLine
     @include m.media(laptop, tablet, phone)
     padding-bottom: 0

@@ -18,6 +18,7 @@ import {
 	VideoReviews
 } from '@/components/sections'
 import { FilterCategory } from './widgets/FilterPrograms/fractals'
+import { useState } from 'react'
 
 const ProgramsPage = () => {
 	return (
@@ -52,9 +53,7 @@ const ProgramsPage = () => {
 						<FilterPrograms />
 					</div>
 
-					<div className={stls.programs}>
-						<CardsProgram />
-					</div>
+					<CardsProgram className={stls.programs} />
 				</div>
 			</section>
 			<VideoReviews />

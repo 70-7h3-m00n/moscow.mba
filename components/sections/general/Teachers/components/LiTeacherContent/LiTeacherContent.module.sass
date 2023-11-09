@@ -1,0 +1,77 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+
+.teachersItem
+  line-height: 1.2
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  min-height: 100%
+  @include m.media(phone)
+    display: flex
+    align-items: flex-start
+  .image
+    margin-bottom: 17px
+    display: block
+    transition: all 0.3s ease-out
+    // &:hover
+    //   opacity: 0.8
+    // }
+    @include m.media(phone)
+      flex-shrink: 0
+      margin-right: 25px
+      margin-bottom: 0
+      width: 143px
+    img
+      max-width: 100%
+      max-height: 322px
+  & .description
+    font-size: 13px
+    margin-bottom: 20px
+    @include m.media(phone)
+      margin-bottom: 15px
+
+.teachersItemWrapper
+  @include m.media(phone)
+    display: flex
+
+.teachersItemContent
+  display: flex
+  flex-direction: column
+  @include m.media(phone)
+    justify-content: space-between
+
+.name
+  font-weight: 500
+  font-size: 20px
+  text-transform: capitalize
+  color: #fff
+  margin-bottom: 13px
+  @include m.media(tablet)
+    font-size: 18px
+  @include m.media(phone)
+    font-size: 16px
+    margin-bottom: 5px
+
+.bio
+  display: flex
+  align-items: center
+  @include m.media(phone)
+    margin-top: f.px(36)
+    margin-bottom: f.px(11)
+
+.phone
+  @include m.media(tablet, laptop, desktop, widescreen)
+    display: none
+
+.icon
+  max-width: f.px(8)
+  max-height: f.px(10)
+  margin-left: f.px(10)
+  transform: translateY(f.px(-2))
+
+
+.tabletLaptopDesktopWidescreen
+  @include m.media(phone)
+    display: none
+

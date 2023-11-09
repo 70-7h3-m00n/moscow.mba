@@ -1,19 +1,23 @@
-import { useEffect } from 'react'
+import stls from './FilterDuration.module.sass'
+import cn from 'classnames'
+import { FilterDurationType } from './types'
+
+import { ChangeEvent, useEffect } from 'react'
 import {
 	countProgressRange,
 	useConfigProgramsContext,
 	usePrograms,
 	FiltersEnum
 } from 'modules/programs-page/fractals'
-import stls from './FilterDuration.module.sass'
 
-const FilterDuration = () => {
+const FilterDuration = ({ className, ...rest }: FilterDurationType) => {
 	const {
 		configPrograms,
 		handlerSetConfigPrograms,
 		router,
 		handlerDeleteConfigPrograms
 	} = useConfigProgramsContext()
+
 	const { minMaxDuration } = usePrograms()
 
 	useEffect(() => {
@@ -28,11 +32,11 @@ const FilterDuration = () => {
 						: minMaxDuration?.maxDuration
 
 				handlerSetConfigPrograms({
-					[FiltersEnum.filterDuration]: isDuration
+					[FiltersEnum.filterDuration]: +isDuration
 				})
 			} else {
 				handlerSetConfigPrograms({
-					[FiltersEnum.filterDuration]: minMaxDuration?.maxDuration
+					[FiltersEnum.filterDuration]: +minMaxDuration?.maxDuration
 				})
 			}
 		}
@@ -41,6 +45,12 @@ const FilterDuration = () => {
 			handlerDeleteConfigPrograms(FiltersEnum.filterDuration)
 		}
 	}, [router.isReady, minMaxDuration?.minDuration, minMaxDuration?.maxDuration])
+
+	useEffect(() => {
+		handlerSetConfigPrograms({
+			[FiltersEnum.filterDuration]: +minMaxDuration?.maxDuration
+		})
+	}, [minMaxDuration?.maxDuration])
 
 	const progres = countProgressRange(
 		configPrograms?.[FiltersEnum.filterDuration],
@@ -56,14 +66,14 @@ const FilterDuration = () => {
 		},   ${inactiveProgress} ${progres + '%'} 100%)`
 	}
 
-	const handlerOnChange = e => {
+	const handlerOnChange = (e: ChangeEvent<HTMLInputElement>) => {
 		handlerSetConfigPrograms({
 			[FiltersEnum.filterDuration]: +e.target.value
 		})
 	}
 
 	return (
-		<div className={stls.filterDuration}>
+		<div className={cn(className, stls.filterDuration)} {...rest}>
 			<p className={stls.filterTitle}>Длительность</p>
 			<div className={stls.filter}>
 				<label htmlFor='volume' className={stls.labelFilter}>{`От ${

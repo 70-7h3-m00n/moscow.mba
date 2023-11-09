@@ -1,6 +1,4 @@
 import stls from '@/styles/components/costs/Loan.module.sass'
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import cn from 'classnames'
 import { ui, currencyRates } from '@/config/index'
 import { toNumberWithSpaces } from '@/helpers/index'
@@ -148,6 +146,7 @@ const Loan = ({
 		<>
 			<i
 				className={cn(
+					'price',
 					discount
 						? getPriceClass('new', renderedByComponent)
 						: getPriceClass('simple', renderedByComponent),
@@ -176,7 +175,7 @@ const Loan = ({
 			{discount && !at.blended && !notComparingPrices && (
 				<>
 					<i
-						className={cn(getPriceClass('old', renderedByComponent), {
+						className={cn('price', getPriceClass('old', renderedByComponent), {
 							[stls.discount]: variant === 'SectionStudyCost'
 						})}
 					>

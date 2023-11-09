@@ -1,16 +1,12 @@
 import stls from './SectionHero.module.sass'
 import cn from 'classnames'
-import SectionHeroProps from './SectionHero.props'
+import { SectionHeroProps } from './types'
 
 import Image from 'next/image'
 import { Wrapper } from '@/components/layout'
 import useAt from '@/hooks/useAt'
 
-export default function SectionHero({
-	data,
-	className,
-	...rest
-}: SectionHeroProps) {
+export const SectionHero = ({ data, className, ...rest }: SectionHeroProps) => {
 	const at = useAt()
 
 	return (

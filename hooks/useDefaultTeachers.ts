@@ -1,7 +1,9 @@
 import { useAt } from '@/hooks/index'
 import { TypeLibTeachers } from '../types'
 
-const useDefaultTeachers = (): TypeLibTeachers => {
+type useDefaultTeachersType = () => TypeLibTeachers
+
+const useDefaultTeachers: useDefaultTeachersType = () => {
 	const at = useAt()
 
 	return [

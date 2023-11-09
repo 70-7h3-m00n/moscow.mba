@@ -48,7 +48,8 @@ const FilterCategory = ({}: FilterCategoryType) => {
 
 	const handlerOnClick = value => {
 		handlerSetConfigPrograms({
-			[FiltersEnum.filterDirection]: value
+			[FiltersEnum.filterDirection]: value,
+			[FiltersEnum.filterDuration]: minMaxDuration?.maxDuration
 		})
 	}
 

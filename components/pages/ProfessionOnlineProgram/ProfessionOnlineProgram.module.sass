@@ -1,0 +1,72 @@
+@use '@/styles/utils/mixin' as m
+
+.container
+
+.programActualityProfession
+  position: relative
+  padding-bottom: 130px
+  border-bottom: 1px solid #E6E6E6
+  @include m.media(phone, tablet, laptop)
+    padding-bottom: 60px
+  &::before
+    content: ''
+    height: 2px
+    background: #ff3535
+    width: 169px
+    left: 220px
+    position: absolute
+    z-index: 3
+    bottom: 0
+    @include m.media(desktop, laptop, tablet, phone)
+      left: 10px
+
+.whoItIsFor
+  margin-top: 0
+  margin-bottom: 130px
+  @include m.media(phone, tablet, laptop)
+    margin-bottom: 0
+
+.pros
+  margin-bottom: 0
+
+.programDevelopedStandard
+  margin-bottom: 60px
+
+.careerCenterSection
+  position: relative
+  border-bottom: 1px solid #E6E6E6
+  padding-bottom: 130px
+  margin-bottom: 130px
+  @include m.media(phone, tablet)
+    padding-bottom: 60px
+    margin-bottom: 60px
+  &::before
+    content: ''
+    height: 2px
+    background: #ff3535
+    width: 169px
+    left: 220px
+    position: absolute
+    z-index: 3
+    bottom: 0
+    @include m.media(desktop, laptop, tablet, phone)
+      left: 10px
+
+.howProcessGoes
+  @include m.media(phone, tablet)
+    margin-bottom: 60px
+
+.diplomaProjectSection
+  margin-bottom: 60px
+
+.getStudyPlan
+  @include m.media(phone, tablet)
+    margin-bottom: 60px
+
+.foreignAffiliates
+  margin-bottom: 60px
+
+.marquee
+  margin-bottom: 130px
+  @include m.media(phone, tablet)
+    margin-bottom: 60px

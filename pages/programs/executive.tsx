@@ -16,7 +16,7 @@ import {
 	ProgramsModules,
 	ContactUs,
 	Accreditation,
-	Teachers,
+	TeachersLegacy,
 	Rules,
 	ExecutiveRequirements,
 	Students,
@@ -59,7 +59,7 @@ const PageProgramsExecutive = ({ program, programs }) => {
 				titleNewStr={'по программе обучения'}
 			/>
 			<Accreditation />
-			<Teachers
+			<TeachersLegacy
 				programId={programBlended?._id}
 				programTitle={programBlended?.title}
 				teachers={programBlended?.teachers}
