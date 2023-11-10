@@ -44,7 +44,9 @@ const ProgramsModules = ({
 				) : (
 					<SubjectsSection program={program} />
 				)}
-				{program?.subjectsStickerType && <StickersSection program={program} />}
+				{program?.subjectsStickerType && !isBonusModules && (
+					<StickersSection program={program} />
+				)}
 			</Wrapper>
 		</section>
 	)
