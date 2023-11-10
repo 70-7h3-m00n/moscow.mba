@@ -69,7 +69,7 @@ const Diploma = ({ darkBackground = false }: DiplomaProps) => {
 					trigger={
 						<a>
 							<Image
-								src={`/assets/images/diplomas/profession-sertificate.jpg`}
+								src={`/assets/diplomas/profession/certificate-profession.png`}
 								alt='Ваш будущий диплом'
 								width={532}
 								height={376}
@@ -90,7 +90,7 @@ const Diploma = ({ darkBackground = false }: DiplomaProps) => {
 						<PopupImage
 							closePopupImage={close}
 							image={{
-								path: '/assets/diplomas/profession/certificate-profession.jpg',
+								path: '/assets/diplomas/profession/certificate-profession.png',
 								fullWidth: 1485,
 								FullHeight: 1050,
 								name: 'Сертификат академии'
@@ -102,7 +102,7 @@ const Diploma = ({ darkBackground = false }: DiplomaProps) => {
 					trigger={
 						<a>
 							<Image
-								src={`/assets/diplomas/profession/qualification-diploma-profession.jpg`}
+								src={`/assets/diplomas/profession/qualification-diploma-profession.png`}
 								alt='Ваш будущий диплом'
 								width={532}
 								height={376}
@@ -123,7 +123,7 @@ const Diploma = ({ darkBackground = false }: DiplomaProps) => {
 						<PopupImage
 							closePopupImage={close}
 							image={{
-								path: `/assets/diplomas/profession/qualification-diploma-profession.jpg`,
+								path: `/assets/diplomas/profession/qualification-diploma-profession.png`,
 								fullWidth: 1485,
 								FullHeight: 1050,
 								name: 'Сертификат академии'

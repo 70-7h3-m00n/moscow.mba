@@ -21,6 +21,57 @@ const HowProcessGoes = ({
 	const at = useAt()
 
 	const stepsData = {
+		profession: [
+			{
+				tabTitle: 'Обучаетесь в удобное для вас время',
+				stepTitle: 'Обучаетесь в удобное для вас время',
+				listItems: [
+					'Сами формируете свое расписание, с легкостью можно совмещать обучение с работой и хобби'
+				]
+			},
+			{
+				tabTitle: 'Смотрите видеолекции от ведущих экспертов направления',
+				stepTitle: 'Смотрите видеолекции от ведущих экспертов направления',
+				listItems: [
+					'Мы подобрали для вас профессоров, преподавателей-практиков, экспертов своей профессии, которые готовы поделиться своими знаниями'
+				]
+			},
+			{
+				tabTitle: 'Изучайте иллюстрированные экспертные материалы',
+				stepTitle: 'Изучайте иллюстрированные экспертные материалы',
+				listItems: [
+					'Экспертный материал подготовлен с использованием доказательного подхода и интуитивен для изучения'
+				]
+			},
+			{
+				tabTitle: 'Практика',
+				stepTitle: 'Практика',
+				listItems: [
+					'Посещаете воркшопы, выполняете задания и получаете обратную связь от экспертов'
+				]
+			},
+			{
+				tabTitle: 'Отработка практики на кейсах',
+				stepTitle: 'Отработка практики на кейсах',
+				listItems: [
+					'Сможете сформировать портфолио, выполняя реальные задания, защитите свои решения и получите развивающую обратную связь'
+				]
+			},
+			{
+				tabTitle: 'Получаете поддержку и сопровождение',
+				stepTitle: 'Получаете поддержку и сопровождение',
+				listItems: [
+					'Поддержка на всех этапах - задавайте вопросы куратору курса и обращаетесь за помощью в системе дистанционного обучения'
+				]
+			},
+			{
+				tabTitle: 'Выпускаетесь с престижным дипломом',
+				stepTitle: 'Выпускаетесь с престижным дипломом',
+				listItems: [
+					'Получаете уверенность в завтрашнем дне и готовность к новым профессиональны свершениям'
+				]
+			}
+		],
 		mini: [
 			{
 				tabTitle: 'Поступление',
@@ -205,7 +256,9 @@ const HowProcessGoes = ({
 
 	const processSteps = useMemo(
 		() =>
-			at.mini
+			at.profession
+				? stepsData.profession
+				: at.mini
 				? stepsData.mini
 				: at.programs
 				? stepsData.programs
@@ -437,7 +490,8 @@ const HowProcessGoes = ({
 										</div>
 										<div
 											className={cn(stls.processStepTitle, {
-												[stls.programsPage]: at.programs
+												[stls.programsPage]: at.programs,
+												[stls.profession]: at.profession
 											})}
 										>
 											{step.stepTitle}
@@ -452,7 +506,10 @@ const HowProcessGoes = ({
 											{step.listItems?.map((item, idx) => (
 												<li
 													key={item + idx}
-													className={cn(stls.listItem, { [stls.job]: at.job })}
+													className={cn(stls.listItem, {
+														[stls.job]: at.job,
+														[stls.profession]: at.profession
+													})}
 												>
 													{item}
 												</li>
