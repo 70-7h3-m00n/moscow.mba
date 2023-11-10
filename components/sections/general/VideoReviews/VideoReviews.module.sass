@@ -37,6 +37,33 @@
   &::-webkit-scrollbar
     width: 0
 
+.previewWrapper
+  cursor: pointer
+  &:hover .image
+    transform: scale(1.05)
 
+.image
+  margin-bottom: f.px(20)
+  object-fit: cover
+  pointer-events: none
+  user-drag: none 
+  user-select: none
+  transition: transform .3s ease-in-out
 
+.openPopupLink
+  display: flex
+  align-items: center
+
+.closeButton
+  transform: translate(5px, -40px)
+
+.openPopupText
+  user-select: none
+  &.darkBackground
+    color: #fff 
+
+.icon
+  max-width: f.px(8)
+  max-height: f.px(10)
+  margin-left: f.px(10)
 

@@ -16,7 +16,7 @@ const CardsProgram = ({ className }: CardsProgramProps) => {
 			program?.slug !== 'international-business-law'
 	)
 
-	const sizeArticles = programs.length
+	const sizeArticles = programs?.length
 	const defaultSizeShowArticles = 8
 	const defaultSizeShowMore = 4
 

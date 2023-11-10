@@ -97,7 +97,7 @@ export const DiplomaPaginationImages = () => {
 									<Image
 										key={`diplomaImage-${1}`}
 										src={
-											'/assets/diplomas/profession/certificate-profession.jpg'
+											'/assets/diplomas/profession/certificate-profession.png'
 										}
 										alt='Сертификат академии'
 										width={532}
@@ -118,7 +118,7 @@ export const DiplomaPaginationImages = () => {
 								<PopupImage
 									closePopupImage={close}
 									image={{
-										path: '/assets/diplomas/profession/certificate-profession.jpg',
+										path: '/assets/diplomas/profession/certificate-profession.png',
 										fullWidth: 1485,
 										FullHeight: 1050,
 										name: 'Сертификат академии'
