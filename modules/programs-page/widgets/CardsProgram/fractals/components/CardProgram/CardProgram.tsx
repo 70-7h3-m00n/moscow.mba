@@ -52,7 +52,7 @@ const CardProgram = ({ program }) => {
 							discount={!at.blended && !isAllProgramsBlendedPage}
 							type={type}
 							format={format}
-							programPrice={(at.profession || at.course) && program?.price}
+							programPrice={program?.price}
 							renderedByComponent='CardProgram'
 						/>
 					</div>
