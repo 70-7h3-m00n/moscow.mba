@@ -32,6 +32,9 @@ const JumbotronProgram = ({
 
 	const isDigitalLaw = router.query.slug === 'zifrovoe-pravo'
 
+	const backgrondPicture =
+		program?.picture?.url || '/assets/images/jumbotron_2.jpg'
+
 	const isDiscounted =
 		(at.mini && at.online) ||
 		(at.mba && at.online) ||
@@ -76,14 +79,12 @@ const JumbotronProgram = ({
 		<section className={stls.container}>
 			{!program?.isActive && <DisabledProgram />}
 			<div className={stls.image}>
-				{program?.picture?.url && (
-					<Image
-						src={program?.picture.url}
-						alt='Студенты обучаются'
-						layout='fill'
-						priority
-					/>
-				)}
+				<Image
+					src={backgrondPicture}
+					alt='Студенты обучаются'
+					layout='fill'
+					priority
+				/>
 			</div>
 			<div className={stls.generalContainer}>
 				<div className={stls.content}>

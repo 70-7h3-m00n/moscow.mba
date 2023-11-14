@@ -4,16 +4,9 @@
   display: grid
   grid-template-columns: repeat(3, 1fr)
   gap: 30px 30px
+  height: min-content
   @include m.media(laptop)
     grid-template-columns: repeat(2, 1fr)
   @include m.media(phone, tablet)
     grid-template-columns: 1fr
 
-.calendar
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
-  padding-bottom: 20px
-  border: 1px solid #e6e6e6
-  min-height: 335px

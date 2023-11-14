@@ -52,7 +52,6 @@ const ProgramsPage = () => {
 					<div className={stls.filtersContainer}>
 						<FilterPrograms />
 					</div>
-
 					<CardsProgram className={stls.programs} />
 				</div>
 			</section>

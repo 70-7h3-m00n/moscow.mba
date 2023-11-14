@@ -17,7 +17,6 @@ const SeminarCards = ({ timeframe }) => {
 
 	return (
 		<div className={stls.list}>
-			<Calendar className={stls.calendar} />
 			{showSeminars?.map(card => (
 				<SeminarCard key={card.id} card={card} />
 			))}

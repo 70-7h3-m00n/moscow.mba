@@ -71,7 +71,8 @@ export const ConfigProgramsProvider = ({ children }) => {
 		router.replace(
 			{
 				query: {
-					...props
+					...props,
+					...router.query
 				}
 			},
 			undefined,

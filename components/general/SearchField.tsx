@@ -41,6 +41,8 @@ const SearchField = ({ header = false }) => {
 					.includes(searchTerm.toLocaleLowerCase()))
 	)
 
+	console.log('filteredPrograms: ', filteredPrograms)
+
 	useEffect(() => {
 		inputIsFocused && document.getElementById('SearchField-input')?.focus()
 	}, [inputIsFocused])
