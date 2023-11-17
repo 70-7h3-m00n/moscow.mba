@@ -1,6 +1,7 @@
 const { createSecureHeaders } = require('next-secure-headers')
 const withPWA = require('next-pwa')
 const dev = process.env.NODE_ENV !== 'production'
+const env = process.env.NEXT_PUBLIC_VERCEL_ENV
 
 // module.exports = withPWA({})
 
@@ -27,6 +28,20 @@ module.exports = {
 		domains: ['res.cloudinary.com']
 	},
 	async headers() {
+		if (process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview') {
+			return [
+				{
+					source: '/:path*',
+					headers: [
+						{
+							key: 'X-Robots-Tag',
+							value: 'noindex'
+						}
+					]
+				}
+			]
+		}
+
 		return [
 			{
 				source: '/:path*',

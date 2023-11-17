@@ -1,4 +1,6 @@
-import stls from '@/styles/components/general/SearchField.module.sass'
+import stls from './SearchField.module.sass'
+import cn from 'classnames'
+
 import { useContext, useState, MouseEventHandler, useEffect } from 'react'
 import Link from 'next/link'
 import Popup from 'reactjs-popup'
@@ -8,10 +10,10 @@ import { ContextStaticProps } from '@/context/index'
 import { useAt } from '@/hooks/index'
 import { LeadLoaderThankyou } from '@/components/general'
 import { Wrapper } from '@/components/layout'
-import { FormAlpha } from '@/components/forms'
 import { IconSearch, IconClose } from '@/components/icons'
 import useDecodedInput from '@/hooks/useDecodedInput'
-import cn from 'classnames'
+import { checkMatchAtBeginning } from './fractals/hooks/searchMatch'
+import { NoResult } from './widgets'
 
 const SearchField = ({ header = false }) => {
 	const at = useAt()
@@ -27,28 +29,29 @@ const SearchField = ({ header = false }) => {
 		program => program.studyFormat !== 'blended'
 	)
 
-	const filteredPrograms = programsNotBlended?.filter(
-		program =>
-			(decodedEnInput &&
-				program?.title
-					?.toLowerCase()
-					?.replace(/-/g, ' ')
-					.includes(decodedEnInput)) ||
-			(searchTerm &&
-				program?.title
-					?.toLowerCase()
-					?.replace(/-/g, ' ')
-					.includes(searchTerm.toLocaleLowerCase()))
-	)
+	const filteredPrograms = programsNotBlended
+		?.filter(
+			program =>
+				(decodedEnInput &&
+					program?.title
+						?.toLowerCase()
+						?.replace(/-/g, ' ')
+						.includes(decodedEnInput)) ||
+				(searchTerm &&
+					program?.title
+						?.toLowerCase()
+						?.replace(/-/g, ' ')
+						.includes(searchTerm.toLocaleLowerCase()))
+		)
+		?.sort(
+			program =>
+				searchTerm &&
+				checkMatchAtBeginning(program?.title, decodedEnInput || searchTerm)
+		)
 
 	useEffect(() => {
 		inputIsFocused && document.getElementById('SearchField-input')?.focus()
 	}, [inputIsFocused])
-
-	// classNames(
-	// 	stls.btn,
-	// 	{
-	// 		[stls.btnHeader]: header})
 
 	return (
 		<>
@@ -96,6 +99,7 @@ const SearchField = ({ header = false }) => {
 									value={searchTerm}
 									placeholder={'Поиск'}
 									onChange={handleInput}
+									autoComplete='off'
 								/>
 								{searchTerm && (
 									<a
@@ -146,31 +150,9 @@ const SearchField = ({ header = false }) => {
 									</li>
 								))}
 							</ul>
+
 							{searchTerm && filteredPrograms.length === 0 && (
-								<>
-									<div className={stls.formAlphaContainer}>
-										<p className={stls.formAlphaTitle}>
-											По Вашему запросу ничего не найдено
-										</p>
-										<p className={stls.formAlphaText}>
-											Попробуйте ввести запрос по-другому или свяжитесь со
-											специалистом. Вам помогут подобрать нужное направление и
-											ответят на вопросы
-										</p>
-										<FormAlpha
-											programTitle={null}
-											setOpenLoader={setOpenLoader}
-											setOpen={setOpen}
-											classNames={[stls.formAlpha]}
-											globalStyle={false}
-											formName={`Заявка с поисковой формы "По вашему запросу ничего не найдено, свяжитесь со специалистом"${
-												searchTerm
-													? `, запрос пользователя: ${searchTerm?.toString()}`
-													: ''
-											}`}
-										/>
-									</div>
-								</>
+								<NoResult setOpenLoader={setOpenLoader} setOpen={setOpen} />
 							)}
 						</Wrapper>
 					</div>

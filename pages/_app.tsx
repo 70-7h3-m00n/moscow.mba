@@ -109,6 +109,12 @@ function MyApp({ Component, pageProps, router }) {
 
 		window.addEventListener('beforeunload', handleBeforeUnload)
 
+		// vercel previews
+		const fullDomainName = window.location.host
+		if (fullDomainName === 'moscow-mba-git-dev-ipe.vercel.app') {
+			console.log('fullDomainName: >>>>>>>>> moscow-mba-git-dev-ipe.vercel.app')
+		}
+
 		return () => {
 			Router.events.off('routeChangeStart', start)
 			Router.events.off('routeChangeComplete', end)
@@ -130,6 +136,7 @@ function MyApp({ Component, pageProps, router }) {
 					content='width=device-width, initial-scale=1, maximum-scale=1'
 				/>
 				<meta name='yandex-verification' content='535e6f9322915158' />
+				<meta name='yandex-verification' content='0529f05a80cf0830' />
 				{!dev && (
 					<script
 						type='text/javascript'
