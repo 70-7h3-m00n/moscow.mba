@@ -110,8 +110,10 @@ function MyApp({ Component, pageProps, router }) {
 		window.addEventListener('beforeunload', handleBeforeUnload)
 
 		// vercel previews
-		const fullDomainName = `${window.location.protocol}//${window.location.host}`
-		console.log('fullDomainName: ', fullDomainName)
+		const fullDomainName = window.location.host
+		if (fullDomainName === 'moscow-mba-git-dev-ipe.vercel.app') {
+			console.log('fullDomainName: >>>>>>>>> moscow-mba-git-dev-ipe.vercel.app')
+		}
 
 		return () => {
 			Router.events.off('routeChangeStart', start)
