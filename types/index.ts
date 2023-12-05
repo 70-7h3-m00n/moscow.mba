@@ -157,4 +157,4 @@ export type { default as TypePageSeminarPaths } from '@/types/page/seminar/paths
 export type { default as TypePageSeminarsPropsQuery } from '@/types/page/seminars/queries/TypePageSeminarsPropsQuery'
 
 // payment
-export * from './_payment'
+export * from './payment'

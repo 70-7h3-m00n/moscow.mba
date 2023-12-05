@@ -11,13 +11,13 @@ type TypeNextApiResponseLeadData = {
 	readonly status: number
 }
 
-const shopId = '225914'
-const secretKey = 'live_eMYxVoSmAFhN6WT9ylz4ayq-YEZce5TqIZ5bYb9Mmow'
+export const shopId = '225914'
+export const secretKey = 'live_eMYxVoSmAFhN6WT9ylz4ayq-YEZce5TqIZ5bYb9Mmow'
 
-const shopIdTest = '283212'
-const secretKeyTest = 'test_VSWLFX4R3H6uUcmzsXJD6kR3zYys09bMmC4cLkKxiNI'
+export const shopIdTest = '283212'
+export const secretKeyTest = 'test_VSWLFX4R3H6uUcmzsXJD6kR3zYys09bMmC4cLkKxiNI'
 
-const idempotenceKey = uuidv4()
+export const idempotenceKey = uuidv4()
 
 const makePaymentRequest = async (
 	req: NextApiRequest,

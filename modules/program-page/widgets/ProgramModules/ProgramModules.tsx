@@ -65,7 +65,7 @@ export const ProgramModules = ({ className }: ProgramModulesProps) => {
 					</div>
 				</div>
 				<div className={stls.accordionBlock}>
-					<ProfessionAccordion />
+					{/* <ProfessionAccordion /> */}
 				</div>
 			</Wrapper>
 		</section>

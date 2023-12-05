@@ -3,15 +3,17 @@ import { CreatePaymentResponseType, TypeLibProgram } from '@/types/index'
 import axios from 'axios'
 import { NextApiRequest, NextApiResponse } from 'next'
 import {
-	TypeNextApiResponseLeadData,
+	// TypeNextApiResponseLeadData,
 	shopIdTest,
 	secretKeyTest,
 	idempotenceKey
 } from './testPayment'
 
 export const makePaymentRequest = async (
-	req: NextApiRequest,
-	res: NextApiResponse<TypeNextApiResponseLeadData | Error>
+	req,
+	res
+	// req: NextApiRequest,
+	// res: NextApiResponse<TypeNextApiResponseLeadData | Error>
 ) => {
 	const { type, slug } = req.body
 
