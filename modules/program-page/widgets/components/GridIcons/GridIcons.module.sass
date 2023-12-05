@@ -1,0 +1,30 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content
+  align-self: center
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  grid-template-rows: repeat(2, 1fr)
+  gap: 1.5rem
+  width: min-content
+
+  &__gitBranch
+    border-radius: 1rem
+    background-color: #fff
+
+  &__arrow
+    border-radius: 100%
+    background-color: #262626
+
+  &__box
+    border-radius: 1rem
+    background-color: #FF3535
+
+.iconWrapper
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 5.6rem
+  height: 5.6rem

@@ -1,0 +1,55 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.title
+  margin-bottom: 3rem
+  color: #000
+  font-size: 2.5rem
+  line-height: 120%
+  letter-spacing: -0.1rem
+  text-align: center
+
+.list
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 1.5rem
+
+.item
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  gap: 1.5rem
+  min-height: 25rem
+  padding: 1.5rem
+  border-radius: 1.5rem
+  background: #E7EAED
+  position: relative
+  overflow: hidden
+
+  &__title
+    margin-bottom: 1rem
+    font-size: 1.5rem
+    line-height: 120%
+
+  &__desc
+    color: #575757
+    font-size: 1rem
+    line-height: 120%
+
+  &__content
+    padding: 1.5rem
+    border-radius: 1rem
+    background-color: #fff
+    z-index: 1
+
+  &__background
+    position: absolute
+
+.item:nth-child(1) .item__background
+  top: -153px
+  left: -80px
+
+.item:nth-child(4) .item__background
+  top: -153px
+  left: -80px

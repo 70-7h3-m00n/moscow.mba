@@ -1,0 +1,50 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.slide
+  width: 80rem
+  height: 30rem
+  background-color: c.$alpha
+
+.pagination
+  margin-bottom: 1.5rem
+  background-color: #fff
+  padding: 3rem
+  
+
+  &__list
+    display: grid
+    grid-template-columns: repeat(6, 1fr)
+
+  &__item svg
+    margin-bottom: 1rem
+
+.slide
+  display: flex
+  align-items: flex-end
+  height: 25rem
+  width: 100%
+  padding: 1.5rem
+  border-radius: 1.5rem
+  background-image: url('../../../../public/assets/images/program/slider-bg.png')
+  background-repeat: no-repeat
+  background-size: 60rem 35rem
+  background-position: 80% center 
+  background-color: #51555B
+
+  &__content
+    max-width: 40rem
+    padding: 1.5rem
+    border-radius: 1rem
+    background-color: #fff
+
+  &__title
+    margin-bottom: 1rem
+    color: #000
+    font-size: 1.5rem
+    line-height: 120%
+
+  &__desc
+    color: #575757
+    line-height: 110%

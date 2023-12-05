@@ -32,3 +32,4 @@ export { default as WhoItIsForItemProfession } from '@/components/general/WhoItI
 export { default as SortingPrograms } from '@/components/general/SortingPrograms'
 export { default as ScrollProgress } from '@/components/general/ScrollProgress'
 export * from '@/components/general/Marquee/Marquee'
+export * from '@/components/general/PaymentComponent/PaymentComponent'

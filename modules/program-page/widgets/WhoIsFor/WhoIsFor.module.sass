@@ -1,0 +1,40 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  gap: 1.5rem
+
+.item
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  gap: 1rem
+  min-height: 30rem
+  padding: 1.5rem
+  border-radius: 1rem
+  
+  &__title
+    font-size: 1.5rem
+    line-height: 1.2
+    color: #fff
+
+.item:first-of-type
+  background-color: #18191A
+  background-image: url('../../../../public/assets/images/program/who-is-for-round.png')
+  background-repeat: no-repeat
+  background-size: 5.5rem
+  background-position: 1.5rem 1.5rem
+  .item__desc
+    color: #979BA0
+
+.item:last-of-type
+  background-color: c.$alpha
+  background-image: url('../../../../public/assets/images/program/who-is-for-bg.png')
+  background-repeat: no-repeat
+  background-size: 100%
+  background-position: 0 -1.5rem
+  .item__desc
+    color:#FDB7B7
