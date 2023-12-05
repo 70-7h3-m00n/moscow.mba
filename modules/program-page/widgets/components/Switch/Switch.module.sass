@@ -1,0 +1,48 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/utils/funcs' as f
+  
+.checkbox  
+  width: 12rem 
+  height: 2.5rem 
+  border-radius: 30px 
+  color: #fff
+  background-color: #262626
+  overflow: hidden  
+  position: relative 
+
+.check  
+  display: none 
+
+.checkbox .toggle  
+  width: 6rem
+  height: 2.3rem
+  position: absolute 
+  border-radius: 30px 
+  left: 2px 
+  cursor: pointer 
+  background: #FF3535
+  transition: transform 0.4s ease-in-out
+
+.checkbox .slide  
+  width: 12rem
+  height: 2.5rem
+  display: flex 
+  align-items: center 
+  justify-content: space-around 
+  cursor: pointer 
+
+.checkbox .slide .text  
+  font-size: 0.875rem
+  line-height: 120%
+  color: #FFF
+  z-index: 100 
+  cursor: pointer 
+  margin-top: 5px
+
+.check:checked + .checkbox .slide .toggle  
+  transform: translateX(5.7rem)
+
+.mini
+  transform: translateX(-5px)
+

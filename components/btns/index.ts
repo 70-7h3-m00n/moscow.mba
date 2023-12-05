@@ -7,3 +7,5 @@ export { default as BtnContact } from '@/components/btns/BtnContact'
 export { default as BtnCategory } from '@/components/btns/BtnCategory'
 export { default as BtnArticlesShowMore } from '@/components/btns/BtnArticlesShowMore'
 export { default as BtnScrollTop } from '@/components/btns/BtnScrollTop'
+
+export * from './BtnBeta/BtnBeta'

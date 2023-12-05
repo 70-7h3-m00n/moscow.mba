@@ -1,0 +1,25 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.title 
+  max-width: 30rem
+  margin-bottom: 3rem
+  color: #000
+  font-size: 2.5rem
+  letter-spacing: -0.1rem
+
+.list
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  gap: 1.5rem
+
+.item
+  padding: 1.5rem
+  border: 1px solid black
+  border-radius: 1rem
+  color: #000
+  font-size: 1.125rem
+
+  svg
+    margin-bottom: 1rem

@@ -1,0 +1,43 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/themes/default/colors' as c
+@use '@/styles/utils/funcs' as f
+
+.details
+  display: flex
+  flex-direction: column
+  gap: 1.5rem
+  padding: 1.5rem
+  min-width: 20rem
+
+  &__banner
+    display: flex
+    align-items: center
+    gap: 1rem
+    font-size: 0.875rem
+    font-weight: 400
+    line-height: 120%
+    color: #000
+
+  &__title
+    margin-bottom: 1rem
+    font-size: 1.375rem
+    font-style: normal
+    font-weight: 400
+    line-height: 110%
+    color: #000
+
+.list
+  display: flex
+  flex-direction: column
+  gap: 1.5rem
+
+.item
+  &__title
+    margin-bottom: 0.25rem
+    font-size: 0.875rem
+    font-weight: 400
+    line-height: 120%
+    color: #575757
+  &__description
+    font-size: 1rem
+    color: #000

@@ -9,6 +9,7 @@ import { IconArrowLeft } from '@/components/icons'
 const RecommendedPrograms = ({ programs }) => {
 	const recommendedPrograms = programs
 		?.filter(program => program.isActive)
+		?.filter(program => program.slug !== 'executive')
 		?.slice(0, 6)
 
 	const translations = {
