@@ -3,8 +3,8 @@ import cn from 'classnames'
 import { NetworkingProps } from './types'
 
 import { Wrapper } from '@/components/layout'
-import { IconCheck } from '../components/icons/IconCheck/IconCheck'
 import { data } from './constants'
+import { BtnBeta } from '@/components/btns'
 
 export const Networking = ({ className }: NetworkingProps) => {
 	return (
@@ -19,6 +19,7 @@ export const Networking = ({ className }: NetworkingProps) => {
 						</li>
 					))}
 				</ul>
+				<BtnBeta variant='beta'>Корпоративное обучение</BtnBeta>
 			</Wrapper>
 		</section>
 	)

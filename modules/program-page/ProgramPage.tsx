@@ -4,7 +4,6 @@ import { ProgramPageProps } from './types'
 import { ProgramPageProvider } from './fractals/context/ProgramPageProvider'
 import { HeroSection } from './widgets'
 import { AboutProgram } from './widgets/AboutProgram/AboutProgram'
-import { WhatWillYouLearn } from '@/components/sections'
 import { WhatWillYouLearnNew } from './widgets/WhatWillYouLearn/WhatWillYouLearn'
 import { WhoIsForNew } from './widgets/WhoIsFor/WhoIsFor'
 import { HowProcessGoesNew } from './widgets/HowProcessGoes/HowProcessGoes'
@@ -15,6 +14,8 @@ import { ExpertsNew } from './widgets/Experts/Experts'
 import { Employment } from './widgets/Employment/Employment'
 import { EmploymentPartners } from './widgets/EmploymentPartners/EmploymentPartners'
 import { Networking } from './widgets/Networking/Networking'
+import { Accreditation } from './widgets/Accreditation/Accreditation'
+import { Reviews } from './widgets/Reviews/Reviews'
 
 export const ProgramPage = ({
 	className,
@@ -41,6 +42,9 @@ export const ProgramPage = ({
 				<Employment className={stls.section} />
 				<EmploymentPartners className={stls.section} />
 				<Networking className={stls.section} />
+				<CtaForm className={stls.section} />
+				<Accreditation className={cn(stls.section, stls.accreditation)} />
+				<Reviews className={stls.section} />
 			</div>
 		</ProgramPageProvider>
 	)
