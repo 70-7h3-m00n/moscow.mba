@@ -108,7 +108,7 @@ const HeaderInformation = ({ classNames = [], handleMenu, openMenu }) => {
 					)}
 				</Popup>
 				<div className={stls.linkWrapper}>
-					{at.index || at.about || at.contact ? <BtnChangeLang /> : null}
+					{/* {at.index || at.about || at.contact ? <BtnChangeLang /> : null} */}
 					<SearchField header />
 					<Link href={'https://lms.moscow.mba/'} className={stls.linkUser}>
 						<IconUser classNames={[stls.iconUserAtBtn]} color='#262626' />
