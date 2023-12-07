@@ -3,7 +3,7 @@ import {
 	TypeLibJournalArticle,
 	TypeLibJournalReadMoreArticlesArticles
 } from '@/types/index'
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { Fragment, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -57,6 +57,9 @@ type TypeJournalArticleProps = {
 const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 	journalArticle
 }) => {
+	// console.log(props?.journalArticle)
+	// const { journalArticle } = props
+
 	// ScrollBar
 	const [pageYOffset, setPageYOffset] = useState(0)
 	const [scollHeight, setScrollHeight] = useState(0)
@@ -209,7 +212,8 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 						transform: `translateX(-${
 							100 - pageYOffset / ((scollHeight - clientHeight) / 100)
 						}%)`
-					}}></div>
+					}}
+				></div>
 			</div>
 			<Wrapper classNames={[stls.wrapper]}>
 				<article
@@ -218,7 +222,8 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 						!isPopupCoursesOnTopicDesktop && !isPopupDownloadMaterials
 							? stls.notPopup
 							: ''
-					)}>
+					)}
+				>
 					<header>
 						<SectionJournalArticleHeader
 							journalArticle={journalArticle}
@@ -413,19 +418,13 @@ export const getStaticProps: GetStaticProps = async context => {
 	})
 }
 
-// export const getStaticProps: GetStaticProps = async context => {
-// 	const data = await handleGetStaticProps({
+// export const getServerSideProps: GetServerSideProps = async context => {
+// 	const journalArticle = await handleGetStaticProps({
 // 		page: routesFront?.journalArticles,
 // 		context
 // 	})
 
-// 	if (!data.props?.programs?.find(prog => prog.slug === context.params.slug)) {
-// 		return {
-// 			notFound: true
-// 		}
-// 	} else {
-// 		return data
-// 	}
+// 	return { props: { journalArticle } }
 // }
 
 export default PageJournalArticle

@@ -30,7 +30,7 @@ const SectionJournalArticleContents = ({
 			item.title.titleBodyParts.map(content => content.text).join(' ')
 		)
 
-	if (journalArticle?.articleBody.length === 0) return null
+	if (journalArticle?.articleBody?.length === 0) return null
 
 	const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		e.preventDefault()
