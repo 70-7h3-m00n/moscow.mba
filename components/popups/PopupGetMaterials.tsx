@@ -40,7 +40,8 @@ const PopupGetMaterials = ({
 			<div
 				className={
 					cn([stls.container], getClassNames({ classNames })) || undefined
-				}>
+				}
+			>
 				{!openLoader ? (
 					<div className={stls.pdfPopupGetMaterials}>
 						{/* todo: should be put in ./componnets/images using ImgTemplate.tsx */}
@@ -74,12 +75,13 @@ const PopupGetMaterials = ({
 				</div>
 				<button
 					className={stls.closed}
-					onClick={handlePopupGetMaterials}></button>
+					onClick={handlePopupGetMaterials}
+				></button>
 				<div className={openLoader || open ? stls.formContent : ''}>
 					<div className={stls.title}>
 						<p className={stls.text}>
 							{
-								'Получите подборку файлов от Московской Бизнес Академии беслпатно'
+								'Получите подборку файлов от Московской Бизнес Академии бесплатно'
 							}
 						</p>
 						<div className={stls.pdfFiles}>
@@ -96,7 +98,8 @@ const PopupGetMaterials = ({
 									</div>
 									<span
 										className={stls.pdfFileName}
-										key={`${file.name}_${idx}`}>
+										key={`${file.name}_${idx}`}
+									>
 										{file.name}
 									</span>
 								</div>
@@ -111,7 +114,8 @@ const PopupGetMaterials = ({
 							setIsSuccess={setIsSuccess}
 							formName={formName}
 							emailIsRequired
-							classNames={[stls.submitButton]}>
+							classNames={[stls.submitButton]}
+						>
 							<span className={stls.submitText}>{'получить бесплатно'}</span>
 						</FormJournalArticle>
 					</div>
@@ -129,7 +133,8 @@ const PopupGetMaterials = ({
 						</p>
 						<button
 							className={stls.formComplitedClosed}
-							onClick={() => setOpen(open => !open)}>
+							onClick={() => setOpen(open => !open)}
+						>
 							{'Вернуться назад'}
 						</button>
 					</div>

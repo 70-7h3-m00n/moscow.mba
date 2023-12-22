@@ -1,13 +1,16 @@
-import stls from '@/styles/components/layout/Header.module.sass'
-import { useContext, useState } from 'react'
+import stls from './Header.module.sass'
+import { useContext } from 'react'
 import { HeaderMenu, HeaderTop } from '@/components/header'
 import {
 	MenuContext,
 	OverlayContext,
 	ContextStaticProps
 } from '@/context/index'
+import useAt from '@/hooks/useAt'
+import { HeaderProgram } from './widgets/HeaderProgram/HeaderProgram'
 
 const Header = () => {
+	const at = useAt()
 	const { menuIsOpen, openMenu, closeMenu } = useContext(MenuContext)
 	const { hideOverlay, showOverlay } = useContext(OverlayContext)
 	const { programs } = useContext(ContextStaticProps)
@@ -24,13 +27,19 @@ const Header = () => {
 
 	return (
 		<header>
-			<div>
-				<HeaderTop handleMenu={handleMenu} openMenu={menuIsOpen} />
-			</div>
-			{menuIsOpen && (
-				<div className={stls.menu}>
-					<HeaderMenu programs={programs} handleMenu={handleMenu} />
-				</div>
+			{at.new ? (
+				<HeaderProgram />
+			) : (
+				<>
+					<div>
+						<HeaderTop handleMenu={handleMenu} openMenu={menuIsOpen} />
+					</div>
+					{menuIsOpen && (
+						<div className={stls.menu}>
+							<HeaderMenu programs={programs} handleMenu={handleMenu} />
+						</div>
+					)}
+				</>
 			)}
 		</header>
 	)

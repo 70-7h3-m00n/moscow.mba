@@ -12,6 +12,8 @@ const onSubmitForm = async ({
 	formName,
 	reset
 }) => {
+	console.log('=<>>>>>>>', values)
+
 	setOpenLoader(o => !o)
 	values.programTitle = programTitle || ''
 	values.leadPage = promoCourseLink ? promoCourseLink : asPath

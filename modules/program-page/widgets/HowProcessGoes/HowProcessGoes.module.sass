@@ -2,45 +2,62 @@
 @use '@/styles/utils/funcs' as f
 @use '@/styles/themes/default/colors' as c
 
-.slide
-  width: 80rem
-  height: 30rem
-  background-color: c.$alpha
+.content
+  overflow: hidden
 
-.pagination
-  margin-bottom: 1.5rem
-  background-color: #fff
-  padding: 3rem
+.carousel
+  margin-bottom: 3rem
   
+  & > .slick-dots
+    background-color: black
 
-  &__list
-    display: grid
-    grid-template-columns: repeat(6, 1fr)
+  & > div > div:first-of-type
+    display: inline-flex 
+    gap: 16px 
 
-  &__item svg
-    margin-bottom: 1rem
+  & > div > div > div
+
+    border-radius: 1.5rem
+
+    &:nth-child(1)
+      background-color: red
+    &:nth-child(2)
+      background-color: pink
+    &:nth-child(3)
+      background-color: blue
+    &:nth-child(4)
+      background-color: orange
+    &:nth-child(5)
+      background-color: grey
+    &:nth-child(6)
+      background-color: black
+    &:nth-child(7)
+      background-color: brown
 
 .slide
-  display: flex
+  display: flex !important
   align-items: flex-end
-  height: 25rem
-  width: 100%
+  min-height: 25rem
   padding: 1.5rem
   border-radius: 1.5rem
-  background-image: url('../../../../public/assets/images/program/slider-bg.png')
-  background-repeat: no-repeat
-  background-size: 60rem 35rem
-  background-position: 80% center 
-  background-color: #51555B
+  // background-color: #51555B
+  overflow: hidden
+  cursor: grab
+  user-select: none
+
+  &:active
+    cursor: grabbing
 
   &__content
+    display: flex
+    flex-direction: column
+    gap: 1rem
     max-width: 40rem
-    padding: 1.5rem
+    padding: 1rem
     border-radius: 1rem
     background-color: #fff
 
   &__title
-    margin-bottom: 1rem
     color: #000
     font-size: 1.5rem
     line-height: 120%
@@ -48,3 +65,70 @@
   &__desc
     color: #575757
     line-height: 110%
+
+.dots
+
+  &__progress
+    display: block
+    position: absolute
+    width: calc(100% - 6rem)
+    height: 2px
+    border: none
+    transform: translate(0, .7rem)
+    z-index: 0
+    background-color: #f5f5f5
+    background-image: linear-gradient(to right, #FF3535, #FF3535)
+    background-repeat: no-repeat
+    background-size: 0 100%
+    transition: background-size .4s ease-in-out
+
+  &__list
+    position: relative
+    display: flex
+    justify-content: space-between
+    border-radius: 1.5rem
+    z-index: 1
+
+    > li:nth-child(1) .checkDescription
+      left: 0
+
+    > li:nth-child(2) .checkDescription
+      left: 50%
+      transform: translateX(-50%)
+   
+    > li:nth-child(3) .checkDescription
+      left: 50%
+      transform: translateX(-50%)
+   
+    > li:nth-child(4) .checkDescription
+      left: 50%
+      transform: translateX(-50%)
+   
+    > li:nth-child(5) .checkDescription
+      left: 50%
+      transform: translateX(-50%)
+
+    > li:nth-child(6) .checkDescription
+      right: 0
+
+.checkWrapper
+  position: relative
+
+.checkDescription
+  position: absolute
+  top: 3rem
+  color: #000
+  text-align: center
+  line-height: 110%
+  white-space: nowrap
+  transition: color .4s ease-in-out
+
+.checkDescription.active
+  color:#FF3535
+
+.iconCheck
+  cursor: pointer
+
+.iconCheck > g > circle
+  transition-delay: .4s
+  transition: fill .4s ease-in-out

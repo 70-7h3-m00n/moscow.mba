@@ -7,11 +7,27 @@ import { Wrapper } from '@/components/layout'
 import Image from 'next/image'
 import { Switch } from '../components/Switch/Switch'
 import { Details } from '../components'
-import { bottomList, data } from './constants'
+import { bottomList } from './constants'
 import { IconFire, IconHeart } from './components'
 import { BtnBeta } from '@/components/btns'
+import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
+import { useContext, useState } from 'react'
+import useAt from '@/hooks/useAt'
+import { useRouter } from 'next/router'
+import { ContextStaticProps } from '@/context/index'
 
 export const HeroSection = ({ className }: HeroSectionProps) => {
+	const at = useAt()
+	const router = useRouter()
+	const { programs } = useContext(ContextStaticProps)
+
+	const { state } = useContext(ProgramPageContext)
+	const { program } = state
+
+	const description =
+		program?.description ||
+		'Оставьте заявку и получите консультацию по программе, а также узнайте возможные варианты скидок и требования к поступлению'
+
 	return (
 		<section className={cn(className, stls.container)}>
 			<Wrapper classNames={[stls.content]}>
@@ -20,8 +36,8 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
 						<Switch className={stls.switch} />
 					</div>
 					<div className={stls.main}>
-						<h1 className={stls.title}>{data.title}</h1>
-						<p className={stls.description}>{data.description}</p>
+						<h1 className={stls.title}>{program?.title}</h1>
+						<p className={stls.description}>{description}</p>
 						<div className={stls.main__btnWrapper}>
 							<BtnBeta variant='alpha'>Оставить заявку</BtnBeta>
 							<BtnBeta variant='beta'>Задать вопрос</BtnBeta>

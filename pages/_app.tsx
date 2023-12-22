@@ -9,13 +9,20 @@ import 'nprogress/nprogress.css'
 import TagManager from 'react-gtm-module'
 import { DefaultSeo, LogoJsonLd } from 'next-seo'
 import SEO from '../seo.config'
-import { usePreserveScroll } from '@/hooks/index'
+import { useAt, usePreserveScroll } from '@/hooks/index'
 import { dev, gtmId, mangoScript, routesFront } from '@/config/index'
-import { Header, Main, WrapperPage, Footer } from '@/components/layout'
+import {
+	Header,
+	Main,
+	WrapperPage,
+	Footer,
+	FooterNew
+} from '@/components/layout'
 import { MenuState, OverlayState, ContextStaticProps } from '@/context/index'
 import { filledUpFormWithoutSubmission } from '../helpers'
 
 function MyApp({ Component, pageProps, router }) {
+	const at = useAt()
 	const [programs, setPrograms] = useState(pageProps.programs || null)
 	const [program, setProgram] = useState(pageProps.program || null)
 	const [until, setUntil] = useState(pageProps.until || null)
@@ -223,14 +230,14 @@ function MyApp({ Component, pageProps, router }) {
 							})();`
 					}}
 				/>
-				{!dev && (
+				{/* {!dev && (
 					<script
 						type='text/javascript'
 						dangerouslySetInnerHTML={{
 							__html: mangoScript
 						}}
 					/>
-				)}
+				)} */}
 			</Head>
 			<DefaultSeo {...SEO} />
 			<LogoJsonLd
@@ -264,7 +271,7 @@ function MyApp({ Component, pageProps, router }) {
 							<Main>
 								<Component {...pageProps} />
 							</Main>
-							<Footer />
+							{at.new ? <FooterNew /> : <Footer />}
 						</WrapperPage>
 					</MenuState>
 				</OverlayState>

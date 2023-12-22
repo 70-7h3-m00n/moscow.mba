@@ -1,13 +1,60 @@
 import stls from './Details.module.sass'
 import cn from 'classnames'
-
-import { data } from './constants'
 import { DetailsProps } from './types'
-import { Tag } from '../Tag/Tag'
+
+import { useContext } from 'react'
+import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
+import useAt from '@/hooks/useAt'
 import Image from 'next/image'
-import { IconSynergy } from '../../HeroSection/components/IconSynergy/IconSynergy'
+import { ruCase } from '@/helpers/index'
+import { Tag } from '../Tag/Tag'
+import { PlacesLeft, TrainingPeriod, Until } from '@/components/costs'
+import { PopupDuration } from '@/components/popups'
 
 export const Details = ({ className }: DetailsProps) => {
+	const at = useAt()
+	const { state } = useContext(ProgramPageContext)
+	const { program } = state
+
+	const durationMonths =
+		program?.duration?.minStudyMonths || (at.mba ? '18' : at.mini ? '9' : null)
+
+	const durationHours = at.mini
+		? 1260
+		: at.mba
+		? 3420
+		: program?.duration?.studyHours
+
+	const data = [
+		{
+			title: 'Срок обучения',
+			description: (
+				<TrainingPeriod
+					period={program?.duration?.minStudyMonths}
+					type={program?.category?.type}
+				/>
+			)
+		},
+		{
+			title: 'Форма обучения',
+			description: `${at.blended ? 'С очными модулями' : 'Дистанционная'}`
+		},
+		{
+			title: 'Ближайшее зачисление',
+			description: (
+				<Until preposition={false} executive={at.executive && false} />
+			)
+		},
+		{
+			title: 'Диплом',
+			description: (
+				<>
+					Заносится в ФРДО <span></span>
+				</>
+			)
+		}
+	]
+
 	return (
 		<div className={cn(className, stls.details)}>
 			<div className={stls.details__banner}>
@@ -25,7 +72,7 @@ export const Details = ({ className }: DetailsProps) => {
 					ноября
 				</p>
 				<Tag className={stls.details__tag} variant='gamma'>
-					Осталось мест: 24
+					Осталось мест: <PlacesLeft uniqueKey={program?.id} />
 				</Tag>
 			</div>
 			<ul className={stls.list}>

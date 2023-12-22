@@ -1,0 +1,45 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content
+  position: relative
+
+.input
+  --chrome-autocomplete-bg: #18191A
+  width: 95%
+  padding-bottom: 1rem
+  border: none
+  border-bottom: 1px solid #383838
+  color: #fff
+  font-family: Helvetica Neue
+  font-size: 1rem
+  font-style: normal
+  font-weight: 400
+  line-height: 120%
+  background-color: transparent
+  outline: none
+  transition: border-color .3s ease-in-out
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active
+    -webkit-background-clip: text
+    -webkit-text-fill-color: #fff
+    transition: background-color 5000s ease-in-out 0s
+    box-shadow: inset 0 0 20px 20px var(--chrome-autocomplete-bg)
+
+  &::placeholder
+    font-size: 0.875rem
+    color: #979BA0
+
+  &:focus
+    border-color: #fff
+
+.error
+  position: absolute
+  left: 1rem
+  bottom: -1.2rem
+  color: #FF3535
+  opacity: .8

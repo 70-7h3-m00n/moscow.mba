@@ -2,6 +2,33 @@
 @use '@/styles/utils/funcs' as f
 @use '@/styles/themes/default/colors' as c
 
+.content
+  overflow: hidden
+
+.titleWrapper
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 3rem
+
+.carousel__navigation
+  display: flex
+  justify-content: center
+  gap: 1.5rem
+
+.prev
+  padding: 0
+  border: none
+  background-color: transparent
+  .svg
+    transform: rotate(180deg)
+
+.next
+  padding: 0
+  border: none
+  background-color: transparent
+
+
 .title
   max-width: 45rem
   margin-bottom: 3rem
@@ -9,3 +36,111 @@
   font-size: 2.5rem
   line-height: 120%
   letter-spacing: -0.1rem
+
+.carousel
+  margin-bottom: 3rem
+  
+  & > div > div:first-of-type
+    display: inline-flex 
+    gap: 16px 
+
+  &__item
+    //  display: flex !important
+    // cursor: grab
+    // cursor: pointer
+    user-select: none
+    // &:active
+    //   cursor: grabbing
+
+.item
+
+  &__image
+    border-radius: 1.5rem
+    cursor: pointer
+
+  &__name
+    max-width: 19rem
+    margin-bottom: 1rem
+    font-family: Unbounded
+    font-size: 1.5rem
+    line-height: 120%
+
+  &__desc
+    max-width: 19rem
+    color: #575757
+    line-height: 120%
+
+.card
+  display: flex
+  gap: 1rem
+  margin-bottom: 1.5rem
+
+.details
+  display: none
+  // width: 0
+  gap: 1rem
+  width: 40rem
+  padding: 1.5rem
+  border-radius: 1.5rem
+  background-color: #E7EAED
+  transition: width 1s ease-in-out
+  // animation-name: toggle-details
+
+  &.active
+    // display: flex
+    // animation-name: toggle-details
+    // animation-duration: 3s
+
+  &__image
+    border-radius: 1rem
+
+  &__text
+    display: flex
+    flex-direction: column
+    gap: 1.5rem
+    padding: 1.5rem
+    border-radius: 1rem
+    background-color: #fff
+
+  &__nameWrapper
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+  &__close
+    border: none
+    background: none
+
+  &__name
+    font-family: Unbounded
+    font-size: 1.5rem
+    line-height: 120%
+
+  &__desc
+    font-size: 1rem
+    line-height: 120%
+
+  &__list
+    display: flex
+    flex-direction: column
+    gap: 1rem
+    padding-left: 1rem
+    list-style: disc
+
+    li
+      color: #575757
+      line-height: 120%
+
+@keyframes toggle-details
+  from
+    background-color: red
+    width: 0 
+
+  50%
+    width: 20rem
+
+  to 
+    background-color: blue
+    width: 40rem
+  
+

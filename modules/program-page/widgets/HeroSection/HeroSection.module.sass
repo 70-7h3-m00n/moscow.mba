@@ -43,6 +43,7 @@
   &__btnWrapper
     display: flex
     gap: 1.5rem
+    margin-top: auto
 
 
 .title
@@ -103,32 +104,30 @@
   height: 90px
   position: absolute
   top: 0
-  left: 0
+  left: 10px
   border-bottom-right-radius: 3rem
-  border-bottom: .6rem solid #fff
-  border-right: .6rem solid #fff
-  background-color: #fff
+  border-bottom: .6rem solid var(--background-color)
+  border-right: .6rem solid var(--background-color)
+  background-color: var(--background-color)
   transform: translate(-1px, -1px)
 
 .cornerPhoto::before,
 .cornerPhoto::after 
   content: ""
-  width: 20px
-  height: 20px
   position: absolute
-
+  width: 25px
+  height: 25px
+  background: transparent
+  border-top-left-radius: 30px
+  box-shadow: -5px -5px 0 5px var(--background-color)
 
 .cornerPhoto::before
-  left: 0 
-  bottom: -28px
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M0 0 Q20 0 20 20 L20 0Z" /></svg>')
-  transform: rotate(270deg)
+  top: 1px
+  right: -34px
 
-.cornerPhoto::after 
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M0 20 Q20 20 20 0 L20 20Z" /></svg>')
-  top: 0 
-  right: -28px
-  transform: rotate(180deg)
+.cornerPhoto::after
+  bottom: -34px
+  left: 1px
 
 .bottomList
   display: grid

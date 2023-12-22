@@ -1,0 +1,43 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.carousel
+  margin-bottom: 3rem
+  
+  & > div > div:first-of-type
+    display: inline-flex 
+    gap: 16px 
+
+  &__post 
+    max-width: 27rem 
+    cursor: grab
+    user-select: none
+
+    &:active
+      cursor: grabbing
+
+.titleWrapper
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 3rem
+
+
+.carousel__navigation
+  display: flex
+  justify-content: center
+  gap: 1.5rem
+
+.prev
+  padding: 0
+  border: none
+  background-color: transparent
+  .svg
+    transform: rotate(180deg)
+
+.next
+  padding: 0
+  border: none
+  background-color: transparent
+

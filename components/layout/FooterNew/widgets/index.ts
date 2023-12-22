@@ -1,0 +1,6 @@
+export * from './Contacts/Contacts'
+export * from './Legal/Legal'
+export * from './Licence/Licence'
+export * from './Navigation/Navigation'
+export * from './PaymentInfo/PaymentInfo'
+export * from './Subscription/Subscription'

@@ -1,0 +1,50 @@
+@use '@/styles/utils/mixin' as m
+
+.container
+  padding-inline: 1rem
+  background-color: #F8F8F8
+  font-family: Helvetica Neue
+  font-weight: 400
+  color: #fff
+
+.content
+  display: grid
+  grid-template-columns: [footer-start contact-start] 20rem [contact-end nav-start licence-start] 20rem [license-end form-start] auto [form-end nav-end footer-end]
+  grid-template-rows: repeat(4, auto)
+  row-gap: 3rem
+  column-gap: 1rem
+  padding: 3rem 1.5rem 1.5rem 1.5rem
+  border-top-left-radius: 1rem
+  border-top-right-radius: 1rem
+  background-color: #18191A
+
+.logo
+  grid-column: contact-start / contact-end
+  display: flex
+  align-items: center 
+  gap: 0.5rem
+
+  &__icon
+    width: 3.25rem
+    height: 3.25rem
+
+.payment
+  grid-column: form-start / form-end
+  justify-self: flex-end
+  align-items: center
+
+.contacts
+  grid-column: contact-start / contact-end
+  grid-row: span 2
+
+.nav
+  grid-column: nav-start / nav-end
+
+.license
+  grid-column: license-start / license-end
+
+.subscription
+  grid-column: form-start / form-end
+
+.legal
+  grid-column: footer-start / footer-end

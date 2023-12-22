@@ -1,5 +1,3 @@
-import { from } from '@apollo/client'
-
 // ./
 export { default as BtnAlpha } from '@/components/btns/BtnAlpha'
 export { default as BtnChangeLang } from '@/components/btns/BtnChangeLang'
@@ -9,3 +7,4 @@ export { default as BtnArticlesShowMore } from '@/components/btns/BtnArticlesSho
 export { default as BtnScrollTop } from '@/components/btns/BtnScrollTop'
 
 export * from './BtnBeta/BtnBeta'
+export * from './BtnClose/BtnClose'
