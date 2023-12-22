@@ -1,6 +1,7 @@
 // ./
 export { default as Footer } from '@/components/layout/Footer/Footer'
-export { default as Header } from '@/components/layout/Header'
+export * from './FooterNew/Footer'
+export { default as Header } from '@/components/layout/Header/Header'
 export { default as IconContainer } from '@/components/layout/IconContainer'
 export { default as Main } from '@/components/layout/Main'
 export { default as Overlay } from '@/components/layout/Overlay'

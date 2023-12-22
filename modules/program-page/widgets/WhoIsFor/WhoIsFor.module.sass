@@ -8,6 +8,7 @@
   gap: 1.5rem
 
 .item
+  position: relative
   display: flex
   flex-direction: column
   justify-content: flex-end
@@ -38,3 +39,34 @@
   background-position: 0 -1.5rem
   .item__desc
     color:#FDB7B7
+
+.cornerPhoto
+  width: 90px
+  height: 90px
+  position: absolute
+  top: 0
+  right: -1px
+  border-bottom-left-radius: 3rem
+  border-bottom: .6rem solid var(--background-color)
+  border-left: .6rem solid var(--background-color)
+  background-color: var(--background-color)
+  transform: translate(-1px, -1px)
+
+.cornerPhoto::before,
+.cornerPhoto::after 
+  content: ""
+  position: absolute
+  width: 25px
+  height: 25px
+  background: transparent
+  border-top-left-radius: 30px
+  box-shadow: -5px -5px 0 5px var(--background-color)
+  transform: rotate(90deg)
+
+.cornerPhoto::before
+  bottom: -34px
+  right: 0px
+
+.cornerPhoto::after
+  top: 1px
+  left: -34px

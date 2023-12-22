@@ -82,15 +82,22 @@ const FormAlpha = ({
 						reset
 					})
 				}
-			})}>
+			})}
+		>
 			<div
 				className={cn(container, {
 					'inputs-flex': globalStyle,
 					'inputs-flex--alt': alpha
-				})}>
+				})}
+			>
 				<InputName register={register} errors={errors} width={width} />
 				<InputPhone register={register} errors={errors} width={width} />
-				<InputEmail register={register} errors={errors} width={width} />
+				<InputEmail
+					register={register}
+					errors={errors}
+					width={width}
+					isRequired
+				/>
 				<InputPromo register={register} errors={errors} width={width} />
 				<InputSubmit errors={errors} alpha={alpha} width={width} />
 			</div>
@@ -98,7 +105,8 @@ const FormAlpha = ({
 				<div
 					className={cn({
 						'personal-data': globalStyle
-					})}>
+					})}
+				>
 					{/* TODO: should be a link here to privacy policy */}
 					{at.en
 						? 'By pressing submit button, you agree to'
@@ -106,7 +114,8 @@ const FormAlpha = ({
 					<a
 						href='/legaldocuments/NDA.pdf'
 						target={'_blank'}
-						rel='noreferrer noopener'>
+						rel='noreferrer noopener'
+					>
 						{at.en ? 'Privacy Policy' : 'персональных данных'}
 					</a>
 				</div>

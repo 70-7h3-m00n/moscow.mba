@@ -4,6 +4,8 @@ import { ReviewsProps } from './types'
 
 import { Wrapper } from '@/components/layout'
 import { Rating } from './components/Rating/Rating'
+import Carousel from './components/ReviewsCarousel/Carousel'
+// import { ReviewsSlider } from './components/ReviewsSlider/ReviewsSlider'
 
 export const Reviews = ({ className }: ReviewsProps) => {
 	return (
@@ -15,7 +17,8 @@ export const Reviews = ({ className }: ReviewsProps) => {
 					собрали для вас отзывы студентов и выпускников об обучении в Moscow
 					Business Academy
 				</p>
-				<Rating />
+				<Rating className={stls.rating} />
+				<Carousel />
 			</Wrapper>
 		</section>
 	)

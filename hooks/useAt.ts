@@ -58,7 +58,9 @@ const useAt = () => {
 			query.locale === 'uz' ||
 			query.locale === 'uz_UZ',
 		programChunk: !!getProgramTitle,
-		getSplitedPath
+		getSplitedPath,
+		// new: !!getProgramTitle && getSplitedPath[1] === 'mba'
+		new: false
 	}
 }
 

@@ -7,23 +7,27 @@ import Image from 'next/image'
 
 const ratings = [
 	{
-		rating: '10%',
-		logo: 'logo.png',
+		name: 'Tutortop',
+		rating: '4.8',
+		src: '/assets/images/program/tutortop.svg',
 		desc: '444 отзывов'
 	},
 	{
-		rating: '10%',
-		logo: 'logo.png',
+		name: 'Google Maps',
+		rating: '4.6',
+		src: '/assets/images/program/google-maps.svg',
 		desc: '444 отзывов'
 	},
 	{
-		rating: '10%',
-		logo: 'logo.png',
+		name: 'Yandex Maps',
+		rating: '4.6',
+		src: '/assets/images/program/yandex-maps.svg',
 		desc: '444 отзывов'
 	},
 	{
-		rating: '10%',
-		logo: 'logo.png',
+		name: 'Otzovik',
+		rating: '78%',
+		src: '/assets/images/program/otzovik.svg',
 		desc: '444 отзывов'
 	}
 ]
@@ -53,7 +57,8 @@ export const Rating = ({ className }: RatingProps) => {
 			{ratings.map((item, idx) => (
 				<li className={stls.item} key={idx}>
 					<span className={stls.item__rating}>{item.rating}</span>
-					{item.logo}
+
+					<Image src={item.src} width={156} height={34} alt={item.name} />
 					<p className={stls.item__desc}>{item.desc}</p>
 				</li>
 			))}

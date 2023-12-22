@@ -1,17 +1,16 @@
 import stls from '@/styles/components/icons/IconLogo.module.sass'
-import { TypeClassNames, TypeColor } from '@/types/index'
 import cn from 'classnames'
-import { colors, companyName } from '@/config/index'
+
+import { companyName } from '@/config/index'
 import { useAt } from '@/hooks/index'
-import { getClassNames } from '@/helpers/index'
-import { IconContainer } from '@/components/layout'
+import { HTMLAttributes } from 'react'
 
 // TODO: improve structure
-const IconLogo = () => {
+const IconLogo = ({ className }: HTMLAttributes<HTMLDivElement>) => {
 	const at = useAt()
 
 	return (
-		<div className={stls.container}>
+		<div className={cn(className, stls.container)}>
 			<svg
 				viewBox='0 0 276 276'
 				fill='none'

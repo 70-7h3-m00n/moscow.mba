@@ -1,0 +1,49 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content 
+  margin-bottom: 2rem
+
+.title
+  margin-bottom: 1rem
+  color: #FFF
+  font-family: Helvetica Neue
+  font-size: 1.125rem
+  line-height: 120%
+
+.labelWrapper
+  display: flex
+  gap: 1.5rem
+
+.label 
+  display: flex
+  align-items: center
+  gap: 0.6rem
+  cursor: pointer
+
+  span
+    color: #FFF
+    font-size: 0.9rem
+    line-height: 120%
+
+.radio
+  display: none
+
+.customRadio
+  overflow: visible
+
+.path 
+  fill: none
+  stroke: #383838
+  stroke-width: 6
+  stroke-linecap: round
+  stroke-linejoin: round
+  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease, stroke .5s ease
+  stroke-dasharray: 241 9999999
+  stroke-dashoffset: 0
+
+.label input:checked ~ svg .path
+  stroke: white
+  stroke-dasharray: 70.5096664428711 9999999
+  stroke-dashoffset: -262.2723388671875

@@ -14,7 +14,7 @@ const PageTest = ({ programs }) => {
 			<ProgramPage
 				program={programs[0]}
 				programs={programs}
-				teachers={programs[0].teachers}
+				teachers={programs[0]?.teachers}
 			/>
 		</>
 	)

@@ -26,6 +26,9 @@
   gap: 1.5rem
 
 .item
+  display: flex
+  flex-direction: column
+  gap: 1rem 
   padding: 1.5rem
   border-radius: 1rem
   background-color: #fff
@@ -37,6 +40,12 @@
   &__desc
     color: #575757
 
+  li
+    color: #979BA0
+    font-family: Helvetica Neue
+    font-size: 0.875rem
+    line-height: 130%
+
   &:nth-child(1)
 
   &:nth-child(2)
@@ -46,12 +55,17 @@
 
   &:nth-child(4)
     grid-column: 3 / 4
-    grid-row: 1 / span 2
+    grid-row: 1 / span 2 
     background-color: #51555B
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+    &>*:last-child
+      align-self: center
 
     .item__title
       color: #fff
 
     .item__desc
       color: #979BA0
-    
