@@ -12,7 +12,7 @@ const IconInfoFRDO = ({
 	className,
 	color = 'white',
 	...rest
-}: HTMLAttributes<HTMLDivElement> & { color: string }) => {
+}: HTMLAttributes<HTMLDivElement> & { color?: string }) => {
 	return (
 		<div className={cn(className, stls.container)} {...rest}>
 			<svg
