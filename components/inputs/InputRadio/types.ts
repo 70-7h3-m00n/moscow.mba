@@ -4,4 +4,5 @@ import { UseFormRegister } from 'react-hook-form'
 
 export type InputrRadioProps = HTMLAttributes<HTMLInputElement> & {
 	register: UseFormRegister<TypeFormValues>
+	variant?: 'alpha' | 'beta' | 'gamma'
 }

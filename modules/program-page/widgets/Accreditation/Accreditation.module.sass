@@ -15,6 +15,11 @@
   gap: 1.5rem
 
 .left
+
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
   &__subtitle
     margin-bottom: 3rem
     color: #575757
@@ -27,14 +32,24 @@
     background-color: #fff
 
   &__desc
-    font-size: 0.85rem
+    color: #000
+    font-size: 0.875rem
+    font-weight: 400
+    line-height: 120% 
 
 .item
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  gap: 1rem
   padding: 1.5rem
   border-radius: 1rem
   background-color: #fff
 
-  &__title
+  &__titleWrapper
+    display: flex
+    flex-direction: column
+    gap: 0.5rem
     font-size: 1.5rem
     line-height: 120%
 
@@ -42,3 +57,14 @@
     color: white
     background-color: c.$alpha
     
+
+.itemTitle
+  display: flex
+  align-items: center
+
+.titleText
+  color: #000
+  font-family: Unbounded
+  font-size: 1.25rem
+  font-weight: 400
+  line-height: 120%

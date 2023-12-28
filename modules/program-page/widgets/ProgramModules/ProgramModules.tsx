@@ -22,9 +22,9 @@ const data = [
 	}
 ]
 
-export const ProgramModules = ({ className }: ProgramModulesProps) => {
+export const ProgramModules = ({ className, ...rest }: ProgramModulesProps) => {
 	return (
-		<section className={cn(className, stls.container)}>
+		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<div className={stls.titleBlock}>
 					<div className={stls.left}>

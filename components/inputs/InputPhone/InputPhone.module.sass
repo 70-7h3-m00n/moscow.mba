@@ -5,26 +5,55 @@
 .content
   position: relative
 
-.input
+.input.alpha
+  --bg-color: #262626
+  --border-color: #383838
   --chrome-autocomplete-bg: #18191A
+  --outline-color: #5D6268
+  --text-color: #fff
+
+.input.beta
+  --bg-color: #5D6268
+  --border-color: #6D7074
+  --chrome-autocomplete-bg: #5D6268
+  --outline-color: #5D6268
+  --text-color: #fff
+
+.input.gamma
+  --bg-color: #fff
+  --border-color: #E9E9E9
+  --chrome-autocomplete-bg: #fff
+  --outline-color: #5D6268
+  --text-color: #000
+
+.input.delta
+  --bg-color: #F8F8F8
+  --border-color: #E9E9E9
+  --chrome-autocomplete-bg: #fff
+  --outline-color: #5D6268
+  --text-color: #000
+
+
+
+.input
   width: 100%
   padding: 1.5rem
   padding-bottom: 1.3rem
-  border: 1px solid #383838
+  border: 1px solid var(--border-color)
   border-radius: 1rem
   font-family: Helvetica Neue
   font-size: 0.875rem
   line-height: 120%
-  color: #fff
-  background: #262626
-  outline-color: #fff
+  color: var(--text-color)
+  background: var(--bg-color)
+  outline-color: var(--outline-color)
 
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active
     -webkit-background-clip: text
-    -webkit-text-fill-color: #fff
+    -webkit-text-fill-color: var(--text-color)
     transition: background-color 5000s ease-in-out 0s
     box-shadow: inset 0 0 20px 20px var(--chrome-autocomplete-bg)
 

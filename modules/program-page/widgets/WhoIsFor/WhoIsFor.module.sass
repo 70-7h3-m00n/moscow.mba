@@ -7,20 +7,35 @@
   grid-template-columns: repeat(3, 1fr)
   gap: 1.5rem
 
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr
+
+
 .item
   position: relative
   display: flex
   flex-direction: column
   justify-content: flex-end
   gap: 1rem
-  min-height: 30rem
+  min-height: 31rem
   padding: 1.5rem
   border-radius: 1rem
+
+  @include m.media(phone, tablet)
+    min-height: 18rem
   
   &__title
     font-size: 1.5rem
     line-height: 1.2
     color: #fff
+
+    @include m.media(phone, tablet)
+      font-size: 1.25rem
+
+  &__desc
+    @include m.media(phone, tablet)
+      font-size: .875rem
+      line-height: 110%
 
 .item:first-of-type
   background-color: #18191A
@@ -37,6 +52,12 @@
   background-repeat: no-repeat
   background-size: 100%
   background-position: 0 -1.5rem
+
+  @include m.media(phone, tablet)
+    background-image: url('../../../../public/assets/images/program/who-is-for-bg-mobile.svg')
+    background-size: 74%
+    background-position: top left
+
   .item__desc
     color:#FDB7B7
 
@@ -45,7 +66,7 @@
   height: 90px
   position: absolute
   top: 0
-  right: -1px
+  right: -2px
   border-bottom-left-radius: 3rem
   border-bottom: .6rem solid var(--background-color)
   border-left: .6rem solid var(--background-color)
@@ -63,10 +84,22 @@
   box-shadow: -5px -5px 0 5px var(--background-color)
   transform: rotate(90deg)
 
+  @include m.media(phone, tablet)
+    width: 15px
+    height: 15px
+    box-shadow: -6px -5px 0 5px var(--background-color)
+
 .cornerPhoto::before
   bottom: -34px
   right: 0px
 
+  @include m.media(phone, tablet)
+    bottom: -23px
+    right: 1px
+
 .cornerPhoto::after
   top: 1px
   left: -34px
+
+  @include m.media(phone, tablet)
+    left: -22px

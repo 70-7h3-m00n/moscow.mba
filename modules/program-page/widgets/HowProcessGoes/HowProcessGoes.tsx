@@ -6,18 +6,37 @@ import { Wrapper } from '@/components/layout'
 import { IconCheck } from '../components/icons/IconCheck/IconCheck'
 import { useEffect, useRef, useState } from 'react'
 import Slider from 'react-slick'
-import { howProcessGoesData } from './constants'
+import { GetHowProcessGoesData } from './fractals/GetHowProcessGoesData'
+import { IconNext } from '../components'
+import useAt from '@/hooks/useAt'
+import useWindowWidth from '@/hooks/useWindowWidth'
+import { MobileCarousel } from './widgets/MobileCarousel/MobileCarousel'
 
-export const HowProcessGoesNew = ({ className }: HowProcessGoesProps) => {
-	const dotsRef = useRef(null)
+export const HowProcessGoesNew = ({
+	className,
+	...rest
+}: HowProcessGoesProps) => {
+	const at = useAt()
+	const widthWindow = useWindowWidth()
+	const sliderRef = useRef<Slider>(null)
 	const slidesRef = useRef(null)
+	const dotsRef = useRef(null)
+	const [isMobile, setIsMobile] = useState(false)
+	const [activeSlideIndex, setActiveSlideIndex] = useState(0)
+	const percent = (100 / 5) * activeSlideIndex
+	const slidesData = GetHowProcessGoesData()
+
+	useEffect(() => {
+		if (widthWindow <= 767) {
+			setIsMobile(true)
+		} else {
+			setIsMobile(false)
+		}
+	}, [widthWindow])
 
 	useEffect(() => {
 		slidesRef.current.prepend(dotsRef.current)
 	}, [])
-
-	const [activeSlideIndex, setActiveSlideIndex] = useState(0)
-	const percent = (100 / 5) * activeSlideIndex
 
 	const settings = {
 		dots: true,
@@ -25,7 +44,7 @@ export const HowProcessGoesNew = ({ className }: HowProcessGoesProps) => {
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		adaptiveHeight: true,
-		autoplay: true,
+		// autoplay: true,
 		autoplaySpeed: 4000,
 		vertical: false,
 		arrows: false,
@@ -47,6 +66,7 @@ export const HowProcessGoesNew = ({ className }: HowProcessGoesProps) => {
 					backgroundColor: '#fff',
 					position: 'relative'
 				}}
+				{...rest}
 			>
 				<span
 					className={cn(stls.dots__progress)}
@@ -68,7 +88,7 @@ export const HowProcessGoesNew = ({ className }: HowProcessGoesProps) => {
 						[stls.active]: activeSlideIndex === idx
 					})}
 				>
-					{howProcessGoesData[idx].title}
+					{slidesData[idx].title}
 				</p>
 			</div>
 		)
@@ -78,26 +98,25 @@ export const HowProcessGoesNew = ({ className }: HowProcessGoesProps) => {
 		<section className={cn(className, stls.container)}>
 			<Wrapper classNames={[stls.content]}>
 				<h2>Как проходит обучение</h2>
-				<div ref={slidesRef} className={stls.slides}>
-					<Slider {...settings}>
-						{howProcessGoesData.map((program, idx) => (
-							<div
-								className={cn(stls.carousel__slide, stls.slide)}
-								key={`Carousel_post--${idx}`}
-							>
-								<div className={stls.slide__content}>
-									<h3 className={stls.slide__title}>Выполняйте задания</h3>
-									<p className={stls.slide__desc}>
-										Вы сможете отточить полученные навыки на групповых проектах
-										и практических заданиях, приближенных к формату реальных
-										задач. Мы ежегодно обновляем учебные планы, чтобы вы
-										получали навыки, которые нужны работодателям
-									</p>
+				{isMobile ? (
+					<MobileCarousel />
+				) : (
+					<div ref={slidesRef} className={stls.slides}>
+						<Slider ref={sliderRef} {...settings}>
+							{slidesData.map((slide, idx) => (
+								<div
+									className={cn(stls.carousel__slide, stls.slide)}
+									key={`Carousel_post--${idx}`}
+								>
+									<div className={stls.slide__content}>
+										<h3 className={stls.slide__title}>{slide.title}</h3>
+										<p className={stls.slide__desc}>{slide.description}</p>
+									</div>
 								</div>
-							</div>
-						))}
-					</Slider>
-				</div>
+							))}
+						</Slider>
+					</div>
+				)}
 			</Wrapper>
 		</section>
 	)

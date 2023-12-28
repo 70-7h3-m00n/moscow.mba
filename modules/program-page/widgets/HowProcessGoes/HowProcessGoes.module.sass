@@ -16,23 +16,26 @@
     gap: 16px 
 
   & > div > div > div
-
     border-radius: 1.5rem
+    background-color: #51555B
+    background-repeat: no-repeat
+    background-size: 70rem 45rem
+    background-position: center center
 
     &:nth-child(1)
-      background-color: red
+      background-image: url('../../../../public/assets/images/program/slider-bg.png')
     &:nth-child(2)
-      background-color: pink
+      background-image: url('../../../../public/assets/images/program/slider-bg.png')
     &:nth-child(3)
-      background-color: blue
+      background-image: url('../../../../public/assets/images/program/slider-bg.png')
     &:nth-child(4)
-      background-color: orange
+      background-image: url('../../../../public/assets/images/program/slider-bg.png')
     &:nth-child(5)
-      background-color: grey
+      background-image: url('../../../../public/assets/images/program/slider-bg.png')
     &:nth-child(6)
-      background-color: black
+      background-image: url('../../../../public/assets/images/program/slider-bg.png')
     &:nth-child(7)
-      background-color: brown
+      background-image: url('../../../../public/assets/images/program/slider-bg.png')
 
 .slide
   display: flex !important
@@ -44,6 +47,7 @@
   overflow: hidden
   cursor: grab
   user-select: none
+  position: relative
 
   &:active
     cursor: grabbing
@@ -132,3 +136,20 @@
 .iconCheck > g > circle
   transition-delay: .4s
   transition: fill .4s ease-in-out
+
+.carousel__navigation
+  display: flex
+  justify-content: center
+  gap: 1.5rem
+
+.prev
+  padding: 0
+  border: none
+  background-color: transparent
+  .svg
+    transform: rotate(180deg)
+
+.next
+  padding: 0
+  border: none
+  background-color: transparent

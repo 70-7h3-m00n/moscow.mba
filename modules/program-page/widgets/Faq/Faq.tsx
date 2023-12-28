@@ -8,13 +8,16 @@ import { Wrapper } from '@/components/layout'
 import { faqMba, faqMini, faqProfession } from './constants'
 import { Accordion } from '../Accordion/Accordion'
 import { FaqProps } from './types'
+import { useState } from 'react'
 
-export const Faq = ({ className }: FaqProps) => {
+export const Faq = ({ className, ...rest }: FaqProps) => {
 	const at = useAt()
 	const router = useRouter()
 
+	const [activeIdx, setActiveIdx] = useState(0)
+
 	return (
-		<section className={cn(className, stls.container)}>
+		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.wrapper]}>
 				<div className={stls.flexContent}>
 					<div className={stls.descContainer}>
@@ -26,7 +29,14 @@ export const Faq = ({ className }: FaqProps) => {
 					</div>
 					<div className={stls.content}>
 						{faqProfession.map((item, idx) => (
-							<Accordion key={idx} item={item} />
+							<Accordion
+								className={stls.accordion}
+								key={idx}
+								active={activeIdx === idx}
+								item={item}
+								idx={idx}
+								handler={() => setActiveIdx(activeIdx === idx ? null : idx)}
+							/>
 						))}
 					</div>
 				</div>

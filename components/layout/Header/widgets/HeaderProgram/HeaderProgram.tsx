@@ -7,12 +7,10 @@ import Link from 'next/link'
 import { IconLogo, IconLogoTitle } from '@/components/icons'
 import companyName from '@/config/companyName'
 import routesFront from '@/config/routesFront'
-import useAt from '@/hooks/useAt'
 import { menuData } from './constants'
 import { PopupHeader } from '@/components/popups'
 
 export const HeaderProgram = ({ className }: HeaderProgramProps) => {
-	const at = useAt()
 	const [activeIdx, setActiveIdx] = useState(null)
 
 	return (
@@ -30,14 +28,14 @@ export const HeaderProgram = ({ className }: HeaderProgramProps) => {
 					<div
 						className={stls.nav__item}
 						onMouseEnter={() => setActiveIdx(idx)}
-						key={item}
+						key={item.title}
 					>
 						<div
 							className={cn(stls.underline, {
 								[stls.active]: activeIdx === idx
 							})}
 						/>
-						{item}
+						<a href={item.src}>{item.title}</a>
 					</div>
 				))}
 			</div>

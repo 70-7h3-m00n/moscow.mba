@@ -5,7 +5,7 @@ import { PhotoSliderProps } from './types'
 import { useEffect, useRef, useState } from 'react'
 import { imagesList, variantsArray } from './constants'
 
-export const PhotoSlider = ({}: PhotoSliderProps) => {
+export const PhotoSlider = ({ className }: PhotoSliderProps) => {
 	const containerRef = useRef<HTMLDivElement | null>(null)
 	const [activeVariant, setActiveVariant] = useState<number>(0)
 	const [scrollPercentage, setScrollPercentage] = useState<number>(0)
@@ -44,13 +44,13 @@ export const PhotoSlider = ({}: PhotoSliderProps) => {
 	}, [scrollPercentage])
 
 	return (
-		<div className={stls.content} ref={containerRef}>
+		<div className={cn(className, stls.content)} ref={containerRef}>
 			<ul className={stls.slider}>
 				{imagesList.map((item, idx) => (
 					<li
 						className={cn(stls.slide, {
-							[stls.slide__medium]: variantsArray[activeVariant][idx] === 1,
-							[stls.slide__big]: variantsArray[activeVariant][idx] === 2
+							[stls.slide__medium]: variantsArray[activeVariant]?.[idx] === 1,
+							[stls.slide__big]: variantsArray[activeVariant]?.[idx] === 2
 						})}
 						key={idx}
 						style={{

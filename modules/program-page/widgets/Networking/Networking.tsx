@@ -6,9 +6,9 @@ import { Wrapper } from '@/components/layout'
 import { data } from './constants'
 import { BtnBeta } from '@/components/btns'
 
-export const Networking = ({ className }: NetworkingProps) => {
+export const Networking = ({ className, ...rest }: NetworkingProps) => {
 	return (
-		<section className={cn(className, stls.container)}>
+		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<h2 className={stls.title}>Нетворкинг: общение и обмен опытом</h2>
 				<ul className={stls.list}>

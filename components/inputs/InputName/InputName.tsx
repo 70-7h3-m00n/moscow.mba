@@ -6,12 +6,19 @@ export const InputNameNew = ({
 	className,
 	register,
 	errors,
+	variant,
 	...rest
 }: InputNameProps) => {
 	return (
 		<div className={cn(className, stls.content)}>
 			<input
-				className={stls.input}
+				className={cn(
+					stls.input,
+					{ [stls.alpha]: variant === 'alpha' },
+					{ [stls.beta]: variant === 'beta' },
+					{ [stls.gamma]: variant === 'gamma' },
+					{ [stls.delta]: variant === 'delta' }
+				)}
 				placeholder='Имя'
 				type='text'
 				aria-label='Имя'

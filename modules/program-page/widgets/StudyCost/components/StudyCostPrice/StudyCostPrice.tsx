@@ -1,40 +1,39 @@
 import stls from './StudyCostPrice.module.sass'
 import cn from 'classnames'
 import { StudyCostPriceProps } from './types'
+
 import { Tag } from 'modules/program-page/widgets/components'
-
-const data = [
-	'Спикеры — эксперты с практикой в крупных российских и зарубежных организациях',
-	'70% программы — практика на основе реальных рабочих задач',
-	'Последнее обновление программы — июнь 2023',
-	'Интерактивные онлайн-вебинары и карьерные консультации',
-	'С вами на связи постоянно будут наши кураторы',
-	'62% выпускников программ MBA продвинулись по карьерной лестнице',
-	'Дипломы заносятся в ФРДО'
-]
-
-const dataGrid = [
-	{
-		title: 'Вернем полную стоимость обучения',
-		desc: 'В течение 14 дней, если вы передумали проходить обучение на программе MBA'
-	},
-	{
-		title: 'Рассрочка 0% на весь период обучения',
-		desc: 'Первый платеж через месяц'
-	},
-	{
-		title: 'Можно вернуть 13% от полной стоимости',
-		desc: 'Оформив налоговый вычет. Все подробности у менеджера при записи на обучение'
-	}
-]
+import Image from 'next/image'
+import { data, dataGrid } from '../../constants'
+import { PlacesLeft, Until } from '@/components/costs'
+import { useContext } from 'react'
+import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
+import useAt from '@/hooks/useAt'
 
 export const StudyCostPrice = ({ className }: StudyCostPriceProps) => {
+	const at = useAt()
+	const { state } = useContext(ProgramPageContext)
+	const { program } = state
+
 	return (
 		<div className={cn(className, stls.content)}>
+			<div className={stls.cornerPhoto}>
+				<Image
+					src={'/assets/images/program/study-cost-corner.png'}
+					width={82}
+					height={82}
+					alt='Фото клиента'
+				/>
+			</div>
 			<h2 className={stls.title}>Стоимость обучения</h2>
 			<div className={stls.details}>
-				<Tag variant='gamma'>Осталось мест: 24</Tag>
-				<p>Старт курса: 12 мая</p>
+				<Tag className={stls.details__tag} variant='gamma'>
+					Осталось мест: <PlacesLeft uniqueKey={program?.id} />
+				</Tag>
+				<p>
+					Старт курса:{' '}
+					<Until preposition={false} executive={at.executive && false} />
+				</p>
 			</div>
 			<div className={stls.priceWrapper}>
 				<p>6 320 ₽ / мес</p>

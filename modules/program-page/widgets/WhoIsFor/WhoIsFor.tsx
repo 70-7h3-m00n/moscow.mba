@@ -8,12 +8,14 @@ import Image from 'next/image'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { whoIsForDefault } from './constants'
 
-export const WhoIsForNew = ({ className }: WhoIsForProps) => {
+export const WhoIsForNew = ({ className, ...rest }: WhoIsForProps) => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
+	console.log(program?.whoIsFor)
+
 	return (
-		<section className={cn(className, stls.container)}>
+		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<h2>Кому подойдет программа</h2>
 				{whoIsForDefault.map(({ name, description, photo }, idx) => {

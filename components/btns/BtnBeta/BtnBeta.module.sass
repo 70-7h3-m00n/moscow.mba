@@ -13,12 +13,20 @@
   font-size: 1.125rem
   font-family: Helvetica Neue
 
+  @include m.media(tablet, phone)
+    min-width: unset
+
 .alpha
   background-color: #FF3535
   color: #FFF
 
 .beta
   background-color: transparent
+  color: #FFF
+  border: 1px solid #FFF
+
+.gamma
+  background-color: #18191A
   color: #FFF
   border: 1px solid #FFF
 

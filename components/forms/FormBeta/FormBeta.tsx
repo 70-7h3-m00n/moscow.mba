@@ -22,7 +22,7 @@ export const FormBeta = ({
 	setOpen,
 	policyPrivacy = true,
 	formName = null,
-	variant = 'light'
+	variant = 'alpha'
 }: FormBetaProps) => {
 	const {
 		register,
@@ -66,25 +66,93 @@ export const FormBeta = ({
 					className={stls.inputName}
 					register={register}
 					errors={errors}
+					variant={
+						variant === 'alpha'
+							? 'alpha'
+							: variant === 'beta'
+							? 'beta'
+							: variant === 'gamma'
+							? 'alpha'
+							: variant === 'delta'
+							? 'delta'
+							: 'alpha'
+					}
 				/>
-				<InputPhoneNew register={register} errors={errors} />
-				<InputEmailNew register={register} errors={errors} />
+				<InputPhoneNew
+					register={register}
+					errors={errors}
+					variant={
+						variant === 'alpha'
+							? 'alpha'
+							: variant === 'beta'
+							? 'beta'
+							: variant === 'gamma'
+							? 'alpha'
+							: variant === 'delta'
+							? 'delta'
+							: 'alpha'
+					}
+				/>
+				<InputEmailNew
+					register={register}
+					errors={errors}
+					variant={
+						variant === 'alpha'
+							? 'alpha'
+							: variant === 'beta'
+							? 'beta'
+							: variant === 'gamma'
+							? 'alpha'
+							: variant === 'delta'
+							? 'delta'
+							: 'alpha'
+					}
+				/>
 				<InputPromoNew
 					className={stls.inputPromo}
 					register={register}
 					errors={errors}
+					variant={
+						variant === 'alpha'
+							? 'alpha'
+							: variant === 'beta'
+							? 'beta'
+							: variant === 'gamma'
+							? 'alpha'
+							: variant === 'delta'
+							? 'delta'
+							: 'alpha'
+					}
 				/>
-				<InputRadioNew className={stls.inputRadio} register={register} />
+				<InputRadioNew
+					className={stls.inputRadio}
+					register={register}
+					variant={
+						variant === 'alpha'
+							? 'alpha'
+							: variant === 'beta'
+							? 'beta'
+							: variant === 'gamma'
+							? 'beta'
+							: variant === 'delta'
+							? 'gamma'
+							: 'alpha'
+					}
+				/>
 				<InputSubmitNew
 					className={stls.inputSubmit}
 					errors={errors}
 					variant='alpha'
-				/>
+				>
+					Записаться на курс
+				</InputSubmitNew>
 			</div>
 			{policyPrivacy && (
 				<div className={stls.privacyPolicy}>
-					Отправляя заявку, Вы соглашаетесь с политикой конфиденциальности и
-					условиями обработки{' '}
+					Отправляя заявку, Вы соглашаетесь{' '}
+					{variant !== 'delta'
+						? 'с политикой конфиденциальности и условиями обработки'
+						: 'на обработку'}{' '}
 					<a
 						href='/legaldocuments/NDA.pdf'
 						target='_blank'
@@ -92,6 +160,7 @@ export const FormBeta = ({
 					>
 						персональных данных
 					</a>
+					{variant === 'delta' && ' и с правилами пользования платформой'}
 				</div>
 			)}
 		</form>

@@ -9,10 +9,11 @@ import { onSubmitForm } from '@/helpers/index'
 
 import {
 	InputName,
+	InputNameNew,
 	InputPhone,
-	InputEmail,
-	InputPromo,
-	InputSubmit
+	InputPhoneNew,
+	InputSubmit,
+	InputSubmitNew
 } from '@/components/inputs'
 
 export const FormHeader = ({
@@ -60,15 +61,15 @@ export const FormHeader = ({
 			// noValidate
 		>
 			<div className={stls.container}>
-				<InputName register={register} errors={errors} />
-				<InputPhone register={register} errors={errors} />
-				<InputEmail register={register} errors={errors} />
-
-				<InputSubmit
+				<InputNameNew register={register} errors={errors} variant='gamma' />
+				<InputPhoneNew register={register} errors={errors} variant='gamma' />
+				<InputSubmitNew
 					className={stls.inputSubmit}
 					errors={errors}
-					variant='alpha'
-				/>
+					variant='beta'
+				>
+					Жду звонка
+				</InputSubmitNew>
 			</div>
 		</form>
 	)

@@ -40,20 +40,20 @@ export const ProgramPage = ({
 				<AboutProgram className={stls.section} />
 				<WhatWillYouLearnNew className={stls.section} />
 				<WhoIsForNew className={stls.section} />
-				<HowProcessGoesNew className={stls.section} />
+				<HowProcessGoesNew className={stls.section} id='how-process-goes' />
 				<CtaForm className={stls.section} />
-				<ProgramModules className={stls.section} />
+				<ProgramModules className={stls.section} id='program-modules' />
 				<Diploma className={stls.section} />
-				<ExpertsNew className={stls.section} />
-				<Employment className={stls.section} />
+				<ExpertsNew className={stls.section} id='experts' />
+				<Employment className={stls.section} id='employment' />
 				<EmploymentPartners className={stls.section} />
 				<Networking className={stls.section} />
-				<CtaForm className={stls.section} />
+				<CtaForm className={stls.section} variant='beta' />
 				<Accreditation className={cn(stls.section, stls.accreditation)} />
-				<Reviews className={stls.section} />
-				<StudyCostNew className={stls.section} />
+				<Reviews className={stls.section} id='reviews' />
+				<StudyCostNew className={stls.section} id='study-cost' />
 				<Faq className={stls.section} />
-				<CtaForm className={stls.section} />
+				<CtaForm className={stls.section} variant='gamma' />
 				<RecommendedProgramsNew className={stls.section} />
 			</div>
 		</ProgramPageProvider>

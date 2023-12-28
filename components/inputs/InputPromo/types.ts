@@ -6,4 +6,5 @@ export type InputPromoProps = HTMLAttributes<HTMLInputElement> & {
 	register: UseFormRegister<TypeFormValues>
 	errors: FieldErrors<TypeFormValues>
 	isRequired?: boolean
+	variant: 'alpha' | 'beta' | 'gamma' | 'delta'
 }

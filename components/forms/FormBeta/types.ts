@@ -6,7 +6,7 @@ export type FormBetaProps = HTMLAttributes<HTMLFormElement> & {
 	setOpen: Dispatch<SetStateAction<boolean>>
 	policyPrivacy: boolean
 	formName: string
-	variant: 'light' | 'dark'
+	variant: 'alpha' | 'beta' | 'gamma' | 'delta'
 }
 
 export type TypeFormValues = {

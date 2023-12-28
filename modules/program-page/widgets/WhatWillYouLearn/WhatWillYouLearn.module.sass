@@ -9,10 +9,20 @@
   font-size: 2.5rem
   letter-spacing: -0.1rem
 
+  @include m.media(phone, tablet)
+    text-align: center
+    font-size: 1.75rem
+    font-weight: 400
+    line-height: 100%
+    letter-spacing: -0.035rem
+
 .list
   display: grid
   grid-template-columns: repeat(3, 1fr)
   gap: 1.5rem
+
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr
 
 .item
   padding: 1.5rem

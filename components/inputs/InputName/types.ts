@@ -5,4 +5,5 @@ import { FieldErrors, UseFormRegister } from 'react-hook-form'
 export type InputNameProps = HTMLAttributes<HTMLInputElement> & {
 	register: UseFormRegister<TypeFormValues>
 	errors: FieldErrors<TypeFormValues>
+	variant?: 'alpha' | 'beta' | 'gamma' | 'delta'
 }

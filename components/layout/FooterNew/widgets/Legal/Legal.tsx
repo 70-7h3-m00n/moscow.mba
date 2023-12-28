@@ -1,6 +1,7 @@
 import stls from './Legal.module.sass'
 import cn from 'classnames'
 import { LegalProps } from './types'
+
 import { legalData } from './constants'
 import Link from 'next/link'
 
@@ -10,7 +11,7 @@ export const Legal = ({ className, ...rest }: LegalProps) => {
 			<ul className={stls.list}>
 				{legalData.map((item, idx) => (
 					<li key={idx}>
-						<Link className={stls.link} href={item.src}>
+						<Link className={stls.link} href={item.src} target={item.target}>
 							{item.title}
 						</Link>
 					</li>

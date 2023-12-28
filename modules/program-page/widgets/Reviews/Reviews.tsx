@@ -7,9 +7,9 @@ import { Rating } from './components/Rating/Rating'
 import Carousel from './components/ReviewsCarousel/Carousel'
 // import { ReviewsSlider } from './components/ReviewsSlider/ReviewsSlider'
 
-export const Reviews = ({ className }: ReviewsProps) => {
+export const Reviews = ({ className, ...rest }: ReviewsProps) => {
 	return (
-		<section className={cn(className, stls.container)}>
+		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<h2 className={stls.title}>Отзывы</h2>
 				<p className={stls.subtitle}>
