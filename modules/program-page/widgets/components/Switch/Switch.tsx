@@ -6,6 +6,8 @@ import useAt from '@/hooks/useAt'
 import { useRouter } from 'next/router'
 import { useContext, useState } from 'react'
 import { ContextStaticProps } from '@/context/index'
+import { JumbotronLabel } from '@/components/general'
+import { Tag } from '../Tag/Tag'
 
 export const Switch = ({ className, ...rest }: SwitchProps) => {
 	const at = useAt()
@@ -36,7 +38,6 @@ export const Switch = ({ className, ...rest }: SwitchProps) => {
 
 	const handleToggleSwitch = event => {
 		setToggleSwitch(event.target.checked)
-		console.log(toggleSwitch)
 		router.push(alternativeLink)
 	}
 
@@ -68,7 +69,9 @@ export const Switch = ({ className, ...rest }: SwitchProps) => {
 					</div>
 				</div>
 			) : (
-				<></>
+				<Tag variant='delta'>
+					<JumbotronLabel />
+				</Tag>
 			)}
 		</div>
 	)

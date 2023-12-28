@@ -6,19 +6,21 @@ import { InputSubmitProps } from './types'
 export const InputSubmitNew = ({
 	className,
 	errors,
-	variant,
+	children,
+	variant = 'alpha',
 	...props
 }: InputSubmitProps) => {
 	return (
 		<button
 			className={cn(className, stls.button, {
+				[stls.beta]: variant === 'beta',
 				[stls.disabled]: errors.name || errors.phone || errors.email
 			})}
 			type='submit'
 			disabled={errors.name || errors.phone || errors.email ? true : false}
 			{...props}
 		>
-			Записаться на курс
+			{children}
 		</button>
 	)
 }

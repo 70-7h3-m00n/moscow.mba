@@ -2,12 +2,23 @@ import stls from './InputRadio.module.sass'
 import cn from 'classnames'
 import { InputrRadioProps } from './types'
 
-export const InputRadioNew = ({ className, register }: InputrRadioProps) => {
+export const InputRadioNew = ({
+	className,
+	register,
+	variant
+}: InputrRadioProps) => {
 	return (
 		<div className={cn(className, stls.content)}>
 			<p className={stls.title}>Как с вами связаться?</p>
 			<div className={stls.labelWrapper}>
-				<label className={stls.label}>
+				<label
+					className={cn(
+						stls.label,
+						{ [stls.alpha]: variant === 'alpha' },
+						{ [stls.beta]: variant === 'beta' },
+						{ [stls.gamma]: variant === 'gamma' }
+					)}
+				>
 					<input
 						className={stls.radio}
 						type='radio'
@@ -30,7 +41,14 @@ export const InputRadioNew = ({ className, register }: InputrRadioProps) => {
 					</svg>
 					<span>По телефону</span>
 				</label>
-				<label className={stls.label}>
+				<label
+					className={cn(
+						stls.label,
+						{ [stls.alpha]: variant === 'alpha' },
+						{ [stls.beta]: variant === 'beta' },
+						{ [stls.gamma]: variant === 'gamma' }
+					)}
+				>
 					<input
 						className={stls.radio}
 						type='radio'

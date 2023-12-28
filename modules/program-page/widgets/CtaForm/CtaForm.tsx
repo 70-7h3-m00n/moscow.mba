@@ -9,17 +9,36 @@ import { useContext, useState } from 'react'
 import { LeadLoaderThankyou } from '@/components/general'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { FormBeta } from '../../../../components/forms/FormBeta/FormBeta'
+import useAt from '@/hooks/useAt'
 
-export const CtaForm = ({ className }: CtaFormProps) => {
+export const CtaForm = ({
+	className,
+	variant = 'alpha',
+	...rest
+}: CtaFormProps) => {
+	const at = useAt()
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
 	const [open, setOpen] = useState(false)
 	const [openLoader, setOpenLoader] = useState(false)
 
+	const ctaTitle =
+		variant === 'gamma'
+			? 'Поможем в выборе'
+			: `Записаться на ${at.course ? 'курс' : 'программу'} или получить
+	бесплатную консультацию`
+
 	return (
-		<section className={cn(className, stls.container)}>
-			<Wrapper classNames={[stls.content]}>
+		<section className={cn(className, stls.container)} {...rest}>
+			<Wrapper
+				classNames={[
+					stls.content,
+					variant === 'alpha' && stls.alpha,
+					variant === 'beta' && stls.beta,
+					variant === 'gamma' && stls.gamma
+				]}
+			>
 				<div className={stls.left}>
 					<LeadLoaderThankyou
 						open={open}
@@ -29,19 +48,64 @@ export const CtaForm = ({ className }: CtaFormProps) => {
 						programId={program?.id}
 						programTitle={program?.title}
 					/>
-					<h2 className={stls.title}>
-						Записаться на курс или получить бесплатную консультацию
-					</h2>
-					<div className={stls.left__imageWrapper}>
-						<Image
-							className={stls.left__image}
-							src={'/assets/images/program/cta-form-icon-1.svg'}
-							alt='Иконка'
-							width={250}
-							height={216}
-						/>
-						<GridIcons variant='alpha' />
+					<div>
+						<h2 className={stls.title}>{ctaTitle}</h2>
+						{variant === 'gamma' && (
+							<p className={stls.titleDesc}>
+								Есть вопросы или сложности с выбором программы? Оставьте заявку,
+								мы свяжемся с вами, проконсультируем и ответим на все
+								интересующие вас вопросы
+							</p>
+						)}
 					</div>
+					{variant === 'alpha' && (
+						<div className={stls.left__imageWrapper}>
+							<Image
+								className={stls.left__image}
+								src={'/assets/images/program/cta-form-icon-1.svg'}
+								alt='Иконка'
+								width={250}
+								height={216}
+							/>
+							<GridIcons variant='alpha' />
+						</div>
+					)}
+					{variant === 'beta' && (
+						<div className={stls.left__imageWrapper}>
+							<Image
+								className={stls.left__image}
+								src={'/assets/images/program/cta-beta-arrow.svg'}
+								alt='Иконка'
+								width={221}
+								height={221}
+							/>
+							<Image
+								className={cn(stls.left__image, stls.left__imageRotate)}
+								src={'/assets/images/program/cta-beta-arrow.svg'}
+								alt='Иконка'
+								width={221}
+								height={221}
+							/>
+							<Image
+								className={stls.left__3d}
+								src={'/assets/images/program/cta-beta-3d.svg'}
+								alt='Иконка'
+								width={316}
+								height={295}
+							/>
+						</div>
+					)}
+					{variant === 'gamma' && (
+						<div className={stls.left__imageWrapper}>
+							<Image
+								className={stls.left__image}
+								src={'/assets/images/program/cta-gamma.svg'}
+								alt='Иконка'
+								width={358}
+								height={236}
+							/>
+						</div>
+					)}
 				</div>
 				<div className={stls.right}>
 					<FormBeta
@@ -50,7 +114,7 @@ export const CtaForm = ({ className }: CtaFormProps) => {
 						setOpen={setOpen}
 						formName={`Заявка с формы 'Свяжитесь с нами'`}
 						policyPrivacy
-						variant='light'
+						variant={variant}
 					/>
 				</div>
 			</Wrapper>

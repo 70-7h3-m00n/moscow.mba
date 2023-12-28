@@ -5,12 +5,19 @@ import { InputPhoneProps } from './types'
 export const InputPhoneNew = ({
 	className,
 	register,
-	errors
+	errors,
+	variant
 }: InputPhoneProps) => {
 	return (
 		<div className={cn(className, stls.content)}>
 			<input
-				className={stls.input}
+				className={cn(
+					stls.input,
+					{ [stls.alpha]: variant === 'alpha' },
+					{ [stls.beta]: variant === 'beta' },
+					{ [stls.gamma]: variant === 'gamma' },
+					{ [stls.delta]: variant === 'delta' }
+				)}
 				type='tel'
 				placeholder='Номер телефона'
 				aria-label={'Телефон'}

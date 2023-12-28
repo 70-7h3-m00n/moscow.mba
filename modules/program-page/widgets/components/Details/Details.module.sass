@@ -8,6 +8,14 @@
   gap: 1.5rem
   padding: 1.5rem
   min-width: 20rem
+  border-radius: 1rem
+  background-color: #fff
+
+
+
+  @include m.media(tablet, phone)
+    min-width: unset
+    gap: 0
 
   &__banner
     display: flex
@@ -18,6 +26,9 @@
     line-height: 120%
     color: #000
 
+    @include m.media(laptop, tablet, phone)
+      display: none
+
   &__title
     margin-bottom: 1rem
     font-size: 1.375rem
@@ -26,18 +37,41 @@
     line-height: 110%
     color: #000
 
+    @include m.media(laptop, tablet, phone)
+      display: none
+
+  &__tag
+    @include m.media(laptop, tablet, phone)
+      display: none !important
+    
+
 .list
   display: flex
   flex-direction: column
   gap: 1.5rem
 
+  @include m.media(tablet, laptop)
+    display: grid
+    grid-template-columns: 1fr 1fr
+
 .item
+
   &__title
-    margin-bottom: 0.25rem
     font-size: 0.875rem
     font-weight: 400
     line-height: 120%
     color: #575757
+
   &__description
+    position: relative
+    display: flex
+    height: 1.5rem
+    align-items: center
     font-size: 1rem
     color: #000
+
+.bold
+  font-weight: 500
+
+.durationHours
+  font-family: Helvetica Neue

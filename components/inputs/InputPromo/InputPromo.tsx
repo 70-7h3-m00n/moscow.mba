@@ -5,12 +5,19 @@ import { InputPromoProps } from './types'
 export const InputPromoNew = ({
 	className,
 	register,
-	errors
+	errors,
+	variant
 }: InputPromoProps) => {
 	return (
 		<div className={cn(className, stls.content)}>
 			<input
-				className={stls.input}
+				className={cn(
+					stls.input,
+					{ [stls.alpha]: variant === 'alpha' },
+					{ [stls.beta]: variant === 'beta' },
+					{ [stls.gamma]: variant === 'gamma' },
+					{ [stls.delta]: variant === 'delta' }
+				)}
 				type='text'
 				placeholder='Промокод'
 				aria-label='Промокод'

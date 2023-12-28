@@ -45,7 +45,8 @@ const PopupInfo: React.FC<PopupInfoPropsType> = ({
 				offsetX={-180}
 				offsetY={35}
 				modal={modal}
-				arrow={false}>
+				arrow={false}
+			>
 				<div className={stls.content}>
 					<div className={stls.icon}>
 						<IconInfoFRDO color={'#000'} />

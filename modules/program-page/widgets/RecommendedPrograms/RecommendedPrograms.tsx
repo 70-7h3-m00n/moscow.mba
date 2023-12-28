@@ -5,14 +5,14 @@ import { RecommendedProgramsProps } from './types'
 import { useRef } from 'react'
 import Slider from 'react-slick'
 import { IconNext } from 'modules/program-page/widgets/components'
-
 import { Wrapper } from '@/components/layout'
 import { ProgramCard } from './components/ProgramCard/ProgramCard'
 
 const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 export const RecommendedProgramsNew = ({
-	className
+	className,
+	...rest
 }: RecommendedProgramsProps) => {
 	const sliderRefRecommended = useRef<Slider>(null)
 
@@ -39,7 +39,7 @@ export const RecommendedProgramsNew = ({
 	}
 
 	return (
-		<section className={cn(className, stls.container)}>
+		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<div className={stls.titleWrapper}>
 					<h2>Рекомендуемые программы</h2>

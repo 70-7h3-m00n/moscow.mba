@@ -16,6 +16,22 @@
   display: flex
   gap: 1.5rem
 
+.alpha
+  --radio-checked-color: #fff
+  --radio-unchecked-color: #6D7074
+  --radio--label-text: #fff
+
+.beta
+  --radio-checked-color: #FF3535
+  --radio-unchecked-color: #6D7074
+  --radio--label-text: #fff
+
+.gamma
+  --radio-checked-color: #FF3535
+  --radio-unchecked-color: #E9E9E9
+  --radio--label-text: #000
+
+
 .label 
   display: flex
   align-items: center
@@ -23,7 +39,7 @@
   cursor: pointer
 
   span
-    color: #FFF
+    color: var(--radio--label-text)
     font-size: 0.9rem
     line-height: 120%
 
@@ -35,7 +51,7 @@
 
 .path 
   fill: none
-  stroke: #383838
+  stroke: var(--radio-unchecked-color)
   stroke-width: 6
   stroke-linecap: round
   stroke-linejoin: round
@@ -44,6 +60,6 @@
   stroke-dashoffset: 0
 
 .label input:checked ~ svg .path
-  stroke: white
+  stroke: var(--radio-checked-color)
   stroke-dasharray: 70.5096664428711 9999999
   stroke-dashoffset: -262.2723388671875

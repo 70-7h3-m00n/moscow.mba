@@ -5,13 +5,35 @@
 .content
   position: relative
 
-.input
+.input.alpha
+  --border-color: #383838
   --chrome-autocomplete-bg: #18191A
+
+.input.beta
+  --border-color: #6D7074
+  --chrome-autocomplete-bg: #5D6268
+
+.input.gamma
+  --bg-color: #fff
+  --border-color: #E9E9E9
+  --chrome-autocomplete-bg: #fff
+  --outline-color: #5D6268
+  --text-color: #000
+
+.input.delta
+  --bg-color: #F8F8F8
+  --border-color: #E9E9E9
+  --chrome-autocomplete-bg: #fff
+  --outline-color: #1b2d43
+  --text-color: #000
+
+
+.input
   width: 95%
   padding-bottom: 1rem
   border: none
-  border-bottom: 1px solid #383838
-  color: #fff
+  border-bottom: 1px solid var(--border-color)
+  color: var(--text-color)
   font-family: Helvetica Neue
   font-size: 1rem
   font-style: normal
@@ -26,7 +48,7 @@
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active
     -webkit-background-clip: text
-    -webkit-text-fill-color: #fff
+    -webkit-text-fill-color: var(--text-color)
     transition: background-color 5000s ease-in-out 0s
     box-shadow: inset 0 0 20px 20px var(--chrome-autocomplete-bg)
 
@@ -35,7 +57,7 @@
     color: #979BA0
 
   &:focus
-    border-color: #fff
+    border-color: var(--border-color)
 
 .error
   position: absolute

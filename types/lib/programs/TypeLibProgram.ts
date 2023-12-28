@@ -35,6 +35,16 @@ type TypeLibProgram = {
 		  }[]
 		| null
 	picture?: TypeLibPicture | null
+	heroAdvantages?:
+		| {
+				id: number | null
+				string: string | null
+		  }[]
+		| null
+	partnership?: {
+		string: string | null
+		url: string | null
+	} | null
 	specializedSubjectsAddons?: {
 		Practice: boolean | null
 		OfflineModule: boolean | null

@@ -1,0 +1,176 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content
+  overflow: hidden
+
+.carousel
+  margin-bottom: 3rem
+  
+  & > .slick-dots
+    background-color: black
+
+  & > div > div:first-of-type
+    display: inline-flex 
+    gap: 16px 
+
+  & > div > div > div
+    border-radius: 1.5rem
+    background-color: #51555B
+    background-repeat: no-repeat
+    background-size: 70rem 45rem
+    background-position: center center
+
+    // &:nth-child(1)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(2)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(3)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(4)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(5)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(6)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(7)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+
+.navigationWrapper
+  margin-bottom: 1rem
+  border-radius: 1rem
+  background-color: #fff
+  overflow: hidden
+  position: relative
+
+  // &:before
+  //   content: ''
+  //   position: absolute
+  //   top: 0
+  //   left: 0
+  //   width: 40%
+  //   height: 100%
+  //   background: linear-gradient(to right, #fff 0%, transparent 100%)
+  //   z-index: 10
+
+  // &:after 
+  //   content: ''
+  //   position: absolute
+  //   top: 0
+  //   right: 0
+  //   width: 40%
+  //   height: 100%
+  //   background: linear-gradient(to left, #fff 0%, transparent 100%)
+  //   z-index: 10
+
+.navigation
+  
+  & > .slick-dots
+    background-color: black
+
+  & > div > div:first-of-type
+    display: inline-flex
+
+  & > div > div > div
+    border-radius: 1.5rem
+    background-color: #fff
+    background-repeat: no-repeat
+    background-size: 70rem 45rem
+    background-position: center center
+
+    // &:nth-child(1)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(2)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(3)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(4)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(5)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(6)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(7)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+
+.carousel__slide
+  min-height: 25rem
+  
+
+.slide
+  display: flex !important
+  align-items: flex-end
+  padding: 1.5rem
+  border-radius: 1.5rem
+  // background-color: #51555B
+  overflow: hidden
+  cursor: grab
+  user-select: none
+  position: relative
+
+  &:active
+    cursor: grabbing
+
+  &__content
+    display: flex
+    flex-direction: column
+    gap: 1rem
+    max-width: 40rem
+    padding: 1rem
+    border-radius: 1rem
+    background-color: #fff
+
+  &__title
+    color: #000
+    font-size: 1.5rem
+    line-height: 120%
+
+  &__desc
+    color: #575757
+    line-height: 110%
+
+.carousel__navigation
+  display: flex
+  justify-content: center
+  gap: 1.5rem
+
+.prev
+  padding: 0
+  border: none
+  background-color: transparent
+  .svg
+    transform: rotate(180deg)
+
+.next
+  padding: 0
+  border: none
+  background-color: transparent
+
+.navigationCarousel
+
+  &__slide
+    display: flex
+    justify-content: center
+    align-items: center
+    position: relative
+
+  &__dot
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 1.5rem
+    height: 1.5rem
+    border-radius: 10rem
+    background-color: red
+    color: #fff
+    z-index: 10
+
+  &__line
+    position: absolute
+    width: 100%
+    height: 0.125rem
+    top: 50%
+    left: 0
+    border-radius: 2.5rem
+    background-color: red

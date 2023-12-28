@@ -4,88 +4,30 @@ import { ExpertsProps } from './types'
 
 import { Wrapper } from '@/components/layout'
 import Image from 'next/image'
-import { useId, useRef, useState } from 'react'
+import { useContext, useId, useRef, useState } from 'react'
 import Slider from 'react-slick'
 import { IconNext } from '../components'
-import { log } from 'console'
+import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 
-const data = [
-	{
-		name: 'Анна Адреева',
-		desc: 'Креативный директор DADA Agency, нейрохудожник и автор канала Ai molodca',
-		image: '/assets/images/program/experts-1.png',
-		list: [
-			'Практикующий экономист в ВТБ',
-			'Работает с крупнейшими международными компаниями в области финансового консалтинга, аудита, банковского дела',
-			'Дипломированный финансовый советник',
-			'Аспирант Финансового университета при правительстве РФ'
-		]
-	},
-	{
-		name: 'Анна Семёнова',
-		desc: 'Креативный директор DADA Agency, нейрохудожник и автор канала Ai molodca',
-		image: '/assets/images/teacher_4.jpg',
-		list: [
-			'Практикующий экономист в ВТБ',
-			'Работает с крупнейшими международными компаниями в области финансового консалтинга, аудита, банковского дела',
-			'Дипломированный финансовый советник',
-			'Аспирант Финансового университета при правительстве РФ'
-		]
-	},
-	{
-		name: 'Виктор Соколов',
-		desc: 'Креативный директор DADA Agency, нейрохудожник и автор канала Ai molodca',
-		image: '/assets/images/teacher_1.jpg',
-		list: [
-			'Практикующий экономист в ВТБ',
-			'Работает с крупнейшими международными компаниями в области финансового консалтинга, аудита, банковского дела',
-			'Дипломированный финансовый советник',
-			'Аспирант Финансового университета при правительстве РФ'
-		]
-	},
-	{
-		name: 'Надежда Петровна',
-		desc: 'Креативный директор DADA Agency, нейрохудожник и автор канала Ai molodca',
-		image: '/assets/images/teacher_2.jpg',
-		list: [
-			'Практикующий экономист в ВТБ',
-			'Работает с крупнейшими международными компаниями в области финансового консалтинга, аудита, банковского дела',
-			'Дипломированный финансовый советник',
-			'Аспирант Финансового университета при правительстве РФ'
-		]
-	}
-]
+export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
+	const { state } = useContext(ProgramPageContext)
+	const { program } = state
 
-export const ExpertsNew = ({ className }: ExpertsProps) => {
-	const [activeIdx, setActiveIdx] = useState<number>(0)
-	const id = useId()
-
-	const sliderRefRecommended = useRef<Slider>(null)
+	const sliderRefExperts = useRef<Slider>(null)
 
 	const nextBtn = () => {
-		setActiveIdx(null)
-		sliderRefRecommended.current?.slickNext()
+		sliderRefExperts.current?.slickNext()
 	}
 
 	const previousBtn = () => {
-		setActiveIdx(null)
-		sliderRefRecommended.current?.slickPrev()
-	}
-
-	const openDetailsHandler = idx => {
-		setActiveIdx(idx)
-	}
-
-	const closeDetailsHandler = idx => {
-		console.log('close')
-		setActiveIdx(null)
+		sliderRefExperts.current?.slickPrev()
 	}
 
 	const settings = {
 		dots: false,
 		speed: 500,
 		// slidesToShow: 2,
-		// slidesToScroll: 3,
+		slidesToScroll: 3,
 		adaptiveHeight: true,
 		autoplay: false,
 		autoplaySpeed: 4000,
@@ -98,7 +40,7 @@ export const ExpertsNew = ({ className }: ExpertsProps) => {
 	}
 
 	return (
-		<section className={cn(className, stls.container)}>
+		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<div className={stls.titleWrapper}>
 					<h2 className={stls.title}>
@@ -114,29 +56,31 @@ export const ExpertsNew = ({ className }: ExpertsProps) => {
 					</div>
 				</div>
 				<div className={stls.slider}>
-					<Slider ref={sliderRefRecommended} {...settings}>
-						{data.map((item, idx) => (
+					<Slider ref={sliderRefExperts} {...settings}>
+						{program?.teachers.map(item => (
 							<div
 								className={cn(stls.carousel__item, stls.item)}
-								key={`Carousel_post--${idx}`}
+								key={`Expert--${item.name}`}
 							>
 								<div className={stls.card}>
 									<Image
 										className={stls.item__image}
-										src={item.image}
+										src={item.portrait.url}
 										alt={item.name}
 										width={318}
 										height={416}
-										onClick={() => openDetailsHandler(idx)}
+										style={{
+											objectFit: 'cover'
+										}}
 									/>
-									<div
+									{/* <div
 										className={cn(stls.item__details, stls.details, {
 											[stls.active]: idx === activeIdx
 										})}
 									>
 										<Image
 											className={stls.details__image}
-											src={item.image}
+											src={item.portrait.url}
 											alt={item.name}
 											width={92}
 											height={120}
@@ -158,10 +102,10 @@ export const ExpertsNew = ({ className }: ExpertsProps) => {
 												))}
 											</ul>
 										</div>
-									</div>
+									</div> */}
 								</div>
 								<p className={stls.item__name}>{item.name}</p>
-								<p className={stls.item__desc}>{item.desc}</p>
+								<p className={stls.item__desc}>{item.description}</p>
 							</div>
 						))}
 					</Slider>

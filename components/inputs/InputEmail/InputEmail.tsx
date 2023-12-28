@@ -6,13 +6,20 @@ export const InputEmailNew = ({
 	className,
 	register,
 	errors,
+	variant,
 	isRequired = false,
 	...props
 }: InputEmailProps) => {
 	return (
 		<div className={cn(className, stls.content)}>
 			<input
-				className={stls.input}
+				className={cn(
+					stls.input,
+					{ [stls.alpha]: variant === 'alpha' },
+					{ [stls.beta]: variant === 'beta' },
+					{ [stls.gamma]: variant === 'gamma' },
+					{ [stls.delta]: variant === 'delta' }
+				)}
 				type='email'
 				placeholder='Электронная почта'
 				aria-label='Электронная почта'

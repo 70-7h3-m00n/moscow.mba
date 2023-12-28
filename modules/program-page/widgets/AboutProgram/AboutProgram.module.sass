@@ -6,11 +6,18 @@
   margin-bottom: 3rem
   text-align: center
 
+  @include m.media(phone, tablet)
+    margin-bottom: 2rem
+    text-align: left
+
 .list
   display: grid
   grid-template-columns: repeat(2, 1fr)
   gap: 1.5rem
   margin-bottom: 1.5rem
+
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr
 
 .item
   flex-shrink: 1
@@ -19,12 +26,32 @@
   justify-content: space-between
   padding: 1.5rem
   border-radius: 0.9375rem
+
   &__title
     font-size: 1.5rem
     font-weight: 400
     line-height: 120%
+
+    @include m.media(phone, tablet)
+      margin-bottom: 1rem
+
   &__image
     align-self: flex-end
+
+    @include m.media(phone, tablet)
+      align-self: flex-start
+      margin-bottom: 1rem
+
+  &:first-child .item__image
+    @include m.media(phone, tablet)
+      width: 6.7rem
+      height: 7.5rem
+  
+  &:last-child .item__image
+    @include m.media(phone, tablet)
+      width: 7.5rem
+      height: 6.1rem
+
   &__description
     // justify-self: flex-end
 
@@ -47,3 +74,7 @@
     color: #000
   .item__description
     color: #575757
+
+.photoSlider
+  @include m.media(phone, tablet)
+    display: none !important

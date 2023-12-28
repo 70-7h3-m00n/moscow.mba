@@ -3,18 +3,22 @@ import { getYear } from 'date-fns'
 export const legalData = [
 	{
 		title: `© Moscow Business Academy, ${getYear(new Date())}`,
-		src: '/'
+		src: '/',
+		target: '_self'
 	},
 	{
 		title: 'Карта сайта',
-		src: '/'
+		src: '/sitemap',
+		target: '_blank'
 	},
 	{
 		title: 'Договор оферты',
-		src: '/'
+		src: '/legaldocuments/oferta.pdf',
+		target: '_blank'
 	},
 	{
 		title: 'Политика конфиденциальности',
-		src: '/'
+		src: '/legaldocuments/NDA.pdf',
+		target: '_blank'
 	}
 ]

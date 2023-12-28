@@ -3,28 +3,11 @@ import cn from 'classnames'
 import { AccreditationProps } from './types'
 
 import { Wrapper } from '@/components/layout'
+import { accreditationData } from './constants'
 
-const data = [
-	{
-		title: 'ТОП-3',
-		desc: 'Входим в ТОП-3 бизнес-школ РФ по актуальности контента',
-		icon: <></>
-	},
-	{
-		title: 'РАБО',
-		desc: 'Российская ассоциация бизнес образования',
-		icon: <></>
-	},
-	{
-		title: 'НАСДОБР',
-		desc: 'Национального аккредитационного совета делового образования',
-		icon: <></>
-	}
-]
-
-export const Accreditation = ({ className }: AccreditationProps) => {
+export const Accreditation = ({ className, ...rest }: AccreditationProps) => {
 	return (
-		<section className={cn(className, stls.container)}>
+		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<h2 className={stls.title}>Аккредитации</h2>
 
@@ -42,9 +25,9 @@ export const Accreditation = ({ className }: AccreditationProps) => {
 							</p>
 						</div>
 					</li>
-					{data.map((item, idx) => (
+					{accreditationData.map((item, idx) => (
 						<li className={stls.item} key={idx}>
-							<h3 className={stls.item__title}>{item.title}</h3>
+							<div className={stls.item__titleWrapper}>{item.title}</div>
 							<p className={stls.item__desc}>{item.desc}</p>
 						</li>
 					))}

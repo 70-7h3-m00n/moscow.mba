@@ -5,9 +5,16 @@
 .content
   display: grid
   grid-template-columns: repeat(2, 1fr)
+  gap: 2rem
   padding: 3rem
   border-radius: 1.5rem
+
+.alpha, .gamma
   background-color: #18191A
+
+.beta
+  background-color: #51555B
+
 
 .left
   display: flex
@@ -16,11 +23,31 @@
 
 .title
   color: #FFF
-  font-size: 2.5rem
+  font-size: 2.3rem
   line-height: 120%
   letter-spacing: -0.1rem
+
+.titleDesc
+  justify-self: flex-start
+  color: #979BA0
+  font-size: 1.125rem
+  font-weight: 400
+  line-height: 110%
 
 .left__imageWrapper
   display: flex
   align-items: center
   gap: 3.5rem
+  position: relative
+
+.beta .left__imageWrapper
+  
+  .left__imageRotate
+    transform: rotate(270deg)
+
+  .left__3d
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translate(-60%)
+    

@@ -2,25 +2,21 @@ import stls from './HeroSection.module.sass'
 import cn from 'classnames'
 import { HeroSectionProps } from './types'
 
-// import Spline from '@splinetool/react-spline'
 import { Wrapper } from '@/components/layout'
 import Image from 'next/image'
 import { Switch } from '../components/Switch/Switch'
-import { Details } from '../components'
-import { bottomList } from './constants'
+import { Details, Tag } from '../components'
 import { IconFire, IconHeart } from './components'
 import { BtnBeta } from '@/components/btns'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
-import { useContext, useState } from 'react'
-import useAt from '@/hooks/useAt'
-import { useRouter } from 'next/router'
-import { ContextStaticProps } from '@/context/index'
+import { useContext } from 'react'
+import { PlacesLeft } from '@/components/costs'
+import { format } from 'date-fns'
+import { ru } from 'date-fns/locale'
 
-export const HeroSection = ({ className }: HeroSectionProps) => {
-	const at = useAt()
-	const router = useRouter()
-	const { programs } = useContext(ContextStaticProps)
+const stringDate = format(new Date(), 'LLLL yyyy', { locale: ru })
 
+export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
@@ -28,23 +24,50 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
 		program?.description ||
 		'Оставьте заявку и получите консультацию по программе, а также узнайте возможные варианты скидок и требования к поступлению'
 
+	const advantagesArray = program?.heroAdvantages
+		?.map(el => el.string)
+		?.slice(Math.max(program?.heroAdvantages?.length - 5, 1))
+
 	return (
-		<section className={cn(className, stls.container)}>
+		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<div className={stls.heroWrapper}>
 					<div className={stls.tags}>
 						<Switch className={stls.switch} />
+					</div>
+					<div className={stls.detailsMobile}>
+						{program?.partnership && (
+							<div className={stls.banner}>
+								<Image
+									src={program?.partnership?.url}
+									width={40}
+									height={40}
+									alt={program?.partnership?.string}
+								/>
+								<p>{program?.partnership?.string}</p>
+							</div>
+						)}
+						<div className={stls.sale}>
+							<p className={stls.sale__title}>
+								{/* //TODO discount & until date */}
+								Участвует в&nbsp;распродаже <span className='red'>-45%</span> до
+								10 ноября
+							</p>
+							<Tag className={stls.sale__tag} variant='gamma'>
+								Осталось мест: <PlacesLeft uniqueKey={program?.id} />
+							</Tag>
+						</div>
 					</div>
 					<div className={stls.main}>
 						<h1 className={stls.title}>{program?.title}</h1>
 						<p className={stls.description}>{description}</p>
 						<div className={stls.main__btnWrapper}>
 							<BtnBeta variant='alpha'>Оставить заявку</BtnBeta>
-							<BtnBeta variant='beta'>Задать вопрос</BtnBeta>
+							<BtnBeta variant='gamma'>Задать вопрос</BtnBeta>
 						</div>
 					</div>
 					<div className={stls.rating}>
-						<div>
+						<div className={stls.rating__wrapper}>
 							<IconHeart />
 							<span className={stls.rating__counter}>4,5</span>
 						</div>
@@ -53,7 +76,7 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
 						</p>
 					</div>
 					<div className={stls.students}>
-						<div>
+						<div className={stls.students__wrapper}>
 							<IconFire />
 							<span className={stls.students__counter}>10 000 +</span>
 						</div>
@@ -71,13 +94,18 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
 						alt='Фото клиента'
 					/>
 				</div>
-				<ul className={stls.bottomList}>
-					{bottomList.map((item, idx) => (
-						<li className={stls.bottomItem} key={idx}>
-							{item}
+				{program?.heroAdvantages && (
+					<ul className={stls.bottomList}>
+						<li className={stls.bottomItem}>
+							{`Актуальная программа: последнее обновление — ${stringDate}`}
 						</li>
-					))}
-				</ul>
+						{advantagesArray?.map((item, idx) => (
+							<li className={stls.bottomItem} key={idx}>
+								{item}
+							</li>
+						))}
+					</ul>
+				)}
 			</Wrapper>
 		</section>
 	)
