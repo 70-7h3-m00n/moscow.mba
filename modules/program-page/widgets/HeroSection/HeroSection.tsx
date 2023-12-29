@@ -20,9 +20,9 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
-	const advantagesArray = program?.heroAdvantages
-		?.map(el => el.string)
-		?.slice(Math.max(program?.heroAdvantages?.length - 5, 1))
+	const advantagesArray = program?.heroAdvantages?.map((el, idx) => {
+		if (idx < 5) return el.string
+	})
 
 	return (
 		<section className={cn(className, stls.container)} {...rest}>

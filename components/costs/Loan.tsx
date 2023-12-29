@@ -56,11 +56,11 @@ const Loan = ({
 		loanRegular: {
 			mini: {
 				online: setPrice(18250),
-				blended: setPrice(18250)
+				blended: setPrice(29150)
 			},
 			mba: {
 				online: setPrice(28900),
-				blended: setPrice(28900)
+				blended: setPrice(37500)
 			},
 			profession: {
 				online: setPrice(6000)
@@ -77,7 +77,7 @@ const Loan = ({
 				online: setPrice(10050)
 			},
 			mba: {
-				online: setPrice(19900)
+				online: setPrice(15900)
 			},
 			profession: {
 				online: setPrice(3250)

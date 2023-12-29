@@ -74,7 +74,7 @@ const PageBlendedProgram = ({ program, programs = null, teachers }) => {
 			<Diploma />
 			<Students />
 			<Reviews />
-			<SectionStudyCost />
+			<SectionStudyCost format='blended' />
 			<SectionCheckPros />
 			<Qna programId={program?._id} programTitle={program?.title} />
 			<ContactUs
