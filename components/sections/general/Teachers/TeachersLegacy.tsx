@@ -38,7 +38,6 @@ const TeachersLegacy = ({
 	const [isInputClose, setIsInputClose] = useState(false)
 
 	const [shownTeachersCount, setShownTeachersCount] = useState(8)
-	console.log('shownTeachersCount: ', shownTeachersCount)
 	const showMoreTeachersAddendum = 12
 
 	const UITeachers: TypeLibTeachers =

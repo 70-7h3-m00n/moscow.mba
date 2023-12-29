@@ -17,8 +17,8 @@ import {
 } from '@/components/sections'
 import { SeoOrganizationJsonLd } from '@/components/seo'
 
-const PagePromo = ({ programs }) => {
-	usePageHandleContext({ programs })
+const PagePromo = ({ programs, until }) => {
+	usePageHandleContext({ programs, until })
 
 	const at = useAt()
 

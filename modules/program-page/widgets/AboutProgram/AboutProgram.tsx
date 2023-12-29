@@ -21,7 +21,7 @@ export const AboutProgram = ({ className, ...rest }: AboutProgramProps) => {
 		? cardsData.mini
 		: {
 				title: 'Цель',
-				description: program.goal || ''
+				description: program?.goal || ''
 		  }
 
 	return (

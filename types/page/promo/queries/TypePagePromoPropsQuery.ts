@@ -1,7 +1,8 @@
-import { TypeLibPrograms } from '@/types/index'
+import { TypeLibPrograms, TypeLibUntil } from '@/types/index'
 
 type TypePagePromoPropsQuery = {
-  readonly programs: TypeLibPrograms | null
+	readonly until: TypeLibUntil | null
+	readonly programs: TypeLibPrograms | null
 }
 
 export default TypePagePromoPropsQuery

@@ -21,7 +21,6 @@ const SectionJournalReadMoreArticles = ({
 	articles,
 	currentJournalArticleSlug
 }: TypeSectionJournalReadMoreArticlesProps) => {
-	// console.log(articles)
 	if (!articles || !articles?.length) return null
 
 	const translations = {
@@ -30,9 +29,8 @@ const SectionJournalReadMoreArticles = ({
 
 	return (
 		<div
-			className={
-				cn(stls.container, getClassNames({ classNames })) || undefined
-			}>
+			className={cn(stls.container, getClassNames({ classNames })) || undefined}
+		>
 			<p className={stls.title}>{translations.title}</p>
 			<CardsJournalArticles articles={articles} />
 		</div>

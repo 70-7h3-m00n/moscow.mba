@@ -10,7 +10,7 @@ import { IconFire, IconHeart } from './components'
 import { BtnBeta } from '@/components/btns'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { useContext } from 'react'
-import { PlacesLeft } from '@/components/costs'
+import { PlacesLeft, Until } from '@/components/costs'
 import { format } from 'date-fns'
 import { ru } from 'date-fns/locale'
 
@@ -19,10 +19,6 @@ const stringDate = format(new Date(), 'LLLL yyyy', { locale: ru })
 export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
-
-	const description =
-		program?.description ||
-		'Оставьте заявку и получите консультацию по программе, а также узнайте возможные варианты скидок и требования к поступлению'
 
 	const advantagesArray = program?.heroAdvantages
 		?.map(el => el.string)
@@ -36,7 +32,7 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 						<Switch className={stls.switch} />
 					</div>
 					<div className={stls.detailsMobile}>
-						{program?.partnership && (
+						{program?.partnership && program?.partnership?.url && (
 							<div className={stls.banner}>
 								<Image
 									src={program?.partnership?.url}
@@ -51,7 +47,7 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 							<p className={stls.sale__title}>
 								{/* //TODO discount & until date */}
 								Участвует в&nbsp;распродаже <span className='red'>-45%</span> до
-								10 ноября
+								<Until />
 							</p>
 							<Tag className={stls.sale__tag} variant='gamma'>
 								Осталось мест: <PlacesLeft uniqueKey={program?.id} />
@@ -60,7 +56,7 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 					</div>
 					<div className={stls.main}>
 						<h1 className={stls.title}>{program?.title}</h1>
-						<p className={stls.description}>{description}</p>
+						<p className={stls.description}>{program?.description}</p>
 						<div className={stls.main__btnWrapper}>
 							<BtnBeta variant='alpha'>Оставить заявку</BtnBeta>
 							<BtnBeta variant='gamma'>Задать вопрос</BtnBeta>

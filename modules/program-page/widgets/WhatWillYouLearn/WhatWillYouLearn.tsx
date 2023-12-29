@@ -16,8 +16,6 @@ export const WhatWillYouLearnNew = ({
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
-	console.log(program?.whatWillYouLearn)
-
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>

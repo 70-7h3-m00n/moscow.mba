@@ -12,8 +12,6 @@ export const WhoIsForNew = ({ className, ...rest }: WhoIsForProps) => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
-	console.log(program?.whoIsFor)
-
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>

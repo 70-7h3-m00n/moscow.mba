@@ -29,19 +29,6 @@ const setNextDay = (currentDate: Date, currentDay: number): Date => {
 	return currentDate
 }
 
-function findNearestFutureDate(datesArray) {
-	let nearestDate = Infinity
-	let nearestDiff = Infinity
-	for (const dateTimestamp of datesArray) {
-		const difference = dateTimestamp - Date.now()
-		if (difference >= 0 && difference < nearestDiff) {
-			nearestDate = dateTimestamp
-			nearestDiff = difference
-		}
-	}
-	return new Date(nearestDate)
-}
-
 const Until = ({ preposition = true, executive = false }) => {
 	const at = useAt()
 	const { until } = useContext(ContextStaticProps)
@@ -50,6 +37,24 @@ const Until = ({ preposition = true, executive = false }) => {
 	const currentDate = new Date()
 	const currentDay = currentDate.getDate()
 	const currentYear = currentDate.getFullYear()
+
+	function findNearestFutureDate(datesArray) {
+		let nearestDate = Infinity
+		let nearestDiff = Infinity
+		for (const dateTimestamp of datesArray) {
+			const difference = dateTimestamp - Date.now()
+			if (difference >= 0 && difference < nearestDiff) {
+				nearestDate = dateTimestamp
+				nearestDiff = difference
+			}
+		}
+
+		return new Date(
+			nearestDate === Infinity
+				? setNextDay(currentDate, currentDay)
+				: nearestDate
+		)
+	}
 
 	const untilArray =
 		untilDates?.map((month, idx) => {

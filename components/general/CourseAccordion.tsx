@@ -4,7 +4,7 @@ import cn from 'classnames'
 import Popup from 'reactjs-popup'
 import { Transition } from 'react-transition-group'
 import PopupForm from '@/components/popups/PopupForm'
-import Until from '@/components/costs/Until'
+import { Until } from '@/components/costs'
 import TrainingPeriod from '@/components/costs/TrainingPeriod'
 import { IconCheckCircle, IconClock, IconScreen } from '@/components/icons'
 
@@ -98,15 +98,15 @@ const CourseAccordion = ({
 						className={stls.mainInfoContainer}
 						onClick={e => handleAccordionClick(e)}
 					>
-						<span className={stls.accordionLabel}>Курс MBA</span>
+						<span className={stls.accordionLabel}>MBA</span>
 						<ul className={stls.courseMainInfoList}>
 							<li className={stls.courseMainInfoItem}>
 								{/* От {<TrainingPeriod type={type} />} */}
-								От 4 месяцев
+								От 9 месяцев
 							</li>
-							<li className={stls.courseMainInfoItem}>Очно или дистанционно</li>
+							<li className={stls.courseMainInfoItem}>ONLINE</li>
 							<li className={stls.courseMainInfoItem}>
-								Ближайшее зачисление {<Until preposition={false} />}
+								Ближайшее зачисление {<Until preposition={true} />}
 							</li>
 						</ul>
 						<h3 className={stls.courseTitle}>{course?.title}</h3>

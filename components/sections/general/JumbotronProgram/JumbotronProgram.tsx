@@ -71,7 +71,6 @@ const JumbotronProgram = ({
 
 	const handleToggleSwitch = event => {
 		setToggleSwitch(event.target.checked)
-		console.log(toggleSwitch)
 		router.push(alternativeLink)
 	}
 
