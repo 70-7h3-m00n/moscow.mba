@@ -210,7 +210,7 @@ const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
 								<Loan
 									discount={isDiscounted}
 									type={program?.category?.type}
-									format={program?.studyFormat}
+									format={'blended'}
 									programPrice={(at.profession || at.course) && program?.price}
 									variant='SectionStudyCost'
 								/>

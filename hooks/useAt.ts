@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { dev } from '@/config/index'
 
 const useAt = () => {
 	const { pathname, asPath, locale, query } = useRouter()
@@ -59,8 +60,7 @@ const useAt = () => {
 			query.locale === 'uz_UZ',
 		programChunk: !!getProgramTitle,
 		getSplitedPath,
-		// new: !!getProgramTitle && getSplitedPath[1] === 'mba'
-		new: false
+		new: dev ? !!getProgramTitle && getSplitedPath[1] === 'mba' : false
 	}
 }
 
