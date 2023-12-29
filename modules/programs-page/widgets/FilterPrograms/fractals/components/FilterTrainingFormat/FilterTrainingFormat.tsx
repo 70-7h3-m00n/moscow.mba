@@ -17,7 +17,6 @@ const FilterTrainingFormat = () => {
 	// if URL is loaded and query TrainingFormat is not empty change configPrograms
 	useEffect(() => {
 		if (router.isReady) {
-			// console.log(`at =>>>>>>>>>>>>>>>>>>>`, at)
 			const trainingFormat = at.blended
 				? FilterFormatTrainingEnum.blended
 				: FilterFormatTrainingEnum.online

@@ -45,11 +45,11 @@ const Price = ({
 		regular: {
 			mini: {
 				online: setPrice(219090),
-				blended: setPrice(219090)
+				blended: setPrice(350000)
 			},
 			mba: {
 				online: setPrice(347090),
-				blended: setPrice(347090)
+				blended: setPrice(450000)
 			},
 			profession: {
 				online: setPrice(70000)

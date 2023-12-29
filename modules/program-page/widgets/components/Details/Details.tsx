@@ -18,7 +18,7 @@ export const Details = ({ className }: DetailsProps) => {
 
 	return (
 		<div className={cn(className, stls.details)}>
-			{program?.partnership && (
+			{program?.partnership && program?.partnership?.url && (
 				<div className={stls.details__banner}>
 					<Image
 						src={program?.partnership?.url}

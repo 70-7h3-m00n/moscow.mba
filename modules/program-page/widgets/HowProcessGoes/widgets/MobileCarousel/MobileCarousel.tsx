@@ -16,13 +16,6 @@ export const MobileCarousel = ({ className, ...rest }: MobileCarouselProps) => {
 	const [activeSlideIndex, setActiveSlideIndex] = useState(0)
 	const slidesData = GetHowProcessGoesData()
 
-	// const navigationSlickTrack =
-	// 	navigationWrapperRef?.current?.querySelector('.slick-track')
-
-	// useEffect(() => {
-	// 	console.log('=>>>>>>>>>>>>>', navigationSlickTrack)
-	// }, [navigationSlickTrack])
-
 	const [nav1, setNav1] = useState(null)
 	const [nav2, setNav2] = useState(null)
 

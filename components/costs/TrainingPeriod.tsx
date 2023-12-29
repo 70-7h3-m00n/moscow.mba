@@ -1,8 +1,14 @@
 import { ruCase } from '@/helpers/index'
 import { useAt } from '@/hooks/index'
 
-const TrainingPeriod = ({ period = null, type = null }) => {
+const TrainingPeriod = ({
+	period = null,
+	type = null,
+	justNumbers = false
+}) => {
 	const at = useAt()
+
+	const addFrontZeroToNumber = (n: number) => ('0' + n).slice(-2)
 
 	const typeToMonths = {
 		mini: 9,
@@ -25,8 +31,14 @@ const TrainingPeriod = ({ period = null, type = null }) => {
 
 	return (
 		<>
-			{months}{' '}
-			{at.en ? 'month' : ruCase(months, ['месяц', 'месяца', 'месяцев'])}
+			{justNumbers ? (
+				<>{addFrontZeroToNumber(months)}</>
+			) : (
+				<>
+					{months}{' '}
+					{at.en ? 'month' : ruCase(months, ['месяц', 'месяца', 'месяцев'])}
+				</>
+			)}
 		</>
 	)
 }

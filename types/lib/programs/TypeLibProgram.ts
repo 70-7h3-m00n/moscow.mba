@@ -28,6 +28,15 @@ type TypeLibProgram = {
 		studyHours?: string | number | null
 		practicalLessons?: string | number | null
 		workshops?: string | number | null
+		videomaterials?: string | number | null
+		modulesDescription: string | null
+		modulesResult: string | null
+		modulesTools:
+			| {
+					id: number | null
+					tool: string | null
+			  }[]
+			| null
 	} | null
 	whatWillYouLearn?:
 		| {
