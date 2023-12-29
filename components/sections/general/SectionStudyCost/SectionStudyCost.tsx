@@ -14,9 +14,14 @@ import { PopupForm } from '@/components/popups'
 import { BtnAlpha } from '@/components/btns'
 import { getYear } from 'date-fns'
 
-type TypeSectionStudyCostProps = TypeClassNames
+type TypeSectionStudyCostProps = TypeClassNames & {
+	format?: 'online' | 'blended'
+}
 
-const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
+const SectionStudyCost = ({
+	classNames,
+	format = 'online'
+}: TypeSectionStudyCostProps) => {
 	const at = useAt()
 	const currentYear = getYear(new Date())
 	const { program } = useContext(ContextStaticProps)
@@ -210,7 +215,7 @@ const SectionStudyCost = ({ classNames }: TypeSectionStudyCostProps) => {
 								<Loan
 									discount={isDiscounted}
 									type={program?.category?.type}
-									format={'blended'}
+									format={format}
 									programPrice={(at.profession || at.course) && program?.price}
 									variant='SectionStudyCost'
 								/>

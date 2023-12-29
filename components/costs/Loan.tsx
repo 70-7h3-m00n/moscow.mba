@@ -77,7 +77,7 @@ const Loan = ({
 				online: setPrice(10050)
 			},
 			mba: {
-				online: setPrice(19900)
+				online: setPrice(15900)
 			},
 			profession: {
 				online: setPrice(3250)
@@ -124,8 +124,6 @@ const Loan = ({
 	const regularPriceUI = programPriceKzUzConsidered
 		? toNumberWithSpaces(Math.floor(programPriceKzUzConsidered / 12))
 		: price[regularOrDiscounted]?.[type]?.[format]
-	console.log('format: ', format)
-	console.log('type: ', type)
 
 	const discountPriceUI = programPriceKzUzConsidered
 		? toNumberWithSpaces(Math.floor(regularPrice / 12))
