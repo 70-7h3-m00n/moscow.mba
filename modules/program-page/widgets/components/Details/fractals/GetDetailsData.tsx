@@ -1,9 +1,8 @@
 import stls from '../Details.module.sass'
 
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import useAt from '@/hooks/useAt'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
-
 import { TrainingPeriod, Until } from '@/components/costs'
 import { ruCase } from '@/helpers/index'
 import { FRDO } from '../components/FRDO'
@@ -29,7 +28,7 @@ export const GetDetailsData = () => {
 						period={program?.duration?.minStudyMonths}
 						type={program?.category?.type}
 					/>
-					<InfoTooltip>
+					<InfoTooltip color='#000' textColor='#fff'>
 						<p className={stls.durationHours}>
 							<span className={stls.bold}>Длительность:</span>{' '}
 							{`${durationHours} ${ruCase(durationHours, [
@@ -52,12 +51,12 @@ export const GetDetailsData = () => {
 				<Until preposition={false} executive={at.executive && false} />
 			)
 		},
-		{
+		!at.course && {
 			title: 'Диплом',
 			description: (
 				<>
 					Заносится в ФРДО{' '}
-					<InfoTooltip>
+					<InfoTooltip color='#000' textColor='#fff'>
 						<FRDO />
 					</InfoTooltip>
 				</>

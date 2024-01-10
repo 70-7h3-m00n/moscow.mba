@@ -1,21 +1,32 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { handleGetStaticPaths, handleGetStaticProps } from '@/lib/index'
-import { usePageHandleContext } from '@/hooks/index'
+import { useAt, usePageHandleContext } from '@/hooks/index'
 import { routesFront } from '@/config/index'
 import { ProfessionOnlineProgram } from '@/components/pages'
 import { SeoOrganizationJsonLd, SeoPagesProgram } from '@/components/seo'
+import { ProgramPage } from 'modules/program-page/ProgramPage'
 
 const PageProgramsProfessionOnlineProgram = ({ program, programs, until }) => {
+	const at = useAt()
 	usePageHandleContext({ programs, program, until })
 
 	return (
 		<>
 			<SeoPagesProgram program={program} />
-			<ProfessionOnlineProgram
-				program={program}
-				programs={programs}
-				teachers={program?.teachers}
-			/>
+
+			{at.new ? (
+				<ProgramPage
+					program={program}
+					programs={programs}
+					teachers={program?.teachers}
+				/>
+			) : (
+				<ProfessionOnlineProgram
+					program={program}
+					programs={programs}
+					teachers={program?.teachers}
+				/>
+			)}
 		</>
 	)
 }

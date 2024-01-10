@@ -1,0 +1,47 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content
+  display: flex
+  justify-content: space-between
+  margin-bottom: 3rem
+  padding: 1.5rem
+  border-radius: 1.5rem
+  background-color: #000
+
+  @include m.media(phone, tablet)
+    flex-direction: column-reverse
+    gap: 1rem
+    padding: 1rem
+
+.text
+  max-width: 40rem
+  color: #FFF
+  font-family: Helvetica Neue
+  font-size: 1.375rem
+  font-style: normal
+  font-weight: 400
+  line-height: 120%
+
+  @include m.media(phone, tablet)
+    font-size: 1.125rem
+
+.arrowIcon
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 5.6rem
+  height: 5.6rem
+  background-color: #fff
+  border-radius: 10rem
+
+  @include m.media(phone, tablet)
+    width: 4rem
+    height: 4rem
+
+.icon
+  @include m.media(phone, tablet)
+    width: 2rem
+    height: 2rem
+

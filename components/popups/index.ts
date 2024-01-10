@@ -15,3 +15,4 @@ export { default as PopupPreviewCoursesOnTopic } from '@/components/popups/Popup
 export { default as PopupGetMaterials } from '@/components/popups/PopupGetMaterials'
 
 export * from './PopupHeader/PopupHeader'
+export * from './PopupTeacherNew/PopupTeacherNew'

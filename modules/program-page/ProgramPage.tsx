@@ -3,6 +3,9 @@ import cn from 'classnames'
 import { ProgramPageProps } from './types'
 
 import { ProgramPageProvider } from './fractals/context/context'
+import useAt from '@/hooks/useAt'
+import { FutureJob } from './widgets/FutureJob/FutureJob'
+import { EducationROI } from './widgets/EducationROI/EducationROI'
 import {
 	HeroSection,
 	AboutProgram,
@@ -29,6 +32,8 @@ export const ProgramPage = ({
 	program,
 	teachers
 }: ProgramPageProps) => {
+	const at = useAt()
+
 	return (
 		<ProgramPageProvider
 			programs={programs}
@@ -46,8 +51,19 @@ export const ProgramPage = ({
 				<Diploma className={stls.section} />
 				<ExpertsNew className={stls.section} id='experts' />
 				<Employment className={stls.section} id='employment' />
-				<EmploymentPartners className={stls.section} />
-				<Networking className={stls.section} />
+				{/* отсутствует на курсах */}
+				{at.profession || at.course ? (
+					<>
+						<FutureJob className={stls.section} />
+						<EducationROI className={stls.section} />
+						<EmploymentPartners className={stls.section} />
+					</>
+				) : (
+					<>
+						<EmploymentPartners className={stls.section} />
+						<Networking className={stls.section} />
+					</>
+				)}
 				<CtaForm className={stls.section} variant='beta' />
 				<Accreditation className={cn(stls.section, stls.accreditation)} />
 				<Reviews className={stls.section} id='reviews' />

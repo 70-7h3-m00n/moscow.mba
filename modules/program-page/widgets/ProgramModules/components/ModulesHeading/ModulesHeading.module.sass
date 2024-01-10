@@ -1,0 +1,108 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 1.5rem
+  margin-bottom: 3rem
+  padding: 3rem
+  border-radius: 1.5rem
+  background: #51555B
+
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr
+    padding: 2rem 1rem
+
+.left
+  display: flex
+  flex-direction: column
+
+  &__title
+    color: #FFF
+    font-size: 2.5rem
+    letter-spacing: -0.1rem
+
+    @include m.media(phone, tablet)
+      font-size: 1.75rem
+      letter-spacing: -0.035rem
+
+  &__desc
+    color: #979BA0
+    font-size: 1.125rem
+    line-height: 120%
+
+    @include m.media(phone, tablet)
+      margin-bottom: 2rem
+      color: #979BA0
+      font-size: 1rem
+
+  &__list
+    margin-top: auto
+    justify-self: flex-end
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    gap: 1.5rem
+
+    @include m.media(phone, tablet)
+      grid-template-columns: repeat(2, 1fr)
+      gap: 1rem
+
+  &__item
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    gap: 0.5rem
+    padding: 1rem
+    border-radius: 1rem
+    background-color: #fff
+
+    .number
+      color: #000
+      font-family: Unbounded
+      font-size: 2.5rem
+      line-height: 120% 
+      letter-spacing: -0.1rem
+
+      @include m.media(phone, tablet)
+        font-size: 1.75rem
+        line-height: 100%
+        letter-spacing: -0.035rem
+
+    .desc
+      color: #979BA0
+      font-size: 1rem
+      line-height: 120%
+
+      @include m.media(phone, tablet)
+        font-size: 0.875rem
+        font-style: normal
+
+.right
+  padding: 1.5rem
+  border-radius: 1rem
+  background-color: #fff
+
+  &__title
+    margin-bottom: 1rem
+    color: #000
+    font-size: 1.4rem
+    line-height: 120%
+
+    @include m.media(phone, tablet)
+      font-size: 1.25rem
+
+  &__desc
+    margin-bottom: 1.5rem
+    color: #575757
+    font-size: 1rem
+    line-height: 120%
+
+    @include m.media(phone, tablet)
+      font-size: 0.875rem
+
+.tagList
+  display: flex
+  flex-wrap: wrap
+  gap: .5rem 1rem

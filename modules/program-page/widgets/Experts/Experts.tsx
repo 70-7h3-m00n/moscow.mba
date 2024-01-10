@@ -4,14 +4,29 @@ import { ExpertsProps } from './types'
 
 import { Wrapper } from '@/components/layout'
 import Image from 'next/image'
-import { useContext, useId, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import Slider from 'react-slick'
-import { IconNext } from '../components'
+import { IconNext, Tag } from '../components'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
+import { BtnBeta } from '@/components/btns'
+import Popup from 'reactjs-popup'
+import { PopupTeacherNew } from '@/components/popups'
+import useWindowWidth from '@/hooks/useWindowWidth'
 
 export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
+
+	const widthWindow = useWindowWidth()
+	const [isMobile, setIsMobile] = useState(false)
+
+	useEffect(() => {
+		if (widthWindow <= 767) {
+			setIsMobile(true)
+		} else {
+			setIsMobile(false)
+		}
+	}, [widthWindow])
 
 	const sliderRefExperts = useRef<Slider>(null)
 
@@ -23,18 +38,20 @@ export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
 		sliderRefExperts.current?.slickPrev()
 	}
 
+	const mainExpert = false
+
 	const settings = {
 		dots: false,
 		speed: 500,
 		// slidesToShow: 2,
-		slidesToScroll: 3,
+		slidesToScroll: isMobile ? 1 : 3,
 		adaptiveHeight: true,
 		autoplay: false,
 		autoplaySpeed: 4000,
 		swipeToSlide: false,
 		vertical: false,
 		arrows: false,
-		infinite: true,
+		infinite: false,
 		variableWidth: true,
 		className: cn(stls.carousel)
 	}
@@ -73,36 +90,30 @@ export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
 											objectFit: 'cover'
 										}}
 									/>
-									{/* <div
-										className={cn(stls.item__details, stls.details, {
-											[stls.active]: idx === activeIdx
-										})}
+									{mainExpert && (
+										<Tag className={stls.cardTag} variant='eta'>
+											Ведущий автор программы
+										</Tag>
+									)}
+									<Popup
+										trigger={
+											<BtnBeta
+												className={stls.cardBtn}
+												variant='alpha'
+												size='s'
+											>
+												Подробнее
+											</BtnBeta>
+										}
+										modal
+										lockScroll
+										nested
+										closeOnDocumentClick
 									>
-										<Image
-											className={stls.details__image}
-											src={item.portrait.url}
-											alt={item.name}
-											width={92}
-											height={120}
-										/>
-										<div className={stls.details__text}>
-											<div className={stls.details__nameWrapper}>
-												<p className={stls.details__name}>{item.name}</p>
-												<button
-													className={stls.details__close}
-													onClick={closeDetailsHandler}
-												>
-													<IconNext />
-												</button>
-											</div>
-											<p className={stls.details__desc}>{item.desc}</p>
-											<ul className={stls.details__list}>
-												{item.list.map(item => (
-													<li key={`item-${item}`}>{item}</li>
-												))}
-											</ul>
-										</div>
-									</div> */}
+										{/* @ts-expect-error  */}
+
+										{close => <PopupTeacherNew close={close} teacher={item} />}
+									</Popup>
 								</div>
 								<p className={stls.item__name}>{item.name}</p>
 								<p className={stls.item__desc}>{item.description}</p>

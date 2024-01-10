@@ -31,7 +31,9 @@ export const Diploma = ({ className, ...rest }: DiplomaProps) => {
 						</a>
 					</p>
 				)}
-				<BtnBeta variant='beta'>Посмотреть дипломы</BtnBeta>
+				<BtnBeta className={stls.btn} variant='beta'>
+					Посмотреть дипломы
+				</BtnBeta>
 			</Wrapper>
 		</section>
 	)

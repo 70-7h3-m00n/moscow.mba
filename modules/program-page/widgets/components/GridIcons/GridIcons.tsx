@@ -11,14 +11,14 @@ export const GridIcons = ({ variant }: GridIconsProps) => {
 	return (
 		<div className={stls.content}>
 			<div className={cn(stls.iconWrapper, stls.content__gitBranch)}>
-				<IconGitBranch />
+				<IconGitBranch className={stls.icon} />
 			</div>
 			<div className={cn(stls.iconWrapper, stls.content__arrow)}>
-				{variant === 'alpha' && <IconArrow />}
-				{variant === 'beta' && <IconGraphic />}
+				{variant === 'alpha' && <IconArrow className={stls.icon} />}
+				{variant === 'beta' && <IconGraphic className={stls.icon} />}
 			</div>
 			<div className={cn(stls.iconWrapper, stls.content__box)}>
-				<IconBox />
+				<IconBox className={stls.icon} />
 			</div>
 		</div>
 	)

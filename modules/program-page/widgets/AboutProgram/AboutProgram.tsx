@@ -4,11 +4,12 @@ import { AboutProgramProps } from './types'
 
 import Image from 'next/image'
 import { Wrapper } from '@/components/layout'
-import { cardsData } from './constants'
+
 import { PhotoSlider } from '../PhotoSlider/PhotoSlider'
 import useAt from '@/hooks/useAt'
 import { useContext } from 'react'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
+import { cardsData } from './constants'
 
 export const AboutProgram = ({ className, ...rest }: AboutProgramProps) => {
 	const at = useAt()
@@ -21,7 +22,7 @@ export const AboutProgram = ({ className, ...rest }: AboutProgramProps) => {
 		? cardsData.mini
 		: {
 				title: 'Цель',
-				description: program?.goal || ''
+				description: <>{program?.goal}</>
 		  }
 
 	return (
@@ -30,7 +31,7 @@ export const AboutProgram = ({ className, ...rest }: AboutProgramProps) => {
 				<h2 className={stls.title}>О программе</h2>
 				<ul className={stls.list}>
 					<li className={stls.item}>
-						<h3 className={stls.item__title}>{cardsData.mba.title}</h3>
+						<h3 className={stls.item__title}>{leftCardData.title}</h3>
 						<Image
 							className={stls.item__image}
 							src='/assets/images/program/about-program-2.png'

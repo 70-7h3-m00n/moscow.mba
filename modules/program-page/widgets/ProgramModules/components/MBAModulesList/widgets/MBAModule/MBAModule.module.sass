@@ -1,0 +1,54 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.subtitle
+  max-width: 62rem
+  margin-top: 1rem
+
+.list
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 3rem
+  width: 100%
+  margin-top: 3rem
+
+.item
+  margin-left: 1rem
+  list-style: disc
+
+  &__titleWrapper
+    display: flex
+    align-items: flex-start
+    gap: 0.5rem
+
+  &__title
+    margin-bottom: 0.5rem
+    color: #000
+    font-size: 1.1rem
+    font-weight: 400
+    line-height: 120%
+
+  &__description
+    margin-left: -1rem
+    color: #575757
+    font-size: 1rem
+    font-weight: 400
+    line-height: 110%
+
+.new
+  flex-shrink: 0
+  display: block
+  padding: 0.2rem 0.5rem
+  border-radius: 10rem
+  font-family: Helvetica Neue
+  font-size: 0.75rem
+  font-style: normal
+  font-weight: 400
+  line-height: 120%
+  color: #FFF
+  background-color: #FF3535
+  transform: translateY(-0.3rem)
+
+.lightning
+  transform: translateY(0.1rem)

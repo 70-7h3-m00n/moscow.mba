@@ -10,10 +10,18 @@
   letter-spacing: -0.1rem
   text-align: center
 
+  @include m.media(phone, tablet)
+    font-size: 1.7rem
+    letter-spacing: -0.065rem
+    text-align: left
+
 .list
   display: grid
   grid-template-columns: repeat(2, 1fr)
   gap: 1.5rem
+
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr
 
 .item
   display: flex
@@ -26,6 +34,10 @@
   background: #E7EAED
   position: relative
   overflow: hidden
+
+  @include m.media(phone, tablet)
+    gap: 1rem
+    padding: 1rem
 
   &__title
     margin-bottom: 1rem
@@ -43,12 +55,19 @@
     background-color: #fff
     z-index: 1
 
+    @include m.media(phone, tablet)
+      align-self: flex-start !important
+
   &__background
     position: absolute
 
 .item:nth-child(1) .item__background
   top: -153px
   left: -80px
+
+  @include m.media(phone, tablet)
+    top: -153px
+    left: -200px
 
 .item:nth-child(4) .item__background
   top: -153px

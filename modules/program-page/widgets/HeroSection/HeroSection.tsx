@@ -20,9 +20,9 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
-	const advantagesArray = program?.heroAdvantages?.map((el, idx) => {
-		if (idx < 5) return el.string
-	})
+	const advantagesArray = program?.heroAdvantages
+		?.map((el, idx) => (idx < 5 ? el.string : undefined))
+		.filter(Boolean)
 
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
@@ -46,8 +46,9 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 						<div className={stls.sale}>
 							<p className={stls.sale__title}>
 								{/* //TODO discount & until date */}
-								Участвует в&nbsp;распродаже <span className='red'>-45%</span> до
-								<Until />
+								Участвует в&nbsp;распродаже <span className='red'>
+									-45%
+								</span> до <Until />
 							</p>
 							<Tag className={stls.sale__tag} variant='gamma'>
 								Осталось мест: <PlacesLeft uniqueKey={program?.id} />

@@ -20,7 +20,7 @@ export const WhatWillYouLearnNew = ({
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<h2 className={stls.title}>
-					Чему вы научитесь за{' '}
+					Чему вы научитесь за&nbsp;
 					<TrainingPeriod
 						period={program?.duration?.minStudyMonths}
 						type={program?.category?.type}
@@ -30,7 +30,7 @@ export const WhatWillYouLearnNew = ({
 					{program?.whatWillYouLearn?.map((item, idx) => (
 						<li className={stls.item} key={idx}>
 							<IconCheck color='#FF3535' />
-							<p>{item.string}</p>
+							<p className={stls.item__p}>{item.string}</p>
 						</li>
 					))}
 				</ul>

@@ -1,0 +1,129 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 1.5rem
+  padding: 3rem 0rem 3rem 1.5rem
+  border-radius: 1.5rem
+  background: #18191A
+
+.left
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+.title
+  margin-bottom: 3rem
+  color: #fff
+  font-size: 2.5rem
+  line-height: 120%
+  letter-spacing: -0.1rem
+
+.list
+  display: flex
+  flex-wrap: wrap
+  gap: 3rem
+
+.item
+  width: min-content
+
+.carousel
+  position: relative
+  
+  & > div
+    width: 34rem
+
+  & > div > div > div:nth-child(2n) .card
+    background-color: #FF3535
+
+    &__title
+      color: #fff
+    
+    &__description
+      color: #FDB7B7
+
+  & > div > div:first-of-type
+    display: inline-flex 
+    gap: 1rem
+
+  &__post 
+    // max-width: 22rem 
+    cursor: grab
+    user-select: none
+
+    &:active
+      cursor: grabbing
+
+.card
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+
+  &__title
+    margin-bottom: 1rem
+    font-family: Unbounded
+    font-size: 1.5rem
+    font-style: normal
+    font-weight: 400
+    line-height: 120%
+
+  &__description
+    font-family: Helvetica Neue
+    font-size: 1rem
+    font-style: normal
+    font-weight: 400
+    line-height: 110%
+
+.post
+  // width: 25rem
+  height: 360px
+  overflow: hidden
+  border-radius: 1.5rem
+
+  &__image
+    border-radius: 1.5rem
+    overflow: hidden
+
+.sliderWrapper
+  position: relative
+  align-self: flex-start
+  margin-bottom: 0
+  overflow: hidden
+
+.active
+  opacity: 1
+
+.carousel__navigation
+  display: flex
+  justify-content: center
+  gap: 1.5rem
+  margin-top: 1.5rem
+
+.prev
+  padding: 0
+  border: none
+  background-color: transparent
+  .svg
+    transform: rotate(180deg)
+
+.next
+  padding: 0
+  border: none
+  background-color: transparent
+
+.svg
+  circle
+    fill: #fff
+    transition: fill .3s ease-in-out
+  path
+    fill: #18191A
+    transition: fill .3s ease-in-out
+
+.disabled
+  circle
+    fill: #51555B
+  path
+    fill: #18191A

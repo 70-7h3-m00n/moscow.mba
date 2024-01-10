@@ -94,6 +94,7 @@ export const FormBeta = ({
 					}
 				/>
 				<InputEmailNew
+					className={stls.inputEmail}
 					register={register}
 					errors={errors}
 					variant={

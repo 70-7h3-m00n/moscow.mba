@@ -5,8 +5,9 @@ import { ReviewsProps } from './types'
 import { Wrapper } from '@/components/layout'
 import { Rating } from './components/Rating/Rating'
 import Carousel from './components/ReviewsCarousel/Carousel'
-// import { ReviewsSlider } from './components/ReviewsSlider/ReviewsSlider'
-
+import { VideoReviewsCarousel } from './components/VideoReviewsCarousel/VideoReviewsCarousel'
+import { BtnBeta } from '@/components/btns'
+import { StudentStories } from './components/StudentStories/StudentStories'
 export const Reviews = ({ className, ...rest }: ReviewsProps) => {
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
@@ -18,7 +19,12 @@ export const Reviews = ({ className, ...rest }: ReviewsProps) => {
 					Business Academy
 				</p>
 				<Rating className={stls.rating} />
-				<Carousel />
+				<Carousel className={stls.carousel} />
+				<VideoReviewsCarousel className={stls.videoReviews} />
+				<BtnBeta className={stls.moreReviewsBtn} variant='alpha'>
+					Больше отзывов
+				</BtnBeta>
+				<StudentStories />
 			</Wrapper>
 		</section>
 	)

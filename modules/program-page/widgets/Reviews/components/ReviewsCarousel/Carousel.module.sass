@@ -80,8 +80,10 @@
   background-color: var(--background-color)
   transform: translate(-1px, -1px)
 
-  img
-    transform: translateY(-2px)
+  &__image
+    width: 44px
+    height: 44px
+    clip-path: circle(50% at 50% 50%)
 
 .cornerPhoto::before,
 .cornerPhoto::after 

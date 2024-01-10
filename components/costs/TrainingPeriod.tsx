@@ -35,7 +35,7 @@ const TrainingPeriod = ({
 				<>{addFrontZeroToNumber(months)}</>
 			) : (
 				<>
-					{months}{' '}
+					{months}&nbsp;
 					{at.en ? 'month' : ruCase(months, ['месяц', 'месяца', 'месяцев'])}
 				</>
 			)}

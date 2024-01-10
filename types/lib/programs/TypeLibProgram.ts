@@ -43,6 +43,11 @@ type TypeLibProgram = {
 				string: string | null
 		  }[]
 		| null
+	whatWillYouLearnNew?:
+		| {
+				string: string | null
+		  }[]
+		| null
 	picture?: TypeLibPicture | null
 	heroAdvantages?:
 		| {
@@ -71,21 +76,39 @@ type TypeLibProgram = {
 		| {
 				string: string | null
 				title: string | null
-				skills: { title: string | null }[]
+				new: boolean | null
+				duration: number | null
+				skills: {
+					title: string | null
+					string: string | null
+					new: boolean | null
+				}[]
 		  }[]
 		| null
 	specializedSubjects?:
 		| {
 				string: string | null
 				title: string | null
-				skills: { title: string | null }[]
+				new: boolean | null
+				duration: number | null
+				skills: {
+					title: string | null
+					string: string | null
+					new: boolean | null
+				}[]
 		  }[]
 		| null
 	bonusSubjects?:
 		| {
 				string: string | null
 				title: string | null
-				skills: { title: string | null }[]
+				new: boolean | null
+				duration: number | null
+				skills: {
+					title: string | null
+					string: string | null
+					new: boolean | null
+				}[]
 		  }[]
 		| null
 	subjectsStickerType?: string | null
@@ -101,12 +124,6 @@ type TypeLibProgram = {
 		question: string | null
 		answer: string | null
 	} | null
-	reviews?: {
-		picture: TypeLibPicture | null
-		name: string | null
-		desc: string | null
-		story: string | null
-	} | null
 	whoIsFor?:
 		| {
 				name: string | null
@@ -115,7 +132,22 @@ type TypeLibProgram = {
 		| null
 	teachers?: TypeLibTeachers | null
 	prosPhoto?: string | null
-	// TODO
+	reviews?:
+		| {
+				id: number | null
+				rating: number | null
+				studentName: string | null
+				studentReview: string | null
+				studentPhoto: string | null
+		  }[]
+		| null
+	faq?:
+		| {
+				id: number | null
+				title: string | null
+				string: string | null
+		  }[]
+		| null
 }
 
 export default TypeLibProgram

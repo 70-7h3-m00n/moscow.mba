@@ -4,22 +4,61 @@ import { AccordionProps } from './types'
 
 import { motion } from 'framer-motion'
 import React from 'react'
-import { IconPlus } from '../components'
+import { IconArrow, IconPlus, Tag } from '../components'
+import { ruCase } from '@/helpers/index'
+import { IconArrowAlt } from '../components/icons/IconArrowAlt/IconArrowAlt'
+import { IconLightning } from '@/components/icons'
 
 export const Accordion = ({
 	className,
 	item,
 	active,
 	handler,
-	idx
+	idx,
+	variant,
+	children
 }: AccordionProps) => {
-	const { title, content } = item
-
 	return (
 		<div className={cn(className, stls.item)} onClick={() => handler(idx)}>
 			<button className={stls.item__btn}>
-				<span>{title}</span>
-				<IconPlus />
+				<div className={stls.titleWrapper}>
+					{item?.new && (
+						<Tag variant={'delta'}>
+							New <IconLightning className={stls.lightning} />
+						</Tag>
+					)}
+					{}
+					<p
+						className={cn(stls.item__title, {
+							[stls.modulesActive]: variant === 'modules' && active
+						})}
+					>
+						{item?.title}
+					</p>
+				</div>
+				<div className={stls.durationWrapper}>
+					{item?.duration && (
+						<div
+							className={cn(stls.duration, { [stls.duration__active]: active })}
+						>
+							{item?.duration}{' '}
+							{ruCase(item?.duration, ['неделя', 'недели', 'недель'])}
+						</div>
+					)}
+					{variant === 'modules' ? (
+						<IconArrowAlt
+							className={cn(stls.iconModules, {
+								[stls.iconModules__active]: active
+							})}
+							active={active}
+						/>
+					) : (
+						<IconPlus
+							className={cn(stls.icon, { [stls.icon__active]: active })}
+							active={active}
+						/>
+					)}
+				</div>
 			</button>
 
 			<div
@@ -27,7 +66,7 @@ export const Accordion = ({
 					[stls.active]: active
 				})}
 			>
-				{content}
+				{children}
 			</div>
 		</div>
 	)
