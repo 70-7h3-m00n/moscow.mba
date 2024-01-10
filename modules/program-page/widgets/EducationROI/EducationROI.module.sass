@@ -1,0 +1,224 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.titleWrapper
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 3rem
+  align-items: end
+  margin-bottom: 3rem
+
+.title
+  margin-bottom: 0
+  font-family: Unbounded
+  font-size: 2.5rem
+  font-style: normal
+  font-weight: 400
+  line-height: 120% 
+  letter-spacing: -0.1rem
+  color: #000
+
+.subtitle
+  font-family: Helvetica Neue
+  font-size: 1.125rem
+  font-style: normal
+  font-weight: 400
+  line-height: 120%
+  color: #575757
+
+.content
+  display: grid
+  grid-template-columns: 1fr 3fr
+  gap: 1.5rem
+  grid-auto-rows: 19rem
+
+  &__item
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 1.5rem
+    border-radius: 1.5rem
+
+.left
+  color: #fff
+  background-color: #FF3535
+
+  &__title
+    font-size: 1rem
+    line-height: 110%
+    color: #FCC
+
+  &__description
+    font-size: 1.375rem
+    line-height: 120% 
+    color: #FFF
+
+.right
+  background-color: #fff
+
+  &__title
+    margin-bottom: 1rem
+    font-family: Unbounded
+    font-size: 1.5rem
+    line-height: 120% 
+    color: #FF3535
+  
+  &__subtitle
+    font-size: 1rem
+    line-height: 110%
+    color: #575757
+
+
+/* input range customisation */
+
+.range
+  position: relative
+  isolation: isolate
+
+  &::before
+    position: absolute
+    content: ''
+    top: .2rem
+    left: 0
+    width: .125rem
+    height: 1rem
+    border-radius: 2.5rem
+    background-color: #DEE2E5
+    z-index: -1
+
+  &::after
+    position: absolute
+    content: ''
+    top: .2rem
+    right: -0.125rem
+    width: .125rem
+    height: 1rem
+    border-radius: 2.5rem
+    background-color: #DEE2E5
+    z-index: -1
+
+
+.input
+  position: relative
+  width: 100%
+  appearance: none
+  -webkit-appearance: none
+  margin-bottom: 1.5rem
+  height: .125rem
+  background: #DEE2E5
+  cursor: pointer
+
+  &::before
+    position: absolute
+    content: ''
+    top: -0.45rem
+    left: 50%
+    width: .125rem
+    height: 1rem
+    border-radius: 2.5rem
+    background-color: #DEE2E5
+    z-index: -1
+
+  &::-webkit-slider-thumb
+    appearance: none
+    -webkit-appearance: none
+    height: 2rem
+    width: 2rem
+    background-size: 2rem 2rem
+    background-repeat: no-repeat
+    background-position: center center
+    transition: background .3s ease-in-out
+    z-index: 100
+    // cursor: ew-resize
+
+  &::-webkit-slider-runnable-track 
+    -webkit-appearance: none
+    box-shadow: none
+    border: none
+    background: transparent
+
+.input.junior::-webkit-slider-thumb
+  background-image: url('./assets/🙂.svg')
+
+.input.middle::-webkit-slider-thumb
+  background-image: url('./assets/🤩.svg')
+
+.input.senior::-webkit-slider-thumb
+  background-image: url('./assets/😎.svg')
+
+.emoji
+  position: absolute
+  top: 0
+  left: 50%
+  transform: translateX(-50%)
+  font-size: 24px
+
+.bubble 
+  position: absolute
+  left: 0
+  top: -4rem
+  max-width: max-content
+  margin-bottom: 1.5rem
+  padding: 0.5rem
+  // border: 1px solid red
+  border-radius: 0.75rem
+  white-space: nowrap
+  color: #fff
+  text-align: center
+  font-family: Helvetica Neue
+  font-size: 1.125rem
+  font-style: normal
+  font-weight: 400
+  line-height: 120%
+  background-color: #18191A
+  transform: translateX(-50%)
+
+  &__arrow
+    position: absolute
+    bottom: -0.5rem
+    left: calc(50% - 10px)
+    // width: 1rem
+    // height: 1rem
+    // border-top: 10px solid black
+    // border-bottom: 10px solid transparent
+    // border-left: 10px solid transparent
+    // border-right: 10px solid transparent
+
+
+.rangeDescription
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+
+
+  &__item
+
+    &:nth-child(1)
+      text-align: left
+
+    &:nth-child(2) > *
+      text-align: center
+
+    &:nth-child(3) > *
+      text-align: right
+
+  &__title
+    margin-bottom: .5rem
+    font-family: Helvetica Neue
+    font-size: 0.875rem
+    font-style: normal
+    font-weight: 400
+    line-height: 110%
+    color: #575757
+    transition: color .3s ease-in-out
+
+  &__title.active
+    color: #FF3535
+
+  &__experience
+    font-family: Helvetica Neue
+    font-size: 1rem
+    font-style: normal
+    font-weight: 400
+    line-height: 110%
+    color: #000

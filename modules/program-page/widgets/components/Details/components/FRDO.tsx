@@ -13,7 +13,7 @@ export const FRDO = () => {
 	return (
 		<div className={stls.content}>
 			<div className={stls.topWrapper}>
-				<IconInfoFRDO className={stls.icon} color='#000' />
+				<IconInfoFRDO className={stls.icon} color='#fff' />
 				<p>
 					<span className={stls.bold}>ФРДО —</span> Федеральный реестр сведений
 					документов об образовании

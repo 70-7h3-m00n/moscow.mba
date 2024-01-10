@@ -1,12 +1,15 @@
-import { Dispatch, HTMLAttributes, SetStateAction } from 'react'
+import { Dispatch, HTMLAttributes, ReactNode, SetStateAction } from 'react'
 
 export type AccordionProps = HTMLAttributes<HTMLDivElement> & {
 	item: {
-		title: string
-		content: string
-		isList: boolean
+		title: string | null
+		string?: string | null
+		new?: boolean | null
+		duration?: number | null
 	}
 	idx: number
 	active: boolean
 	handler: Dispatch<SetStateAction<number>>
+	variant: 'modules' | 'faq'
+	children: ReactNode
 }

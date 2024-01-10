@@ -1,0 +1,130 @@
+@use 'sass:math'
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.container
+  position: relative
+  min-width: 100%
+  max-width: 42rem
+  padding: 1.5rem
+  border-radius: 1.5rem
+  background-color: #fff
+
+.close
+  position: absolute
+  top: 2rem
+  right: 2rem
+  z-index: 2
+  display: flex
+  justify-content: center
+  align-items: center
+  margin: 0
+  padding: 0
+  padding: f.px(12)
+  border: 0
+  appearance: none
+  background: none
+
+.content
+  @include m.media(laptop, desktop, widescreen)
+    display: flex
+    min-width: 100%
+    gap: 1rem
+
+.left
+  width: 5.75rem
+  height: 7.5rem
+  // overflow: hidden
+  &__image
+    border-radius: 1rem
+
+
+.right
+  padding: 1.5rem
+  border-radius: 1rem
+  background: #F8F8F8
+
+.title
+  color: #000
+  font-family: Unbounded
+  font-size: 1.5rem
+  font-weight: 400
+  line-height: 120%
+
+.about
+  color: #000
+  font-family: Helvetica Neue
+  font-size: 1rem
+  font-weight: 400
+  line-height: 120%
+
+.subtitle
+  @include m.media(phone, tablet)
+    margin-top: f.px(22)
+    margin-bottom: 0
+    font-size: f.px(16)
+    font-weight: 700
+  @include m.media(laptop, desktop, widescreen)
+    margin: 0
+    font-size: f.px(18)
+    font-weight: 500
+  line-height: 120%
+  @include m.dye(c, c.$chi)
+
+.list
+  @include m.media(phone, tablet)
+    margin-top: f.px(15)
+  @include m.media(laptop, desktop, widescreen)
+    margin-top: f.px(20)
+
+.listItem
+  position: relative
+  max-width: 75ch
+  & + .listItem
+    margin-top: f.px(10)
+  @include m.media(phone, tablet)
+    font-size: f.px(15)
+    color: #575757
+  @include m.media(laptop, desktop, widescreen)
+    font-size: f.px(16)
+    color: #575757
+  padding-left: f.px(16)
+  font-weight: 300
+  line-height: 120%
+  & p
+    margin: 0
+  &::before
+    content: ''
+    position: absolute
+    top: f.px(8)
+    left: 0
+    min-width: f.px(5)
+    width: 100%
+    max-width: f.px(5)
+    min-height: f.px(5)
+    height: 100%
+    max-height: f.px(5)
+    border-radius: 50%
+    @include m.dye(bgc, #000)
+
+.p
+  max-width: 75ch
+  @include m.media(phone, tablet)
+    margin-top: f.px(7)
+    font-size: f.px(15)
+    @include m.dye(c, c.$omega)
+  @include m.media(laptop, desktop, widescreen)
+    margin-top: f.px(10)
+    font-size: f.px(16)
+    @include m.dye(c, c.$chi)
+  font-weight: 300
+  line-height: 120%
+
+.laptopDesktopWidescreen
+  @include m.media(phone, tablet)
+    display: none
+
+.phoneTablet
+  @include m.media(laptop, desktop, widescreen)
+    display: none

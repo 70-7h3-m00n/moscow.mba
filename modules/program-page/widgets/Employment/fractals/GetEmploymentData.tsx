@@ -28,7 +28,7 @@ export const GetEmploymentData = () => {
 		{
 			title: 'Конкурентное портфолио',
 			desc: 'Поможем оформить кейсы в презентабельное портфолио и подскажем площадки для публикаций',
-			background: <GridIcons variant='beta' />
+			background: <GridIcons className={stls.gridIcons} variant='beta' />
 		},
 		{
 			title:

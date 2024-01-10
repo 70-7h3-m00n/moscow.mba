@@ -3,16 +3,17 @@ import cn from 'classnames'
 
 import { useRouter } from 'next/router'
 import { useAt } from '@/hooks/index'
-
 import { Wrapper } from '@/components/layout'
-import { faqMba, faqMini, faqProfession } from './constants'
+// import { faqMba, faqMini, faqProfession } from './constants'
 import { Accordion } from '../Accordion/Accordion'
 import { FaqProps } from './types'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 
 export const Faq = ({ className, ...rest }: FaqProps) => {
 	const at = useAt()
-	const router = useRouter()
+	const { state } = useContext(ProgramPageContext)
+	const { program } = state
 
 	const [activeIdx, setActiveIdx] = useState(0)
 
@@ -28,7 +29,7 @@ export const Faq = ({ className, ...rest }: FaqProps) => {
 						</p>
 					</div>
 					<div className={stls.content}>
-						{faqProfession.map((item, idx) => (
+						{program?.faq?.map((item, idx) => (
 							<Accordion
 								className={stls.accordion}
 								key={idx}
@@ -36,7 +37,10 @@ export const Faq = ({ className, ...rest }: FaqProps) => {
 								item={item}
 								idx={idx}
 								handler={() => setActiveIdx(activeIdx === idx ? null : idx)}
-							/>
+								variant='faq'
+							>
+								<p className={stls.answer}>{item?.string}</p>
+							</Accordion>
 						))}
 					</div>
 				</div>

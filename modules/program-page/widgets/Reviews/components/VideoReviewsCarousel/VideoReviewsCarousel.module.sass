@@ -1,0 +1,44 @@
+.carousel
+  margin-bottom: 3rem
+  
+  & > div > div:first-of-type
+    display: inline-flex 
+    gap: 1.5rem
+
+  &__post 
+    display: flex !important 
+    max-height: 30rem
+    height: 30rem
+    max-width: 20rem 
+    width: 20rem
+    flex-direction: column 
+    align-items: flex-start 
+    gap: 16px 
+    border-radius: 8px
+    background: unset
+    box-sizing: border-box
+    cursor: grab
+    user-select: none
+
+    &:active
+      cursor: grabbing
+
+.post
+  position: relative
+
+.carousel__navigation
+  display: flex
+  justify-content: center
+  gap: 1.5rem
+
+.prev
+  padding: 0
+  border: none
+  background-color: transparent
+  .svg
+    transform: rotate(180deg)
+
+.next
+  padding: 0
+  border: none
+  background-color: transparent

@@ -1,8 +1,9 @@
 import { SVGProps } from 'react'
 
-export const IconNext = ({ ...rest }: SVGProps<SVGSVGElement>) => {
+export const IconNext = ({ className, ...rest }: SVGProps<SVGSVGElement>) => {
 	return (
 		<svg
+			className={className}
 			xmlns='http://www.w3.org/2000/svg'
 			width='24'
 			height='24'

@@ -13,7 +13,6 @@ export const MobileCarousel = ({ className, ...rest }: MobileCarouselProps) => {
 	const sliderRef = useRef<Slider>(null)
 	const slidesRef = useRef(null)
 	const navigationWrapperRef = useRef<HTMLDivElement>(null)
-	const [activeSlideIndex, setActiveSlideIndex] = useState(0)
 	const slidesData = GetHowProcessGoesData()
 
 	const [nav1, setNav1] = useState(null)
@@ -55,17 +54,19 @@ export const MobileCarousel = ({ className, ...rest }: MobileCarouselProps) => {
 	}
 
 	const nextBtn = () => {
+		console.log('click next')
+
 		slider1.current?.slickNext()
 	}
 
 	const previousBtn = () => {
+		console.log('click prev')
 		slider1.current?.slickPrev()
 	}
 
 	return (
 		<section className={cn(className, stls.container)}>
 			<Wrapper classNames={[stls.content]}>
-				<h2>Как проходит обучение</h2>
 				<div ref={slidesRef} className={stls.slides}>
 					<div className={stls.navigationWrapper} ref={navigationWrapperRef}>
 						<Slider
@@ -108,14 +109,14 @@ export const MobileCarousel = ({ className, ...rest }: MobileCarouselProps) => {
 						))}
 					</Slider>
 
-					<div className={stls.carousel__navigation}>
+					{/* <div className={stls.carousel__navigation}>
 						<button className={stls.prev} onClick={previousBtn}>
 							<IconNext className={stls.svg} />
 						</button>
 						<button className={stls.next} onClick={nextBtn}>
 							<IconNext className={stls.svg} />
 						</button>
-					</div>
+					</div> */}
 				</div>
 			</Wrapper>
 		</section>

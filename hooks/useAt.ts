@@ -61,7 +61,8 @@ const useAt = () => {
 		programChunk: !!getProgramTitle,
 		getSplitedPath,
 		// new: dev ? !!getProgramTitle && getSplitedPath[1] === 'mba' : false
-		new: false
+		new: dev ? !!getProgramTitle : false
+		// new: false
 	}
 }
 

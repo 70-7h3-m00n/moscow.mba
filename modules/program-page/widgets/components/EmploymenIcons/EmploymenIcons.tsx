@@ -10,7 +10,7 @@ export const EmploymenIcons = ({ className }: EmploymenIconsProps) => {
 	return (
 		<div className={stls.content}>
 			<div className={cn(stls.iconWrapper, stls.content__left)}>
-				<IconSwitch />
+				<IconSwitch className={stls.icon} />
 			</div>
 			<div className={cn(stls.content__photo)}>
 				<Image
@@ -21,7 +21,7 @@ export const EmploymenIcons = ({ className }: EmploymenIconsProps) => {
 				/>
 			</div>
 			<div className={cn(stls.iconWrapper, stls.content__right)}>
-				<IconLine />
+				<IconLine className={stls.icon} />
 			</div>
 		</div>
 	)

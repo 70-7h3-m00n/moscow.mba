@@ -14,29 +14,26 @@ export const RedRectangleSection = ({
 }: RedRectangleSectionType) => {
 	const at = useAt()
 	const currentYear = getYear(new Date())
-	const { studyHours, practicalLessons, workshops, minStudyMonths } =
-		program?.duration
 
 	const professionRectangleData = [
 		{
-			title: `${studyHours} часов` || null,
+			title: `${program?.duration?.studyHours} часов` || null,
 			description: 'Видео-уроков'
 		},
 		{
-			title: practicalLessons,
+			title: program?.duration?.practicalLessons,
 			description: 'Практических занятий'
 		},
 		{
-			title: workshops,
+			title: program?.duration?.workshops,
 			description: 'Воркшопов'
 		},
 		{
 			title:
-				`${minStudyMonths} ${ruCase(+minStudyMonths, [
-					'месяц',
-					'месяца',
-					'месяцев'
-				])}` || null,
+				`${program?.duration?.minStudyMonths} ${ruCase(
+					+program?.duration?.minStudyMonths,
+					['месяц', 'месяца', 'месяцев']
+				)}` || null,
 			description: `Продолжительность обучения`
 		},
 

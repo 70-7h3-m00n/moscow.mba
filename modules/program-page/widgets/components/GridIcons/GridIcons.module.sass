@@ -10,6 +10,9 @@
   gap: 1.5rem
   width: min-content
 
+  @include m.media(phone, tablet)
+    align-self: flex-start
+
   &__gitBranch
     border-radius: 1rem
     background-color: #fff
@@ -28,3 +31,12 @@
   align-items: center
   width: 5.6rem
   height: 5.6rem
+
+  @include m.media(phone, tablet)
+    width: 4rem 
+    height: 4rem 
+
+.icon
+  @include m.media(phone, tablet)
+    width: 2rem 
+    height: 2rem 

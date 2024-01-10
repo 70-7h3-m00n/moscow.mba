@@ -11,11 +11,28 @@
   row-gap: 1.5rem
   column-gap: 1rem
 
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr
+    row-gap: 1rem
+
 .inputName,
 .inputPromo,
 .inputRadio,
 .inputSubmit
   grid-column: span 2
+
+  @include m.media(phone, tablet)
+    grid-column: span 1
+
+.inputEmail
+
+  @include m.media(phone, tablet)
+    margin-bottom: 1rem
+
+.inputPromo
+
+  @include m.media(phone, tablet)
+    margin-bottom: 1rem
 
 .privacyPolicy
   margin-top: 1rem

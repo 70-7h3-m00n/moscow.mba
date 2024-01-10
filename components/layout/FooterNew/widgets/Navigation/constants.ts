@@ -1,26 +1,28 @@
+import { routesFront } from '@/config/index'
+
 export const navList = [
 	{
 		title: 'Направления',
 		list: [
 			{
 				item: 'MBA',
-				src: ''
+				src: `${routesFront.programs}/mba/online`
 			},
 			{
 				item: 'Mini MBA',
-				src: ''
+				src: `${routesFront.programs}/mini/online`
 			},
 			{
 				item: 'Executive MBA',
-				src: ''
+				src: `${routesFront.programs}/executive`
 			},
 			{
 				item: 'Профессии',
-				src: ''
+				src: `${routesFront.programs}/profession/online`
 			},
 			{
 				item: 'Курсы',
-				src: ''
+				src: `${routesFront.programs}/course/online`
 			}
 		]
 	},
@@ -29,35 +31,36 @@ export const navList = [
 		list: [
 			{
 				item: 'О нас',
-				src: ''
+				src: routesFront.about
 			},
 			{
 				item: 'Центр карьеры',
-				src: ''
+				src: routesFront.job
 			},
 			{
 				item: 'Отзывы',
-				src: ''
+				src: routesFront.reviews
 			},
 			{
 				item: 'Эксперты',
-				src: ''
+				src: routesFront.teachers
 			},
 			{
 				item: 'Контакты',
-				src: ''
+				src: routesFront.contact
 			},
 			{
 				item: 'Вакансии',
-				src: ''
+				// TODO
+				src: '/'
 			},
 			{
 				item: 'Оплата',
-				src: ''
+				src: routesFront.payment
 			},
 			{
 				item: 'Сведения об организации',
-				src: ''
+				src: routesFront.about
 			}
 		]
 	},
@@ -66,15 +69,16 @@ export const navList = [
 		list: [
 			{
 				item: 'Семинары',
-				src: ''
+				src: routesFront.seminars
 			},
 			{
 				item: 'Бесплатные курсы',
-				src: ''
+				//TODO
+				src: routesFront.programs
 			},
 			{
 				item: 'Журнал',
-				src: ''
+				src: routesFront.journal
 			}
 		]
 	},
@@ -83,7 +87,7 @@ export const navList = [
 		list: [
 			{
 				item: 'Корпоративным клиентам',
-				src: ''
+				src: routesFront.partner
 			}
 		]
 	}

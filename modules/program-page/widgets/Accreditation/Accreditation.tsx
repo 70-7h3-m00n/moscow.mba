@@ -3,9 +3,11 @@ import cn from 'classnames'
 import { AccreditationProps } from './types'
 
 import { Wrapper } from '@/components/layout'
-import { accreditationData } from './constants'
+import { AccreditationData } from './constants'
 
 export const Accreditation = ({ className, ...rest }: AccreditationProps) => {
+	const accreditationData = AccreditationData()
+
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>

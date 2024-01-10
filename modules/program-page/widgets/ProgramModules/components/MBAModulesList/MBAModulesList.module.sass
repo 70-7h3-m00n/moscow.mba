@@ -1,0 +1,19 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.module
+  position: relative
+
+  &:not(:last-child)::after
+    position: absolute
+    content: ''
+    height: 1px
+    bottom: 0
+    left: 1.5rem
+    right: 1.5rem
+    background: #E9E9E9
+    
+.tag
+  margin-top: .5rem
+  margin-bottom: 1.5rem
