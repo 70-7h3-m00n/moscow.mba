@@ -6,6 +6,8 @@ import useAt from '@/hooks/useAt'
 import { useContext, useState } from 'react'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import Image from 'next/image'
+import IconVisa from '@/components/icons/IconVisa'
+import { IconVisaAlt } from '@/components/icons'
 
 export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 	const at = useAt()
@@ -43,12 +45,7 @@ export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 			name: 'Оплатить всю сумму сразу с дополнительной скидкой 5% — 8 957 Р',
 			image: (
 				<div className={stls.paymentType}>
-					<Image
-						src={'/assets/images/program/visa.svg'}
-						alt='Visa'
-						width={49}
-						height={16}
-					/>
+					<IconVisaAlt />
 					<Image
 						src={'/assets/images/program/mir.svg'}
 						alt='Mir'

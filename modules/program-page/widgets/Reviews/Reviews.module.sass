@@ -9,6 +9,9 @@
   background: #E7EAED
   overflow: hidden
 
+  @include m.media(phone, tablet)
+    padding: 2rem 1rem
+
 .title
   margin-bottom: 1rem
   color: #000
@@ -26,11 +29,12 @@
   text-align: center
   line-height: 110%
 
-.rating
-  margin-bottom: 7.5rem
-
+.rating,
 .carousel
   margin-bottom: 7.5rem
+
+  @include m.media(phone, tablet)
+    margin-bottom: 2rem
 
 .videoReviews
   margin-bottom: 3rem

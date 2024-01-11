@@ -10,6 +10,7 @@
   letter-spacing: -0.1rem
 
   @include m.media(phone, tablet)
+    margin-bottom: 2rem
     text-align: center
     font-size: 1.75rem
     font-weight: 400
@@ -23,6 +24,7 @@
 
   @include m.media(phone, tablet)
     grid-template-columns: 1fr
+    gap: 1rem
 
 .item
   padding: 1.5rem
@@ -30,6 +32,9 @@
   font-size: 1.125rem
   color: #000
   background-color: #fff
+
+  @include m.media(phone, tablet)
+    padding: 1rem
 
   &__p
     color: #000

@@ -7,7 +7,6 @@
   padding: 0
 
 .carousel
-  margin-bottom: 3rem
   
   & > .slick-dots
     background-color: black
@@ -66,6 +65,7 @@
   //   z-index: 10
 
 .navigation
+  height: 5.5rem
   
   & > .slick-dots
     background-color: black
@@ -127,9 +127,15 @@
     font-size: 1.5rem
     line-height: 120%
 
+    @include m.media(phone, tablet)
+      font-size: 1.25rem
+
   &__desc
     color: #575757
     line-height: 110%
+
+    @include m.media(phone, tablet)
+      font-size: .875rem
 
 .carousel__navigation
   display: flex
@@ -149,6 +155,7 @@
   background-color: transparent
 
 .navigationCarousel
+  position: relative
 
   &__slide
     display: flex
@@ -163,7 +170,7 @@
     width: 1.5rem
     height: 1.5rem
     border-radius: 10rem
-    background-color: red
+    background-color: #FF3535
     color: #fff
     z-index: 10
 
@@ -174,4 +181,15 @@
     top: 50%
     left: 0
     border-radius: 2.5rem
-    background-color: red
+    background-color: #FF3535
+
+  &__desc
+    position: absolute
+    bottom: 0
+    text-align: center
+    font-family: Helvetica Neue
+    font-size: 0.875rem
+    font-style: normal
+    font-weight: 400
+    line-height: 110% 
+    color: #FF3535

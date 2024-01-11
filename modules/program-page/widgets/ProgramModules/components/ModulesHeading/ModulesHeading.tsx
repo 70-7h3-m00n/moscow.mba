@@ -55,7 +55,7 @@ export const ModulesHeading = ({ className, ...rest }: ModulesHeadingProps) => {
 					program?.duration?.modulesTools?.length > 0 && (
 						<>
 							<h3 className={stls.right__title}>
-								Научитесь работать с инструментами
+								Научитесь работать с&nbsp;инструментами
 							</h3>
 							<ul className={stls.tagList}>
 								{program?.duration?.modulesTools?.map(skill => (

@@ -88,12 +88,16 @@ const Until = ({ preposition = true, executive = false }) => {
 			: findNearestFutureDate(untilMillisecondsArray)
 
 	return (
-		<>
+		<span
+			style={{
+				whiteSpace: 'nowrap'
+			}}
+		>
 			{nearestFutureDate.toLocaleString([at.en ? 'en-US' : 'ru'], {
 				day: 'numeric',
 				month: 'long'
 			})}
-		</>
+		</span>
 	)
 }
 

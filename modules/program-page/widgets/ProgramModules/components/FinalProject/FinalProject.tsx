@@ -15,6 +15,7 @@ export const FinalProject = () => {
 				idx={0}
 				handler={() => setActiveIdx(activeIdx === 0 ? null : 0)}
 				variant='modules'
+				final
 			>
 				<p className={stls.description}>
 					Подберёте оптимальную структуру управления командой. Научитесь

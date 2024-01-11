@@ -11,8 +11,6 @@
   border-radius: 1rem
   background-color: #fff
 
-
-
   @include m.media(tablet, phone)
     min-width: unset
     gap: 0
@@ -29,21 +27,16 @@
     @include m.media(laptop, tablet, phone)
       display: none
 
-  &__title
-    margin-bottom: 1rem
-    font-size: 1.375rem
-    font-style: normal
-    font-weight: 400
-    line-height: 110%
-    color: #000
+.sale
+  margin-bottom: 1rem
+  font-size: 1.375rem
+  font-style: normal
+  font-weight: 400
+  line-height: 110%
+  color: #000
 
-    @include m.media(laptop, tablet, phone)
-      display: none
-
-  &__tag
-    @include m.media(laptop, tablet, phone)
-      display: none !important
-    
+  @include m.media(laptop, tablet, phone)
+    display: none !important  
 
 .list
   display: flex

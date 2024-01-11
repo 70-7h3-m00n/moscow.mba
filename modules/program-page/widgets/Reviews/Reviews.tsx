@@ -8,7 +8,11 @@ import Carousel from './components/ReviewsCarousel/Carousel'
 import { VideoReviewsCarousel } from './components/VideoReviewsCarousel/VideoReviewsCarousel'
 import { BtnBeta } from '@/components/btns'
 import { StudentStories } from './components/StudentStories/StudentStories'
+import useAt from '@/hooks/useAt'
+
 export const Reviews = ({ className, ...rest }: ReviewsProps) => {
+	const at = useAt()
+
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
@@ -24,7 +28,7 @@ export const Reviews = ({ className, ...rest }: ReviewsProps) => {
 				<BtnBeta className={stls.moreReviewsBtn} variant='alpha'>
 					Больше отзывов
 				</BtnBeta>
-				<StudentStories />
+				{(at.course || at.profession) && <StudentStories />}
 			</Wrapper>
 		</section>
 	)

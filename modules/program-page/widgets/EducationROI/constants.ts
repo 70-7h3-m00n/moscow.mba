@@ -10,7 +10,7 @@ export const dataROI = [
 		experience: 'Опыт 12 месяцев'
 	},
 	{
-		salary: '60 000 ₽',
+		salary: '160 000 ₽',
 		title: 'Senior',
 		experience: 'Опыт 24 месяца'
 	}

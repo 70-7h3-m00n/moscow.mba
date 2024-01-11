@@ -2,11 +2,8 @@ import stls from './MiniModule.module.sass'
 import cn from 'classnames'
 import { MiniModuleProps } from './types'
 
-import { useContext, useState } from 'react'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
+import { useState } from 'react'
 import { Accordion } from 'modules/program-page/widgets/Accordion/Accordion'
-import { Tag } from 'modules/program-page/widgets/components'
-import { IconLightning } from '@/components/icons'
 
 export const MiniModule = ({
 	className,
@@ -14,9 +11,6 @@ export const MiniModule = ({
 	idx,
 	...rest
 }: MiniModuleProps) => {
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
-
 	const [activeIdx, setActiveIdx] = useState(0)
 
 	return (

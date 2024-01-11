@@ -3,7 +3,7 @@ import { SVGProps } from 'react'
 export const IconCheck = ({
 	color,
 	...rest
-}: SVGProps<SVGSVGElement> & { color: string }) => {
+}: SVGProps<SVGSVGElement> & { color?: string }) => {
 	return (
 		<svg
 			xmlns='http://www.w3.org/2000/svg'

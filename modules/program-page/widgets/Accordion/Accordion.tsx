@@ -2,9 +2,7 @@ import stls from './Accordion.module.sass'
 import cn from 'classnames'
 import { AccordionProps } from './types'
 
-import { motion } from 'framer-motion'
-import React from 'react'
-import { IconArrow, IconPlus, Tag } from '../components'
+import { IconPlus, Tag } from '../components'
 import { ruCase } from '@/helpers/index'
 import { IconArrowAlt } from '../components/icons/IconArrowAlt/IconArrowAlt'
 import { IconLightning } from '@/components/icons'
@@ -16,14 +14,15 @@ export const Accordion = ({
 	handler,
 	idx,
 	variant,
+	final = false,
 	children
 }: AccordionProps) => {
 	return (
 		<div className={cn(className, stls.item)} onClick={() => handler(idx)}>
-			<button className={stls.item__btn}>
+			<button className={cn(stls.item__btn, { [stls.final]: final })}>
 				<div className={stls.titleWrapper}>
 					{item?.new && (
-						<Tag variant={'delta'}>
+						<Tag variant='delta'>
 							New <IconLightning className={stls.lightning} />
 						</Tag>
 					)}
@@ -36,7 +35,11 @@ export const Accordion = ({
 						{item?.title}
 					</p>
 				</div>
-				<div className={stls.durationWrapper}>
+				<div
+					className={cn(stls.durationWrapper, {
+						[stls.noDuration]: !item?.duration
+					})}
+				>
 					{item?.duration && (
 						<div
 							className={cn(stls.duration, { [stls.duration__active]: active })}

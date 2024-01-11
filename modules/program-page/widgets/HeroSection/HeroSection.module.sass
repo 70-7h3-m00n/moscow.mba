@@ -79,29 +79,6 @@
     flex-direction: row
     justify-content: space-between
 
-.banner
-  grid-area: banner
-  display: none
-
-  @include m.media(tablet, phone)
-    display: flex
-    align-items: center
-    gap: 1rem
-    padding: 0.5rem
-    border-radius: 1rem
-    font-size: 0.875rem
-    font-weight: 400
-    line-height: 120%
-    color: #000
-    background-color: #fff
-
-  @include m.media(tablet)
-    align-self: flex-start
-
-  p
-    @include m.media(tablet, phone)
-      max-width: 15rem
-
 .main
   grid-area: main
   display: flex
@@ -223,15 +200,7 @@
   @include m.media(tablet, phone)
     display: block
   
-  &__title
-    margin-bottom: 1rem
-    font-size: 1.125rem
-    font-style: normal
-    font-weight: 400
-    line-height: 110%
-  
-    @include m.media(laptop, tablet, phone)
-      color: #fff
+
 
 .cornerPhoto
   width: 90px

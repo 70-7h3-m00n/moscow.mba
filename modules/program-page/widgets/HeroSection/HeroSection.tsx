@@ -6,13 +6,15 @@ import { Wrapper } from '@/components/layout'
 import Image from 'next/image'
 import { Switch } from '../components/Switch/Switch'
 import { Details, Tag } from '../components'
-import { IconFire, IconHeart } from './components'
+import { IconFire, IconHeart } from './widgets'
 import { BtnBeta } from '@/components/btns'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { useContext } from 'react'
 import { PlacesLeft, Until } from '@/components/costs'
 import { format } from 'date-fns'
 import { ru } from 'date-fns/locale'
+import { Partnership } from './widgets/Partnership/Partnership'
+import { Sale } from './widgets/Sale/Sale'
 
 const stringDate = format(new Date(), 'LLLL yyyy', { locale: ru })
 
@@ -24,6 +26,8 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 		?.map((el, idx) => (idx < 5 ? el.string : undefined))
 		.filter(Boolean)
 
+	const isPartnership = program?.partnership && program?.partnership?.url
+
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
@@ -32,28 +36,8 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 						<Switch className={stls.switch} />
 					</div>
 					<div className={stls.detailsMobile}>
-						{program?.partnership && program?.partnership?.url && (
-							<div className={stls.banner}>
-								<Image
-									src={program?.partnership?.url}
-									width={40}
-									height={40}
-									alt={program?.partnership?.string}
-								/>
-								<p>{program?.partnership?.string}</p>
-							</div>
-						)}
-						<div className={stls.sale}>
-							<p className={stls.sale__title}>
-								{/* //TODO discount & until date */}
-								Участвует в&nbsp;распродаже <span className='red'>
-									-45%
-								</span> до <Until />
-							</p>
-							<Tag className={stls.sale__tag} variant='gamma'>
-								Осталось мест: <PlacesLeft uniqueKey={program?.id} />
-							</Tag>
-						</div>
+						{isPartnership && <Partnership program={program} mobile />}
+						<Sale className={stls.sale} program={program} />
 					</div>
 					<div className={stls.main}>
 						<h1 className={stls.title}>{program?.title}</h1>

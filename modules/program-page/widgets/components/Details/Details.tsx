@@ -9,6 +9,8 @@ import { Tag } from '../Tag/Tag'
 import { PlacesLeft } from '@/components/costs'
 import { GetDetailsData } from './fractals/GetDetailsData'
 import Until from '@/components/costs/Until'
+import { Partnership } from '../../HeroSection/widgets/Partnership/Partnership'
+import { Sale } from '../../HeroSection/widgets/Sale/Sale'
 
 export const Details = ({ className }: DetailsProps) => {
 	const { state } = useContext(ProgramPageContext)
@@ -16,29 +18,14 @@ export const Details = ({ className }: DetailsProps) => {
 
 	const detailsData = GetDetailsData()
 
+	const isPartnership = program?.partnership && program?.partnership?.url
+
 	return (
 		<div className={cn(className, stls.details)}>
-			{program?.partnership && program?.partnership?.url && (
-				<div className={stls.details__banner}>
-					<Image
-						src={program?.partnership?.url}
-						width={40}
-						height={40}
-						alt={program?.partnership?.string}
-					/>
-					<p>{program?.partnership?.string}</p>
-				</div>
+			{isPartnership && (
+				<Partnership className={stls.details__banner} program={program} />
 			)}
-			<div>
-				<p className={stls.details__title}>
-					{/* //TODO discount & until date */}
-					Участвует в&nbsp;распродаже <span className='red'>-45%</span> до{' '}
-					<Until />
-				</p>
-				<Tag className={stls.details__tag} variant='gamma'>
-					Осталось мест: <PlacesLeft uniqueKey={program?.id} />
-				</Tag>
-			</div>
+			<Sale className={stls.sale} program={program} />
 			<ul className={stls.list}>
 				{detailsData.map((item, idx) => (
 					<li className={stls.item} key={idx}>

@@ -44,14 +44,14 @@ export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
 		dots: false,
 		speed: 500,
 		// slidesToShow: 2,
-		slidesToScroll: isMobile ? 1 : 3,
+		slidesToScroll: 1,
 		adaptiveHeight: true,
-		autoplay: false,
+		autoplay: true,
 		autoplaySpeed: 4000,
 		swipeToSlide: false,
 		vertical: false,
 		arrows: false,
-		infinite: false,
+		infinite: true,
 		variableWidth: true,
 		className: cn(stls.carousel)
 	}

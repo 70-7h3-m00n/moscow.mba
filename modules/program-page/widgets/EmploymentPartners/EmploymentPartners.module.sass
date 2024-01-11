@@ -7,6 +7,9 @@
   grid-template-columns: repeat(2, 1fr)
   gap: 1.5rem
 
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr
+
 .title
   margin-bottom: 3rem
   color: #000
@@ -14,33 +17,52 @@
   line-height: 120%
   letter-spacing: -0.1rem
 
+  @include m.media(phone, tablet)
+    margin-bottom: 2rem
+    font-size: 1.625rem
+
 .list
   display: flex
   flex-wrap: wrap
   gap: 3rem
 
+  @include m.media(phone, tablet)
+    gap: 1.5rem
+
 .item
   width: min-content
+
+  @include m.media(phone, tablet)
+    svg
+      height: 1.1rem
+      width: auto
 
 .carousel
   position: relative
   
   & > div > div:first-of-type
-    display: inline-flex 
+    display: inline-flex
+    gap: 1rem
 
   &__post 
     // max-width: 22rem 
     cursor: grab
     user-select: none
-
+    outline: none
+    
     &:active
       cursor: grabbing
+
 
 .post
   width: 660px
   height: 360px
   overflow: hidden
   border-radius: 1.5rem
+  position: relative
+  
+  @include m.media(phone, tablet)
+    height: 12rem
 
   &__image
     border-radius: 1.5rem

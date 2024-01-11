@@ -9,6 +9,10 @@
   align-items: end
   margin-bottom: 3rem
 
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr
+    gap: 1rem
+
 .title
   margin-bottom: 0
   font-family: Unbounded
@@ -19,6 +23,9 @@
   letter-spacing: -0.1rem
   color: #000
 
+  @include m.media(phone, tablet)
+    font-size: 1.625rem
+
 .subtitle
   font-family: Helvetica Neue
   font-size: 1.125rem
@@ -27,11 +34,19 @@
   line-height: 120%
   color: #575757
 
+  @include m.media(phone, tablet)
+    font-size: 1rem
+
 .content
   display: grid
   grid-template-columns: 1fr 3fr
   gap: 1.5rem
   grid-auto-rows: 19rem
+
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr
+    grid-template-rows: 18rem auto
+    grid-auto-rows: unset
 
   &__item
     display: flex
@@ -40,9 +55,16 @@
     padding: 1.5rem
     border-radius: 1.5rem
 
+    @include m.media(phone, tablet)
+      padding: 1rem
+
 .left
   color: #fff
   background-color: #FF3535
+
+  @include m.media(phone, tablet)
+    gap: 2rem
+    height: min-content
 
   &__title
     font-size: 1rem
@@ -57,12 +79,18 @@
 .right
   background-color: #fff
 
+  @include m.media(phone, tablet)
+    grid-row: 1
+
   &__title
     margin-bottom: 1rem
     font-family: Unbounded
     font-size: 1.5rem
     line-height: 120% 
     color: #FF3535
+
+    @include m.media(phone, tablet)
+      font-size: 1.25rem
   
   &__subtitle
     font-size: 1rem
@@ -212,6 +240,9 @@
     color: #575757
     transition: color .3s ease-in-out
 
+    @include m.media(phone, tablet)
+      font-size: 0.75rem
+
   &__title.active
     color: #FF3535
 
@@ -222,3 +253,6 @@
     font-weight: 400
     line-height: 110%
     color: #000
+
+    @include m.media(phone, tablet)
+      font-size: 0.75rem

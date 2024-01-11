@@ -44,10 +44,16 @@
     font-size: 1.5rem
     line-height: 120%
 
+    @include m.media(phone, tablet)
+      font-size: 1.25rem
+
   &__desc
     color: #575757
     font-size: 1rem
     line-height: 120%
+
+    @include m.media(phone, tablet)
+      font-size: .9rem
 
   &__content
     padding: 1.5rem

@@ -1,0 +1,21 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content
+
+  @include m.media(phone)
+    max-width: 17rem
+
+  &__title
+    margin-bottom: 1rem
+    font-size: 1.375rem
+    font-style: normal
+    font-weight: 400
+    line-height: 110%
+    color: #000
+
+    @include m.media(laptop, tablet, phone)
+      font-size: 1.125rem
+      color: #fff
+
