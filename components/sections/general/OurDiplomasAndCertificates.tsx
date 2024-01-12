@@ -18,11 +18,13 @@ import diplomaAddendumProfession from '@/public/assets/diplomas/profession/diplo
 import certificateCourses from '@/public/assets/diplomas/courses/certificate-courses.jpg'
 import qualificationCertificateCourses from '@/public/assets/diplomas/courses/qualification-certificate-courses.jpg'
 import { Wrapper } from '@/components/layout'
+import useAt from '@/hooks/useAt'
 
 const profIndDocuments = [
 	{
 		path: academyDiplomaProfInd,
 		name: 'Диплом академии',
+		nameEn: 'Diploma of the academy',
 		fillWidth: 783,
 		fullHeight: 1110,
 		smallWidth: 362,
@@ -31,6 +33,7 @@ const profIndDocuments = [
 	{
 		path: qualificationDiplomaProfInd,
 		name: 'Диплом уст. образца',
+		nameEn: 'Diploma of the established form',
 		fillWidth: 783,
 		fullHeight: 1110,
 		smallWidth: 362,
@@ -39,6 +42,7 @@ const profIndDocuments = [
 	{
 		path: diplomaAddendumProfInd,
 		name: 'Приложение к диплому',
+		nameEn: 'Diploma supplement',
 		fillWidth: 783,
 		fullHeight: 1110,
 		smallWidth: 362,
@@ -47,6 +51,7 @@ const profIndDocuments = [
 	{
 		path: diplomaSupplementProfInd,
 		name: 'Диплом Supplement',
+		nameEn: 'International Diploma Supplement',
 		fillWidth: 795,
 		fullHeight: 1125
 	}
@@ -56,6 +61,7 @@ const miniDocuments = [
 	{
 		path: academyDiplomaMini,
 		name: 'Диплом академии',
+		nameEn: 'Diploma of the academy',
 		fillWidth: 783,
 		fullHeight: 1110,
 		smallWidth: 362,
@@ -64,6 +70,7 @@ const miniDocuments = [
 	{
 		path: qualificationDiplomaMini,
 		name: 'Диплом уст. образца',
+		nameEn: 'Diploma of the established form',
 		fillWidth: 783,
 		fullHeight: 1110,
 		smallWidth: 362,
@@ -72,6 +79,7 @@ const miniDocuments = [
 	{
 		path: diplomaAddendumMini,
 		name: 'Приложение к диплому',
+		nameEn: 'Diploma supplement',
 		fillWidth: 783,
 		fullHeight: 1110,
 		smallWidth: 362,
@@ -80,6 +88,7 @@ const miniDocuments = [
 	{
 		path: diplomaSupplementMini,
 		name: 'Диплом Supplement',
+		nameEn: 'International Diploma Supplement',
 		fillWidth: 795,
 		fullHeight: 1125
 	}
@@ -89,6 +98,7 @@ const professionDocuments = [
 	{
 		path: certificateProfession,
 		name: 'Сертификат академии',
+		nameEn: 'Certificate of the academy',
 		fillWidth: 783,
 		fullHeight: 1110,
 		smallWidth: 362,
@@ -97,6 +107,7 @@ const professionDocuments = [
 	{
 		path: qualificationDiplomaProfession,
 		name: 'Диплом уст. образца',
+		nameEn: 'Diploma of the established form',
 		fillWidth: 783,
 		fullHeight: 1110,
 		smallWidth: 362,
@@ -105,6 +116,7 @@ const professionDocuments = [
 	{
 		path: diplomaAddendumProfession,
 		name: 'Приложение к диплому',
+		nameEn: 'Diploma supplement',
 		fillWidth: 783,
 		fullHeight: 1110,
 		smallWidth: 362,
@@ -116,6 +128,7 @@ const coursesDocuments = [
 	{
 		path: certificateCourses,
 		name: 'Сертификат академии',
+		nameEn: 'Certificate of the academy',
 		fillWidth: 783,
 		fullHeight: 1110,
 		smallWidth: 362,
@@ -124,6 +137,7 @@ const coursesDocuments = [
 	{
 		path: qualificationCertificateCourses,
 		name: 'Удостоверение уст. образца',
+		nameEn: 'Certificate of the established form',
 		fillWidth: 783,
 		fullHeight: 1110,
 		smallWidth: 362,
@@ -134,41 +148,63 @@ const coursesDocuments = [
 const documentsBasedOnProgram = [
 	{
 		title: 'MBA',
+		titleEn: 'MBA',
 		content: profIndDocuments,
 		isImage: true
 	},
 	{
 		title: 'MBA Mini',
+		titleEn: 'MBA Mini',
 		content: miniDocuments,
 		isImage: true
 	},
 	{
 		title: 'Профессия',
+		titleEn: 'Profession',
 		content: professionDocuments,
 		isImage: true
 	},
 	{
 		title: 'Курс',
+		titleEn: 'Course',
 		content: coursesDocuments,
 		isImage: true
 	}
 ]
 
+const getEnglishDocuments = (
+	docs: typeof documentsBasedOnProgram
+): typeof documentsBasedOnProgram => {
+	return docs.map(item => ({
+		...item,
+		title: item.titleEn,
+		content: item.content.map(docs => ({ ...docs, name: docs.nameEn }))
+	}))
+}
+
 const OurDiplomasAndCertificates = () => {
+	const at = useAt()
+
 	return (
 		<section>
 			<Wrapper classNames={[stls.wrapper]}>
-				<div className={stls.content}>
-					<h2 className={stls.subHeading}>Выдаваемые дипломы и сертификаты</h2>
+				<div className={cn(stls.content, { [stls.borderBottom]: !at.en })}>
+					<h2 className={stls.subHeading}>
+						{at.en
+							? 'Diplomas and certificates'
+							: 'Выдаваемые дипломы и сертификаты'}
+					</h2>
 					<p className={stls.desc}>
-						Мы производим обучение на основании государственной лицензии
-						№041221. После окончания обучения в Moscow Business Academy Вы
-						получите диплом о профессиональной переподготовке установленного
-						образца, диплом академии и международный диплом Supplement, которые
-						можно добавить в портфолио и показать работодателю.
+						{at.en
+							? 'We provide training on the basis of the state license №041221. After graduation from Moscow Business Academy you will receive a professional retraining diploma of the established sample, a diploma of the Academy in English and an international Diploma Supplement, which can be added to your portfolio and shown to your employer.'
+							: 'Мы производим обучение на основании государственной лицензии №041221. После окончания обучения в Moscow Business Academy Вы получите диплом о профессиональной переподготовке установленного образца, диплом академии и международный диплом Supplement, которые можно добавить в портфолио и показать работодателю.'}
 					</p>
 					<AccordionsContainer
-						accordionsItems={documentsBasedOnProgram}
+						accordionsItems={
+							at.en
+								? getEnglishDocuments(documentsBasedOnProgram)
+								: documentsBasedOnProgram
+						}
 						firstAccordionActive={true}
 						closeAll={false}
 						setCloseAll={() => {}}

@@ -158,7 +158,7 @@ const InfoRectangle = ({
 	}
 
 	const typeOfContent =
-		at.index || at.promo || at.sale
+		at.index || at.promo || at.sale || at.en
 			? 'academyInfo'
 			: at.programs
 			? 'programsInfo'

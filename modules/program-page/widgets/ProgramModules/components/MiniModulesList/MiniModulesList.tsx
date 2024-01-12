@@ -41,7 +41,7 @@ export const MiniModulesList = ({
 					<MiniModule
 						className={stls.module}
 						subject={subject}
-						key={subject?.title}
+						key={`${subject?.title}-${subject?.duration}`}
 					/>
 				))}
 			</div>

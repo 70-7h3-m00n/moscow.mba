@@ -1,7 +1,6 @@
 @use '@/styles/utils/mixin' as m
 
 .content
-  border-bottom: solid 1px #D2D2D2
   padding: 75px 0
   @include m.media(tablet, phone)
     padding: 60px 0
@@ -9,6 +8,9 @@
     font-size: 20px
     @include m.media(tablet, phone)
       font-size: 16px
+
+  &.borderBottom
+    border-bottom: solid 1px #D2D2D2
 
 .desc
   line-height: 120%

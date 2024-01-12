@@ -22,6 +22,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { DisabledProgram } from './DisabledProgram/DisabledProgram'
 import { JumbotronProgramProps } from './types'
+import { getYear } from 'date-fns'
 
 const JumbotronProgram = ({
 	program,
@@ -194,8 +195,8 @@ const JumbotronProgram = ({
 						</div>
 						<ul className={stls.list}>
 							<li className={stls.item}>
-								<div className={stls.number}>2023</div>
-								<p>Новейшая программа 2023 года</p>
+								<div className={stls.number}>{getYear(new Date())}</div>
+								<p>{`Новейшая программа ${getYear(new Date())} года`}</p>
 							</li>
 							<li className={stls.separator}></li>
 

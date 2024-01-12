@@ -3,13 +3,50 @@ import cn from 'classnames'
 import { EducationROIProps } from './types'
 
 import { Wrapper } from '@/components/layout'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { IconTriangle } from '@/components/icons'
-import { range, dataROI } from './constants'
+import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 
 export const EducationROI = ({ className, ...rest }: EducationROIProps) => {
+	const { state } = useContext(ProgramPageContext)
+	const { program } = state
+
+	const salary = program?.futureJob?.futureJobSalary || null
+
+	const range = {
+		min: 0,
+		max: 2
+	}
+
 	const [inputPosition, setInputPosition] = useState<number>(range.min)
 	const [bubblePosition, setBubblePosition] = useState<number>(0)
+
+	const dataROI = [
+		{
+			salary: `${salary?.junior || '50 000'} ₽`,
+			title: 'Начало работы',
+			experience: 'Поступление',
+			subtitle:
+				'На позиции Junior вы заработаете столько же, сколько стоит курс',
+			description: 'В начале работы'
+		},
+		{
+			salary: `${salary?.middle || '100 000'} ₽`,
+			title: 'Middle',
+			experience: 'Опыт 12 месяцев',
+			subtitle:
+				'На позиции Middle вы заработаете столько же, сколько стоит курс',
+			description: 'Middle-специалист	(опыт 1-3 года)'
+		},
+		{
+			salary: `${salary?.senior || '160 000'} ₽`,
+			title: 'Senior',
+			experience: 'Опыт 24 месяца',
+			subtitle:
+				'На позиции Senior вы заработаете столько же, сколько стоит курс',
+			description: 'Senior-специалист	(опыт более 3 лет)'
+		}
+	]
 
 	useEffect(() => {
 		const value = Number(
@@ -33,9 +70,11 @@ export const EducationROI = ({ className, ...rest }: EducationROIProps) => {
 				<div className={stls.content}>
 					<div className={cn(stls.content__item, stls.left)}>
 						<p className={stls.left__title}>
-							На позиции Junior вы заработаете столько же, сколько стоит курс
+							{dataROI[inputPosition].subtitle}
 						</p>
-						<p className={stls.left__description}>За 1 месяц</p>
+						<p className={stls.left__description}>
+							{dataROI[inputPosition].description}
+						</p>
 					</div>
 					<div className={cn(stls.content__item, stls.right)}>
 						<div>
