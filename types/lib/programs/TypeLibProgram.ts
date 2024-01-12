@@ -36,11 +36,13 @@ type TypeLibProgram = {
 			senior: number | null
 		}
 		job:
-			{
-				id: number| null
-				title: string | null
-				string: string | null
-			}[] | null
+			| {
+					id: number | null
+					title: string | null
+					string: string | null
+			  }[]
+			| null
+	} | null
 	duration?: {
 		minStudyMonths: string | number | null
 		studyHours?: string | number | null
