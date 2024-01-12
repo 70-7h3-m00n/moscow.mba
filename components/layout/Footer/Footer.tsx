@@ -4,6 +4,7 @@ import { FooterProps } from './types'
 
 import { useAt } from '@/hooks/index'
 import { FooterTop } from './widgets/FooterTop/FooterTop'
+import { getYear } from 'date-fns'
 
 const Footer = ({ className, ...rest }: FooterProps) => {
 	const at = useAt()
@@ -15,21 +16,21 @@ const Footer = ({ className, ...rest }: FooterProps) => {
 
 				<div className={stls.bottom}>
 					<div className={stls.copyright}>
-						&copy; Moscow Business Academy, 2023
+						&copy; Moscow Business Academy, {getYear(new Date())}
 					</div>
 					<a
 						href='/legaldocuments/oferta.pdf'
 						target='_blank'
 						className={stls.legalLink}
 					>
-						{'Договор Оферты'}
+						{at.en ? 'Offer Agreement' : 'Договор Оферты'}
 					</a>
 					<a
 						href='/legaldocuments/NDA.pdf'
 						target='_blank'
 						className={stls.legalLink}
 					>
-						{'Политика конфиденциальности'}
+						{at.en ? 'Privacy Policy' : 'Политика конфиденциальности'}
 					</a>
 				</div>
 			</div>

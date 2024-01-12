@@ -35,21 +35,15 @@ export const VideoReviewsCarousel = ({
 		vertical: false,
 		arrows: false,
 		infinite: false,
-		className: cn(stls.carousel)
-		// responsive: [
-		//    {
-		//       breakpoint: 1280,
-		//       settings: {
-		//          slidesToShow: 2
-		//       }
-		//    },
-		//    {
-		//       breakpoint: 480,
-		//       settings: {
-		//          slidesToShow: 1
-		//       }
-		//    }
-		// ]
+		className: cn(stls.carousel),
+		responsive: [
+			{
+				breakpoint: 767,
+				settings: {
+					slidesToShow: 1
+				}
+			}
+		]
 	}
 
 	return (

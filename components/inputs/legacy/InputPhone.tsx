@@ -31,7 +31,7 @@ const InputPhone = ({ register, errors, width = '25' }) => {
 				? '+7 (9'
 				: ['8', '9'].includes(inputNumbersValue[0])
 				? inputNumbersValue[0]
-				: '+7'
+				: `+${inputNumbersValue[0]}`
 
 		formatedInputValue = firstSymbols + ' '
 

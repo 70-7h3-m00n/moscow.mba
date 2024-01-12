@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react'
 import Slider from 'react-slick'
 import { GetHowProcessGoesData } from '../../fractals/GetHowProcessGoesData'
 import { IconCheck, IconNext } from 'modules/program-page/widgets/components'
+import { IconCheckCircle } from '@/components/icons'
 
 export const MobileCarousel = ({ className, ...rest }: MobileCarouselProps) => {
 	const sliderRef = useRef<Slider>(null)
@@ -79,7 +80,12 @@ export const MobileCarousel = ({ className, ...rest }: MobileCarouselProps) => {
 									className={cn(stls.navigationCarousel__slide, stls.slide)}
 									key={`navigation_carousel_post--${idx}`}
 								>
-									<div className={stls.navigationCarousel__dot}>{idx + 1}</div>
+									<div className={stls.navigationCarousel__dot}>
+										<IconCheck />
+										<p className={stls.navigationCarousel__desc}>
+											{slide.title}
+										</p>
+									</div>
 									<div
 										className={stls.navigationCarousel__line}
 										style={{

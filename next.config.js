@@ -19,11 +19,11 @@ module.exports = {
 	// },
 	reactStrictMode: true,
 	poweredByHeader: false,
-	i18n: {
-		locales: ['ru', 'en-US'],
-		defaultLocale: 'ru',
-		localeDetection: true
-	},
+	// i18n: {
+	// 	locales: ['ru', 'en-US'],
+	// 	defaultLocale: 'ru',
+	// 	localeDetection: true
+	// },
 	images: {
 		domains: ['res.cloudinary.com']
 	},

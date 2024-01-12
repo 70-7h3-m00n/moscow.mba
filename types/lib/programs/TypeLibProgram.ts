@@ -1,4 +1,5 @@
 import { TypeLibPicture, TypeLibTeachers } from '@/types/index'
+import { FutureJob } from 'modules/program-page/widgets/FutureJob/FutureJob'
 
 type TypeLibProgram = {
 	_id: string | null
@@ -23,6 +24,25 @@ type TypeLibProgram = {
 	// TODO Этих типов нет в новых типах (в телеге)
 	price?: string | number | null
 	discount?: string | number | null
+	hit?: boolean | null
+	new?: boolean | null
+	frdo?: boolean | null
+	futureJob: {
+		id: number | null
+		futureJobSalary: {
+			id: number | null
+			junior: number | null
+			middle: number | null
+			senior: number | null
+		}
+		job:
+			| {
+					id: number | null
+					title: string | null
+					string: string | null
+			  }[]
+			| null
+	} | null
 	duration?: {
 		minStudyMonths: string | number | null
 		studyHours?: string | number | null

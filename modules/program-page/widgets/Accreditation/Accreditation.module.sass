@@ -8,23 +8,35 @@
   color: #000
   font-size: 2.5rem
   letter-spacing: -0.1rem
+  @include m.media(phone, tablet)
+    font-size: 1.8rem
 
 .list
   display: grid
   grid-template-columns: 3fr repeat(3, 1fr)
   gap: 1.5rem
 
-.left
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr 1fr
+    gap: 1rem
 
+.left
   display: flex
   flex-direction: column
   justify-content: space-between
+
+  @include m.media(phone, tablet)
+    grid-column: span 2
 
   &__subtitle
     margin-bottom: 3rem
     color: #575757
     font-size: 1.125rem
     line-height: 120%
+
+    @include m.media(phone, tablet)
+      font-size: 1rem
+      margin-bottom: 1rem
 
   &__wrapper 
     padding: 1.5rem
@@ -46,6 +58,9 @@
   border-radius: 1rem
   background-color: #fff
 
+  @include m.media(phone, tablet)
+    padding: 1rem
+
   &__titleWrapper
     display: flex
     flex-direction: column
@@ -54,6 +69,7 @@
     line-height: 120%
 
   &:nth-child(2)
+    grid-column: span 2
     color: white
     background-color: c.$alpha
     
@@ -68,3 +84,6 @@
   font-size: 1.25rem
   font-weight: 400
   line-height: 120%
+
+  @include m.media(phone, tablet)
+    font-size: 1rem

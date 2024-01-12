@@ -7,6 +7,7 @@ import PopupForm from '@/components/popups/PopupForm'
 import { Until } from '@/components/costs'
 import TrainingPeriod from '@/components/costs/TrainingPeriod'
 import { IconCheckCircle, IconClock, IconScreen } from '@/components/icons'
+import { getYear } from 'date-fns'
 
 const duration = 0.6
 
@@ -37,7 +38,7 @@ const CourseAccordion = ({
 		'Международный диплом установленного образца с присвоением степени MBA',
 		<>
 			<span>Последнее обновление </span>
-			программы было в 2023 г.
+			программы было в {getYear(new Date())} г.
 		</>,
 		<>
 			<span>Разработана по </span>

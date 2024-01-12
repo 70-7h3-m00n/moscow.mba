@@ -3,12 +3,13 @@ import cn from 'classnames'
 import { FutureJobProps } from './types'
 
 import { Wrapper } from '@/components/layout'
-import { useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import Image from 'next/image'
 import Slider from 'react-slick'
 import { IconUmbrella } from './assets/IconUmbrella'
 import { CornerPhoto } from '../components/CornerPhoto/CornerPhoto'
 import { IconNext } from '../components'
+import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 
 const data = [
 	{
@@ -26,6 +27,8 @@ const data = [
 ]
 
 export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
+	const { state } = useContext(ProgramPageContext)
+	const { program } = state
 	const [activeSlideIndex, setActiveSlideIndex] = useState(0)
 
 	const settings = {
@@ -59,11 +62,11 @@ export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 			<Wrapper classNames={[stls.content]}>
 				<div className={stls.left}>
 					<h2 className={stls.title}>Кем именно вы будете работать</h2>
-					<IconUmbrella />
+					<IconUmbrella className={stls.icon} />
 				</div>
 				<div className={stls.sliderWrapper}>
 					<Slider ref={sliderRefExperts} {...settings}>
-						{data.map((image, idx) => (
+						{program?.futureJob?.job.map((item, idx) => (
 							<div
 								className={cn(stls.carousel__post, stls.post)}
 								key={`Carousel_post--${idx}`}
@@ -72,15 +75,8 @@ export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 									className={stls.card}
 									src='/assets/images/program/employment-partners.jpg'
 								>
-									<h3 className={stls.card__title}>
-										Возможность построить карьеру в топовой компании
-									</h3>
-									<p className={stls.card__description}>
-										Сегодня любая компания - потенциальная жертва кибератак. Чем
-										дороже компания, тем выше риски. А значит, тем больше денег
-										готовы тратить руководители на специалистов по
-										кибербезопасности
-									</p>
+									<h3 className={stls.card__title}>{item?.title}</h3>
+									<p className={stls.card__description}>{item?.string}</p>
 								</CornerPhoto>
 							</div>
 						))}
@@ -101,6 +97,19 @@ export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 							/>
 						</button>
 					</div>
+				</div>
+				<div className={stls.mobileList}>
+					{program?.futureJob?.job.map((item, idx) => (
+						<div className={stls.post} key={`Carousel_post--${idx}`}>
+							<CornerPhoto
+								className={stls.card}
+								src='/assets/images/program/employment-partners.jpg'
+							>
+								<h3 className={stls.card__title}>{item?.title}</h3>
+								<p className={stls.card__description}>{item?.string}</p>
+							</CornerPhoto>
+						</div>
+					))}
 				</div>
 			</Wrapper>
 		</section>

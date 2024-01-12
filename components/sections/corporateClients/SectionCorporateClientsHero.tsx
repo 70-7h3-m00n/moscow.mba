@@ -10,6 +10,7 @@ import { PopupForm } from '@/components/popups'
 import { ImgCorporateClientsBg } from '@/components/images'
 import { Wrapper } from '@/components/layout'
 import { BtnAlpha } from '@/components/btns'
+import { getYear } from 'date-fns'
 
 type SectionCorporateClientsHeroProps = TypeClassNames & {
 	programId: string
@@ -27,8 +28,8 @@ const SectionCorporateClientsHero = ({
 			content: 'Программ MBA и курсов'
 		},
 		{
-			title: '2023',
-			content: <>Актуальные программы 2023&nbsp;года</>
+			title: getYear(new Date()),
+			content: <>Актуальные программы {getYear(new Date())}&nbsp;года</>
 		},
 		{
 			title: '9000+',
@@ -47,9 +48,8 @@ const SectionCorporateClientsHero = ({
 
 	return (
 		<section
-			className={
-				cn(stls.container, getClassNames({ classNames })) || undefined
-			}>
+			className={cn(stls.container, getClassNames({ classNames })) || undefined}
+		>
 			<ImgCorporateClientsBg classNames={[stls.bg]} />
 			<Wrapper column classNames={[stls.wrapper]}>
 				<ul className={stls.breadcrumbs}>
@@ -86,7 +86,8 @@ const SectionCorporateClientsHero = ({
 							modal
 							lockScroll
 							nested
-							closeOnDocumentClick>
+							closeOnDocumentClick
+						>
 							{/* @ts-expect-error  */}
 							{(close: MouseEventHandler) => (
 								<PopupForm

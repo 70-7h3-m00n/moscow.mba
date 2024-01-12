@@ -6,13 +6,14 @@ import { Wrapper } from '@/components/layout'
 import { partners } from './constants'
 import Image from 'next/image'
 import Slider from 'react-slick'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 
 const data = [
-	{ src: '/assets/images/program/employment-partners.jpg' },
-	{ src: '/assets/images/program/employment-partners.jpg' },
-	{ src: '/assets/images/program/employment-partners.jpg' },
-	{ src: '/assets/images/program/employment-partners.jpg' }
+	{ src: '/assets/images/program/employment-partners-photo-1.jpg' },
+	{ src: '/assets/images/program/employment-partners-photo-2.png' },
+	{ src: '/assets/images/program/employment-partners-photo-3.png' },
+	{ src: '/assets/images/program/employment-partners-photo-4.png' },
+	{ src: '/assets/images/program/employment-partners-photo-5.png' }
 ]
 
 export const EmploymentPartners = ({
@@ -27,7 +28,7 @@ export const EmploymentPartners = ({
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		adaptiveHeight: true,
-		autoplay: false,
+		autoplay: true,
 		autoplaySpeed: 4000,
 		vertical: false,
 		arrows: false,
@@ -87,8 +88,10 @@ export const EmploymentPartners = ({
 								<Image
 									className={stls.post__image}
 									src={image.src}
-									width={660}
-									height={360}
+									// width={660}
+									// height={360}
+									fill
+									style={{ objectFit: 'cover' }}
 									alt='Фото клиента'
 								/>
 							</div>

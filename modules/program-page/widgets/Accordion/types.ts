@@ -11,5 +11,6 @@ export type AccordionProps = HTMLAttributes<HTMLDivElement> & {
 	active: boolean
 	handler: Dispatch<SetStateAction<number>>
 	variant: 'modules' | 'faq'
+	final?: boolean
 	children: ReactNode
 }

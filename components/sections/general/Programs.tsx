@@ -8,6 +8,7 @@ import { Wrapper } from '@/components/layout'
 import { ProgramSubjects, ProgramsQty } from '@/components/general'
 import { Until, Price, TrainingPeriod, Discount } from '@/components/costs'
 import { IconCheckCircle, IconScreen } from '@/components/icons'
+import { getYear } from 'date-fns'
 
 const Programs = () => {
 	const at = useAt()
@@ -106,8 +107,8 @@ const Programs = () => {
 									</span>
 								</div>
 								<div className='prog-status'>
-									{at.en ? 'Newest programs of' : 'Актуальные программы'} 2023{' '}
-									{at.en ? '' : 'года'}
+									{at.en ? 'Newest programs of' : 'Актуальные программы'}{' '}
+									{getYear(new Date())} {at.en ? '' : 'года'}
 								</div>
 							</div>
 							<div className='desc'>
@@ -290,8 +291,8 @@ const Programs = () => {
 									</span>
 								</div>
 								<div className='prog-status'>
-									{at.en ? 'Newest programs of' : 'Актуальные программы'} 2023{' '}
-									{at.en ? '' : 'года'}
+									{at.en ? 'Newest programs of' : 'Актуальные программы'}{' '}
+									{getYear(new Date())} {at.en ? '' : 'года'}
 								</div>
 							</div>
 							<div className='desc'>

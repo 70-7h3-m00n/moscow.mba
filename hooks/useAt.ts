@@ -45,7 +45,7 @@ const useAt = () => {
 		contact: getSplitedPath[0] === 'contact',
 		mbl: getSplitedPath[1] === 'international-business-law',
 		ru: locale === 'ru',
-		en: locale === 'en-US',
+		en: locale === 'en-US' || getSplitedPath[0] === 'en-US',
 		kz:
 			locale === 'kz' ||
 			locale === 'kk' ||
@@ -60,9 +60,9 @@ const useAt = () => {
 			query.locale === 'uz_UZ',
 		programChunk: !!getProgramTitle,
 		getSplitedPath,
-		// new: dev ? !!getProgramTitle && getSplitedPath[1] === 'mba' : false
-		new: dev ? !!getProgramTitle : false
-		// new: false
+		// new: !!getProgramTitle && getSplitedPath[1] === 'profession'
+		// new: dev ? !!getProgramTitle : false
+		new: false
 	}
 }
 

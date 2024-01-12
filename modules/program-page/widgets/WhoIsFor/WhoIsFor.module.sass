@@ -9,6 +9,7 @@
 
   @include m.media(phone, tablet)
     grid-template-columns: 1fr
+    gap: 1rem
 
 
 .item
@@ -22,7 +23,8 @@
   border-radius: 1rem
 
   @include m.media(phone, tablet)
-    min-height: 18rem
+    min-height: 22rem
+    padding: 1rem
   
   &__title
     font-size: 1.5rem
@@ -43,6 +45,10 @@
   background-repeat: no-repeat
   background-size: 5.5rem
   background-position: 1.5rem 1.5rem
+
+  @include m.media(phone, tablet)
+    background-position: 1rem 1rem
+
   .item__desc
     color: #979BA0
 

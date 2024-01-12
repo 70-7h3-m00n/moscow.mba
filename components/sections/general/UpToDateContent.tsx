@@ -5,6 +5,7 @@ import { useAt } from '@/hooks/index'
 import { Wrapper } from '@/components/layout'
 import { useContext } from 'react'
 import { DigitalTransformationContext } from '@/context/index'
+import { getYear } from 'date-fns'
 
 const UpToDateContent = ({ withBottomLine = false }) => {
 	const at = useAt()
@@ -17,7 +18,8 @@ const UpToDateContent = ({ withBottomLine = false }) => {
 		<section
 			className={cn(stls.container, {
 				[stls.withLine]: withBottomLine
-			})}>
+			})}
+		>
 			<Wrapper classNames={[stls.wrapper]}>
 				<div className={stls.section}>
 					<h2>
@@ -52,10 +54,12 @@ const UpToDateContent = ({ withBottomLine = false }) => {
 				<div className={stls.section}>
 					<ul className={stls.list}>
 						<li>
-							<div className={stls.number}>2023 {at.en ? 'year' : 'год'}</div>
+							<div className={stls.number}>
+								{getYear(new Date())} {at.en ? 'year' : 'год'}
+							</div>
 							<p>
-								{at.en ? 'The newest program of' : 'Новейшая программа'} 2023{' '}
-								{at.en ? '' : 'года'}
+								{at.en ? 'The newest program of' : 'Новейшая программа'}
+								{getYear(new Date())} {at.en ? '' : 'года'}
 							</p>
 						</li>
 						<li>

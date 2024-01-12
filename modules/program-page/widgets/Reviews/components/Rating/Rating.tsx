@@ -2,35 +2,8 @@ import stls from './Rating.module.sass'
 import cn from 'classnames'
 import { RatingProps } from './types'
 
-import { Wrapper } from '@/components/layout'
 import Image from 'next/image'
-
-const ratings = [
-	{
-		name: 'Tutortop',
-		rating: '4.8',
-		src: '/assets/images/program/tutortop.svg',
-		desc: '444 отзывов'
-	},
-	{
-		name: 'Google Maps',
-		rating: '4.6',
-		src: '/assets/images/program/google-maps.svg',
-		desc: '444 отзывов'
-	},
-	{
-		name: 'Yandex Maps',
-		rating: '4.6',
-		src: '/assets/images/program/yandex-maps.svg',
-		desc: '444 отзывов'
-	},
-	{
-		name: 'Otzovik',
-		rating: '78%',
-		src: '/assets/images/program/otzovik.svg',
-		desc: '444 отзывов'
-	}
-]
+import { ratings } from './constants'
 
 export const Rating = ({ className }: RatingProps) => {
 	return (
@@ -48,6 +21,7 @@ export const Rating = ({ className }: RatingProps) => {
 			</li>
 			<li className={stls.large}>
 				<Image
+					className={stls.large__image}
 					src={'/assets/images/program/reviews-rating-photo.jpg'}
 					alt='Спикер на конференции'
 					width={432}
@@ -58,7 +32,13 @@ export const Rating = ({ className }: RatingProps) => {
 				<li className={stls.item} key={idx}>
 					<span className={stls.item__rating}>{item.rating}</span>
 
-					<Image src={item.src} width={156} height={34} alt={item.name} />
+					<Image
+						className={stls.item__image}
+						src={item.src}
+						width={156}
+						height={34}
+						alt={item.name}
+					/>
 					<p className={stls.item__desc}>{item.desc}</p>
 				</li>
 			))}
