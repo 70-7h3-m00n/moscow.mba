@@ -22,6 +22,11 @@
   letter-spacing: -0.1rem
   text-align: center
 
+  @include m.media(phone, tablet)
+    font-size: 1.75rem
+    line-height: 100%
+    letter-spacing: -0.035rem
+
 .desc
   width: 42rem
   margin-bottom: 3rem
@@ -29,6 +34,11 @@
   text-align: center
   font-size: 1.125rem
   line-height: 110%
+
+  @include m.media(phone, tablet)
+    width: unset
+    font-size: 1rem
+    line-height: 120%
 
 .content
   flex-grow: 1
@@ -59,11 +69,14 @@
     background-color: #ff3535
     color: #fff
   @include m.media(phone)
-    width: 100%
+    width: 10rem
 
 .accordion
   width: 55rem
   border-radius: 1rem
+
+  @include m.media(phone, tablet)
+    width: 100%
 
 .answer
   margin-top: 1.5rem

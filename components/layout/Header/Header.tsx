@@ -28,7 +28,14 @@ const Header = () => {
 	return (
 		<header>
 			{at.new ? (
-				<HeaderProgram />
+				<>
+					<HeaderProgram handleMenu={handleMenu} openMenu={menuIsOpen} />
+					{menuIsOpen && (
+						<div className={stls.menu}>
+							<HeaderMenu programs={programs} handleMenu={handleMenu} />
+						</div>
+					)}
+				</>
 			) : (
 				<>
 					<div>

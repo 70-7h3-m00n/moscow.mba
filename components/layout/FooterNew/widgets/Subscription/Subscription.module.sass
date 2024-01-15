@@ -3,6 +3,9 @@
 .content
   margin-left: 10rem
 
+  @include m.media(phone,tablet)
+    margin-left: 0
+
 .title
   margin-bottom: 1rem
   font-size: 1.125rem
@@ -16,6 +19,9 @@
   display: flex
   gap: 1rem
   margin-bottom: 1rem
+
+  @include m.media(phone, tablet)
+    flex-direction: column
 
   &__desc
     font-size: 0.75rem

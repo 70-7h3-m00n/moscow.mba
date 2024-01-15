@@ -18,6 +18,11 @@
   border-top-right-radius: 1rem
   background-color: #18191A
 
+  @include m.media(phone, tablet)
+    grid-template-columns: [footer-start] 1fr [footer-end]
+    padding: 2rem 1rem
+    row-gap: 2rem
+
 .logo
   grid-column: contact-start / contact-end
   display: flex
@@ -28,23 +33,44 @@
     width: 3.25rem
     height: 3.25rem
 
+  @include m.media(phone, tablet)
+    grid-column: footer-start / footer-end
+
 .payment
   grid-column: form-start / form-end
   justify-self: flex-end
   align-items: center
 
+  @include m.media(phone, tablet)
+    grid-column: footer-start / footer-end
+    grid-row: 5 / span 1
+    align-items: flex-start
+    justify-self: flex-start
+
 .contacts
   grid-column: contact-start / contact-end
   grid-row: span 2
 
+  @include m.media(phone, tablet)
+    grid-column: footer-start / footer-end
+
 .nav
   grid-column: nav-start / nav-end
+
+  @include m.media(phone, tablet)
+    grid-column: footer-start / footer-end
 
 .license
   grid-column: license-start / license-end
 
+  @include m.media(phone, tablet)
+    grid-column: footer-start / footer-end
+
 .subscription
   grid-column: form-start / form-end
+
+  @include m.media(phone, tablet)
+    grid-column: footer-start / footer-end
 
 .legal
   grid-column: footer-start / footer-end

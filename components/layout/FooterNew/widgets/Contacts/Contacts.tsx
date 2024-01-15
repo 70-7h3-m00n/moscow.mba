@@ -51,38 +51,46 @@ export const Contacts = ({ className, ...rest }: ContactsProps) => {
 
 			<p className={stls.title}>Приемная комиссия</p>
 
-			<div className={stls.phone}>
-				<a className={stls.phone__link} href={contactInfo.ru.tels[0].href}>
-					{contactInfo.ru.tels[0].val}
-				</a>
-				<p className={stls.phone__desc}>{contactInfo.ru.tels[0].description}</p>
+			<div className={stls.phonesWrapper}>
+				<div className={stls.phone}>
+					<a className={stls.phone__link} href={contactInfo.ru.tels[0].href}>
+						{contactInfo.ru.tels[0].val}
+					</a>
+					<p className={stls.phone__desc}>
+						{contactInfo.ru.tels[0].description}
+					</p>
+				</div>
+				<div className={stls.phone}>
+					<a className={stls.phone__link} href={contactInfo.ru.tels[1].href}>
+						{contactInfo.ru.tels[1].val}
+					</a>
+					<p className={stls.phone__desc}>
+						{contactInfo.ru.tels[1].description}
+					</p>
+				</div>
 			</div>
-			<div className={stls.phone}>
-				<a className={stls.phone__link} href={contactInfo.ru.tels[1].href}>
-					{contactInfo.ru.tels[1].val}
-				</a>
-				<p className={stls.phone__desc}>{contactInfo.ru.tels[1].description}</p>
-			</div>
-			<BtnBeta variant='beta' size='s'>
-				Обратный звонок
-			</BtnBeta>
-			<ul className={stls.socials}>
-				{contactLinks.map((socialLink, idx) => (
-					<li
-						className={cn(stls.socials__item, stls.socials__item_small)}
-						key={idx}
-					>
-						<Link
-							className={stls.socials__link}
-							href={socialLink.link}
-							aria-label={socialLink.ariaLabel}
-							target='_blank'
+			<div className={stls.btnWrapper}>
+				<BtnBeta variant='beta' size='s'>
+					Обратный звонок
+				</BtnBeta>
+				<ul className={stls.socials}>
+					{contactLinks.map((socialLink, idx) => (
+						<li
+							className={cn(stls.socials__item, stls.socials__item_small)}
+							key={idx}
 						>
-							{socialLink.icon}
-						</Link>
-					</li>
-				))}
-			</ul>
+							<Link
+								className={stls.socials__link}
+								href={socialLink.link}
+								aria-label={socialLink.ariaLabel}
+								target='_blank'
+							>
+								{socialLink.icon}
+							</Link>
+						</li>
+					))}
+				</ul>
+			</div>
 		</div>
 	)
 }

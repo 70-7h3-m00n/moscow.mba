@@ -50,6 +50,7 @@
 
     @include m.media(phone, tablet)
       grid-template-columns: repeat(2, 1fr)
+      grid-template-rows: repeat(2, 1fr)
       gap: 1rem
 
   &__item
@@ -83,9 +84,15 @@
         font-style: normal
 
 .right
+  position: relative
+  min-height: 10rem
   padding: 1.5rem
   border-radius: 1rem
   background-color: #fff
+  overflow: hidden
+
+  &__image
+    object-fit: cover
 
   &__title
     margin-bottom: 1rem

@@ -19,7 +19,11 @@ export const Accordion = ({
 }: AccordionProps) => {
 	return (
 		<div className={cn(className, stls.item)} onClick={() => handler(idx)}>
-			<button className={cn(stls.item__btn, { [stls.final]: final })}>
+			<button
+				className={cn(stls.item__btn, {
+					[stls.row]: final || variant === 'faq'
+				})}
+			>
 				<div className={stls.titleWrapper}>
 					{item?.new && (
 						<Tag variant='delta'>

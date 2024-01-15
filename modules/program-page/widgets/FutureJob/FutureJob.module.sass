@@ -6,6 +6,11 @@
   @include m.media(phone, tablet)
     padding-inline: 10px
 
+.container.noCarousel .content
+  padding: 3rem 1.5rem 3rem 1.5rem
+
+  @include m.media(phone, tablet)
+    padding: 2rem 1rem
 
 .content
   display: grid
@@ -18,7 +23,6 @@
   @include m.media(phone, tablet)
     grid-template-columns: 1fr
     padding: 2rem 1rem
-
 
 .left
   display: flex
@@ -87,6 +91,9 @@
     font-weight: 400
     line-height: 120%
 
+    @include m.media(phone, tablet)
+      margin-top: 4rem
+
   &__description
     font-family: Helvetica Neue
     font-size: 1rem
@@ -109,6 +116,10 @@
   align-self: flex-start
   margin-bottom: 0
   overflow: hidden
+
+.sliderWrapper.hide
+  display: none
+
 
 .active
   opacity: 1
@@ -153,9 +164,30 @@
     display: none
 
 .mobileList
+  display: flex
+  flex-direction: column
+  gap: 1rem
+
+.mobileList.hide
   display: none
 
-  @include m.media(phone, tablet)
-    display: flex
-    flex-direction: column
-    gap: 1rem
+.post:nth-child(2n) .card
+  background-color: #FF3535
+
+  &__title
+    color: #fff
+  
+  &__description
+    color: #FDB7B7
+
+.rotation
+  animation-name: rotation
+  animation-duration: 45s
+  animation-iteration-count: infinite
+  animation-timing-function: linear
+
+@keyframes rotation
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)

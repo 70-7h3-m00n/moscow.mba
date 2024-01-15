@@ -6,13 +6,25 @@
   gap: 1rem
   margin-left: 10rem
 
+  @include m.media(phone, tablet)
+    grid-template-columns: repeat(2, 1fr)
+    margin-left: 0
+    padding-bottom: 2rem
+    border-bottom: 1px solid #383838
+
 .list
 
   &__title
     margin-bottom: 1rem
     font-size: 1.125rem
 
+    @include m.media(phone, tablet)
+      font-size: 1rem
+
   &__item
     margin-bottom: 0.5rem
     font-size: 0.875rem
     color: #979BA0
+
+    @include m.media(phone, tablet)
+      max-width: 6.5rem 

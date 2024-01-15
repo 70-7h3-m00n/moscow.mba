@@ -30,7 +30,7 @@ export const StudyCostPrice = ({ className }: StudyCostPriceProps) => {
 				<Tag className={stls.details__tag} variant='gamma'>
 					Осталось мест: <PlacesLeft uniqueKey={program?.id} />
 				</Tag>
-				<p>
+				<p className={stls.details__until}>
 					Старт курса:{' '}
 					<Until preposition={false} executive={at.executive && false} />
 				</p>

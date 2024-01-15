@@ -3,27 +3,9 @@ const withPWA = require('next-pwa')
 const dev = process.env.NODE_ENV !== 'production'
 const env = process.env.NEXT_PUBLIC_VERCEL_ENV
 
-// module.exports = withPWA({})
-
 module.exports = {
-	// experimental: {
-	//   esmExternals: false
-	// },
-	// pwa: {
-	//   dest: 'public',
-	//   disable: dev
-	// },
-	// staticPageGenerationTimeout: 120,
-	// experimental: {
-	//   scrollRestoration: true
-	// },
 	reactStrictMode: true,
 	poweredByHeader: false,
-	// i18n: {
-	// 	locales: ['ru', 'en-US'],
-	// 	defaultLocale: 'ru',
-	// 	localeDetection: true
-	// },
 	images: {
 		domains: ['res.cloudinary.com']
 	},
@@ -36,6 +18,11 @@ module.exports = {
 						{
 							key: 'X-Robots-Tag',
 							value: 'noindex'
+						},
+						{
+							key: 'meta',
+							name: 'robots',
+							content: 'noindex, nofollow'
 						}
 					]
 				}
@@ -148,21 +135,6 @@ module.exports = {
 	},
 	async redirects() {
 		return [
-			// {
-			// 	source: '/programs',
-			// 	destination: '/programs/mini/online',
-			// 	permanent: true
-			// },
-			// {
-			// 	source: '/programs/mini',
-			// 	destination: '/programs/mini/online',
-			// 	permanent: true
-			// },
-			// {
-			// 	source: '/programs/mba',
-			// 	destination: '/programs/mba/online',
-			// 	permanent: true
-			// },
 			{
 				source: '/journal/korporativnoe-upravlenie-proektami-uspeh-biznesa',
 				destination:
@@ -181,32 +153,37 @@ module.exports = {
 				destination: '/programs/international-business-law',
 				permanent: true
 			}
+			// {
+			// 	source: '/programs',
+			// 	destination: '/programs/mini/online',
+			// 	permanent: true
+			// },
+			// {
+			// 	source: '/programs/mini',
+			// 	destination: '/programs/mini/online',
+			// 	permanent: true
+			// },
+			// {
+			// 	source: '/programs/mba',
+			// 	destination: '/programs/mba/online',
+			// 	permanent: true
+			// },
 		]
 	}
-	// async headers() {
-	//   return [
-	//     {
-	//       source: '/',
-	//       headers: [
-	//         {
-	//           key: 'X-XSS-Protection',
-	//           value: '1',
-	//         },
-	//         {
-	//           key: 'Content-Security-Policy',
-	//           value: "default-src 'self' ipo-cp.ru *.ipo-cp.ru",
-	//         },
-	//         {
-	//           key: 'X-Frame-Options',
-	//           value: 'DENY',
-	//         },
-	//         {
-	//           key: 'X-Content-Type-Options',
-	//           value: 'nosniff',
-	//         },
-	//       ],
-	//     },
-	//   ]
+	// experimental: {
+	//   esmExternals: false
+	// },
+	// pwa: {
+	//   dest: 'public',
+	//   disable: dev
+	// },
+	// staticPageGenerationTimeout: 120,
+	// experimental: {
+	//   scrollRestoration: true
+	// },
+	// i18n: {
+	// 	locales: ['ru', 'en-US'],
+	// 	defaultLocale: 'ru',
+	// 	localeDetection: true
 	// },
 }
-// )

@@ -51,7 +51,6 @@ export const ProgramPage = ({
 				<Diploma className={stls.section} />
 				<ExpertsNew className={stls.section} id='experts' />
 				<Employment className={stls.section} id='employment' />
-				{/* отсутствует на курсах */}
 				{at.profession || at.course ? (
 					<>
 						<FutureJob className={stls.section} />

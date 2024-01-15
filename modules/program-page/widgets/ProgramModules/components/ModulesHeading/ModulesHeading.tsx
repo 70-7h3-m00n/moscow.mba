@@ -6,6 +6,7 @@ import { ProgramPageContext } from 'modules/program-page/fractals/context/contex
 import { TrainingPeriod } from '@/components/costs'
 import { ModulesHeadingProps } from './types'
 import { Tag } from 'modules/program-page/widgets/components'
+import Image from 'next/image'
 
 export const ModulesHeading = ({ className, ...rest }: ModulesHeadingProps) => {
 	const { state } = useContext(ProgramPageContext)
@@ -49,23 +50,38 @@ export const ModulesHeading = ({ className, ...rest }: ModulesHeadingProps) => {
 				</ul>
 			</div>
 			<div className={stls.right}>
-				<h3 className={stls.right__title}>Результат</h3>
-				<p className={stls.right__desc}>{program?.duration?.modulesResult}</p>
-				{program?.duration?.modulesTools &&
-					program?.duration?.modulesTools?.length > 0 && (
-						<>
-							<h3 className={stls.right__title}>
-								Научитесь работать с&nbsp;инструментами
-							</h3>
-							<ul className={stls.tagList}>
-								{program?.duration?.modulesTools?.map(skill => (
-									<Tag variant='gamma' key={skill.id}>
-										{skill.tool}
-									</Tag>
-								))}
-							</ul>
-						</>
-					)}
+				{true ? (
+					<>
+						<Image
+							className={stls.right__image}
+							src='/assets/images/program/employment-partners-photo-1.jpg'
+							alt='Студент'
+							fill
+						/>
+					</>
+				) : (
+					<>
+						<h3 className={stls.right__title}>Результат</h3>
+						<p className={stls.right__desc}>
+							{program?.duration?.modulesResult}
+						</p>
+						{program?.duration?.modulesTools &&
+							program?.duration?.modulesTools?.length > 0 && (
+								<>
+									<h3 className={stls.right__title}>
+										Научитесь работать с&nbsp;инструментами
+									</h3>
+									<ul className={stls.tagList}>
+										{program?.duration?.modulesTools?.map(skill => (
+											<Tag variant='gamma' key={skill.id}>
+												{skill.tool}
+											</Tag>
+										))}
+									</ul>
+								</>
+							)}
+					</>
+				)}
 			</div>
 		</div>
 	)

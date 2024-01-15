@@ -4,7 +4,7 @@ import cn from 'classnames'
 import { useRouter } from 'next/router'
 import { useAt } from '@/hooks/index'
 import { Wrapper } from '@/components/layout'
-// import { faqMba, faqMini, faqProfession } from './constants'
+import { faqCourse, faqMba, faqMini, faqProfession } from './constants'
 import { Accordion } from '../Accordion/Accordion'
 import { FaqProps } from './types'
 import { useContext, useState } from 'react'
@@ -16,6 +16,19 @@ export const Faq = ({ className, ...rest }: FaqProps) => {
 	const { program } = state
 
 	const [activeIdx, setActiveIdx] = useState(0)
+
+	const faqData =
+		program?.faq && program?.faq?.length > 0
+			? program?.faq
+			: at.mba
+			? faqMba
+			: at.mini
+			? faqMini
+			: at.profession
+			? faqProfession
+			: at.course
+			? faqCourse
+			: faqMba
 
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
@@ -29,7 +42,7 @@ export const Faq = ({ className, ...rest }: FaqProps) => {
 						</p>
 					</div>
 					<div className={stls.content}>
-						{program?.faq?.map((item, idx) => (
+						{faqData?.map((item, idx) => (
 							<Accordion
 								className={stls.accordion}
 								key={idx}

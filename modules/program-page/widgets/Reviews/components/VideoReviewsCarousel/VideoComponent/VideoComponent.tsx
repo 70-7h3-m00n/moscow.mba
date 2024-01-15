@@ -9,6 +9,8 @@ import { IconSoundOff } from './widgets/IconSoundOff/IconSoundOff'
 
 export const VideoComponent = ({
 	item,
+	width = 318,
+	height = 424,
 	className,
 	...rest
 }: VideoComponentProps) => {
@@ -60,8 +62,8 @@ export const VideoComponent = ({
 				onMouseLeave={() => {
 					videoStop()
 				}}
-				width={318}
-				height={424}
+				width={width}
+				height={height}
 				style={{ objectFit: 'cover', backgroundSize: 'cover' }}
 				preload='auto'
 				ref={videoRef}

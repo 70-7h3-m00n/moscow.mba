@@ -3,13 +3,14 @@ import cn from 'classnames'
 import { FutureJobProps } from './types'
 
 import { Wrapper } from '@/components/layout'
-import { useContext, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Slider from 'react-slick'
 import { IconUmbrella } from './assets/IconUmbrella'
 import { CornerPhoto } from '../components/CornerPhoto/CornerPhoto'
 import { IconNext } from '../components'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
+import useWindowWidth from '@/hooks/useWindowWidth'
 
 const data = [
 	{
@@ -29,7 +30,20 @@ const data = [
 export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
+	const jobsList = program?.futureJob?.job
 	const [activeSlideIndex, setActiveSlideIndex] = useState(0)
+	const widthWindow = useWindowWidth()
+	const [isMobile, setIsMobile] = useState(false)
+
+	const noCarusel = isMobile || jobsList?.length === 1
+
+	useEffect(() => {
+		if (widthWindow <= 767) {
+			setIsMobile(true)
+		} else {
+			setIsMobile(false)
+		}
+	}, [widthWindow])
 
 	const settings = {
 		speed: 500,
@@ -58,15 +72,20 @@ export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 	}
 
 	return (
-		<section className={cn(className, stls.container)} {...rest}>
+		<section
+			className={cn(className, stls.container, {
+				[stls.noCarousel]: noCarusel
+			})}
+			{...rest}
+		>
 			<Wrapper classNames={[stls.content]}>
 				<div className={stls.left}>
 					<h2 className={stls.title}>Кем именно вы будете работать</h2>
-					<IconUmbrella className={stls.icon} />
+					<IconUmbrella className={cn(stls.icon, stls.rotation)} />
 				</div>
-				<div className={stls.sliderWrapper}>
+				<div className={cn(stls.sliderWrapper, { [stls.hide]: noCarusel })}>
 					<Slider ref={sliderRefExperts} {...settings}>
-						{program?.futureJob?.job.map((item, idx) => (
+						{jobsList?.map((item, idx) => (
 							<div
 								className={cn(stls.carousel__post, stls.post)}
 								key={`Carousel_post--${idx}`}
@@ -98,7 +117,7 @@ export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 						</button>
 					</div>
 				</div>
-				<div className={stls.mobileList}>
+				<div className={cn(stls.mobileList, { [stls.hide]: !noCarusel })}>
 					{program?.futureJob?.job.map((item, idx) => (
 						<div className={stls.post} key={`Carousel_post--${idx}`}>
 							<CornerPhoto
