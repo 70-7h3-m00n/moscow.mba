@@ -21,8 +21,7 @@ module.exports = {
 						},
 						{
 							key: 'meta',
-							name: 'robots',
-							content: 'noindex, nofollow'
+							value: 'noindex, nofollow'
 						}
 					]
 				}
