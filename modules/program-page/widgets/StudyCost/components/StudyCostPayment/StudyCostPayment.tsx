@@ -1,13 +1,14 @@
 import stls from './StudyCostPayment.module.sass'
 import cn from 'classnames'
 import { StudyCostPaymentProps } from './types'
+
 import { FormBeta } from '@/components/forms/FormBeta/FormBeta'
 import useAt from '@/hooks/useAt'
 import { useContext, useState } from 'react'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import Image from 'next/image'
-import IconVisa from '@/components/icons/IconVisa'
 import { IconVisaAlt } from '@/components/icons'
+import { PAYMENT, PaymentType } from '@/types/payment/paymentTypes'
 
 export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 	const at = useAt()
@@ -17,31 +18,36 @@ export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 	const [open, setOpen] = useState(false)
 	const [openLoader, setOpenLoader] = useState(false)
 
-	const firstHandler = () => {
-		console.log('Оставить заявку на бесплатную консультацию')
+	const [activePaymentMethod, setActivePaymentMethod] = useState<PaymentType>(
+		PAYMENT.CONSULTATION
+	)
+	console.log('activePaymentMethod: ', activePaymentMethod)
+
+	const consultationHandler = () => {
+		setActivePaymentMethod(PAYMENT.CONSULTATION)
 	}
 
-	const secondHandler = () => {
-		console.log(
-			'Оплатить всю сумму сразу с дополнительной скидкой 5% — 8 957 Рф'
-		)
+	const fullpriceHandler = () => {
+		setActivePaymentMethod(PAYMENT.FULLPRICE)
 	}
 
-	const thirdHandler = () => {
-		console.log('В рассрочку в Тинькофф')
+	const creditHandler = () => {
+		setActivePaymentMethod(PAYMENT.CREDIT)
 	}
 
-	const fourthHandler = () => {
-		console.log('Купить в подарок')
+	const giftHandler = () => {
+		setActivePaymentMethod(PAYMENT.GIFT)
 	}
 
 	const paymentMethods = [
 		{
+			type: PAYMENT.CONSULTATION,
 			name: 'Оставить заявку на бесплатную консультацию',
 			image: <></>,
-			handler: firstHandler
+			handler: consultationHandler
 		},
 		{
+			type: PAYMENT.FULLPRICE,
 			name: 'Оплатить всю сумму сразу с дополнительной скидкой 5% — 8 957 Р',
 			image: (
 				<div className={stls.paymentType}>
@@ -60,9 +66,10 @@ export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 					/>
 				</div>
 			),
-			handler: secondHandler
+			handler: fullpriceHandler
 		},
 		{
+			type: PAYMENT.CREDIT,
 			name: 'В рассрочку в Тинькофф',
 			image: (
 				<Image
@@ -72,9 +79,10 @@ export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 					height={32}
 				/>
 			),
-			handler: thirdHandler
+			handler: creditHandler
 		},
 		{
+			type: PAYMENT.GIFT,
 			name: 'Купить в подарок',
 			image: (
 				<Image
@@ -84,7 +92,7 @@ export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 					height={42}
 				/>
 			),
-			handler: fourthHandler
+			handler: giftHandler
 		}
 	]
 
@@ -94,7 +102,9 @@ export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 				{paymentMethods.map(paymentMethod => (
 					<li className={stls.item} key={paymentMethod.name}>
 						<button
-							className={stls.item__btn}
+							className={cn(stls.item__btn, {
+								[stls.active]: paymentMethod.type === activePaymentMethod
+							})}
 							onClick={() => paymentMethod.handler()}
 						>
 							<p className={stls.paymentText}>{paymentMethod.name}</p>
@@ -110,6 +120,7 @@ export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 				formName={`Заявка с формы 'Стоимость обучения'`}
 				policyPrivacy
 				variant='delta'
+				paymentMethod={activePaymentMethod}
 			/>
 		</div>
 	)

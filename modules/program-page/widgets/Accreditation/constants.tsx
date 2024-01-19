@@ -54,8 +54,10 @@ export const AccreditationData = () => {
 							<p className={stls.titleText}>НАСДОБР</p>
 							<InfoTooltip color='#18191A' textColor='#fff'>
 								<p className={stls.infoDescription}>
-									{/* //TODO */}
-									ЗАПОЛНИТЬ ТЕКСТ
+									Наши программы соответствуют стандартам качества образования
+									уровня MBA. Отвечают требованиям к подготовке кадров со
+									стороны российского делового сообщества, основанных на
+									международных практиках
 								</p>
 							</InfoTooltip>
 						</div>
@@ -72,14 +74,19 @@ export const AccreditationData = () => {
 							<p className={stls.titleText}>ECICEL</p>
 							<InfoTooltip color='#18191A' textColor='#fff'>
 								<p className={stls.infoDescription}>
-									{/* //TODO */}
-									ЗАПОЛНИТЬ ТЕКСТ
+									Наши программы прошли строгую проверку европейской
+									аккредитационной комиссии ECICEL и полностью соответствуют
+									всем стандартам. Наличие данной аккредитации гарантирует
+									высокое качество образования в Moscow Business Academy
 								</p>
 							</InfoTooltip>
 						</div>
 					</>
 				),
-			desc: 'Заполнить текст'
+			desc:
+				at.mba || at.mini
+					? 'Национальный аккредитационный совет делового и управленческого образования'
+					: 'Европейская аккредитационная комиссия'
 		}
 	]
 }

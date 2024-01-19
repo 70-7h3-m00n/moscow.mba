@@ -20,7 +20,7 @@
   grid-template-columns: repeat(2, 1fr)
   gap: 1.5rem
 
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     grid-template-columns: 1fr
 
 .item
@@ -56,6 +56,7 @@
       font-size: .9rem
 
   &__content
+    width: 100%
     padding: 1.5rem
     border-radius: 1rem
     background-color: #fff
@@ -71,9 +72,13 @@
   top: -153px
   left: -80px
 
-  @include m.media(phone, tablet)
+  @include m.media(phone)
     top: -153px
     left: -200px
+  
+  @include m.media(tablet)
+    top: -153px
+    left: 0px
 
 .item:nth-child(4) .item__background
   top: -153px

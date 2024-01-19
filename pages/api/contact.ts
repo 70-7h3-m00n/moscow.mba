@@ -15,6 +15,7 @@ import axios from 'axios'
 // TODO: write down TEST to make sure with each deployment that leads are being delivered properly
 const contact = async (req, res) => {
 	process.env.TZ = 'Europe/Moscow'
+
 	// data from the client
 	let {
 		name,
@@ -465,6 +466,8 @@ const contact = async (req, res) => {
 
 	const html = createEmailBody()
 
+	console.log('api contact =>>>>>>', req.body.name)
+
 	// const testAccount = await nodemailer.createTestAccount()
 	// console.log(data)
 	// F5 BEGIN
@@ -479,24 +482,25 @@ const contact = async (req, res) => {
 			data
 		})
 	} catch (e) {
+		console.log('error in f5 request')
 		console.error(e)
 	}
 	//  F5 END
 
 	// TEST BEGIN
-	try {
-		const test = await axios.request({
-			method: 'POST',
-			maxBodyLength: Infinity,
-			url: `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6`,
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			data
-		})
-	} catch (e) {
-		console.error(e)
-	}
+	// try {
+	// 	const test = await axios.request({
+	// 		method: 'POST',
+	// 		maxBodyLength: Infinity,
+	// 		url: `https://webhook.site/8ae882fe-2b33-4bae-b5ca-32dc877c78d6`,
+	// 		headers: {
+	// 			'Content-Type': 'application/json'
+	// 		},
+	// 		data
+	// 	})
+	// } catch (e) {
+	// 	console.error(e)
+	// }
 	//  TEST END
 
 	const transporter = nodemailer.createTransport({

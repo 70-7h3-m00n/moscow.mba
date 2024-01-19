@@ -9,6 +9,7 @@
   display: flex
   justify-content: space-between
   align-items: center
+  gap: 1rem
   margin-bottom: 3rem
 
   @include m.media(phone, tablet)
@@ -68,10 +69,12 @@
 
   &__name
     max-width: 2em
+    margin-top: 1rem
     margin-bottom: 1rem
     font-family: Unbounded
     font-size: 1.5rem
     line-height: 120%
+    transition: color .3s ease-in-out
 
     @include m.media(phone, tablet)
       margin-top: 1rem
@@ -128,8 +131,15 @@
       color: #575757
       line-height: 120%
 
-.card:hover .cardBtn
-  opacity: 1
+.card:hover
+
+  .cardBtn
+    opacity: 1
+
+.item:hover
+
+  .item__name
+    color: #FF3535
 
 .cardBtn
   opacity: 0

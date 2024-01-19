@@ -8,12 +8,24 @@ import Slider from 'react-slick'
 import { IconNext, IconStar } from 'modules/program-page/widgets/components'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { posts } from './constants'
+import useWindowWidth from '@/hooks/useWindowWidth'
 
 export function Carousel({ className }: CarouselProps) {
 	const sliderRef = useRef<Slider>(null)
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 	const reviews = program?.reviews
+
+	// const widthWindow = useWindowWidth()
+	// const [isMobile, setIsMobile] = useState(false)
+
+	// useEffect(() => {
+	// 	if (widthWindow <= 767) {
+	// 		setIsMobile(true)
+	// 	} else {
+	// 		setIsMobile(false)
+	// 	}
+	// }, [widthWindow])
 
 	const reviewsInDatabase = reviews && reviews?.length > 0
 	const data: typeof reviews = reviewsInDatabase ? reviews : posts
@@ -78,6 +90,7 @@ export function Carousel({ className }: CarouselProps) {
 						</div>
 						<p className={stls.post__name}>{item?.studentName}</p>
 						<p className={cn(stls.post__description)}>{item?.studentReview}</p>
+						<button className={stls.post__openLink}>Читать подробнее</button>
 						<div className={stls.cornerPhoto}>
 							{item?.studentPhoto ? (
 								<Image

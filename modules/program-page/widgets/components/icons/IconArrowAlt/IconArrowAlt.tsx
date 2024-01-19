@@ -4,8 +4,14 @@ import { SVGProps } from 'react'
 export const IconArrowAlt = ({
 	className,
 	active = false,
+	disabled = false,
+	variant = 'alpha',
 	...rest
-}: SVGProps<SVGSVGElement> & { active?: boolean }) => {
+}: SVGProps<SVGSVGElement> & {
+	active?: boolean
+	disabled?: boolean
+	variant?: 'alpha' | 'beta'
+}) => {
 	return (
 		<svg
 			className={cn(className)}

@@ -35,15 +35,23 @@ export const RecommendedProgramsNew = ({
 		vertical: false,
 		arrows: false,
 		infinite: true,
-		className: cn(stls.carousel)
+		className: cn(stls.carousel),
+		responsive: [
+			{
+				breakpoint: 767,
+				settings: {
+					slidesToShow: 1
+				}
+			}
+		]
 	}
 
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<div className={stls.titleWrapper}>
-					<h2>Рекомендуемые программы</h2>
-					<div className={stls.carousel__navigation}>
+					<h2 className={stls.title}>Рекомендуемые программы</h2>
+					<div className={cn(stls.carousel__navigation, stls.top)}>
 						<button className={stls.prev} onClick={previousBtn}>
 							<IconNext className={stls.svg} />
 						</button>
@@ -63,6 +71,14 @@ export const RecommendedProgramsNew = ({
 						</div>
 					))}
 				</Slider>
+				<div className={cn(stls.carousel__navigation, stls.bottom)}>
+					<button className={stls.prev} onClick={previousBtn}>
+						<IconNext className={stls.svg} />
+					</button>
+					<button className={stls.next} onClick={nextBtn}>
+						<IconNext className={stls.svg} />
+					</button>
+				</div>
 			</Wrapper>
 		</section>
 	)

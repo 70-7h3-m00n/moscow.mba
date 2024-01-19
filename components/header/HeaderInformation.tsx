@@ -63,13 +63,13 @@ const HeaderInformation = ({ classNames = [], handleMenu, openMenu }) => {
 						<span className={stls.description}>
 							{contactInfo.ru.tels[0].description}
 						</span>
-						<span>{contactInfo.ru.tels[0].val}</span>
+						<span className={stls.number}>{contactInfo.ru.tels[0].val}</span>
 					</a>
 					<a className={stls.phoneLink} href={contactInfo.ru.tels[1].href}>
 						<span className={stls.description}>
 							{contactInfo.ru.tels[1].description}
 						</span>
-						<span>{contactInfo.ru.tels[1].val}</span>
+						<span className={stls.number}>{contactInfo.ru.tels[1].val}</span>
 					</a>
 					<a href={contactInfo.ru.tels[0].href} className={stls.phoneIcon}>
 						<IconMobilePhone large fill={'#000'} />

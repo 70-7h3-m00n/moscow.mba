@@ -6,7 +6,6 @@ import { Wrapper } from '@/components/layout'
 import { IconCheck } from '../components/icons/IconCheck/IconCheck'
 import { useContext } from 'react'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
-import { ruCase } from '@/helpers/index'
 import { TrainingPeriod } from '@/components/costs'
 
 export const WhatWillYouLearnNew = ({

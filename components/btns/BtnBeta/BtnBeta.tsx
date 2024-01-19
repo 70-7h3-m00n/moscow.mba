@@ -1,8 +1,9 @@
 import stls from './BtnBeta.module.sass'
 import cn from 'classnames'
 import { BtnBetaProps } from './types'
+import { forwardRef } from 'react'
 
-export const BtnBeta = ({
+const Btn = ({
 	className,
 	children,
 	variant,
@@ -23,3 +24,5 @@ export const BtnBeta = ({
 		</button>
 	)
 }
+
+export const BtnBeta = forwardRef(Btn)

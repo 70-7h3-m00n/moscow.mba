@@ -18,6 +18,7 @@ export const CornerPhoto = ({
 					className={stls.cornerPhoto__image}
 					src={src}
 					fill
+					sizes='(max-width: 768px) 90px, (max-width: 1200px) 200px'
 					alt='Фото клиента'
 				/>
 			</div>

@@ -4,7 +4,7 @@ import { TagProps } from './types'
 
 export const Tag = ({ className, children, variant }: TagProps) => {
 	return (
-		<div
+		<span
 			className={cn(className, stls.tag, {
 				[stls.alpha]: variant === 'alpha', // no background white color white border
 				[stls.beta]: variant === 'beta', // no background red color red border
@@ -16,6 +16,6 @@ export const Tag = ({ className, children, variant }: TagProps) => {
 			})}
 		>
 			{children}
-		</div>
+		</span>
 	)
 }

@@ -9,7 +9,7 @@
   align-items: end
   margin-bottom: 3rem
 
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     grid-template-columns: 1fr
     gap: 1rem
 
@@ -34,7 +34,7 @@
   line-height: 120%
   color: #575757
 
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     font-size: 1rem
 
 .content
@@ -43,7 +43,7 @@
   gap: 1.5rem
   grid-auto-rows: 19rem
 
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     grid-template-columns: 1fr
     grid-template-rows: 18rem auto
     grid-auto-rows: unset
@@ -55,14 +55,14 @@
     padding: 1.5rem
     border-radius: 1.5rem
 
-    @include m.media(phone, tablet)
+    @include m.media(phone, tablet, laptop)
       padding: 1rem
 
 .left
   color: #fff
   background-color: #FF3535
 
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     gap: 2rem
     height: min-content
 
@@ -76,10 +76,16 @@
     line-height: 120% 
     color: #FFF
 
+    @include m.media(widescreen)
+      max-width: 13rem
+
+    @include m.media(desktop)
+      font-size: 1.275rem
+
 .right
   background-color: #fff
 
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     grid-row: 1
 
   &__title
@@ -170,10 +176,10 @@
   background-image: url('./assets/🙂.svg')
 
 .input.middle::-webkit-slider-thumb
-  background-image: url('./assets/🤩.svg')
+  background-image: url('./assets/🤑.svg')
 
 .input.senior::-webkit-slider-thumb
-  background-image: url('./assets/😎.svg')
+  background-image: url('./assets/💰.svg')
 
 .emoji
   position: absolute
@@ -202,6 +208,10 @@
   background-color: #18191A
   transform: translateX(-50%)
 
+  span
+    font-family: Visuelt
+    font-weight: 300
+
   &__arrow
     position: absolute
     bottom: -0.5rem
@@ -213,11 +223,9 @@
     // border-left: 10px solid transparent
     // border-right: 10px solid transparent
 
-
 .rangeDescription
   display: grid
   grid-template-columns: repeat(3, 1fr)
-
 
   &__item
 

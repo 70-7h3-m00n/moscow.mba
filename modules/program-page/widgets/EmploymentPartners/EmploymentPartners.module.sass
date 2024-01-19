@@ -7,7 +7,7 @@
   grid-template-columns: repeat(2, 1fr)
   gap: 1.5rem
 
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     grid-template-columns: 1fr
 
 .title
@@ -61,7 +61,10 @@
   border-radius: 1.5rem
   position: relative
   
-  @include m.media(phone, tablet)
+  @include m.media(tablet)
+    height: 24rem
+  
+  @include m.media(phone)
     height: 12rem
 
   &__image

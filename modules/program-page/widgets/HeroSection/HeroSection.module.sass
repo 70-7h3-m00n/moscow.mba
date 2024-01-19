@@ -98,7 +98,8 @@
     @include m.media(tablet)
       gap: 1rem
       & > *
-        min-width: 15rem
+        // min-width: 14rem
+        width: 100%
 
     @include m.media(phone)
       flex-direction: column
@@ -130,12 +131,16 @@
 
 .details
   grid-area: details
+  align-self: flex-start
 
 .rating, .students
   display: flex
   justify-content: space-between
   align-items: center
   padding: 1.5rem
+
+  @include m.media(tablet)
+    padding: 1rem
 
   
   &__wrapper
@@ -154,8 +159,12 @@
     line-height: 90%
     color: #FFF
 
-    @include m.media(phone, tablet, laptop)
+    @include m.media(phone, laptop)
       font-size: 1.75rem
+
+    @include m.media(tablet)
+      font-size: 1.6rem
+      margin-left: 0.5rem
 
   &__desc
     max-width: 7.6875rem
@@ -199,8 +208,6 @@
   
   @include m.media(tablet, phone)
     display: block
-  
-
 
 .cornerPhoto
   width: 90px
@@ -252,7 +259,7 @@
 
 .bottomItem
   max-width: 26rem
-  font-size: 1.125rem
+  font-size: 1.1rem
   font-style: normal
   font-weight: 400
   line-height: 120%

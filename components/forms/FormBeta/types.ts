@@ -1,3 +1,4 @@
+import { PaymentType } from '@/types/payment/paymentTypes'
 import { Dispatch, HTMLAttributes, SetStateAction } from 'react'
 
 export type FormBetaProps = HTMLAttributes<HTMLFormElement> & {
@@ -7,6 +8,7 @@ export type FormBetaProps = HTMLAttributes<HTMLFormElement> & {
 	policyPrivacy: boolean
 	formName: string
 	variant: 'alpha' | 'beta' | 'gamma' | 'delta'
+	paymentMethod?: PaymentType | null
 }
 
 export type TypeFormValues = {

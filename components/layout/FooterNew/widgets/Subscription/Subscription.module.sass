@@ -1,7 +1,10 @@
 @use '@/styles/utils/mixin' as m
 
 .content
-  margin-left: 10rem
+  margin-left: 0
+
+  @include m.media(widescreen)
+    margin-left: 10rem
 
 .title
   margin-bottom: 1rem
@@ -16,6 +19,9 @@
   display: flex
   gap: 1rem
   margin-bottom: 1rem
+
+  @include m.media(phone, desktop)
+    flex-direction: column
 
   &__desc
     font-size: 0.75rem

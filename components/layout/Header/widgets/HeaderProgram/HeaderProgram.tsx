@@ -7,39 +7,66 @@ import Link from 'next/link'
 import { IconLogo, IconLogoTitle } from '@/components/icons'
 import companyName from '@/config/companyName'
 import routesFront from '@/config/routesFront'
-import { menuData } from './constants'
 import { PopupHeader } from '@/components/popups'
+import Wrapper from '@/components/layout/Wrapper'
 
-export const HeaderProgram = ({ className }: HeaderProgramProps) => {
+export const HeaderProgram = ({
+	className,
+	handleMenu,
+	openMenu
+}: HeaderProgramProps) => {
 	const [activeIdx, setActiveIdx] = useState(null)
+
+	const menuData = [
+		{ title: 'Как проходит обучение', src: '#how-process-goes' },
+		{ title: 'Программа', src: '#program-modules' },
+		{ title: 'Стоимость', src: '#study-cost' },
+		{ title: 'Преподаватели', src: '#experts' },
+		{ title: 'Отзывы', src: '#reviews' },
+		...(true ? [{ title: 'Трудоустройство', src: '#employment' }] : [])
+	]
 
 	return (
 		<div className={cn(className, stls.content)}>
-			<Link
-				className={stls.logo}
-				aria-label={companyName}
-				href={routesFront.home}
-			>
-				<IconLogo className={stls.logo__icon} />
-				<IconLogoTitle className={stls.logo__name} />
-			</Link>
-			<div className={cn(stls.nav)} onMouseLeave={() => setActiveIdx(null)}>
-				{menuData.map((item, idx) => (
-					<div
-						className={stls.nav__item}
-						onMouseEnter={() => setActiveIdx(idx)}
-						key={item.title}
-					>
+			<Wrapper classNames={[stls.wrapper]}>
+				<Link
+					className={stls.logo}
+					aria-label={companyName}
+					href={routesFront.home}
+				>
+					<IconLogo className={stls.logo__icon} />
+					<IconLogoTitle className={stls.logo__name} />
+				</Link>
+				<div className={cn(stls.nav)} onMouseLeave={() => setActiveIdx(null)}>
+					{menuData.map((item, idx) => (
 						<div
-							className={cn(stls.underline, {
-								[stls.active]: activeIdx === idx
-							})}
-						/>
-						<a href={item.src}>{item.title}</a>
+							className={stls.nav__item}
+							onMouseEnter={() => setActiveIdx(idx)}
+							key={item.title}
+						>
+							<div
+								className={cn(stls.underline, {
+									[stls.active]: activeIdx === idx
+								})}
+							/>
+							<a href={item.src}>{item.title}</a>
+						</div>
+					))}
+				</div>
+				<div className={stls.right}>
+					<PopupHeader className={stls.popupHeader} />
+					<div
+						className={cn(stls.burger, {
+							[stls.opened]: openMenu
+						})}
+						onClick={() => handleMenu(!openMenu)}
+					>
+						<i className={stls.line} />
+						<i className={stls.line} />
+						<i className={stls.line} />
 					</div>
-				))}
-			</div>
-			<PopupHeader />
+				</div>
+			</Wrapper>
 		</div>
 	)
 }

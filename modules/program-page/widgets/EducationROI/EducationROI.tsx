@@ -6,6 +6,7 @@ import { Wrapper } from '@/components/layout'
 import { useContext, useEffect, useState } from 'react'
 import { IconTriangle } from '@/components/icons'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
+import { toNumberWithSpaces } from '@/helpers/index'
 
 export const EducationROI = ({ className, ...rest }: EducationROIProps) => {
 	const { state } = useContext(ProgramPageContext)
@@ -23,27 +24,27 @@ export const EducationROI = ({ className, ...rest }: EducationROIProps) => {
 
 	const dataROI = [
 		{
-			salary: `${salary?.junior || '50 000'} ₽`,
+			salary: `${toNumberWithSpaces(salary?.junior) || '50 000'}`,
 			title: 'Начало работы',
 			experience: 'Поступление',
 			subtitle:
-				'На позиции Junior вы заработаете столько же, сколько стоит курс',
+				'За 1-2 месяца работы на позиции начинающего специалиста сможете окупить обучение на программе',
 			description: 'В начале работы'
 		},
 		{
-			salary: `${salary?.middle || '100 000'} ₽`,
+			salary: `${toNumberWithSpaces(salary?.middle) || '100 000'}`,
 			title: 'Middle',
 			experience: 'Опыт 12 месяцев',
 			subtitle:
-				'На позиции Middle вы заработаете столько же, сколько стоит курс',
+				'В течение года продвинетесь до должности middle-специалиста с увеличением дохода вдвое',
 			description: 'Middle-специалист	(опыт 1-3 года)'
 		},
 		{
-			salary: `${salary?.senior || '160 000'} ₽`,
+			salary: `${toNumberWithSpaces(salary?.senior) || '160 000'}`,
 			title: 'Senior',
 			experience: 'Опыт 24 месяца',
 			subtitle:
-				'На позиции Senior вы заработаете столько же, сколько стоит курс',
+				'В течение двух лет сможете занять должность ведущего специалиста многократно окупив обучение',
 			description: 'Senior-специалист	(опыт более 3 лет)'
 		}
 	]
@@ -64,7 +65,8 @@ export const EducationROI = ({ className, ...rest }: EducationROIProps) => {
 					</h2>
 					<p className={stls.subtitle}>
 						Показываем, как будет расти ваш заработок вместе с опытом.
-						И&nbsp;сколько времени потребуется, чтобы окупить вложения в курс
+						И&nbsp;сколько времени потребуется, чтобы окупить вложения в
+						программу
 					</p>
 				</div>
 				<div className={stls.content}>
@@ -78,7 +80,7 @@ export const EducationROI = ({ className, ...rest }: EducationROIProps) => {
 					</div>
 					<div className={cn(stls.content__item, stls.right)}>
 						<div>
-							<h3 className={stls.right__title}>Зарплаты BI-аналитиков</h3>
+							<h3 className={stls.right__title}>Зарплаты</h3>
 							<p className={stls.right__subtitle}>по данным HH.ru</p>
 						</div>
 						<div className={stls.range}>
@@ -104,7 +106,7 @@ export const EducationROI = ({ className, ...rest }: EducationROIProps) => {
 									}rem))`
 								}}
 							>
-								{dataROI[inputPosition].salary}
+								{dataROI[inputPosition].salary} <span>₽</span>
 								<IconTriangle className={stls.bubble__arrow} />
 							</output>
 

@@ -12,21 +12,28 @@ import { BtnBeta } from '@/components/btns'
 import Popup from 'reactjs-popup'
 import { PopupTeacherNew } from '@/components/popups'
 import useWindowWidth from '@/hooks/useWindowWidth'
+import useDefaultTeachers from '@/hooks/useDefaultTeachers'
 
 export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
-	const widthWindow = useWindowWidth()
-	const [isMobile, setIsMobile] = useState(false)
+	const defaultTeachers = useDefaultTeachers()
+	const teachers =
+		program?.teachers && program?.teachers?.length > 0
+			? program?.teachers
+			: defaultTeachers
 
-	useEffect(() => {
-		if (widthWindow <= 767) {
-			setIsMobile(true)
-		} else {
-			setIsMobile(false)
-		}
-	}, [widthWindow])
+	const widthWindow = useWindowWidth()
+	// const [isMobile, setIsMobile] = useState(false)
+
+	// useEffect(() => {
+	// 	if (widthWindow <= 767) {
+	// 		setIsMobile(true)
+	// 	} else {
+	// 		setIsMobile(false)
+	// 	}
+	// }, [widthWindow])
 
 	const sliderRefExperts = useRef<Slider>(null)
 
@@ -74,7 +81,7 @@ export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
 				</div>
 				<div className={stls.slider}>
 					<Slider ref={sliderRefExperts} {...settings}>
-						{program?.teachers.map(item => (
+						{teachers?.map(item => (
 							<div
 								className={cn(stls.carousel__item, stls.item)}
 								key={`Expert--${item.name}`}

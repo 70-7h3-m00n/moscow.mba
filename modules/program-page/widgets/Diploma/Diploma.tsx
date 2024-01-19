@@ -6,6 +6,7 @@ import { Wrapper } from '@/components/layout'
 import { BtnBeta } from '@/components/btns'
 import useAt from '@/hooks/useAt'
 import { diplomaData } from './constants'
+import Image from 'next/image'
 
 export const Diploma = ({ className, ...rest }: DiplomaProps) => {
 	const at = useAt()
@@ -21,19 +22,29 @@ export const Diploma = ({ className, ...rest }: DiplomaProps) => {
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
-				<h2 className={stls.title}>Документы после обучения</h2>
-				<p className={stls.desc}>{data.description}</p>
-				{(at.profession || at.course) && (
-					<p className={stls.desc}>
-						Мы обучаем{' '}
-						<a className={stls.link} href='' target='_blank'>
-							по государственной лицензии №041221
-						</a>
-					</p>
-				)}
-				<BtnBeta className={stls.btn} variant='beta'>
-					Посмотреть дипломы
-				</BtnBeta>
+				<div>
+					<h2 className={stls.title}>Документы после обучения</h2>
+					<p className={stls.desc}>{data.description}</p>
+					{(at.profession || at.course) && (
+						<p className={stls.desc}>
+							Мы обучаем{' '}
+							<a className={stls.link} href='' target='_blank'>
+								по государственной лицензии №041221
+							</a>
+						</p>
+					)}
+					<BtnBeta className={stls.btn} variant='beta'>
+						Посмотреть дипломы
+					</BtnBeta>
+				</div>
+				<div className={stls.imageWrapper}>
+					<Image
+						className={stls.image}
+						src={data.src}
+						fill
+						alt={'Документы после обучения'}
+					/>
+				</div>
 			</Wrapper>
 		</section>
 	)

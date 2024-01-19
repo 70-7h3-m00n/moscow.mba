@@ -27,6 +27,7 @@ type TypeLibProgram = {
 	hit?: boolean | null
 	new?: boolean | null
 	frdo?: boolean | null
+	employment?: boolean | null
 	futureJob: {
 		id: number | null
 		futureJobSalary: {

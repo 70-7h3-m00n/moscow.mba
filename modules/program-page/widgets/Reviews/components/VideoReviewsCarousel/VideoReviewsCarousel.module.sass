@@ -24,6 +24,12 @@
     cursor: grab
     user-select: none
 
+    // @include m.media(phone, tablet)
+    //   width: 15rem
+    //   max-width: 15rem
+    //   height: 20rem
+    //   max-height: 20rem
+
     &:active
       cursor: grabbing
 
@@ -34,6 +40,9 @@
   display: flex
   justify-content: center
   gap: 1.5rem
+
+  @include m.media(phone, tablet)
+    display: none
 
 .prev
   padding: 0
@@ -46,3 +55,10 @@
   padding: 0
   border: none
   background-color: transparent
+
+// .video
+//   @include m.media(phone, tablet)
+//     width: 15rem
+//     max-width: 15rem
+//     height: 20rem
+//     max-height: 20rem

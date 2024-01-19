@@ -7,6 +7,7 @@ export const InputNameNew = ({
 	register,
 	errors,
 	variant,
+	placeholder = 'Имя',
 	...rest
 }: InputNameProps) => {
 	return (
@@ -19,7 +20,7 @@ export const InputNameNew = ({
 					{ [stls.gamma]: variant === 'gamma' },
 					{ [stls.delta]: variant === 'delta' }
 				)}
-				placeholder='Имя'
+				placeholder={placeholder}
 				type='text'
 				aria-label='Имя'
 				{...register('name', {

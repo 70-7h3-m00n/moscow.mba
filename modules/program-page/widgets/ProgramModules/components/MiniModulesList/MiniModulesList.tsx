@@ -2,9 +2,8 @@ import stls from './MiniModulesList.module.sass'
 import cn from 'classnames'
 import { MiniModulesListProps } from './types'
 
-import useAt from '@/hooks/useAt'
 import { MiniModule } from './widgets/MBAModule/MiniModule'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { Tag } from 'modules/program-page/widgets/components'
 
@@ -14,7 +13,6 @@ export const MiniModulesList = ({
 	bonusSubjects = false,
 	...rest
 }: MiniModulesListProps) => {
-	const at = useAt()
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 

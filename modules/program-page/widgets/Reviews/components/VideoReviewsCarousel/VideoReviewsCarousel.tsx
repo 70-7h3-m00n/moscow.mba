@@ -38,6 +38,18 @@ export const VideoReviewsCarousel = ({
 		className: cn(stls.carousel),
 		responsive: [
 			{
+				breakpoint: 1300,
+				settings: {
+					slidesToShow: 3
+				}
+			},
+			{
+				breakpoint: 968,
+				settings: {
+					slidesToShow: 2
+				}
+			},
+			{
 				breakpoint: 767,
 				settings: {
 					slidesToShow: 1
@@ -54,7 +66,7 @@ export const VideoReviewsCarousel = ({
 						className={cn(stls.carousel__post, stls.post)}
 						key={`Carousel_post--${item.name}`}
 					>
-						<VideoComponent item={item} />
+						<VideoComponent className={stls.video} item={item} />
 					</div>
 				))}
 			</Slider>

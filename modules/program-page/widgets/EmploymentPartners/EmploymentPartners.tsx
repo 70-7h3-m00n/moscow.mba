@@ -91,6 +91,7 @@ export const EmploymentPartners = ({
 									// width={660}
 									// height={360}
 									fill
+									sizes='(max-width: 1020px) 100vw, 50vw'
 									style={{ objectFit: 'cover' }}
 									alt='Фото клиента'
 								/>

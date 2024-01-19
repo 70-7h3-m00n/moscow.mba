@@ -109,6 +109,10 @@
   & small
     opacity: 1 !important // a fix for chrome weird bug where phone number values being broken down to small tags and their opacity being set to less than 1
 
+.number
+  @include m.media(phone, tablet)
+    font-size: 14px !important
+
 .description
   margin-bottom: 5px
   font-size: 10px

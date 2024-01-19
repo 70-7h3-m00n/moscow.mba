@@ -2,7 +2,7 @@ import stls from './FormBeta.module.sass'
 import cn from 'classnames'
 import { FormBetaProps, TypeFormValues } from './types'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { onSubmitForm } from '@/helpers/index'
@@ -15,6 +15,7 @@ import {
 	InputSubmitNew,
 	InputRadioNew
 } from '@/components/inputs'
+import { PAYMENT } from '@/types/payment/paymentTypes'
 
 export const FormBeta = ({
 	programTitle,
@@ -22,7 +23,8 @@ export const FormBeta = ({
 	setOpen,
 	policyPrivacy = true,
 	formName = null,
-	variant = 'alpha'
+	variant = 'alpha',
+	paymentMethod = null
 }: FormBetaProps) => {
 	const {
 		register,
@@ -32,8 +34,16 @@ export const FormBeta = ({
 	} = useForm<TypeFormValues>()
 
 	const { asPath } = useRouter()
-
 	const [submitIsDisabled, setSubmitIsDisabled] = useState(false)
+	const [noRadio, setNoRadio] = useState<boolean>(false)
+
+	useEffect(() => {
+		if (paymentMethod === PAYMENT.FULLPRICE || paymentMethod === PAYMENT.GIFT) {
+			setNoRadio(true)
+		} else {
+			setNoRadio(false)
+		}
+	}, [paymentMethod])
 
 	return (
 		<form
@@ -66,6 +76,9 @@ export const FormBeta = ({
 					className={stls.inputName}
 					register={register}
 					errors={errors}
+					placeholder={
+						paymentMethod === PAYMENT.GIFT ? 'Имя получателя' : 'Имя'
+					}
 					variant={
 						variant === 'alpha'
 							? 'alpha'
@@ -125,27 +138,38 @@ export const FormBeta = ({
 							: 'alpha'
 					}
 				/>
-				<InputRadioNew
-					className={stls.inputRadio}
-					register={register}
-					variant={
-						variant === 'alpha'
-							? 'alpha'
-							: variant === 'beta'
-							? 'beta'
-							: variant === 'gamma'
-							? 'beta'
-							: variant === 'delta'
-							? 'gamma'
-							: 'alpha'
-					}
-				/>
+				{paymentMethod === PAYMENT.GIFT && (
+					<button>Предпросмотр подарка</button>
+				)}
+				{!noRadio && (
+					<InputRadioNew
+						className={stls.inputRadio}
+						register={register}
+						variant={
+							variant === 'alpha'
+								? 'alpha'
+								: variant === 'beta'
+								? 'beta'
+								: variant === 'gamma'
+								? 'beta'
+								: variant === 'delta'
+								? 'gamma'
+								: 'alpha'
+						}
+					/>
+				)}
 				<InputSubmitNew
 					className={stls.inputSubmit}
 					errors={errors}
 					variant='alpha'
 				>
-					Записаться на курс
+					{paymentMethod === PAYMENT.FULLPRICE
+						? 'Оплатить'
+						: paymentMethod === PAYMENT.CREDIT
+						? 'Оформить'
+						: paymentMethod === PAYMENT.GIFT
+						? 'Отправить'
+						: 'Записаться на программу'}
 				</InputSubmitNew>
 			</div>
 			{policyPrivacy && (

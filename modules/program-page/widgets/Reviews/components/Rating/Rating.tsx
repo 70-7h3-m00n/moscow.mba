@@ -10,7 +10,8 @@ export const Rating = ({ className }: RatingProps) => {
 		<ul className={cn(className, stls.content)}>
 			<li className={cn(stls.large, stls.left)}>
 				<Image
-					src={'/assets/images/program/reviews-rating-photo-2.jpg'}
+					className={stls.left__image}
+					src={'/assets/images/program/reviews-rating-photo-3.jpg'}
 					alt='Студентка'
 					width={90}
 					height={90}
@@ -19,13 +20,12 @@ export const Rating = ({ className }: RatingProps) => {
 					Получите конкурентное преимущество на своем карьерном пути
 				</p>
 			</li>
-			<li className={stls.large}>
+			<li className={cn(stls.large, stls.center)}>
 				<Image
 					className={stls.large__image}
 					src={'/assets/images/program/reviews-rating-photo.jpg'}
 					alt='Спикер на конференции'
-					width={432}
-					height={432}
+					fill
 				/>
 			</li>
 			{ratings.map((item, idx) => (

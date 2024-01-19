@@ -29,11 +29,9 @@ const setNextDay = (currentDate: Date, currentDay: number): Date => {
 	return currentDate
 }
 
-const Until = ({ preposition = true, executive = false }) => {
-	const at = useAt()
+export const CountUntil = () => {
 	const { until } = useContext(ContextStaticProps)
 	const untilDates: UntilType = until
-	const { locale } = useRouter()
 	const currentDate = new Date()
 	const currentDay = currentDate.getDate()
 	const currentYear = currentDate.getFullYear()
@@ -86,6 +84,17 @@ const Until = ({ preposition = true, executive = false }) => {
 		untilArray.length === 0
 			? setNextDay(currentDate, currentDay)
 			: findNearestFutureDate(untilMillisecondsArray)
+
+	return nearestFutureDate
+}
+
+const Until = ({
+	preposition = true,
+	executive = false,
+	returnDate = false
+}) => {
+	const at = useAt()
+	const nearestFutureDate = CountUntil()
 
 	return (
 		<span

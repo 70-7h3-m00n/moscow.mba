@@ -7,11 +7,18 @@
   border-radius: 1.5rem
   background-color:  #fff
 
+  @include m.media(phone, tablet)
+    padding: 2rem 1rem
+
 .list
   display: grid
   grid-template-columns: repeat(2, 1fr)
   gap: 1.5rem
   margin-bottom: 3rem
+
+  @include m.media(phone, tablet)
+    gap: .8rem
+    margin-bottom: 2rem
 
 .item
   min-height: 8rem
@@ -34,9 +41,34 @@
     text-align: left
     background-color: transparent
     
+    @include m.media(phone, tablet)
+      padding: .8rem
+
+    img
+      @include m.media(phone, tablet)
+        // max-height: 1rem
+
+  &:nth-child(2)
+    .item__btn img
+      @include m.media(phone, tablet)
+        width: 2rem
+
+  &:nth-child(3)
+    .item__btn img
+      @include m.media(phone, tablet)
+        width: 5rem
+  
+  &:nth-child(4)
+  .item__btn img
+    @include m.media(phone, tablet)
+      width: 2rem
+    
 .paymentType
   display: flex
   gap: 1rem
+
+  @include m.media(phone, tablet)
+    gap: 0.5rem
 
 .paymentText
   color: #000
@@ -44,3 +76,9 @@
   font-size: 0.875rem
   font-weight: 400
   line-height: 120%
+
+  @include m.media(phone, tablet)
+    font-size: 0.75rem
+
+.active
+  outline: 2px solid red
