@@ -15,16 +15,25 @@ import { format } from 'date-fns'
 import { ru } from 'date-fns/locale'
 import { Partnership } from './widgets/Partnership/Partnership'
 import { Sale } from './widgets/Sale/Sale'
+import { advantagesArray } from './constants'
+import useAt from '@/hooks/useAt'
 
 const stringDate = format(new Date(), 'LLLL yyyy', { locale: ru })
 
 export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
+	const at = useAt()
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
-	const advantagesArray = program?.heroAdvantages
-		?.map((el, idx) => (idx < 5 ? el.string : undefined))
-		.filter(Boolean)
+	// const advantagesArray = program?.heroAdvantages
+	// 	?.map((el, idx) => (idx < 5 ? el.string : undefined))
+	// 	.filter(Boolean)
+
+	const advantages = at.profession
+		? advantagesArray.profession
+		: at.course
+		? advantagesArray.course
+		: advantagesArray.mba
 
 	const isPartnership = program?.partnership && program?.partnership?.url
 
@@ -50,7 +59,7 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 					<div className={stls.rating}>
 						<div className={stls.rating__wrapper}>
 							<IconHeart />
-							<span className={stls.rating__counter}>4,5</span>
+							<span className={stls.rating__counter}>4,8</span>
 						</div>
 						<p className={stls.rating__desc}>
 							на отзовике IRecommended и TutorTop
@@ -69,7 +78,7 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 				</div>
 				<div className={stls.cornerPhoto}>
 					<Image
-						src='/assets/images/program/hero-image.png'
+						src='/assets/images/program/hero-image-2.png'
 						width={82}
 						height={82}
 						alt='Фото клиента'
@@ -80,7 +89,7 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 						<li className={stls.bottomItem}>
 							{`Актуальная программа: последнее обновление — ${stringDate}`}
 						</li>
-						{advantagesArray?.map((item, idx) => (
+						{advantages?.map((item, idx) => (
 							<li className={stls.bottomItem} key={idx}>
 								{item}
 							</li>

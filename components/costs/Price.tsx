@@ -1,6 +1,6 @@
 import stls from '@/styles/components/costs/Price.module.sass'
-import { useEffect, useState } from 'react'
 import cn from 'classnames'
+
 import { currencyRates, ui } from '@/config/index'
 import { toNumberWithSpaces } from '@/helpers/index'
 import { useAt, useSSLocale } from '@/hooks/index'

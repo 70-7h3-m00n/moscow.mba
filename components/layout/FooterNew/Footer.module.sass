@@ -1,6 +1,7 @@
 @use '@/styles/utils/mixin' as m
 
 .container
+  width: 100%
   padding-inline: 1rem
   background-color: #F8F8F8
   font-family: Helvetica Neue
@@ -8,8 +9,10 @@
   color: #fff
 
 .content
+  max-width: 1370px
+  margin: 0 auto
   display: grid
-  grid-template-columns: [footer-start contact-start] 20rem [contact-end nav-start licence-start] 20rem [license-end form-start] auto [form-end nav-end footer-end]
+  grid-template-columns: [footer-start contact-start] 17rem [contact-end nav-start licence-start] 20rem [license-end form-start] auto [form-end nav-end footer-end]
   grid-template-rows: repeat(4, auto)
   row-gap: 3rem
   column-gap: 1rem
@@ -17,6 +20,10 @@
   border-top-left-radius: 1rem
   border-top-right-radius: 1rem
   background-color: #18191A
+
+  @include m.media(laptop)
+    grid-template-columns: [footer-start ] auto [center] auto [footer-end]
+
 
   @include m.media(phone, tablet)
     grid-template-columns: [footer-start] 1fr [footer-end]
@@ -33,6 +40,10 @@
     width: 3.25rem
     height: 3.25rem
 
+  @include m.media(laptop)
+    grid-column: footer-start / center
+
+
   @include m.media(phone, tablet)
     grid-column: footer-start / footer-end
 
@@ -40,6 +51,9 @@
   grid-column: form-start / form-end
   justify-self: flex-end
   align-items: center
+
+  @include m.media(laptop)
+    grid-column: center / footer-end
 
   @include m.media(phone, tablet)
     grid-column: footer-start / footer-end
@@ -51,11 +65,18 @@
   grid-column: contact-start / contact-end
   grid-row: span 2
 
+  @include m.media(laptop)
+    grid-column: footer-start / center
+    grid-row: span 1
+
   @include m.media(phone, tablet)
     grid-column: footer-start / footer-end
 
 .nav
   grid-column: nav-start / nav-end
+
+  @include m.media(laptop)
+    grid-column: center / footer-end
 
   @include m.media(phone, tablet)
     grid-column: footer-start / footer-end
@@ -63,11 +84,17 @@
 .license
   grid-column: license-start / license-end
 
+  @include m.media(laptop)
+    grid-column: footer-start / center
+
   @include m.media(phone, tablet)
     grid-column: footer-start / footer-end
 
 .subscription
   grid-column: form-start / form-end
+
+  @include m.media(laptop)
+    grid-column: center / footer-end
 
   @include m.media(phone, tablet)
     grid-column: footer-start / footer-end

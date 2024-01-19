@@ -4,11 +4,13 @@
   display: grid
   grid-template-columns: repeat(4, 1fr)
   gap: 1rem
-  margin-left: 10rem
+  margin: 0
 
-  @include m.media(phone, tablet)
+  @include m.media(widescreen)
+    margin-left: 10rem
+
+  @include m.media(phone, tablet, laptop)
     grid-template-columns: repeat(2, 1fr)
-    margin-left: 0
     padding-bottom: 2rem
     border-bottom: 1px solid #383838
 
@@ -26,5 +28,5 @@
     font-size: 0.875rem
     color: #979BA0
 
-    @include m.media(phone, tablet)
+    @include m.media(phone, tablet, laptop)
       max-width: 6.5rem 

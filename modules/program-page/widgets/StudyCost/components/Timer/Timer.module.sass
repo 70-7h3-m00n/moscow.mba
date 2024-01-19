@@ -1,0 +1,29 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content
+  width: 14rem
+
+.list
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+
+.item
+  position: relative
+
+  &:not(:last-child)::after
+    content: ':'
+    position: absolute
+    right: 1rem
+    top: .2rem
+
+  &__number
+    color: #FFF
+    font-size: 1.125rem
+    line-height: 120%
+
+  &__description
+    color: #979BA0
+    font-size: 0.625rem
+    line-height: normal

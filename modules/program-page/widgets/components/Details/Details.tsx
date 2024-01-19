@@ -4,11 +4,7 @@ import { DetailsProps } from './types'
 
 import { useContext } from 'react'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
-import Image from 'next/image'
-import { Tag } from '../Tag/Tag'
-import { PlacesLeft } from '@/components/costs'
 import { GetDetailsData } from './fractals/GetDetailsData'
-import Until from '@/components/costs/Until'
 import { Partnership } from '../../HeroSection/widgets/Partnership/Partnership'
 import { Sale } from '../../HeroSection/widgets/Sale/Sale'
 
@@ -16,7 +12,7 @@ export const Details = ({ className }: DetailsProps) => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
-	const detailsData = GetDetailsData()
+	const detailsData = GetDetailsData().filter(item => item)
 
 	const isPartnership = program?.partnership && program?.partnership?.url
 

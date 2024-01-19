@@ -33,6 +33,7 @@ export const PopupTeacherNew = ({
 				<div className={stls.right}>
 					<h2 className={stls.title}>{teacher?.name || 'Преподаватель'}</h2>
 					<div className={stls.about}>
+						{/* <p>{teacher?.description}</p> */}
 						{teacher?.descriptionItems?.length > 0 ? (
 							<ul className={stls.list}>
 								{teacher.descriptionItems

@@ -4,7 +4,6 @@ import { useContext } from 'react'
 import useAt from '@/hooks/useAt'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { TrainingPeriod, Until } from '@/components/costs'
-import { ruCase } from '@/helpers/index'
 import { FRDO } from '../components/FRDO'
 import { InfoTooltip } from '@/components/popups/InfoTooltip/InfoTooltip'
 
@@ -13,11 +12,7 @@ export const GetDetailsData = () => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
-	const durationHours = at.mini
-		? 1260
-		: at.mba
-		? 3420
-		: +program?.duration?.studyHours
+	console.log(' GetDetailsData =>>>>>> FRDO', program?.frdo)
 
 	return [
 		{
@@ -29,13 +24,10 @@ export const GetDetailsData = () => {
 						type={program?.category?.type}
 					/>
 					<InfoTooltip color='#000' textColor='#fff'>
-						<p className={stls.durationHours}>
-							<span className={stls.bold}>Длительность:</span>{' '}
-							{`${durationHours} ${ruCase(durationHours, [
-								'час',
-								'часа',
-								'часов'
-							])}`}
+						<p className={stls.durationTitle}>Как можно сократить?</p>
+						<p className={stls.durationDesc}>
+							Вы можете пройти программу в ускоренном темпе, если уже имеете
+							необходимые знания или профильный опыт работы
 						</p>
 					</InfoTooltip>
 				</>
@@ -51,16 +43,17 @@ export const GetDetailsData = () => {
 				<Until preposition={false} executive={at.executive && false} />
 			)
 		},
-		!at.course && {
-			title: 'Диплом',
-			description: (
-				<>
-					Заносится в ФРДО{' '}
-					<InfoTooltip color='#000' textColor='#fff'>
-						<FRDO />
-					</InfoTooltip>
-				</>
-			)
-		}
+		program?.frdo !== false &&
+			!at.course && {
+				title: 'Диплом',
+				description: (
+					<>
+						Заносится в ФРДО{' '}
+						<InfoTooltip color='#000' textColor='#fff'>
+							<FRDO />
+						</InfoTooltip>
+					</>
+				)
+			}
 	]
 }

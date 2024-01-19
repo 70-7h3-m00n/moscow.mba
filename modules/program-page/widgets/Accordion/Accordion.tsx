@@ -25,17 +25,18 @@ export const Accordion = ({
 				})}
 			>
 				<div className={stls.titleWrapper}>
-					{item?.new && (
-						<Tag variant='delta'>
-							New <IconLightning className={stls.lightning} />
-						</Tag>
-					)}
 					{}
 					<p
 						className={cn(stls.item__title, {
 							[stls.modulesActive]: variant === 'modules' && active
 						})}
 					>
+						{item?.new && (
+							<Tag className={stls.item__tag} variant='delta'>
+								New
+								<IconLightning className={stls.lightning} />
+							</Tag>
+						)}
 						{item?.title}
 					</p>
 				</div>

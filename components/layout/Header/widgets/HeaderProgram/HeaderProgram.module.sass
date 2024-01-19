@@ -3,11 +3,15 @@
 @use '@/styles/themes/default/colors' as c
 
 .content
+  background-color: #F8F8F8
+
+.wrapper
+  max-width: 1392px
+  width: 100%
   display: flex
   justify-content: space-between
   align-items: center
-  padding: 1rem 3rem .5rem 3rem
-  background-color: #F8F8F8
+  padding: 1rem 1.5rem .5rem 1.5rem
 
   @include m.media(phone, tablet)
     padding: 1rem .6rem 0rem .6rem
@@ -27,16 +31,16 @@
 
 .nav 
   display: flex
-  gap: 1.5rem
+  gap: 1.1rem
   padding: 1rem
   border-radius: 1rem
 
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     display: none
 
   &__item
     color: #000
-    font-size: 0.875rem
+    font-size: 0.85rem
     font-weight: 400
     line-height: 120%
     cursor: pointer
@@ -55,13 +59,17 @@
   &.active
     background-color: #ff3535
 
+.popupHeader
+  @include m.media(phone, tablet, laptop)
+    justify-self: flex-end
+
+.right
+  display: flex
+  gap: 3rem
+
 .burger 
     display: block
     cursor: pointer
-    @include m.media(laptop)
-      margin-left: 40px
-    @include m.media(phone, tablet)
-      margin-left: 25px
     &.opened 
       .line 
         &:nth-of-type(1) 

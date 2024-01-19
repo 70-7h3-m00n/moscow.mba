@@ -15,7 +15,8 @@ export const WhoIsForNew = ({ className, ...rest }: WhoIsForProps) => {
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
-				<h2>Кому подойдет программа</h2>
+				<h2 className={stls.title}>Кому подойдет программа</h2>
+
 				{whoIsForDefault.map(({ name, description, photo }, idx) => {
 					return (
 						<div className={stls.item} key={idx}>

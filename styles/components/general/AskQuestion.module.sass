@@ -11,24 +11,39 @@
     &.stickyHidden
       margin-bottom: 60px
 
+.wrapper
+  display: flex
+  flex-direction: column
+  gap: 0.5rem
+
 .messages
   position: relative
-  width: 58px
-  height: 58px
-  background-color: #27C500
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 2.5rem
+  height: 2.5rem
+  background-color: #FF3535
   border-radius: 50%
   cursor: pointer
   transition: all .3s ease-out
   pointer-events: all
   &:hover
-    background-color: lighten(#27C500, 2%)
-  & > *
-    position: absolute
-  & > *:first-of-type
-    left: 30%
-    top: 60%
-    transform: translate(-30%, -60%)
-  & > *:nth-of-type(2)
-    left: 60%
-    top: 50%
-    transform: translate(-60%, -50%)
+    background-color: lighten(#FF3535, 2%)
+
+.scroll
+  position: relative
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 2.5rem
+  height: 2.5rem
+  background-color: #18191A
+  border-radius: 50%
+  cursor: pointer
+  transition: all .3s ease-out
+  pointer-events: all
+  &:hover
+    background-color: lighten(#18191A, 2%)
+
+

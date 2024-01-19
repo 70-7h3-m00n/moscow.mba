@@ -2,12 +2,11 @@ import stls from './HeaderProgram.module.sass'
 import cn from 'classnames'
 import { HeaderProgramProps } from './types'
 
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { IconLogo, IconLogoTitle } from '@/components/icons'
 import companyName from '@/config/companyName'
 import routesFront from '@/config/routesFront'
-import { menuData } from './constants'
 import { PopupHeader } from '@/components/popups'
 import Wrapper from '@/components/layout/Wrapper'
 
@@ -18,9 +17,18 @@ export const HeaderProgram = ({
 }: HeaderProgramProps) => {
 	const [activeIdx, setActiveIdx] = useState(null)
 
+	const menuData = [
+		{ title: 'Как проходит обучение', src: '#how-process-goes' },
+		{ title: 'Программа', src: '#program-modules' },
+		{ title: 'Стоимость', src: '#study-cost' },
+		{ title: 'Преподаватели', src: '#experts' },
+		{ title: 'Отзывы', src: '#reviews' },
+		...(true ? [{ title: 'Трудоустройство', src: '#employment' }] : [])
+	]
+
 	return (
 		<div className={cn(className, stls.content)}>
-			<Wrapper>
+			<Wrapper classNames={[stls.wrapper]}>
 				<Link
 					className={stls.logo}
 					aria-label={companyName}
@@ -45,16 +53,18 @@ export const HeaderProgram = ({
 						</div>
 					))}
 				</div>
-				<PopupHeader />
-				<div
-					className={cn(stls.burger, {
-						[stls.opened]: openMenu
-					})}
-					onClick={() => handleMenu(!openMenu)}
-				>
-					<i className={stls.line} />
-					<i className={stls.line} />
-					<i className={stls.line} />
+				<div className={stls.right}>
+					<PopupHeader className={stls.popupHeader} />
+					<div
+						className={cn(stls.burger, {
+							[stls.opened]: openMenu
+						})}
+						onClick={() => handleMenu(!openMenu)}
+					>
+						<i className={stls.line} />
+						<i className={stls.line} />
+						<i className={stls.line} />
+					</div>
 				</div>
 			</Wrapper>
 		</div>

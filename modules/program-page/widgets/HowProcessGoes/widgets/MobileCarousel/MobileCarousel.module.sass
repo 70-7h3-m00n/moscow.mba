@@ -17,10 +17,7 @@
 
   & > div > div > div
     border-radius: 1.5rem
-    background-color: #51555B
-    background-repeat: no-repeat
-    background-size: 70rem 45rem
-    background-position: center center
+ 
 
     // &:nth-child(1)
     //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
@@ -101,10 +98,11 @@
 
 .slide
   display: flex !important
-  align-items: flex-end
+  flex-direction: column
+  align-items: center
+  gap: 1rem
   padding: 1.5rem
   border-radius: 1.5rem
-  // background-color: #51555B
   overflow: hidden
   cursor: grab
   user-select: none
@@ -136,6 +134,11 @@
 
     @include m.media(phone, tablet)
       font-size: .875rem
+
+  &__image
+    width: 80vw
+    height: 50vw
+    border-radius: 1.5rem
 
 .carousel__navigation
   display: flex

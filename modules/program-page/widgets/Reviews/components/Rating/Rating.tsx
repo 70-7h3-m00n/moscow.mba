@@ -11,7 +11,7 @@ export const Rating = ({ className }: RatingProps) => {
 			<li className={cn(stls.large, stls.left)}>
 				<Image
 					className={stls.left__image}
-					src={'/assets/images/program/reviews-rating-photo-2.jpg'}
+					src={'/assets/images/program/reviews-rating-photo-3.jpg'}
 					alt='Студентка'
 					width={90}
 					height={90}

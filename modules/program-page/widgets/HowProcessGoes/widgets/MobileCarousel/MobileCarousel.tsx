@@ -9,6 +9,7 @@ import Slider from 'react-slick'
 import { GetHowProcessGoesData } from '../../fractals/GetHowProcessGoesData'
 import { IconCheck, IconNext } from 'modules/program-page/widgets/components'
 import { IconCheckCircle } from '@/components/icons'
+import Image from 'next/image'
 
 export const MobileCarousel = ({ className, ...rest }: MobileCarouselProps) => {
 	const sliderRef = useRef<Slider>(null)
@@ -111,6 +112,13 @@ export const MobileCarousel = ({ className, ...rest }: MobileCarouselProps) => {
 									<h3 className={stls.slide__title}>{slide.title}</h3>
 									<p className={stls.slide__desc}>{slide.description}</p>
 								</div>
+								<Image
+									className={stls.slide__image}
+									src={slide.src}
+									width={684}
+									height={400}
+									alt={slide.title}
+								/>
 							</div>
 						))}
 					</Slider>

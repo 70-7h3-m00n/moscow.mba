@@ -4,26 +4,26 @@ import { FutureJobProps } from './types'
 
 import { Wrapper } from '@/components/layout'
 import { useContext, useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import Slider from 'react-slick'
 import { IconUmbrella } from './assets/IconUmbrella'
 import { CornerPhoto } from '../components/CornerPhoto/CornerPhoto'
 import { IconNext } from '../components'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import useWindowWidth from '@/hooks/useWindowWidth'
+import { IconArrowAlt } from '../components/icons/IconArrowAlt/IconArrowAlt'
 
 const data = [
 	{
 		title: 'Возможность построить карьеру в топовой компании',
 		description:
 			'Сегодня любая компания - потенциальная жертва кибератак. Чем дороже компания, тем выше риски. А значит, тем больше денег готовы тратить руководители на специалистов по кибербезопасности',
-		src: '/assets/images/program/employment-partners.jpg'
+		src: '/assets/images/program/future-job-photo.png'
 	},
 	{
 		title: 'Возможность построить карьеру в топовой компании',
 		description:
 			'Сегодня любая компания - потенциальная жертва кибератак. Чем дороже компания, тем выше риски. А значит, тем больше денег готовы тратить руководители на специалистов по кибербезопасности',
-		src: '/assets/images/program/employment-partners.jpg'
+		src: '/assets/images/program/future-job-photo-2.png'
 	}
 ]
 
@@ -90,10 +90,7 @@ export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 								className={cn(stls.carousel__post, stls.post)}
 								key={`Carousel_post--${idx}`}
 							>
-								<CornerPhoto
-									className={stls.card}
-									src='/assets/images/program/employment-partners.jpg'
-								>
+								<CornerPhoto className={stls.card} src={data[idx].src}>
 									<h3 className={stls.card__title}>{item?.title}</h3>
 									<p className={stls.card__description}>{item?.string}</p>
 								</CornerPhoto>
@@ -114,16 +111,17 @@ export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 									[stls.disabled]: data.length - 1 === activeSlideIndex
 								})}
 							/>
+							<IconArrowAlt
+								className={cn(stls.svg)}
+								disabled={data.length - 1 === activeSlideIndex}
+							/>
 						</button>
 					</div>
 				</div>
 				<div className={cn(stls.mobileList, { [stls.hide]: !noCarusel })}>
 					{program?.futureJob?.job.map((item, idx) => (
 						<div className={stls.post} key={`Carousel_post--${idx}`}>
-							<CornerPhoto
-								className={stls.card}
-								src='/assets/images/program/employment-partners.jpg'
-							>
+							<CornerPhoto className={stls.card} src={data[idx].src}>
 								<h3 className={stls.card__title}>{item?.title}</h3>
 								<p className={stls.card__description}>{item?.string}</p>
 							</CornerPhoto>

@@ -12,8 +12,10 @@
   gap: 2rem
   padding: 3rem
   border-radius: 1.5rem
+  overflow: hidden
+  isolation: isolate
 
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     grid-template-columns: 1fr
     padding: 2rem 1rem
 
@@ -31,6 +33,7 @@
 
   &__image
     width: 10.375rem
+    height: auto
 
 .title
   color: #FFF
@@ -76,3 +79,26 @@
     bottom: 0
     left: 50%
     transform: translate(-60%)
+
+    @include m.media(laptop)
+      width: 10rem
+      top: -5rem
+
+.gamma .left__imageWrapper
+  position: relative
+
+  // @include m.media(laptop)
+  //   height: 30rem
+
+  .left__image
+    position: absolute
+    width: auto
+    z-index: -1
+
+    @include m.media(desktop)
+      top: -20rem
+      width: 30rem
+
+    @include m.media(laptop)
+      position: relative
+      width: 20rem

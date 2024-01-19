@@ -14,7 +14,7 @@ export const EmploymenIcons = ({ className }: EmploymenIconsProps) => {
 			</div>
 			<div className={cn(stls.content__photo)}>
 				<Image
-					src={'/assets/images/program/employment-photo.jpg'}
+					src={'/assets/images/program/employment-photo-2.jpg'}
 					alt='Карьерный коуч'
 					width={200}
 					height={200}

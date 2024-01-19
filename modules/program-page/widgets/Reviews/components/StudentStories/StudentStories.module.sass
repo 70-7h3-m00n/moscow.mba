@@ -7,7 +7,7 @@
   grid-template-columns: 3fr 1fr
   gap: 1.5rem
 
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     grid-template-columns: 1fr
     padding-inline: unset
 
@@ -117,7 +117,15 @@
   border: none
   background-color: transparent
 
+.mobileSlider
+  display: none
+
+  @include m.media(phone, tablet)
+    display: block
+
 .studentStories
 
   &__video
     margin-bottom: 1rem
+
+    

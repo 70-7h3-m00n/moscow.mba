@@ -50,11 +50,13 @@ export const PopupHeader = ({ className }: PopupHeaderProps) => {
 						Позвонить
 					</button>
 				)}
-				position={['top center', 'bottom right', 'bottom left']}
+				position={['bottom center', 'bottom left']}
 				open={open}
 				closeOnDocumentClick
 				onClose={close}
 				ref={ref}
+				modal={modal}
+				lockScroll
 			>
 				<div className={stls.content}>{formStages[formStage]}</div>
 			</Popup>

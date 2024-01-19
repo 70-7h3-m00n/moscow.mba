@@ -17,29 +17,31 @@
 
   & > div > div > div
     border-radius: 1.5rem
-    background-color: #51555B
-    background-repeat: no-repeat
-    background-size: 70rem 45rem
-    background-position: center center
+    // background-color: #51555B
+    // background-repeat: no-repeat
+    // background-size: 70rem 45rem
+    // background-position: center center
 
-    &:nth-child(1)
-      background-image: url('../../../../public/assets/images/program/slider-bg.png')
-    &:nth-child(2)
-      background-image: url('../../../../public/assets/images/program/slider-bg.png')
-    &:nth-child(3)
-      background-image: url('../../../../public/assets/images/program/slider-bg.png')
-    &:nth-child(4)
-      background-image: url('../../../../public/assets/images/program/slider-bg.png')
-    &:nth-child(5)
-      background-image: url('../../../../public/assets/images/program/slider-bg.png')
-    &:nth-child(6)
-      background-image: url('../../../../public/assets/images/program/slider-bg.png')
-    &:nth-child(7)
-      background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(1)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(2)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(3)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(4)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(5)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(6)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
+    // &:nth-child(7)
+    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
 
 .slide
   display: flex !important
-  align-items: flex-end
+  justify-content: space-between
+  align-items: flex-start
+  gap: 1.5rem
   min-height: 25rem
   padding: 1.5rem
   border-radius: 1.5rem
@@ -48,6 +50,9 @@
   cursor: grab
   user-select: none
   position: relative
+
+  @include m.media(laptop)
+    flex-direction: column-reverse
 
   &:active
     cursor: grabbing
@@ -69,6 +74,16 @@
   &__desc
     color: #575757
     line-height: 110%
+
+  &__image
+    border-radius: 1.5rem
+
+    @include m.media(desktop)
+      height: 20rem
+
+    @include m.media(laptop)
+      height: 23rem
+      width: 100%
 
 .dots
 
@@ -126,6 +141,9 @@
   line-height: 110%
   white-space: nowrap
   transition: color .4s ease-in-out
+
+  @include m.media(laptop)
+    font-size: .8rem
 
 .checkDescription.active
   color:#FF3535

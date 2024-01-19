@@ -20,7 +20,11 @@
   border-radius: 1.5rem
   background: #18191A
 
-  @include m.media(phone, tablet)
+  @include m.media(desktop)
+    grid-template-columns: 1fr auto
+    padding-right: 0.5rem
+
+  @include m.media(phone, tablet, laptop)
     grid-template-columns: 1fr
     padding: 2rem 1rem
 
@@ -145,19 +149,19 @@
   border: none
   background-color: transparent
 
-.svg
-  circle
-    fill: #fff
-    transition: fill .3s ease-in-out
-  path
-    fill: #18191A
-    transition: fill .3s ease-in-out
+// .svg
+//   circle
+//     fill: #fff
+//     transition: fill .3s ease-in-out
+//   path
+//     fill: #18191A
+//     transition: fill .3s ease-in-out
 
-.disabled
-  circle
-    fill: #51555B
-  path
-    fill: #18191A
+// .disabled
+//   circle
+//     fill: #51555B
+//   path
+//     fill: #18191A
 
 .icon
   @include m.media(phone, tablet)

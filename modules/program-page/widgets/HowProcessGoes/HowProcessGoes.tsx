@@ -7,16 +7,14 @@ import { IconCheck } from '../components/icons/IconCheck/IconCheck'
 import { useEffect, useRef, useState } from 'react'
 import Slider from 'react-slick'
 import { GetHowProcessGoesData } from './fractals/GetHowProcessGoesData'
-import { IconNext } from '../components'
-import useAt from '@/hooks/useAt'
 import useWindowWidth from '@/hooks/useWindowWidth'
 import { MobileCarousel } from './widgets/MobileCarousel/MobileCarousel'
+import Image from 'next/image'
 
 export const HowProcessGoesNew = ({
 	className,
 	...rest
 }: HowProcessGoesProps) => {
-	const at = useAt()
 	const widthWindow = useWindowWidth()
 	const sliderRef = useRef<Slider>(null)
 	const slidesRef = useRef(null)
@@ -44,7 +42,7 @@ export const HowProcessGoesNew = ({
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		adaptiveHeight: true,
-		// autoplay: true,
+		autoplay: true,
 		autoplaySpeed: 4000,
 		vertical: false,
 		arrows: false,
@@ -109,9 +107,16 @@ export const HowProcessGoesNew = ({
 									key={`Carousel_post--${idx}`}
 								>
 									<div className={stls.slide__content}>
-										<h3 className={stls.slide__title}>{slide.title}</h3>
+										<h3 className={stls.slide__title}>{slide.subtitle}</h3>
 										<p className={stls.slide__desc}>{slide.description}</p>
 									</div>
+									<Image
+										className={stls.slide__image}
+										src={slide.src}
+										width={684}
+										height={400}
+										alt={slide.title}
+									/>
 								</div>
 							))}
 						</Slider>

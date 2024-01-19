@@ -24,7 +24,9 @@ export const CtaForm = ({
 	const [openLoader, setOpenLoader] = useState(false)
 
 	const ctaTitle =
-		variant === 'gamma'
+		variant === 'gamma' && (at.course || at.profession)
+			? 'Есть вопросы или сложности с выбором программы?'
+			: variant === 'gamma'
 			? 'Поможем в выборе'
 			: `Записаться на ${at.course ? 'курс' : 'программу'} или получить
 	бесплатную консультацию`
@@ -52,9 +54,11 @@ export const CtaForm = ({
 						<h2 className={stls.title}>{ctaTitle}</h2>
 						{variant === 'gamma' && (
 							<p className={stls.titleDesc}>
-								Есть вопросы или сложности с выбором программы? Оставьте заявку,
-								мы свяжемся с вами, проконсультируем и ответим на все
-								интересующие вас вопросы
+								{at.mba ||
+									(at.mini &&
+										'Есть вопросы или сложности с выбором программы?')}{' '}
+								Оставьте заявку, мы свяжемся с вами, проконсультируем и ответим
+								на все интересующие вас вопросы
 							</p>
 						)}
 					</div>
@@ -99,10 +103,10 @@ export const CtaForm = ({
 						<div className={stls.left__imageWrapper}>
 							<Image
 								className={stls.left__image}
-								src={'/assets/images/program/cta-gamma.svg'}
+								src={'/assets/images/program/cta-bg.png'}
 								alt='Иконка'
-								width={358}
-								height={236}
+								width={640}
+								height={520}
 							/>
 						</div>
 					)}

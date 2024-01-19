@@ -4,8 +4,10 @@ import { AccreditationProps } from './types'
 
 import { Wrapper } from '@/components/layout'
 import { AccreditationData } from './constants'
+import useAt from '@/hooks/useAt'
 
 export const Accreditation = ({ className, ...rest }: AccreditationProps) => {
+	const at = useAt()
 	const accreditationData = AccreditationData()
 
 	return (
@@ -16,9 +18,15 @@ export const Accreditation = ({ className, ...rest }: AccreditationProps) => {
 				<ul className={stls.list}>
 					<li className={stls.left}>
 						<p className={stls.left__subtitle}>
-							Обучение по программам MBA в Московской Бизнес Академии проходит
-							на базе всех необходимых лицензий и аккредитации, которые дают
-							право на осуществление образовательной деятельности
+							Обучение по программам{' '}
+							{at.profession
+								? 'профессиональной переподготовки'
+								: at.course
+								? 'повышения квалификации'
+								: 'MBA'}{' '}
+							в Московской Бизнес Академии проходит на базе всех необходимых
+							лицензий и аккредитации, которые дают право на осуществление
+							образовательной деятельности
 						</p>
 						<div className={stls.left__wrapper}>
 							<p className={stls.left__desc}>

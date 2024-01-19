@@ -13,8 +13,9 @@ export const InfoTooltip = ({
 	color = '#fff',
 	textColor = '#000'
 }: InfoTooltipProps) => {
-	const at = useAt()
 	const ref = useRef(null)
+
+	const [opened, setOpened] = useState(false)
 
 	const widthWindow = useWindowWidth()
 	const [modal, setModal] = useState(false)
@@ -44,18 +45,14 @@ export const InfoTooltip = ({
 				className={stls.popup}
 				trigger={open => (
 					<button className={stls.btn}>
-						<IconInfo />
+						<IconInfo opened={opened} onClick={() => setOpened(o => !o)} />
 					</button>
 				)}
-				position={[
-					'top center',
-					'bottom center',
-					'bottom left',
-					'left center',
-					'left bottom'
-				]}
+				position={['top center', 'bottom center']}
 				closeOnDocumentClick
 				ref={ref}
+				modal={modal}
+				lockScroll
 				{...{
 					contentStyle,
 					// overlayStyle,

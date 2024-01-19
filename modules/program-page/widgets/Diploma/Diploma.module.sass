@@ -2,19 +2,26 @@
 @use '@/styles/utils/funcs' as f
 @use '@/styles/themes/default/colors' as c
 
+.container
+  @include m.media(phone, tablet)
+    padding-inline: 10px
+
 .content
+  display: grid
+  grid-template-columns: auto 1fr
   padding: 3rem 1.5rem
   border-radius: 1.5rem
   background-color: #18191A
-  background-image: url('../../../../public/assets/images/program/diploma-bg.png')
-  background-repeat: no-repeat
-  background-size: 42rem 38rem
-  background-position: right center 
-  @include m.media(phone, tablet)
+  
+  @include m.media(phone, tablet, laptop)
+    grid-template-columns: 1fr
     min-height: 45rem
     padding: 2rem 1rem
     background-size: 22rem
     background-position: center bottom 
+
+  @include m.media(phone)
+    overflow: hidden
 
 .title
   max-width: 41rem
@@ -49,3 +56,22 @@
 .btn
   @include m.media(phone, tablet)
     width: 100%
+
+.imageWrapper
+  position: relative
+
+.image
+  object-fit: contain
+  transform: scale(1.5)
+
+  @include m.media(desktop)
+    transform: translate(-2rem, 5rem) scale(1.5)
+
+  @include m.media(laptop)
+    transform: translate(0rem, -2rem) scale(2.5)
+
+  @include m.media(tablet)
+    transform: translate(0rem, -5rem) scale(1.8)
+  
+  @include m.media(phone)
+    transform: translate(0rem, -5rem) scale(2.1)

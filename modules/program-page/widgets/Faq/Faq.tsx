@@ -1,7 +1,6 @@
 import stls from './Faq.module.sass'
 import cn from 'classnames'
 
-import { useRouter } from 'next/router'
 import { useAt } from '@/hooks/index'
 import { Wrapper } from '@/components/layout'
 import { faqCourse, faqMba, faqMini, faqProfession } from './constants'
@@ -52,7 +51,20 @@ export const Faq = ({ className, ...rest }: FaqProps) => {
 								handler={() => setActiveIdx(activeIdx === idx ? null : idx)}
 								variant='faq'
 							>
-								<p className={stls.answer}>{item?.string}</p>
+								{typeof item?.string === 'string' && (
+									<p className={stls.answer}>{item?.string}</p>
+								)}
+								{Array.isArray(item?.string) &&
+									item?.string?.map(el => (
+										<p
+											className={cn(stls.answer, {
+												[stls.isList]: item?.isList
+											})}
+											key={el}
+										>
+											{el}
+										</p>
+									))}
 							</Accordion>
 						))}
 					</div>

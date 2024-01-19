@@ -7,6 +7,6 @@ export const whoIsForDefault = [
 	{
 		name: 'Владельцам малого бизнеса и ИП',
 		description: '',
-		photo: '/assets/images/program/who-is-for-photo-2.png'
+		photo: '/assets/images/program/who-is-for-photo.png'
 	}
 ]

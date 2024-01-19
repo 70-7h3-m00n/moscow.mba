@@ -22,7 +22,7 @@
   letter-spacing: -0.1rem
   text-align: center
 
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     font-size: 1.75rem
     line-height: 100%
     letter-spacing: -0.035rem
@@ -35,7 +35,7 @@
   font-size: 1.125rem
   line-height: 110%
 
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     width: unset
     font-size: 1rem
     line-height: 120%
@@ -74,9 +74,18 @@
 .accordion
   width: 55rem
   border-radius: 1rem
+  counter-increment: 1
+  counter-reset: section
 
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     width: 100%
 
 .answer
   margin-top: 1.5rem
+
+.isList
+  padding-left: 2rem
+
+  &::before
+    counter-increment: section
+    content: counter(section) '. '

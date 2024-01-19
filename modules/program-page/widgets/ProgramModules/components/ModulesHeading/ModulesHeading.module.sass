@@ -11,13 +11,17 @@
   border-radius: 1.5rem
   background: #51555B
 
-  @include m.media(phone, tablet)
+  @include m.media(desktop)
+    padding: 2rem 1rem
+
+  @include m.media(phone, tablet, laptop)
     grid-template-columns: 1fr
     padding: 2rem 1rem
 
 .left
   display: flex
   flex-direction: column
+  gap: 1rem
 
   &__title
     color: #FFF
@@ -48,6 +52,9 @@
     grid-template-columns: repeat(3, 1fr)
     gap: 1.5rem
 
+    @include m.media(desktop)
+      gap: 1rem
+
     @include m.media(phone, tablet)
       grid-template-columns: repeat(2, 1fr)
       grid-template-rows: repeat(2, 1fr)
@@ -61,6 +68,12 @@
     padding: 1rem
     border-radius: 1rem
     background-color: #fff
+
+    @include m.media(desktop)
+      padding: 0.5rem
+    
+    @include m.media(phone)
+      padding: 0.95rem
 
     .number
       color: #000
@@ -79,7 +92,7 @@
       font-size: 1rem
       line-height: 120%
 
-      @include m.media(phone, tablet)
+      @include m.media(phone, tablet, desktop)
         font-size: 0.875rem
         font-style: normal
 
@@ -111,6 +124,37 @@
 
     @include m.media(phone, tablet)
       font-size: 0.875rem
+
+.right.images
+  display: grid
+  grid-template-columns: repeat(2, minmax(9rem, 25rem))
+  gap: 1.5rem
+  background-color: transparent
+  padding: 0
+  width: 100%
+
+  @include m.media(phone, tablet)
+    gap: 1rem
+
+  .images__wrapper
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 1.5rem
+    border-radius: 1.5rem
+
+    svg
+      width: auto
+      height: auto
+
+    &:nth-child(1)
+      border: 1px solid #6D7074
+
+      svg
+        transform: translateX(.5rem) scale(1.2)
+    
+    &:nth-child(2)
+      border: 1px solid #6D7074
 
 .tagList
   display: flex
