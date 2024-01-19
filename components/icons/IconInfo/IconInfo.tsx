@@ -6,7 +6,7 @@ export const IconInfo = ({
 	className,
 	opened,
 	...rest
-}: SVGProps<SVGSVGElement> & { opened: boolean }) => {
+}: SVGProps<SVGSVGElement> & { opened?: boolean }) => {
 	return (
 		<svg
 			className={cn(className)}
