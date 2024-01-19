@@ -8,7 +8,7 @@ export const ratings = [
 	{
 		name: 'Google Maps',
 		rating: '4.6',
-		src: '/assets/images/program/google-maps.svg',
+		src: '/assets/images/program/zoon.png',
 		desc: '55 отзывов'
 	},
 	{

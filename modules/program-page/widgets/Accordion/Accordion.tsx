@@ -58,7 +58,7 @@ export const Accordion = ({
 							className={cn(stls.iconModules, {
 								[stls.iconModules__active]: active
 							})}
-							active={active}
+							status={active ? 'active' : 'default'}
 						/>
 					) : (
 						<IconPlus

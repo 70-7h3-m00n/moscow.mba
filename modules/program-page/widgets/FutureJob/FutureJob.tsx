@@ -72,63 +72,68 @@ export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 	}
 
 	return (
-		<section
-			className={cn(className, stls.container, {
-				[stls.noCarousel]: noCarusel
-			})}
-			{...rest}
-		>
-			<Wrapper classNames={[stls.content]}>
-				<div className={stls.left}>
-					<h2 className={stls.title}>Кем именно вы будете работать</h2>
-					<IconUmbrella className={cn(stls.icon, stls.rotation)} />
-				</div>
-				<div className={cn(stls.sliderWrapper, { [stls.hide]: noCarusel })}>
-					<Slider ref={sliderRefExperts} {...settings}>
-						{jobsList?.map((item, idx) => (
-							<div
-								className={cn(stls.carousel__post, stls.post)}
-								key={`Carousel_post--${idx}`}
-							>
-								<CornerPhoto className={stls.card} src={data[idx].src}>
-									<h3 className={stls.card__title}>{item?.title}</h3>
-									<p className={stls.card__description}>{item?.string}</p>
-								</CornerPhoto>
-							</div>
-						))}
-					</Slider>
-					<div className={stls.carousel__navigation}>
-						<button className={stls.prev} onClick={previousBtn}>
-							<IconNext
-								className={cn(stls.svg, {
-									[stls.disabled]: 0 === activeSlideIndex
-								})}
-							/>
-						</button>
-						<button className={stls.next} onClick={nextBtn}>
-							<IconNext
-								className={cn(stls.svg, {
-									[stls.disabled]: data.length - 1 === activeSlideIndex
-								})}
-							/>
-							<IconArrowAlt
-								className={cn(stls.svg)}
-								disabled={data.length - 1 === activeSlideIndex}
-							/>
-						</button>
-					</div>
-				</div>
-				<div className={cn(stls.mobileList, { [stls.hide]: !noCarusel })}>
-					{program?.futureJob?.job.map((item, idx) => (
-						<div className={stls.post} key={`Carousel_post--${idx}`}>
-							<CornerPhoto className={stls.card} src={data[idx].src}>
-								<h3 className={stls.card__title}>{item?.title}</h3>
-								<p className={stls.card__description}>{item?.string}</p>
-							</CornerPhoto>
+		<>
+			{program?.futureJob?.job && program?.futureJob?.job?.length > 0 && (
+				<section
+					className={cn(className, stls.container, {
+						[stls.noCarousel]: noCarusel
+					})}
+					{...rest}
+				>
+					<Wrapper classNames={[stls.content]}>
+						<div className={stls.left}>
+							<h2 className={stls.title}>Кем именно вы будете работать</h2>
+							<IconUmbrella className={cn(stls.icon, stls.rotation)} />
 						</div>
-					))}
-				</div>
-			</Wrapper>
-		</section>
+						<div className={cn(stls.sliderWrapper, { [stls.hide]: noCarusel })}>
+							<Slider ref={sliderRefExperts} {...settings}>
+								{jobsList?.map((item, idx) => (
+									<div
+										className={cn(stls.carousel__post, stls.post)}
+										key={`Carousel_post--${idx}`}
+									>
+										<CornerPhoto className={stls.card} src={data[idx].src}>
+											<h3 className={stls.card__title}>{item?.title}</h3>
+											<p className={stls.card__description}>{item?.string}</p>
+										</CornerPhoto>
+									</div>
+								))}
+							</Slider>
+							<div className={stls.carousel__navigation}>
+								<button className={stls.prev} onClick={previousBtn}>
+									<IconArrowAlt
+										className={cn(stls.svg)}
+										status={activeSlideIndex === 0 ? 'disabled' : 'default'}
+										variant='beta'
+										direction='left'
+									/>
+								</button>
+								<button className={stls.next} onClick={nextBtn}>
+									<IconArrowAlt
+										className={cn(stls.svg)}
+										status={
+											data.length - 1 === activeSlideIndex
+												? 'disabled'
+												: 'default'
+										}
+										variant='beta'
+									/>
+								</button>
+							</div>
+						</div>
+						<div className={cn(stls.mobileList, { [stls.hide]: !noCarusel })}>
+							{program?.futureJob?.job.map((item, idx) => (
+								<div className={stls.post} key={`Carousel_post--${idx}`}>
+									<CornerPhoto className={stls.card} src={data[idx].src}>
+										<h3 className={stls.card__title}>{item?.title}</h3>
+										<p className={stls.card__description}>{item?.string}</p>
+									</CornerPhoto>
+								</div>
+							))}
+						</div>
+					</Wrapper>
+				</section>
+			)}
+		</>
 	)
 }
