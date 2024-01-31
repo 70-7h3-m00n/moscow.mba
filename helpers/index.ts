@@ -25,6 +25,8 @@ export { default as toNumberWithSpaces } from '@/helpers/general/toNumberWithSpa
 export { default as getRenderTime } from '@/helpers/general/getRenderTime'
 export { default as handleSubmitFormArticle } from '@/helpers/general/handleSubmitFormArticle'
 export { default as formatDate } from '@/helpers/general/formatDate'
+export * from '@/helpers/general/handlePayment'
+export * from '@/helpers/general/getFullPaymentPrice'
 
 // ./ruCases
 export { default as ruCase } from '@/helpers/ruCases/ruCase'

@@ -16,14 +16,17 @@ export const VideoComponent = ({
 }: VideoComponentProps) => {
 	const [play, setPlay] = useState(false)
 	const [sound, setSound] = useState(false)
+	const [clicked, setClicked] = useState(false)
 
 	const videoRef = useRef<HTMLVideoElement>(null)
 
 	const videoPlay = () => {
+		setPlay(true)
 		videoRef.current.play()
 	}
 
 	const videoStop = () => {
+		setPlay(false)
 		videoRef.current.pause()
 	}
 
@@ -32,7 +35,7 @@ export const VideoComponent = ({
 		videoRef.current.muted = true
 	}
 
-	const videoUnMute = () => {
+	const videoUnmute = () => {
 		setSound(true)
 		videoRef.current.muted = false
 	}
@@ -45,10 +48,24 @@ export const VideoComponent = ({
 		videoRef.current.controls = false
 	}
 
-	const playBtnHandler = () => {
-		setPlay(true)
+	const playBackgroundMode = () => {
+		if (!clicked) videoPlay()
+	}
+
+	const stopBackgroundMode = () => {
+		if (!clicked) videoStop()
+	}
+
+	const playDefaultMode = () => {
+		setClicked(true)
+		videoPlay()
 		videoControlsOn()
-		videoUnMute()
+		videoUnmute()
+	}
+
+	const stopDefaultMode = () => {
+		setClicked(false)
+		videoStop()
 	}
 
 	return (
@@ -57,10 +74,10 @@ export const VideoComponent = ({
 				className={stls.video}
 				muted
 				onMouseEnter={() => {
-					videoPlay()
+					playBackgroundMode()
 				}}
 				onMouseLeave={() => {
-					videoStop()
+					stopBackgroundMode()
 				}}
 				width={width}
 				height={height}
@@ -74,26 +91,26 @@ export const VideoComponent = ({
 			>
 				<source src={item.src} type='video/mp4' />
 			</video>
-			{play ? (
+			{clicked ? (
 				<></>
 			) : (
 				<IconPlay
 					className={stls.playBtn}
-					onClick={playBtnHandler}
-					onMouseEnter={videoPlay}
-					onMouseLeave={videoStop}
+					onClick={playDefaultMode}
+					onMouseEnter={playBackgroundMode}
+					onMouseLeave={stopBackgroundMode}
 				/>
 			)}
-			<div className={stls.bottom}>
+			{/* <div className={stls.bottom}>
 				<p className={stls.bottom__name}>{item.name}</p>
 				<button className={stls.bottom__soundBtn}>
 					{sound ? (
-						<IconSoundOn onClick={() => setSound(false)} />
+						<IconSoundOn onClick={() => videoMute()} />
 					) : (
-						<IconSoundOff onClick={() => setSound(true)} />
+						<IconSoundOff onClick={() => videoUnmute()} />
 					)}
 				</button>
-			</div>
+			</div> */}
 		</div>
 	)
 }

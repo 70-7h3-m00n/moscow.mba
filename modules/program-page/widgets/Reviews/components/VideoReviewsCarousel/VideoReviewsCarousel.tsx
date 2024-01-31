@@ -26,36 +26,17 @@ export const VideoReviewsCarousel = ({
 
 	const settings = {
 		dots: false,
-		speed: 300,
-		slidesToShow: 4,
+		speed: 500,
 		slidesToScroll: 1,
 		adaptiveHeight: true,
 		// autoplay: true,
 		autoplaySpeed: 4000,
+		swipeToSlide: false,
 		vertical: false,
 		arrows: false,
-		infinite: false,
-		className: cn(stls.carousel),
-		responsive: [
-			{
-				breakpoint: 1300,
-				settings: {
-					slidesToShow: 3
-				}
-			},
-			{
-				breakpoint: 968,
-				settings: {
-					slidesToShow: 2
-				}
-			},
-			{
-				breakpoint: 767,
-				settings: {
-					slidesToShow: 1
-				}
-			}
-		]
+		infinite: true,
+		variableWidth: true,
+		className: cn(stls.carousel)
 	}
 
 	return (

@@ -1,6 +1,11 @@
 import stls from './InputPhone.module.sass'
 import cn from 'classnames'
 import { InputPhoneProps } from './types'
+import {
+	handlePhoneInput,
+	handlePhonePaste,
+	hanleOnKeyDown
+} from '@/helpers/general/handleForm'
 
 export const InputPhoneNew = ({
 	className,
@@ -32,6 +37,9 @@ export const InputPhoneNew = ({
 				onBlur={e =>
 					e.target.value === '' ? e.target.classList.remove('texted') : ''
 				}
+				onInput={handlePhoneInput}
+				onKeyDown={hanleOnKeyDown}
+				onPaste={handlePhonePaste}
 			/>
 			<p className={stls.error}>{errors.phone && errors.phone.message}</p>
 		</div>

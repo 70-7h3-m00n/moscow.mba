@@ -4,14 +4,13 @@ import { ExpertsProps } from './types'
 
 import { Wrapper } from '@/components/layout'
 import Image from 'next/image'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useRef } from 'react'
 import Slider from 'react-slick'
 import { IconNext, Tag } from '../components'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { BtnBeta } from '@/components/btns'
 import Popup from 'reactjs-popup'
 import { PopupTeacherNew } from '@/components/popups'
-import useWindowWidth from '@/hooks/useWindowWidth'
 import useDefaultTeachers from '@/hooks/useDefaultTeachers'
 
 export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
@@ -23,17 +22,6 @@ export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
 		program?.teachers && program?.teachers?.length > 0
 			? program?.teachers
 			: defaultTeachers
-
-	const widthWindow = useWindowWidth()
-	// const [isMobile, setIsMobile] = useState(false)
-
-	// useEffect(() => {
-	// 	if (widthWindow <= 767) {
-	// 		setIsMobile(true)
-	// 	} else {
-	// 		setIsMobile(false)
-	// 	}
-	// }, [widthWindow])
 
 	const sliderRefExperts = useRef<Slider>(null)
 
@@ -50,7 +38,6 @@ export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
 	const settings = {
 		dots: false,
 		speed: 500,
-		// slidesToShow: 2,
 		slidesToScroll: 1,
 		adaptiveHeight: true,
 		autoplay: true,

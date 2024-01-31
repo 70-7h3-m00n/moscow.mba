@@ -10,7 +10,7 @@
 
 .heroWrapper
   display: grid
-  grid-template-columns: repeat(4, 1fr)
+  grid-template-columns: repeat(4, minmax(0, 1fr))
   grid-template-rows: 2rem auto 6.6rem
   grid-template-areas: "tags tags tags details" "main main main details" "main main main details" "rating rating students students"
   gap: 3rem 1.5rem
@@ -85,6 +85,25 @@
   flex-direction: column
   max-width: 55rem
   color: #fff
+
+  &__link
+    display: flex
+    justify-content: center
+    align-items: center
+    min-width: 18.4rem
+    padding-block: 2rem
+    border: none
+    border-radius: 0.75rem
+    font-size: 1.125rem
+    font-family: Helvetica Neue
+    background-color: #FF3535
+    color: #FFF
+
+
+    @include m.media(phone, tablet)
+      min-width: unset
+      padding-block: 1.7rem
+      font-size: .875rem
   
   &__btnWrapper
     display: flex

@@ -2,12 +2,15 @@ import stls from './Carousel.module.sass'
 import cn from 'classnames'
 import { CarouselProps } from './types'
 
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useRef } from 'react'
 import Image from 'next/image'
 import Slider from 'react-slick'
 import { IconNext, IconStar } from 'modules/program-page/widgets/components'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
-import { posts } from './constants'
+import { defaultReviews } from './constants'
+import Popup from 'reactjs-popup'
+import { ReviewCard } from '../ReviewCard/ReviewCard'
+import truncate from 'truncate'
 import useWindowWidth from '@/hooks/useWindowWidth'
 
 export function Carousel({ className }: CarouselProps) {
@@ -28,7 +31,7 @@ export function Carousel({ className }: CarouselProps) {
 	// }, [widthWindow])
 
 	const reviewsInDatabase = reviews && reviews?.length > 0
-	const data: typeof reviews = reviewsInDatabase ? reviews : posts
+	const data: typeof reviews = reviewsInDatabase ? reviews : defaultReviews
 
 	const next = () => {
 		sliderRef.current?.slickNext()
@@ -82,15 +85,69 @@ export function Carousel({ className }: CarouselProps) {
 						className={cn(stls.carousel__post, stls.post)}
 						key={`Carousel_post--${item?.studentName}`}
 					>
-						<p className={stls.post__title}>{program?.title}</p>
+						<p className={stls.post__title}>{item?.title || program?.title}</p>
 						<div className={cn(stls.post__stars)}>
 							{new Array(5).fill('_').map((_el, idx) => (
 								<IconStar key={idx} filled={idx < item?.rating} />
 							))}
 						</div>
 						<p className={stls.post__name}>{item?.studentName}</p>
-						<p className={cn(stls.post__description)}>{item?.studentReview}</p>
-						<button className={stls.post__openLink}>Читать подробнее</button>
+						{item?.studentReview.length > 250 ? (
+							<>
+								<p className={cn(stls.post__description)}>
+									{truncate(item?.studentReview, 250)}
+								</p>
+								<Popup
+									trigger={
+										<button className={stls.post__openLink}>
+											Читать подробнее
+										</button>
+									}
+									modal
+									lockScroll
+									nested
+									closeOnDocumentClick
+								>
+									{/* @ts-expect-error  */}
+
+									{close => (
+										<ReviewCard
+											close={close}
+											item={item}
+											title={item?.title || program?.title}
+											avatar={
+												item?.studentPhoto ? (
+													<Image
+														className={stls.cornerPhoto__image}
+														src={item?.studentPhoto}
+														width={44}
+														height={44}
+														style={{
+															objectFit: 'cover'
+														}}
+														alt='Фото клиента'
+													/>
+												) : (
+													<div
+														className={stls.noAvatar}
+														style={{ backgroundColor: `${getRandomColor()}` }}
+													>
+														{item?.studentName?.at(0)}
+													</div>
+												)
+											}
+										/>
+									)}
+								</Popup>
+							</>
+						) : (
+							<>
+								<p className={cn(stls.post__description)}>
+									{item?.studentReview}
+								</p>
+							</>
+						)}
+
 						<div className={stls.cornerPhoto}>
 							{item?.studentPhoto ? (
 								<Image

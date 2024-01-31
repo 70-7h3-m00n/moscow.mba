@@ -1,7 +1,7 @@
 import stls from '@/styles/components/costs/Price.module.sass'
 import cn from 'classnames'
 
-import { currencyRates, ui } from '@/config/index'
+import { currencyRates, price, ui } from '@/config/index'
 import { toNumberWithSpaces } from '@/helpers/index'
 import { useAt, useSSLocale } from '@/hooks/index'
 
@@ -39,47 +39,6 @@ const Price = ({
 			: atUz
 			? toNumberWithSpaces(rub * currencyRates.uzm)
 			: toNumberWithSpaces(rub)
-	}
-
-	const price = {
-		regular: {
-			mini: {
-				online: setPrice(219090),
-				blended: setPrice(350000)
-			},
-			mba: {
-				online: setPrice(347090),
-				blended: setPrice(450000)
-			},
-			profession: {
-				online: setPrice(70000)
-			},
-			course: {
-				online: setPrice(70000)
-			},
-			mbl: {
-				online: setPrice(318000)
-			},
-			executive: setPrice(1400000)
-		},
-		discounted: {
-			mini: {
-				online: setPrice(120500)
-			},
-			mba: {
-				online: setPrice(190900)
-			},
-			profession: {
-				online: setPrice(38900)
-			},
-			course: {
-				online: setPrice(38900)
-			},
-			mbl: {
-				online: setPrice(174900)
-			},
-			executive: setPrice(1400000)
-		}
 	}
 
 	const componentSpecificClasses = {

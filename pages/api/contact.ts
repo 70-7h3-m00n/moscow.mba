@@ -31,7 +31,9 @@ const contact = async (req, res) => {
 		utms,
 		referer,
 		ymUid,
-		formName
+		formName,
+		radio,
+		paymentStatus
 	} = req.body
 
 	if (name?.includes('@')) {
@@ -163,6 +165,13 @@ const contact = async (req, res) => {
 		}
 	}
 
+	const paymentStatusRu =
+		paymentStatus === 'succeeded'
+			? 'Оплачено'
+			: paymentStatus === 'canceled'
+			? 'Отклонено'
+			: 'В обработке'
+
 	const data = {
 		id: uuidv4() || null,
 		date: now.format('DD-MM-YYYY') || null,
@@ -173,7 +182,7 @@ const contact = async (req, res) => {
 		email: email || '',
 		vk: vk || null,
 		promocode: promo || null,
-		contactWay: contactWay || null,
+		contactWay: radio || contactWay || null,
 		contactMethod: contactMethod || null,
 		question: question || null,
 		root: root || null,
@@ -202,9 +211,11 @@ const contact = async (req, res) => {
 		utmCampaign: (utms && utms.utm_campaign) || null,
 		utmContent: (utms && utms.utm_content) || null,
 		utmTerm: (utms && utms.utm_term) || null,
-		roistatVisit: roistatVisit || null
+		roistatVisit: roistatVisit || null,
+		paymentStatus: paymentStatusRu || null
 	}
 
+	console.log('data: ', data)
 	// const createLeadBackApiRes = await createLeadBackApi({ data })
 
 	// console.log(createLeadBackApiRes)
@@ -214,9 +225,9 @@ const contact = async (req, res) => {
 	const createEmailBody = () => {
 		const createTr = (item, idx) => {
 			const output = /* html */ `
-        <tr id='tr-item-${idx}' class="${idx % 2 === 0 && 'bgOnEven'} ${
-				item.tdKey === 'Телефон' && 'active-row'
-			} ${!(idx + 1) && 'bgBorderHighlight'}">
+        <tr id='tr-item-${idx}' class="${idx % 2 === 0 &&
+				'bgOnEven'} ${item.tdKey === 'Телефон' && 'active-row'} ${!(idx + 1) &&
+				'bgBorderHighlight'}">
           <td class="counterCell">${idx + 1}</td>
           <td>${item.tdKey}</td>
           <td>${item.tdVal}</td>
@@ -387,6 +398,10 @@ const contact = async (req, res) => {
 				tdVal: data.formName || ''
 			},
 			{
+				tdKey: 'Статус платежа',
+				tdVal: data.paymentStatus || ''
+			},
+			{
 				tdKey: 'roistat_visit',
 				tdVal: data.roistatVisit || ''
 			}
@@ -481,6 +496,7 @@ const contact = async (req, res) => {
 			},
 			data
 		})
+		console.log('f5 sucssess')
 	} catch (e) {
 		console.log('error in f5 request')
 		console.error(e)

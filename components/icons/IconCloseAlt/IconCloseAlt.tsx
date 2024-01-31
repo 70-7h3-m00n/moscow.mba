@@ -4,6 +4,7 @@ import { IconCloseAltProps } from './types'
 export const IconCloseAlt = ({
 	className,
 	fill = '#979BA0',
+	crossColor = '#fff',
 	style = {},
 	...rest
 }: IconCloseAltProps) => {
@@ -26,20 +27,20 @@ export const IconCloseAlt = ({
 				/>
 				<path
 					d='M9.14136 9.1406L14.7982 14.7975'
-					stroke='white'
+					stroke={crossColor}
 					strokeWidth='1.5'
 					strokeLinecap='round'
 				/>
 				<path
 					d='M14.7983 9.1406L9.14149 14.7975'
-					stroke='white'
+					stroke={crossColor}
 					strokeWidth='1.5'
 					strokeLinecap='round'
 				/>
 			</g>
 			<defs>
 				<clipPath id='clip0_1080_4146'>
-					<rect width='24' height='24' fill='white' />
+					<rect width='24' height='24' fill={crossColor} />
 				</clipPath>
 			</defs>
 		</svg>

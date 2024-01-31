@@ -12,8 +12,6 @@ export const GetDetailsData = () => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
-	console.log(' GetDetailsData =>>>>>> FRDO', program?.frdo)
-
 	return [
 		{
 			title: 'Срок обучения',

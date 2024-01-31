@@ -103,19 +103,28 @@
     line-height: 110%
     color: #575757
 
-
 /* input range customisation */
 
 .range
   position: relative
   isolation: isolate
 
+  @include m.media(phone, tablet)
+    margin: 0 auto
+    width: 90%
+
+  &.middle::before
+    background-color: #FF3535
+
+  &.senior::before
+    background-color: #FF3535
+
   &::before
     position: absolute
     content: ''
-    top: .2rem
+    top: -.4rem
     left: 0
-    width: .125rem
+    width: 1px
     height: 1rem
     border-radius: 2.5rem
     background-color: #DEE2E5
@@ -124,14 +133,13 @@
   &::after
     position: absolute
     content: ''
-    top: .2rem
+    top: -.4rem
     right: -0.125rem
-    width: .125rem
+    width: 1px
     height: 1rem
     border-radius: 2.5rem
     background-color: #DEE2E5
     z-index: -1
-
 
 .input
   position: relative
@@ -141,45 +149,33 @@
   margin-bottom: 1.5rem
   height: .125rem
   background: #DEE2E5
+  background-image: linear-gradient(to right,#FF3535 0%, #DEE2E5 0%) 
   cursor: pointer
+  transition: background-image .3s ease-in-out
+
+  &.middle
+    background-image: linear-gradient(to right,#FF3535 50%, #DEE2E5 50%) 
+
+  &.senior
+    background-image: linear-gradient(to right,#FF3535 100%, #DEE2E5 100%)
+
+    &::before
+      background-color: #FF3535
 
   &::before
     position: absolute
     content: ''
     top: -0.45rem
     left: 50%
-    width: .125rem
+    width: 1px
     height: 1rem
     border-radius: 2.5rem
     background-color: #DEE2E5
     z-index: -1
 
-  &::-webkit-slider-thumb
-    appearance: none
-    -webkit-appearance: none
-    height: 2rem
-    width: 2rem
-    background-size: 2rem 2rem
-    background-repeat: no-repeat
-    background-position: center center
-    transition: background .3s ease-in-out
-    z-index: 100
-    // cursor: ew-resize
-
-  &::-webkit-slider-runnable-track 
-    -webkit-appearance: none
-    box-shadow: none
-    border: none
-    background: transparent
-
-.input.junior::-webkit-slider-thumb
-  background-image: url('./assets/🙂.svg')
-
-.input.middle::-webkit-slider-thumb
-  background-image: url('./assets/🤑.svg')
-
-.input.senior::-webkit-slider-thumb
-  background-image: url('./assets/💰.svg')
+.slider
+  font-size: 2rem
+  outline: none
 
 .emoji
   position: absolute
@@ -191,7 +187,7 @@
 .bubble 
   position: absolute
   left: 0
-  top: -4rem
+  top: -4.5rem
   max-width: max-content
   margin-bottom: 1.5rem
   padding: 0.5rem
@@ -216,12 +212,6 @@
     position: absolute
     bottom: -0.5rem
     left: calc(50% - 10px)
-    // width: 1rem
-    // height: 1rem
-    // border-top: 10px solid black
-    // border-bottom: 10px solid transparent
-    // border-left: 10px solid transparent
-    // border-right: 10px solid transparent
 
 .rangeDescription
   display: grid

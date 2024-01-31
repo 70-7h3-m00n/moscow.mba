@@ -24,7 +24,7 @@ export const InputRadioNew = ({
 						type='radio'
 						name='radio'
 						value='По телефону'
-						checked
+						defaultChecked={true}
 						{...register('radio')}
 					/>
 					<svg

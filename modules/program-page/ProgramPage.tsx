@@ -50,7 +50,9 @@ export const ProgramPage = ({
 				<ProgramModules className={stls.section} id='program-modules' />
 				<Diploma className={stls.section} />
 				<ExpertsNew className={stls.section} id='experts' />
-				<Employment className={stls.section} id='employment' />
+				{program?.employment !== false && (
+					<Employment className={stls.section} id='employment' />
+				)}
 				{at.profession || at.course ? (
 					<>
 						<FutureJob className={stls.section} />
@@ -69,7 +71,7 @@ export const ProgramPage = ({
 				<StudyCostNew className={stls.section} id='study-cost' />
 				<Faq className={stls.section} />
 				<CtaForm className={stls.section} variant='gamma' />
-				<RecommendedProgramsNew className={stls.section} />
+				{/* <RecommendedProgramsNew className={stls.section} /> */}
 			</div>
 		</ProgramPageProvider>
 	)

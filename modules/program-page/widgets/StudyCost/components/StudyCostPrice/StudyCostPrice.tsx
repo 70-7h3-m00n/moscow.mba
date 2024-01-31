@@ -5,7 +5,7 @@ import { StudyCostPriceProps } from './types'
 import { Tag } from 'modules/program-page/widgets/components'
 import Image from 'next/image'
 import { dataList, dataGrid } from '../../constants'
-import { PlacesLeft, Until } from '@/components/costs'
+import { Loan, PlacesLeft, Until } from '@/components/costs'
 import { useContext } from 'react'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import useAt from '@/hooks/useAt'
@@ -32,7 +32,7 @@ export const StudyCostPrice = ({ className }: StudyCostPriceProps) => {
 				/>
 			</div>
 			<h2 className={stls.title}>Стоимость обучения</h2>
-			<Timer />
+			{(at.profession || at.course) && <Timer />}
 			<div className={stls.details}>
 				<Tag className={stls.details__tag} variant='gamma'>
 					Осталось мест: <PlacesLeft uniqueKey={program?.id} />
@@ -43,7 +43,13 @@ export const StudyCostPrice = ({ className }: StudyCostPriceProps) => {
 				</p>
 			</div>
 			<div className={stls.priceWrapper}>
-				<p>6 320 ₽ / мес</p>
+				<Loan
+					discount
+					type={program?.category?.type}
+					format={program?.studyFormat}
+					programPrice={(at.profession || at.course) && +program?.price}
+					variant='programPage'
+				/>
 			</div>
 			<ul className={stls.list}>
 				{data.map((item, idx) => (

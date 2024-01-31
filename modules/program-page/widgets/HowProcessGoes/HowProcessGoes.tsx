@@ -51,6 +51,7 @@ export const HowProcessGoesNew = ({
 		beforeChange(oldIndex, newIndex) {
 			setActiveSlideIndex(newIndex)
 		},
+		// eslint-disable-next-line react/display-name
 		appendDots: dots => (
 			<div
 				ref={dotsRef}
@@ -75,6 +76,7 @@ export const HowProcessGoesNew = ({
 				<ul className={stls.dots__list}>{dots}</ul>
 			</div>
 		),
+		// eslint-disable-next-line react/display-name
 		customPaging: idx => (
 			<div className={stls.checkWrapper}>
 				<IconCheck

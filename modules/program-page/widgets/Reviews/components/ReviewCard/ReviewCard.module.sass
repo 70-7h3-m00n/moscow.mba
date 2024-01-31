@@ -1,0 +1,56 @@
+@use 'sass:math'
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.container
+  position: relative
+  min-width: 100%
+  max-width: 42rem
+  padding: 1.5rem
+  border-radius: 1.5rem
+  background-color: #fff
+  font-family: Helvetica Neue
+
+.close
+  position: absolute
+  top: 1rem
+  right: 1rem
+  z-index: 2
+  display: flex
+  justify-content: center
+  align-items: center
+  margin: 0
+  padding: 0
+  padding: f.px(12)
+  border: 0
+  appearance: none
+  background: none
+
+.content
+  display: flex
+  flex-direction: column
+  gap: 1rem
+
+.post
+  position: relative
+
+  &__title
+    color: #FF3535
+    font-size: 0.875rem
+    line-height: 120%
+
+  &__stars 
+    display: flex
+    align-items: flex-start
+    gap: 8px
+
+  &__name
+    color: #000
+    font-size: 1.125rem
+    line-height: 120%
+
+  &__description
+    color: #575757
+    font-size: 1rem
+    line-height: 120%

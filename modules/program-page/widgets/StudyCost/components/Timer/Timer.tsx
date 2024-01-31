@@ -6,6 +6,7 @@ import Countdown, { zeroPad } from 'react-countdown'
 
 import React, { useEffect, useState } from 'react'
 import { CountUntil } from '@/components/costs/Until'
+import { ruCase } from '@/helpers/index'
 
 export const Timer = ({ className, ...rest }: TimerProps) => {
 	const [isLoaded, setIsLoaded] = useState(false)
@@ -17,10 +18,22 @@ export const Timer = ({ className, ...rest }: TimerProps) => {
 
 	const renderer = ({ days, hours, minutes, seconds }) => {
 		const timerData = [
-			{ number: zeroPad(days), description: 'дней' },
-			{ number: zeroPad(hours), description: 'часов' },
-			{ number: zeroPad(minutes), description: 'минут' },
-			{ number: zeroPad(seconds), description: 'секунд' }
+			{
+				number: zeroPad(days),
+				description: ruCase(days, ['день', 'дня', 'дней'])
+			},
+			{
+				number: zeroPad(hours),
+				description: ruCase(hours, ['час', 'часа', 'часов'])
+			},
+			{
+				number: zeroPad(minutes),
+				description: ruCase(minutes, ['минута', 'минуты', 'минут'])
+			},
+			{
+				number: zeroPad(seconds),
+				description: ruCase(seconds, ['секунда', 'секунды', 'секунд'])
+			}
 		]
 
 		return (
