@@ -24,7 +24,15 @@ export type HowToContactActionType =
 	| { type: typeof ACTION.SET_FORM_STAGE; payload: number }
 	| { type: typeof ACTION.SET_QUESTION; payload: string }
 	| { type: typeof ACTION.SET_HOW_TO_CONTACT; payload: WayToContactType }
-	| { type: typeof ACTION.SET_WAY; payload: string }
+	| {
+			type: typeof ACTION.SET_WAY
+			payload:
+				| 'Telegram'
+				| 'Viber'
+				| 'WhatsApp'
+				| 'Позвонить'
+				| 'Электронная почта'
+	  }
 	| { type: typeof ACTION.SET_METHOD; payload: 'Написать' | 'Позвонить' }
 	| { type: typeof ACTION.SET_PHONE; payload: string }
 	| { type: typeof ACTION.SET_EMAIL; payload: string }

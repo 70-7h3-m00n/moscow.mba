@@ -19,14 +19,10 @@ export const ContactBtns = ({ dataToCreateButtons }) => {
 	if (selectWay) {
 		buttons = waysToContact.map((wayToContact, idx) => (
 			<BtnContact
-				key={wayToContact.name + idx}
+				key={wayToContact.way + idx}
 				wayToContact={wayToContact}
 				chooseWayToContact={selectedWayToContact => {
-					handleUserClick(
-						selectedWayToContact,
-						wayToContact.stageStep,
-						userQuestion
-					)
+					handleUserClick(selectedWayToContact, 1, userQuestion)
 				}}
 			/>
 		))

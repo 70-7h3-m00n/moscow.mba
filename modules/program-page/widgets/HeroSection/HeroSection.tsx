@@ -99,6 +99,7 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 						))}
 					</ul>
 				)}
+				
 			</Wrapper>
 		</section>
 	)

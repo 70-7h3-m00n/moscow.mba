@@ -9,6 +9,7 @@ import { useContext, useState } from 'react'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { IconCloseAlt } from '@/components/icons'
 import { LeadLoaderThankyou } from '@/components/general'
+import { PopupLoader, PopupThankyou } from '..'
 
 export const PopupCTA = ({
 	className,
@@ -31,7 +32,6 @@ export const PopupCTA = ({
 				closeOnDocumentClick
 			>
 				{/* @ts-expect-error  */}
-
 				{close => (
 					<div className={cn(className, stls.content)} {...rest}>
 						<button className={stls.close} onClick={close}>
@@ -46,18 +46,16 @@ export const PopupCTA = ({
 							policyPrivacy
 							variant={'alpha'}
 						/>
+						<PopupLoader closePopUp={() => setOpenLoader(false)} />
+
+						<PopupThankyou
+							closePopUp={() => setOpen(false)}
+							programId={program?.id}
+							programTitle={program?.title}
+						/>
 					</div>
 				)}
 			</Popup>
-
-			<LeadLoaderThankyou
-				open={open}
-				setOpen={setOpen}
-				openLoader={openLoader}
-				setOpenLoader={setOpenLoader}
-				programId={program?.id}
-				programTitle={program?.title}
-			/>
 		</>
 	)
 }
