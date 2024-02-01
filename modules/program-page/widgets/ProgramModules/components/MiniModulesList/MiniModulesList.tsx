@@ -35,11 +35,12 @@ export const MiniModulesList = ({
 				</Tag>
 			)}
 			<div className={cn(className, stls.content)} {...rest}>
-				{subjects?.map(subject => (
+				{subjects?.map((subject, idx) => (
 					<MiniModule
 						className={stls.module}
 						subject={subject}
 						key={`${subject?.title}-${subject?.duration}`}
+						idx={idx}
 					/>
 				))}
 			</div>

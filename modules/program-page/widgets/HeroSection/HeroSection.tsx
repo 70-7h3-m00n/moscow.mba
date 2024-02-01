@@ -65,7 +65,7 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 							<span className={stls.rating__counter}>4,8</span>
 						</div>
 						<p className={stls.rating__desc}>
-							на отзовике IRecommended и TutorTop
+							рейтинг на&nbsp;Otzovik и&nbsp;Tutortop
 						</p>
 					</div>
 					<div className={stls.students}>
@@ -99,7 +99,6 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 						))}
 					</ul>
 				)}
-				
 			</Wrapper>
 		</section>
 	)

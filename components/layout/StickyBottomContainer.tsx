@@ -34,6 +34,31 @@ const StickyBottomContainer = () => {
 
 	useEffect(() => setIsMounted(true), [])
 
+	useEffect(() => {
+		document.addEventListener('scroll', () => {
+			// check if on programs page
+			const pathArr = window.location.pathname.split('/').filter(part => part)
+			if (
+				!(
+					pathArr[0] === 'promo' ||
+					(pathArr[0] === 'programs' &&
+						(pathArr[1] === 'mini' ||
+							pathArr[1] === 'mba' ||
+							pathArr[1] === 'mba') &&
+						(pathArr[2] === 'online' || pathArr[2] === 'blended') &&
+						!pathArr[3])
+				)
+			) {
+				const pageHeight = document.body.scrollHeight
+				window.pageYOffset > 1500 &&
+				window.pageYOffset < pageHeight - 2500 &&
+				!clickedAsk
+					? setIsStickyBottomShown(true)
+					: setIsStickyBottomShown(false)
+			}
+		})
+	}, [isStickyBottomShown, stickyHasBeenClosed, clickedAsk])
+
 	if (!isMounted || at.journal) return null
 
 	return (
@@ -54,12 +79,12 @@ const StickyBottomContainer = () => {
 					stickyShown={isStickyBottomShown}
 				/>
 			)}
-			<StickyBottom
+			{/* <StickyBottom
 				openStickyModule={() => setIsStickyBottomShown(true)}
 				hideStickyModule={() => setIsStickyBottomShown(false)}
 				closeStickyModule={() => setStickyHasBeenClosed(true)}
 				clickedAsk={clickedAsk}
-			/>
+			/> */}
 		</div>
 	)
 }

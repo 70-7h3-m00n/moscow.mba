@@ -60,7 +60,7 @@ const useAt = () => {
 			query.locale === 'uz_UZ',
 		programChunk: !!getProgramTitle,
 		getSplitedPath,
-		new: dev ? true : !!getProgramTitle && getSplitedPath[1] === 'profession'
+		new: !!getProgramTitle && getSplitedPath[1] === 'profession'
 		// new: dev ? !!getProgramTitle : false
 		// new: false
 	}

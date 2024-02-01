@@ -5,11 +5,12 @@ import { PopupTeacherNewProps } from './types'
 import Popup from 'reactjs-popup'
 import { BtnBeta } from '@/components/btns'
 import { FormBeta } from 'modules/program-page/widgets'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { IconCloseAlt } from '@/components/icons'
-import { LeadLoaderThankyou } from '@/components/general'
 import { PopupLoader, PopupThankyou } from '..'
+import { IconLoaderAlt } from '@/components/icons/IconLoaderAlt/IconLoaderAlt'
+import Image from 'next/image'
 
 export const PopupCTA = ({
 	className,
@@ -19,8 +20,15 @@ export const PopupCTA = ({
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
+	const [stage, setStage] = useState<'form' | 'loader' | 'thanks'>('form')
 	const [open, setOpen] = useState(false)
 	const [openLoader, setOpenLoader] = useState(false)
+
+	useEffect(() => {
+		if (!open && !openLoader) setStage('form')
+		if (!open && openLoader) setStage('loader')
+		if (open && !openLoader) setStage('thanks')
+	}, [open, openLoader])
 
 	return (
 		<>
@@ -30,6 +38,7 @@ export const PopupCTA = ({
 				lockScroll
 				nested
 				closeOnDocumentClick
+				onClose={() => setStage('form')}
 			>
 				{/* @ts-expect-error  */}
 				{close => (
@@ -37,22 +46,48 @@ export const PopupCTA = ({
 						<button className={stls.close} onClick={close}>
 							<IconCloseAlt fill='#fff' crossColor='#000' />
 						</button>
-						<h3 className={stls.title}>{title}</h3>
-						<FormBeta
-							programTitle={program?.title}
-							setOpenLoader={setOpenLoader}
-							setOpen={setOpen}
-							formName={`Заявка с формы 'Свяжитесь с нами'`}
-							policyPrivacy
-							variant={'alpha'}
-						/>
-						<PopupLoader closePopUp={() => setOpenLoader(false)} />
+						{stage === 'form' && (
+							// {false && (
+							<div className={stls.formWrapper}>
+								<h3 className={stls.title}>{title}</h3>
+								<FormBeta
+									programTitle={program?.title}
+									setOpenLoader={setOpenLoader}
+									setOpen={setOpen}
+									formName={`Заявка с формы 'Свяжитесь с нами'`}
+									policyPrivacy
+									variant={'alpha'}
+								/>
+							</div>
+						)}
+						{stage === 'loader' && (
+							// {false && (
+							<div className={stls.loader}>
+								<Image
+									src='/assets/images/Spinner.svg'
+									width={82}
+									height={82}
+									alt='Фото клиента'
+								/>
+								<p>Ваша заявка отправляется, пожалуйста, подождите</p>
+							</div>
+						)}
 
-						<PopupThankyou
-							closePopUp={() => setOpen(false)}
-							programId={program?.id}
-							programTitle={program?.title}
-						/>
+						{stage === 'thanks' && (
+							<div className={stls.thanks}>
+								<p className={stls.thanks__title}>Спасибо!</p>
+								<p className={stls.thanks__subtitle}>
+									Наш менеджер свяжется с Вами в ближайшее время
+								</p>
+								<BtnBeta
+									variant='beta'
+									className={stls.thanks__btn}
+									onClick={close}
+								>
+									Ок!
+								</BtnBeta>
+							</div>
+						)}
 					</div>
 				)}
 			</Popup>

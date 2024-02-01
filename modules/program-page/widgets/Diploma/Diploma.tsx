@@ -7,6 +7,7 @@ import { BtnBeta } from '@/components/btns'
 import useAt from '@/hooks/useAt'
 import { diplomaData } from './constants'
 import Image from 'next/image'
+import { DiplomaPopup } from './DiplomaPopup/DiplomaPopup'
 
 export const Diploma = ({ className, ...rest }: DiplomaProps) => {
 	const at = useAt()
@@ -33,9 +34,7 @@ export const Diploma = ({ className, ...rest }: DiplomaProps) => {
 							</a>
 						</p>
 					)}
-					<BtnBeta className={stls.btn} variant='beta'>
-						Посмотреть дипломы
-					</BtnBeta>
+					<DiplomaPopup />
 				</div>
 				<div className={stls.imageWrapper}>
 					<Image

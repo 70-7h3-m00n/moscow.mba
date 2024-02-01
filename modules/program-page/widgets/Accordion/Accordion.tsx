@@ -59,6 +59,7 @@ export const Accordion = ({
 								[stls.iconModules__active]: active
 							})}
 							status={active ? 'active' : 'default'}
+							direction={active ? 'down' : 'right'}
 						/>
 					) : (
 						<IconPlus
