@@ -41,7 +41,6 @@ export const handlePayment = async ({
 	sessionStorage.setItem('payment', 'waiting_for_capture')
 
 	const returnURL = `${routesFront.root}/programs/${type}/online/${program.slug}#study-cost`
-	const description = `Оплата программы ${values.programTitle} для ${values.email}`
 
 	const price = getFullPaymentPrice({
 		price: +program?.price,
@@ -52,7 +51,7 @@ export const handlePayment = async ({
 		const paymentRes = await axios.post(`${routesFront.root}/api/payment`, {
 			price,
 			returnURL,
-			description
+			values
 		})
 
 		setTimeout(() => {

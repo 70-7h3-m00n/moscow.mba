@@ -5,7 +5,12 @@ import { FormBetaProps, TypeFormValues } from './types'
 import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import { handlePayment, onSubmitForm } from '@/helpers/index'
+import {
+	getFullPaymentPrice,
+	handlePayment,
+	onSubmitForm,
+	toNumberWithSpaces
+} from '@/helpers/index'
 
 import {
 	InputNameNew,
@@ -71,7 +76,10 @@ export const FormBeta = ({
 						setSubmitIsDisabled(false)
 					}, 5000)
 
-					if (paymentMethod === PAYMENT.FULLPRICE) {
+					if (
+						paymentMethod === PAYMENT.FULLPRICE ||
+						paymentMethod === PAYMENT.GIFT
+					) {
 						return handlePayment({
 							program,
 							asPath,
@@ -133,6 +141,7 @@ export const FormBeta = ({
 				<InputEmailNew
 					className={stls.inputEmail}
 					register={register}
+					isRequired
 					errors={errors}
 					variant={
 						variant === 'alpha'
@@ -162,7 +171,7 @@ export const FormBeta = ({
 							: 'alpha'
 					}
 				/>
-				{paymentMethod === PAYMENT.GIFT && (
+				{/* {paymentMethod === PAYMENT.GIFT && (
 					<button className={stls.giftBtn}>
 						Предпросмотр подарка
 						<Image
@@ -173,7 +182,7 @@ export const FormBeta = ({
 							quality={100}
 						/>
 					</button>
-				)}
+				)} */}
 				{!noRadio && (
 					<InputRadioNew
 						className={stls.inputRadio}
@@ -201,7 +210,12 @@ export const FormBeta = ({
 						: paymentMethod === PAYMENT.CREDIT
 						? 'Оформить'
 						: paymentMethod === PAYMENT.GIFT
-						? 'Отправить'
+						? `Оплатить всю сумму с доп. скидкой 5% — ${toNumberWithSpaces(
+								getFullPaymentPrice({
+									price: +program?.price,
+									type: programType
+								})
+						  )} Р`
 						: 'Записаться на программу'}
 				</InputSubmitNew>
 			</div>

@@ -15,6 +15,8 @@ import Image from 'next/image'
 export const PopupCTA = ({
 	className,
 	title,
+	variant = 'alpha',
+	btnText,
 	...rest
 }: PopupTeacherNewProps) => {
 	const { state } = useContext(ProgramPageContext)
@@ -33,7 +35,7 @@ export const PopupCTA = ({
 	return (
 		<>
 			<Popup
-				trigger={<BtnBeta variant='gamma'>Задать вопрос</BtnBeta>}
+				trigger={<BtnBeta variant={variant}>{btnText}</BtnBeta>}
 				modal
 				lockScroll
 				nested

@@ -21,7 +21,8 @@ export const FormHeader = ({
 	programTitle,
 	setOpenLoader,
 	setOpen,
-	formName = null
+	formName = null,
+	next
 }: FormHeaderProps) => {
 	const {
 		register,
@@ -45,6 +46,8 @@ export const FormHeader = ({
 					setTimeout(() => {
 						setSubmitIsDisabled(false)
 					}, 5000)
+
+					next()
 
 					window.sessionStorage.setItem('formFilled', 'false')
 					return onSubmitForm({

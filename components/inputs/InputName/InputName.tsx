@@ -8,6 +8,7 @@ export const InputNameNew = ({
 	errors,
 	variant,
 	placeholder = 'Имя',
+	isRequired = false,
 	...rest
 }: InputNameProps) => {
 	return (
@@ -24,7 +25,7 @@ export const InputNameNew = ({
 				type='text'
 				aria-label='Имя'
 				{...register('name', {
-					required: '* введите имя',
+					required: isRequired ? '* введите имя' : false,
 					maxLength: {
 						value: 32,
 						message: '* имя не может содержать более 32-х символов'

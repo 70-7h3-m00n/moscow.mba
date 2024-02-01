@@ -27,6 +27,7 @@ export { default as handleSubmitFormArticle } from '@/helpers/general/handleSubm
 export { default as formatDate } from '@/helpers/general/formatDate'
 export * from '@/helpers/general/handlePayment'
 export * from '@/helpers/general/getFullPaymentPrice'
+export * from '@/helpers/general/normalizePhoneNumber'
 
 // ./ruCases
 export { default as ruCase } from '@/helpers/ruCases/ruCase'

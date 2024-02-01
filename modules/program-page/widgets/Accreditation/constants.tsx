@@ -8,13 +8,37 @@ export const AccreditationData = () => {
 	const at = useAt()
 
 	return [
+		// {
+		// 	title: (
+		// 		<div className={stls.titleWrapper}>
+		// 			<p>ТОП-3</p>
+		// 		</div>
+		// 	),
+		// 	desc: 'Входим в ТОП-3 бизнес-школ РФ по актуальности контента'
+		// },
 		{
 			title: (
-				<div className={stls.titleWrapper}>
-					<p>ТОП-3</p>
-				</div>
+				<>
+					<Image
+						src='/assets/images/program/ECICEL.svg'
+						width={110}
+						height={41}
+						alt='Логотип ECICEL'
+					/>
+					<div className={stls.itemTitle}>
+						<p className={stls.titleText}>ECICEL</p>
+						<InfoTooltip color='#18191A' textColor='#fff'>
+							<p className={stls.infoDescription}>
+								Наши программы прошли строгую проверку европейской
+								аккредитационной комиссии ECICEL и полностью соответствуют всем
+								стандартам. Наличие данной аккредитации гарантирует высокое
+								качество образования в Moscow Business Academy
+							</p>
+						</InfoTooltip>
+					</div>
+				</>
 			),
-			desc: 'Входим в ТОП-3 бизнес-школ РФ по актуальности контента'
+			desc: 'Европейская аккредитационная комиссия'
 		},
 		{
 			title: (
@@ -41,52 +65,29 @@ export const AccreditationData = () => {
 			desc: 'Российская ассоциация бизнес образования'
 		},
 		{
-			title:
-				at.mba || at.mini ? (
-					<>
-						<Image
-							src='/assets/images/program/NASDOBR.svg'
-							width={40}
-							height={40}
-							alt='Фото клиента'
-						/>
-						<div className={stls.itemTitle}>
-							<p className={stls.titleText}>НАСДОБР</p>
-							<InfoTooltip color='#18191A' textColor='#fff'>
-								<p className={stls.infoDescription}>
-									Наши программы соответствуют стандартам качества образования
-									уровня MBA. Отвечают требованиям к подготовке кадров со
-									стороны российского делового сообщества, основанных на
-									международных практиках
-								</p>
-							</InfoTooltip>
-						</div>
-					</>
-				) : (
-					<>
-						<Image
-							src='/assets/images/program/ECICEL.svg'
-							width={110}
-							height={41}
-							alt='Фото клиента'
-						/>
-						<div className={stls.itemTitle}>
-							<p className={stls.titleText}>ECICEL</p>
-							<InfoTooltip color='#18191A' textColor='#fff'>
-								<p className={stls.infoDescription}>
-									Наши программы прошли строгую проверку европейской
-									аккредитационной комиссии ECICEL и полностью соответствуют
-									всем стандартам. Наличие данной аккредитации гарантирует
-									высокое качество образования в Moscow Business Academy
-								</p>
-							</InfoTooltip>
-						</div>
-					</>
-				),
+			title: (
+				<>
+					<Image
+						src='/assets/images/program/NASDOBR.svg'
+						width={40}
+						height={40}
+						alt='Фото клиента'
+					/>
+					<div className={stls.itemTitle}>
+						<p className={stls.titleText}>НАСДОБР</p>
+						<InfoTooltip color='#18191A' textColor='#fff'>
+							<p className={stls.infoDescription}>
+								Наши программы соответствуют стандартам качества образования
+								уровня MBA. Отвечают требованиям к подготовке кадров со стороны
+								российского делового сообщества, основанных на международных
+								практиках
+							</p>
+						</InfoTooltip>
+					</div>
+				</>
+			),
 			desc:
-				at.mba || at.mini
-					? 'Национальный аккредитационный совет делового и управленческого образования'
-					: 'Европейская аккредитационная комиссия'
+				'Национальный аккредитационный совет делового и управленческого образования'
 		}
 	]
 }

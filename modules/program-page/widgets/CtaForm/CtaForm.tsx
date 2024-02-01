@@ -10,6 +10,8 @@ import { LeadLoaderThankyou } from '@/components/general'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { FormBeta } from '../../../../components/forms/FormBeta/FormBeta'
 import useAt from '@/hooks/useAt'
+import { LoaderThankyou } from '../LoaderThankYou/LoaderThankyou'
+import { LeadLoaderThankyouAlt } from '@/components/general/LoaderThankyou/LoaderThankyou'
 
 export const CtaForm = ({
 	className,
@@ -42,7 +44,7 @@ export const CtaForm = ({
 				]}
 			>
 				<div className={stls.left}>
-					<LeadLoaderThankyou
+					<LeadLoaderThankyouAlt
 						open={open}
 						setOpen={setOpen}
 						openLoader={openLoader}

@@ -6,5 +6,6 @@ export type InputNameProps = HTMLAttributes<HTMLInputElement> & {
 	register: UseFormRegister<TypeFormValues>
 	errors: FieldErrors<TypeFormValues>
 	variant?: 'alpha' | 'beta' | 'gamma' | 'delta'
+	isRequired?: boolean
 	placeholder?: string
 }

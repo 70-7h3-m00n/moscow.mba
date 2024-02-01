@@ -45,7 +45,7 @@ export const EducationROI = ({ className, ...rest }: EducationROIProps) => {
 		{
 			salary: `${toNumberWithSpaces(salary?.senior) || '160 000'}`,
 			title: 'Senior',
-			experience: 'Опыт 24 месяца',
+			experience: 'Опыт 36 месяцев',
 			subtitle:
 				'В течение двух лет сможете занять должность ведущего специалиста многократно окупив обучение',
 			description: 'Senior-специалист	(опыт более 3 лет)',

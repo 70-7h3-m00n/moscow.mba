@@ -5,6 +5,14 @@
 .content
   position: relative
 
+.content:has(.input:placeholder-shown)::after
+  content: '*'
+  position: absolute
+  right: 1.5rem
+  top: 1.5rem
+  font-size: 1.25rem
+  color: #979BA0
+
 .input.alpha
   --bg-color: #262626
   --border-color: #383838

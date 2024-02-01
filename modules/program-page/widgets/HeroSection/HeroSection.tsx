@@ -56,7 +56,11 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 							>
 								Оставить заявку
 							</Link>
-							<PopupCTA title='Получить полную программу курса или бесплатную консультацию' />
+							<PopupCTA
+								title='Задать вопрос или получить бесплатную консультацию'
+								btnText='Задать вопрос'
+								variant='gamma'
+							/>
 						</div>
 					</div>
 					<div className={stls.rating}>

@@ -29,7 +29,11 @@ export const Diploma = ({ className, ...rest }: DiplomaProps) => {
 					{(at.profession || at.course) && (
 						<p className={stls.desc}>
 							Мы обучаем{' '}
-							<a className={stls.link} href='' target='_blank'>
+							<a
+								className={stls.link}
+								href='https://islod.obrnadzor.gov.ru/rlic/details/2df11621-2d30-4173-9389-2fecc24a7639/'
+								target='_blank'
+							>
 								по государственной лицензии №041221
 							</a>
 						</p>

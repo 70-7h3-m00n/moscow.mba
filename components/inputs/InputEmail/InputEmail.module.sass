@@ -5,6 +5,14 @@
 .content
   position: relative
 
+.content:has(.input:placeholder-shown)::after
+  content: '*'
+  position: absolute
+  right: 1.5rem
+  top: 1.5rem
+  font-size: 1.25rem
+  color: #979BA0
+
 .input.alpha
   --bg-color: #262626
   --border-color: #383838
@@ -45,6 +53,7 @@
   color: var(--text-color)
   background: var(--bg-color)
   outline-color: var(--outline-color)
+  position: relative
 
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
@@ -61,6 +70,15 @@
     font-size: 0.875rem
     line-height: 120%
     color: #979BA0
+
+// .input::after
+  // content: ''
+  // position: absolute
+  // right: 0
+  // top: 0
+  // width: 1rem
+  // height: 1rem
+  // background-color: red
 
 .error
   position: absolute

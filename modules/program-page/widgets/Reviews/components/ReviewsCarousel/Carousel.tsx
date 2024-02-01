@@ -47,7 +47,7 @@ export function Carousel({ className }: CarouselProps) {
 		slidesToShow: 2,
 		slidesToScroll: 1,
 		adaptiveHeight: true,
-		autoplay: true,
+		// autoplay: true,
 		autoplaySpeed: 4000,
 		vertical: false,
 		arrows: false,
@@ -95,7 +95,7 @@ export function Carousel({ className }: CarouselProps) {
 						{item?.studentReview.length > 250 ? (
 							<>
 								<p className={cn(stls.post__description)}>
-									{truncate(item?.studentReview, 250)}
+									{truncate(item?.studentReview, 251)}
 								</p>
 								<Popup
 									trigger={
