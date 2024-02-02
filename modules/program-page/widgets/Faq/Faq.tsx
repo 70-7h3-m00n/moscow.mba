@@ -14,7 +14,7 @@ export const Faq = ({ className, ...rest }: FaqProps) => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
-	const [activeIdx, setActiveIdx] = useState(0)
+	const [activeIdx, setActiveIdx] = useState(null)
 
 	const faqData =
 		program?.faq && program?.faq?.length > 0

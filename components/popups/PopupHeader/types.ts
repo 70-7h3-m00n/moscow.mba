@@ -1,3 +1,5 @@
 import { HTMLAttributes } from 'react'
 
-export type PopupHeaderProps = HTMLAttributes<HTMLDivElement>
+export type PopupHeaderProps = HTMLAttributes<HTMLDivElement> & {
+	footer?: boolean
+}

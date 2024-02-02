@@ -8,6 +8,7 @@ import {
 } from '@/context/index'
 import useAt from '@/hooks/useAt'
 import { HeaderProgram } from './widgets/HeaderProgram/HeaderProgram'
+import { HeaderMenuAlt } from '@/components/header/HeaderMenuAlt/HeaderMenuAlt'
 
 const Header = () => {
 	const at = useAt()
@@ -32,7 +33,7 @@ const Header = () => {
 					<HeaderProgram handleMenu={handleMenu} openMenu={menuIsOpen} />
 					{menuIsOpen && (
 						<div className={stls.menu}>
-							<HeaderMenu programs={programs} handleMenu={handleMenu} />
+							<HeaderMenuAlt programs={programs} handleMenu={handleMenu} />
 						</div>
 					)}
 				</>

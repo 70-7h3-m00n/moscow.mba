@@ -7,16 +7,19 @@ import { useWindowWidth } from '@/hooks/index'
 import { PopupHeaderProps } from './types'
 import { PopupCta, PopupForm, PopupThanks } from './widgets'
 
-export const PopupHeader = ({ className }: PopupHeaderProps) => {
+export const PopupHeader = ({
+	className,
+	footer = false
+}: PopupHeaderProps) => {
 	const ref = useRef(null)
 	const widthWindow = useWindowWidth()
 	const [open, setOpen] = useState(false)
-	const [formStage, setFormStage] = useState(0)
+	const [formStage, setFormStage] = useState(footer ? 1 : 0)
 	const [modal, setModal] = useState(false)
 
 	const next = () => setFormStage(prev => (prev < 2 ? prev + 1 : prev))
 	const prev = () => setFormStage(prev => (prev > 0 ? prev - 1 : prev))
-	const close = () => setFormStage(0)
+	const close = () => setFormStage(footer ? 1 : 0)
 
 	const closePopup = () => ref.current.close()
 
@@ -47,7 +50,7 @@ export const PopupHeader = ({ className }: PopupHeaderProps) => {
 						className={cn(stls.btn, { [stls.opened]: open })}
 						onClick={() => setOpen(o => !o)}
 					>
-						Позвонить
+						{footer ? 'Обратный звонок' : 'Позвонить'}
 					</button>
 				)}
 				position={['bottom center', 'bottom left']}

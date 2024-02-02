@@ -34,6 +34,8 @@ export const ProgramPage = ({
 }: ProgramPageProps) => {
 	const at = useAt()
 
+	const isEmployment = program?.employment !== false
+
 	return (
 		<ProgramPageProvider
 			programs={programs}
@@ -50,7 +52,7 @@ export const ProgramPage = ({
 				<ProgramModules className={stls.section} id='program-modules' />
 				<Diploma className={stls.section} />
 				<ExpertsNew className={stls.section} id='experts' />
-				{program?.employment !== false && (
+				{isEmployment && (
 					<Employment className={stls.section} id='employment' />
 				)}
 				{at.profession || at.course ? (

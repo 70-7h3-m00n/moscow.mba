@@ -9,6 +9,9 @@
   border-radius: 1rem
   border: 1.5px solid #FF3535
 
+  @include m.media(phone, tablet, laptop)
+    grid-column: span 1
+
 .paragraph
   font-size: 1.125rem
   line-height: 120%

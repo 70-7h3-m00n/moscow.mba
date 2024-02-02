@@ -1,3 +1,6 @@
+// todo
+// https://drive.google.com/drive/folders/1lXc7ljlddCAhgJiR7TmuzmcTsb5kWaCV
+
 export const studentStoriesData = [
 	{
 		name: 'Сальникова Мария',

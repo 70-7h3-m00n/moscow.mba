@@ -20,6 +20,7 @@ import {
 } from '@/helpers/index'
 import { useRouter } from 'next/router'
 import { paymentMethods } from './constants'
+import { LeadLoaderThankyouAlt } from '@/components/general/LoaderThankyou/LoaderThankyou'
 
 export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 	const at = useAt()
@@ -95,7 +96,7 @@ export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 				variant='delta'
 				paymentMethod={activePaymentMethod}
 			/>
-			<LeadLoaderThankyou
+			<LeadLoaderThankyouAlt
 				open={open}
 				setOpen={setOpen}
 				openLoader={openLoader}

@@ -85,6 +85,7 @@ export const VideoComponent = ({
 				preload='auto'
 				ref={videoRef}
 				loop
+				poster={item.preview}
 				// autoPlay
 				// playsInline
 				{...rest}
@@ -101,7 +102,7 @@ export const VideoComponent = ({
 					onMouseLeave={stopBackgroundMode}
 				/>
 			)}
-			{/* <div className={stls.bottom}>
+			<div className={stls.bottom}>
 				<p className={stls.bottom__name}>{item.name}</p>
 				<button className={stls.bottom__soundBtn}>
 					{sound ? (
@@ -110,7 +111,7 @@ export const VideoComponent = ({
 						<IconSoundOff onClick={() => videoUnmute()} />
 					)}
 				</button>
-			</div> */}
+			</div>
 		</div>
 	)
 }

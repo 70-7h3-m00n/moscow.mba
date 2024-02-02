@@ -1,4 +1,4 @@
-import stls from './InputPhone.module.sass'
+import stls from '../Input/Input.module.sass'
 import cn from 'classnames'
 import { InputPhoneProps } from './types'
 import {
@@ -14,7 +14,12 @@ export const InputPhoneNew = ({
 	variant
 }: InputPhoneProps) => {
 	return (
-		<div className={cn(className, stls.content)}>
+		<div
+			className={cn(className, stls.content, {
+				[stls.errorWrapper]: errors.phone,
+				[stls.required]: true
+			})}
+		>
 			<input
 				className={cn(
 					stls.input,
@@ -27,10 +32,10 @@ export const InputPhoneNew = ({
 				placeholder='Номер телефона'
 				aria-label={'Телефон'}
 				{...register('phone', {
-					required: '* введите номер телефона',
+					required: 'Пожалуйста, введите номер телефона',
 					minLength: {
-						value: 5,
-						message: '* номер слишком короткий'
+						value: 17,
+						message: 'Пожалуйста, введите корректный номер телефона'
 					}
 				})}
 				onFocus={e => e.target.classList.add('texted')}

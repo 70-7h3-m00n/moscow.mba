@@ -38,7 +38,7 @@ export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
 	const settings = {
 		dots: false,
 		speed: 500,
-		slidesToScroll: 1,
+		slidesToScroll: 2,
 		adaptiveHeight: true,
 		autoplay: true,
 		autoplaySpeed: 4000,
@@ -47,7 +47,15 @@ export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
 		arrows: false,
 		infinite: true,
 		variableWidth: true,
-		className: cn(stls.carousel)
+		className: cn(stls.carousel),
+		responsive: [
+			{
+				breakpoint: 767,
+				settings: {
+					slidesToShow: 1
+				}
+			}
+		]
 	}
 
 	return (
@@ -114,6 +122,14 @@ export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
 							</div>
 						))}
 					</Slider>
+					<div className={cn(stls.carousel__navigation, stls.bottom)}>
+						<button className={stls.prev} onClick={previousBtn}>
+							<IconNext className={stls.svg} />
+						</button>
+						<button className={stls.next} onClick={nextBtn}>
+							<IconNext className={stls.svg} />
+						</button>
+					</div>
 				</div>
 			</Wrapper>
 		</section>

@@ -1,4 +1,4 @@
-import stls from './InputName.module.sass'
+import stls from '../Input/Input.module.sass'
 import cn from 'classnames'
 import { InputNameProps } from './types'
 
@@ -12,7 +12,12 @@ export const InputNameNew = ({
 	...rest
 }: InputNameProps) => {
 	return (
-		<div className={cn(className, stls.content)}>
+		<div
+			className={cn(className, stls.content, {
+				[stls.errorWrapper]: errors.name,
+				[stls.required]: isRequired
+			})}
+		>
 			<input
 				className={cn(
 					stls.input,
