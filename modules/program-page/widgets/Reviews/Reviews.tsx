@@ -9,6 +9,7 @@ import { VideoReviewsCarousel } from './components/VideoReviewsCarousel/VideoRev
 import { BtnBeta } from '@/components/btns'
 import { StudentStories } from './components/StudentStories/StudentStories'
 import useAt from '@/hooks/useAt'
+import Link from 'next/link'
 
 export const Reviews = ({ className, ...rest }: ReviewsProps) => {
 	const at = useAt()
@@ -25,10 +26,12 @@ export const Reviews = ({ className, ...rest }: ReviewsProps) => {
 				<Rating className={stls.rating} />
 				<Carousel className={stls.carousel} />
 				<VideoReviewsCarousel className={stls.videoReviews} />
-				<BtnBeta className={stls.moreReviewsBtn} variant='alpha'>
-					Больше отзывов
-				</BtnBeta>
-				{(at.course || at.profession) && <StudentStories />}
+				<Link href={'/reviews'}>
+					<BtnBeta className={stls.moreReviewsBtn} variant='alpha'>
+						Больше отзывов
+					</BtnBeta>
+				</Link>
+				{/* {(at.course || at.profession) && <StudentStories />} */}
 			</Wrapper>
 		</section>
 	)

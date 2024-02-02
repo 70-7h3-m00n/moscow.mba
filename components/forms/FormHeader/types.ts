@@ -5,6 +5,7 @@ export type FormHeaderProps = HTMLAttributes<HTMLFormElement> & {
 	setOpenLoader: Dispatch<SetStateAction<boolean>>
 	setOpen: Dispatch<SetStateAction<boolean>>
 	formName: string
+	next: () => void
 }
 
 export type TypeFormValues = {

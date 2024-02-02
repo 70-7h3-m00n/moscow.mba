@@ -23,6 +23,12 @@
   @include m.media(phone)
     display: none
 
+  &.bottom
+    display: none
+
+    @include m.media(phone)
+      display: flex
+
 .prev
   padding: 0
   border: none
@@ -62,7 +68,6 @@
       cursor: grabbing
 
 .item
-
   &__image
     border-radius: 1.5rem
     transition: all .3s ease-in-out

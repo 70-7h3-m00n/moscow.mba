@@ -1,0 +1,70 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.btn
+  @include m.media(phone, tablet)
+    width: 100%
+
+.content
+  position: relative
+
+.close
+  position: absolute
+  top: 1.5rem
+  right: 1.5rem
+  border: none
+  background-color: unset
+  z-index: 100
+
+  @include m.media(phone)
+    top: 1rem
+    right: 1rem
+
+.imageWrapper
+  position: relative
+  width: 55rem
+  min-height: 40rem
+  margin-bottom: 1rem
+  border-radius: 1.5rem
+  background-color: #fff
+  overflow: hidden
+
+  @include m.media(laptop)
+    width: 45rem
+    min-height: 32rem
+
+  @include m.media(tablet)
+    width: 27rem
+    min-height: 20rem
+
+  @include m.media(phone)
+    width: 22rem
+    min-height: 15rem
+
+.image
+  object-fit: cover
+
+.navigation
+  display: flex
+  justify-content: center
+  align-items: center
+  gap: 1.5rem
+  padding: 1.5rem
+  border-radius: 1rem
+  background-color: #fff
+
+  @include m.media(phone)
+    justify-content: space-between
+    padding: 1rem
+
+  &__btn
+    border: none
+    background-color: transparent
+
+  &__name
+    text-align: center
+    font-family: "Helvetica Neue"
+    font-size: 1rem
+    line-height: 110%
+    color: #575757

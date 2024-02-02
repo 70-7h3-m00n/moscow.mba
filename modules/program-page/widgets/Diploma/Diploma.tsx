@@ -7,6 +7,7 @@ import { BtnBeta } from '@/components/btns'
 import useAt from '@/hooks/useAt'
 import { diplomaData } from './constants'
 import Image from 'next/image'
+import { DiplomaPopup } from './DiplomaPopup/DiplomaPopup'
 
 export const Diploma = ({ className, ...rest }: DiplomaProps) => {
 	const at = useAt()
@@ -28,14 +29,16 @@ export const Diploma = ({ className, ...rest }: DiplomaProps) => {
 					{(at.profession || at.course) && (
 						<p className={stls.desc}>
 							Мы обучаем{' '}
-							<a className={stls.link} href='' target='_blank'>
+							<a
+								className={stls.link}
+								href='https://islod.obrnadzor.gov.ru/rlic/details/2df11621-2d30-4173-9389-2fecc24a7639/'
+								target='_blank'
+							>
 								по государственной лицензии №041221
 							</a>
 						</p>
 					)}
-					<BtnBeta className={stls.btn} variant='beta'>
-						Посмотреть дипломы
-					</BtnBeta>
+					<DiplomaPopup />
 				</div>
 				<div className={stls.imageWrapper}>
 					<Image

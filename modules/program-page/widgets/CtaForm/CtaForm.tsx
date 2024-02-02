@@ -3,13 +3,12 @@ import cn from 'classnames'
 import { CtaFormProps } from './types'
 
 import { Wrapper } from '@/components/layout'
-import Image from 'next/image'
-import { GridIcons } from '../components/GridIcons/GridIcons'
 import { useContext, useState } from 'react'
-import { LeadLoaderThankyou } from '@/components/general'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { FormBeta } from '../../../../components/forms/FormBeta/FormBeta'
 import useAt from '@/hooks/useAt'
+import { LeadLoaderThankyouAlt } from '@/components/general/LoaderThankyou/LoaderThankyou'
+import { CtaFormAlpha, CtaFormBeta, CtaFormGamma } from './variants'
 
 export const CtaForm = ({
 	className,
@@ -42,7 +41,7 @@ export const CtaForm = ({
 				]}
 			>
 				<div className={stls.left}>
-					<LeadLoaderThankyou
+					<LeadLoaderThankyouAlt
 						open={open}
 						setOpen={setOpen}
 						openLoader={openLoader}
@@ -62,54 +61,9 @@ export const CtaForm = ({
 							</p>
 						)}
 					</div>
-					{variant === 'alpha' && (
-						<div className={stls.left__imageWrapper}>
-							<Image
-								className={stls.left__image}
-								src={'/assets/images/program/cta-form-icon-1.svg'}
-								alt='Иконка'
-								width={250}
-								height={216}
-							/>
-							<GridIcons variant='alpha' />
-						</div>
-					)}
-					{variant === 'beta' && (
-						<div className={stls.left__imageWrapper}>
-							<Image
-								className={stls.left__image}
-								src={'/assets/images/program/cta-beta-arrow.svg'}
-								alt='Иконка'
-								width={221}
-								height={221}
-							/>
-							<Image
-								className={cn(stls.left__image, stls.left__imageRotate)}
-								src={'/assets/images/program/cta-beta-arrow.svg'}
-								alt='Иконка'
-								width={221}
-								height={221}
-							/>
-							<Image
-								className={stls.left__3d}
-								src={'/assets/images/program/cta-beta-3d.svg'}
-								alt='Иконка'
-								width={316}
-								height={295}
-							/>
-						</div>
-					)}
-					{variant === 'gamma' && (
-						<div className={stls.left__imageWrapper}>
-							<Image
-								className={stls.left__image}
-								src={'/assets/images/program/cta-bg.png'}
-								alt='Иконка'
-								width={640}
-								height={520}
-							/>
-						</div>
-					)}
+					{variant === 'alpha' && <CtaFormAlpha />}
+					{variant === 'beta' && <CtaFormBeta />}
+					{variant === 'gamma' && <CtaFormGamma />}
 				</div>
 				<div className={stls.right}>
 					<FormBeta

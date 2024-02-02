@@ -27,7 +27,7 @@ export const PopupTeacherNew = ({
 						style={{
 							objectFit: 'cover'
 						}}
-						alt={teacher?.name}
+						alt={teacher?.name || 'Преподаватель'}
 					/>
 				</div>
 				<div className={stls.right}>

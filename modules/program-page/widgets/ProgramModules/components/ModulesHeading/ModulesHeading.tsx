@@ -35,6 +35,10 @@ export const ModulesHeading = ({ className, ...rest }: ModulesHeadingProps) => {
 		}
 	]
 
+	const tools =
+		program?.duration?.modulesTools &&
+		program?.duration?.modulesTools?.length > 0
+
 	return (
 		<div className={cn(className, stls.content)} {...rest}>
 			<div className={stls.left}>
@@ -62,24 +66,28 @@ export const ModulesHeading = ({ className, ...rest }: ModulesHeadingProps) => {
 					</div>
 				</div>
 			) : (
-				<div className={stls.right}>
+				// todo dodelat
+				<div
+					className={cn(stls.right, {
+						[stls.spaceBetween]: !tools
+					})}
+				>
 					<h3 className={stls.right__title}>Результат</h3>
 					<p className={stls.right__desc}>{program?.duration?.modulesResult}</p>
-					{program?.duration?.modulesTools &&
-						program?.duration?.modulesTools?.length > 0 && (
-							<>
-								<h3 className={stls.right__title}>
-									Научитесь работать с&nbsp;инструментами
-								</h3>
-								<ul className={stls.tagList}>
-									{program?.duration?.modulesTools?.map(skill => (
-										<Tag variant='gamma' key={skill.id}>
-											{skill.tool}
-										</Tag>
-									))}
-								</ul>
-							</>
-						)}
+					{tools && (
+						<>
+							<h3 className={stls.right__title}>
+								Научитесь работать с&nbsp;инструментами
+							</h3>
+							<ul className={stls.tagList}>
+								{program?.duration?.modulesTools?.map(skill => (
+									<Tag variant='gamma' key={skill.id}>
+										{skill.tool}
+									</Tag>
+								))}
+							</ul>
+						</>
+					)}
 				</div>
 			)}
 		</div>

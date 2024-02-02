@@ -11,7 +11,7 @@ type TypeLoanProps = {
 	notComparingPrices?: boolean
 	renderedByComponent?: string | null
 	programPrice?: number | null
-	variant?: 'SectionStudyCost'
+	variant?: 'SectionStudyCost' | 'programPage'
 }
 
 const Loan = ({
@@ -152,6 +152,7 @@ const Loan = ({
 						: getPriceClass('simple', renderedByComponent),
 					{
 						[stls.price]: variant === 'SectionStudyCost',
+						[stls.programPagePrice]: variant === 'programPage',
 						[stls.smallerFontForSmallerLength]:
 							variant === 'SectionStudyCost' &&
 							regularPriceUI?.toString()?.length > 5
@@ -176,7 +177,8 @@ const Loan = ({
 				<>
 					<i
 						className={cn('price', getPriceClass('old', renderedByComponent), {
-							[stls.discount]: variant === 'SectionStudyCost'
+							[stls.discount]: variant === 'SectionStudyCost',
+							[stls.programPageOldPrice]: variant === 'programPage'
 						})}
 					>
 						<span

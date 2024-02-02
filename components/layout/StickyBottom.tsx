@@ -19,33 +19,12 @@ const StickyBottom = ({
 }) => {
 	const at = useAt()
 
-	const { overlayIsShown, showOverlay, hideOverlay, toggleOverlay } =
-		useContext(OverlayContext)
-
-	useEffect(() => {
-		document.addEventListener('scroll', () => {
-			// check if on programs page
-			const pathArr = window.location.pathname.split('/').filter(part => part)
-			if (
-				!(
-					pathArr[0] === 'promo' ||
-					(pathArr[0] === 'programs' &&
-						(pathArr[1] === 'mini' ||
-							pathArr[1] === 'mba' ||
-							pathArr[1] === 'mba') &&
-						(pathArr[2] === 'online' || pathArr[2] === 'blended') &&
-						!pathArr[3])
-				)
-			) {
-				const pageHeight = document.body.scrollHeight
-				window.pageYOffset > 1500 &&
-				window.pageYOffset < pageHeight - 2500 &&
-				!clickedAsk
-					? openStickyModule()
-					: hideStickyModule()
-			}
-		})
-	}, [hideStickyModule, openStickyModule, clickedAsk])
+	const {
+		overlayIsShown,
+		showOverlay,
+		hideOverlay,
+		toggleOverlay
+	} = useContext(OverlayContext)
 
 	return (
 		<div
@@ -139,7 +118,6 @@ const StickyBottom = ({
 					<IconClose />
 				</a>
 			</div>
-			{/* </div> */}
 		</div>
 	)
 }

@@ -31,7 +31,7 @@ export const FooterNew = ({ className, ...rest }: FooterProps) => {
 				<Contacts className={stls.contacts} />
 				<Navigation className={stls.nav} />
 				<Licence className={stls.licence} />
-				<Subscription className={stls.subscription} />
+				{/* <Subscription className={stls.subscription} /> */}
 				<Legal className={stls.legal} />
 			</div>
 		</footer>

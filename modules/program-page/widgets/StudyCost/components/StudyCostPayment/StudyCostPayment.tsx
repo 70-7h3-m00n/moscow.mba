@@ -9,9 +9,22 @@ import { ProgramPageContext } from 'modules/program-page/fractals/context/contex
 import Image from 'next/image'
 import { IconVisaAlt } from '@/components/icons'
 import { PAYMENT, PaymentType } from '@/types/payment/paymentTypes'
+import { LeadLoaderThankyou } from '@/components/general'
+// import routesFront from '@/config/routesFront'
+// import axios from 'axios'
+import {
+	getFullPaymentPrice,
+	// handlePayment,
+	// handlePaymentType,
+	toNumberWithSpaces
+} from '@/helpers/index'
+import { useRouter } from 'next/router'
+import { paymentMethods } from './constants'
+import { LeadLoaderThankyouAlt } from '@/components/general/LoaderThankyou/LoaderThankyou'
 
 export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 	const at = useAt()
+	// const router = useRouter()
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 
@@ -21,7 +34,7 @@ export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 	const [activePaymentMethod, setActivePaymentMethod] = useState<PaymentType>(
 		PAYMENT.CONSULTATION
 	)
-	console.log('activePaymentMethod: ', activePaymentMethod)
+	// console.log('activePaymentMethod: ', activePaymentMethod)
 
 	const consultationHandler = () => {
 		setActivePaymentMethod(PAYMENT.CONSULTATION)
@@ -39,75 +52,36 @@ export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 		setActivePaymentMethod(PAYMENT.GIFT)
 	}
 
-	const paymentMethods = [
-		{
-			type: PAYMENT.CONSULTATION,
-			name: 'Оставить заявку на бесплатную консультацию',
-			image: <></>,
-			handler: consultationHandler
-		},
-		{
-			type: PAYMENT.FULLPRICE,
-			name: 'Оплатить всю сумму сразу с дополнительной скидкой 5% — 8 957 Р',
-			image: (
-				<div className={stls.paymentType}>
-					<IconVisaAlt />
-					<Image
-						src={'/assets/images/program/mir.svg'}
-						alt='Mir'
-						width={56}
-						height={16}
-					/>
-					<Image
-						src={'/assets/images/program/master-card.svg'}
-						alt='Master card'
-						width={25}
-						height={16}
-					/>
-				</div>
-			),
-			handler: fullpriceHandler
-		},
-		{
-			type: PAYMENT.CREDIT,
-			name: 'В рассрочку в Тинькофф',
-			image: (
-				<Image
-					src={'/assets/images/program/tinkoff.svg'}
-					alt='Тинькофф'
-					width={121}
-					height={32}
-				/>
-			),
-			handler: creditHandler
-		},
-		{
-			type: PAYMENT.GIFT,
-			name: 'Купить в подарок',
-			image: (
-				<Image
-					src={'/assets/images/program/gift.svg'}
-					alt='Купить в подарок'
-					width={41}
-					height={42}
-				/>
-			),
-			handler: giftHandler
-		}
-	]
+	const programType = at.profession
+		? 'profession'
+		: at.course
+		? 'course'
+		: at.mba
+		? 'mba'
+		: 'mini'
+
+	const fullPrice = `${toNumberWithSpaces(
+		getFullPaymentPrice({ price: +program?.price, type: programType })
+	)} Р`
 
 	return (
 		<div className={cn(className, stls.content)}>
 			<ul className={stls.list}>
 				{paymentMethods.map(paymentMethod => (
-					<li className={stls.item} key={paymentMethod.name}>
+					<li
+						className={cn(stls.item, {
+							[stls.active]: paymentMethod.type === activePaymentMethod
+						})}
+						key={paymentMethod.name}
+					>
 						<button
-							className={cn(stls.item__btn, {
-								[stls.active]: paymentMethod.type === activePaymentMethod
-							})}
-							onClick={() => paymentMethod.handler()}
+							className={stls.item__btn}
+							onClick={() => setActivePaymentMethod(paymentMethod.type)}
 						>
-							<p className={stls.paymentText}>{paymentMethod.name}</p>
+							<p className={stls.paymentText}>
+								{paymentMethod.name}
+								{paymentMethod.type === PAYMENT.FULLPRICE && fullPrice}
+							</p>
 							{paymentMethod.image}
 						</button>
 					</li>
@@ -121,6 +95,14 @@ export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 				policyPrivacy
 				variant='delta'
 				paymentMethod={activePaymentMethod}
+			/>
+			<LeadLoaderThankyouAlt
+				open={open}
+				setOpen={setOpen}
+				openLoader={openLoader}
+				setOpenLoader={setOpenLoader}
+				programId={program?.id}
+				programTitle={program?.title}
 			/>
 		</div>
 	)

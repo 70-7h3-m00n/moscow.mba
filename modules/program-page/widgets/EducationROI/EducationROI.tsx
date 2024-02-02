@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from 'react'
 import { IconTriangle } from '@/components/icons'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { toNumberWithSpaces } from '@/helpers/index'
+import { Range } from 'react-range'
 
 export const EducationROI = ({ className, ...rest }: EducationROIProps) => {
 	const { state } = useContext(ProgramPageContext)
@@ -29,7 +30,8 @@ export const EducationROI = ({ className, ...rest }: EducationROIProps) => {
 			experience: 'Поступление',
 			subtitle:
 				'За 1-2 месяца работы на позиции начинающего специалиста сможете окупить обучение на программе',
-			description: 'В начале работы'
+			description: 'В начале работы',
+			emoji: '🙂'
 		},
 		{
 			salary: `${toNumberWithSpaces(salary?.middle) || '100 000'}`,
@@ -37,15 +39,17 @@ export const EducationROI = ({ className, ...rest }: EducationROIProps) => {
 			experience: 'Опыт 12 месяцев',
 			subtitle:
 				'В течение года продвинетесь до должности middle-специалиста с увеличением дохода вдвое',
-			description: 'Middle-специалист	(опыт 1-3 года)'
+			description: 'Middle-специалист	(опыт 1-3 года)',
+			emoji: '🤑'
 		},
 		{
 			salary: `${toNumberWithSpaces(salary?.senior) || '160 000'}`,
 			title: 'Senior',
-			experience: 'Опыт 24 месяца',
+			experience: 'Опыт 36 месяцев',
 			subtitle:
 				'В течение двух лет сможете занять должность ведущего специалиста многократно окупив обучение',
-			description: 'Senior-специалист	(опыт более 3 лет)'
+			description: 'Senior-специалист	(опыт более 3 лет)',
+			emoji: '💰'
 		}
 	]
 
@@ -83,33 +87,47 @@ export const EducationROI = ({ className, ...rest }: EducationROIProps) => {
 							<h3 className={stls.right__title}>Зарплаты</h3>
 							<p className={stls.right__subtitle}>по данным HH.ru</p>
 						</div>
-						<div className={stls.range}>
-							<input
-								className={cn(stls.input, {
-									[stls.junior]: inputPosition === 0,
-									[stls.middle]: inputPosition === 1,
-									[stls.senior]: inputPosition === 2
-								})}
-								type='range'
-								name='volume'
-								min={range.min}
-								value={inputPosition}
-								max={range.max}
-								onChange={e => setInputPosition(+e.target.value)}
-							/>
 
-							<output
+						<div
+							className={cn(stls.range, {
+								[stls.middle]: inputPosition === 1,
+								[stls.senior]: inputPosition === 2
+							})}
+						>
+							<div
 								className={stls.bubble}
 								style={{
-									left: `calc(${bubblePosition}% + (${
-										(50 - bubblePosition) / 50
-									}rem))`
+									left: `calc(${bubblePosition}% + (${(50 - bubblePosition) /
+										350}rem))`
 								}}
 							>
 								{dataROI[inputPosition].salary} <span>₽</span>
 								<IconTriangle className={stls.bubble__arrow} />
-							</output>
-
+							</div>
+							<Range
+								step={1}
+								min={range.min}
+								max={range.max}
+								values={[inputPosition]}
+								onChange={values => setInputPosition(values[0])}
+								renderTrack={({ props, children }) => (
+									<div
+										className={cn(stls.input, {
+											[stls.junior]: inputPosition === 0,
+											[stls.middle]: inputPosition === 1,
+											[stls.senior]: inputPosition === 2
+										})}
+										{...props}
+									>
+										{children}
+									</div>
+								)}
+								renderThumb={({ props }) => (
+									<div {...props} className={stls.slider}>
+										{dataROI[inputPosition].emoji}
+									</div>
+								)}
+							/>
 							<div className={stls.rangeDescription}>
 								{dataROI.map((item, idx) => (
 									<div className={stls.rangeDescription__item} key={item.title}>

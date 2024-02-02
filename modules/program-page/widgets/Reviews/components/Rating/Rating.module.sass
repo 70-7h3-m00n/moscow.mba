@@ -29,6 +29,8 @@
   grid-row: span 1
 
   @include m.media(phone, tablet)
+    // grid-column: 1
+    // grid-row: 1
     padding: 1rem
     border-radius: 1rem
 
@@ -48,6 +50,12 @@
     @include m.media(phone, laptop)
       height: 1.5rem
       width: auto
+  
+  &__desc
+    color: #575757
+    font-family: "Helvetica Neue"
+    font-size: 0.875rem
+    line-height: 120% 
 
 .left
   display: flex
@@ -65,14 +73,19 @@
 
   @include m.media(phone, tablet)
     grid-column: span 2
-    grid-row: 3 / 5
+    grid-row: 3 / span 2 !important
     width: unset
     height: unset
     min-height: 20rem
     width: 100%
     gap: 1rem
     border-radius: 1rem
+
+  @include m.media(phone)
     background-size: 90%
+
+  @include m.media(tablet)
+    background-size: 50%
 
   &__title
     color: #FFF

@@ -2,10 +2,15 @@ import stls from './FormBeta.module.sass'
 import cn from 'classnames'
 import { FormBetaProps, TypeFormValues } from './types'
 
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import { onSubmitForm } from '@/helpers/index'
+import {
+	getFullPaymentPrice,
+	handlePayment,
+	onSubmitForm,
+	toNumberWithSpaces
+} from '@/helpers/index'
 
 import {
 	InputNameNew,
@@ -16,6 +21,9 @@ import {
 	InputRadioNew
 } from '@/components/inputs'
 import { PAYMENT } from '@/types/payment/paymentTypes'
+import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
+import useAt from '@/hooks/useAt'
+import Image from 'next/image'
 
 export const FormBeta = ({
 	programTitle,
@@ -33,6 +41,9 @@ export const FormBeta = ({
 		formState: { errors }
 	} = useForm<TypeFormValues>()
 
+	const at = useAt()
+	const { state } = useContext(ProgramPageContext)
+	const { program } = state
 	const { asPath } = useRouter()
 	const [submitIsDisabled, setSubmitIsDisabled] = useState(false)
 	const [noRadio, setNoRadio] = useState<boolean>(false)
@@ -45,6 +56,14 @@ export const FormBeta = ({
 		}
 	}, [paymentMethod])
 
+	const programType = at.profession
+		? 'profession'
+		: at.course
+		? 'course'
+		: at.mba
+		? 'mba'
+		: 'mini'
+
 	return (
 		<form
 			method='post'
@@ -56,6 +75,19 @@ export const FormBeta = ({
 					setTimeout(() => {
 						setSubmitIsDisabled(false)
 					}, 5000)
+
+					if (
+						paymentMethod === PAYMENT.FULLPRICE ||
+						paymentMethod === PAYMENT.GIFT
+					) {
+						return handlePayment({
+							program,
+							asPath,
+							formName,
+							values,
+							type: programType
+						})
+					}
 
 					window.sessionStorage.setItem('formFilled', 'false')
 					return onSubmitForm({
@@ -109,6 +141,7 @@ export const FormBeta = ({
 				<InputEmailNew
 					className={stls.inputEmail}
 					register={register}
+					isRequired
 					errors={errors}
 					variant={
 						variant === 'alpha'
@@ -138,9 +171,18 @@ export const FormBeta = ({
 							: 'alpha'
 					}
 				/>
-				{paymentMethod === PAYMENT.GIFT && (
-					<button>Предпросмотр подарка</button>
-				)}
+				{/* {paymentMethod === PAYMENT.GIFT && (
+					<button className={stls.giftBtn}>
+						Предпросмотр подарка
+						<Image
+							src='/assets/images/program/gift-btn.svg'
+							width={24}
+							height={24}
+							alt='Искры'
+							quality={100}
+						/>
+					</button>
+				)} */}
 				{!noRadio && (
 					<InputRadioNew
 						className={stls.inputRadio}
@@ -168,7 +210,12 @@ export const FormBeta = ({
 						: paymentMethod === PAYMENT.CREDIT
 						? 'Оформить'
 						: paymentMethod === PAYMENT.GIFT
-						? 'Отправить'
+						? `Оплатить всю сумму с доп. скидкой 5% — ${toNumberWithSpaces(
+								getFullPaymentPrice({
+									price: +program?.price,
+									type: programType
+								})
+						  )} Р`
 						: 'Записаться на программу'}
 				</InputSubmitNew>
 			</div>

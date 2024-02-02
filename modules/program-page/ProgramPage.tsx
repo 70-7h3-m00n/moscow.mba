@@ -34,6 +34,8 @@ export const ProgramPage = ({
 }: ProgramPageProps) => {
 	const at = useAt()
 
+	const isEmployment = program?.employment !== false
+
 	return (
 		<ProgramPageProvider
 			programs={programs}
@@ -45,12 +47,15 @@ export const ProgramPage = ({
 				<AboutProgram className={stls.section} />
 				<WhatWillYouLearnNew className={stls.section} />
 				<WhoIsForNew className={stls.section} />
-				<HowProcessGoesNew className={stls.section} id='how-process-goes' />
+				<div id='process' />
+				<HowProcessGoesNew className={stls.section} />
 				<CtaForm className={stls.section} />
 				<ProgramModules className={stls.section} id='program-modules' />
 				<Diploma className={stls.section} />
 				<ExpertsNew className={stls.section} id='experts' />
-				<Employment className={stls.section} id='employment' />
+				{isEmployment && (
+					<Employment className={stls.section} id='employment' />
+				)}
 				{at.profession || at.course ? (
 					<>
 						<FutureJob className={stls.section} />
@@ -69,7 +74,7 @@ export const ProgramPage = ({
 				<StudyCostNew className={stls.section} id='study-cost' />
 				<Faq className={stls.section} />
 				<CtaForm className={stls.section} variant='gamma' />
-				<RecommendedProgramsNew className={stls.section} />
+				{/* <RecommendedProgramsNew className={stls.section} /> */}
 			</div>
 		</ProgramPageProvider>
 	)

@@ -160,6 +160,7 @@ type TypeLibProgram = {
 				studentName: string | null
 				studentReview: string | null
 				studentPhoto: string | null
+				title?: string | null
 		  }[]
 		| null
 	faq?:

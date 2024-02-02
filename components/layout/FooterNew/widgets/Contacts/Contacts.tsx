@@ -8,6 +8,7 @@ import routesFront from '@/config/routesFront'
 import { contactLinks, socialLinks } from './constants'
 import Image from 'next/image'
 import { BtnBeta } from '@/components/btns'
+import { PopupHeader } from '@/components/popups'
 
 export const Contacts = ({ className, ...rest }: ContactsProps) => {
 	const contactInfo = useContactInfo()
@@ -70,9 +71,7 @@ export const Contacts = ({ className, ...rest }: ContactsProps) => {
 				</div>
 			</div>
 			<div className={stls.btnWrapper}>
-				<BtnBeta variant='beta' size='s'>
-					Обратный звонок
-				</BtnBeta>
+				<PopupHeader className={stls.popupFooter} footer />
 				<ul className={stls.socials}>
 					{contactLinks.map((socialLink, idx) => (
 						<li

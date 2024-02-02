@@ -8,6 +8,7 @@ import { studentStoriesData } from './constants'
 import { useRef, useState } from 'react'
 import Image from 'next/image'
 import Slider from 'react-slick'
+import truncate from 'truncate'
 
 export const StudentStories = ({ className, ...rest }: StudentStoriesProps) => {
 	const sliderRef = useRef<Slider>(null)
@@ -44,9 +45,11 @@ export const StudentStories = ({ className, ...rest }: StudentStoriesProps) => {
 					<Tag className={stls.tag} variant='gamma'>
 						{studentStoriesData[selectedStory].profession}
 					</Tag>
-					<p className={stls.text}>
-						{studentStoriesData[selectedStory].description}
-					</p>
+					<div className={stls.text}>
+						<p>
+							{truncate(studentStoriesData[selectedStory].description[0], 70)}
+						</p>
+					</div>
 					<button className={stls.readMore}>Читать подробнее</button>
 					<ul className={stls.avatarList}>
 						{studentStoriesData.map((item, idx) => (

@@ -12,6 +12,7 @@
   padding: 3rem 1.5rem
   border-radius: 1.5rem
   background-color: #18191A
+  overflow: hidden
   
   @include m.media(phone, tablet, laptop)
     grid-template-columns: 1fr
@@ -53,10 +54,6 @@
   color: #fff
   text-decoration: underline
 
-.btn
-  @include m.media(phone, tablet)
-    width: 100%
-
 .imageWrapper
   position: relative
 
@@ -74,4 +71,4 @@
     transform: translate(0rem, -5rem) scale(1.8)
   
   @include m.media(phone)
-    transform: translate(0rem, -5rem) scale(2.1)
+    transform: translate(0rem, -5rem) scale(1.8)

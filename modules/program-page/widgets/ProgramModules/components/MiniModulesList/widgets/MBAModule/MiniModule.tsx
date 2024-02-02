@@ -9,10 +9,10 @@ export const MiniModule = ({
 	className,
 	subject,
 	idx,
+	activeIdx,
+	handler,
 	...rest
 }: MiniModuleProps) => {
-	const [activeIdx, setActiveIdx] = useState(0)
-
 	return (
 		<div className={cn(className, stls.content)} {...rest}>
 			<Accordion
@@ -21,7 +21,7 @@ export const MiniModule = ({
 				active={activeIdx === idx}
 				item={subject}
 				idx={idx}
-				handler={() => setActiveIdx(activeIdx === idx ? null : idx)}
+				handler={handler}
 				variant='modules'
 			>
 				<p className={stls.subtitle}>{subject?.string}</p>

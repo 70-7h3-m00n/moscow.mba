@@ -1,0 +1,54 @@
+@use '@/styles/components/layout/StickyBottom.module.sass' as stickyBottom
+@use '@/styles/utils/mixin' as m
+
+.inputContainer
+  position: relative
+
+.contactDataInput
+  width: 100%
+  padding: 1.5rem
+  border-radius: 1rem
+  border: 1px solid #E9E9E9
+  background: #F8F8F8
+
+  &::placeholder
+    color: #BDBCBC
+    font-size: 0.875rem
+    line-height: 120%
+
+.bottomContainer
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 1.5rem
+  padding: 1.5rem
+  background-color: #fff
+
+.methodWrapper
+  display: flex
+  gap: 1.5rem
+  width: 100%  
+  & > *
+    flex-grow: 1
+
+.buttonDescription
+  font-size: 1.125rem
+  text-align: center
+  color: #000
+
+.privacyPolicy
+  font-size: 0.875rem
+  text-align: center
+  color: #575757
+
+.submitBtn
+  width: 100%
+  padding: 1.5rem
+  border: none
+  border-radius: 1rem
+  color: #fff
+  background: #18191A
+  transition: opacity .3s ease-in-out
+
+  &:hover
+    opacity: .9

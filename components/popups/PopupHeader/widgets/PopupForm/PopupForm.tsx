@@ -15,6 +15,7 @@ export const PopupForm = ({ className, next, prev, close }: PopupFormProps) => {
 		<div className={cn(className, stls.content)}>
 			<p className={stls.title}>Обратный звонок</p>
 			<FormHeader
+				next={next}
 				setOpen={setOpen}
 				setOpenLoader={setOpenLoader}
 				programTitle='Форма из шапки сайта'

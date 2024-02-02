@@ -5,18 +5,18 @@ import { HeroSectionProps } from './types'
 import { Wrapper } from '@/components/layout'
 import Image from 'next/image'
 import { Switch } from '../components/Switch/Switch'
-import { Details, Tag } from '../components'
+import { Details } from '../components'
 import { IconFire, IconHeart } from './widgets'
-import { BtnBeta } from '@/components/btns'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { useContext } from 'react'
-import { PlacesLeft, Until } from '@/components/costs'
 import { format } from 'date-fns'
 import { ru } from 'date-fns/locale'
 import { Partnership } from './widgets/Partnership/Partnership'
 import { Sale } from './widgets/Sale/Sale'
 import { advantagesArray } from './constants'
 import useAt from '@/hooks/useAt'
+import Link from 'next/link'
+import { PopupCTA } from '@/components/popups/PopupCTA/PopupCTA'
 
 const stringDate = format(new Date(), 'LLLL yyyy', { locale: ru })
 
@@ -24,10 +24,6 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 	const at = useAt()
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
-
-	// const advantagesArray = program?.heroAdvantages
-	// 	?.map((el, idx) => (idx < 5 ? el.string : undefined))
-	// 	.filter(Boolean)
 
 	const advantages = at.profession
 		? advantagesArray.profession
@@ -52,8 +48,18 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 						<h1 className={stls.title}>{program?.title}</h1>
 						<p className={stls.description}>{program?.description}</p>
 						<div className={stls.main__btnWrapper}>
-							<BtnBeta variant='alpha'>Оставить заявку</BtnBeta>
-							<BtnBeta variant='gamma'>Задать вопрос</BtnBeta>
+							<Link
+								href='#study-cost'
+								scroll={false}
+								className={stls.main__link}
+							>
+								Оставить заявку
+							</Link>
+							<PopupCTA
+								title='Задать вопрос или получить бесплатную консультацию'
+								btnText='Задать вопрос'
+								variant='gamma'
+							/>
 						</div>
 					</div>
 					<div className={stls.rating}>
@@ -62,7 +68,7 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 							<span className={stls.rating__counter}>4,8</span>
 						</div>
 						<p className={stls.rating__desc}>
-							на отзовике IRecommended и TutorTop
+							рейтинг на&nbsp;Otzovik и&nbsp;Tutortop
 						</p>
 					</div>
 					<div className={stls.students}>

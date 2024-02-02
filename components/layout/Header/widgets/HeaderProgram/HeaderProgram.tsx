@@ -2,13 +2,14 @@ import stls from './HeaderProgram.module.sass'
 import cn from 'classnames'
 import { HeaderProgramProps } from './types'
 
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Link from 'next/link'
 import { IconLogo, IconLogoTitle } from '@/components/icons'
 import companyName from '@/config/companyName'
 import routesFront from '@/config/routesFront'
 import { PopupHeader } from '@/components/popups'
 import Wrapper from '@/components/layout/Wrapper'
+import { ContextStaticProps } from '@/context/index'
 
 export const HeaderProgram = ({
 	className,
@@ -16,14 +17,17 @@ export const HeaderProgram = ({
 	openMenu
 }: HeaderProgramProps) => {
 	const [activeIdx, setActiveIdx] = useState(null)
+	const { program } = useContext(ContextStaticProps)
 
 	const menuData = [
-		{ title: 'Как проходит обучение', src: '#how-process-goes' },
+		{ title: 'Как проходит обучение', src: '#process' },
 		{ title: 'Программа', src: '#program-modules' },
 		{ title: 'Стоимость', src: '#study-cost' },
 		{ title: 'Преподаватели', src: '#experts' },
 		{ title: 'Отзывы', src: '#reviews' },
-		...(true ? [{ title: 'Трудоустройство', src: '#employment' }] : [])
+		...(program?.employment === false
+			? []
+			: [{ title: 'Трудоустройство', src: '#employment' }])
 	]
 
 	return (

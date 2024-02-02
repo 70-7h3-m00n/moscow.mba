@@ -50,6 +50,8 @@ export const InfoTooltip = ({
 				)}
 				position={['top center', 'bottom center']}
 				closeOnDocumentClick
+				open={opened}
+				onClose={() => setOpened(false)}
 				ref={ref}
 				modal={modal}
 				lockScroll

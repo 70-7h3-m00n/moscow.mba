@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { MiniModulesListProps } from './types'
 
 import { MiniModule } from './widgets/MBAModule/MiniModule'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { Tag } from 'modules/program-page/widgets/components'
 
@@ -15,6 +15,8 @@ export const MiniModulesList = ({
 }: MiniModulesListProps) => {
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
+
+	const [activeIdx, setActiveIdx] = useState(0)
 
 	const subjects = baseSubjects
 		? program?.baseSubjects
@@ -35,11 +37,14 @@ export const MiniModulesList = ({
 				</Tag>
 			)}
 			<div className={cn(className, stls.content)} {...rest}>
-				{subjects?.map(subject => (
+				{subjects?.map((subject, idx) => (
 					<MiniModule
 						className={stls.module}
 						subject={subject}
 						key={`${subject?.title}-${subject?.duration}`}
+						idx={idx}
+						handler={() => setActiveIdx(activeIdx === idx ? null : idx)}
+						activeIdx={activeIdx}
 					/>
 				))}
 			</div>
