@@ -15,11 +15,6 @@ export const DiplomaPopup = ({ className, ...rest }: DiplomaPopupProps) => {
 	const diplomas = {
 		profession: [
 			{
-				title: 'Сертификат',
-				src: '/assets/diplomas/profession/new/certificate-profession.jpg',
-				orientation: 'horizontal'
-			},
-			{
 				title: 'Диплом',
 				src:
 					'/assets/diplomas/profession/new/qualification-diploma-profession.jpg',
@@ -28,6 +23,11 @@ export const DiplomaPopup = ({ className, ...rest }: DiplomaPopupProps) => {
 			{
 				title: 'Приложение к диплому',
 				src: '/assets/diplomas/profession/new/diploma-addendum-profession.jpg',
+				orientation: 'horizontal'
+			},
+			{
+				title: 'Диплом',
+				src: '/assets/diplomas/profession/new/certificate-profession.jpg',
 				orientation: 'horizontal'
 			}
 		]

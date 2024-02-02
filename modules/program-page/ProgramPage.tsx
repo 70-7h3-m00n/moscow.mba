@@ -47,7 +47,8 @@ export const ProgramPage = ({
 				<AboutProgram className={stls.section} />
 				<WhatWillYouLearnNew className={stls.section} />
 				<WhoIsForNew className={stls.section} />
-				<HowProcessGoesNew className={stls.section} id='how-process-goes' />
+				<div id='process' />
+				<HowProcessGoesNew className={stls.section} />
 				<CtaForm className={stls.section} />
 				<ProgramModules className={stls.section} id='program-modules' />
 				<Diploma className={stls.section} />

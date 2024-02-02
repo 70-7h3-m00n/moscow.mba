@@ -18,7 +18,7 @@ export const HeaderMenuAlt = ({ programs, handleMenu }) => {
 	const { program } = useContext(ContextStaticProps)
 
 	const menuData = [
-		{ val: 'Как проходит обучение', href: '#how-process-goes' },
+		{ val: 'Как проходит обучение', href: '#process' },
 		{ val: 'Программа', href: '#program-modules' },
 		{ val: 'Стоимость', href: '#study-cost' },
 		{ val: 'Преподаватели', href: '#experts' },

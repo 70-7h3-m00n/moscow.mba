@@ -39,7 +39,6 @@ export const ModulesHeading = ({ className, ...rest }: ModulesHeadingProps) => {
 		program?.duration?.modulesTools &&
 		program?.duration?.modulesTools?.length > 0
 
-	console.log('noTools: ', tools)
 	return (
 		<div className={cn(className, stls.content)} {...rest}>
 			<div className={stls.left}>

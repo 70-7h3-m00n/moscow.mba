@@ -39,7 +39,7 @@ export const contactLinks = [
 		icon: <IconWhatsappAlt className={stls.watsapp} fill='#000' />
 	},
 	{
-		link: 'https://t.me/mbamoscow',
+		link: 'https://t.me/MBAACADEMY_BOT',
 		ariaLabel: 'MBA Telegram',
 		icon: <IconTelegramAlt className={stls.telegram} fill='#000' />
 	}

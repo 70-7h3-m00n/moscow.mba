@@ -33,10 +33,10 @@ export const navList = [
 				item: 'О нас',
 				src: routesFront.about
 			},
-			{
-				item: 'Центр карьеры',
-				src: routesFront.job
-			},
+			// {
+			// 	item: 'Центр карьеры',
+			// 	src: routesFront.job
+			// },
 			{
 				item: 'Отзывы',
 				src: routesFront.reviews
@@ -49,15 +49,15 @@ export const navList = [
 				item: 'Контакты',
 				src: routesFront.contact
 			},
-			{
-				item: 'Вакансии',
-				// TODO
-				src: '/'
-			},
-			{
-				item: 'Оплата',
-				src: routesFront.payment
-			},
+			// {
+			// 	item: 'Вакансии',
+			// 	// TODO
+			// 	src: '/'
+			// },
+			// {
+			// 	item: 'Оплата',
+			// 	src: routesFront.payment
+			// },
 			{
 				item: 'Сведения об организации',
 				src: routesFront.about
@@ -71,11 +71,11 @@ export const navList = [
 				item: 'Семинары',
 				src: routesFront.seminars
 			},
-			{
-				item: 'Бесплатные курсы',
-				//TODO
-				src: routesFront.programs
-			},
+			// {
+			// 	item: 'Бесплатные курсы',
+			// 	//TODO
+			// 	src: routesFront.programs
+			// },
 			{
 				item: 'Журнал',
 				src: routesFront.journal

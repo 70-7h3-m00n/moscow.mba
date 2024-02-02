@@ -37,10 +37,13 @@ export const HeaderMobileTabsAlt = ({
 							{at.en ? 'Programs' : 'Программы'}
 						</li> */}
 						{links.map((item, idx) => (
-							<Link legacyBehavior href={item.href} key={item.href + idx}>
-								<a className={cn(stls.link)} onClick={() => handleMenu(false)}>
-									{item.val}
-								</a>
+							<Link
+								className={cn(stls.link)}
+								href={item.href}
+								key={item.href + idx}
+								onClick={() => handleMenu(false)}
+							>
+								{item.val}
 							</Link>
 						))}
 					</ul>

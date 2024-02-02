@@ -20,7 +20,7 @@ export const HeaderProgram = ({
 	const { program } = useContext(ContextStaticProps)
 
 	const menuData = [
-		{ title: 'Как проходит обучение', src: '#how-process-goes' },
+		{ title: 'Как проходит обучение', src: '#process' },
 		{ title: 'Программа', src: '#program-modules' },
 		{ title: 'Стоимость', src: '#study-cost' },
 		{ title: 'Преподаватели', src: '#experts' },
