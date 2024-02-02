@@ -12,7 +12,8 @@ export const studentStoriesData = [
 		],
 		src:
 			'https://code.s3.yandex.net/Landing_summer/programirovanie_cc_10sec.mp4',
-		avatar: '/assets/images/program/employment-partners-photo-1.jpg'
+		avatar: '/assets/images/program/employment-partners-photo-1.jpg',
+		preview: ''
 	},
 	{
 		name: 'Прохоров Вячеслав',
@@ -25,7 +26,8 @@ export const studentStoriesData = [
 		],
 		src:
 			'https://code.s3.yandex.net/Landing_summer/programirovanie_cc_10sec.mp4',
-		avatar: '/assets/images/program/employment-partners-photo-1.jpg'
+		avatar: '/assets/images/program/employment-partners-photo-1.jpg',
+		preview: ''
 	},
 	{
 		name: 'Кудряшова Екатерина',
@@ -35,7 +37,8 @@ export const studentStoriesData = [
 		],
 		src:
 			'https://code.s3.yandex.net/Landing_summer/programirovanie_cc_10sec.mp4',
-		avatar: '/assets/images/program/employment-partners-photo-1.jpg'
+		avatar: '/assets/images/program/employment-partners-photo-1.jpg',
+		preview: ''
 	},
 	{
 		name: 'Скворцов Андрей',
@@ -47,7 +50,8 @@ export const studentStoriesData = [
 		],
 		src:
 			'https://code.s3.yandex.net/Landing_summer/programirovanie_cc_10sec.mp4',
-		avatar: '/assets/images/program/employment-partners-photo-1.jpg'
+		avatar: '/assets/images/program/employment-partners-photo-1.jpg',
+		preview: ''
 	},
 	{
 		name: 'Бессонова Дарья',
@@ -58,7 +62,8 @@ export const studentStoriesData = [
 		],
 		src:
 			'https://code.s3.yandex.net/Landing_summer/programirovanie_cc_10sec.mp4',
-		avatar: '/assets/images/program/employment-partners-photo-1.jpg'
+		avatar: '/assets/images/program/employment-partners-photo-1.jpg',
+		preview: ''
 	},
 	{
 		name: 'Никитина Милана',
@@ -71,7 +76,8 @@ export const studentStoriesData = [
 		],
 		src:
 			'https://code.s3.yandex.net/Landing_summer/programirovanie_cc_10sec.mp4',
-		avatar: '/assets/images/program/employment-partners-photo-1.jpg'
+		avatar: '/assets/images/program/employment-partners-photo-1.jpg',
+		preview: ''
 	},
 	{
 		name: 'Наумова Мирослава',
@@ -83,7 +89,8 @@ export const studentStoriesData = [
 		],
 		src:
 			'https://code.s3.yandex.net/Landing_summer/programirovanie_cc_10sec.mp4',
-		avatar: '/assets/images/program/employment-partners-photo-1.jpg'
+		avatar: '/assets/images/program/employment-partners-photo-1.jpg',
+		preview: ''
 	},
 	{
 		name: 'Сидоров Александр',
@@ -96,7 +103,8 @@ export const studentStoriesData = [
 		],
 		src:
 			'https://code.s3.yandex.net/Landing_summer/programirovanie_cc_10sec.mp4',
-		avatar: '/assets/images/program/employment-partners-photo-1.jpg'
+		avatar: '/assets/images/program/employment-partners-photo-1.jpg',
+		preview: ''
 	},
 	{
 		name: 'Зайцев Егор',
@@ -110,7 +118,8 @@ export const studentStoriesData = [
 		],
 		src:
 			'https://code.s3.yandex.net/Landing_summer/programirovanie_cc_10sec.mp4',
-		avatar: '/assets/images/program/employment-partners-photo-1.jpg'
+		avatar: '/assets/images/program/employment-partners-photo-1.jpg',
+		preview: ''
 	},
 	{
 		name: 'Федотова Таисия',
@@ -123,7 +132,8 @@ export const studentStoriesData = [
 		],
 		src:
 			'https://code.s3.yandex.net/Landing_summer/programirovanie_cc_10sec.mp4',
-		avatar: '/assets/images/program/employment-partners-photo-1.jpg'
+		avatar: '/assets/images/program/employment-partners-photo-1.jpg',
+		preview: ''
 	},
 	{
 		name: 'Жуков Илья',
@@ -135,7 +145,8 @@ export const studentStoriesData = [
 		],
 		src:
 			'https://code.s3.yandex.net/Landing_summer/programirovanie_cc_10sec.mp4',
-		avatar: '/assets/images/program/employment-partners-photo-1.jpg'
+		avatar: '/assets/images/program/employment-partners-photo-1.jpg',
+		preview: ''
 	},
 	{
 		name: 'Смирнов Павел',
@@ -146,6 +157,7 @@ export const studentStoriesData = [
 		],
 		src:
 			'https://code.s3.yandex.net/Landing_summer/programirovanie_cc_10sec.mp4',
-		avatar: '/assets/images/program/employment-partners-photo-1.jpg'
+		avatar: '/assets/images/program/employment-partners-photo-1.jpg',
+		preview: ''
 	}
 ]
