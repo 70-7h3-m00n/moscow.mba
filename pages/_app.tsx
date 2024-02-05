@@ -10,7 +10,7 @@ import TagManager from 'react-gtm-module'
 import { DefaultSeo, LogoJsonLd } from 'next-seo'
 import SEO from '../seo.config'
 import { useAt, usePreserveScroll } from '@/hooks/index'
-import { dev, gtmId, mangoScript, routesFront } from '@/config/index'
+import { dev, gtmId, routesFront } from '@/config/index'
 import {
 	Header,
 	Main,

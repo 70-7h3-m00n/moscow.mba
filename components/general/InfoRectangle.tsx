@@ -24,7 +24,7 @@ const InfoRectangle = ({
 		(at.course && at.online) ||
 		at.mbl
 
-	const durationHours = at.mini ? 1260 : at.mba ? 3420 : studyDurationHours
+	const durationHours = at.mini ? 1260 : at.mba ? 2700 : studyDurationHours
 
 	const date = new Date()
 	const month = date.toLocaleString('default', { month: 'long' })
