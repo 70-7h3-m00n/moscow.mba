@@ -26,28 +26,32 @@ export const MiniModulesList = ({
 
 	return (
 		<>
-			{baseSubjects && (
-				<Tag className={stls.tag} variant='eta'>
-					Универсальные знания
-				</Tag>
+			{!!subjects?.length && subjects?.length > 0 && (
+				<>
+					{baseSubjects && (
+						<Tag className={stls.tag} variant='eta'>
+							Универсальные знания
+						</Tag>
+					)}
+					{bonusSubjects && (
+						<Tag className={stls.tag} variant='eta'>
+							Бонусные модули
+						</Tag>
+					)}
+					<div className={cn(className, stls.content)} {...rest}>
+						{subjects?.map((subject, idx) => (
+							<MiniModule
+								className={stls.module}
+								subject={subject}
+								key={`${subject?.title}-${subject?.duration}`}
+								idx={idx}
+								handler={() => setActiveIdx(activeIdx === idx ? null : idx)}
+								activeIdx={activeIdx}
+							/>
+						))}
+					</div>
+				</>
 			)}
-			{bonusSubjects && (
-				<Tag className={stls.tag} variant='eta'>
-					Бонусные модули
-				</Tag>
-			)}
-			<div className={cn(className, stls.content)} {...rest}>
-				{subjects?.map((subject, idx) => (
-					<MiniModule
-						className={stls.module}
-						subject={subject}
-						key={`${subject?.title}-${subject?.duration}`}
-						idx={idx}
-						handler={() => setActiveIdx(activeIdx === idx ? null : idx)}
-						activeIdx={activeIdx}
-					/>
-				))}
-			</div>
 		</>
 	)
 }

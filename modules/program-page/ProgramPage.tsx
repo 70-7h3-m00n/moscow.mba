@@ -25,6 +25,9 @@ import {
 	Faq,
 	RecommendedProgramsNew
 } from './widgets'
+import { Breadcrumbs } from '@/components/general'
+import { BreadcrumbsAlt } from '@/components/general/BreadcrumbsAlt/BreadcrumbsAlt'
+import { BreadcrumbsSection } from './widgets/BreadcrumbsSection/BreadcrumbsSection'
 
 export const ProgramPage = ({
 	className,
@@ -75,6 +78,7 @@ export const ProgramPage = ({
 				<Faq className={stls.section} />
 				<CtaForm className={stls.section} variant='gamma' />
 				{/* <RecommendedProgramsNew className={stls.section} /> */}
+				{/* <BreadcrumbsSection /> */}
 			</div>
 		</ProgramPageProvider>
 	)

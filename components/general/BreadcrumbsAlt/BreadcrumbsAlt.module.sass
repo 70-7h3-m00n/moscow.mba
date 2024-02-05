@@ -1,0 +1,55 @@
+@use '@/styles/utils/mixin' as m
+
+.breadcrumbs
+  padding: 22px 0 12px
+  display: flex
+  flex-wrap: wrap
+  font-weight: 400
+  font-size: 14px
+  line-height: 1.2
+  li
+    margin-right: 44px
+    position: relative
+    margin-bottom: 10px
+    color: #575757
+    &::before
+      content: ''
+      width: 1px
+      height: 10px
+      background: #575757
+      position: absolute
+      top: 5px
+      right: -24px
+      transform: rotate(45deg)
+    &::after
+      content: ''
+      width: 1px
+      height: 10px
+      background:#575757
+      position: absolute
+      top: -1px
+      right: -24px
+      transform: rotate(-45deg)
+    &:last-child
+      margin-right: 0
+      padding-right: 10px
+      &::before
+        display: none
+      &::after
+        display: none
+  a
+    white-space: nowrap
+    transition: all 0.3s ease-out
+    &:hover
+      color: #ff3535
+  span
+    color: #b3b3b3
+    white-space: nowrap
+  @include m.media(tablet, phone)
+    overflow-x: auto
+    flex-wrap: nowrap
+    a
+      white-space: nowrap
+    span
+      white-space: nowrap
+
