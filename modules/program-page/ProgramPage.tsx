@@ -38,12 +38,12 @@ const helvetica = localFont({
 	]
 })
 
-const unbounded = Unbounded({
-	weight: ['400'],
-	style: ['normal'],
-	subsets: ['latin', 'cyrillic'],
-	display: 'swap'
-})
+// const unbounded = Unbounded({
+// 	weight: ['400'],
+// 	style: ['normal'],
+// 	subsets: ['latin', 'cyrillic'],
+// 	display: 'swap'
+// })
 
 export const ProgramPage = ({
 	className,
@@ -65,8 +65,8 @@ export const ProgramPage = ({
 				className={cn(
 					className,
 					stls.container,
-					helvetica.className,
-					unbounded.className
+					helvetica.className
+					// unbounded.className
 				)}
 			>
 				<HeroSection className={stls.heroSection} program={program} />

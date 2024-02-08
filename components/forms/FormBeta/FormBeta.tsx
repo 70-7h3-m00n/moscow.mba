@@ -23,6 +23,8 @@ import {
 import { PAYMENT } from '@/types/payment/paymentTypes'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import useAt from '@/hooks/useAt'
+import Image from 'next/image'
+import { PopupGift } from '@/components/popups/PopupGift/PopupGift'
 
 export const FormBeta = ({
 	programTitle,
@@ -170,18 +172,15 @@ export const FormBeta = ({
 							: 'alpha'
 					}
 				/>
-				{/* {paymentMethod === PAYMENT.GIFT && (
-					<button className={stls.giftBtn}>
-						Предпросмотр подарка
-						<Image
-							src='/assets/images/program/gift-btn.svg'
-							width={24}
-							height={24}
-							alt='Искры'
-							quality={100}
-						/>
-					</button>
-				)} */}
+
+				{paymentMethod === PAYMENT.GIFT && (
+					<PopupGift
+						programTitle='«Управление современной организацией в здравоохранении»'
+						studentName='Имя получателя'
+						untilDate='12.03.2024'
+						programType='Mini MBA'
+					/>
+				)}
 				{!noRadio && (
 					<InputRadioNew
 						className={stls.inputRadio}
