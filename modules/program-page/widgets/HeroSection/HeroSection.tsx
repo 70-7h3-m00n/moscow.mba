@@ -17,6 +17,8 @@ import { advantagesArray } from './constants'
 import useAt from '@/hooks/useAt'
 import Link from 'next/link'
 import { PopupCTA } from '@/components/popups/PopupCTA/PopupCTA'
+import { RevertedCorner } from '@/components/icons/geometrics/RevertedCorner/RevertedCorner'
+import { CornerPhoto } from '../components/CornerPhoto/CornerPhoto'
 
 const stringDate = format(new Date(), 'LLLL yyyy', { locale: ru })
 
@@ -82,14 +84,19 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 					</div>
 					<Details className={stls.details} />
 				</div>
-				<div className={stls.cornerPhoto}>
+				<CornerPhoto
+					className={stls.cornerPhoto}
+					src='/assets/images/program/hero-image-2.png'
+					size='l'
+				/>
+				{/* <div className={stls.cornerPhoto}>
 					<Image
 						src='/assets/images/program/hero-image-2.png'
 						width={82}
 						height={82}
 						alt='Фото клиента'
 					/>
-				</div>
+				</div> */}
 				{program?.heroAdvantages && (
 					<ul className={stls.bottomList}>
 						<li className={stls.bottomItem}>

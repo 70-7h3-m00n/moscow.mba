@@ -1,5 +1,6 @@
 import stls from './BreadcrumbsAlt.module.sass'
 import cn from 'classnames'
+import { BreadCrumbJsonLdProps } from 'next-seo'
 
 import { useRouter } from 'next/router'
 import { useAt } from '@/hooks/index'
@@ -11,8 +12,11 @@ import {
 	mainRoutes,
 	professionRoute
 } from './constants'
+import { BreadcrumbsAltProps } from './types'
 
-export const BreadcrumbsAlt = ({ programChunkData = {} }) => {
+export const BreadcrumbsAlt = ({
+	programChunkData = {}
+}: BreadcrumbsAltProps) => {
 	const at = useAt()
 	const router = useRouter()
 	const userViewingProfession = at.profession
@@ -23,6 +27,16 @@ export const BreadcrumbsAlt = ({ programChunkData = {} }) => {
 	let breadcrumbsList = [homeRoute]
 	const maxNumOfBreadcrumbs = 4
 	const additionalRoutes = []
+
+	const programType = at.mini
+		? 'Mini MBA'
+		: at.mba
+		? 'MBA'
+		: at.profession
+		? 'Профессии'
+		: at.course
+		? 'Курсы'
+		: null
 
 	const matchingMainRoutes = mainRoutes
 		.filter(route => route.path !== '/')
@@ -70,11 +84,18 @@ export const BreadcrumbsAlt = ({ programChunkData = {} }) => {
 			path: '/' + splitedPath.join('/') + '/' + programChunkData?.url
 		}
 
-		additionalRoutes.push(programChunkRoute)
+		const programTypeRoute = {
+			label: {
+				ru: programType,
+				'en-US': programChunkData?.category?.type
+			},
+			path: '/' + splitedPath.slice(0, 2).join('/')
+		}
+
+		additionalRoutes.push(programTypeRoute, programChunkRoute)
 	}
 
 	if (userViewingPrograms) addProgramsRoute(at.getSplitedPath)
-	console.log('at.getSplitedPath: ', at.getSplitedPath)
 	if (userViewingProgramChunk)
 		addProgramChunkRoute(at.getSplitedPath, programChunkData)
 

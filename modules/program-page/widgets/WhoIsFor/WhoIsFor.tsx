@@ -4,9 +4,9 @@ import { WhoIsForProps } from './types'
 
 import { useContext } from 'react'
 import { Wrapper } from '@/components/layout'
-import Image from 'next/image'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { whoIsForDefault } from './constants'
+import { CornerPhoto } from '../components/CornerPhoto/CornerPhoto'
 
 export const WhoIsForNew = ({ className, ...rest }: WhoIsForProps) => {
 	const { state } = useContext(ProgramPageContext)
@@ -28,9 +28,12 @@ export const WhoIsForNew = ({ className, ...rest }: WhoIsForProps) => {
 							<p className={stls.item__desc}>
 								{program?.whoIsFor?.[idx]?.description || description}
 							</p>
-							<div className={stls.cornerPhoto}>
-								<Image src={photo} width={82} height={82} alt='Фото клиента' />
-							</div>
+							<CornerPhoto
+								className={stls.cornerPhoto}
+								src={photo}
+								size='l'
+								variant='top-right'
+							/>
 						</div>
 					)
 				})}

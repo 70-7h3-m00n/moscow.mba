@@ -11,21 +11,8 @@ import { IconNext } from '../components'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import useWindowWidth from '@/hooks/useWindowWidth'
 import { IconArrowAlt } from '../components/icons/IconArrowAlt/IconArrowAlt'
-
-const data = [
-	{
-		title: 'Возможность построить карьеру в топовой компании',
-		description:
-			'Сегодня любая компания - потенциальная жертва кибератак. Чем дороже компания, тем выше риски. А значит, тем больше денег готовы тратить руководители на специалистов по кибербезопасности',
-		src: '/assets/images/program/future-job-photo.png'
-	},
-	{
-		title: 'Возможность построить карьеру в топовой компании',
-		description:
-			'Сегодня любая компания - потенциальная жертва кибератак. Чем дороже компания, тем выше риски. А значит, тем больше денег готовы тратить руководители на специалистов по кибербезопасности',
-		src: '/assets/images/program/future-job-photo-2.png'
-	}
-]
+import { data } from './constants'
+import { FutureJobItem } from './FutureJobItem/FutureJobItem'
 
 export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 	const { state } = useContext(ProgramPageContext)
@@ -92,10 +79,7 @@ export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 										className={cn(stls.carousel__post, stls.post)}
 										key={`Carousel_post--${idx}`}
 									>
-										<CornerPhoto className={stls.card} src={data[idx].src}>
-											<h3 className={stls.card__title}>{item?.title}</h3>
-											<p className={stls.card__description}>{item?.string}</p>
-										</CornerPhoto>
+										<FutureJobItem idx={idx} item={item} />
 									</div>
 								))}
 							</Slider>
@@ -123,12 +107,7 @@ export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 						</div>
 						<div className={cn(stls.mobileList, { [stls.hide]: !noCarusel })}>
 							{program?.futureJob?.job.map((item, idx) => (
-								<div className={stls.post} key={`Carousel_post--${idx}`}>
-									<CornerPhoto className={stls.card} src={data[idx].src}>
-										<h3 className={stls.card__title}>{item?.title}</h3>
-										<p className={stls.card__description}>{item?.string}</p>
-									</CornerPhoto>
-								</div>
+								<FutureJobItem key={idx} idx={idx} item={item} />
 							))}
 						</div>
 					</Wrapper>

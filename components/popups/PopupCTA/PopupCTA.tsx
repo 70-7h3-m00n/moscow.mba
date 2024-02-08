@@ -4,13 +4,13 @@ import cn from 'classnames'
 import { PopupTeacherNewProps } from './types'
 import Popup from 'reactjs-popup'
 import { BtnBeta } from '@/components/btns'
-import { FormBeta } from 'modules/program-page/widgets'
 import { useContext, useEffect, useState } from 'react'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { IconCloseAlt } from '@/components/icons'
 import { PopupLoader, PopupThankyou } from '..'
 import { IconLoaderAlt } from '@/components/icons/IconLoaderAlt/IconLoaderAlt'
 import Image from 'next/image'
+import { FormBeta } from '@/components/forms/FormBeta/FormBeta'
 
 export const PopupCTA = ({
 	className,

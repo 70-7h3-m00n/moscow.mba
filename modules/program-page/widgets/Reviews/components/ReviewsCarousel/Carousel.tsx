@@ -7,28 +7,18 @@ import Image from 'next/image'
 import Slider from 'react-slick'
 import { IconNext, IconStar } from 'modules/program-page/widgets/components'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
-import { defaultReviews } from './constants'
+import { colors, defaultReviews } from './constants'
 import Popup from 'reactjs-popup'
 import { ReviewCard } from '../ReviewCard/ReviewCard'
 import truncate from 'truncate'
-import useWindowWidth from '@/hooks/useWindowWidth'
+import { Review } from './Review/Review'
+import { CornerPhoto } from 'modules/program-page/widgets/components/CornerPhoto/CornerPhoto'
 
 export function Carousel({ className }: CarouselProps) {
 	const sliderRef = useRef<Slider>(null)
 	const { state } = useContext(ProgramPageContext)
 	const { program } = state
 	const reviews = program?.reviews
-
-	// const widthWindow = useWindowWidth()
-	// const [isMobile, setIsMobile] = useState(false)
-
-	// useEffect(() => {
-	// 	if (widthWindow <= 767) {
-	// 		setIsMobile(true)
-	// 	} else {
-	// 		setIsMobile(false)
-	// 	}
-	// }, [widthWindow])
 
 	const reviewsInDatabase = reviews && reviews?.length > 0
 	const data: typeof reviews = reviewsInDatabase ? reviews : defaultReviews
@@ -40,6 +30,9 @@ export function Carousel({ className }: CarouselProps) {
 	const previous = () => {
 		sliderRef.current?.slickPrev()
 	}
+
+	const getRandomColor = (): string =>
+		colors[Math.floor(Math.random() * colors.length)]
 
 	const settings = {
 		dots: false,
@@ -63,24 +56,15 @@ export function Carousel({ className }: CarouselProps) {
 		]
 	}
 
-	const colors = [
-		'#6E84F8',
-		'#F88268',
-		'#79C173',
-		'#BB72C7',
-		'#DD5B5B',
-		'#E1BF44',
-		'#7CCECE',
-		'#D96797'
-	]
-
-	const getRandomColor = (): string =>
-		colors[Math.floor(Math.random() * colors.length)]
-
 	return (
 		<div className={cn(className, stls.content)}>
 			<Slider ref={sliderRef} {...settings}>
 				{data?.map(item => (
+					// <Review
+					// 	className={cn(stls.carousel__post, stls.post)}
+					// 	item={item}
+					// 	key={item.id}
+					// />
 					<div
 						className={cn(stls.carousel__post, stls.post)}
 						key={`Carousel_post--${item?.studentName}`}
@@ -147,8 +131,15 @@ export function Carousel({ className }: CarouselProps) {
 								</p>
 							</>
 						)}
+						<CornerPhoto
+							className={stls.cornerPhoto}
+							variant='top-right'
+							size='s'
+							src={item?.studentPhoto}
+							bgColor='#E7EAED'
+						/>
 
-						<div className={stls.cornerPhoto}>
+						{/* <div className={stls.cornerPhoto}>
 							{item?.studentPhoto ? (
 								<Image
 									className={stls.cornerPhoto__image}
@@ -167,7 +158,7 @@ export function Carousel({ className }: CarouselProps) {
 									{item?.studentName?.at(0)}
 								</div>
 							)}
-						</div>
+						</div> */}
 					</div>
 				))}
 			</Slider>

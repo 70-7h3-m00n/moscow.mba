@@ -23,7 +23,6 @@ import {
 import { PAYMENT } from '@/types/payment/paymentTypes'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import useAt from '@/hooks/useAt'
-import Image from 'next/image'
 
 export const FormBeta = ({
 	programTitle,

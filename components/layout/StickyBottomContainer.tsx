@@ -49,10 +49,15 @@ const StickyBottomContainer = () => {
 						!pathArr[3])
 				)
 			) {
+				// const pageHeight = document.body.scrollHeight
+				// window.pageYOffset > 1500 &&
+				// window.pageYOffset < pageHeight - 2500 &&
+				// !clickedAsk
+				// 	? setIsStickyBottomShown(true)
+				// 	: setIsStickyBottomShown(false)
+
 				const pageHeight = document.body.scrollHeight
-				window.pageYOffset > 1500 &&
-				window.pageYOffset < pageHeight - 2500 &&
-				!clickedAsk
+				window.pageYOffset > 500 && !clickedAsk
 					? setIsStickyBottomShown(true)
 					: setIsStickyBottomShown(false)
 			}

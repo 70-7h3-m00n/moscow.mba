@@ -1,15 +1,9 @@
 import stls from '@/styles/components/general/AskQuestion.module.sass'
 import { IconMessage } from '@/components/icons'
 import { IconScrollTop } from '../icons/IconScrollTop/IconScrollTop'
+import { BtnScrollTop } from '../btns/BtnScrollTop/BtnScrollTop'
 
 const AskQuestion = ({ handleClickedAskQuestion, stickyShown = false }) => {
-	const isBrowser = () => typeof window !== 'undefined'
-
-	const scrollToTop = () => {
-		if (!isBrowser()) return
-		window.scrollTo({ top: 0, behavior: 'smooth' })
-	}
-
 	return (
 		<div
 			className={`${stls.container} ${
@@ -20,9 +14,7 @@ const AskQuestion = ({ handleClickedAskQuestion, stickyShown = false }) => {
 				<div className={stls.messages} onClick={handleClickedAskQuestion}>
 					<IconMessage />
 				</div>
-				<div className={stls.scroll} onClick={scrollToTop}>
-					<IconScrollTop />
-				</div>
+				<BtnScrollTop />
 			</div>
 		</div>
 	)

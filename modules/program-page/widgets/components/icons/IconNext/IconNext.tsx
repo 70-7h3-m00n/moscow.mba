@@ -1,8 +1,10 @@
 import { SVGProps } from 'react'
 
-export const IconNext = ({ className, ...rest }: SVGProps<SVGSVGElement>) => {
-	const disabled = false
-
+export const IconNext = ({
+	className,
+	disabled = false,
+	...rest
+}: SVGProps<SVGSVGElement> & { disabled?: boolean }) => {
 	return (
 		<svg
 			className={className}

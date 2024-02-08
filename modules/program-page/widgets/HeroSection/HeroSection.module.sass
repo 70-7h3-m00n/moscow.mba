@@ -229,37 +229,10 @@
     display: block
 
 .cornerPhoto
-  width: 90px
-  height: 90px
-  position: absolute
-  top: 0
-  left: 10px
-  border-bottom-right-radius: 3rem
-  border-bottom: .6rem solid var(--background-color)
-  border-right: .6rem solid var(--background-color)
-  background-color: var(--background-color)
-  transform: translate(-1px, -1px)
+  left: 10px !important
 
   @include m.media(tablet, phone)
     display: none
-
-.cornerPhoto::before,
-.cornerPhoto::after 
-  content: ""
-  position: absolute
-  width: 25px
-  height: 25px
-  background: transparent
-  border-top-left-radius: 30px
-  box-shadow: -5px -5px 0 5px var(--background-color)
-
-.cornerPhoto::before
-  top: 1px
-  right: -34px
-
-.cornerPhoto::after
-  bottom: -34px
-  left: 1px
 
 .bottomList
   display: grid

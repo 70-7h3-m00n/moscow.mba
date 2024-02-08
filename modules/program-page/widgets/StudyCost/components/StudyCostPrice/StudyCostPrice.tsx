@@ -10,6 +10,7 @@ import { useContext } from 'react'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import useAt from '@/hooks/useAt'
 import { Timer } from '../Timer/Timer'
+import { CornerPhoto } from 'modules/program-page/widgets/components/CornerPhoto/CornerPhoto'
 
 export const StudyCostPrice = ({ className }: StudyCostPriceProps) => {
 	const at = useAt()
@@ -23,14 +24,19 @@ export const StudyCostPrice = ({ className }: StudyCostPriceProps) => {
 
 	return (
 		<div className={cn(className, stls.content)}>
-			<div className={stls.cornerPhoto}>
+			{/* <div className={stls.cornerPhoto}>
 				<Image
 					src={'/assets/images/program/study-cost-corner-2.png'}
 					width={82}
 					height={82}
 					alt='Фото клиента'
 				/>
-			</div>
+			</div> */}
+			<CornerPhoto
+				src='/assets/images/program/study-cost-corner-2.png'
+				variant='top-right'
+				size='l'
+			/>
 			<h2 className={stls.title}>Стоимость обучения</h2>
 			{(at.profession || at.course) && <Timer />}
 			<div className={stls.details}>

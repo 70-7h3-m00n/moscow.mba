@@ -144,3 +144,14 @@ export const defaultReviews: {
 		studentPhoto: '/assets/images/program/reviews-avatars/Евгения Нечаева.jpg'
 	}
 ]
+
+export const colors = [
+	'#6E84F8',
+	'#F88268',
+	'#79C173',
+	'#BB72C7',
+	'#DD5B5B',
+	'#E1BF44',
+	'#7CCECE',
+	'#D96797'
+]

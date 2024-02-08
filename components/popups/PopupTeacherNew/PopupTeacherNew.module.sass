@@ -38,12 +38,16 @@
   // overflow: hidden
   &__image
     border-radius: 1rem
+    object-fit: cover
 
 
 .right
   padding: 1.5rem
   border-radius: 1rem
   background: #F8F8F8
+  
+  @include m.media(laptop, desktop, widescreen)
+    min-width: 23rem
 
 .title
   color: #000

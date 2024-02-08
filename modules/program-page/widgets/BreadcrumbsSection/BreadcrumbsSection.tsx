@@ -17,7 +17,7 @@ export const BreadcrumbsSection = ({
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
-				<BreadcrumbsAlt programChunkData={program?.title} />
+				<BreadcrumbsAlt programChunkData={program} />
 			</Wrapper>
 		</section>
 	)

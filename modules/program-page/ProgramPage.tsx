@@ -3,9 +3,9 @@ import cn from 'classnames'
 import { ProgramPageProps } from './types'
 
 import { ProgramPageProvider } from './fractals/context/context'
+import localFont from 'next/font/local'
+import { Unbounded } from 'next/font/google'
 import useAt from '@/hooks/useAt'
-import { FutureJob } from './widgets/FutureJob/FutureJob'
-import { EducationROI } from './widgets/EducationROI/EducationROI'
 import {
 	HeroSection,
 	AboutProgram,
@@ -23,11 +23,27 @@ import {
 	Reviews,
 	StudyCostNew,
 	Faq,
-	RecommendedProgramsNew
+	BreadcrumbsSection,
+	EducationROI,
+	FutureJob
 } from './widgets'
-import { Breadcrumbs } from '@/components/general'
-import { BreadcrumbsAlt } from '@/components/general/BreadcrumbsAlt/BreadcrumbsAlt'
-import { BreadcrumbsSection } from './widgets/BreadcrumbsSection/BreadcrumbsSection'
+
+const helvetica = localFont({
+	src: [
+		{
+			path: '../../public/assets/fonts/HelveticaNeue.woff2',
+			weight: '400',
+			style: 'normal'
+		}
+	]
+})
+
+const unbounded = Unbounded({
+	weight: ['400'],
+	style: ['normal'],
+	subsets: ['latin', 'cyrillic'],
+	display: 'swap'
+})
 
 export const ProgramPage = ({
 	className,
@@ -45,7 +61,14 @@ export const ProgramPage = ({
 			program={program}
 			teachers={teachers}
 		>
-			<div className={cn(className, stls.container)}>
+			<div
+				className={cn(
+					className,
+					stls.container,
+					helvetica.className,
+					unbounded.className
+				)}
+			>
 				<HeroSection className={stls.heroSection} />
 				<AboutProgram className={stls.section} />
 				<WhatWillYouLearnNew className={stls.section} />
@@ -78,7 +101,7 @@ export const ProgramPage = ({
 				<Faq className={stls.section} />
 				<CtaForm className={stls.section} variant='gamma' />
 				{/* <RecommendedProgramsNew className={stls.section} /> */}
-				{/* <BreadcrumbsSection /> */}
+				<BreadcrumbsSection />
 			</div>
 		</ProgramPageProvider>
 	)

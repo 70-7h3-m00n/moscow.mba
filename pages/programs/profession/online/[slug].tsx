@@ -5,6 +5,31 @@ import { routesFront } from '@/config/index'
 import { ProfessionOnlineProgram } from '@/components/pages'
 import { SeoOrganizationJsonLd, SeoPagesProgram } from '@/components/seo'
 import { ProgramPage } from 'modules/program-page/ProgramPage'
+import localFont from 'next/font/local'
+
+// const helvetica = localFont({
+// 	src: [
+// 		{
+// 			path: './assets/fonts/HelveticaNeue.woff2',
+// 			weight: '400',
+// 			style: 'normal'
+// 		}
+// 	]
+// })
+
+// @font-face
+//   font-display: swap
+//   font-family: 'Unbounded'
+//   src: url(/assets/fonts/Unbounded.woff2) format("woff2"), url('/assets/fonts/Unbounded.woff') format("woff")
+//   font-style: normal
+//   font-weight: 400
+
+// @font-face
+//   font-display: swap
+//   font-family: 'Helvetica Neue'
+//   src: url(/assets/fonts/HelveticaNeue.woff2) format("woff2"), url('/assets/fonts/HelveticaNeue.woff') format("woff")
+//   font-style: normal
+//   font-weight: 400
 
 const PageProgramsProfessionOnlineProgram = ({ program, programs, until }) => {
 	const at = useAt()
