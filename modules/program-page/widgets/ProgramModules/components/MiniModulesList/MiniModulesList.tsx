@@ -11,11 +11,9 @@ export const MiniModulesList = ({
 	className,
 	baseSubjects = false,
 	bonusSubjects = false,
+	program,
 	...rest
 }: MiniModulesListProps) => {
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
-
 	const [activeIdx, setActiveIdx] = useState(0)
 
 	const subjects = baseSubjects

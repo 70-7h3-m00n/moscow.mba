@@ -13,8 +13,6 @@ export const VideoReviewsCarousel = ({
 	className
 }: VideoReviewsCarouselProps) => {
 	const sliderRef = useRef<Slider>(null)
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
 
 	const next = () => {
 		sliderRef.current?.slickNext()

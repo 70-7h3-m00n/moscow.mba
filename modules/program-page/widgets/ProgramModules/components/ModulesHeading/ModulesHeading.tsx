@@ -10,10 +10,11 @@ import Image from 'next/image'
 import { ScaleImage } from '@/components/images/program/ScaleImage/ScaleImage'
 import { FolderImage } from '@/components/images/program/FolderImage/FolderImage'
 
-export const ModulesHeading = ({ className, ...rest }: ModulesHeadingProps) => {
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
-
+export const ModulesHeading = ({
+	className,
+	program,
+	...rest
+}: ModulesHeadingProps) => {
 	const data = [
 		{
 			number: (

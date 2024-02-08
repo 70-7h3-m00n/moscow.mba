@@ -3,8 +3,7 @@ import cn from 'classnames'
 import { CtaFormProps } from './types'
 
 import { Wrapper } from '@/components/layout'
-import { useContext, useState } from 'react'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
+import { useState } from 'react'
 import { FormBeta } from '../../../../components/forms/FormBeta/FormBeta'
 import useAt from '@/hooks/useAt'
 import { LeadLoaderThankyouAlt } from '@/components/general/LoaderThankyou/LoaderThankyou'
@@ -13,11 +12,10 @@ import { CtaFormAlpha, CtaFormBeta, CtaFormGamma } from './variants'
 export const CtaForm = ({
 	className,
 	variant = 'alpha',
+	program,
 	...rest
 }: CtaFormProps) => {
 	const at = useAt()
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
 
 	const [open, setOpen] = useState(false)
 	const [openLoader, setOpenLoader] = useState(false)

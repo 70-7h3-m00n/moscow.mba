@@ -4,8 +4,6 @@ import { MBAModulesListProps } from './types'
 
 import useAt from '@/hooks/useAt'
 import { MBAModule } from './widgets/MBAModule/MBAModule'
-import { useContext, useState } from 'react'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { Tag } from 'modules/program-page/widgets/components'
 
 export const MBAModulesList = ({
@@ -13,11 +11,10 @@ export const MBAModulesList = ({
 	baseSubjects = false,
 	specializedSubjects = false,
 	bonusSubjects = false,
+	program,
 	...rest
 }: MBAModulesListProps) => {
 	const at = useAt()
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
 
 	const subjects = baseSubjects
 		? program?.baseSubjects

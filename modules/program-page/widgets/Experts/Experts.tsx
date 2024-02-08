@@ -33,10 +33,7 @@ const settings = {
 	]
 }
 
-export const ExpertsNew = ({ className, ...rest }: ExpertsProps) => {
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
-
+export const ExpertsNew = ({ className, program, ...rest }: ExpertsProps) => {
 	const defaultTeachers = useDefaultTeachers()
 	const teachers =
 		program?.teachers && program?.teachers?.length > 0

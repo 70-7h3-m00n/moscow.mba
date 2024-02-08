@@ -12,32 +12,56 @@ import { GetFullProgramBtn } from './components/GetFullProgramBtn/GetFullProgram
 import { MiniModulesList } from './components/MiniModulesList/MiniModulesList'
 import { ModulesHeading } from './components/ModulesHeading/ModulesHeading'
 
-export const ProgramModules = ({ className, ...rest }: ProgramModulesProps) => {
+export const ProgramModules = ({
+	className,
+	program,
+	...rest
+}: ProgramModulesProps) => {
 	const at = useAt()
 
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
-				<ModulesHeading />
+				<ModulesHeading program={program} />
 				{at.mba && (
 					<>
-						<MBAModulesList className={stls.modulesList} baseSubjects />
-						<MBAModulesList className={stls.modulesList} specializedSubjects />
+						<MBAModulesList
+							className={stls.modulesList}
+							baseSubjects
+							program={program}
+						/>
+						<MBAModulesList
+							className={stls.modulesList}
+							specializedSubjects
+							program={program}
+						/>
 						<FinalProject />
 						<EmploymentModule />
 						<BonusModule />
-						<MBAModulesList className={stls.modulesList} bonusSubjects />
-						<GetFullProgramBtn />
+						<MBAModulesList
+							className={stls.modulesList}
+							bonusSubjects
+							program={program}
+						/>
+						<GetFullProgramBtn program={program} />
 					</>
 				)}
 				{(at.mini || at.profession) && (
 					<>
-						<MiniModulesList className={stls.modulesList} baseSubjects />
+						<MiniModulesList
+							className={stls.modulesList}
+							baseSubjects
+							program={program}
+						/>
 						<FinalProject />
 						<EmploymentModule />
 						<BonusModule />
-						<MiniModulesList className={stls.modulesList} bonusSubjects />
-						<GetFullProgramBtn />
+						<MiniModulesList
+							className={stls.modulesList}
+							bonusSubjects
+							program={program}
+						/>
+						<GetFullProgramBtn program={program} />
 					</>
 				)}
 			</Wrapper>

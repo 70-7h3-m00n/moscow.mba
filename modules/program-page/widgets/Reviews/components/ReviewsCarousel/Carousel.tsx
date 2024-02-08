@@ -2,22 +2,18 @@ import stls from './Carousel.module.sass'
 import cn from 'classnames'
 import { CarouselProps } from './types'
 
-import { useContext, useRef } from 'react'
+import { useRef } from 'react'
 import Image from 'next/image'
 import Slider from 'react-slick'
 import { IconNext, IconStar } from 'modules/program-page/widgets/components'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { colors, defaultReviews } from './constants'
 import Popup from 'reactjs-popup'
 import { ReviewCard } from '../ReviewCard/ReviewCard'
 import truncate from 'truncate'
-import { Review } from './Review/Review'
 import { CornerPhoto } from 'modules/program-page/widgets/components/CornerPhoto/CornerPhoto'
 
-export function Carousel({ className }: CarouselProps) {
+export function Carousel({ className, program }: CarouselProps) {
 	const sliderRef = useRef<Slider>(null)
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
 	const reviews = program?.reviews
 
 	const reviewsInDatabase = reviews && reviews?.length > 0

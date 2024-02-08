@@ -12,10 +12,8 @@ import useAt from '@/hooks/useAt'
 import { Timer } from '../Timer/Timer'
 import { CornerPhoto } from 'modules/program-page/widgets/components/CornerPhoto/CornerPhoto'
 
-export const StudyCostPrice = ({ className }: StudyCostPriceProps) => {
+export const StudyCostPrice = ({ className, program }: StudyCostPriceProps) => {
 	const at = useAt()
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
 
 	const data =
 		at.profession || at.course

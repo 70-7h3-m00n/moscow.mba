@@ -21,8 +21,8 @@ export const RevertedCorner = ({
 			{...rest}
 		>
 			<path
-				fill-rule='evenodd'
-				clip-rule='evenodd'
+				fillRule='evenodd'
+				clipRule='evenodd'
 				d={
 					size === 'l'
 						? 'M0 114.935C0 101.68 10.7452 90.9347 24 90.9347H43C68.9574 90.9347 90 69.8921 90 43.9347V24C90 10.7451 100.745 0 114 0H24C10.7452 0 0 10.7452 0 24V114.935Z'

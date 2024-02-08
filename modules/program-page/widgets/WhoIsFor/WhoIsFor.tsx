@@ -2,16 +2,11 @@ import stls from './WhoIsFor.module.sass'
 import cn from 'classnames'
 import { WhoIsForProps } from './types'
 
-import { useContext } from 'react'
 import { Wrapper } from '@/components/layout'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { whoIsForDefault } from './constants'
 import { CornerPhoto } from '../components/CornerPhoto/CornerPhoto'
 
-export const WhoIsForNew = ({ className, ...rest }: WhoIsForProps) => {
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
-
+export const WhoIsForNew = ({ className, program, ...rest }: WhoIsForProps) => {
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>

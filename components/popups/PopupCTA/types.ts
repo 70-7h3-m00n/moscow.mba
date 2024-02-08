@@ -1,4 +1,4 @@
-import { TypeLibTeacher } from '@/types/index'
+import { TypeLibProgram, TypeLibTeacher } from '@/types/index'
 import { HTMLAttributes, MouseEventHandler, ReactNode } from 'react'
 
 export type PopupTeacherNewProps = HTMLAttributes<HTMLDivElement> & {
@@ -6,4 +6,5 @@ export type PopupTeacherNewProps = HTMLAttributes<HTMLDivElement> & {
 	variant?: 'alpha' | 'beta' | 'gamma'
 	btnText: string
 	title: string
+	program: TypeLibProgram
 }

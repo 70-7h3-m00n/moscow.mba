@@ -19,7 +19,7 @@ export const Partnership = ({
 				src={program?.partnership?.url}
 				width={40}
 				height={40}
-				alt={program?.partnership?.string}
+				alt={'Партнёр'}
 			/>
 			<p>{program?.partnership?.string}</p>
 		</div>

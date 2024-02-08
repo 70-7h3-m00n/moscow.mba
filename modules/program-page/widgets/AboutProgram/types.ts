@@ -1,3 +1,6 @@
+import { TypeLibProgram } from '@/types/index'
 import { HTMLAttributes } from 'react'
 
-export type AboutProgramProps = HTMLAttributes<HTMLElement>
+export type AboutProgramProps = HTMLAttributes<HTMLElement> & {
+	program: TypeLibProgram
+}

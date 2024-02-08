@@ -3,20 +3,15 @@ import cn from 'classnames'
 import { FutureJobProps } from './types'
 
 import { Wrapper } from '@/components/layout'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Slider from 'react-slick'
 import { IconUmbrella } from './assets/IconUmbrella'
-import { CornerPhoto } from '../components/CornerPhoto/CornerPhoto'
-import { IconNext } from '../components'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import useWindowWidth from '@/hooks/useWindowWidth'
 import { IconArrowAlt } from '../components/icons/IconArrowAlt/IconArrowAlt'
 import { data } from './constants'
 import { FutureJobItem } from './FutureJobItem/FutureJobItem'
 
-export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
+export const FutureJob = ({ className, program, ...rest }: FutureJobProps) => {
 	const jobsList = program?.futureJob?.job
 	const [activeSlideIndex, setActiveSlideIndex] = useState(0)
 	const widthWindow = useWindowWidth()

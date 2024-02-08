@@ -4,11 +4,8 @@ import cn from 'classnames'
 import { PopupTeacherNewProps } from './types'
 import Popup from 'reactjs-popup'
 import { BtnBeta } from '@/components/btns'
-import { useContext, useEffect, useState } from 'react'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
+import { useEffect, useState } from 'react'
 import { IconCloseAlt } from '@/components/icons'
-import { PopupLoader, PopupThankyou } from '..'
-import { IconLoaderAlt } from '@/components/icons/IconLoaderAlt/IconLoaderAlt'
 import Image from 'next/image'
 import { FormBeta } from '@/components/forms/FormBeta/FormBeta'
 
@@ -17,11 +14,9 @@ export const PopupCTA = ({
 	title,
 	variant = 'alpha',
 	btnText,
+	program,
 	...rest
 }: PopupTeacherNewProps) => {
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
-
 	const [stage, setStage] = useState<'form' | 'loader' | 'thanks'>('form')
 	const [open, setOpen] = useState(false)
 	const [openLoader, setOpenLoader] = useState(false)
@@ -49,7 +44,6 @@ export const PopupCTA = ({
 							<IconCloseAlt fill='#fff' crossColor='#000' />
 						</button>
 						{stage === 'form' && (
-							// {false && (
 							<div className={stls.formWrapper}>
 								<h3 className={stls.title}>{title}</h3>
 								<FormBeta
@@ -63,7 +57,6 @@ export const PopupCTA = ({
 							</div>
 						)}
 						{stage === 'loader' && (
-							// {false && (
 							<div className={stls.loader}>
 								<Image
 									src='/assets/images/Spinner.svg'
