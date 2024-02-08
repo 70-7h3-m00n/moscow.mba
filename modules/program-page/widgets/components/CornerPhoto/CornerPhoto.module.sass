@@ -33,3 +33,20 @@
   &.topRightNoRevert .content__corner
     rotate: 0deg
     
+.noAvatar
+  display: flex
+  justify-content: center
+  align-items: center
+  position: absolute
+  top: 1px
+  left: 1px
+  border-radius: 10rem
+  text-transform: uppercase
+  font-family: Unbounded
+  color: #fff
+  z-index: 999
+  overflow: hidden
+
+.content.topRight .noAvatar
+  left: unset !important
+  right: 1px !important

@@ -133,28 +133,8 @@ export function Carousel({ className, program }: CarouselProps) {
 							size='s'
 							src={item?.studentPhoto}
 							bgColor='#E7EAED'
+							name={item?.studentName}
 						/>
-
-						{/* <div className={stls.cornerPhoto}>
-							{item?.studentPhoto ? (
-								<Image
-									className={stls.cornerPhoto__image}
-									src={item?.studentPhoto}
-									fill
-									style={{
-										objectFit: 'cover'
-									}}
-									alt='Фото клиента'
-								/>
-							) : (
-								<div
-									className={stls.noAvatar}
-									style={{ backgroundColor: `${getRandomColor()}` }}
-								>
-									{item?.studentName?.at(0)}
-								</div>
-							)}
-						</div> */}
 					</div>
 				))}
 			</Slider>

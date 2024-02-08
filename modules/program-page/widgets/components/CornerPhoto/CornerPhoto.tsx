@@ -5,16 +5,21 @@ import { CornerPhotoProps } from './types'
 import Image from 'next/image'
 import { RevertedCorner } from '@/components/icons/geometrics/RevertedCorner/RevertedCorner'
 import base64pixel from '@/config/base64pixel'
+import { colors } from '../../Reviews/components/ReviewsCarousel/constants'
 
 export const CornerPhoto = ({
 	className,
 	variant = 'top-left',
 	size,
 	src,
+	name = 'a',
 	bgColor = '#f8f8f8',
 	...rest
 }: CornerPhotoProps) => {
 	const photoSize = size === 'l' ? 82 : size === 'm' ? 200 : 44
+
+	const getRandomColor = (): string =>
+		colors[Math.floor(Math.random() * colors.length)]
 
 	return (
 		<div
@@ -30,16 +35,31 @@ export const CornerPhoto = ({
 				bgColor={bgColor}
 				size={size}
 			/>
-			<Image
-				className={stls.content__image}
-				src={src}
-				width={photoSize}
-				height={photoSize}
-				quality={100}
-				alt='Фото клиента'
-				placeholder='blur'
-				blurDataURL={base64pixel}
-			/>
+			{src ? (
+				<Image
+					className={stls.content__image}
+					src={src}
+					width={photoSize}
+					height={photoSize}
+					quality={100}
+					alt='Фото клиента'
+					placeholder='blur'
+					blurDataURL={base64pixel}
+				/>
+			) : (
+				<>
+					<div
+						className={stls.noAvatar}
+						style={{
+							width: `${photoSize}px`,
+							height: `${photoSize}px`,
+							backgroundColor: `${getRandomColor()}`
+						}}
+					>
+						{name.at(0)}
+					</div>
+				</>
+			)}
 		</div>
 	)
 }

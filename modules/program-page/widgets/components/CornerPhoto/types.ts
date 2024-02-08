@@ -6,4 +6,5 @@ export type CornerPhotoProps = HTMLAttributes<HTMLDivElement> & {
 	variant?: 'top-left' | 'top-right'
 	size: 's' | 'm' | 'l'
 	bgColor?: TypeColor
+	name?: string
 }
