@@ -10,6 +10,7 @@ import { GetHowProcessGoesData } from './fractals/GetHowProcessGoesData'
 import useWindowWidth from '@/hooks/useWindowWidth'
 import { MobileCarousel } from './widgets/MobileCarousel/MobileCarousel'
 import Image from 'next/image'
+import base64pixel from '@/config/base64pixel'
 
 export const HowProcessGoesNew = ({
 	className,
@@ -118,6 +119,9 @@ export const HowProcessGoesNew = ({
 										width={684}
 										height={400}
 										alt={slide.title}
+										placeholder='blur'
+										blurDataURL={base64pixel}
+										quality={100}
 									/>
 								</div>
 							))}

@@ -31,41 +31,6 @@ const payment = async (
 	res: NextApiResponse<TypeNextApiResponseLeadData | Error>
 ) => {
 	const { price, returnURL, values } = req.body
-	console.log('price: ', price)
-
-	// цену нужно получать с бека
-
-	// const requestData = {
-	// 	amount: {
-	// 		value: `${price}.00`, // string '100.00'
-	// 		currency: 'RUB'
-	// 	},
-	// 	capture: true,
-	// 	confirmation: {
-	// 		type: 'redirect',
-	// 		return_url: returnURL
-	// 	},
-	// 	receipt: {
-	// 		customer: {
-	// 			full_name: values.name,
-	// 			phone: values.phone
-	// 		},
-	// 		items: [
-	// 			{
-	// 				description: values.programTitle,
-	// 				quantity: '1.00',
-	// 				amount: {
-	// 					value: `${price}.00`,
-	// 					currency: 'RUB'
-	// 				},
-	// 				vat_code: '2',
-	// 				payment_mode: 'full_prepayment',
-	// 				payment_subject: 'commodity'
-	// 			}
-	// 		]
-	// 	},
-	// 	description: `Оплата программы ${values.programTitle} для ${values.email}`
-	// }
 
 	const requestData = {
 		amount: {
@@ -112,6 +77,8 @@ const payment = async (
 				}
 			}
 		)
+		values.paymentStatus = 'В обработке'
+		await axios.post(`${routesFront.root}/api/contact`, values)
 
 		res.status(200).json({
 			status: 200,

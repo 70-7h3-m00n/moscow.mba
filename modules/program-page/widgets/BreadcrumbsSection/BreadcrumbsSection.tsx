@@ -9,15 +9,13 @@ import { ProgramPageContext } from 'modules/program-page/fractals/context/contex
 
 export const BreadcrumbsSection = ({
 	className,
+	program,
 	...rest
 }: BreadcrumbsSectionProps) => {
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
-
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
-				<BreadcrumbsAlt programChunkData={program?.title} />
+				<BreadcrumbsAlt programChunkData={program} />
 			</Wrapper>
 		</section>
 	)

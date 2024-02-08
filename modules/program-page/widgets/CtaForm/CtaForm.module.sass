@@ -30,7 +30,6 @@
   flex-direction: column
   justify-content: space-between
 
-
   &__image
     width: 10.375rem
     height: auto
@@ -77,19 +76,17 @@
 
   .left__3d
     position: absolute
-    bottom: 0
+    bottom: -2rem
     left: 50%
     transform: translate(-60%)
 
     @include m.media(laptop)
       width: 10rem
       top: -5rem
+      left: 10rem
 
 .gamma .left__imageWrapper
   position: relative
-
-  // @include m.media(laptop)
-  //   height: 30rem
 
   .left__image
     position: absolute
@@ -97,8 +94,8 @@
     z-index: -1
 
     @include m.media(desktop)
-      top: -20rem
-      width: 30rem
+      top: -15rem
+      width: 25rem
 
     @include m.media(laptop)
       position: relative

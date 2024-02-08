@@ -4,29 +4,17 @@ import { StudyCostPaymentProps } from './types'
 
 import { FormBeta } from '@/components/forms/FormBeta/FormBeta'
 import useAt from '@/hooks/useAt'
-import { useContext, useState } from 'react'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
-import Image from 'next/image'
-import { IconVisaAlt } from '@/components/icons'
+import { useState } from 'react'
 import { PAYMENT, PaymentType } from '@/types/payment/paymentTypes'
-import { LeadLoaderThankyou } from '@/components/general'
-// import routesFront from '@/config/routesFront'
-// import axios from 'axios'
-import {
-	getFullPaymentPrice,
-	// handlePayment,
-	// handlePaymentType,
-	toNumberWithSpaces
-} from '@/helpers/index'
-import { useRouter } from 'next/router'
+import { getFullPaymentPrice, toNumberWithSpaces } from '@/helpers/index'
 import { paymentMethods } from './constants'
 import { LeadLoaderThankyouAlt } from '@/components/general/LoaderThankyou/LoaderThankyou'
 
-export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
+export const StudyCostPayment = ({
+	className,
+	program
+}: StudyCostPaymentProps) => {
 	const at = useAt()
-	// const router = useRouter()
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
 
 	const [open, setOpen] = useState(false)
 	const [openLoader, setOpenLoader] = useState(false)
@@ -34,23 +22,22 @@ export const StudyCostPayment = ({ className }: StudyCostPaymentProps) => {
 	const [activePaymentMethod, setActivePaymentMethod] = useState<PaymentType>(
 		PAYMENT.CONSULTATION
 	)
-	// console.log('activePaymentMethod: ', activePaymentMethod)
 
-	const consultationHandler = () => {
-		setActivePaymentMethod(PAYMENT.CONSULTATION)
-	}
+	// const consultationHandler = () => {
+	// 	setActivePaymentMethod(PAYMENT.CONSULTATION)
+	// }
 
-	const fullpriceHandler = () => {
-		setActivePaymentMethod(PAYMENT.FULLPRICE)
-	}
+	// const fullpriceHandler = () => {
+	// 	setActivePaymentMethod(PAYMENT.FULLPRICE)
+	// }
 
-	const creditHandler = () => {
-		setActivePaymentMethod(PAYMENT.CREDIT)
-	}
+	// const creditHandler = () => {
+	// 	setActivePaymentMethod(PAYMENT.CREDIT)
+	// }
 
-	const giftHandler = () => {
-		setActivePaymentMethod(PAYMENT.GIFT)
-	}
+	// const giftHandler = () => {
+	// 	setActivePaymentMethod(PAYMENT.GIFT)
+	// }
 
 	const programType = at.profession
 		? 'profession'

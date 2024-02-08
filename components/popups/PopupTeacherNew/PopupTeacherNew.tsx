@@ -24,9 +24,6 @@ export const PopupTeacherNew = ({
 						src={teacher?.portrait?.url}
 						width={92}
 						height={120}
-						style={{
-							objectFit: 'cover'
-						}}
 						alt={teacher?.name || 'Преподаватель'}
 					/>
 				</div>

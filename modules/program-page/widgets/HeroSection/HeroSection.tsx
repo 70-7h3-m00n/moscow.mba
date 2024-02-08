@@ -3,12 +3,9 @@ import cn from 'classnames'
 import { HeroSectionProps } from './types'
 
 import { Wrapper } from '@/components/layout'
-import Image from 'next/image'
 import { Switch } from '../components/Switch/Switch'
 import { Details } from '../components'
 import { IconFire, IconHeart } from './widgets'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
-import { useContext } from 'react'
 import { format } from 'date-fns'
 import { ru } from 'date-fns/locale'
 import { Partnership } from './widgets/Partnership/Partnership'
@@ -17,13 +14,16 @@ import { advantagesArray } from './constants'
 import useAt from '@/hooks/useAt'
 import Link from 'next/link'
 import { PopupCTA } from '@/components/popups/PopupCTA/PopupCTA'
+import { CornerPhoto } from '../components/CornerPhoto/CornerPhoto'
 
 const stringDate = format(new Date(), 'LLLL yyyy', { locale: ru })
 
-export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
+export const HeroSection = ({
+	className,
+	program,
+	...rest
+}: HeroSectionProps) => {
 	const at = useAt()
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
 
 	const advantages = at.profession
 		? advantagesArray.profession
@@ -59,6 +59,7 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 								title='Задать вопрос или получить бесплатную консультацию'
 								btnText='Задать вопрос'
 								variant='gamma'
+								program={program}
 							/>
 						</div>
 					</div>
@@ -82,14 +83,19 @@ export const HeroSection = ({ className, ...rest }: HeroSectionProps) => {
 					</div>
 					<Details className={stls.details} />
 				</div>
-				<div className={stls.cornerPhoto}>
+				<CornerPhoto
+					className={stls.cornerPhoto}
+					src='/assets/images/program/hero-image-2.png'
+					size='l'
+				/>
+				{/* <div className={stls.cornerPhoto}>
 					<Image
 						src='/assets/images/program/hero-image-2.png'
 						width={82}
 						height={82}
 						alt='Фото клиента'
 					/>
-				</div>
+				</div> */}
 				{program?.heroAdvantages && (
 					<ul className={stls.bottomList}>
 						<li className={stls.bottomItem}>

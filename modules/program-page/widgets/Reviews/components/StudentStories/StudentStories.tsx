@@ -3,30 +3,15 @@ import cn from 'classnames'
 import { StudentStoriesProps } from './types'
 
 import { IconNext, Tag } from 'modules/program-page/widgets/components'
-import { VideoComponent } from '../VideoReviewsCarousel/VideoComponent/VideoComponent'
 import { studentStoriesData } from './constants'
-import { useRef, useState } from 'react'
-import Image from 'next/image'
-import Slider from 'react-slick'
+import { useState } from 'react'
 import truncate from 'truncate'
+import { PopupStudentStories } from '@/components/popups/PopupStudentStories/PopupStudentStories'
+import { StudentStory } from './StudentStory/StudentStory'
+import { AvatarList } from './AvatarList/AvatarList'
 
 export const StudentStories = ({ className, ...rest }: StudentStoriesProps) => {
-	const sliderRef = useRef<Slider>(null)
 	const [selectedStory, setSelectedStory] = useState(0)
-
-	const settings = {
-		dots: false,
-		speed: 300,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		adaptiveHeight: true,
-		// autoplay: true,
-		autoplaySpeed: 4000,
-		vertical: false,
-		arrows: false,
-		infinite: true,
-		className: cn(stls.carousel)
-	}
 
 	const next = () => {
 		if (selectedStory < studentStoriesData.length - 1)
@@ -45,51 +30,32 @@ export const StudentStories = ({ className, ...rest }: StudentStoriesProps) => {
 					<Tag className={stls.tag} variant='gamma'>
 						{studentStoriesData[selectedStory].profession}
 					</Tag>
-					<div className={stls.text}>
-						<p>
-							{truncate(studentStoriesData[selectedStory].description[0], 70)}
-						</p>
-					</div>
-					<button className={stls.readMore}>Читать подробнее</button>
-					<ul className={stls.avatarList}>
-						{studentStoriesData.map((item, idx) => (
-							<li
-								className={cn(stls.avatarList__item, {
-									[stls.disabled]: idx !== selectedStory
-								})}
-								key={`Avatar-${idx}-${item.avatar}`}
-								onClick={() => setSelectedStory(idx)}
-							>
-								<Image
-									fill
-									src={studentStoriesData[selectedStory].avatar}
-									alt={studentStoriesData[selectedStory].name}
-								/>
-							</li>
-						))}
-					</ul>
+					<p className={stls.text}>
+						{truncate(studentStoriesData[selectedStory].description[0], 70)}
+					</p>
+					<PopupStudentStories storyData={studentStoriesData[selectedStory]} />
+					<AvatarList
+						selectedStory={selectedStory}
+						setSelectedStory={setSelectedStory}
+					/>
 					<div className={stls.mobileSlider}>
-						<div className={stls.studentStories}>
-							<VideoComponent
-								className={stls.studentStories__video}
-								item={studentStoriesData[selectedStory]}
-								width={256}
-								height={256}
-							/>
-						</div>
+						<StudentStory storyData={studentStoriesData[selectedStory]} />
 						<div className={stls.carousel__navigation}>
 							<button className={stls.prev} onClick={previous}>
-								<IconNext className={stls.svg} />
+								<IconNext className={stls.svg} disabled={selectedStory === 0} />
 							</button>
 							<button className={stls.next} onClick={next}>
-								<IconNext className={stls.svg} />
+								<IconNext
+									className={stls.svg}
+									disabled={selectedStory === studentStoriesData.length - 1}
+								/>
 							</button>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div className={stls.right}>
-				<VideoComponent item={studentStoriesData[selectedStory]} />
+				<StudentStory storyData={studentStoriesData[selectedStory]} />
 			</div>
 		</div>
 	)

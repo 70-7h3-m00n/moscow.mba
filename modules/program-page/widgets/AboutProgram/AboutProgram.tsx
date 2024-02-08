@@ -4,17 +4,16 @@ import { AboutProgramProps } from './types'
 
 import Image from 'next/image'
 import { Wrapper } from '@/components/layout'
-
 import { PhotoSlider } from '../PhotoSlider/PhotoSlider'
 import useAt from '@/hooks/useAt'
-import { useContext } from 'react'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import { cardsData } from './constants'
 
-export const AboutProgram = ({ className, ...rest }: AboutProgramProps) => {
+export const AboutProgram = ({
+	className,
+	program,
+	...rest
+}: AboutProgramProps) => {
 	const at = useAt()
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
 
 	const leftCardData = at.mba
 		? cardsData.mba
@@ -51,10 +50,8 @@ export const AboutProgram = ({ className, ...rest }: AboutProgramProps) => {
 							height={156}
 						/>
 						<p className={stls.item__description}>
-							{`${
-								program?.actualInformation?.description ||
-								cardsData.actual.description
-							}`}
+							{`${program?.actualInformation?.description ||
+								cardsData.actual.description}`}
 						</p>
 					</li>
 				</ul>

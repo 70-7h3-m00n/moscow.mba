@@ -9,11 +9,8 @@ import { FaqProps } from './types'
 import { useContext, useState } from 'react'
 import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 
-export const Faq = ({ className, ...rest }: FaqProps) => {
+export const Faq = ({ className, program, ...rest }: FaqProps) => {
 	const at = useAt()
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
-
 	const [activeIdx, setActiveIdx] = useState(null)
 
 	const faqData =

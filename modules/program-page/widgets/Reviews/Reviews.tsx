@@ -11,7 +11,7 @@ import { StudentStories } from './components/StudentStories/StudentStories'
 import useAt from '@/hooks/useAt'
 import Link from 'next/link'
 
-export const Reviews = ({ className, ...rest }: ReviewsProps) => {
+export const Reviews = ({ className, program, ...rest }: ReviewsProps) => {
 	const at = useAt()
 
 	return (
@@ -24,14 +24,14 @@ export const Reviews = ({ className, ...rest }: ReviewsProps) => {
 					Business Academy
 				</p>
 				<Rating className={stls.rating} />
-				<Carousel className={stls.carousel} />
+				<Carousel className={stls.carousel} program={program} />
 				<VideoReviewsCarousel className={stls.videoReviews} />
 				<Link href={'/reviews'}>
 					<BtnBeta className={stls.moreReviewsBtn} variant='alpha'>
 						Больше отзывов
 					</BtnBeta>
 				</Link>
-				{/* {(at.course || at.profession) && <StudentStories />} */}
+				{(at.course || at.profession) && <StudentStories />}
 			</Wrapper>
 		</section>
 	)

@@ -2,8 +2,7 @@ import stls from './PopupForm.module.sass'
 import cn from 'classnames'
 import { PopupFormProps } from './types'
 
-import { BtnBeta, BtnClose } from '@/components/btns'
-import { FormBeta } from 'modules/program-page/widgets'
+import { BtnClose } from '@/components/btns'
 import { FormHeader } from '@/components/forms/FormHeader/FormHeader'
 import { useState } from 'react'
 

@@ -182,7 +182,7 @@ const Loan = ({
 						})}
 					>
 						<span
-							className={cn({
+							className={cn(stls.discountNum, {
 								[stls.discountNum]: variant === 'SectionStudyCost'
 							})}
 						>

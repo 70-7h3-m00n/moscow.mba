@@ -9,10 +9,11 @@ import { ProgramPageContext } from 'modules/program-page/fractals/context/contex
 import { toNumberWithSpaces } from '@/helpers/index'
 import { Range } from 'react-range'
 
-export const EducationROI = ({ className, ...rest }: EducationROIProps) => {
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
-
+export const EducationROI = ({
+	className,
+	program,
+	...rest
+}: EducationROIProps) => {
 	const salary = program?.futureJob?.futureJobSalary || null
 
 	const range = {

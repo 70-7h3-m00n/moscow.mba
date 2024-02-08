@@ -3,18 +3,10 @@ import cn from 'classnames'
 import { EmploymentPartnersProps } from './types'
 
 import { Wrapper } from '@/components/layout'
-import { partners } from './constants'
+import { partners, photoData } from './constants'
 import Image from 'next/image'
 import Slider from 'react-slick'
 import { useState } from 'react'
-
-const data = [
-	{ src: '/assets/images/program/employment-partners-photo-1.jpg' },
-	{ src: '/assets/images/program/employment-partners-photo-2.png' },
-	{ src: '/assets/images/program/employment-partners-photo-3.png' },
-	{ src: '/assets/images/program/employment-partners-photo-4.png' },
-	{ src: '/assets/images/program/employment-partners-photo-5.png' }
-]
 
 export const EmploymentPartners = ({
 	className,
@@ -37,6 +29,7 @@ export const EmploymentPartners = ({
 		beforeChange(oldIndex, newIndex) {
 			setActiveSlideIndex(newIndex)
 		},
+		// eslint-disable-next-line react/display-name
 		appendDots: dots => (
 			<div
 				className={stls.dots}
@@ -53,6 +46,7 @@ export const EmploymentPartners = ({
 				<ul className={stls.dots__list}>{dots}</ul>
 			</div>
 		),
+		// eslint-disable-next-line react/display-name
 		customPaging: idx => (
 			<button
 				className={cn(stls.customDot, {
@@ -80,7 +74,7 @@ export const EmploymentPartners = ({
 
 				<div className={stls.sliderWrapper}>
 					<Slider {...settings}>
-						{data.map((image, idx) => (
+						{photoData.map((image, idx) => (
 							<div
 								className={cn(stls.carousel__post, stls.post)}
 								key={`Carousel_post--${idx}`}

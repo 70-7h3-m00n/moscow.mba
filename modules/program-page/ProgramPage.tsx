@@ -3,9 +3,9 @@ import cn from 'classnames'
 import { ProgramPageProps } from './types'
 
 import { ProgramPageProvider } from './fractals/context/context'
+import localFont from 'next/font/local'
+import { Unbounded } from 'next/font/google'
 import useAt from '@/hooks/useAt'
-import { FutureJob } from './widgets/FutureJob/FutureJob'
-import { EducationROI } from './widgets/EducationROI/EducationROI'
 import {
 	HeroSection,
 	AboutProgram,
@@ -23,11 +23,27 @@ import {
 	Reviews,
 	StudyCostNew,
 	Faq,
-	RecommendedProgramsNew
+	BreadcrumbsSection,
+	EducationROI,
+	FutureJob
 } from './widgets'
-import { Breadcrumbs } from '@/components/general'
-import { BreadcrumbsAlt } from '@/components/general/BreadcrumbsAlt/BreadcrumbsAlt'
-import { BreadcrumbsSection } from './widgets/BreadcrumbsSection/BreadcrumbsSection'
+
+const helvetica = localFont({
+	src: [
+		{
+			path: '../../public/assets/fonts/HelveticaNeue.woff2',
+			weight: '400',
+			style: 'normal'
+		}
+	]
+})
+
+const unbounded = Unbounded({
+	weight: ['400'],
+	style: ['normal'],
+	subsets: ['latin', 'cyrillic'],
+	display: 'swap'
+})
 
 export const ProgramPage = ({
 	className,
@@ -45,24 +61,35 @@ export const ProgramPage = ({
 			program={program}
 			teachers={teachers}
 		>
-			<div className={cn(className, stls.container)}>
-				<HeroSection className={stls.heroSection} />
-				<AboutProgram className={stls.section} />
-				<WhatWillYouLearnNew className={stls.section} />
-				<WhoIsForNew className={stls.section} />
+			<div
+				className={cn(
+					className,
+					stls.container,
+					helvetica.className,
+					unbounded.className
+				)}
+			>
+				<HeroSection className={stls.heroSection} program={program} />
+				<AboutProgram className={stls.section} program={program} />
+				<WhatWillYouLearnNew className={stls.section} program={program} />
+				<WhoIsForNew className={stls.section} program={program} />
 				<div id='process' />
 				<HowProcessGoesNew className={stls.section} />
-				<CtaForm className={stls.section} />
-				<ProgramModules className={stls.section} id='program-modules' />
+				<CtaForm className={stls.section} program={program} />
+				<ProgramModules
+					className={stls.section}
+					id='program-modules'
+					program={program}
+				/>
 				<Diploma className={stls.section} />
-				<ExpertsNew className={stls.section} id='experts' />
+				<ExpertsNew className={stls.section} id='experts' program={program} />
 				{isEmployment && (
 					<Employment className={stls.section} id='employment' />
 				)}
 				{at.profession || at.course ? (
 					<>
-						<FutureJob className={stls.section} />
-						<EducationROI className={stls.section} />
+						<FutureJob className={stls.section} program={program} />
+						<EducationROI className={stls.section} program={program} />
 						<EmploymentPartners className={stls.section} />
 					</>
 				) : (
@@ -71,14 +98,18 @@ export const ProgramPage = ({
 						<Networking className={stls.section} />
 					</>
 				)}
-				<CtaForm className={stls.section} variant='beta' />
+				<CtaForm className={stls.section} variant='beta' program={program} />
 				<Accreditation className={cn(stls.section, stls.accreditation)} />
-				<Reviews className={stls.section} id='reviews' />
-				<StudyCostNew className={stls.section} id='study-cost' />
-				<Faq className={stls.section} />
-				<CtaForm className={stls.section} variant='gamma' />
+				<Reviews className={stls.section} id='reviews' program={program} />
+				<StudyCostNew
+					className={stls.section}
+					id='study-cost'
+					program={program}
+				/>
+				<Faq className={stls.section} program={program} />
+				<CtaForm className={stls.section} variant='gamma' program={program} />
 				{/* <RecommendedProgramsNew className={stls.section} /> */}
-				{/* <BreadcrumbsSection /> */}
+				<BreadcrumbsSection program={program} />
 			</div>
 		</ProgramPageProvider>
 	)

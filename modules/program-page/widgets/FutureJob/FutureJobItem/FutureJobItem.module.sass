@@ -1,0 +1,42 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.card
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  height: 100%
+  padding: 1.5rem
+  border-radius: 1.5rem
+  position: relative
+  background-color: #fff
+
+  &__title
+    margin-bottom: 1rem
+    font-family: Unbounded
+    font-size: 1.5rem
+    font-style: normal
+    font-weight: 400
+    line-height: 120%
+
+    @include m.media(phone, tablet)
+      margin-top: 4rem
+
+  &__description
+    font-family: Helvetica Neue
+    font-size: 1rem
+    font-style: normal
+    font-weight: 400
+    line-height: 110%
+    color: #575757
+
+.redBg
+
+  background-color: #FF3535
+
+  .card__title
+    color: #fff
+
+  .card__description
+    color: #FDB7B7

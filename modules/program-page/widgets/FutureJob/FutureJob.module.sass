@@ -35,9 +35,9 @@
 
 .title
   margin-bottom: 3rem
-  color: #fff
   font-size: 2.5rem
   line-height: 120%
+  color: #fff
   letter-spacing: -0.1rem
 
   @include m.media(phone, tablet)
@@ -63,6 +63,7 @@
 
   & > div > div > div:nth-child(2n) .card
     background-color: #FF3535
+    border-radius: 1.5rem
 
     &__title
       color: #fff
@@ -82,48 +83,29 @@
     &:active
       cursor: grabbing
 
-.card
-  display: flex
-  flex-direction: column
-  justify-content: flex-end
-
-  &__title
-    margin-bottom: 1rem
-    font-family: Unbounded
-    font-size: 1.5rem
-    font-style: normal
-    font-weight: 400
-    line-height: 120%
-
-    @include m.media(phone, tablet)
-      margin-top: 4rem
-
-  &__description
-    font-family: Helvetica Neue
-    font-size: 1rem
-    font-style: normal
-    font-weight: 400
-    line-height: 110%
-
 .post
-  // width: 25rem
   height: 360px
-  overflow: hidden
+  // overflow: hidden
   border-radius: 1.5rem
+  // border-top-right-radius: 3rem
+  // background-color: lightgray !important
+
+  background-color: #fff
+  position: relative
 
   &__image
-    border-radius: 1.5rem
+    // border-radius: 1.5rem
     overflow: hidden
 
 .sliderWrapper
   position: relative
   align-self: flex-start
   margin-bottom: 0
+  padding-top: .1rem
   overflow: hidden
 
 .sliderWrapper.hide
   display: none
-
 
 .active
   opacity: 1
@@ -149,20 +131,6 @@
   border: none
   background-color: transparent
 
-// .svg
-//   circle
-//     fill: #fff
-//     transition: fill .3s ease-in-out
-//   path
-//     fill: #18191A
-//     transition: fill .3s ease-in-out
-
-// .disabled
-//   circle
-//     fill: #51555B
-//   path
-//     fill: #18191A
-
 .icon
   @include m.media(phone, tablet)
     display: none
@@ -183,6 +151,9 @@
   
   &__description
     color: #FDB7B7
+
+.cornerPhoto
+  translate: 1px
 
 .rotation
   animation-name: rotation

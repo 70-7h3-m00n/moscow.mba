@@ -3,33 +3,15 @@ import cn from 'classnames'
 import { FutureJobProps } from './types'
 
 import { Wrapper } from '@/components/layout'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Slider from 'react-slick'
 import { IconUmbrella } from './assets/IconUmbrella'
-import { CornerPhoto } from '../components/CornerPhoto/CornerPhoto'
-import { IconNext } from '../components'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import useWindowWidth from '@/hooks/useWindowWidth'
 import { IconArrowAlt } from '../components/icons/IconArrowAlt/IconArrowAlt'
+import { data } from './constants'
+import { FutureJobItem } from './FutureJobItem/FutureJobItem'
 
-const data = [
-	{
-		title: 'Возможность построить карьеру в топовой компании',
-		description:
-			'Сегодня любая компания - потенциальная жертва кибератак. Чем дороже компания, тем выше риски. А значит, тем больше денег готовы тратить руководители на специалистов по кибербезопасности',
-		src: '/assets/images/program/future-job-photo.png'
-	},
-	{
-		title: 'Возможность построить карьеру в топовой компании',
-		description:
-			'Сегодня любая компания - потенциальная жертва кибератак. Чем дороже компания, тем выше риски. А значит, тем больше денег готовы тратить руководители на специалистов по кибербезопасности',
-		src: '/assets/images/program/future-job-photo-2.png'
-	}
-]
-
-export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
+export const FutureJob = ({ className, program, ...rest }: FutureJobProps) => {
 	const jobsList = program?.futureJob?.job
 	const [activeSlideIndex, setActiveSlideIndex] = useState(0)
 	const widthWindow = useWindowWidth()
@@ -92,10 +74,7 @@ export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 										className={cn(stls.carousel__post, stls.post)}
 										key={`Carousel_post--${idx}`}
 									>
-										<CornerPhoto className={stls.card} src={data[idx].src}>
-											<h3 className={stls.card__title}>{item?.title}</h3>
-											<p className={stls.card__description}>{item?.string}</p>
-										</CornerPhoto>
+										<FutureJobItem idx={idx} item={item} />
 									</div>
 								))}
 							</Slider>
@@ -123,12 +102,7 @@ export const FutureJob = ({ className, ...rest }: FutureJobProps) => {
 						</div>
 						<div className={cn(stls.mobileList, { [stls.hide]: !noCarusel })}>
 							{program?.futureJob?.job.map((item, idx) => (
-								<div className={stls.post} key={`Carousel_post--${idx}`}>
-									<CornerPhoto className={stls.card} src={data[idx].src}>
-										<h3 className={stls.card__title}>{item?.title}</h3>
-										<p className={stls.card__description}>{item?.string}</p>
-									</CornerPhoto>
-								</div>
+								<FutureJobItem key={idx} idx={idx} item={item} />
 							))}
 						</div>
 					</Wrapper>

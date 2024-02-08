@@ -1,3 +1,6 @@
+import { TypeLibProgram } from '@/types/index'
 import { HTMLAttributes } from 'react'
 
-export type EducationROIProps = HTMLAttributes<HTMLElement>
+export type EducationROIProps = HTMLAttributes<HTMLElement> & {
+	program: TypeLibProgram
+}

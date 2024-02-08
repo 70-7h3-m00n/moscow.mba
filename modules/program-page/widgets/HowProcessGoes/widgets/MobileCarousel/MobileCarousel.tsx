@@ -10,6 +10,7 @@ import { GetHowProcessGoesData } from '../../fractals/GetHowProcessGoesData'
 import { IconCheck, IconNext } from 'modules/program-page/widgets/components'
 import { IconCheckCircle } from '@/components/icons'
 import Image from 'next/image'
+import base64pixel from '@/config/base64pixel'
 
 export const MobileCarousel = ({ className, ...rest }: MobileCarouselProps) => {
 	const sliderRef = useRef<Slider>(null)
@@ -118,6 +119,8 @@ export const MobileCarousel = ({ className, ...rest }: MobileCarouselProps) => {
 									width={684}
 									height={400}
 									alt={slide.title}
+									placeholder='blur'
+									blurDataURL={base64pixel}
 								/>
 							</div>
 						))}

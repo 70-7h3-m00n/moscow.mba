@@ -10,11 +10,9 @@ import { TrainingPeriod } from '@/components/costs'
 
 export const WhatWillYouLearnNew = ({
 	className,
+	program,
 	...rest
 }: WhatWillYouLearnProps) => {
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
-
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
