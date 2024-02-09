@@ -5,13 +5,17 @@ import { FormBetaProps, TypeFormValues } from './types'
 import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
+import { PAYMENT } from '@/types/payment/paymentTypes'
+import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
+import useAt from '@/hooks/useAt'
+import { PopupGift } from '@/components/popups/PopupGift/PopupGift'
+import { ContextStaticProps } from '@/context/index'
 import {
 	getFullPaymentPrice,
 	handlePayment,
 	onSubmitForm,
 	toNumberWithSpaces
 } from '@/helpers/index'
-
 import {
 	InputNameNew,
 	InputPhoneNew,
@@ -20,11 +24,8 @@ import {
 	InputSubmitNew,
 	InputRadioNew
 } from '@/components/inputs'
-import { PAYMENT } from '@/types/payment/paymentTypes'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
-import useAt from '@/hooks/useAt'
-import Image from 'next/image'
-import { PopupGift } from '@/components/popups/PopupGift/PopupGift'
+import { CountUntil } from '@/components/costs/Until'
+import { InputPhoneFlag } from '@/components/inputs/InputPhoneFlag/InputPhoneFlag'
 
 export const FormBeta = ({
 	programTitle,
@@ -43,8 +44,7 @@ export const FormBeta = ({
 	} = useForm<TypeFormValues>()
 
 	const at = useAt()
-	const { state } = useContext(ProgramPageContext)
-	const { program } = state
+	const { program } = useContext(ContextStaticProps)
 	const { asPath } = useRouter()
 	const [submitIsDisabled, setSubmitIsDisabled] = useState(false)
 	const [noRadio, setNoRadio] = useState<boolean>(false)
@@ -64,6 +64,12 @@ export const FormBeta = ({
 		: at.mba
 		? 'mba'
 		: 'mini'
+
+	const untilDate = CountUntil().toLocaleString([at.en ? 'en-US' : 'ru'], {
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric'
+	})
 
 	return (
 		<form
@@ -139,6 +145,21 @@ export const FormBeta = ({
 							: 'alpha'
 					}
 				/>
+				{/* <InputPhoneFlag
+					register={register}
+					errors={errors}
+					variant={
+						variant === 'alpha'
+							? 'alpha'
+							: variant === 'beta'
+							? 'beta'
+							: variant === 'gamma'
+							? 'alpha'
+							: variant === 'delta'
+							? 'delta'
+							: 'alpha'
+					}
+				/> */}
 				<InputEmailNew
 					className={stls.inputEmail}
 					register={register}
@@ -173,14 +194,22 @@ export const FormBeta = ({
 					}
 				/>
 
-				{paymentMethod === PAYMENT.GIFT && (
+				{/* {paymentMethod === PAYMENT.GIFT && (
 					<PopupGift
-						programTitle='«Управление современной организацией в здравоохранении»'
+						programTitle={`«${programTitle}»`}
 						studentName='Имя получателя'
-						untilDate='12.03.2024'
-						programType='Mini MBA'
+						untilDate={untilDate}
+						programType={
+							programType === 'mini'
+								? 'Мини MBA'
+								: programType === 'mba'
+								? 'MBA'
+								: programType === 'profession'
+								? 'Профессия'
+								: 'Курс'
+						}
 					/>
-				)}
+				)} */}
 				{!noRadio && (
 					<InputRadioNew
 						className={stls.inputRadio}
