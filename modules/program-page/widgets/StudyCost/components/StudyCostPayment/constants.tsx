@@ -33,7 +33,7 @@ export const paymentMethods = [
 	},
 	{
 		type: PAYMENT.CREDIT,
-		name: 'В рассрочку в Тинькофф',
+		name: 'В рассрочку Тинькофф на 12 месяцев',
 		image: (
 			<Image
 				src={'/assets/images/program/tinkoff.svg'}

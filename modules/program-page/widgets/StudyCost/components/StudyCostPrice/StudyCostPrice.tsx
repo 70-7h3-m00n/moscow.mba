@@ -22,14 +22,6 @@ export const StudyCostPrice = ({ className, program }: StudyCostPriceProps) => {
 
 	return (
 		<div className={cn(className, stls.content)}>
-			{/* <div className={stls.cornerPhoto}>
-				<Image
-					src={'/assets/images/program/study-cost-corner-2.png'}
-					width={82}
-					height={82}
-					alt='Фото клиента'
-				/>
-			</div> */}
 			<CornerPhoto
 				src='/assets/images/program/study-cost-corner-2.png'
 				variant='top-right'

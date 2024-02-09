@@ -1,0 +1,67 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.input.alpha
+  --bg-color: #262626
+  --border-color: #383838
+  --chrome-autocomplete-bg: #18191A
+  --outline-color: #5D6268
+  --text-color: #fff
+
+.input.beta
+  --bg-color: #5D6268
+  --border-color: #6D7074
+  --chrome-autocomplete-bg: #5D6268
+  --outline-color: #5D6268
+  --text-color: #fff
+
+.input.gamma
+  --bg-color: #fff
+  --border-color: #E9E9E9
+  --chrome-autocomplete-bg: #fff
+  --outline-color: #5D6268
+  --text-color: #000
+
+.input.delta
+  --bg-color: #F8F8F8
+  --border-color: #E9E9E9
+  --chrome-autocomplete-bg: #fff
+  --outline-color: #5D6268
+  --text-color: #000
+
+.containerInput
+  & input
+    padding: 1.5rem 1.5rem 1.5rem 5rem !important
+    padding-bottom: 1.3rem !important
+    border: 1px solid var(--border-color) !important
+    border-radius: 1rem !important
+    height: unset !important
+    font-family: Helvetica Neue !important
+    font-size: 0.875rem !important
+    line-height: 120% !important
+    color: var(--text-color) !important
+    background: var(--bg-color) !important
+    outline-color: var(--outline-color) !important
+
+.phoneInput,.dropdown
+  font-family: Helvetica Neue !important
+
+.flagButton
+  border: 1px solid var(--border-color) !important
+  border-top-left-radius: 1rem !important
+  border-bottom-left-radius: 1rem !important
+  background: var(--bg-color) !important
+  &:hover
+    background-color: black !important
+
+.dropdown
+  background-color: green !important
+
+.error
+  position: absolute
+  left: 0rem
+  bottom: -1.1rem
+  font-size: 0.625rem
+  color: #FF3535
+  opacity: .8

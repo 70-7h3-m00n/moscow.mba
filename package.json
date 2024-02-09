@@ -46,6 +46,7 @@
     "react-highlight-words": "^0.18.0",
     "react-hook-form": "^7.33.1",
     "react-pdf": "^5.7.2",
+    "react-phone-input-2": "^2.15.1",
     "react-player": "^2.14.1",
     "react-range": "^1.8.14",
     "react-share": "^4.4.0",
