@@ -3,10 +3,27 @@ import cn from 'classnames'
 import { WhoIsForProps } from './types'
 
 import { Wrapper } from '@/components/layout'
-import { whoIsForDefault } from './constants'
 import { CornerPhoto } from '../components/CornerPhoto/CornerPhoto'
+import useAt from '@/hooks/useAt'
 
 export const WhoIsForNew = ({ className, program, ...rest }: WhoIsForProps) => {
+	const at = useAt()
+
+	const whoIsForDefault = [
+		{
+			name: 'Специалистам',
+			description: '',
+			photo: at.profession
+				? '/assets/images/program/who-is-for-photo-1.png'
+				: '/assets/images/program/who-is-for-photo-2.png'
+		},
+		{
+			name: 'Владельцам малого бизнеса и ИП',
+			description: '',
+			photo: '/assets/images/program/who-is-for-photo.png'
+		}
+	]
+
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>

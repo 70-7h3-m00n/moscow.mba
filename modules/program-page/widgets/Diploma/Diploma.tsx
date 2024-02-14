@@ -27,7 +27,7 @@ export const Diploma = ({ className, ...rest }: DiplomaProps) => {
 					<h2 className={stls.title}>Документы после обучения</h2>
 					<p className={stls.desc}>{data.description}</p>
 					{(at.profession || at.course) && (
-						<p className={stls.desc}>
+						<p className={cn(stls.desc, stls.license)}>
 							Мы обучаем{' '}
 							<a
 								className={stls.link}

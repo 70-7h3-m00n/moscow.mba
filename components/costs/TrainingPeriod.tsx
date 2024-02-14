@@ -32,7 +32,7 @@ const TrainingPeriod = ({
 	return (
 		<>
 			{justNumbers ? (
-				<>{addFrontZeroToNumber(months)}</>
+				<>{months % 1 === 0 ? addFrontZeroToNumber(months) : months}</>
 			) : (
 				<>
 					{months}&nbsp;

@@ -38,13 +38,6 @@ const helvetica = localFont({
 	]
 })
 
-// const unbounded = Unbounded({
-// 	weight: ['400'],
-// 	style: ['normal'],
-// 	subsets: ['latin', 'cyrillic'],
-// 	display: 'swap'
-// })
-
 export const ProgramPage = ({
 	className,
 	programs,
@@ -61,14 +54,7 @@ export const ProgramPage = ({
 			program={program}
 			teachers={teachers}
 		>
-			<div
-				className={cn(
-					className,
-					stls.container,
-					helvetica.className
-					// unbounded.className
-				)}
-			>
+			<div className={cn(className, stls.container, helvetica.className)}>
 				<HeroSection className={stls.heroSection} program={program} />
 				<AboutProgram className={stls.section} program={program} />
 				<WhatWillYouLearnNew className={stls.section} program={program} />

@@ -16,20 +16,32 @@ import {
 	handlePhonePaste,
 	hanleOnKeyDown
 } from '@/helpers/general/handleForm'
+import { useForm } from 'react-hook-form'
+import { TypeFormValues } from '@/components/forms/FormBeta/types'
 
 export const ContactStage = () => {
 	const { asPath } = useRouter()
 	const { program } = useContext(ContextStaticProps)
 	const { state, dispatch } = useContext(HowToContactContext)
 	const { formStage, way, method, question, phone, email } = state
+	console.log('state: ', state)
 	const wayToContact = waysToContact[formStage]
 	const [error, setError] = useState(false)
+
+	// const {
+	// 	register,
+	// 	handleSubmit,
+	// 	reset,
+	// 	control,
+	// 	formState: { errors }
+	// } = useForm<TypeFormValues>()
 
 	const handleFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
 		event.preventDefault()
 		const target = event.target as HTMLInputElement
 		const contactDataInput = target.querySelector('input')
 		const enteredContactData = contactDataInput.value
+		console.log('enteredContactData: ', enteredContactData)
 
 		const isValid = checkValidity({
 			enteredContactData,
@@ -44,13 +56,17 @@ export const ContactStage = () => {
 
 		setError(false)
 
-		if (method === 'Написать') {
-			dispatch({ type: ACTION.SET_EMAIL, payload: enteredContactData })
-		} else {
-			dispatch({ type: ACTION.SET_PHONE, payload: enteredContactData })
-		}
+		dispatch({ type: ACTION.SET_EMAIL, payload: enteredContactData })
+		dispatch({ type: ACTION.SET_PHONE, payload: enteredContactData })
 
-		console.log('data sent')
+		console.log('data sent', {
+			name: '',
+			phone,
+			email,
+			contactWay: way,
+			contactMethod: method,
+			question
+		})
 
 		onSubmitForm({
 			setOpenLoader: () => {},
@@ -61,8 +77,8 @@ export const ContactStage = () => {
 			formName: 'Виджет: задать вопрос',
 			values: {
 				name: '',
-				phone,
-				email,
+				phone: state.phone,
+				email: state.email,
 				contactWay: way,
 				contactMethod: method,
 				question
@@ -74,6 +90,7 @@ export const ContactStage = () => {
 
 	const handlerMethod = (method: 'Написать' | 'Позвонить') => {
 		dispatch({ type: ACTION.SET_METHOD, payload: method })
+		// dispatch({type: ACTION.SET_PHONE, payload: })
 	}
 
 	return (
@@ -107,6 +124,13 @@ export const ContactStage = () => {
 							{error && <p className={stls.errorText}>*Номер указан неверно</p>}
 						</>
 					)}
+					{/* 				
+					<InputPhoneFlag
+							register={register}
+							errors={errors}
+							control={control}
+							variant='gamma'
+						/> */}
 					{state.contactMethods.length > 1 ? (
 						<>
 							<p className={stls.buttonDescription}>

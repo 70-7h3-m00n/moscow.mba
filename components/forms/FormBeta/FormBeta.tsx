@@ -6,7 +6,6 @@ import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { PAYMENT } from '@/types/payment/paymentTypes'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 import useAt from '@/hooks/useAt'
 import { PopupGift } from '@/components/popups/PopupGift/PopupGift'
 import { ContextStaticProps } from '@/context/index'
@@ -40,6 +39,7 @@ export const FormBeta = ({
 		register,
 		handleSubmit,
 		reset,
+		control,
 		formState: { errors }
 	} = useForm<TypeFormValues>()
 
@@ -130,22 +130,7 @@ export const FormBeta = ({
 							: 'alpha'
 					}
 				/>
-				<InputPhoneNew
-					register={register}
-					errors={errors}
-					variant={
-						variant === 'alpha'
-							? 'alpha'
-							: variant === 'beta'
-							? 'beta'
-							: variant === 'gamma'
-							? 'alpha'
-							: variant === 'delta'
-							? 'delta'
-							: 'alpha'
-					}
-				/>
-				{/* <InputPhoneFlag
+				{/* <InputPhoneNew
 					register={register}
 					errors={errors}
 					variant={
@@ -160,6 +145,22 @@ export const FormBeta = ({
 							: 'alpha'
 					}
 				/> */}
+				<InputPhoneFlag
+					register={register}
+					errors={errors}
+					control={control}
+					variant={
+						variant === 'alpha'
+							? 'alpha'
+							: variant === 'beta'
+							? 'beta'
+							: variant === 'gamma'
+							? 'alpha'
+							: variant === 'delta'
+							? 'delta'
+							: 'alpha'
+					}
+				/>
 				<InputEmailNew
 					className={stls.inputEmail}
 					register={register}

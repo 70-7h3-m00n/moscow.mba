@@ -12,7 +12,7 @@ const onSubmitForm = async ({
 	formName,
 	reset
 }) => {
-	// console.log('=<>>>>>>>', values)
+	console.log('=<>>>>>>>', values)
 
 	setOpenLoader(o => !o)
 	values.programTitle = programTitle || ''

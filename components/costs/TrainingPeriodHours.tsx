@@ -6,7 +6,7 @@ const TrainingPeriodHours = ({ period = null, type = null }) => {
 
 	const periodMapping = {
 		mini: 1260,
-		mba: 3420,
+		mba: 2700,
 		profession: 980,
 		course: 140,
 		executive: 4520,

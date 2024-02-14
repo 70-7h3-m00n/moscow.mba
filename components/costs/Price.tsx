@@ -33,13 +33,13 @@ const Price = ({
 		? ui.currentlySymbols.uzm
 		: ui.currentlySymbols.rubAlt
 
-	const setPrice = (rub: number) => {
-		return atKz
-			? toNumberWithSpaces(rub * currencyRates.kzt)
-			: atUz
-			? toNumberWithSpaces(rub * currencyRates.uzm)
-			: toNumberWithSpaces(rub)
-	}
+	// const setPrice = (rub: number) => {
+	// 	return atKz
+	// 		? toNumberWithSpaces(rub * currencyRates.kzt)
+	// 		: atUz
+	// 		? toNumberWithSpaces(rub * currencyRates.uzm)
+	// 		: toNumberWithSpaces(rub)
+	// }
 
 	const componentSpecificClasses = {
 		simple: {
