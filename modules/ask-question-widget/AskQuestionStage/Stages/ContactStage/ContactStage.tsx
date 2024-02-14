@@ -18,6 +18,8 @@ import {
 } from '@/helpers/general/handleForm'
 import { useForm } from 'react-hook-form'
 import { TypeFormValues } from '@/components/forms/FormBeta/types'
+import { InputPhoneFlag } from '@/components/inputs/InputPhoneFlag/InputPhoneFlag'
+import { InputEmailNew } from '@/components/inputs'
 
 export const ContactStage = () => {
 	const { asPath } = useRouter()
@@ -26,15 +28,16 @@ export const ContactStage = () => {
 	const { formStage, way, method, question, phone, email } = state
 	console.log('state: ', state)
 	const wayToContact = waysToContact[formStage]
-	const [error, setError] = useState(false)
+	const [submitIsDisabled, setSubmitIsDisabled] = useState(false)
+	// const [error, setError] = useState(false)
 
-	// const {
-	// 	register,
-	// 	handleSubmit,
-	// 	reset,
-	// 	control,
-	// 	formState: { errors }
-	// } = useForm<TypeFormValues>()
+	const {
+		register,
+		handleSubmit,
+		reset,
+		control,
+		formState: { errors }
+	} = useForm<TypeFormValues>()
 
 	const handleFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
 		event.preventDefault()
@@ -48,13 +51,13 @@ export const ContactStage = () => {
 			way: way === 'Электронная почта' ? 'email' : 'phone'
 		})
 
-		if (!isValid) {
-			setError(true)
-			contactDataInput.focus()
-			return
-		}
+		// if (!isValid) {
+		// 	setError(true)
+		// 	contactDataInput.focus()
+		// 	return
+		// }
 
-		setError(false)
+		// setError(false)
 
 		dispatch({ type: ACTION.SET_EMAIL, payload: enteredContactData })
 		dispatch({ type: ACTION.SET_PHONE, payload: enteredContactData })
@@ -96,41 +99,60 @@ export const ContactStage = () => {
 	return (
 		<>
 			<FormStageTitle />
-			<form className={stls.form} onSubmit={handleFormSubmit}>
+			<form
+				className={stls.form}
+				onSubmit={handleSubmit(values => {
+					if (!submitIsDisabled) {
+						setSubmitIsDisabled(true)
+						setTimeout(() => {
+							setSubmitIsDisabled(false)
+						}, 5000)
+
+						window.sessionStorage.setItem('formFilled', 'false')
+
+						console.log('react-hook-form =>>>>>', {
+							...values,
+							name: '',
+							contactWay: way,
+							contactMethod: method,
+							question
+						})
+
+						return onSubmitForm({
+							values: {
+								...values,
+								name: '',
+								contactWay: way,
+								contactMethod: method,
+								question
+							},
+							programTitle: program?.title || '',
+							asPath,
+							formName: 'Виджет: задать вопрос',
+							setOpenLoader: () => {},
+							setOpen: () => {},
+							reset: () => {}
+						})
+					}
+				})}
+			>
 				<div className={stls.bottomContainer}>
 					{way === 'Электронная почта' ? (
-						<>
-							<input
-								name='email'
-								type='text'
-								className={stls.contactDataInput}
-								placeholder='Электронная почта'
-							/>
-							{error && (
-								<p className={stls.errorText}>*Адрес почты указан неверно</p>
-							)}
-						</>
+						<InputEmailNew
+							className={stls.contactDataInput}
+							register={register}
+							isRequired
+							errors={errors}
+							variant='gamma'
+						/>
 					) : (
-						<>
-							<input
-								name='phone'
-								type='text'
-								className={stls.contactDataInput}
-								placeholder='Номер телефона'
-								onInput={handlePhoneInput}
-								onKeyDown={hanleOnKeyDown}
-								onPaste={handlePhonePaste}
-							/>
-							{error && <p className={stls.errorText}>*Номер указан неверно</p>}
-						</>
-					)}
-					{/* 				
-					<InputPhoneFlag
+						<InputPhoneFlag
 							register={register}
 							errors={errors}
 							control={control}
 							variant='gamma'
-						/> */}
+						/>
+					)}
 					{state.contactMethods.length > 1 ? (
 						<>
 							<p className={stls.buttonDescription}>

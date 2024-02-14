@@ -71,7 +71,8 @@ export const DiplomaPopup = ({ className, ...rest }: DiplomaPopupProps) => {
 		? diplomas.courseFRDO
 		: at.course
 		? diplomas.course
-		: null
+		: diplomas.profession
+	//todo
 
 	const filteredImagesData = imagesData?.filter(
 		element => element !== undefined

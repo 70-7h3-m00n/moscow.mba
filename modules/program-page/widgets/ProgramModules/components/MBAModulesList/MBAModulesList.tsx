@@ -22,7 +22,7 @@ export const MBAModulesList = ({
 		? program?.specializedSubjects
 		: bonusSubjects
 		? program?.bonusSubjects
-		: null
+		: []
 
 	return (
 		<>

@@ -42,3 +42,27 @@ const onSubmitForm = async ({
 }
 
 export default onSubmitForm
+
+// onSubmit={handleSubmit(values => {
+// 	if (!submitIsDisabled) {
+// 		setSubmitIsDisabled(true)
+// 		setTimeout(() => {
+// 			setSubmitIsDisabled(false)
+// 		}, 5000)
+
+// 		window.sessionStorage.setItem('formFilled', 'false')
+// 		return onSubmitForm({
+// 			setOpenLoader: () => {},
+// 			setOpen: () => {},
+// 			asPath,
+// 			reset: () => {},
+// 			programTitle: program?.title || '',
+// 			formName: 'Виджет: задать вопрос',
+// 			values: {
+// 				name: '',
+// 				phone: state.phone,
+// 				email: state.email,
+// 				contactWay: way,
+// 				contactMethod: method,
+// 				question
+// 			}})}}
