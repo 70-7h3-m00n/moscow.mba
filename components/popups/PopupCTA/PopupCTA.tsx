@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react'
 import { IconCloseAlt } from '@/components/icons'
 import Image from 'next/image'
 import { FormBeta } from '@/components/forms/FormBeta/FormBeta'
+import useGenerateLeadGTM from '@/hooks/useGenerateLeadGTM'
+import { StageThanks } from './StageThanks/StageThanks'
 
 export const PopupCTA = ({
 	className,
@@ -68,21 +70,7 @@ export const PopupCTA = ({
 							</div>
 						)}
 
-						{stage === 'thanks' && (
-							<div className={stls.thanks}>
-								<p className={stls.thanks__title}>Спасибо!</p>
-								<p className={stls.thanks__subtitle}>
-									Наш менеджер свяжется с Вами в ближайшее время
-								</p>
-								<BtnBeta
-									variant='beta'
-									className={stls.thanks__btn}
-									onClick={close}
-								>
-									Ок!
-								</BtnBeta>
-							</div>
-						)}
+						{stage === 'thanks' && <StageThanks close={close} />}
 					</div>
 				)}
 			</Popup>

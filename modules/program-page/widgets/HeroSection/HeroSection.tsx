@@ -49,7 +49,7 @@ export const HeroSection = ({
 						<Sale className={stls.sale} program={program} />
 					</div>
 					<div className={stls.main}>
-						<h1 className={stls.title}>{program?.title}</h1>
+						<h1 className={cn(stls.title)}>{program?.title}</h1>
 						<p className={stls.description}>{program?.description}</p>
 						<div className={stls.main__btnWrapper}>
 							<Link

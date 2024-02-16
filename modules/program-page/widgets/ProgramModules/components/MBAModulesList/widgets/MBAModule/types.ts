@@ -4,4 +4,5 @@ import { HTMLAttributes } from 'react'
 export type MBAModuleProps = HTMLAttributes<HTMLDivElement> & {
 	idx?: number
 	subject: TypeLibProgram['baseSubjects'][number]
+	firstOpen?: boolean
 }

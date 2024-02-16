@@ -12,15 +12,24 @@
   gap: 3rem
   width: 100%
   margin-top: 3rem
+  @include m.media(phone, tablet)
+    grid-template-columns: 1fr 
 
 .item
+  top: 1rem
   margin-left: 1rem
+  line-height: 100%
   list-style: disc
 
+  &::marker
+    color: #000
+
   &__titleWrapper
+    position: relative
     display: flex
     align-items: flex-start
     gap: 0.5rem
+    top: .2rem
 
   &__title
     margin-bottom: 0.5rem

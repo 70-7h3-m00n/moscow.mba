@@ -37,12 +37,14 @@ export const MBAModulesList = ({
 				</Tag>
 			)}
 			<div className={cn(className, stls.content)} {...rest}>
-				{at.mba &&
-					subjects?.map(subject => (
+				{(at.mba || at.mini) &&
+					subjects?.map((subject, idx) => (
 						<MBAModule
+							firstOpen
 							className={stls.module}
 							subject={subject}
 							key={subject?.title}
+							idx={idx}
 						/>
 					))}
 			</div>

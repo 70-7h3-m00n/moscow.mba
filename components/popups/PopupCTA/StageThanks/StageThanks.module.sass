@@ -1,9 +1,8 @@
-@use 'sass:math'
 @use '@/styles/utils/mixin' as m
 @use '@/styles/utils/funcs' as f
 @use '@/styles/themes/default/colors' as c
 
-.content
+.thanks
   position: relative
   min-width: 100%
   width: 42rem
@@ -11,19 +10,6 @@
   padding: 3rem 1.5rem 1.5rem
   border-radius: 1.5rem
   background-color: #18191A
-
-  @include m.media(phone, tablet)
-    width: unset
-
-.title
-  margin-bottom: 1.5rem
-  color: #FFF
-  font-family: Unbounded
-  font-size: 1.5rem
-  line-height: 120%
-  letter-spacing: -0.06rem
-
-.loader
   min-height: 35rem
   display: flex
   flex-direction: column
@@ -31,18 +17,25 @@
   align-items: center
   gap: 1rem
 
-  p
+  &__title
+    color: #FFF
+    text-align: center
+    font-family: Unbounded
+    font-size: 1.5rem
+    font-style: normal
+    font-weight: 400
+    line-height: 120%
+    letter-spacing: -0.06rem
+
+  &__subtitle
+    margin-bottom: 2rem
     color: #979BA0
     text-align: center
     font-family: "Helvetica Neue"
     font-size: 1.125rem
     font-style: normal
     font-weight: 400
-    line-height: 110% 
+    line-height: 110%
 
-.close
-  position: absolute
-  top: 1.5rem
-  right: 1.5rem
-  background-color: transparent
-  border: none
+  &__btn
+    min-width: 18rem

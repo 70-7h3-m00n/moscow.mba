@@ -21,7 +21,7 @@ export const Networking = ({ className, ...rest }: NetworkingProps) => {
 						</li>
 					))}
 				</ul>
-				<BtnBeta variant='beta'>Корпоративное обучение</BtnBeta>
+				{/* <BtnBeta variant='beta'>Корпоративное обучение</BtnBeta> */}
 			</Wrapper>
 		</section>
 	)

@@ -13,7 +13,7 @@ export const Sale = ({ className, program, ...rest }: SaleProps) => {
 				<Until />
 			</p>
 			<Tag className={stls.content__tag} variant='gamma'>
-				Осталось мест: <PlacesLeft uniqueKey={program?.id} />
+				{'Осталось мест:'} <PlacesLeft uniqueKey={+program?.id} />
 			</Tag>
 		</div>
 	)

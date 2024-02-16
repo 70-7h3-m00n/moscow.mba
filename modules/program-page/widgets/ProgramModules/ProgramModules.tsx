@@ -24,30 +24,29 @@ export const ProgramModules = ({
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<ModulesHeading program={program} />
-				{at.mini ||
-					(at.mba && (
-						<>
-							<MBAModulesList
-								className={stls.modulesList}
-								baseSubjects
-								program={program}
-							/>
-							<MBAModulesList
-								className={stls.modulesList}
-								specializedSubjects
-								program={program}
-							/>
-							<FinalProject />
-							<EmploymentModule />
-							<BonusModule />
-							<MBAModulesList
-								className={stls.modulesList}
-								bonusSubjects
-								program={program}
-							/>
-							<GetFullProgramBtn program={program} />
-						</>
-					))}
+				{(at.mini || at.mba) && (
+					<>
+						<MBAModulesList
+							className={stls.modulesList}
+							baseSubjects
+							program={program}
+						/>
+						<MBAModulesList
+							className={stls.modulesList}
+							specializedSubjects
+							program={program}
+						/>
+						<FinalProject />
+						<EmploymentModule />
+						<BonusModule />
+						<MBAModulesList
+							className={stls.modulesList}
+							bonusSubjects
+							program={program}
+						/>
+						<GetFullProgramBtn program={program} />
+					</>
+				)}
 				{at.profession && (
 					<>
 						<MiniModulesList

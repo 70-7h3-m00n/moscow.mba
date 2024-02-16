@@ -11,6 +11,10 @@
   font-family: Unbounded
   font-size: 2.5rem
   letter-spacing: -0.1rem
+  @include m.media(phone, tablet, laptop)
+    font-size: 1.75rem
+    letter-spacing: -0.035rem
+    text-align: left
 
 .carousel
   margin-bottom: 3rem

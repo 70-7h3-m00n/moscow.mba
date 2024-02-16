@@ -31,7 +31,7 @@ export const StudyCostPrice = ({ className, program }: StudyCostPriceProps) => {
 			{(at.profession || at.course) && <Timer />}
 			<div className={stls.details}>
 				<Tag className={stls.details__tag} variant='gamma'>
-					Осталось мест: <PlacesLeft uniqueKey={program?.id} />
+					Осталось мест: <PlacesLeft uniqueKey={+program?.id} />
 				</Tag>
 				<p className={stls.details__until}>
 					Старт курса:{' '}

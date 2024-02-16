@@ -8,6 +8,7 @@ import { IconLightning } from '@/components/icons'
 
 export const MBAModule = ({
 	className,
+	firstOpen = false,
 	subject,
 	idx,
 	...rest
@@ -24,6 +25,7 @@ export const MBAModule = ({
 				idx={activeIdx}
 				handler={() => setActiveIdx(activeIdx === idx ? null : idx)}
 				variant='modules'
+				firstOpen
 			>
 				<p className={stls.subtitle}>{subject?.string}</p>
 				<ul className={stls.list}>
