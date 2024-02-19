@@ -9,6 +9,7 @@ import { Tag } from 'modules/program-page/widgets/components'
 import Image from 'next/image'
 import { ScaleImage } from '@/components/images/program/ScaleImage/ScaleImage'
 import { FolderImage } from '@/components/images/program/FolderImage/FolderImage'
+import { ruCase } from '@/helpers/index'
 
 export const ModulesHeading = ({
 	className,
@@ -24,15 +25,27 @@ export const ModulesHeading = ({
 					justNumbers
 				/>
 			),
-			desc: 'Месяцев обучения'
+			desc: `${ruCase(+program?.duration?.minStudyMonths, [
+				'Месяц',
+				'Месяца',
+				'Месяцев'
+			])} обучения`
 		},
 		{
 			number: program?.duration?.videomaterials,
-			desc: 'Видеоматериалов'
+			desc: ruCase(+program?.duration?.videomaterials, [
+				'Видеоматериал',
+				'Видеоматериалa',
+				'Видеоматериалов'
+			])
 		},
 		{
 			number: program?.duration?.workshops,
-			desc: 'Воркшопов'
+			desc: ruCase(+program?.duration?.videomaterials, [
+				'Воркшоп',
+				'Воркшопa',
+				'Воркшопов'
+			])
 		}
 	]
 

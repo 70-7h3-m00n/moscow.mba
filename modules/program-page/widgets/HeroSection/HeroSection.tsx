@@ -33,6 +33,14 @@ export const HeroSection = ({
 
 	const isPartnership = program?.partnership && program?.partnership?.url
 
+	const cornerPhotoURL = at.profession
+		? '/assets/images/program/hero-image-2.png'
+		: at.course
+		? '/assets/images/program/hero-image-3.png'
+		: at.mini
+		? '/assets/images/program/hero-image-4.png'
+		: '/assets/images/program/hero-image-5.png'
+
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
@@ -45,7 +53,7 @@ export const HeroSection = ({
 						<Sale className={stls.sale} program={program} />
 					</div>
 					<div className={stls.main}>
-						<h1 className={stls.title}>{program?.title}</h1>
+						<h1 className={cn(stls.title)}>{program?.title}</h1>
 						<p className={stls.description}>{program?.description}</p>
 						<div className={stls.main__btnWrapper}>
 							<Link
@@ -85,17 +93,9 @@ export const HeroSection = ({
 				</div>
 				<CornerPhoto
 					className={stls.cornerPhoto}
-					src='/assets/images/program/hero-image-2.png'
+					src={cornerPhotoURL}
 					size='l'
 				/>
-				{/* <div className={stls.cornerPhoto}>
-					<Image
-						src='/assets/images/program/hero-image-2.png'
-						width={82}
-						height={82}
-						alt='Фото клиента'
-					/>
-				</div> */}
 				{program?.heroAdvantages && (
 					<ul className={stls.bottomList}>
 						<li className={stls.bottomItem}>

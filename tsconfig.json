@@ -34,6 +34,12 @@
 		],
 		"strictNullChecks": false
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		"modules/program-page/widgets/ProgramModules/components/CourseModules/CourseModules.tsx "
+	],
 	"exclude": ["node_modules"]
 }

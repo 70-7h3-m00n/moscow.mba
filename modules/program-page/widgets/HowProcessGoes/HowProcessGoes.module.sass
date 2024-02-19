@@ -5,6 +5,17 @@
 .content
   overflow: hidden
 
+.title
+  color: #000
+  text-align: center
+  font-family: Unbounded
+  font-size: 2.5rem
+  letter-spacing: -0.1rem
+  @include m.media(phone, tablet, laptop)
+    font-size: 1.75rem
+    letter-spacing: -0.035rem
+    text-align: left
+
 .carousel
   margin-bottom: 3rem
   
@@ -17,25 +28,6 @@
 
   & > div > div > div
     border-radius: 1.5rem
-    // background-color: #51555B
-    // background-repeat: no-repeat
-    // background-size: 70rem 45rem
-    // background-position: center center
-
-    // &:nth-child(1)
-    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
-    // &:nth-child(2)
-    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
-    // &:nth-child(3)
-    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
-    // &:nth-child(4)
-    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
-    // &:nth-child(5)
-    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
-    // &:nth-child(6)
-    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
-    // &:nth-child(7)
-    //   background-image: url('../../../../public/assets/images/program/slider-bg.png')
 
 .slide
   display: flex !important

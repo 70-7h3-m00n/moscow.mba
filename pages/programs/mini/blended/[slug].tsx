@@ -2,21 +2,31 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { v4 as uuidv4 } from 'uuid'
 import { studyFormats, routesFront } from '@/config/index'
 import { handleGetStaticPaths, handleGetStaticProps } from '@/lib/index'
-import { usePageHandleContext } from '@/hooks/index'
+import { useAt, usePageHandleContext } from '@/hooks/index'
 import { BlendedProgram } from '@/components/pages'
 import { SeoOrganizationJsonLd, SeoPagesProgram } from '@/components/seo'
+import { ProgramPage } from 'modules/program-page/ProgramPage'
 
 const PageProgramsMiniBlendedProgram = ({ program, programs }) => {
 	usePageHandleContext({ programs, program })
+	const at = useAt()
 
 	return (
 		<>
 			<SeoPagesProgram program={program} />
-			<BlendedProgram
-				program={program}
-				programs={programs}
-				teachers={program?.teachers}
-			/>
+			{at.new ? (
+				<ProgramPage
+					program={program}
+					programs={programs}
+					teachers={program?.teachers}
+				/>
+			) : (
+				<BlendedProgram
+					program={program}
+					programs={programs}
+					teachers={program?.teachers}
+				/>
+			)}
 		</>
 	)
 }

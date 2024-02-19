@@ -4,8 +4,7 @@ import cn from 'classnames'
 import Popup from 'reactjs-popup'
 import Image from 'next/image'
 import { IconCloseAlt } from '@/components/icons'
-import { BtnBeta } from '@/components/btns'
-import { useState } from 'react'
+import { StageThanks } from '@/components/popups/PopupCTA/StageThanks/StageThanks'
 
 export const LeadLoaderThankyouAlt = ({
 	open,
@@ -51,24 +50,7 @@ export const LeadLoaderThankyouAlt = ({
 				onClose={() => setOpen(false)}
 			>
 				{/* @ts-expect-error  */}
-				{close => (
-					<div className={cn(stls.thanks, stls.content)}>
-						<button className={stls.close} onClick={close}>
-							<IconCloseAlt fill='#fff' crossColor='#000' />
-						</button>
-						<p className={stls.thanks__title}>Спасибо!</p>
-						<p className={stls.thanks__subtitle}>
-							Наш менеджер свяжется с Вами в ближайшее время
-						</p>
-						<BtnBeta
-							variant='beta'
-							className={stls.thanks__btn}
-							onClick={close}
-						>
-							Ок!
-						</BtnBeta>
-					</div>
-				)}
+				{close => <StageThanks close={close} />}
 			</Popup>
 		</>
 	)

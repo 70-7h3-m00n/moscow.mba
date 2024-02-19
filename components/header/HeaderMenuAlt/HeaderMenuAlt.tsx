@@ -23,7 +23,7 @@ export const HeaderMenuAlt = ({ programs, handleMenu }) => {
 		{ val: 'Стоимость', href: '#study-cost' },
 		{ val: 'Преподаватели', href: '#experts' },
 		{ val: 'Отзывы', href: '#reviews' },
-		...(program?.employment === false
+		...(program?.frdo === false
 			? []
 			: [{ val: 'Трудоустройство', href: '#employment' }])
 	]

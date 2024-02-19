@@ -169,8 +169,10 @@ const contact = async (req, res) => {
 		paymentStatus === 'succeeded'
 			? 'Оплачено'
 			: paymentStatus === 'canceled'
-			? 'Отклонено'
-			: 'В обработке'
+			? 'Оплата отменена'
+			: paymentStatus === 'pending' || paymentStatus === 'waiting_for_capture'
+			? 'В обработке'
+			: null
 
 	const data = {
 		id: uuidv4() || null,

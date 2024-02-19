@@ -15,7 +15,8 @@ export const Accordion = ({
 	idx,
 	variant,
 	final = false,
-	children
+	children,
+	firstOpen = false
 }: AccordionProps) => {
 	return (
 		<div className={cn(className, stls.item)} onClick={() => handler(idx)}>
@@ -26,18 +27,20 @@ export const Accordion = ({
 			>
 				<div className={stls.titleWrapper}>
 					{}
-					<p
-						className={cn(stls.item__title, {
-							[stls.modulesActive]: variant === 'modules' && active
-						})}
-					>
+					<p className={cn(stls.item__title)}>
 						{item?.new && (
 							<Tag className={stls.item__tag} variant='delta'>
 								New
 								<IconLightning className={stls.lightning} />
 							</Tag>
 						)}
-						{item?.title}
+						<span
+							className={cn(stls.item__title, stls.span, {
+								[stls.modulesActive]: variant === 'modules' && active
+							})}
+						>
+							{item?.title}
+						</span>
 					</p>
 				</div>
 				<div

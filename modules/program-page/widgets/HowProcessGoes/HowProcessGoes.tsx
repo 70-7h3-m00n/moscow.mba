@@ -98,7 +98,7 @@ export const HowProcessGoesNew = ({
 	return (
 		<section className={cn(className, stls.container)}>
 			<Wrapper classNames={[stls.content]}>
-				<h2>Как проходит обучение</h2>
+				<h2 className={stls.title}>Как проходит обучение</h2>
 				{isMobile ? (
 					<MobileCarousel />
 				) : (

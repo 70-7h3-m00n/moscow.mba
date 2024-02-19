@@ -1,9 +1,11 @@
 import { useContext } from 'react'
 import stls from './ThanksStage.module.sass'
 import { HowToContactContext } from 'modules/ask-question-widget/fractals/context/context'
+import useGenerateLeadGTM from '@/hooks/useGenerateLeadGTM'
 
 export const ThanksStage = () => {
 	const { state } = useContext(HowToContactContext)
+	useGenerateLeadGTM('AskQuestion Widget')
 
 	return (
 		<div className={stls.content}>

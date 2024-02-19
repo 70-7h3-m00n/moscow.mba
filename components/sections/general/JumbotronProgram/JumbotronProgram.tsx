@@ -104,7 +104,7 @@ const JumbotronProgram = ({
 							<div className={stls.leftContainer}>
 								<JumbotronLabel />
 								<div className={stls.placesLeft}>
-									Осталось мест: <PlacesLeft uniqueKey={program?.id} />
+									Осталось мест: <PlacesLeft uniqueKey={+program?.id} />
 								</div>
 							</div>
 							{!!alternativeLink && (
@@ -167,9 +167,10 @@ const JumbotronProgram = ({
 											closePopUpForm={close}
 											formName={`Заявка с модальной формы первого экрана${
 												program?.title
-													? ` программы ${program?.category?.type || ''} ${
-															program?.studyFormat || ''
-													  } ${program.title}`
+													? ` программы ${program?.category?.type ||
+															''} ${program?.studyFormat || ''} ${
+															program.title
+													  }`
 													: ''
 											}`}
 										/>

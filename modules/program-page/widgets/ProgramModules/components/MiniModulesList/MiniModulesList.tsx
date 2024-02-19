@@ -3,8 +3,7 @@ import cn from 'classnames'
 import { MiniModulesListProps } from './types'
 
 import { MiniModule } from './widgets/MBAModule/MiniModule'
-import { useContext, useState } from 'react'
-import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
+import { useState } from 'react'
 import { Tag } from 'modules/program-page/widgets/components'
 
 export const MiniModulesList = ({

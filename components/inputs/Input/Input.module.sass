@@ -13,6 +13,7 @@
   &.errorWrapper 
     .input
       --border-color: #FF3535
+      --outline-color: #FF3535
       
       &.alpha
         --bg-color: #3F2121
@@ -25,8 +26,6 @@
      
       &.delta
         --bg-color: #FFDFDF
-
-      
 
   &.required::after
     display: none
@@ -93,7 +92,6 @@
     -webkit-text-fill-color: var(--text-color)
     transition: background-color 5000s ease-in-out 0s
     box-shadow: inset 0 0 20px 20px var(--chrome-autocomplete-bg)
-
 
   &::placeholder
     font-family: Helvetica Neue

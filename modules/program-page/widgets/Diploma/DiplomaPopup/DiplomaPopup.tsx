@@ -7,9 +7,15 @@ import { BtnBeta } from '@/components/btns'
 import { IconCloseAlt } from '@/components/icons'
 import { IconArrowAlt } from '../../components/icons/IconArrowAlt/IconArrowAlt'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import useAt from '@/hooks/useAt'
+import { ContextStaticProps } from '@/context/index'
+import { ProgramPageContext } from 'modules/program-page/fractals/context/context'
 
 export const DiplomaPopup = ({ className, ...rest }: DiplomaPopupProps) => {
+	const at = useAt()
+	const { state } = useContext(ProgramPageContext)
+	const { program } = state
 	const [activeIdx, setActiveIdx] = useState(0)
 
 	const diplomas = {
@@ -30,12 +36,107 @@ export const DiplomaPopup = ({ className, ...rest }: DiplomaPopupProps) => {
 				src: '/assets/diplomas/profession/new/certificate-profession.jpg',
 				orientation: 'horizontal'
 			}
+		],
+		course: [
+			{
+				title: 'Сертификат',
+				src: '/assets/diplomas/courses/new/certificate-courses.jpg',
+				orientation: 'horizontal'
+			}
+		],
+		courseFRDO: [
+			{
+				title: 'Сертификат',
+				src: '/assets/diplomas/courses/new/certificate-courses.jpg',
+				orientation: 'horizontal'
+			},
+
+			{
+				title: 'Удостоверение',
+				src:
+					'/assets/diplomas/courses/new/qualification-certificate-courses.jpg',
+				orientation: 'horizontal'
+			}
+		],
+		mba: [
+			{
+				title: 'Диплом',
+				src: '/assets/diplomas/general/new/mba-diploma.jpg',
+				orientation: 'horizontal'
+			},
+
+			{
+				title: 'Supplement',
+				src: '/assets/diplomas/general/new/mba-supplement-1.png',
+				orientation: 'horizontal'
+			},
+			{
+				title: 'Supplement',
+				src: '/assets/diplomas/general/new/mba-supplement-2.png',
+				orientation: 'horizontal'
+			},
+			{
+				title: 'Диплом',
+				src: '/assets/diplomas/general/new/mba-diploma-2.jpg',
+				orientation: 'horizontal'
+			},
+
+			{
+				title: 'Приложение',
+				src: '/assets/diplomas/general/new/mba-addendum.png',
+				orientation: 'horizontal'
+			}
+		],
+		mini: [
+			{
+				title: 'Диплом',
+				src: '/assets/diplomas/mini/new/mini-diploma.jpg',
+				orientation: 'horizontal'
+			},
+
+			{
+				title: 'Supplement',
+				src: '/assets/diplomas/mini/new/mini-supplement-1.png',
+				orientation: 'horizontal'
+			},
+			{
+				title: 'Supplement',
+				src: '/assets/diplomas/mini/new/mini-supplement-2.png',
+				orientation: 'horizontal'
+			},
+			{
+				title: 'Диплом',
+				src: '/assets/diplomas/mini/new/mini-diploma-2.jpg',
+				orientation: 'horizontal'
+			},
+
+			{
+				title: 'Приложение',
+				src: '/assets/diplomas/mini/new/mini-addendum.png',
+				orientation: 'horizontal'
+			}
 		]
 	}
+	// На этих профессиях выдаётся только сертификат
+	// Цифровое образование: онлайн-инструменты, платформы и технологии		Сертификат
+	// cifrovoe-obrazovanie
+	// IT-технологии в управлении проектами		Сертификат
+	// IT-tehnologii-v-upravlenii-proektami
 
-	const imagesData = diplomas.profession
+	const imagesData = at.profession
+		? diplomas.profession
+		: at.course && program?.frdo
+		? diplomas.courseFRDO
+		: at.course
+		? diplomas.course
+		: at.mini
+		? diplomas.mini
+		: diplomas.mba
+	//todo
 
-	const onlyImage = imagesData.length === 1
+	const filteredImagesData = imagesData?.filter(
+		element => element !== undefined
+	)
 
 	const prev = () => {
 		if (activeIdx > 0) setActiveIdx(prev => prev - 1)
@@ -67,14 +168,14 @@ export const DiplomaPopup = ({ className, ...rest }: DiplomaPopupProps) => {
 							</button>
 							<Image
 								className={stls.image}
-								src={imagesData[activeIdx].src}
+								src={imagesData[activeIdx]?.src}
 								fill
 								alt={imagesData[activeIdx].title}
 							/>
 						</div>
 
 						<div className={cn(stls.navigation)}>
-							{!onlyImage && (
+							{filteredImagesData.length !== 1 && (
 								<button className={stls.navigation__btn} onClick={prev}>
 									<IconArrowAlt
 										className={cn(stls.iconModules)}
@@ -87,7 +188,7 @@ export const DiplomaPopup = ({ className, ...rest }: DiplomaPopupProps) => {
 							<p className={stls.navigation__name}>
 								{imagesData[activeIdx].title}
 							</p>
-							{!onlyImage && (
+							{filteredImagesData.length !== 1 && (
 								<button className={stls.navigation__btn} onClick={next}>
 									<IconArrowAlt
 										className={cn(stls.iconModules)}

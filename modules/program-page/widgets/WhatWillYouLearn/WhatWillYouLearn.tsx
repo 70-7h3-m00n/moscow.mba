@@ -24,7 +24,7 @@ export const WhatWillYouLearnNew = ({
 					/>
 				</h2>
 				<ul className={stls.list}>
-					{program?.whatWillYouLearn?.map((item, idx) => (
+					{program?.whatWillYouLearnNew?.map((item, idx) => (
 						<li className={stls.item} key={idx}>
 							<IconCheck color='#FF3535' />
 							<p className={stls.item__p}>{item.string}</p>

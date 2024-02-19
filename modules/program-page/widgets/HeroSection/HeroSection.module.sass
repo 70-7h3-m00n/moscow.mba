@@ -85,6 +85,7 @@
   flex-direction: column
   max-width: 55rem
   color: #fff
+  word-break: break-word
 
   &__link
     display: flex
@@ -99,7 +100,6 @@
     background-color: #FF3535
     color: #FFF
 
-
     @include m.media(phone, tablet)
       min-width: unset
       padding-block: 1.7rem
@@ -110,14 +110,9 @@
     gap: 1.5rem
     margin-top: auto
 
-    // @include m.media(laptop)
-    //   flex-direction: column
-    //   gap: 1rem
-
     @include m.media(tablet)
       gap: 1rem
       & > *
-        // min-width: 14rem
         width: 100%
 
     @include m.media(phone)
@@ -161,9 +156,7 @@
   @include m.media(tablet)
     padding: 1rem
 
-  
   &__wrapper
-
     @include m.media(laptop)
       flex-shrink: 0
 

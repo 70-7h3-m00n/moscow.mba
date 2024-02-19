@@ -25,7 +25,7 @@ export const HeaderProgram = ({
 		{ title: 'Стоимость', src: '#study-cost' },
 		{ title: 'Преподаватели', src: '#experts' },
 		{ title: 'Отзывы', src: '#reviews' },
-		...(program?.employment === false
+		...(program?.frdo === false
 			? []
 			: [{ title: 'Трудоустройство', src: '#employment' }])
 	]

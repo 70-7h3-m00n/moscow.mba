@@ -1,32 +1,64 @@
-import { useEffect, useState } from 'react'
+import { HTMLAttributes } from 'react'
+import { CountUntil } from './Until'
+import { ForwardRefComponent, HTMLMotionProps, motion } from 'framer-motion'
 
-const PlacesLeft = ({ uniqueKey }) => {
+const pseudoRandom = seed => {
+	const x = Math.sin(seed++) * 10000
+	return x - Math.floor(x)
+}
+
+const generateSeed = (id, currentDate) => {
+	const dateStr =
+		currentDate.getFullYear().toString() +
+		(currentDate.getMonth() + 1).toString() +
+		currentDate.getDate().toString()
+	return parseInt(dateStr + id.toString(), 10)
+}
+
+const PlacesLeft = ({ uniqueKey }: { uniqueKey: number }) => {
+	const maxSeats = 45
+	const minSeats = 8
 	const currentDate = new Date()
-	const currentDay = currentDate.getDate()
+	const closestEnrollmentDate = CountUntil()
 
-	const [places, setPlaces] = useState(4)
-	const divisible = typeof uniqueKey === 'number' ? uniqueKey % 10 : 8
+	const seed = generateSeed(uniqueKey, currentDate)
+	const randomFactor = pseudoRandom(seed)
 
-	useEffect(() => {
-		const placesLeft =
-			(1 <= currentDay && currentDay <= 3) ||
-			(11 <= currentDay && currentDay <= 13) ||
-			(21 <= currentDay && currentDay <= 23)
-				? Math.floor((divisible + 15) / 2)
-				: (4 <= currentDay && currentDay <= 6) ||
-				  (14 <= currentDay && currentDay <= 16) ||
-				  (24 <= currentDay && currentDay <= 26)
-				? Math.floor((divisible + 10) / 3)
-				: (7 <= currentDay && currentDay <= 10) ||
-				  (17 <= currentDay && currentDay <= 20) ||
-				  (27 <= currentDay && currentDay <= 31)
-				? Math.floor((divisible + 5) / 3)
-				: 10
+	const dayDifference = Math.max(
+		0,
+		Math.min(
+			12,
+			Math.floor(
+				(closestEnrollmentDate.getTime() - currentDate.getTime()) /
+					(1000 * 60 * 60 * 24)
+			)
+		)
+	) // Ограничиваем dayDifference диапазоном от 0 до 12 дней
 
-		setPlaces(placesLeft + 10)
-	}, [places])
+	// Рассчитываем уменьшение мест на основе dayDifference, учитывая, что dayDifference может быть от 0 до 12
+	const daysFactor = 12 - dayDifference // Чем ближе дата, тем меньше значение daysFactor
 
-	return <>{places}</>
+	const dynamicSeatsReduction = Math.round(
+		(maxSeats - minSeats) * (daysFactor / 12) * randomFactor
+	)
+	let remainingSeats = maxSeats - dynamicSeatsReduction
+	remainingSeats = Math.max(remainingSeats, minSeats)
+
+	return (
+		<>
+			{uniqueKey ? (
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ duration: 1 }}
+				>
+					&nbsp;{remainingSeats}
+				</motion.div>
+			) : (
+				<></>
+			)}
+		</>
+	)
 }
 
 export default PlacesLeft

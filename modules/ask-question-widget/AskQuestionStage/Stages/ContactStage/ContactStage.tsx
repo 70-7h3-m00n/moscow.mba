@@ -10,67 +10,80 @@ import { ACTION } from 'modules/ask-question-widget/fractals/context/reducer'
 import { onSubmitForm } from '@/helpers/index'
 import { useRouter } from 'next/router'
 import { ContextStaticProps } from '@/context/index'
-import { checkValidity } from 'modules/ask-question-widget/fractals/hooks/checkValidity'
-import {
-	handlePhoneInput,
-	handlePhonePaste,
-	hanleOnKeyDown
-} from '@/helpers/general/handleForm'
+import { useForm } from 'react-hook-form'
+import { TypeFormValues } from '@/components/forms/FormBeta/types'
+import { InputPhoneFlag } from '@/components/inputs/InputPhoneFlag/InputPhoneFlag'
+import { InputEmailNew } from '@/components/inputs'
 
 export const ContactStage = () => {
 	const { asPath } = useRouter()
 	const { program } = useContext(ContextStaticProps)
 	const { state, dispatch } = useContext(HowToContactContext)
 	const { formStage, way, method, question, phone, email } = state
+	console.log('state: ', state)
 	const wayToContact = waysToContact[formStage]
-	const [error, setError] = useState(false)
+	const [submitIsDisabled, setSubmitIsDisabled] = useState(false)
+	// const [error, setError] = useState(false)
 
-	const handleFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
-		event.preventDefault()
-		const target = event.target as HTMLInputElement
-		const contactDataInput = target.querySelector('input')
-		const enteredContactData = contactDataInput.value
+	const {
+		register,
+		handleSubmit,
+		reset,
+		control,
+		formState: { errors }
+	} = useForm<TypeFormValues>()
 
-		const isValid = checkValidity({
-			enteredContactData,
-			way: way === 'Электронная почта' ? 'email' : 'phone'
-		})
+	// const handleFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
+	// 	event.preventDefault()
+	// 	const target = event.target as HTMLInputElement
+	// 	const contactDataInput = target.querySelector('input')
+	// 	const enteredContactData = contactDataInput.value
+	// 	console.log('enteredContactData: ', enteredContactData)
 
-		if (!isValid) {
-			setError(true)
-			contactDataInput.focus()
-			return
-		}
+	// 	const isValid = checkValidity({
+	// 		enteredContactData,
+	// 		way: way === 'Электронная почта' ? 'email' : 'phone'
+	// 	})
 
-		setError(false)
+	// 	// if (!isValid) {
+	// 	// 	setError(true)
+	// 	// 	contactDataInput.focus()
+	// 	// 	return
+	// 	// }
 
-		if (method === 'Написать') {
-			dispatch({ type: ACTION.SET_EMAIL, payload: enteredContactData })
-		} else {
-			dispatch({ type: ACTION.SET_PHONE, payload: enteredContactData })
-		}
+	// 	// setError(false)
 
-		console.log('data sent')
+	// 	dispatch({ type: ACTION.SET_EMAIL, payload: enteredContactData })
+	// 	dispatch({ type: ACTION.SET_PHONE, payload: enteredContactData })
 
-		onSubmitForm({
-			setOpenLoader: () => {},
-			setOpen: () => {},
-			asPath,
-			reset: () => {},
-			programTitle: program?.title || '',
-			formName: 'Виджет: задать вопрос',
-			values: {
-				name: '',
-				phone,
-				email,
-				contactWay: way,
-				contactMethod: method,
-				question
-			}
-		})
+	// 	console.log('data sent', {
+	// 		name: '',
+	// 		phone,
+	// 		email,
+	// 		contactWay: way,
+	// 		contactMethod: method,
+	// 		question
+	// 	})
 
-		dispatch({ type: ACTION.SET_FORM_STAGE, payload: 2 })
-	}
+	// 	onSubmitForm({
+	// 		setOpenLoader: () => {},
+	// 		setOpen: () => {},
+	// 		asPath,
+	// 		reset: () => {},
+	// 		programTitle: program?.title || '',
+	// 		formName: 'Виджет: задать вопрос',
+	// 		values: {
+	// 			name: '',
+	// 			phone: state.phone,
+	// 			email: state.email,
+	// 			contactWay: way,
+	// 			contactMethod: method,
+	// 			question
+	// 		}
+	// 	})
+
+	// 	dispatch({ type: ACTION.SET_FORM_STAGE, payload: 2 })
+	// }
 
 	const handlerMethod = (method: 'Написать' | 'Позвонить') => {
 		dispatch({ type: ACTION.SET_METHOD, payload: method })
@@ -79,33 +92,53 @@ export const ContactStage = () => {
 	return (
 		<>
 			<FormStageTitle />
-			<form className={stls.form} onSubmit={handleFormSubmit}>
+			<form
+				className={stls.form}
+				onSubmit={handleSubmit(values => {
+					if (!submitIsDisabled) {
+						setSubmitIsDisabled(true)
+						setTimeout(() => {
+							setSubmitIsDisabled(false)
+						}, 5000)
+
+						window.sessionStorage.setItem('formFilled', 'false')
+
+						dispatch({ type: ACTION.SET_FORM_STAGE, payload: 2 })
+
+						return onSubmitForm({
+							values: {
+								...values,
+								name: '',
+								contactWay: way,
+								contactMethod: method,
+								question
+							},
+							programTitle: program?.title || '',
+							asPath,
+							formName: 'Виджет: задать вопрос',
+							setOpenLoader: () => {},
+							setOpen: () => {},
+							reset: () => {}
+						})
+					}
+				})}
+			>
 				<div className={stls.bottomContainer}>
 					{way === 'Электронная почта' ? (
-						<>
-							<input
-								name='email'
-								type='text'
-								className={stls.contactDataInput}
-								placeholder='Электронная почта'
-							/>
-							{error && (
-								<p className={stls.errorText}>*Адрес почты указан неверно</p>
-							)}
-						</>
+						<InputEmailNew
+							className={stls.contactDataInput}
+							register={register}
+							isRequired
+							errors={errors}
+							variant='gamma'
+						/>
 					) : (
-						<>
-							<input
-								name='phone'
-								type='text'
-								className={stls.contactDataInput}
-								placeholder='Номер телефона'
-								onInput={handlePhoneInput}
-								onKeyDown={hanleOnKeyDown}
-								onPaste={handlePhonePaste}
-							/>
-							{error && <p className={stls.errorText}>*Номер указан неверно</p>}
-						</>
+						<InputPhoneFlag
+							register={register}
+							errors={errors}
+							control={control}
+							variant='gamma'
+						/>
 					)}
 					{state.contactMethods.length > 1 ? (
 						<>

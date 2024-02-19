@@ -11,6 +11,7 @@ import { BonusModule } from './components/BonusModule/BonusModule'
 import { GetFullProgramBtn } from './components/GetFullProgramBtn/GetFullProgramBtn'
 import { MiniModulesList } from './components/MiniModulesList/MiniModulesList'
 import { ModulesHeading } from './components/ModulesHeading/ModulesHeading'
+import { CourseModules } from './components/CourseModules/CourseModules'
 
 export const ProgramModules = ({
 	className,
@@ -23,7 +24,7 @@ export const ProgramModules = ({
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<ModulesHeading program={program} />
-				{at.mba && (
+				{(at.mini || at.mba) && (
 					<>
 						<MBAModulesList
 							className={stls.modulesList}
@@ -46,7 +47,7 @@ export const ProgramModules = ({
 						<GetFullProgramBtn program={program} />
 					</>
 				)}
-				{(at.mini || at.profession) && (
+				{at.profession && (
 					<>
 						<MiniModulesList
 							className={stls.modulesList}
@@ -61,6 +62,13 @@ export const ProgramModules = ({
 							bonusSubjects
 							program={program}
 						/>
+						<GetFullProgramBtn program={program} />
+					</>
+				)}
+				{at.course && (
+					<>
+						<CourseModules className={stls.modulesList} program={program} />
+						{program?.frdo && <FinalProject />}
 						<GetFullProgramBtn program={program} />
 					</>
 				)}

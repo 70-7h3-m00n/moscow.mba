@@ -1,6 +1,6 @@
 import stls from '@/styles/components/forms/FormAlpha.module.sass'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import cn from 'classnames'
 import { useForm } from 'react-hook-form'
 import { useAt } from '@/hooks/index'
@@ -17,7 +17,6 @@ import {
 	InputPromo,
 	InputSubmit
 } from '@/components/inputs'
-import routesFront from '@/config/routesFront'
 
 type TypeFormValues = {
 	name: string

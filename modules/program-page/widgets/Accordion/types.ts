@@ -13,4 +13,5 @@ export type AccordionProps = HTMLAttributes<HTMLDivElement> & {
 	variant: 'modules' | 'faq'
 	final?: boolean
 	children: ReactNode
+	firstOpen?: boolean
 }

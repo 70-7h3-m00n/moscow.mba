@@ -8,8 +8,9 @@ import useAt from '@/hooks/useAt'
 import { diplomaData } from './constants'
 import Image from 'next/image'
 import { DiplomaPopup } from './DiplomaPopup/DiplomaPopup'
+import Link from 'next/link'
 
-export const Diploma = ({ className, ...rest }: DiplomaProps) => {
+export const Diploma = ({ className, program, ...rest }: DiplomaProps) => {
 	const at = useAt()
 
 	const data = at.mba
@@ -18,7 +19,9 @@ export const Diploma = ({ className, ...rest }: DiplomaProps) => {
 		? diplomaData.mini
 		: at.profession
 		? diplomaData.profession
-		: diplomaData.course
+		: at.course && program?.frdo === false
+		? diplomaData.course
+		: diplomaData.courseFRDO
 
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
@@ -26,18 +29,18 @@ export const Diploma = ({ className, ...rest }: DiplomaProps) => {
 				<div>
 					<h2 className={stls.title}>Документы после обучения</h2>
 					<p className={stls.desc}>{data.description}</p>
-					{(at.profession || at.course) && (
-						<p className={stls.desc}>
-							Мы обучаем{' '}
-							<a
-								className={stls.link}
-								href='https://islod.obrnadzor.gov.ru/rlic/details/2df11621-2d30-4173-9389-2fecc24a7639/'
-								target='_blank'
-							>
-								по государственной лицензии №041221
-							</a>
-						</p>
-					)}
+
+					<p className={cn(stls.desc)}>
+						Мы обучаем{' '}
+						<Link
+							className={stls.link}
+							href='https://islod.obrnadzor.gov.ru/rlic/details/2df11621-2d30-4173-9389-2fecc24a7639/'
+							target='_blank'
+						>
+							по государственной лицензии №041221
+						</Link>
+					</p>
+
 					<DiplomaPopup />
 				</div>
 				<div className={stls.imageWrapper}>

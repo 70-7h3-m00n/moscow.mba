@@ -2,47 +2,106 @@
 @use '@/styles/utils/funcs' as f
 @use '@/styles/themes/default/colors' as c
 
-.input.alpha
+.content.alpha
   --bg-color: #262626
   --border-color: #383838
   --chrome-autocomplete-bg: #18191A
   --outline-color: #5D6268
   --text-color: #fff
 
-.input.beta
+.content.beta
   --bg-color: #5D6268
   --border-color: #6D7074
   --chrome-autocomplete-bg: #5D6268
   --outline-color: #5D6268
   --text-color: #fff
 
-.input.gamma
+.content.gamma
   --bg-color: #fff
   --border-color: #E9E9E9
   --chrome-autocomplete-bg: #fff
   --outline-color: #5D6268
   --text-color: #000
 
-.input.delta
+.content.delta
   --bg-color: #F8F8F8
   --border-color: #E9E9E9
   --chrome-autocomplete-bg: #fff
   --outline-color: #5D6268
   --text-color: #000
 
+.content
+  position: relative
+  width: 100%
+
+  &.errorWrapper 
+    .flagButton
+      --border-color: #FF3535 !important
+
+    .dropdown
+      --border-color: var(--outline-color) !important
+
+    .input
+      --border-color: #FF3535 !important
+      --text-color: #FF3535 !important
+      
+      &.alpha
+        --bg-color: #3F2121
+      
+      &.beta
+        --bg-color: #7A5B5B
+
+      &.gamma
+        --bg-color: #FFDFDF
+
+      &.delta
+        --bg-color: #FFDFDF
+
+    & .containerInput::after
+      display: block !important
+      color: #FF3535 !important
+
 .containerInput
+  margin-bottom: .5rem !important
+
+  &:has(.input:placeholder-shown)
+    &::after
+      display: block !important
+      color: #979BA0
+
+
+  &::after
+    display: none !important
+    content: '*' !important
+    position: absolute !important
+    right: 1.5rem !important
+    top: 1.4rem !important
+    font-size: 0.875rem !important
+    color: #979BA0 !important
+
   & input
     padding: 1.5rem 1.5rem 1.5rem 5rem !important
     padding-bottom: 1.3rem !important
     border: 1px solid var(--border-color) !important
     border-radius: 1rem !important
     height: unset !important
+    width: 100% !important
     font-family: Helvetica Neue !important
     font-size: 0.875rem !important
     line-height: 120% !important
     color: var(--text-color) !important
     background: var(--bg-color) !important
-    outline-color: var(--outline-color) !important
+    position: relative !important
+    // outline: 1px solid var(--outline-color) !important
+
+    &::placeholder
+      font-family: Helvetica Neue
+      font-size: 0.875rem
+      line-height: 120%
+      color: #979BA0
+
+    &:focus
+      outline: 2px solid #fff !important
 
 .phoneInput,.dropdown
   font-family: Helvetica Neue !important
@@ -52,11 +111,47 @@
   border-top-left-radius: 1rem !important
   border-bottom-left-radius: 1rem !important
   background: var(--bg-color) !important
-  &:hover
-    background-color: black !important
+  
+  & > div 
+    // padding-left: 1rem !important
+    border-top-left-radius: 1rem !important
+    border-bottom-left-radius: 1rem !important
+    transition: all .3s ease-in-out !important
+    width: 4.5rem !important
+    padding: 0 0 0 1.5rem !important
+
+    &[class~="open"]
+      background-color: var(--chrome-autocomplete-bg) !important
+
+    &:hover
+      background-color: var(--outline-color) !important
+    &:focus
+      background-color: var(--outline-color) !important
+    &:active
+      background-color: var(--outline-color) !important
+
+  & > div > div > div
+    left: 2rem !important
+    border-top-color: #fff !important
 
 .dropdown
-  background-color: green !important
+  border-radius: 1rem !important
+  background-color: var(--bg-color) !important
+  color: var(--text-color)
+  border: 1px solid var(--border-color)
+  z-index: 1000 !important
+
+  & > li
+    z-index: 1000 !important
+    &:hover
+      background-color: var(--border-color) !important
+    &:focus
+      background-color: var(--border-color) !important
+    &:active
+      background-color: var(--border-color) !important
+
+  & > li[class~="highlight"]
+    background-color: var(--chrome-autocomplete-bg) !important
 
 .error
   position: absolute
@@ -65,3 +160,4 @@
   font-size: 0.625rem
   color: #FF3535
   opacity: .8
+  z-index: 1

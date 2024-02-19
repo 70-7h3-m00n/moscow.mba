@@ -38,13 +38,6 @@ const helvetica = localFont({
 	]
 })
 
-// const unbounded = Unbounded({
-// 	weight: ['400'],
-// 	style: ['normal'],
-// 	subsets: ['latin', 'cyrillic'],
-// 	display: 'swap'
-// })
-
 export const ProgramPage = ({
 	className,
 	programs,
@@ -61,14 +54,7 @@ export const ProgramPage = ({
 			program={program}
 			teachers={teachers}
 		>
-			<div
-				className={cn(
-					className,
-					stls.container,
-					helvetica.className
-					// unbounded.className
-				)}
-			>
+			<div className={cn(className, stls.container, helvetica.className)}>
 				<HeroSection className={stls.heroSection} program={program} />
 				<AboutProgram className={stls.section} program={program} />
 				<WhatWillYouLearnNew className={stls.section} program={program} />
@@ -81,19 +67,24 @@ export const ProgramPage = ({
 					id='program-modules'
 					program={program}
 				/>
-				<Diploma className={stls.section} />
+				<Diploma className={stls.section} program={program} />
 				<ExpertsNew className={stls.section} id='experts' program={program} />
-				{isEmployment && (
-					<Employment className={stls.section} id='employment' />
-				)}
-				{at.profession || at.course ? (
+
+				{program?.frdo === false && (at.profession || at.course) ? (
 					<>
+						<FutureJob className={stls.section} program={program} />
+						<EducationROI className={stls.section} program={program} />
+					</>
+				) : at.profession || at.course ? (
+					<>
+						<Employment className={stls.section} id='employment' />
 						<FutureJob className={stls.section} program={program} />
 						<EducationROI className={stls.section} program={program} />
 						<EmploymentPartners className={stls.section} />
 					</>
 				) : (
 					<>
+						<Employment className={stls.section} id='employment' />
 						<EmploymentPartners className={stls.section} />
 						<Networking className={stls.section} />
 					</>

@@ -6,50 +6,12 @@ import { ContactStage } from './Stages/ContactStage/ContactStage'
 import { ThanksStage } from './Stages/ThanksStage/ThanksStage'
 import { SelectWayStage } from './Stages/SelectWayStage/SelectWayStage'
 import { HowToContactContext } from '../fractals/context/context'
+import useAt from '@/hooks/useAt'
 
 const AskQuestionStage = () => {
+	const at = useAt()
 	const { state } = useContext(HowToContactContext)
-	console.log('state: ', state)
 	const { formStage } = state
-
-	// useEffect(() => {
-	// 	if (formSubmitted) {
-	// 		const tagManagerArgs = {
-	// 			dataLayer: {
-	// 				event: 'generate_lead',
-	// 				ecommerce: {
-	// 					add: {
-	// 						actionField: {
-	// 							id: uuidv4()
-	// 						},
-	// 						products: [
-	// 							{
-	// 								id: 'question',
-	// 								name: 'question',
-	// 								programFormat: at.online
-	// 									? 'online'
-	// 									: at.blended
-	// 									? 'blended'
-	// 									: null,
-	// 								programType: at.mini
-	// 									? 'mini'
-	// 									: at.mba
-	// 									? 'mba'
-	// 									: at.profession
-	// 									? 'profession'
-	// 									: at.course
-	// 									? 'course'
-	// 									: null
-	// 							}
-	// 						]
-	// 					}
-	// 				}
-	// 			},
-	// 			dataLayerName: 'dataLayer'
-	// 		}
-	// 		TagManager.dataLayer(tagManagerArgs)
-	// 	}
-	// }, [])
 
 	return (
 		<>

@@ -15,6 +15,7 @@ import {
 	InputSubmit,
 	InputSubmitNew
 } from '@/components/inputs'
+import { InputPhoneFlag } from '@/components/inputs/InputPhoneFlag/InputPhoneFlag'
 
 export const FormHeader = ({
 	className,
@@ -28,6 +29,7 @@ export const FormHeader = ({
 		register,
 		handleSubmit,
 		reset,
+		control,
 		formState: { errors }
 	} = useForm<TypeFormValues>()
 
@@ -65,7 +67,13 @@ export const FormHeader = ({
 		>
 			<div className={stls.container}>
 				<InputNameNew register={register} errors={errors} variant='gamma' />
-				<InputPhoneNew register={register} errors={errors} variant='gamma' />
+				{/* <InputPhoneNew register={register} errors={errors} variant='gamma' /> */}
+				<InputPhoneFlag
+					register={register}
+					errors={errors}
+					control={control}
+					variant='gamma'
+				/>
 				<InputSubmitNew
 					className={stls.inputSubmit}
 					errors={errors}
