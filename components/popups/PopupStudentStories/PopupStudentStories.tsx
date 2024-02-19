@@ -33,7 +33,9 @@ export const PopupStudentStories = ({
 				blurDataURL={base64pixel}
 			/>
 			<div className={stls.content}>
-				<Tag variant='gamma'>{storyData.profession}</Tag>
+				<Tag className={stls.tag} variant='gamma'>
+					{storyData.profession}
+				</Tag>
 				<p className={stls.content__name}>{storyData.name}</p>
 				<div className={stls.content__description}>
 					{storyData.description.map((item, idx) => (

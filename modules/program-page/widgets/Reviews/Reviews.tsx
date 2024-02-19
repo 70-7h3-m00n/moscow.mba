@@ -31,7 +31,9 @@ export const Reviews = ({ className, program, ...rest }: ReviewsProps) => {
 						Больше отзывов
 					</BtnBeta>
 				</Link>
-				{(at.course || at.profession) && <StudentStories />}
+				{(at.course || at.profession) && (
+					<StudentStories className={stls.studentStories} />
+				)}
 			</Wrapper>
 		</section>
 	)
