@@ -3,14 +3,14 @@ import stls from './Networking.module.sass'
 import { NetworkingDiagram } from '@/components/images/program/NetworkingDiagram/NetworkingDiagram'
 import Image from 'next/image'
 
-export const data = [
+export const dataNetworking = [
 	{
 		title: 'Единомышленники, близкие вам по уровню',
 		desc:
 			'На дистанционных программах MBA обучаются корпоративные менеджеры и предприниматели из разных сфер',
 		image: (
 			<Image
-				src='/assets/images/program/networking-item-1.jpg'
+				src='/assets/images/program/networking-item-1.png'
 				width={82}
 				height={82}
 				alt='Фото клиента'

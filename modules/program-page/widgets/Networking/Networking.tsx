@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { NetworkingProps } from './types'
 
 import { Wrapper } from '@/components/layout'
-import { data } from './constants'
+import { dataNetworking } from './constants'
 import { BtnBeta } from '@/components/btns'
 
 export const Networking = ({ className, ...rest }: NetworkingProps) => {
@@ -12,7 +12,7 @@ export const Networking = ({ className, ...rest }: NetworkingProps) => {
 			<Wrapper classNames={[stls.content]}>
 				<h2 className={stls.title}>Нетворкинг: общение и обмен опытом</h2>
 				<ul className={stls.list}>
-					{data.map((item, idx) => (
+					{dataNetworking.map((item, idx) => (
 						<li className={stls.item} key={idx}>
 							{item.image}
 							<h3 className={stls.item__title}>{item.title}</h3>

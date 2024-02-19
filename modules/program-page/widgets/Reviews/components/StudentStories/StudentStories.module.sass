@@ -11,6 +11,10 @@
     grid-template-columns: 1fr
     padding-inline: unset
 
+.desktop
+  @include m.media(phone, tablet, laptop)
+    display: none
+
 .left
   display: flex
   flex-direction: column
@@ -20,7 +24,7 @@
   border-radius: 1.5rem
   background-color: #51555B
   
-  @include m.media(phone, tablet)
+  @include m.media(phone, tablet, laptop)
     justify-content: flex-start
     gap: 1rem
     padding: 1rem
@@ -34,6 +38,7 @@
     letter-spacing: -0.1rem
 
     @include m.media(phone, tablet)
+      margin-bottom: 1rem
       text-align: center
       font-size: 1.75rem
       letter-spacing: -0.035rem
@@ -45,15 +50,29 @@
     border-radius: 1.5rem
     background-color: #fff
 
-    @include m.media(phone, tablet)
+    @include m.media(phone, tablet, laptop)
+      display: block
       padding: 1rem
+
+
+    @include m.media(laptop)
+      max-width: 90vw
+
+    @include m.media(tablet)
+      max-width: 90vw
+
+    @include m.media(phone)
+      max-width: 85vw
 
 .tag
   margin-bottom: 1.5rem
+  max-width: 20rem
 
 .text
   margin-bottom: 1rem
   font-size: 1.375rem
+  @include m.media(phone, tablet)
+    font-size: 1.125rem
 
 .right
   display: flex

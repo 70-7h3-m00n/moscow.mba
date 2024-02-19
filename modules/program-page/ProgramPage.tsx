@@ -4,7 +4,6 @@ import { ProgramPageProps } from './types'
 
 import { ProgramPageProvider } from './fractals/context/context'
 import localFont from 'next/font/local'
-import { Unbounded } from 'next/font/google'
 import useAt from '@/hooks/useAt'
 import {
 	HeroSection,
@@ -45,8 +44,6 @@ export const ProgramPage = ({
 	teachers
 }: ProgramPageProps) => {
 	const at = useAt()
-
-	const isEmployment = program?.employment !== false
 
 	return (
 		<ProgramPageProvider
