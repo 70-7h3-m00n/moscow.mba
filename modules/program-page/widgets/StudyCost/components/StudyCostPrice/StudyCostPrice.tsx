@@ -16,7 +16,9 @@ export const StudyCostPrice = ({ className, program }: StudyCostPriceProps) => {
 	const at = useAt()
 
 	const data =
-		at.profession || at.course
+		program?.frdo === false
+			? dataList.professionAndCourseNoEployment
+			: at.profession || at.course
 			? dataList.professionAndCourse
 			: dataList.mbaAndMini
 

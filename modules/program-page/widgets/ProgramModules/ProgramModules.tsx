@@ -68,6 +68,7 @@ export const ProgramModules = ({
 				{at.course && (
 					<>
 						<CourseModules className={stls.modulesList} program={program} />
+						{program?.frdo && <FinalProject />}
 						<GetFullProgramBtn program={program} />
 					</>
 				)}

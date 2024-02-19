@@ -35,7 +35,11 @@ export const HeroSection = ({
 
 	const cornerPhotoURL = at.profession
 		? '/assets/images/program/hero-image-2.png'
-		: '/assets/images/program/hero-image-3.png'
+		: at.course
+		? '/assets/images/program/hero-image-3.png'
+		: at.mini
+		? '/assets/images/program/hero-image-4.png'
+		: '/assets/images/program/hero-image-5.png'
 
 	return (
 		<section className={cn(className, stls.container)} {...rest}>

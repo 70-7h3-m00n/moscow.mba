@@ -12,24 +12,16 @@
     position: relative
     margin-bottom: 10px
     color: #575757
-    &::before
-      content: ''
-      width: 1px
-      height: 10px
-      background: #575757
-      position: absolute
-      top: 5px
-      right: -24px
-      transform: rotate(45deg)
     &::after
       content: ''
-      width: 1px
+      width: 10px
       height: 10px
-      background:#575757
+      border-top: 1px solid #575757
+      border-right: 1px solid #575757
       position: absolute
-      top: -1px
+      top: 3px
       right: -24px
-      transform: rotate(-45deg)
+      transform: rotate(45deg)
     &:last-child
       margin-right: 0
       padding-right: 10px

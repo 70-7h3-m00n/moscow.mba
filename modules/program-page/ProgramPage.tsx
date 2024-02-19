@@ -67,19 +67,24 @@ export const ProgramPage = ({
 					id='program-modules'
 					program={program}
 				/>
-				<Diploma className={stls.section} />
+				<Diploma className={stls.section} program={program} />
 				<ExpertsNew className={stls.section} id='experts' program={program} />
-				{isEmployment && (
-					<Employment className={stls.section} id='employment' />
-				)}
-				{at.profession || at.course ? (
+
+				{program?.frdo === false && (at.profession || at.course) ? (
 					<>
+						<FutureJob className={stls.section} program={program} />
+						<EducationROI className={stls.section} program={program} />
+					</>
+				) : at.profession || at.course ? (
+					<>
+						<Employment className={stls.section} id='employment' />
 						<FutureJob className={stls.section} program={program} />
 						<EducationROI className={stls.section} program={program} />
 						<EmploymentPartners className={stls.section} />
 					</>
 				) : (
 					<>
+						<Employment className={stls.section} id='employment' />
 						<EmploymentPartners className={stls.section} />
 						<Networking className={stls.section} />
 					</>

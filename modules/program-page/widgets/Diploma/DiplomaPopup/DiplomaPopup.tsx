@@ -57,6 +57,64 @@ export const DiplomaPopup = ({ className, ...rest }: DiplomaPopupProps) => {
 					'/assets/diplomas/courses/new/qualification-certificate-courses.jpg',
 				orientation: 'horizontal'
 			}
+		],
+		mba: [
+			{
+				title: 'Диплом',
+				src: '/assets/diplomas/general/new/mba-diploma.jpg',
+				orientation: 'horizontal'
+			},
+
+			{
+				title: 'Supplement',
+				src: '/assets/diplomas/general/new/mba-supplement-1.png',
+				orientation: 'horizontal'
+			},
+			{
+				title: 'Supplement',
+				src: '/assets/diplomas/general/new/mba-supplement-2.png',
+				orientation: 'horizontal'
+			},
+			{
+				title: 'Диплом',
+				src: '/assets/diplomas/general/new/mba-diploma-2.jpg',
+				orientation: 'horizontal'
+			},
+
+			{
+				title: 'Приложение',
+				src: '/assets/diplomas/general/new/mba-addendum.png',
+				orientation: 'horizontal'
+			}
+		],
+		mini: [
+			{
+				title: 'Диплом',
+				src: '/assets/diplomas/mini/new/mini-diploma.jpg',
+				orientation: 'horizontal'
+			},
+
+			{
+				title: 'Supplement',
+				src: '/assets/diplomas/mini/new/mini-supplement-1.png',
+				orientation: 'horizontal'
+			},
+			{
+				title: 'Supplement',
+				src: '/assets/diplomas/mini/new/mini-supplement-2.png',
+				orientation: 'horizontal'
+			},
+			{
+				title: 'Диплом',
+				src: '/assets/diplomas/mini/new/mini-diploma-2.jpg',
+				orientation: 'horizontal'
+			},
+
+			{
+				title: 'Приложение',
+				src: '/assets/diplomas/mini/new/mini-addendum.png',
+				orientation: 'horizontal'
+			}
 		]
 	}
 	// На этих профессиях выдаётся только сертификат
@@ -71,7 +129,9 @@ export const DiplomaPopup = ({ className, ...rest }: DiplomaPopupProps) => {
 		? diplomas.courseFRDO
 		: at.course
 		? diplomas.course
-		: diplomas.profession
+		: at.mini
+		? diplomas.mini
+		: diplomas.mba
 	//todo
 
 	const filteredImagesData = imagesData?.filter(
