@@ -7,6 +7,9 @@ import { routesFront } from '@/config/index'
 // import { Programs } from '@/components/pages'
 import { ProgramsPage } from 'modules'
 import { SeoPagesPrograms } from '@/components/seo'
+import { dev } from '@/config/index'
+import ProgramsPageAlt from 'modules/programs-page-alt/ProgramsPage'
+
 
 const PagePrograms = ({ programs }) => {
 	usePageHandleContext({ programs })
@@ -15,7 +18,10 @@ const PagePrograms = ({ programs }) => {
 		<>
 			<SeoPagesPrograms />
 			{/* <Programs mbaTypeOfProgram={'mini'} mbaFormat={'online'} /> */}
-			<ProgramsPage />
+			{dev ?
+			<ProgramsPageAlt programs={programs}/>
+			:
+				<ProgramsPage />}
 		</>
 	)
 }

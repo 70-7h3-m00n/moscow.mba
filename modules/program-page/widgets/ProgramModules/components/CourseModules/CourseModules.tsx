@@ -20,14 +20,8 @@ export const CourseModules = ({
 					</Tag>
 
 					<div className={cn(className, stls.content)} {...rest}>
-						<p className={stls.title}>
-							Стратегическое управление и развитие строительного бизнеса
-						</p>
-						<p className={stls.description}>
-							Подберёте оптимальную структуру управления командой. Научитесь
-							анализировать и улучшать показатели отдела. Построите воронки
-							продаж, сформируете KPI и систему мотивации сотрудников.
-						</p>
+						<p className={stls.title}>{studyModule.title}</p>
+						<p className={stls.description}>{studyModule.string}</p>
 						<ul className={stls.skills}>
 							{studyModule?.skills.map(el => (
 								<li className={stls.skills__item} key={el.title}>
