@@ -1,4 +1,4 @@
-import { FilterFormatTrainingEnum, FilterTypeProgramEnum } from '../enums'
+import { FilterTypeProgramEnum } from '../enums'
 
 export const LIST_FILTER_TYPE_PROGRAM = [
 	{ value: FilterTypeProgramEnum.all, text: 'Все категории' },
