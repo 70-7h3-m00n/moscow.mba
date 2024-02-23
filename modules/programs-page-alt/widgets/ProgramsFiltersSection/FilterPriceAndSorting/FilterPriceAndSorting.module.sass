@@ -1,0 +1,48 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.list
+  display: flex
+  gap: 1.5rem
+  flex-wrap: wrap
+
+.item
+
+  &__btn
+    display: flex
+    padding: 0.5rem
+    justify-content: center
+    align-items: center
+    gap: 0.5rem
+    border-radius: 0.75rem
+    border: 1px solid #000
+    background-color: #fff
+    transition: all .3s ease-in-out
+
+    &.active
+      border-color: #FF3535
+      background-color: #FF3535
+
+  &__name
+    font-size: 0.875rem
+    font-style: normal
+    font-weight: 400
+    line-height: 120% 
+    color: #000
+    transition: all .3s ease-in-out
+
+  &__counter
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 1.25rem
+    height: 1.25rem
+    border-radius: 10rem
+    font-size: 0.625rem
+    color: #FF3535
+    background-color: #fcc
+
+
+.item__btn.active .item__name
+    color: #fff

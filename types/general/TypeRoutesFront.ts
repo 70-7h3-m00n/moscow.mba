@@ -22,6 +22,7 @@ type TypeRoutesFront = {
 	programsMba: '/programs/mba'
 	programsMini: '/programs/mini'
 	programsProfession: '/programs/profession'
+	programsCourse: '/programs/course'
 	programsMbaOnline: '/programs/mba/online'
 	programsMbaBlended: '/programs/mba/blended'
 	programsMiniOnline: '/programs/mini/online'

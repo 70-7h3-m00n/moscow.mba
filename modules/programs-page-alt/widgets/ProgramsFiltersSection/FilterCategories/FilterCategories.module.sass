@@ -1,0 +1,54 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.list
+  display: flex
+  gap: 1.5rem
+  flex-wrap: wrap
+  margin-bottom: 1.5rem
+
+.item
+  position: relative
+
+  &__link
+    display: flex
+    padding: 0.5rem
+    justify-content: center
+    align-items: center
+    gap: 0.5rem
+    border-radius: 1.5rem
+    border: 1px solid #DEE2E5
+    background-color: #fff
+    transition: all .3s ease-in-out
+
+  &__name
+    font-size: 0.875rem
+    font-style: normal
+    font-weight: 400
+    line-height: 120% 
+    color: #000
+    transition: all .3s ease-in-out
+
+.item:has(.info) .item__link
+  padding-right: 2rem
+
+.info
+  position: absolute
+  top: .3rem
+  right: .4rem
+  width: 22px
+  height: 22px
+  z-index: 100
+
+  button
+    padding: 0
+
+  svg
+    padding: 0
+
+.premium
+  position: relative
+  top: -0.2rem
+  font-size: 0.625rem
+  color: #FF3535

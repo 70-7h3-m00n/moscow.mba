@@ -20,7 +20,10 @@ export type ProgramsPageProviderProps = {
 }
 
 export const ProgramsReducerInitialState: TypeProgramsReducer = {
-	programs: []
+	programs: [],
+	UIPrograms: [],
+	direction: null,
+	price: null
 }
 
 export const ProgramsPageContext = createContext<
@@ -43,7 +46,10 @@ export const ProgramsPageProvider: React.FC<ProgramsPageProviderProps> = ({
 		dispatch({
 			type: ACTION.SET_INITIAL_PROPS,
 			payload: {
-				programs: programs
+				programs: programs,
+				UIPrograms: programs,
+				direction: null,
+				price: null
 			}
 		})
 	}, [])
