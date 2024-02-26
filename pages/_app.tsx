@@ -20,6 +20,7 @@ import {
 } from '@/components/layout'
 import { MenuState, OverlayState, ContextStaticProps } from '@/context/index'
 import { filledUpFormWithoutSubmission } from '../helpers'
+import { YandexMetrika } from '@/components/seo/Metrica'
 
 function MyApp({ Component, pageProps, router }) {
 	const at = useAt()
@@ -142,8 +143,6 @@ function MyApp({ Component, pageProps, router }) {
 					name='viewport'
 					content='width=device-width, initial-scale=1, maximum-scale=1'
 				/>
-				<meta name='yandex-verification' content='535e6f9322915158' />
-				<meta name='yandex-verification' content='0529f05a80cf0830' />
 				{!dev && (
 					<script
 						type='text/javascript'
@@ -230,14 +229,6 @@ function MyApp({ Component, pageProps, router }) {
 							})();`
 					}}
 				/>
-				{/* {!dev && (
-					<script
-						type='text/javascript'
-						dangerouslySetInnerHTML={{
-							__html: mangoScript
-						}}
-					/>
-				)} */}
 			</Head>
 			<DefaultSeo {...SEO} />
 			<LogoJsonLd
@@ -276,6 +267,7 @@ function MyApp({ Component, pageProps, router }) {
 					</MenuState>
 				</OverlayState>
 			</ContextStaticProps.Provider>
+			<YandexMetrika />
 		</>
 	)
 }

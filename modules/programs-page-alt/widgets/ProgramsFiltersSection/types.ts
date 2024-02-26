@@ -1,3 +1,3 @@
-import { HTMLAttributes } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 
-export type ProgramsFiltersSectionProps = HTMLAttributes<HTMLElement>
+export type ProgramsFiltersSectionProps = ComponentPropsWithoutRef<'section'>

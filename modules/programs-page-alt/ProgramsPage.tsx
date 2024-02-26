@@ -5,10 +5,8 @@ import { ProgramsPageProps } from './types'
 import localFont from 'next/font/local'
 
 import { ProgramsFiltersSection } from './widgets'
-import {
-	ProgramsPageContext,
-	ProgramsPageProvider
-} from './fractals/context/context'
+import { ProgramsPageProvider } from './fractals/context/context'
+import { ProgramsCardsSection } from './widgets/ProgramsCardsSection/ProgramsCardsSection'
 
 const helvetica = localFont({
 	src: [
@@ -21,10 +19,12 @@ const helvetica = localFont({
 })
 
 const ProgramsPageAlt = ({ className, programs }: ProgramsPageProps) => {
+	// console.log('programs: ', programs)
 	return (
 		<ProgramsPageProvider programs={programs}>
 			<div className={cn(className, stls.container, helvetica.className)}>
-				<ProgramsFiltersSection />
+				<ProgramsFiltersSection className={stls.filtersSection} />
+				<ProgramsCardsSection className={stls.cardsSection} />
 			</div>
 		</ProgramsPageProvider>
 	)

@@ -4,40 +4,61 @@ import { ProgramsFiltersSectionProps } from './types'
 import { Wrapper } from '@/components/layout'
 import { useContext } from 'react'
 import { ProgramsPageContext } from 'modules/programs-page-alt/fractals/context/context'
-import { TypeLibPrograms } from '@/types/index'
+import { TypeLibProgram, TypeLibPrograms } from '@/types/index'
+import { FilterDirections } from './FilterDirections/FilterDirections'
+import { FilterCategories } from './FilterCategories/FilterCategories'
+import { FilterPriceAndSorting } from './FilterPriceAndSorting/FilterPriceAndSorting'
+import Image from 'next/image'
+
+export type GroupedProgramsType = {
+	[fieldName: string]: TypeLibProgram[]
+}
 
 export const ProgramsFiltersSection = ({
 	className,
 	...rest
 }: ProgramsFiltersSectionProps) => {
-	// const { uniqueDirections, minMaxDuration } = usePrograms()
-	// console.log('>>>> uniqueDirections <<<<  ', uniqueDirections)
-
 	const { state, dispatch } = useContext(ProgramsPageContext)
 
-	const filterUniqueDirections = (programs: TypeLibPrograms) => {
-		const programsStudyFieldName = programs.map(
-			program => program?.study_field?.name
-		)
-		const uniqueProgramsStudyFieldName = programsStudyFieldName.filter(
-			(item, index, arr) => arr.indexOf(item) === index
-		)
+	const groupProgramsByField = (
+		programs: TypeLibPrograms
+	): GroupedProgramsType => {
+		const grouped = programs.reduce((acc, program) => {
+			const fieldName = program?.study_field?.name
 
-		return uniqueProgramsStudyFieldName
+			if (fieldName) {
+				if (!acc[fieldName]) {
+					acc[fieldName] = []
+				}
+				acc[fieldName].push(program)
+			}
+			return acc
+		}, {})
+
+		return grouped
 	}
 
-	const uniqueDirections = filterUniqueDirections(state?.programs)
+	const bg = '/assets/images/programs/filters-bg.png'
+
+	const uniqueDirections = groupProgramsByField(state?.programs)
 
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<h1 className={stls.title}>Все программы обучения</h1>
-				{/* categories */}
-				<ul>
-					{uniqueDirections?.map(direction => (
-						<li key={direction}>{direction}</li>
-					))}
-				</ul>
+				<FilterCategories />
+				<FilterDirections
+					className={stls.directions}
+					directions={uniqueDirections}
+				/>
+				<FilterPriceAndSorting />
+				<Image
+					className={stls.bgImage}
+					src={bg}
+					alt=''
+					width={700}
+					height={800}
+				/>
 			</Wrapper>
 		</section>
 	)
