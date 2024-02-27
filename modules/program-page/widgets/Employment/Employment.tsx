@@ -17,7 +17,7 @@ export const Employment = ({ className, ...rest }: EmploymentProps) => {
 						<li className={stls.item} key={idx}>
 							{item.background}
 							<div className={stls.item__content}>
-								<h3 className={stls.item__title}>{item.title}</h3>
+								<p className={stls.item__title}>{item.title}</p>
 								<p className={stls.item__desc}>{item.desc}</p>
 							</div>
 						</li>

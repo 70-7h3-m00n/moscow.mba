@@ -47,13 +47,13 @@ const PlacesLeft = ({ uniqueKey }: { uniqueKey: number }) => {
 	return (
 		<>
 			{uniqueKey ? (
-				<motion.div
+				<motion.span
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ duration: 1 }}
 				>
 					&nbsp;{remainingSeats}
-				</motion.div>
+				</motion.span>
 			) : (
 				<></>
 			)}

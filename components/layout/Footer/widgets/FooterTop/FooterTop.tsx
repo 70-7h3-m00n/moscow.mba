@@ -148,14 +148,14 @@ export const FooterTop = ({ className, ...rest }: FooterTopProps) => {
 												: 'Подписка на рассылку'}
 										</Link>
 									</li> */}
-								<li className={stls.linkItem}>
+								{/* <li className={stls.linkItem}>
 									<Link
 										href='/archive'
 										{...(at.en ? { locale: 'ru' } : undefined)}
 									>
 										{at.en ? 'Archived programs' : 'Архивные программы'}
 									</Link>
-								</li>
+								</li> */}
 								<li className={stls.linkItem}>
 									<Link
 										href='/seminars'

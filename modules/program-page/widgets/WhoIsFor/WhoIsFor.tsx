@@ -32,11 +32,11 @@ export const WhoIsForNew = ({ className, program, ...rest }: WhoIsForProps) => {
 				{whoIsForDefault.map(({ name, description, photo }, idx) => {
 					return (
 						<div className={stls.item} key={idx}>
-							<h3 className={stls.item__title}>
+							<p className={stls.item__title}>
 								{program?.whoIsFor?.length > 0
 									? program?.whoIsFor[idx]?.name
 									: name}
-							</h3>
+							</p>
 							<p className={stls.item__desc}>
 								{program?.whoIsFor?.[idx]?.description || description}
 							</p>

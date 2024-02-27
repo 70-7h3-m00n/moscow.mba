@@ -86,13 +86,13 @@ export const ModulesHeading = ({
 						[stls.spaceBetween]: !tools
 					})}
 				>
-					<h3 className={stls.right__title}>Результат</h3>
+					<p className={stls.right__title}>Результат</p>
 					<p className={stls.right__desc}>{program?.duration?.modulesResult}</p>
 					{tools && (
 						<>
-							<h3 className={stls.right__title}>
+							<p className={stls.right__title}>
 								Научитесь работать с&nbsp;инструментами
-							</h3>
+							</p>
 							<ul className={stls.tagList}>
 								{program?.duration?.modulesTools?.map(skill => (
 									<Tag variant='gamma' key={skill.id}>

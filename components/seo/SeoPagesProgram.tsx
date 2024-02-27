@@ -61,12 +61,22 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
 		  ]
 		: cannonicalCheck
 
+	// const metaTitleTemplate = `${programTitle} • ${
+	// 	program?.category.type === 'mini' ? 'MBA' : ''
+	// } ${program?.category.type} ${
+	// 	at.blended ? 'blended' : 'online'
+	// } • ${companyName}`
+
+	const metaTitleTemplate = at.profession
+		? `Профессия "${program?.title}": обучение онлайн`
+		: at.course
+		? `Курс "${program?.title}": обучение онлайн`
+		: at.mini
+		? `Программа Mini MBA "${program?.title}": обучение онлайн`
+		: `Программа MBA "${program?.title}": обучение онлайн`
+
 	const seoParams = {
-		title: program?.metaTitle
-			? metaTitle
-			: `${programTitle} • ${program?.category.type === 'mini' ? 'MBA' : ''} ${
-					program?.category.type
-			  } ${at.blended ? 'blended' : 'online'} • ${companyName}`,
+		title: program?.metaTitle ? metaTitle : metaTitleTemplate,
 		programTitle: programTitle,
 		desc: program?.metaDescription
 			? metaDescription

@@ -13,10 +13,10 @@ export const BreadcrumbsSection = ({
 	...rest
 }: BreadcrumbsSectionProps) => {
 	return (
-		<section className={cn(className, stls.container)} {...rest}>
+		<div className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
 				<BreadcrumbsAlt programChunkData={program} />
 			</Wrapper>
-		</section>
+		</div>
 	)
 }

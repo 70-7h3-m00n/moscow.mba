@@ -23,22 +23,6 @@ export const StudyCostPayment = ({
 		PAYMENT.CONSULTATION
 	)
 
-	// const consultationHandler = () => {
-	// 	setActivePaymentMethod(PAYMENT.CONSULTATION)
-	// }
-
-	// const fullpriceHandler = () => {
-	// 	setActivePaymentMethod(PAYMENT.FULLPRICE)
-	// }
-
-	// const creditHandler = () => {
-	// 	setActivePaymentMethod(PAYMENT.CREDIT)
-	// }
-
-	// const giftHandler = () => {
-	// 	setActivePaymentMethod(PAYMENT.GIFT)
-	// }
-
 	const programType = at.profession
 		? 'profession'
 		: at.course
@@ -65,10 +49,10 @@ export const StudyCostPayment = ({
 							className={stls.item__btn}
 							onClick={() => setActivePaymentMethod(paymentMethod.type)}
 						>
-							<p className={stls.paymentText}>
+							<span className={stls.paymentText}>
 								{paymentMethod.name}
 								{paymentMethod.type === PAYMENT.FULLPRICE && fullPrice}
-							</p>
+							</span>
 							{paymentMethod.image}
 						</button>
 					</li>

@@ -25,11 +25,11 @@ export const Reviews = ({ className, program, ...rest }: ReviewsProps) => {
 				</p>
 				<Rating className={stls.rating} />
 				<Carousel className={stls.carousel} program={program} />
-				<VideoReviewsCarousel className={stls.videoReviews} />
-				<Link href={'/reviews'}>
-					<BtnBeta className={stls.moreReviewsBtn} variant='alpha'>
-						Больше отзывов
-					</BtnBeta>
+				{/* <VideoReviewsCarousel className={stls.videoReviews} /> */}
+				<Link href={'/reviews'} className={stls.moreReviewsBtn}>
+					{/* <BtnBeta className={stls.moreReviewsBtn} variant='alpha'> */}
+					Больше отзывов
+					{/* </BtnBeta> */}
 				</Link>
 				{(at.course || at.profession) && (
 					<StudentStories className={stls.studentStories} />

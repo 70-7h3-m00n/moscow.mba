@@ -110,7 +110,7 @@ export const HowProcessGoesNew = ({
 									key={`Carousel_post--${idx}`}
 								>
 									<div className={stls.slide__content}>
-										<h3 className={stls.slide__title}>{slide.subtitle}</h3>
+										<p className={stls.slide__title}>{slide.subtitle}</p>
 										<p className={stls.slide__desc}>{slide.description}</p>
 									</div>
 									<Image

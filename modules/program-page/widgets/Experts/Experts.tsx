@@ -37,7 +37,7 @@ export const ExpertsNew = ({ className, program, ...rest }: ExpertsProps) => {
 	const defaultTeachers = useDefaultTeachers()
 	const teachers =
 		program?.teachers && program?.teachers?.length > 0
-			? program?.teachers
+			? program?.teachers?.filter(teacher => !!teacher.portrait.url)
 			: defaultTeachers
 
 	const sliderRefExperts = useRef<Slider>(null)
