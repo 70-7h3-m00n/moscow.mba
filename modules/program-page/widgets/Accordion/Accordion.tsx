@@ -20,7 +20,7 @@ export const Accordion = ({
 }: AccordionProps) => {
 	return (
 		<div className={cn(className, stls.item)} onClick={() => handler(idx)}>
-			<button
+			<div
 				className={cn(stls.item__btn, {
 					[stls.row]: final || variant === 'faq'
 				})}
@@ -71,7 +71,7 @@ export const Accordion = ({
 						/>
 					)}
 				</div>
-			</button>
+			</div>
 
 			<div
 				className={cn(stls.item__content, {

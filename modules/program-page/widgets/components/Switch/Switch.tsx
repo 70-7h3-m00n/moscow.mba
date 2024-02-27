@@ -49,22 +49,29 @@ export const Switch = ({ className, ...rest }: SwitchProps) => {
 						className={stls.check}
 						id='checkbox_toggle'
 						type='checkbox'
-						defaultChecked={toggleSwitch}
+						checked={toggleSwitch}
 						onChange={handleToggleSwitch}
 						{...rest}
 					/>
 					<div className={stls.checkbox}>
-						<label className={stls.slide} htmlFor='checkbox_toggle'>
-							<label className={stls.toggle} htmlFor='checkbox_toggle'></label>
-							<label className={stls.text} htmlFor='checkbox_toggle'>
+						<label
+							className={stls.slide}
+							htmlFor='checkbox_toggle'
+							// onClick={() => setToggleSwitch(!toggleSwitch)}
+						>
+							<div className={stls.toggle}></div>
+							<div
+								className={stls.text}
+								// onClick={() => setToggleSwitch(!toggleSwitch)}
+							>
 								MBA online
-							</label>
-							<label
+							</div>
+							<div
 								className={cn(stls.text, stls.mini)}
-								htmlFor='checkbox_toggle'
+								// onClick={() => setToggleSwitch(!toggleSwitch)}
 							>
 								Mini MBA
-							</label>
+							</div>
 						</label>
 					</div>
 				</div>

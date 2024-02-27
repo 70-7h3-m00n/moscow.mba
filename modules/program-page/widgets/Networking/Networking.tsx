@@ -15,7 +15,7 @@ export const Networking = ({ className, ...rest }: NetworkingProps) => {
 					{dataNetworking.map((item, idx) => (
 						<li className={stls.item} key={idx}>
 							{item.image}
-							<h3 className={stls.item__title}>{item.title}</h3>
+							<p className={stls.item__title}>{item.title}</p>
 							<div className={stls.item__desc}>{item.desc}</div>
 							{item.bigImage}
 						</li>

@@ -124,6 +124,5 @@ export const BreadcrumbsAlt = ({
 				</ul>
 			</Wrapper>
 		</div>
-		// <></>
 	)
 }
