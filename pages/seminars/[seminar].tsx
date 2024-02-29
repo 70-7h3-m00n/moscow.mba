@@ -49,6 +49,7 @@ const PageSeminar: NextPage<TypePageSeminarProps> = ({ programs, seminar }) => {
 
 	useEffect(() => {
 		setSeminarState(seminar)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const seoParams = {
