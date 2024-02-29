@@ -10,24 +10,6 @@ module.exports = {
 		domains: ['res.cloudinary.com']
 	},
 	async headers() {
-		if (process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview') {
-			return [
-				{
-					source: '/:path*',
-					headers: [
-						{
-							key: 'X-Robots-Tag',
-							value: 'noindex'
-						},
-						{
-							key: 'meta',
-							value: 'noindex, nofollow'
-						}
-					]
-				}
-			]
-		}
-
 		return [
 			{
 				source: '/:path*',

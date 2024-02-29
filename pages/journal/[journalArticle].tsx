@@ -150,6 +150,7 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 			}
 		}
 		getIsUrls()
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const at = useAt()

@@ -64,8 +64,9 @@ const PageSeminars = ({
 	const at = useAt()
 
 	const [seminarsState, setSeminarsState] = useState<TypeLibSeminars | []>([])
-	const [seminarCategoriesState, setSeminarsCategoriesState] =
-		useState<TypeLibSeminarCategories>([])
+	const [seminarCategoriesState, setSeminarsCategoriesState] = useState<
+		TypeLibSeminarCategories
+	>([])
 	const [showSeminars, setShowSeminars] = useState<TypeLibSeminars | []>([])
 	const [selectedCategory, setSelectedCategory] = useState('all')
 	const [dateRange, setDateRange] = useState<DateRangeType[]>([
@@ -107,6 +108,7 @@ const PageSeminars = ({
 		setSeminarsState(sortedSeminars)
 		setSeminarsCategoriesState(categories)
 		setShowSeminars(sortedSeminars)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	useEffect(() => {
@@ -131,6 +133,7 @@ const PageSeminars = ({
 		})
 
 		setShowSeminars(filteredSeminars)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [dateRange, selectedCategory])
 
 	const seoParams = {
