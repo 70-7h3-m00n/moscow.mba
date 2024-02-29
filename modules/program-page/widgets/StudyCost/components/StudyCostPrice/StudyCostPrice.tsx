@@ -49,6 +49,7 @@ export const StudyCostPrice = ({ className, program }: StudyCostPriceProps) => {
 					variant='programPage'
 				/>
 			</div>
+			<p className={stls.priceDesc}>* рассрочка на 12 месяцев</p>
 			<ul className={stls.list}>
 				{data.map((item, idx) => (
 					<li className={stls.list__item} key={idx}>
