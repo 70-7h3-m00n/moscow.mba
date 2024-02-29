@@ -20,7 +20,7 @@ import {
 } from '@/components/layout'
 import { MenuState, OverlayState, ContextStaticProps } from '@/context/index'
 import { filledUpFormWithoutSubmission } from '../helpers'
-import { YandexMetrika } from '@/components/seo/Metrica'
+import { YandexMetrika } from '@/components/seo/Metrika'
 
 function MyApp({ Component, pageProps, router }) {
 	const at = useAt()
@@ -143,7 +143,21 @@ function MyApp({ Component, pageProps, router }) {
 					name='viewport'
 					content='width=device-width, initial-scale=1, maximum-scale=1'
 				/>
-
+				<YandexMetrika />
+				{
+					<script
+						type='text/javascript'
+						dangerouslySetInnerHTML={{
+							__html: `
+					(function(w, d, s, h, id) {
+							w.roistatProjectId = id; w.roistatHost = h;
+							var p = d.location.protocol == "https:" ? "https://" : "http://";
+							var u = /^.*roistat_visit=[^;]+(.*)?$/.test(d.cookie) ? "/dist/module.js" : "/api/site/1.0/"+id+"/init?referrer="+encodeURIComponent(d.location.href);
+							var js = d.createElement(s); js.charset="UTF-8"; js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
+					})(window, document, 'script', 'cloud.roistat.com', '4c5a69eb8374b9673e7545e55aa19050');`
+						}}
+					/>
+				}
 				{!dev && (
 					<script
 						type='text/javascript'
@@ -268,7 +282,6 @@ function MyApp({ Component, pageProps, router }) {
 					</MenuState>
 				</OverlayState>
 			</ContextStaticProps.Provider>
-			<YandexMetrika />
 		</>
 	)
 }
