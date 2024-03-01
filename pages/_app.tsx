@@ -144,11 +144,7 @@ function MyApp({ Component, pageProps, router }) {
 					name='viewport'
 					content='width=device-width, initial-scale=1, maximum-scale=1'
 				/>
-				{process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview' && (
-					<meta name='robots' content='noindex,nofollow' />
-				)}
-				{/* <YandexMetrika /> */}
-				<Roistat />
+				{!dev && <Roistat />}
 			</Head>
 			<DefaultSeo {...SEO} />
 			<LogoJsonLd
