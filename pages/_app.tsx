@@ -6,7 +6,7 @@ import Router from 'next/router'
 
 import SEO from '../seo.config'
 import TagManager from 'react-gtm-module'
-import { DefaultSeo, LogoJsonLd } from 'next-seo'
+import { DefaultSeo, NextSeo, LogoJsonLd } from 'next-seo'
 import { Roistat } from '@/components/seo/Roistat'
 
 import 'reactjs-popup/dist/index.css'
@@ -147,6 +147,9 @@ function MyApp({ Component, pageProps, router }) {
 				{!dev && <Roistat />}
 			</Head>
 			<DefaultSeo {...SEO} />
+			{process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview' && (
+				<NextSeo nofollow noindex />
+			)}
 			<LogoJsonLd
 				logo='https://moscow.mba/logo.jpg'
 				url='https://moscow.mba/'
