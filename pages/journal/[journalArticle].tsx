@@ -15,7 +15,7 @@ import {
 	useWindowWidth,
 	useCheckIfResourseExists
 } from '@/hooks/index'
-import { routesFront, companyName } from '@/config/index'
+import { routesFront, companyName, preview } from '@/config/index'
 import { handleGetStaticProps, handleGetStaticPaths } from '@/lib/index'
 import { checkIfResourceExists } from '@/helpers/index'
 import { useAt } from '@/hooks/index'
@@ -186,6 +186,8 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 				title={seoParams.title}
 				description={seoParams.desc}
 				canonical={seoParams.canonical}
+				nofollow={preview || journalArticle?.nofollow !== false}
+				noindex={preview || journalArticle?.noindex !== false}
 				openGraph={{
 					url: seoParams.canonical,
 					title: seoParams.title,
@@ -201,8 +203,6 @@ const PageJournalArticle: NextPage<TypeJournalArticleProps> = ({
 					],
 					site_name: companyName
 				}}
-				nofollow={journalArticle?.nofollow === false ? false : true}
-				noindex={journalArticle?.noindex === false ? false : true}
 			/>
 			<SeoOrganizationJsonLd />
 			<SectionJournalHistoryArticle journalArticle={journalArticle} />

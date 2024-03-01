@@ -1,5 +1,5 @@
 import truncate from 'truncate'
-import { companyName, routesFront } from '../config'
+import { companyName, preview, routesFront } from '../config'
 import { NextSeo } from 'next-seo'
 import { SeoOrganizationJsonLd } from '@/components/seo'
 import { JobPage, PartnerPage } from 'modules'
@@ -17,6 +17,8 @@ const PagePartners = () => {
 				title={seoParams.title}
 				description={seoParams.desc}
 				canonical={seoParams.canonical}
+				nofollow={preview}
+				noindex={preview}
 				openGraph={{
 					url: seoParams.canonical,
 					title: seoParams.title,

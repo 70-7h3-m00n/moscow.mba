@@ -2,7 +2,7 @@ import stls from '@/styles/pages/promo/Index.module.sass'
 import { GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import truncate from 'truncate'
-import { routesFront, companyName } from '@/config/index'
+import { routesFront, companyName, preview } from '@/config/index'
 import { handleGetStaticProps } from '@/lib/index'
 import { usePageHandleContext, useAt } from '@/hooks/index'
 import {
@@ -69,6 +69,8 @@ const PagePromo = ({ programs, until }) => {
 				title={seoParams.title}
 				description={seoParams.desc}
 				canonical={seoParams.canonical}
+				nofollow={preview}
+				noindex={preview}
 				openGraph={{
 					url: seoParams.canonical,
 					title: seoParams.title,
