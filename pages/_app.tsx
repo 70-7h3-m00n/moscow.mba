@@ -147,9 +147,9 @@ function MyApp({ Component, pageProps, router }) {
 				{!dev && <Roistat />}
 			</Head>
 			<DefaultSeo {...SEO} />
-			{process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview' && (
-				<NextSeo nofollow noindex />
-			)}
+			{/* {process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview' && (
+				// <NextSeo nofollow noindex />
+			)} */}
 			<LogoJsonLd
 				logo='https://moscow.mba/logo.jpg'
 				url='https://moscow.mba/'
