@@ -6,7 +6,7 @@ import Router from 'next/router'
 
 import SEO from '../seo.config'
 import TagManager from 'react-gtm-module'
-import { DefaultSeo, LogoJsonLd } from 'next-seo'
+import { DefaultSeo, NextSeo, LogoJsonLd } from 'next-seo'
 import { Roistat } from '@/components/seo/Roistat'
 
 import 'reactjs-popup/dist/index.css'
@@ -144,11 +144,7 @@ function MyApp({ Component, pageProps, router }) {
 					name='viewport'
 					content='width=device-width, initial-scale=1, maximum-scale=1'
 				/>
-				{process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview' && (
-					<meta name='robots' content='noindex,nofollow' />
-				)}
-				{/* <YandexMetrika /> */}
-				<Roistat />
+				{!dev && <Roistat />}
 			</Head>
 			<DefaultSeo {...SEO} />
 			<LogoJsonLd

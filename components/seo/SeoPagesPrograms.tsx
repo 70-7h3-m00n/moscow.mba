@@ -1,7 +1,7 @@
 import { TypeLibPrograms } from '@/types/index'
 import { NextSeo } from 'next-seo'
 import truncate from 'truncate'
-import { routesFront, companyName } from '@/config/index'
+import { routesFront, companyName, preview } from '@/config/index'
 import { useAt } from '@/hooks/index'
 import { SeoOrganizationJsonLd } from '@/components/seo'
 
@@ -57,6 +57,8 @@ const SeoPagesPrograms = ({
 				title={seoParams.title}
 				description={seoParams.desc}
 				canonical={seoParams.canonical}
+				nofollow={preview}
+				noindex={preview}
 				openGraph={{
 					url: seoParams.canonical,
 					title: seoParams.title,

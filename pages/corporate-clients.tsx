@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next'
 import { TypePageHomeProps } from '@/types/index'
 import { NextSeo } from 'next-seo'
 import truncate from 'truncate'
-import { routesFront, companyName } from '@/config/index'
+import { routesFront, companyName, preview } from '@/config/index'
 import { handleGetStaticProps } from '@/lib/index'
 import { usePageHandleContext, useAt } from '@/hooks/index'
 import { Wrapper } from '@/components/layout'
@@ -51,6 +51,8 @@ const PageCorporateClients: NextPage<TypePageHomeProps> = ({ programs }) => {
         title={seoParams.title}
         description={seoParams.desc}
         canonical={seoParams.canonical}
+        nofollow={preview}
+				noindex={preview}
         openGraph={{
           url: seoParams.canonical,
           title: seoParams.title,

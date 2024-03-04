@@ -4,7 +4,7 @@ import { TypePageJournalArticlesProps } from '@/types/index'
 import { useState } from 'react'
 import { NextSeo } from 'next-seo'
 import truncate from 'truncate'
-import { routesFront, companyName } from '@/config/index'
+import { routesFront, companyName, preview } from '@/config/index'
 import { handleGetStaticProps } from '@/lib/index'
 import { useAt, usePageHandleContext } from '@/hooks/index'
 import { ContextStaticPropsJournal } from '@/context/index'
@@ -36,6 +36,8 @@ const PageJournal: NextPage<TypePageJournalArticlesProps> = ({
 				title={seoParams.title}
 				description={seoParams.desc}
 				canonical={seoParams.canonical}
+				nofollow={preview}
+				noindex={preview}
 				openGraph={{
 					url: seoParams.canonical,
 					title: seoParams.title,

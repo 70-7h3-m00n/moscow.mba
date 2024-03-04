@@ -11,7 +11,7 @@ import { marked } from 'marked'
 import { getImageHeight } from '@/helpers/index'
 import { handleGetStaticPaths, handleGetStaticProps } from '@/lib/index'
 import { usePageHandleContext } from '@/hooks/index'
-import { routesFront, companyName } from '@/config/index'
+import { routesFront, companyName, preview } from '@/config/index'
 import { Wrapper } from '@/components/layout'
 import { ImgTeachersTeacher } from '@/components/images'
 import { SeoOrganizationJsonLd } from '@/components/seo'
@@ -74,6 +74,8 @@ const PageTeachersTeacher: NextPage<TypePageTeacherProps> = ({
 				title={seoParams.title}
 				description={seoParams.desc}
 				canonical={seoParams.canonical}
+				nofollow={preview}
+				noindex={preview}
 				openGraph={{
 					url: seoParams.canonical,
 					title: seoParams.title,

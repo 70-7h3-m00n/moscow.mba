@@ -1,7 +1,7 @@
 import { TypeLibProgram } from '@/types/index'
 import { NextSeo, CourseJsonLd } from 'next-seo'
 import truncate from 'truncate'
-import { routesFront, companyName } from '@/config/index'
+import { routesFront, companyName, preview } from '@/config/index'
 import { useAt } from '@/hooks/index'
 
 type TSeoPagesProgram = {
@@ -96,6 +96,8 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
 				title={seoParams.title}
 				description={seoParams.desc}
 				canonical={seoParams.canonical}
+				noindex={preview || program?.noindex || false}
+				nofollow={preview || program?.nofollow || false}
 				openGraph={{
 					url: seoParams.canonical,
 					title: seoParams.title,
@@ -111,8 +113,6 @@ const SeoPagesProgram = ({ program, canonical }: TSeoPagesProgram) => {
 					],
 					site_name: companyName
 				}}
-				noindex={program?.noindex || false}
-				nofollow={program?.nofollow || false}
 			/>
 			<CourseJsonLd
 				courseName={seoParams.programTitle}

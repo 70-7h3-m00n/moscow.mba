@@ -8,6 +8,9 @@ class MyDocument extends Document {
 				<Head>
 					<MetaFonts />
 					<MetaManifest />
+					{/* {process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview' && (
+						<meta name='robots' content='noindex,nofollow' />
+					)} */}
 				</Head>
 				<body>
 					<>

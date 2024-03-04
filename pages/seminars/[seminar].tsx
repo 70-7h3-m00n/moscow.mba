@@ -18,6 +18,7 @@ import {
 	useState
 } from 'react'
 import usePageHandleContext from '@/hooks/usePageHandleContext'
+import { preview } from '@/config/preview'
 
 const initialState: TypeLibSeminar = {
 	id: null,
@@ -66,6 +67,8 @@ const PageSeminar: NextPage<TypePageSeminarProps> = ({ programs, seminar }) => {
 				title={seoParams.title}
 				description={seoParams.desc}
 				canonical={seoParams.canonical}
+				nofollow={preview}
+				noindex={preview}
 				openGraph={{
 					url: seoParams.canonical,
 					title: seoParams.title,

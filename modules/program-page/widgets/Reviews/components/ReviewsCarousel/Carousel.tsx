@@ -16,8 +16,15 @@ export function Carousel({ className, program }: CarouselProps) {
 	const sliderRef = useRef<Slider>(null)
 	const reviews = program?.reviews
 
+	const getRandomReviews = (reviews, count) => {
+		const shuffledReviews = reviews.sort(() => 0.5 - Math.random())
+		return shuffledReviews.slice(0, count)
+	}
+
 	const reviewsInDatabase = reviews && reviews?.length > 0
-	const data: typeof reviews = reviewsInDatabase ? reviews : defaultReviews
+	const data: typeof reviews = reviewsInDatabase
+		? reviews
+		: getRandomReviews(defaultReviews, 5)
 
 	const next = () => {
 		sliderRef.current?.slickNext()
@@ -36,7 +43,7 @@ export function Carousel({ className, program }: CarouselProps) {
 		slidesToShow: 2,
 		slidesToScroll: 1,
 		adaptiveHeight: true,
-		// autoplay: true,
+		autoplay: true,
 		autoplaySpeed: 4000,
 		vertical: false,
 		arrows: false,

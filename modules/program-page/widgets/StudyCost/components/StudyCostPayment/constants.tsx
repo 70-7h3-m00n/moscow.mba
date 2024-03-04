@@ -14,7 +14,7 @@ export const paymentMethods = [
 		type: PAYMENT.FULLPRICE,
 		name: `Оплатить всю сумму сразу с дополнительной скидкой 5% — `,
 		image: (
-			<div className={stls.paymentType}>
+			<span className={stls.paymentType}>
 				<IconVisaAlt />
 				<Image
 					src={'/assets/images/program/mir.svg'}
@@ -28,7 +28,7 @@ export const paymentMethods = [
 					width={25}
 					height={16}
 				/>
-			</div>
+			</span>
 		)
 	},
 	{
