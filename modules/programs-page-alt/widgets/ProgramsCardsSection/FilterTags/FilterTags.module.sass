@@ -1,0 +1,33 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.directions
+  max-width: 60rem
+  margin-bottom: 1.5rem
+
+.list
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+  gap: 1rem
+
+.item
+  
+  position: relative
+
+  &__text
+    padding-right: 1.5rem
+
+  &__close
+    position: absolute
+    top: .4rem
+    right: .5rem
+
+.clearBtn
+  display: flex
+  gap: 0.5rem
+  font-size: 0.875rem
+  color: #000
+  background-color: unset
+  border: none

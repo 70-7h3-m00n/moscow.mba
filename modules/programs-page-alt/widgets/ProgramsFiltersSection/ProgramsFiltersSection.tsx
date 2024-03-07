@@ -19,6 +19,7 @@ export const ProgramsFiltersSection = ({
 	...rest
 }: ProgramsFiltersSectionProps) => {
 	const { state, dispatch } = useContext(ProgramsPageContext)
+	console.log('ProgramsFiltersSection state =>>>>>>>', state.programsConfig)
 
 	const groupProgramsByField = (
 		programs: TypeLibPrograms
@@ -58,6 +59,7 @@ export const ProgramsFiltersSection = ({
 					alt=''
 					width={700}
 					height={800}
+					priority
 				/>
 			</Wrapper>
 		</section>

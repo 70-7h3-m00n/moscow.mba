@@ -4,7 +4,7 @@ import { FilterPriceAndSortingProps } from './types'
 
 import { ProgramsPageContext } from 'modules/programs-page-alt/fractals/context/context'
 import { useContext } from 'react'
-import { FilterPriceProgramEnum } from 'modules/programs-page-alt/fractals/enums'
+import { FilterPricingProgramEnum } from 'modules/programs-page-alt/fractals/enums'
 import { LIST_FILTER_PRICE_PROGRAM } from 'modules/programs-page-alt/fractals/constants'
 import { ACTION } from 'modules/programs-page-alt/fractals/context/reducer'
 import { SortingPopup } from './SortingPopup/SortingPopup'
@@ -15,19 +15,10 @@ export const FilterPriceAndSorting = ({
 }: FilterPriceAndSortingProps) => {
 	const { state, dispatch } = useContext(ProgramsPageContext)
 
-	const handlerOnClick = (priceFilter: FilterPriceProgramEnum) => {
-		console.log(state.price)
-
-		if (priceFilter === state.price) {
-			// dispatch({
-			// 	type: ACTION.SET_UI_PROGRAMS,
-			// 	payload: state.programs
-			// })
-			dispatch({ type: ACTION.SET_PRICE, payload: null })
-			return
-		}
-
-		dispatch({ type: ACTION.SET_PRICE, payload: priceFilter })
+	const handlerOnClick = (priceFilter: FilterPricingProgramEnum) => {
+		const newPricing =
+			priceFilter === state.programsConfig.pricing ? null : priceFilter
+		dispatch({ type: ACTION.SET_PRICING, payload: newPricing })
 	}
 
 	return (
@@ -37,7 +28,8 @@ export const FilterPriceAndSorting = ({
 					<li className={stls.item} key={priceFilter.value}>
 						<button
 							className={cn(stls.item__btn, {
-								// [stls.active]: state.price === fieldName.value
+								[stls.active]:
+									state.programsConfig.pricing === priceFilter.value
 							})}
 							onClick={() => handlerOnClick(priceFilter.value)}
 						>

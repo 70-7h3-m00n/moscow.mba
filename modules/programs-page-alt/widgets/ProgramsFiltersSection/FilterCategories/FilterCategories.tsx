@@ -15,8 +15,8 @@ import Link from 'next/link'
 export const FilterCategories = ({ className }: FilterCategoriesProps) => {
 	const { state, dispatch } = useContext(ProgramsPageContext)
 
-	const handlerOnClick = categoryName => {
-		console.log(categoryName)
+	const handlerOnClick = (value: FilterTypeProgramEnum) => {
+		dispatch({ type: ACTION.SET_TYPE, payload: value })
 	}
 
 	return (
@@ -24,9 +24,12 @@ export const FilterCategories = ({ className }: FilterCategoriesProps) => {
 			{LIST_FILTER_TYPE_PROGRAM?.map((category, idx) => (
 				<li className={stls.item} key={idx}>
 					<Link
-						href={category.src}
-						className={cn(stls.item__link)}
-						onClick={() => handlerOnClick(category)}
+						// href={category.src}
+						href={'#'}
+						className={cn(stls.item__link, {
+							[stls.active]: category.value === state.programsConfig.type
+						})}
+						onClick={() => handlerOnClick(category.value)}
 					>
 						<span className={cn(stls.item__name)}>
 							{category.text}{' '}

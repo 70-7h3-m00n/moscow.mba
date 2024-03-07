@@ -1,6 +1,6 @@
 import { TypeLibPrograms } from '@/types/index'
-import { HTMLAttributes } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 
-export type ProgramsPageProps = HTMLAttributes<HTMLElement> & {
+export type ProgramsPageProps = ComponentPropsWithoutRef<'div'> & {
 	programs: TypeLibPrograms
 }

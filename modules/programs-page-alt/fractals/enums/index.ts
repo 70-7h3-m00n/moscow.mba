@@ -1,6 +1,6 @@
 export {
 	FilterTypeProgramEnum,
 	FiltersEnum,
-	FilterPriceProgramEnum
+	FilterPricingProgramEnum
 } from './filters'
 export { SortingEnum, SortingsEnum } from './sorting'
