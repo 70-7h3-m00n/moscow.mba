@@ -2,19 +2,22 @@ import stls from './SortingPopup.module.sass'
 import cn from 'classnames'
 import { SortingPopupProps } from './types'
 
-import { useEffect, useRef, useState } from 'react'
+import { ChangeEvent, useContext, useRef, useState } from 'react'
 import Popup from 'reactjs-popup'
-import useWindowWidth from '@/hooks/useWindowWidth'
-import { IconInfo } from '@/components/icons'
-import { LIST_SORTING, SortingsEnum } from 'modules/programs-page-alt/fractals'
+import {
+	LIST_SORTING,
+	SortingEnum,
+	SortingsEnum
+} from 'modules/programs-page-alt/fractals'
+import { ACTION } from 'modules/programs-page-alt/fractals/context/reducer'
+import { IconSorting } from './IconSorting/IconSorting'
+import { ProgramsPageContext } from 'modules/programs-page-alt/fractals/context/context'
 
 export const SortingPopup = ({ className, ...rest }: SortingPopupProps) => {
 	const ref = useRef(null)
+	const { state, dispatch } = useContext(ProgramsPageContext)
 
 	const [opened, setOpened] = useState(false)
-
-	const widthWindow = useWindowWidth()
-	const [modal, setModal] = useState(false)
 
 	const contentStyle = {
 		backgroundColor: '#fff',
@@ -22,30 +25,24 @@ export const SortingPopup = ({ className, ...rest }: SortingPopupProps) => {
 		width: 'max-content',
 		maxWidth: '22rem',
 		borderRadius: '0.7rem',
-		padding: '1.5rem'
+		padding: '1rem'
 	}
-	// const overlayStyle = { background: 'rgba(0,0,0,0.5)' }
 	const arrowStyle = { display: 'none' } // style for an svg element
 
-	useEffect(() => {
-		if (widthWindow <= 767) {
-			setModal(true)
-		} else {
-			setModal(false)
-		}
-	}, [widthWindow])
-
-	const handlerOnChange = e => {
-		console.log('>>>>>>>>>>>>>>>>>>', e.target.value)
+	const handlerOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+		const sortingValue = event.target.value as SortingEnum // приводим значение к типу SortingEnum
+		dispatch({ type: ACTION.SET_SORTING, payload: sortingValue })
 	}
-
 	return (
 		<div className={cn(className, stls.container)}>
 			<Popup
 				className={stls.popup}
 				trigger={open => (
 					<button className={stls.btn}>
-						<IconInfo opened={opened} onClick={() => setOpened(o => !o)} />
+						<span className={stls.btn__text}>Сортировать</span>
+						<IconSorting
+							className={cn(stls.btn__icon, { [stls.opened]: open })}
+						/>
 					</button>
 				)}
 				position={['bottom center']}
@@ -53,29 +50,23 @@ export const SortingPopup = ({ className, ...rest }: SortingPopupProps) => {
 				open={opened}
 				onClose={() => setOpened(false)}
 				ref={ref}
-				modal={modal}
 				lockScroll
-				{...{
-					contentStyle,
-					// overlayStyle,
-					arrowStyle
-				}}
+				{...{ contentStyle, arrowStyle }}
 			>
-				<div className={stls.modalSorting}>
+				<div className={stls.modal}>
 					{LIST_SORTING.map(item => (
-						<div key={item.value} className={stls.itemModalSorting}>
+						<label key={item.value} className={stls.modal__label}>
 							<input
+								className={stls.modal__radio}
 								type='radio'
 								name={SortingsEnum.sorting}
 								value={item.value}
 								id={item.value}
 								onChange={e => handlerOnChange(e)}
-								// checked={configPrograms?.[SortingsEnum.sorting] === item.value}
+								checked={state?.programsConfig.sorting === item.value}
 							/>
-							<label className={stls.labelModalSorting} htmlFor={item.value}>
-								{item.text}
-							</label>
-						</div>
+							{item.text}
+						</label>
 					))}
 				</div>
 			</Popup>

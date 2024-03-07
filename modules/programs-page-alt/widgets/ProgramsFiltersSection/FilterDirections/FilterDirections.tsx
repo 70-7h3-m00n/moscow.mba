@@ -15,23 +15,9 @@ export const FilterDirections = ({
 	const uniqueDirections = Object.keys(directions)
 
 	const handlerOnClick = (fieldName: string) => {
-		if (fieldName === state.direction) {
-			dispatch({
-				type: ACTION.SET_UI_PROGRAMS,
-				payload: state.programs
-			})
-			dispatch({ type: ACTION.SET_DIRECTION, payload: null })
-			return
-		}
-
-		const filteredByDirection = state.programs?.filter(
-			program => program.study_field.name === fieldName
-		)
-		dispatch({
-			type: ACTION.SET_UI_PROGRAMS,
-			payload: filteredByDirection
-		})
-		dispatch({ type: ACTION.SET_DIRECTION, payload: fieldName })
+		const newDirection =
+			fieldName === state.programsConfig.direction ? null : fieldName
+		dispatch({ type: ACTION.SET_DIRECTION, payload: newDirection })
 	}
 
 	return (
@@ -40,7 +26,7 @@ export const FilterDirections = ({
 				<li className={stls.item} key={fieldName}>
 					<button
 						className={cn(stls.item__btn, {
-							[stls.active]: state.direction === fieldName
+							[stls.active]: state.programsConfig.direction === fieldName
 						})}
 						onClick={() => handlerOnClick(fieldName)}
 					>

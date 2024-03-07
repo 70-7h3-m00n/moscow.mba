@@ -7,14 +7,15 @@ export enum FilterTypeProgramEnum {
 	executive = 'executive'
 }
 
-export enum FilterPriceProgramEnum {
+export enum FilterPricingProgramEnum {
 	free = 'free',
 	paid = 'paid'
 }
 
 export enum FiltersEnum {
 	filterTypeProgram = 'filterTypeProgram',
-	filterTrainingFormat = 'filterTrainingFormat',
+	filterDirection = 'filterDirection',
 	filterDuration = 'filterDuration',
-	filterDirection = 'filterDirection'
+	filterPricing = 'filterPricing',
+	filterEmployment = 'filterEmployment'
 }

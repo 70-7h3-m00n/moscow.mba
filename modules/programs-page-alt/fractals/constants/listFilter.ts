@@ -1,5 +1,5 @@
 import routesFront from '@/config/routesFront'
-import { FilterPriceProgramEnum, FilterTypeProgramEnum } from '../enums'
+import { FilterPricingProgramEnum, FilterTypeProgramEnum } from '../enums'
 
 export const LIST_FILTER_TYPE_PROGRAM = [
 	{
@@ -42,11 +42,11 @@ export const LIST_FILTER_TYPE_PROGRAM = [
 
 export const LIST_FILTER_PRICE_PROGRAM = [
 	{
-		value: FilterPriceProgramEnum.free,
+		value: FilterPricingProgramEnum.free,
 		text: 'Бесплатно'
 	},
 	{
-		value: FilterPriceProgramEnum.paid,
+		value: FilterPricingProgramEnum.paid,
 		text: 'Платно'
 	}
 ]

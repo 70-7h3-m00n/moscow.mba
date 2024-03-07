@@ -1,12 +1,26 @@
 import { TypeLibPrograms } from '@/types/index'
-import { FilterPriceProgramEnum } from '../enums'
+import { FilterPricingProgramEnum, FilterTypeProgramEnum } from '../enums'
+import { SortingEnum } from 'modules/programs-page-alt/fractals'
 
 export const ACTION = {
 	SET_INITIAL_PROPS: 'SET_INITIAL_PROPS' as const,
 	SET_PROGRAMS: 'SET_PROGRAMS' as const,
 	SET_UI_PROGRAMS: 'SET_UI_PROGRAMS' as const,
+	SET_SORTING: 'SET_SORTING' as const,
+	SET_TYPE: 'SET_TYPE' as const,
 	SET_DIRECTION: 'SET_DIRECTION' as const,
-	SET_PRICE: 'SET_PRICE' as const
+	SET_PRICING: 'SET_PRICING' as const,
+	SET_DURATION: 'SET_DURATION' as const,
+	SET_EMPLOYMENT: 'SET_EMPLOYMENT' as const
+}
+
+export type TypeProgramsConfig = {
+	sorting: SortingEnum
+	type: FilterTypeProgramEnum
+	direction: string
+	pricing: FilterPricingProgramEnum
+	duration: number | null
+	employment: boolean | null
 }
 
 export type TypeProgramsAction =
@@ -15,8 +29,7 @@ export type TypeProgramsAction =
 			payload: {
 				programs: TypeLibPrograms
 				UIPrograms: TypeLibPrograms
-				direction: string | null
-				price: FilterPriceProgramEnum | null
+				programsConfig: TypeProgramsConfig
 			}
 	  }
 	| {
@@ -28,19 +41,34 @@ export type TypeProgramsAction =
 			payload: TypeLibPrograms
 	  }
 	| {
-			type: typeof ACTION.SET_DIRECTION
-			payload: string
+			type: typeof ACTION.SET_SORTING
+			payload: SortingEnum
 	  }
 	| {
-			type: typeof ACTION.SET_PRICE
-			payload: FilterPriceProgramEnum | null
+			type: typeof ACTION.SET_TYPE
+			payload: FilterTypeProgramEnum | null
+	  }
+	| {
+			type: typeof ACTION.SET_DIRECTION
+			payload: string | null
+	  }
+	| {
+			type: typeof ACTION.SET_PRICING
+			payload: FilterPricingProgramEnum | null
+	  }
+	| {
+			type: typeof ACTION.SET_DURATION
+			payload: number | null
+	  }
+	| {
+			type: typeof ACTION.SET_EMPLOYMENT
+			payload: boolean | null
 	  }
 
 export type TypeProgramsReducer = {
 	programs: TypeLibPrograms
 	UIPrograms: TypeLibPrograms
-	direction: string
-	price: FilterPriceProgramEnum
+	programsConfig: TypeProgramsConfig
 }
 
 export const programsPageReducer = (
@@ -53,17 +81,42 @@ export const programsPageReducer = (
 				...state,
 				programs: action.payload.programs,
 				UIPrograms: action.payload.UIPrograms,
-				direction: action.payload.direction,
-				price: action.payload.price
+				programsConfig: action.payload.programsConfig
 			}
 		case ACTION.SET_PROGRAMS:
 			return { ...state, programs: action.payload }
 		case ACTION.SET_UI_PROGRAMS:
 			return { ...state, UIPrograms: action.payload }
+		case ACTION.SET_SORTING:
+			return {
+				...state,
+				programsConfig: { ...state.programsConfig, sorting: action.payload }
+			}
+		case ACTION.SET_TYPE:
+			return {
+				...state,
+				programsConfig: { ...state.programsConfig, type: action.payload }
+			}
 		case ACTION.SET_DIRECTION:
-			return { ...state, direction: action.payload }
-		case ACTION.SET_PRICE:
-			return { ...state, price: action.payload }
+			return {
+				...state,
+				programsConfig: { ...state.programsConfig, direction: action.payload }
+			}
+		case ACTION.SET_PRICING:
+			return {
+				...state,
+				programsConfig: { ...state.programsConfig, pricing: action.payload }
+			}
+		case ACTION.SET_DURATION:
+			return {
+				...state,
+				programsConfig: { ...state.programsConfig, duration: action.payload }
+			}
+		case ACTION.SET_EMPLOYMENT:
+			return {
+				...state,
+				programsConfig: { ...state.programsConfig, employment: action.payload }
+			}
 
 		default:
 			return state

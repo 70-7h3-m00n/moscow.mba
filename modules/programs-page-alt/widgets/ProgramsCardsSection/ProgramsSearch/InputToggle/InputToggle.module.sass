@@ -1,0 +1,61 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.toggle 
+  position: relative
+  width: 60px
+  height: 34px
+
+  &__input
+    display: none
+
+  &__label
+    position: absolute
+    top: 0
+    left: 0
+    width: 60px
+    height: 34px
+    background-color: #ccc
+    border-radius: 17px
+    cursor: pointer
+    transition: background-color 0.3s ease
+
+.toggle__label::before 
+  content: ""
+  position: absolute
+  top: 3px
+  left: 3px
+  width: 28px
+  height: 28px
+  border-radius: 50%
+  background-color: #fff
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3)
+  transition: transform 0.3s ease
+
+.toggle__input:checked + label 
+  background-color: #FF3535
+
+
+.toggle__input:checked + label::before 
+  transform: translateX(26px)
+
+
+.toggle__label:hover 
+  background-color: #DEE2E5
+
+
+.toggle__input:checked + label:hover 
+  background-color: #FF3535
+
+.toggle__input:active + label 
+  background-color: rgba(255, 53, 53, .5)
+
+
+.toggle__input:checked:active + label 
+  background-color: rgba(222, 226, 229, .5)
+
+
+.toggle__input:focus + label 
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2)
+

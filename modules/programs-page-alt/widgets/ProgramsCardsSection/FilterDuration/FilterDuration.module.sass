@@ -1,0 +1,42 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content
+  max-width: 20rem
+  @include m.media(tablet, phone, laptop)
+    margin-top: f.px(35)
+
+.filterTitle
+  font-weight: 500
+  font-size: 1.375rem
+  line-height: 120%
+  color: #262626
+  margin-bottom: f.px(26)
+
+.filter
+  display: flex
+  flex-direction: column
+
+.labelFilter
+  color: #575757
+  font-size: 0.875rem
+  margin-bottom: f.px(26)
+
+.inputDuration
+  -webkit-appearance: none
+  appearance: none
+  width: 100%
+  height: f.px(4)
+  opacity: 1
+  outline: none
+  margin: 0 auto
+  cursor: pointer
+
+  &::-webkit-slider-thumb
+    appearance: none
+    -webkit-appearance: none
+    background: #FB4D3E
+    height: f.px(15)
+    width: f.px(15)
+    border-radius: 50%
