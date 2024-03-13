@@ -13,7 +13,8 @@ export const Tag = ({ className, children, variant }: TagProps) => {
 				[stls.epsilon]: variant === 'epsilon', // white background black color no border
 				[stls.zeta]: variant === 'zeta', // yellow background orange color no border
 				[stls.eta]: variant === 'eta', // black background white color no border
-				[stls.theta]: variant === 'theta' // grey background black color no border
+				[stls.theta]: variant === 'theta', // grey background black color no border
+				[stls.iota]: variant === 'iota' // green background green color no border
 			})}
 		>
 			{children}

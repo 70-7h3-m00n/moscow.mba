@@ -7,7 +7,6 @@ import localFont from 'next/font/local'
 import { ProgramsFiltersSection } from './widgets'
 import { ProgramsPageProvider } from './fractals/context/context'
 import { ProgramsCardsSection } from './widgets/ProgramsCardsSection/ProgramsCardsSection'
-import { ProgramsSearch } from './widgets/ProgramsCardsSection/ProgramsSearch/ProgramsSearch'
 
 const helvetica = localFont({
 	src: [
@@ -20,7 +19,6 @@ const helvetica = localFont({
 })
 
 const ProgramsPageAlt = ({ className, programs }: ProgramsPageProps) => {
-	// console.log('programs: ', programs)
 	return (
 		<ProgramsPageProvider programs={programs}>
 			<div className={cn(className, stls.container, helvetica.className)}>

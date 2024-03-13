@@ -1,6 +1,10 @@
 import { TypeLibPrograms } from '@/types/index'
 import { FilterPricingProgramEnum, FilterTypeProgramEnum } from '../enums'
 import { SortingEnum } from 'modules/programs-page-alt/fractals'
+import {
+	TypeDuration,
+	TypeProgramsConfig
+} from 'modules/programs-page-alt/types'
 
 export const ACTION = {
 	SET_INITIAL_PROPS: 'SET_INITIAL_PROPS' as const,
@@ -12,15 +16,6 @@ export const ACTION = {
 	SET_PRICING: 'SET_PRICING' as const,
 	SET_DURATION: 'SET_DURATION' as const,
 	SET_EMPLOYMENT: 'SET_EMPLOYMENT' as const
-}
-
-export type TypeProgramsConfig = {
-	sorting: SortingEnum
-	type: FilterTypeProgramEnum
-	direction: string
-	pricing: FilterPricingProgramEnum
-	duration: number | null
-	employment: boolean | null
 }
 
 export type TypeProgramsAction =
@@ -58,11 +53,11 @@ export type TypeProgramsAction =
 	  }
 	| {
 			type: typeof ACTION.SET_DURATION
-			payload: number | null
+			payload: TypeDuration | null
 	  }
 	| {
 			type: typeof ACTION.SET_EMPLOYMENT
-			payload: boolean | null
+			payload: boolean
 	  }
 
 export type TypeProgramsReducer = {

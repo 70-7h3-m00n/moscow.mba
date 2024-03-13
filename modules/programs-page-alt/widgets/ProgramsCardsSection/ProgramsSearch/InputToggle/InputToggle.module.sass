@@ -4,8 +4,8 @@
 
 .toggle 
   position: relative
-  width: 60px
-  height: 34px
+  width: 3rem
+  height: 1.5rem
 
   &__input
     display: none
@@ -14,48 +14,53 @@
     position: absolute
     top: 0
     left: 0
-    width: 60px
-    height: 34px
+    width: 100%
+    height: 100%
     background-color: #ccc
-    border-radius: 17px
+    border-radius: 3rem
     cursor: pointer
     transition: background-color 0.3s ease
 
 .toggle__label::before 
   content: ""
   position: absolute
-  top: 3px
-  left: 3px
-  width: 28px
-  height: 28px
+  top: .125rem
+  left: .125rem
+  width: 1.25rem
+  height: 1.25rem
   border-radius: 50%
   background-color: #fff
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3)
   transition: transform 0.3s ease
 
-.toggle__input:checked + label 
+// .toggle__input:checked + label
+.toggle__label:has(.toggle__input:checked)
   background-color: #FF3535
 
 
-.toggle__input:checked + label::before 
-  transform: translateX(26px)
-
+// .toggle__input:checked + label::before 
+.toggle__label:has(.toggle__input:checked)::before
+  transform: translateX(24px)
 
 .toggle__label:hover 
   background-color: #DEE2E5
 
 
-.toggle__input:checked + label:hover 
+// .toggle__input:checked + label:hover 
+.toggle__label:hover:has(.toggle__input:checked)
   background-color: #FF3535
 
-.toggle__input:active + label 
+// .toggle__input:active + label
+.toggle__label:has(.toggle__input:active)
   background-color: rgba(255, 53, 53, .5)
 
 
-.toggle__input:checked:active + label 
+// .toggle__input:checked:active + label 
+.toggle__label:has(.toggle__input:checked:active)
   background-color: rgba(222, 226, 229, .5)
 
 
-.toggle__input:focus + label 
+// .toggle__input:focus + label 
+.toggle__label:has(.toggle__input:focus)
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2)
 

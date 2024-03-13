@@ -116,6 +116,30 @@ module.exports = {
 	},
 	async redirects() {
 		return [
+			// remove dublicates
+			{
+				source: '/programs/course/online/GR-menedzhment-1',
+				destination: '/programs/course/online/gr-menedzhment',
+				permanent: true
+			},
+			{
+				source: '/programs/course/online/kadrovaya-bezopasnost-kompanii-1',
+				destination: '/programs/course/online/kadrovaya-bezopasnost-kompanii',
+				permanent: true
+			},
+			{
+				source:
+					'/programs/course/online/nalogooblozhenie-investorov-i-pravovoe-regulirovanie',
+				destination: '/programs/course/online/nalogooblozhenie-investorov',
+				permanent: true
+			},
+			{
+				source: '/programs/course/online/osnovy-sovremennoj-mediacii',
+				destination: '/programs/course/online/mediazia',
+				permanent: true
+			},
+			// end
+
 			{
 				source: '/journal/korporativnoe-upravlenie-proektami-uspeh-biznesa',
 				destination:

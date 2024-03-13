@@ -11,4 +11,5 @@ export type TagProps = HTMLAttributes<HTMLDivElement> & {
 		| 'zeta'
 		| 'eta'
 		| 'theta'
+		| 'iota'
 }

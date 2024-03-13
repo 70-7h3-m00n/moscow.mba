@@ -6,8 +6,9 @@ import { useContext } from 'react'
 import { ProgramsPageContext } from 'modules/programs-page-alt/fractals/context/context'
 import { Wrapper } from '@/components/layout'
 import { Tag } from 'modules/program-page/widgets'
-import { ProgramsSearch } from './ProgramsSearch/ProgramsSearch'
-import { ProgramsCardsList } from './ProgramsCardsList/ProgramsCardsList'
+
+import { ProgramsMain } from './ProgramsMain/ProgramsMain'
+import { ProgramsSidebar } from './ProgramsSearch/ProgramsSidebar'
 
 export const ProgramsCardsSection = ({
 	className,
@@ -18,8 +19,8 @@ export const ProgramsCardsSection = ({
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
-				<ProgramsSearch />
-				<ProgramsCardsList />
+				<ProgramsSidebar />
+				<ProgramsMain />
 			</Wrapper>
 		</section>
 	)

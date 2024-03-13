@@ -11,10 +11,6 @@
   border-radius: 1rem
   background-color: #fff
 
-.tags
-  display: flex
-  gap: 0.5rem
-
 .title
   font-size: 1.125rem
   line-height: 1.2
@@ -22,20 +18,40 @@
 .bottom
   display: flex
   justify-content: space-between
+  align-items: baseline
   margin-top: auto
 
-.price
-  display: flex
-  flex-direction: column
-  gap: .5rem
+  &__duration
+    color: #575757
 
-  &__description
-    font-size: 0.625rem
-    font-style: normal
-    font-weight: 400
-    line-height: 120%
-    color: #FF3535
+.tags
+  display: flex
+  gap: 0.5rem
+
+.tag
+  white-space: nowrap
 
 .star
+  width: 1.25rem
+  height: 1.25rem
+  margin-right: .5rem
+  translate: 0 -0.1rem 
+
   path
     fill: #FA9928
+
+.lightning
+  width: 1rem
+  height: 1rem
+  margin-right: .5rem
+  translate: 0 -0.1rem
+
+  path
+    fill: #14840B
+
+.discount
+  width: 1rem
+  height: 1rem
+  margin-right: .5rem
+  translate: 0 -0.1rem
+  white-space: nowrap

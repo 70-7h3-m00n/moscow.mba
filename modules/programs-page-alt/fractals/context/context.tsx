@@ -2,36 +2,15 @@ import React, { createContext, useContext, useEffect, useReducer } from 'react'
 import useAt from '@/hooks/useAt'
 import { useRouter } from 'next/router'
 import { TypeLibPrograms } from '@/types/index'
-import {
-	ACTION,
-	TypeProgramsAction,
-	TypeProgramsReducer,
-	programsPageReducer
-} from './reducer'
+import { ACTION, TypeProgramsReducer, programsPageReducer } from './reducer'
 import { FilterTypeProgramEnum, SortingEnum } from '../enums'
-
-type ProgramsPageContextType = {
-	state: TypeProgramsReducer
-	dispatch: React.Dispatch<TypeProgramsAction>
-}
-
-export type ProgramsPageProviderProps = {
-	children: React.ReactNode
-	programs: TypeLibPrograms
-}
-
-// export const ProgramsReducerInitialState: TypeProgramsReducer = {
-// 	programs: [],
-// 	UIPrograms: [],
-// 	programsConfig: {
-// 		sorting: SortingEnum.popular,
-// 		type: FilterTypeProgramEnum.all,
-// 		direction: null,
-// 		pricing: null,
-// 		duration: null,
-// 		employment: null
-// 	}
-// }
+import {
+	ProgramsPageContextType,
+	ProgramsPageProviderProps
+} from 'modules/programs-page-alt/types'
+import { addDurationAndPriceMBA } from '../utils/addDurationAndPriceMBA'
+import { getMaxDuration, getMinDuration } from '../utils/getDuration'
+import { sortNovelty, sortPopular, sortPrograms } from '../utils/sortPrograms'
 
 export const ProgramsPageContext = createContext<
 	ProgramsPageContextType | undefined
@@ -43,16 +22,24 @@ export const ProgramsPageProvider: React.FC<ProgramsPageProviderProps> = ({
 }) => {
 	const at = useAt()
 
+	const programsDuration = addDurationAndPriceMBA(programs)
+
+	const initialPrograms = programsDuration
+
 	const ProgramsReducerInitialState: TypeProgramsReducer = {
-		programs: programs,
-		UIPrograms: programs,
+		programs: initialPrograms,
+		UIPrograms: initialPrograms,
 		programsConfig: {
 			sorting: SortingEnum.popular,
 			type: FilterTypeProgramEnum.all,
 			direction: null,
 			pricing: null,
-			duration: null,
-			employment: null
+			duration: {
+				value: getMaxDuration(initialPrograms),
+				min: getMinDuration(initialPrograms),
+				max: getMaxDuration(initialPrograms)
+			},
+			employment: false
 		}
 	}
 
@@ -62,33 +49,37 @@ export const ProgramsPageProvider: React.FC<ProgramsPageProviderProps> = ({
 	)
 
 	useEffect(() => {
-		// dispatch({
-		// 	type: ACTION.SET_UI_PROGRAMS,
-		// 	payload: programs
-		// })
+		const sortedPrograms = sortPrograms(
+			initialPrograms,
+			state.programsConfig.sorting
+		)
 
-		const sortPopular = (programs: TypeLibPrograms) =>
-			[...programs].sort((a, b) => a?.title[0].localeCompare(b?.title[0]))
-
-		const sortNovelty = programs =>
-			programs &&
-			[...programs].sort(
-				(a, b) =>
-					new Date(b?.updatedAt).getTime() - new Date(a?.updatedAt).getTime()
-			)
-
-		const sorting = () => {
-			if (SortingEnum.popular === state.programsConfig?.sorting) {
-				dispatch({
-					type: ACTION.SET_UI_PROGRAMS,
-					payload: sortPopular(programs)
-				})
-			}
-			// if (SortingEnum.novelty === configPrograms?.sorting) {
-			// 	setRenderPrograms(renderPrograms => sortNovelty(renderPrograms))
-			// }
-		}
+		dispatch({
+			type: ACTION.SET_UI_PROGRAMS,
+			payload: sortedPrograms
+		})
 	}, [])
+
+	useEffect(() => {
+		dispatch({
+			type: ACTION.SET_DURATION,
+			payload: {
+				...state.programsConfig.duration,
+				value: state.programsConfig.duration.max
+			}
+		})
+	}, [])
+
+	useEffect(() => {
+		dispatch({
+			type: ACTION.SET_DURATION,
+			payload: {
+				...state.programsConfig.duration,
+				min: getMinDuration(state.UIPrograms),
+				max: getMaxDuration(state.UIPrograms)
+			}
+		})
+	}, [state.UIPrograms])
 
 	return (
 		<ProgramsPageContext.Provider

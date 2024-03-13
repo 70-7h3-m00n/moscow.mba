@@ -34,7 +34,7 @@ export const FilterPriceAndSorting = ({
 							onClick={() => handlerOnClick(priceFilter.value)}
 						>
 							<span className={stls.item__name}> {priceFilter.text} </span>
-							<span className={stls.item__counter}>{164}</span>
+							{/* <span className={stls.item__counter}>{164}</span> */}
 						</button>
 					</li>
 				))}

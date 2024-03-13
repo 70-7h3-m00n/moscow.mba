@@ -5,37 +5,39 @@ export const LIST_FILTER_TYPE_PROGRAM = [
 	{
 		value: FilterTypeProgramEnum.all,
 		text: 'Все категории',
-		description: 'test',
+		description: null,
 		src: `${routesFront.root}${routesFront.programs}`
 	},
 	{
 		value: FilterTypeProgramEnum.mba,
 		text: 'MBA',
-		description: 'test',
+		description:
+			'MBA (Master of Business Administration) — это квалификационная степень в менеджменте, которую получают в бизнес-школах. Программы обучения MBA подходят руководителям и менеджерам, которым необходимо развить управленческий навык',
 		src: `${routesFront.root}${routesFront.programsMba}`
 	},
 	{
 		value: FilterTypeProgramEnum.mini,
 		text: ' Mini MBA',
-		description: 'test',
+		description:
+			'Программы Mini MBA подойдут руководителям и менеджерам среднего звена. Обучение в Mini MBA проходит в ускоренном темпе и помогает актуализировать знания в сжатые сроки',
 		src: `${routesFront.root}${routesFront.programsMini}`
 	},
 	{
 		value: FilterTypeProgramEnum.profession,
 		text: 'Профессии',
-		description: 'test',
+		description: null,
 		src: `${routesFront.root}${routesFront.programsProfession}`
 	},
 	{
 		value: FilterTypeProgramEnum.course,
 		text: 'Курсы',
-		description: 'test',
+		description: null,
 		src: `${routesFront.root}${routesFront.programsCourse}`
 	},
 	{
 		value: FilterTypeProgramEnum.executive,
 		text: 'Executive MBA',
-		description: 'test',
+		description: null,
 		src: `${routesFront.root}${routesFront.programsExecutive}`
 	}
 ]

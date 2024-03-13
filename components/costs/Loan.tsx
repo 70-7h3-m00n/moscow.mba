@@ -11,7 +11,7 @@ type TypeLoanProps = {
 	notComparingPrices?: boolean
 	renderedByComponent?: string | null
 	programPrice?: number | null
-	variant?: 'SectionStudyCost' | 'programPage'
+	variant?: 'SectionStudyCost' | 'programPage' | 'programsPage'
 }
 
 const Loan = ({
@@ -129,19 +129,6 @@ const Loan = ({
 		? toNumberWithSpaces(Math.floor(regularPrice / 12))
 		: price.loanRegular[type]?.[format]
 
-	// console.log(regularPriceUI)
-	// console.log(discountPriceUI)
-
-	// regularPriceUI = toNumberWithSpaces(
-	//   Number(regularPriceUI?.trim().replace(/\u00A0/, '')) * 10
-	// )
-
-	// discountPriceUI = toNumberWithSpaces(
-	//   Number(discountPriceUI?.trim().replace(/\u00A0/, '')) / 10
-	// )
-
-	// console.log(regularPriceUI.trim().replace(/\u00A0/, ''))
-
 	return (
 		<>
 			<i
@@ -173,31 +160,38 @@ const Loan = ({
 					</span>
 				</span>
 			</i>
-			{discount && !at.blended && !notComparingPrices && (
-				<>
-					<i
-						className={cn('price', getPriceClass('old', renderedByComponent), {
-							[stls.discount]: variant === 'SectionStudyCost',
-							[stls.programPageOldPrice]: variant === 'programPage'
-						})}
-					>
-						<span
-							className={cn(stls.discountNum, {
-								[stls.discountNum]: variant === 'SectionStudyCost'
-							})}
+			{discount &&
+				!at.blended &&
+				!notComparingPrices &&
+				variant !== 'programsPage' && (
+					<>
+						<i
+							className={cn(
+								'price',
+								getPriceClass('old', renderedByComponent),
+								{
+									[stls.discount]: variant === 'SectionStudyCost',
+									[stls.programPageOldPrice]: variant === 'programPage'
+								}
+							)}
 						>
-							{discountPriceUI}
-						</span>{' '}
-						<span
-							className={cn({
-								[stls.discountLabel]: variant === 'SectionStudyCost'
-							})}
-						>
-							{currencySymbol}
-						</span>
-					</i>
-				</>
-			)}
+							<span
+								className={cn(stls.discountNum, {
+									[stls.discountNum]: variant === 'SectionStudyCost'
+								})}
+							>
+								{discountPriceUI}
+							</span>{' '}
+							<span
+								className={cn({
+									[stls.discountLabel]: variant === 'SectionStudyCost'
+								})}
+							>
+								{currencySymbol}
+							</span>
+						</i>
+					</>
+				)}
 			{variant === 'SectionStudyCost' && (
 				<span className={stls.priceLabelInfo}>*рассрочка на 12 месяцев</span>
 			)}
