@@ -8,10 +8,6 @@ import { BtnBeta, BtnClose } from '@/components/btns'
 export const PopupCta = ({ className, next, close }: PopupCtaProps) => {
 	const contactInfo = useContactInfo()
 
-	const handlerClose = () => {
-		console.log('close clicked')
-	}
-
 	return (
 		<div className={cn(className, stls.content)}>
 			<p className={stls.title}>Приемная комиссия</p>

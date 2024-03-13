@@ -246,7 +246,7 @@ const contact = async (req, res) => {
 		contactMethod: contactMethod || null,
 		question: question || null,
 		root: root || null,
-		leadPage: root + leadPage || null,
+		leadPage: (root + leadPage).replace(/#.*/g, '') || null,
 		formName: formName || null,
 		ip: ip || null,
 		cityEn: (locationData && locationData.city.names.en) || null,

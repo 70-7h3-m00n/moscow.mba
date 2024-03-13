@@ -38,7 +38,7 @@ export const FilterCategories = ({ className }: FilterCategoriesProps) => {
 							)}
 						</span>
 					</Link>
-					{category.value !== FilterTypeProgramEnum.all && (
+					{category.description && (
 						<InfoTooltip className={stls.info} color='#18191A' textColor='#fff'>
 							<p className={stls.infoDescription}>{category.description}</p>
 						</InfoTooltip>

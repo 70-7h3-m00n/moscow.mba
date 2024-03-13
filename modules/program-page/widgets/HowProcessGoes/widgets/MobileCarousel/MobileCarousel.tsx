@@ -57,13 +57,10 @@ export const MobileCarousel = ({ className, ...rest }: MobileCarouselProps) => {
 	}
 
 	const nextBtn = () => {
-		console.log('click next')
-
 		slider1.current?.slickNext()
 	}
 
 	const previousBtn = () => {
-		console.log('click prev')
 		slider1.current?.slickPrev()
 	}
 

@@ -2,12 +2,16 @@ import stls from './FilterDuration.module.sass'
 import cn from 'classnames'
 import { FilterDurationType } from './types'
 
-import { ChangeEvent, useEffect, useState } from 'react'
-
+import { ChangeEvent, useContext, use, useState } from 'react'
 import { useRouter } from 'next/router'
+import { countProgressRange } from 'modules/programs-page-alt/fractals/utils'
+import { ProgramsPageContext } from 'modules/programs-page-alt/fractals/context/context'
+import { ACTION } from 'modules/programs-page-alt/fractals/context/reducer'
+import { FiltersEnum } from 'modules/programs-page-alt/fractals'
 
 export const FilterDuration = ({ className, ...rest }: FilterDurationType) => {
-	const router = useRouter()
+	const { state, dispatch } = useContext(ProgramsPageContext)
+	// const router = useRouter()
 
 	// useEffect(() => {
 	// 	if (router.isReady) {
@@ -41,47 +45,38 @@ export const FilterDuration = ({ className, ...rest }: FilterDurationType) => {
 	// 	})
 	// }, [minMaxDuration?.maxDuration])
 
-	// const progres = countProgressRange(
-	// 	configPrograms?.[FiltersEnum.filterDuration],
-	// 	minMaxDuration?.minDuration,
-	// 	minMaxDuration?.maxDuration
-	// )
-	const progres = 100
+	// const progress = 90
 
-	const activeProgress = '#FB4D3E'
-	const inactiveProgress = '#EFEFEF'
-	const styleInput = {
-		background: `linear-gradient(90deg, ${activeProgress} 0% ${progres +
-			'%'},   ${inactiveProgress} ${progres + '%'} 100%)`
-	}
+	const progress = countProgressRange(state.programsConfig?.duration)
+	const styleInput = { '--progress': `${progress}%` }
 
 	const [value, setValue] = useState(0)
 
-	const handlerOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setValue(+e.target.value)
+	const handlerOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+		// setValue(+event.target.value)
+		dispatch({
+			type: ACTION.SET_DURATION,
+			payload: { ...state.programsConfig.duration, value: +event.target.value }
+		})
 	}
 
 	return (
 		<div className={cn(className, stls.content)} {...rest}>
 			<p className={stls.filterTitle}>Длительность</p>
 			<div className={stls.filter}>
-				<label
-					htmlFor='volume'
-					className={stls.labelFilter}
-				>{`От 0 до 6 месяцев`}</label>
-				{/* <label htmlFor='volume' className={stls.labelFilter}>{`От ${
-					minMaxDuration?.minDuration
-				} до ${configPrograms?.[FiltersEnum.filterDuration]} месяцев`}</label> */}
+				<label htmlFor='volume' className={stls.labelFilter}>
+					{`От ${state.programsConfig?.duration?.min} до ${state.programsConfig?.duration?.value} месяцев`}
+				</label>
 				<input
-					type='range'
-					min={0}
-					max={6}
-					name={'FiltersEnum.filterDuration'}
-					step={1}
 					className={stls.inputDuration}
-					style={styleInput}
-					onChange={e => handlerOnChange(e)}
-					value={value}
+					type='range'
+					min={state.programsConfig.duration?.min}
+					max={state.programsConfig.duration?.max}
+					name={FiltersEnum.filterDuration}
+					step={1}
+					style={styleInput as React.CSSProperties}
+					onChange={event => handlerOnChange(event)}
+					value={state.programsConfig.duration?.value}
 				/>
 			</div>
 		</div>

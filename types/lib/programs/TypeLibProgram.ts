@@ -21,6 +21,7 @@ type TypeLibProgram = {
 		slug: string | null
 		description: string | null
 	} | null
+	updatedAt?: Date | null
 	// TODO Этих типов нет в новых типах (в телеге)
 	price?: string | number | null
 	discount?: string | number | null

@@ -1,0 +1,49 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.priceTag.reverse
+  flex-direction: row-reverse
+
+.priceTag
+  // background-color: red !important
+
+  span
+    font-family: "Helvetica Neue" !important
+    font-style: normal
+    font-weight: 400
+    line-height: 120%
+    color: #000
+
+  i
+    font-family: "Helvetica Neue" !important
+    font-style: normal
+    font-weight: 400
+    line-height: 120%
+
+
+  i:last-of-type
+    color: #000
+    font-size: 1rem
+
+  i:first-of-type
+    color: #575757
+    font-size: 0.875rem
+
+    &::after
+      background-color: currentColor
+
+.price
+  display: flex
+  flex-direction: column
+  gap: .5rem
+
+  &__description
+    font-size: 0.625rem
+    font-style: normal
+    font-weight: 400
+    line-height: 120%
+    color: #FF3535
+    
+    i
+      font-family: "Helvetica Neue" !important

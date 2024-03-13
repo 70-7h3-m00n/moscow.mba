@@ -1,3 +1,3 @@
 import { ComponentPropsWithoutRef } from 'react'
 
-export type ProgramsSearchProps = ComponentPropsWithoutRef<'section'>
+export type ProgramsSidebarProps = ComponentPropsWithoutRef<'section'>

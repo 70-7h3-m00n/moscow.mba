@@ -19,7 +19,6 @@ export const ProgramsFiltersSection = ({
 	...rest
 }: ProgramsFiltersSectionProps) => {
 	const { state, dispatch } = useContext(ProgramsPageContext)
-	console.log('ProgramsFiltersSection state =>>>>>>>', state.programsConfig)
 
 	const groupProgramsByField = (
 		programs: TypeLibPrograms
