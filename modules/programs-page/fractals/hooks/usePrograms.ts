@@ -17,8 +17,10 @@ export const usePrograms = () => {
 		null
 	)
 
-	const [uniqueDirections, setUniqueDirections] =
-		useState<TUniqueDirections | null>(null)
+	const [
+		uniqueDirections,
+		setUniqueDirections
+	] = useState<TUniqueDirections | null>(null)
 
 	const fitlerAll = programs => programs && [...programs]
 

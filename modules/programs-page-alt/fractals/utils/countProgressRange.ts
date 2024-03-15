@@ -1,12 +1,15 @@
-import { TypeDuration } from 'modules/programs-page-alt/types'
+import { TypeDurationConfig } from 'modules/programs-page-alt/types'
 
-export const countProgressRange = (param: TypeDuration) => {
-	if (param === null) {
+export const countProgressRange = (
+	config: TypeDurationConfig,
+	value: number
+) => {
+	if (config === null) {
 		// Обработка ситуации, когда value равен null
 		return 0 // Или любое другое значение по умолчанию
 	}
 
-	const { value, min, max } = param
+	const { min, max } = config
 
 	const countProgress = ((value - min) / (max - min)) * 100
 

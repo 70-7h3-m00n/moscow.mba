@@ -6,12 +6,16 @@ import { ChangeEvent, useContext } from 'react'
 import { ProgramsPageContext } from 'modules/programs-page-alt/fractals/context/context'
 import { InputToggle } from '../ProgramsSearch/InputToggle/InputToggle'
 import { ACTION } from 'modules/programs-page-alt/fractals/context/reducer'
+import useAt from '@/hooks/useAt'
 
 export const FilterEmployment = ({
 	className,
 	...rest
 }: FilterEmploymentProps) => {
+	const at = useAt()
 	const { state, dispatch } = useContext(ProgramsPageContext)
+
+	const disabled = at.mba || at.mini
 
 	const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
 		dispatch({
@@ -21,9 +25,15 @@ export const FilterEmployment = ({
 	}
 
 	return (
-		<div className={cn(className, stls.content)} {...rest}>
+		<div
+			className={cn(className, stls.content, {
+				[stls.disabled]: disabled
+			})}
+			{...rest}
+		>
 			<p className={stls.text}>С трудоустройством</p>
 			<InputToggle
+				disabled={disabled}
 				checked={state.programsConfig.employment}
 				onChange={event => handleOnChange(event)}
 			/>

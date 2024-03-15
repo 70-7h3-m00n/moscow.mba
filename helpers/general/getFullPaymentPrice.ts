@@ -6,7 +6,8 @@ type getFullPriceProps = {
 }
 
 export const getFullPaymentPrice = ({ price, type }: getFullPriceProps) => {
-	const discountRate = 0.05 // 5% скидка
+	const discountRate = 0 // 0% скидка
+	// const discountRate = 0.05 // 5% скидка
 	const currentTypePrice = price ? price : defaultPrice.discounted[type].online
 
 	const discountedPrice = Math.floor(

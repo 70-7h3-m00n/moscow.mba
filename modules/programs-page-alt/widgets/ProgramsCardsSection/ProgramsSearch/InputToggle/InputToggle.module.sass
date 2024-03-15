@@ -33,34 +33,24 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3)
   transition: transform 0.3s ease
 
-// .toggle__input:checked + label
 .toggle__label:has(.toggle__input:checked)
   background-color: #FF3535
 
-
-// .toggle__input:checked + label::before 
 .toggle__label:has(.toggle__input:checked)::before
   transform: translateX(24px)
 
 .toggle__label:hover 
   background-color: #DEE2E5
 
-
-// .toggle__input:checked + label:hover 
 .toggle__label:hover:has(.toggle__input:checked)
   background-color: #FF3535
 
-// .toggle__input:active + label
 .toggle__label:has(.toggle__input:active)
   background-color: rgba(255, 53, 53, .5)
 
-
-// .toggle__input:checked:active + label 
-.toggle__label:has(.toggle__input:checked:active)
+.toggle__label:has(.toggle__input:checked:active):has(:not(.toggle__input:disabled))
   background-color: rgba(222, 226, 229, .5)
 
-
-// .toggle__input:focus + label 
 .toggle__label:has(.toggle__input:focus)
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2)
 

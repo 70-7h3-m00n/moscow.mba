@@ -22,7 +22,7 @@ const PagePrograms = ({ programs }) => {
 			<ProgramsPageAlt programs={programs}/>
 			:
 				<ProgramsPage />}
-				{/* <ProgramsPage /> */}
+
 		</>
 	)
 }

@@ -12,7 +12,8 @@ export const paymentMethods = [
 	},
 	{
 		type: PAYMENT.FULLPRICE,
-		name: `Оплатить всю сумму сразу с дополнительной скидкой 5% — `,
+		// name: `Оплатить всю сумму сразу с дополнительной скидкой 5% — `,
+		name: `Оплатить всю сумму сразу — `,
 		image: (
 			<span className={stls.paymentType}>
 				<IconVisaAlt />

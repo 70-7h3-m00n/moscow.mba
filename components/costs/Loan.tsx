@@ -14,6 +14,45 @@ type TypeLoanProps = {
 	variant?: 'SectionStudyCost' | 'programPage' | 'programsPage'
 }
 
+export const price = {
+	loanRegular: {
+		mini: {
+			online: toNumberWithSpaces(18250),
+			blended: toNumberWithSpaces(29150)
+		},
+		mba: {
+			online: toNumberWithSpaces(28900),
+			blended: toNumberWithSpaces(37500)
+		},
+		profession: {
+			online: toNumberWithSpaces(6000)
+		},
+		course: {
+			online: toNumberWithSpaces(6000)
+		},
+		mbl: {
+			online: toNumberWithSpaces(26500)
+		}
+	},
+	loanDiscounted: {
+		mini: {
+			online: toNumberWithSpaces(10050)
+		},
+		mba: {
+			online: toNumberWithSpaces(15900)
+		},
+		profession: {
+			online: toNumberWithSpaces(3250)
+		},
+		course: {
+			online: toNumberWithSpaces(3250)
+		},
+		mbl: {
+			online: toNumberWithSpaces(14600)
+		}
+	}
+}
+
 const Loan = ({
 	discount = false,
 	type = null,
@@ -44,52 +83,13 @@ const Loan = ({
 		? `${ui.currentlySymbols.uzm}/мес`
 		: `${ui.currentlySymbols.rubAlt}/мес`
 
-	const setPrice = (rub: number) => {
-		return atKz
-			? toNumberWithSpaces(rub * currencyRates.kzt)
-			: atUz
-			? toNumberWithSpaces(rub * currencyRates.uzm)
-			: toNumberWithSpaces(rub)
-	}
-
-	const price = {
-		loanRegular: {
-			mini: {
-				online: setPrice(18250),
-				blended: setPrice(29150)
-			},
-			mba: {
-				online: setPrice(28900),
-				blended: setPrice(37500)
-			},
-			profession: {
-				online: setPrice(6000)
-			},
-			course: {
-				online: setPrice(6000)
-			},
-			mbl: {
-				online: setPrice(26500)
-			}
-		},
-		loanDiscounted: {
-			mini: {
-				online: setPrice(10050)
-			},
-			mba: {
-				online: setPrice(15900)
-			},
-			profession: {
-				online: setPrice(3250)
-			},
-			course: {
-				online: setPrice(3250)
-			},
-			mbl: {
-				online: setPrice(14600)
-			}
-		}
-	}
+	// const setPrice = (rub: number) => {
+	// 	return atKz
+	// 		? toNumberWithSpaces(rub * currencyRates.kzt)
+	// 		: atUz
+	// 		? toNumberWithSpaces(rub * currencyRates.uzm)
+	// 		: toNumberWithSpaces(rub)
+	// }
 
 	const regularOrDiscounted = discount ? 'loanDiscounted' : 'loanRegular'
 

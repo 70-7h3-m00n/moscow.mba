@@ -116,6 +116,12 @@ module.exports = {
 	},
 	async redirects() {
 		return [
+			// no program
+			{
+				source: '/programs/course/online/business-analitika',
+				destination: '/programs/profession/online/business-analitika',
+				permanent: true
+			},
 			// remove dublicates
 			{
 				source: '/programs/course/online/GR-menedzhment-1',
