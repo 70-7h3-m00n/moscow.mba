@@ -20,8 +20,8 @@ export const ProgramsPageProvider: React.FC<ProgramsPageProviderProps> = ({
 	programs
 }) => {
 	const at = useAt()
-
 	const { mba, mini, profession, course } = at
+
 	const filteredPrograms = programs.filter(program => {
 		if (mba && program.category.type === FilterTypeProgramEnum.mba) return true
 		if (mini && program.category.type === FilterTypeProgramEnum.mini)
