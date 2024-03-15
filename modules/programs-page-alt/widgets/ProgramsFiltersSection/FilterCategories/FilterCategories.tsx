@@ -11,25 +11,25 @@ import {
 } from 'modules/programs-page-alt/fractals'
 import { InfoTooltip } from '@/components/popups/InfoTooltip/InfoTooltip'
 import Link from 'next/link'
+import routesFront from '@/config/routesFront'
 
 export const FilterCategories = ({ className }: FilterCategoriesProps) => {
 	const { state, dispatch } = useContext(ProgramsPageContext)
 
-	const handlerOnClick = (value: FilterTypeProgramEnum) => {
-		dispatch({ type: ACTION.SET_TYPE, payload: value })
-	}
+	// const handlerOnClick = (value: FilterTypeProgramEnum) => {
+	// 	dispatch({ type: ACTION.SET_TYPE, payload: value })
+	// }
 
 	return (
 		<ul className={cn(className, stls.list)}>
 			{LIST_FILTER_TYPE_PROGRAM?.map((category, idx) => (
 				<li className={stls.item} key={idx}>
 					<Link
-						// href={category.src}
-						href={'#'}
+						href={category.src}
 						className={cn(stls.item__link, {
 							[stls.active]: category.value === state.programsConfig.type
 						})}
-						onClick={() => handlerOnClick(category.value)}
+						// onClick={() => handlerOnClick(category.value)}
 					>
 						<span className={cn(stls.item__name)}>
 							{category.text}{' '}
@@ -38,9 +38,9 @@ export const FilterCategories = ({ className }: FilterCategoriesProps) => {
 							)}
 						</span>
 					</Link>
-					{category.description && (
+					{category.tooltip && (
 						<InfoTooltip className={stls.info} color='#18191A' textColor='#fff'>
-							<p className={stls.infoDescription}>{category.description}</p>
+							<p className={stls.infoDescription}>{category.tooltip}</p>
 						</InfoTooltip>
 					)}
 				</li>

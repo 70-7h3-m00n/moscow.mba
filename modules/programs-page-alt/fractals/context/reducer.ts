@@ -2,9 +2,12 @@ import { TypeLibPrograms } from '@/types/index'
 import { FilterPricingProgramEnum, FilterTypeProgramEnum } from '../enums'
 import { SortingEnum } from 'modules/programs-page-alt/fractals'
 import {
-	TypeDuration,
+	TypeDurationConfig,
 	TypeProgramsConfig
 } from 'modules/programs-page-alt/types'
+import { filterPrograms } from '../utils/filterPrograms'
+import { sortPrograms } from '../utils/sortPrograms'
+import { getMaxDuration, getMinDuration } from '../utils/getDuration'
 
 export const ACTION = {
 	SET_INITIAL_PROPS: 'SET_INITIAL_PROPS' as const,
@@ -15,6 +18,7 @@ export const ACTION = {
 	SET_DIRECTION: 'SET_DIRECTION' as const,
 	SET_PRICING: 'SET_PRICING' as const,
 	SET_DURATION: 'SET_DURATION' as const,
+	SET_DURATION_CONFIG: 'SET_DURATION_CONFIG' as const,
 	SET_EMPLOYMENT: 'SET_EMPLOYMENT' as const
 }
 
@@ -33,7 +37,6 @@ export type TypeProgramsAction =
 	  }
 	| {
 			type: typeof ACTION.SET_UI_PROGRAMS
-			payload: TypeLibPrograms
 	  }
 	| {
 			type: typeof ACTION.SET_SORTING
@@ -53,7 +56,11 @@ export type TypeProgramsAction =
 	  }
 	| {
 			type: typeof ACTION.SET_DURATION
-			payload: TypeDuration | null
+			payload: number | null
+	  }
+	| {
+			type: typeof ACTION.SET_DURATION_CONFIG
+			payload: TypeDurationConfig | null
 	  }
 	| {
 			type: typeof ACTION.SET_EMPLOYMENT
@@ -64,6 +71,7 @@ export type TypeProgramsReducer = {
 	programs: TypeLibPrograms
 	UIPrograms: TypeLibPrograms
 	programsConfig: TypeProgramsConfig
+	durationConfig: TypeDurationConfig
 }
 
 export const programsPageReducer = (
@@ -78,35 +86,61 @@ export const programsPageReducer = (
 				UIPrograms: action.payload.UIPrograms,
 				programsConfig: action.payload.programsConfig
 			}
+
 		case ACTION.SET_PROGRAMS:
 			return { ...state, programs: action.payload }
+
 		case ACTION.SET_UI_PROGRAMS:
-			return { ...state, UIPrograms: action.payload }
+			const filteredAndSortedPrograms = sortPrograms(
+				filterPrograms(state.programs, state.programsConfig),
+				state.programsConfig.sorting
+			)
+
+			return {
+				...state,
+				UIPrograms: filteredAndSortedPrograms
+				// durationConfig: {
+				// 	min: getMinDuration(filteredAndSortedPrograms),
+				// 	max: getMaxDuration(filteredAndSortedPrograms)
+				// }
+			}
+
 		case ACTION.SET_SORTING:
 			return {
 				...state,
 				programsConfig: { ...state.programsConfig, sorting: action.payload }
 			}
+
 		case ACTION.SET_TYPE:
 			return {
 				...state,
 				programsConfig: { ...state.programsConfig, type: action.payload }
 			}
+
 		case ACTION.SET_DIRECTION:
 			return {
 				...state,
 				programsConfig: { ...state.programsConfig, direction: action.payload }
 			}
+
 		case ACTION.SET_PRICING:
 			return {
 				...state,
 				programsConfig: { ...state.programsConfig, pricing: action.payload }
 			}
+
 		case ACTION.SET_DURATION:
 			return {
 				...state,
 				programsConfig: { ...state.programsConfig, duration: action.payload }
 			}
+
+		case ACTION.SET_DURATION_CONFIG:
+			return {
+				...state,
+				durationConfig: action.payload
+			}
+
 		case ACTION.SET_EMPLOYMENT:
 			return {
 				...state,

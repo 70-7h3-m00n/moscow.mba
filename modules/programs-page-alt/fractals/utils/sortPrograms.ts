@@ -1,5 +1,6 @@
 import { TypeLibPrograms } from '@/types/index'
 import { SortingEnum } from '../enums'
+import { price } from '@/config/price'
 
 export const sortNovelty = (programs: TypeLibPrograms) => {
 	if (!programs) {
@@ -41,11 +42,42 @@ export const sortPopular = (programs: TypeLibPrograms) => {
 	return sortedPrograms
 }
 
+const discountedMBA = price.discounted.mba.online
+const discountedMini = price.discounted.mini.online
+
 export const sortPriceDecrease = (programs: TypeLibPrograms) =>
-	[...programs].sort((a, b) => Number(b.price) - Number(a.price))
+	[...programs].sort((a, b) => {
+		const priceA =
+			a.category.type === 'mba'
+				? discountedMBA
+				: a.category.type === 'mini'
+				? discountedMini
+				: Number(a.price)
+		const priceB =
+			b.category.type === 'mba'
+				? discountedMBA
+				: b.category.type === 'mini'
+				? discountedMini
+				: Number(b.price)
+		return priceB - priceA
+	})
 
 export const sortPriceIncrease = (programs: TypeLibPrograms) =>
-	[...programs].sort((a, b) => Number(a.price) - Number(b.price))
+	[...programs].sort((a, b) => {
+		const priceA =
+			a.category.type === 'mba'
+				? discountedMBA
+				: a.category.type === 'mini'
+				? discountedMini
+				: Number(a.price)
+		const priceB =
+			b.category.type === 'mba'
+				? discountedMBA
+				: b.category.type === 'mini'
+				? discountedMini
+				: Number(b.price)
+		return priceA - priceB
+	})
 
 export const sortPrograms = (
 	programs: TypeLibPrograms,

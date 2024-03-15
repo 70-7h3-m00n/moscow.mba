@@ -11,8 +11,7 @@ export type ProgramsPageProps = ComponentPropsWithoutRef<'div'> & {
 	programs: TypeLibPrograms
 }
 
-export type TypeDuration = {
-	value: number
+export type TypeDurationConfig = {
 	min: number
 	max: number
 }
@@ -23,7 +22,7 @@ export type TypeProgramsConfig = {
 	direction: string
 	pricing: FilterPricingProgramEnum
 	employment: boolean | null
-	duration: TypeDuration | null
+	duration: number | null
 }
 
 export type ProgramsPageContextType = {

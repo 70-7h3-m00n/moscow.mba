@@ -5,44 +5,44 @@ import { FilterTagsProps, TagsType } from './types'
 import { Tag } from 'modules/program-page/widgets'
 import { IconCloseAlt, IconRefresh } from '@/components/icons'
 import { ACTION } from 'modules/programs-page-alt/fractals/context/reducer'
-import {
-	FilterTypeProgramEnum,
-	SortingEnum
-} from 'modules/programs-page-alt/fractals'
+import { FilterTypeProgramEnum } from 'modules/programs-page-alt/fractals'
 import { useContext, useEffect, useState } from 'react'
 import { ProgramsPageContext } from 'modules/programs-page-alt/fractals/context/context'
+import useAt from '@/hooks/useAt'
 
 export const FilterTags = ({ className, ...rest }: FilterTagsProps) => {
+	const at = useAt()
 	const { state, dispatch } = useContext(ProgramsPageContext)
-	const config = state.programsConfig
-
+	const { programsConfig, durationConfig } = state
 	const [tags, setTags] = useState<TagsType[]>([])
+
+	const initialEmployment = !at.profession || !at.course
 
 	useEffect(() => {
 		const array: TagsType[] = [
-			...(config.type === FilterTypeProgramEnum.all
+			...(programsConfig.type === FilterTypeProgramEnum.all
 				? []
 				: [
 						{
-							title: config.type,
+							title: programsConfig.type,
 							action: {
 								type: ACTION.SET_TYPE,
 								payload: FilterTypeProgramEnum.all
 							}
 						}
 				  ]),
-			...(config.duration?.max === config.duration?.value
+			...(durationConfig?.max === programsConfig?.duration
 				? []
 				: [
 						{
-							title: `От ${config.duration?.min} до ${config.duration?.value} месяцев`,
+							title: `От ${durationConfig?.min} до ${programsConfig?.duration} месяцев`,
 							action: {
 								type: ACTION.SET_DURATION,
-								payload: { ...config.duration, value: config.duration?.max }
+								payload: durationConfig?.max
 							}
 						}
 				  ]),
-			...(config.employment
+			...(programsConfig.employment && !at.mba && !at.mini
 				? [
 						{
 							title: 'С трудоустройством',
@@ -56,24 +56,20 @@ export const FilterTags = ({ className, ...rest }: FilterTagsProps) => {
 		]
 
 		setTags(array)
-	}, [])
+	}, [durationConfig?.max, durationConfig?.min, programsConfig])
 
 	const handlerClearFilters = () => {
 		// dispatch({ type: ACTION.SET_DIRECTION, payload: null })
-		dispatch({ type: ACTION.SET_TYPE, payload: FilterTypeProgramEnum.all })
 		dispatch({ type: ACTION.SET_PRICING, payload: null })
 		dispatch({ type: ACTION.SET_EMPLOYMENT, payload: false })
 		dispatch({
 			type: ACTION.SET_DURATION,
-			payload: {
-				...config.duration,
-				value: config.duration.max
-			}
+			payload: durationConfig?.max
 		})
 	}
 
 	const [rotate, setRotate] = useState(false)
-	console.log('rotate: ', rotate)
+	console.log('FilterTags rerender ->>>: ')
 
 	const handleRotate = () => {
 		setRotate(true)

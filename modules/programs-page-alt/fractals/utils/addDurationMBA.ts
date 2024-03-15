@@ -1,6 +1,6 @@
 import { TypeLibPrograms } from '@/types/index'
 
-export const addDurationAndPriceMBA = (
+export const addDurationToMBA = (
 	programs: TypeLibPrograms
 ): TypeLibPrograms => {
 	const categoryDurationMap: Record<string, { duration: number }> = {
@@ -9,6 +9,7 @@ export const addDurationAndPriceMBA = (
 	}
 
 	return programs
+		.filter(program => program.category.slug !== 'executive')
 		.map(program => {
 			const { category, duration } = program || {}
 

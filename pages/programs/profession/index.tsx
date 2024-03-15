@@ -3,10 +3,11 @@ import { GetStaticProps } from 'next'
 import { TypePageHomeProps } from '@/types/index'
 import { handleGetStaticProps } from '@/lib/index'
 import { usePageHandleContext } from '@/hooks/index'
-import { routesFront } from '@/config/index'
+import { dev, routesFront } from '@/config/index'
 import { Programs } from '@/components/pages'
 import { SeoPagesPrograms } from '@/components/seo'
 import { ProgramsPage } from 'modules'
+import ProgramsPageAlt from 'modules/programs-page-alt/ProgramsPage'
 
 const PageProgramsProfession = ({ programs }) => {
 	usePageHandleContext({ programs })
@@ -15,7 +16,10 @@ const PageProgramsProfession = ({ programs }) => {
 		<>
 			<SeoPagesPrograms />
 			{/* <Programs mbaTypeOfProgram={'profession'} mbaFormat={'online'} /> */}
-			<ProgramsPage />
+			{dev ?
+			<ProgramsPageAlt programs={programs}/>
+			:
+				<ProgramsPage />}
 		</>
 	)
 }

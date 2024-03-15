@@ -26,6 +26,13 @@ export const ProgramsSidebar = ({
 					.map((el, idx) => (
 						<p key={idx}>{el}</p>
 					))}
+				<br />
+				{JSON.stringify(state.durationConfig)
+					.replace(/[{}]/g, '')
+					.split(',')
+					.map((el, idx) => (
+						<p key={idx}>{el}</p>
+					))}
 			</div>
 		</div>
 	)
