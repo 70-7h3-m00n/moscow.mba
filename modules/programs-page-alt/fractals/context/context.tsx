@@ -58,7 +58,8 @@ export const ProgramsPageProvider: React.FC<ProgramsPageProviderProps> = ({
 			direction: null,
 			pricing: null,
 			duration: getMaxDuration(initialPrograms),
-			employment: initialEmployment
+			employment: initialEmployment,
+			searchTerm: ''
 		},
 		durationConfig: {
 			min: getMinDuration(initialPrograms),

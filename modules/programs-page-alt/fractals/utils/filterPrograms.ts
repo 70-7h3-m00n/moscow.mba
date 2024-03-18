@@ -1,9 +1,11 @@
 import { TypeLibPrograms } from '@/types/index'
 import { FilterTypeProgramEnum } from '../enums'
+import keyboard from '@/config/keyboard'
 import {
 	TypeDurationConfig,
 	TypeProgramsConfig
 } from 'modules/programs-page-alt/types'
+import { checkMatchAtBeginning } from '@/components/general/SearchField/fractals/hooks/searchMatch'
 
 export const filterByType = (
 	programs: TypeLibPrograms,
@@ -45,6 +47,43 @@ export const filterByEmployment = (programs: TypeLibPrograms) => {
 	})
 }
 
+const decode = (search: string) => {
+	return search.replace(/[^а-я]/gi, match => {
+		if (keyboard.hasOwnProperty(match.length > 1 ? match.at(-1) : match)) {
+			return match.length > 1 ? ` ${keyboard[match.at(-1)]}` : keyboard[match]
+		} else {
+			return ''
+		}
+	})
+}
+
+export const filterBySearchTerm = (
+	programs: TypeLibPrograms,
+	searchTerm: string
+) => {
+	// Получаем расшифрованный поисковый запрос
+	const decodedSearchTerm = decode(searchTerm)
+
+	const filteredBySearch = programs.filter(program => {
+		// Определяем название программы и приводим его к нижнему регистру
+		const title = program.title.toLowerCase().replace(/-/g, ' ')
+
+		// Приводим поисковый запрос к нижнему регистру и убираем тире
+		const search = searchTerm?.toLowerCase()?.replace(/-/g, ' ')
+
+		return title.includes(search) || title.includes(decodedSearchTerm)
+	})
+
+	// Сортируем отфильтрованные программы
+	const result = filteredBySearch?.sort(
+		program =>
+			searchTerm &&
+			checkMatchAtBeginning(program?.title, decodedSearchTerm || searchTerm)
+	)
+
+	return result
+}
+
 export const filterPrograms = (
 	programsArray: TypeLibPrograms,
 	config: TypeProgramsConfig
@@ -54,6 +93,8 @@ export const filterPrograms = (
 	programs = filterByDirection(programs, config.direction)
 
 	programs = filterByDuration(programs, config.duration)
+
+	programs = filterBySearchTerm(programs, config.searchTerm)
 
 	// programs = filterByEmployment(programs)
 
