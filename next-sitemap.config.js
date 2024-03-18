@@ -50,16 +50,27 @@ module.exports = {
 					'/*kk_KZ',
 					'*/ru/',
 					'/*uz_UZ',
-					'/promo*',
-					'*?',
-					'/*en-US',
-					'/*kk_KZ',
-					'*/ru/',
-					'/*uz_UZ',
-					'/%20policyf',
-					'/oferta.pdf'
+					'/legaldocuments/',
+					'*blended'
 				]
 			}
 		]
 	}
 }
+
+// User-agent: *
+// Allow: /*.css
+// Allow: /*.js
+// Allow: /*.jpg
+// Allow: /*.png
+// Allow: /*.gif
+
+// Disallow: *utm
+// Disallow: /promo*
+// Disallow: *?
+// Disallow: /*en-US
+// Disallow: /*kk_KZ
+// Disallow: */ru/
+// Disallow: /*uz_UZ
+// Disallow: /legaldocuments/
+// Disallow: *blended

@@ -23,6 +23,7 @@ export type TypeProgramsConfig = {
 	pricing: FilterPricingProgramEnum
 	employment: boolean | null
 	duration: number | null
+	searchTerm: string
 }
 
 export type ProgramsPageContextType = {

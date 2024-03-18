@@ -19,7 +19,8 @@ export const ACTION = {
 	SET_PRICING: 'SET_PRICING' as const,
 	SET_DURATION: 'SET_DURATION' as const,
 	SET_DURATION_CONFIG: 'SET_DURATION_CONFIG' as const,
-	SET_EMPLOYMENT: 'SET_EMPLOYMENT' as const
+	SET_EMPLOYMENT: 'SET_EMPLOYMENT' as const,
+	SET_SEARCH_TERM: 'SET_SEARCH_TERM' as const
 }
 
 export type TypeProgramsAction =
@@ -66,6 +67,10 @@ export type TypeProgramsAction =
 			type: typeof ACTION.SET_EMPLOYMENT
 			payload: boolean
 	  }
+	| {
+			type: typeof ACTION.SET_SEARCH_TERM
+			payload: string
+	  }
 
 export type TypeProgramsReducer = {
 	programs: TypeLibPrograms
@@ -95,14 +100,9 @@ export const programsPageReducer = (
 				filterPrograms(state.programs, state.programsConfig),
 				state.programsConfig.sorting
 			)
-
 			return {
 				...state,
 				UIPrograms: filteredAndSortedPrograms
-				// durationConfig: {
-				// 	min: getMinDuration(filteredAndSortedPrograms),
-				// 	max: getMaxDuration(filteredAndSortedPrograms)
-				// }
 			}
 
 		case ACTION.SET_SORTING:
@@ -145,6 +145,12 @@ export const programsPageReducer = (
 			return {
 				...state,
 				programsConfig: { ...state.programsConfig, employment: action.payload }
+			}
+
+		case ACTION.SET_SEARCH_TERM:
+			return {
+				...state,
+				programsConfig: { ...state.programsConfig, searchTerm: action.payload }
 			}
 
 		default:
