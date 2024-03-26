@@ -7,12 +7,16 @@
   gap: 1.5rem
   flex-wrap: wrap
   margin-bottom: 1.5rem
+  @include m.media(phone, tablet)
+    gap: 1rem
+    margin-bottom: 1rem
 
 .item
   position: relative
 
   &__link
     display: flex
+    height: 2.1rem
     padding: 0.5rem
     justify-content: center
     align-items: center

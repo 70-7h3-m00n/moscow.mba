@@ -1,0 +1,42 @@
+@use '@/styles/utils/mixin' as m
+
+.content
+  display: grid
+  grid-template-columns: minmax(5rem, 1fr) auto minmax(5rem, 1fr)
+  width: 100%
+  padding-top: 3rem
+  padding-bottom: 1.6rem
+
+.programs
+  display: flex
+  align-items: center
+
+  &__link
+    display: flex
+    align-items: center
+    gap: .5rem
+
+    span
+      color: #FF3535
+      font-family: "Helvetica Neue"
+      font-size: 1rem
+      font-style: normal
+      font-weight: 400
+      line-height: 120%
+
+.nav
+  &__list
+    display: flex
+    gap: 1.5rem
+
+  &__link
+    color: #000
+    font-family: "Helvetica Neue"
+    font-size: 0.875rem
+    font-style: normal
+    font-weight: 400
+    line-height: 120%
+    transition: color .3s ease-in-out
+
+    &:hover
+      color: #FF3535

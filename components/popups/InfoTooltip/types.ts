@@ -5,4 +5,5 @@ export type InfoTooltipProps = HTMLAttributes<HTMLDivElement> & {
 	children: ReactNode
 	color?: TypeColor
 	textColor?: TypeColor
+	programsPageActive?: boolean
 }

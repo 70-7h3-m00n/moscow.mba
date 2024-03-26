@@ -10,26 +10,38 @@ import {
 	LIST_FILTER_TYPE_PROGRAM
 } from 'modules/programs-page-alt/fractals'
 import { InfoTooltip } from '@/components/popups/InfoTooltip/InfoTooltip'
-import Link from 'next/link'
 import routesFront from '@/config/routesFront'
+import { useRouter } from 'next/navigation'
 
 export const FilterCategories = ({ className }: FilterCategoriesProps) => {
+	const router = useRouter()
 	const { state, dispatch } = useContext(ProgramsPageContext)
 
-	// const handlerOnClick = (value: FilterTypeProgramEnum) => {
-	// 	dispatch({ type: ACTION.SET_TYPE, payload: value })
-	// }
+	const handlerOnClick = (value: FilterTypeProgramEnum) => {
+		if (value === FilterTypeProgramEnum.executive) {
+			router.push(routesFront.programsExecutive)
+			return
+		}
+
+		dispatch({ type: ACTION.SET_TYPE, payload: value })
+		dispatch({
+			type: ACTION.SET_EMPLOYMENT,
+			payload:
+				value === FilterTypeProgramEnum.mba ||
+				value === FilterTypeProgramEnum.mini ||
+				value === FilterTypeProgramEnum.all
+		})
+	}
 
 	return (
 		<ul className={cn(className, stls.list)}>
 			{LIST_FILTER_TYPE_PROGRAM?.map((category, idx) => (
 				<li className={stls.item} key={idx}>
-					<Link
-						href={category.src}
+					<button
 						className={cn(stls.item__link, {
 							[stls.active]: category.value === state.programsConfig.type
 						})}
-						// onClick={() => handlerOnClick(category.value)}
+						onClick={() => handlerOnClick(category.value)}
 					>
 						<span className={cn(stls.item__name)}>
 							{category.text}{' '}
@@ -37,9 +49,14 @@ export const FilterCategories = ({ className }: FilterCategoriesProps) => {
 								<span className={stls.premium}>Premium</span>
 							)}
 						</span>
-					</Link>
+					</button>
 					{category.tooltip && (
-						<InfoTooltip className={stls.info} color='#18191A' textColor='#fff'>
+						<InfoTooltip
+							className={stls.info}
+							color='#18191A'
+							textColor='#fff'
+							programsPageActive={category.value === state.programsConfig.type}
+						>
 							<p className={stls.infoDescription}>{category.tooltip}</p>
 						</InfoTooltip>
 					)}

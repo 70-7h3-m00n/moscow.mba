@@ -1,22 +1,14 @@
 import stls from './CardsList.module.sass'
 import cn from 'classnames'
 import { CardsListProps } from './types'
-import { ProgramCard } from '../ProgramCard/ProgramCard'
+import { ProgramCard } from '../../../../../components/cards/ProgramCard/ProgramCard'
 
-import { ProgramsPageContext } from 'modules/programs-page-alt/fractals/context/context'
-import { useContext, useState } from 'react'
-import { BtnArticlesShowMore, BtnBeta } from '@/components/btns'
+import { useState } from 'react'
+import { BtnBeta } from '@/components/btns'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
 
-export const CardsList = ({ className, ...rest }: CardsListProps) => {
-	const { state } = useContext(ProgramsPageContext)
-
-	const programs = state.UIPrograms?.filter(
-		program =>
-			program?.slug !== 'executive' &&
-			program?.slug !== 'international-business-law' &&
-			program?.studyFormat !== 'blended'
-	)
-
+export const CardsList = ({ className, programs }: CardsListProps) => {
 	const sizeArticles = programs?.length
 	const defaultSizeShowArticles = 8
 	const defaultSizeShowMore = 4
@@ -32,13 +24,23 @@ export const CardsList = ({ className, ...rest }: CardsListProps) => {
 	}
 
 	return (
-		<ul className={cn(className, stls.content)} {...rest}>
+		<motion.ul className={cn(className, stls.content)} layout>
 			{programs
 				?.filter((_, idx) => idx < sizeShowArticles)
 				?.map(program => (
-					<li className={stls.item} key={program._id}>
-						<ProgramCard program={program} />
-					</li>
+					<motion.li
+						className={stls.item}
+						key={program._id}
+						whileHover={{ scale: 1.05 }}
+						whileTap={{ scale: 0.98 }}
+						layout
+					>
+						<Link
+							href={`/programs/${program?.category.type}/${program?.studyFormat}/${program?.slug}`}
+						>
+							<ProgramCard program={program} />
+						</Link>
+					</motion.li>
 				))}
 			{sizeArticles > sizeShowArticles && (
 				<div className={stls.buttonWrapper}>
@@ -47,6 +49,6 @@ export const CardsList = ({ className, ...rest }: CardsListProps) => {
 					</BtnBeta>
 				</div>
 			)}
-		</ul>
+		</motion.ul>
 	)
 }

@@ -1,0 +1,51 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.formAlphaContainer
+	width: 100%
+	@include m.media(tablet, phone)
+		padding: 30px 15px
+	@include m.media(widescreen, desktop, laptop)
+		padding: 40px
+
+.formAlphaTitle
+	margin-bottom: 20px
+	font-weight: 500
+	font-size: 24px
+	line-height: 120%
+	color: #262626
+
+.formAlphaText
+	font-weight: 300
+	font-size: 20px
+	line-height: 120%
+	@include m.media(tablet, phone)
+		font-size: 16px
+		margin-bottom: 40px
+	@include m.media(widescreen, desktop, laptop)
+		font-size: 20px
+		margin-bottom: 52px
+
+.formAlpha
+	display: flex
+	@include m.media(tablet, phone)
+		flex-wrap: nowrap
+		flex-direction: column
+	@include m.media(widescreen, desktop, laptop)
+		flex-wrap: wrap
+		align-items: flex-start
+		justify-content: space-between
+	input
+		width: calc(100% - 30px)
+		min-width: 260px
+		border-color: #262626
+		color: #1f1f1f
+		margin: 0 20px 0 0
+		&::placeholder
+			color: #B2B2B2
+	button
+		min-width: 260px
+		width: 100%
+		background-color: #FF3535!important
+		color: #fff!important

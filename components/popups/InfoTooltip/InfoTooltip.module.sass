@@ -15,3 +15,20 @@
 
 .bold
   font-weight: 500
+
+.activeOpen
+  path:first-of-type
+    transition: all .3s ease-in-out
+    fill: #FFDFDF
+
+  path:not(:first-of-type)
+    stroke: #FF3535
+    transition: all .3s ease-in-out
+
+.activeClose
+  path:not(:first-of-type)
+    transition: all .3s ease-in-out
+    stroke: #FF3535
+
+
+// FFDFDF

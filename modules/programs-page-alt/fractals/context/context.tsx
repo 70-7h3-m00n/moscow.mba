@@ -22,22 +22,8 @@ export const ProgramsPageProvider: React.FC<ProgramsPageProviderProps> = ({
 	const at = useAt()
 	const { mba, mini, profession, course } = at
 
-	const filteredPrograms = programs.filter(program => {
-		if (mba && program.category.type === FilterTypeProgramEnum.mba) return true
-		if (mini && program.category.type === FilterTypeProgramEnum.mini)
-			return true
-		if (
-			profession &&
-			program.category.type === FilterTypeProgramEnum.profession
-		)
-			return true
-		if (course && program.category.type === FilterTypeProgramEnum.course)
-			return true
-		return false
-	})
+	const initialPrograms = addDurationToMBA(programs)
 
-	const initialPrograms =
-		filteredPrograms.length > 0 ? filteredPrograms : addDurationToMBA(programs)
 	const initialType = mba
 		? FilterTypeProgramEnum.mba
 		: mini
@@ -47,6 +33,7 @@ export const ProgramsPageProvider: React.FC<ProgramsPageProviderProps> = ({
 		: course
 		? FilterTypeProgramEnum.course
 		: FilterTypeProgramEnum.all
+
 	const initialEmployment = !profession || !course
 
 	const ProgramsReducerInitialState: TypeProgramsReducer = {

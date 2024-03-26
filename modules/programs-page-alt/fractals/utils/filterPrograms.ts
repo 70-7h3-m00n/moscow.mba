@@ -34,17 +34,25 @@ export const filterByDuration = (
 	)
 }
 
-export const filterByEmployment = (programs: TypeLibPrograms) => {
-	return programs.filter(program => {
-		if (
-			program.category.type === 'mba' ||
-			program.category.type === 'mini' ||
-			program?.frdo
-		) {
-			return true
-		}
-		return false
-	})
+export const filterByEmployment = (
+	programs: TypeLibPrograms,
+	employment: boolean
+) => {
+	if (employment) {
+		return programs.filter(
+			program =>
+				program.category.type === 'mba' ||
+				program.category.type === 'mini' ||
+				(program.category.type === 'course' && program.frdo === true) ||
+				(program.category.type === 'profession' && program.frdo === true)
+		)
+	} else {
+		return programs.filter(
+			program =>
+				(program.category.type === 'course' && !program.frdo) ||
+				(program.category.type === 'profession' && !program.frdo)
+		)
+	}
 }
 
 const decode = (search: string) => {
@@ -90,13 +98,15 @@ export const filterPrograms = (
 ) => {
 	let programs = programsArray
 
+	programs = filterByType(programs, config.type)
+
 	programs = filterByDirection(programs, config.direction)
 
 	programs = filterByDuration(programs, config.duration)
 
 	programs = filterBySearchTerm(programs, config.searchTerm)
 
-	// programs = filterByEmployment(programs)
+	programs = filterByEmployment(programs, config.employment)
 
 	return programs
 }

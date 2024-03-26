@@ -9,6 +9,7 @@ import { FilterTypeProgramEnum } from 'modules/programs-page-alt/fractals'
 import { useContext, useEffect, useState } from 'react'
 import { ProgramsPageContext } from 'modules/programs-page-alt/fractals/context/context'
 import useAt from '@/hooks/useAt'
+import { motion } from 'framer-motion'
 
 export const FilterTags = ({ className, ...rest }: FilterTagsProps) => {
 	const at = useAt()
@@ -16,15 +17,22 @@ export const FilterTags = ({ className, ...rest }: FilterTagsProps) => {
 	const { programsConfig, durationConfig } = state
 	const [tags, setTags] = useState<TagsType[]>([])
 
-	const initialEmployment = !at.profession || !at.course
-
 	useEffect(() => {
 		const array: TagsType[] = [
 			...(programsConfig.type === FilterTypeProgramEnum.all
 				? []
 				: [
 						{
-							title: programsConfig.type,
+							title:
+								programsConfig.type === 'mba'
+									? 'MBA'
+									: programsConfig.type === 'mini'
+									? 'Mini MBA'
+									: programsConfig.type === 'course'
+									? 'Курс'
+									: programsConfig.type === 'profession'
+									? 'Профессия'
+									: '',
 							action: {
 								type: ACTION.SET_TYPE,
 								payload: FilterTypeProgramEnum.all
@@ -42,7 +50,9 @@ export const FilterTags = ({ className, ...rest }: FilterTagsProps) => {
 							}
 						}
 				  ]),
-			...(programsConfig.employment && !at.mba && !at.mini
+			...(programsConfig.employment &&
+			state.programsConfig.type !== FilterTypeProgramEnum.mba &&
+			state.programsConfig.type !== FilterTypeProgramEnum.mini
 				? [
 						{
 							title: 'С трудоустройством',
@@ -59,9 +69,10 @@ export const FilterTags = ({ className, ...rest }: FilterTagsProps) => {
 	}, [durationConfig?.max, durationConfig?.min, programsConfig])
 
 	const handlerClearFilters = () => {
-		// dispatch({ type: ACTION.SET_DIRECTION, payload: null })
-		dispatch({ type: ACTION.SET_PRICING, payload: null })
 		dispatch({ type: ACTION.SET_EMPLOYMENT, payload: false })
+		dispatch({ type: ACTION.SET_TYPE, payload: FilterTypeProgramEnum.all })
+		dispatch({ type: ACTION.SET_DIRECTION, payload: null })
+		dispatch({ type: ACTION.SET_PRICING, payload: null })
 		dispatch({
 			type: ACTION.SET_DURATION,
 			payload: durationConfig?.max
@@ -69,7 +80,7 @@ export const FilterTags = ({ className, ...rest }: FilterTagsProps) => {
 	}
 
 	const [rotate, setRotate] = useState(false)
-	console.log('FilterTags rerender ->>>: ')
+	// console.log('FilterTags rerender ->>>: ')
 
 	const handleRotate = () => {
 		setRotate(true)
@@ -80,7 +91,7 @@ export const FilterTags = ({ className, ...rest }: FilterTagsProps) => {
 
 	return (
 		<div className={cn(className, stls.content)} {...rest}>
-			<ul className={stls.list}>
+			<motion.ul className={stls.list} layout>
 				{tags.map(tag => (
 					<li className={stls.item} key={tag.title}>
 						<Tag variant='theta'>
@@ -91,7 +102,7 @@ export const FilterTags = ({ className, ...rest }: FilterTagsProps) => {
 						</Tag>
 					</li>
 				))}
-				<li>
+				<motion.li layout>
 					<button
 						className={stls.clearBtn}
 						onClick={() => {
@@ -106,8 +117,8 @@ export const FilterTags = ({ className, ...rest }: FilterTagsProps) => {
 							})}
 						/>
 					</button>
-				</li>
-			</ul>
+				</motion.li>
+			</motion.ul>
 		</div>
 	)
 }

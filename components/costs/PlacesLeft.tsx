@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react'
 import { CountUntil } from './Until'
-import { ForwardRefComponent, HTMLMotionProps, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const pseudoRandom = seed => {
 	const x = Math.sin(seed++) * 10000
