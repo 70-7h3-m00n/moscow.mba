@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next'
 import { TypePageHomeProps } from '@/types/index'
 import { handleGetStaticProps } from '@/lib/index'
 import { usePageHandleContext } from '@/hooks/index'
-import { routesFront } from '@/config/index'
+import { preview, routesFront } from '@/config/index'
 // import { Programs } from '@/components/pages'
 import { ProgramsPage } from 'modules'
 import { SeoPagesPrograms } from '@/components/seo'
@@ -18,7 +18,7 @@ const PagePrograms = ({ programs }) => {
 		<>
 			<SeoPagesPrograms />
 			{/* <Programs mbaTypeOfProgram={'mini'} mbaFormat={'online'} /> */}
-			{dev ?
+			{dev || preview ?
 			<ProgramsPageAlt programs={programs}/>
 			:
 				<ProgramsPage />}

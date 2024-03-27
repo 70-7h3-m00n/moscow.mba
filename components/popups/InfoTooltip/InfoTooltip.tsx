@@ -11,7 +11,8 @@ export const InfoTooltip = ({
 	className,
 	children,
 	color = '#fff',
-	textColor = '#000'
+	textColor = '#000',
+	programsPageActive = false
 }: InfoTooltipProps) => {
 	const ref = useRef(null)
 
@@ -45,7 +46,14 @@ export const InfoTooltip = ({
 				className={stls.popup}
 				trigger={open => (
 					<button className={stls.btn}>
-						<IconInfo opened={opened} onClick={() => setOpened(o => !o)} />
+						<IconInfo
+							className={cn({
+								[stls.activeOpen]: programsPageActive && opened,
+								[stls.activeClose]: programsPageActive && !opened
+							})}
+							opened={opened}
+							onClick={() => setOpened(o => !o)}
+						/>
 					</button>
 				)}
 				position={['top center', 'bottom center']}

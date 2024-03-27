@@ -1,0 +1,70 @@
+@use '@/styles/utils/mixin' as m
+
+.content
+  position: relative
+  display: inline-block
+  font-size: 0.875rem
+  // isolation: isolate
+  // margin-top: 5rem
+  // margin-bottom: 5rem
+
+.button
+  position: relative
+  display: flex
+  align-items: center
+  gap: .5rem
+  border: none
+  outline: 0
+  color: #333
+  background-color: unset
+  white-space: nowrap
+  cursor: pointer
+  z-index: 9
+
+  &__title
+    color: #000
+    font-family: "Helvetica Neue"
+    font-size: 0.875rem
+    font-style: normal
+    font-weight: 400
+    line-height: 120%
+    transition: color .3s ease-in-out
+
+.list
+  display: flex
+  flex-direction: column
+  gap: 0.8rem
+  list-style: none
+  padding: 0
+  margin: 0
+
+.item
+  padding: 0.3rem
+  color: #575757
+  font-family: "Helvetica Neue"
+  font-size: 0.875rem
+  font-style: normal
+  font-weight: 400
+  line-height: 120%
+  transition: color .3s ease-in-out
+
+.item:hover 
+  color: #FF3535
+  cursor: pointer
+  user-select: none
+
+.dropdown
+  position: absolute
+  top: -1rem
+  left: -1rem
+  right: -1rem
+  padding: 1rem
+  padding-top: 3rem
+  border-radius: 1rem
+  background-color: #fff
+  box-shadow: 0px 0px 47.1px 0px rgba(0, 0, 0, 0.08)
+  z-index: 8
+
+.arrow.active path
+    stroke: #FF3535
+    transition: stroke .3s ease-in-out

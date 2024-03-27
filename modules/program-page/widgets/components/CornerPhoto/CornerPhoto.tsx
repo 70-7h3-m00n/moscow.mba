@@ -5,7 +5,6 @@ import { CornerPhotoProps } from './types'
 import Image from 'next/image'
 import { RevertedCorner } from '@/components/icons/geometrics/RevertedCorner/RevertedCorner'
 import base64pixel from '@/config/base64pixel'
-import { colors } from '../../Reviews/components/ReviewsCarousel/constants'
 
 export const CornerPhoto = ({
 	className,
@@ -17,6 +16,17 @@ export const CornerPhoto = ({
 	...rest
 }: CornerPhotoProps) => {
 	const photoSize = size === 'l' ? 82 : size === 'm' ? 200 : 44
+
+	const colors = [
+		'#6E84F8',
+		'#F88268',
+		'#79C173',
+		'#BB72C7',
+		'#DD5B5B',
+		'#E1BF44',
+		'#7CCECE',
+		'#D96797'
+	]
 
 	const getRandomColor = (): string =>
 		colors[Math.floor(Math.random() * colors.length)]

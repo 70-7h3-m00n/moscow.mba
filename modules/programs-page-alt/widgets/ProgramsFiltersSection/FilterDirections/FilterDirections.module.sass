@@ -6,6 +6,8 @@
   display: flex
   gap: 1.5rem
   flex-wrap: wrap
+  @include m.media(phone, tablet)
+    gap: 1rem
 
 .item
 
@@ -14,6 +16,7 @@
     padding: 0.6rem 0.5rem 0.5rem 0.7rem
     justify-content: center
     align-items: center
+    height: 2.1rem
     gap: 0.5rem
     border-radius: 1.5rem
     border: 1px solid #DEE2E5

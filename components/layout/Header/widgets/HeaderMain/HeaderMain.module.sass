@@ -1,0 +1,23 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content
+  font-family: Helvetica Neue
+  font-weight: 400
+  background-color: #F8F8F8
+
+.wrapper
+  max-width: 1392px !important
+  width: 100%
+  display: flex
+  flex-direction: column
+  padding: 1rem 1.5rem .5rem 1.5rem
+  position: static
+
+  @include m.media(phone, tablet)
+    padding: 1rem .6rem 0rem .6rem
+
+.headerBottomAlt
+  @include m.media(phone, tablet)
+    display: none !important

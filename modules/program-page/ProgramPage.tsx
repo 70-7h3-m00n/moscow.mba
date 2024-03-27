@@ -8,10 +8,8 @@ import useAt from '@/hooks/useAt'
 import {
 	HeroSection,
 	AboutProgram,
-	WhatWillYouLearnNew,
 	WhoIsForNew,
 	HowProcessGoesNew,
-	CtaForm,
 	ProgramModules,
 	Diploma,
 	ExpertsNew,
@@ -19,13 +17,15 @@ import {
 	EmploymentPartners,
 	Networking,
 	Accreditation,
-	Reviews,
 	StudyCostNew,
-	Faq,
 	BreadcrumbsSection,
 	EducationROI,
 	FutureJob
 } from './widgets'
+import { WhatWillYouLearnNew } from '@/components/sections/general/WhatWillYouLearn/WhatWillYouLearn'
+import { CtaForm } from '@/components/sections/general/CtaForm/CtaForm'
+import { Faq } from '@/components/sections/general/Faq/Faq'
+import { ReviewsAlt } from '@/components/sections/general/Reviews/Reviews'
 
 const helvetica = localFont({
 	src: [
@@ -88,7 +88,7 @@ export const ProgramPage = ({
 				)}
 				<CtaForm className={stls.section} variant='beta' program={program} />
 				<Accreditation className={cn(stls.section, stls.accreditation)} />
-				<Reviews className={stls.section} id='reviews' program={program} />
+				<ReviewsAlt className={stls.section} id='reviews' program={program} />
 				<StudyCostNew
 					className={stls.section}
 					id='study-cost'

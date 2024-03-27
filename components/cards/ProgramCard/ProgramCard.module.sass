@@ -1,0 +1,78 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content
+  display: flex
+  flex-direction: column
+  gap: 1.5rem
+  height: 100%
+  min-height: 15rem
+  padding: 1.5rem
+  border-radius: 1rem
+  background-color: #fff
+
+  &.dark
+    background-color: #1e1e1e
+    background-position: right
+    background-repeat: no-repeat
+
+    .title
+      color: #fff
+
+    .bottom__duration
+      color: #979BA0
+    
+.content.dark[data-idx="0"]
+  background-image: url('./assets/recommended-bg-1.svg')
+
+.content.dark[data-idx="1"]
+  background-image: url('./assets/recommended-bg-2.svg')
+
+.content.dark[data-idx="2"]
+  background-image: url('./assets/recommended-bg-3.svg')
+
+.title
+  font-size: 1.125rem
+  line-height: 1.2
+
+.bottom
+  display: flex
+  justify-content: space-between
+  align-items: baseline
+  margin-top: auto
+
+  &__duration
+    color: #575757
+
+.tags
+  display: flex
+  gap: 0.5rem
+
+.tag
+  white-space: nowrap
+
+.star
+  width: 1.25rem
+  height: 1.25rem
+  margin-right: .5rem
+  translate: 0 -0.1rem 
+
+  path
+    fill: #FA9928
+
+.lightning
+  width: 1rem
+  height: 1rem
+  margin-right: .5rem
+  translate: 0 -0.1rem
+
+  path
+    fill: #14840B
+
+.discount
+  width: 1rem
+  height: 1rem
+  margin-right: .5rem
+  translate: 0 -0.1rem
+  white-space: nowrap

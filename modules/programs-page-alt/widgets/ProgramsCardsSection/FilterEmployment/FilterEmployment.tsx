@@ -7,6 +7,7 @@ import { ProgramsPageContext } from 'modules/programs-page-alt/fractals/context/
 import { InputToggle } from '../ProgramsSearch/InputToggle/InputToggle'
 import { ACTION } from 'modules/programs-page-alt/fractals/context/reducer'
 import useAt from '@/hooks/useAt'
+import { FilterTypeProgramEnum } from 'modules/programs-page/fractals'
 
 export const FilterEmployment = ({
 	className,
@@ -15,7 +16,9 @@ export const FilterEmployment = ({
 	const at = useAt()
 	const { state, dispatch } = useContext(ProgramsPageContext)
 
-	const disabled = at.mba || at.mini
+	const disabled =
+		state.programsConfig.type === FilterTypeProgramEnum.mba ||
+		state.programsConfig.type === FilterTypeProgramEnum.mini
 
 	const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
 		dispatch({

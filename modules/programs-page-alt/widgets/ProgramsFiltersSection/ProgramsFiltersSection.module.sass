@@ -9,6 +9,9 @@
   padding: 3rem
   isolation: isolate
   overflow: hidden
+  @include m.media(phone, tablet)
+    padding: 1rem
+    padding-bottom: 20rem
 
 .title
   color: #000
@@ -29,3 +32,9 @@
   right: -11rem
   object-fit: cover
   z-index: -1
+  @include m.media(phone, tablet)
+    top: unset
+    bottom: -11rem
+    right: -7rem
+    height: 39rem
+    width: 34rem

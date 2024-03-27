@@ -10,7 +10,7 @@ import {
 	SortingsEnum
 } from 'modules/programs-page-alt/fractals'
 import { ACTION } from 'modules/programs-page-alt/fractals/context/reducer'
-import { IconSorting } from './IconSorting/IconSorting'
+import { IconSorting } from '../../../../../../components/icons/IconSorting/IconSorting'
 import { ProgramsPageContext } from 'modules/programs-page-alt/fractals/context/context'
 
 export const SortingPopup = ({ className, ...rest }: SortingPopupProps) => {

@@ -1,0 +1,101 @@
+@use '@/styles/utils/mixin' as m
+
+.content
+  display: grid
+  grid-template-columns: minmax(5rem, 1fr) minmax(auto, 27rem) minmax(5rem, 1fr)
+  gap: 1rem
+
+  @include m.media(phone, tablet)
+    grid-template-columns: auto auto auto
+
+.logosWrapper
+  display: flex
+  align-items: center
+  gap: 1.5rem
+
+.logo
+  display: flex
+  align-items: center
+  gap: 1rem
+  margin-right: 1.5rem
+
+  &__icon
+    width: 3.25rem
+    height: 3.25rem
+
+  &__name
+    width: 3.25rem
+    height: 2.25rem
+
+.department
+  @include m.media(phone, tablet)
+    display: none
+
+.rabo
+  @include m.media(phone, tablet)
+    display: none
+
+.inputWrapper
+  @include m.media(phone, tablet)
+    display: none
+
+.contacts
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  gap: 1.5rem
+
+  &__email
+    color: #575757
+    font-family: "Helvetica Neue"
+    font-size: 0.875rem
+    font-style: normal
+    font-weight: 400
+    @include m.media(phone, tablet)
+      display: none
+
+  &__login
+    padding: 0.5rem 1rem
+    border-radius: 0.75rem
+    font-family: "Helvetica Neue"
+    font-size: 0.875rem
+    font-style: normal
+    font-weight: 400
+    line-height: 120%
+    color: #FFF
+    background: #FF3535
+    @include m.media(phone, tablet)
+      display: none
+
+.burger 
+  display: block
+  cursor: pointer
+
+  @include m.media(phone, tablet)
+    justify-self: end
+    align-self: center
+
+  &.opened 
+    .line 
+      background-color: #ff3535
+
+      &:nth-of-type(1) 
+        transform: rotate(45deg)
+        top: 8px
+      &:nth-of-type(2) 
+        opacity: 0
+        transition: none
+      &:nth-of-type(3) 
+        top: -8px
+        transform: rotate(-45deg)
+  .line 
+    display: block
+    width: 34px
+    height: 2px
+    background: #000
+    margin: 6px 0
+    position: relative
+    transform-origin: center
+    transition:  all 0.3s ease-out
+  @include m.media(desktop, widescreen)
+    display: none

@@ -9,7 +9,7 @@ import { ProgramPageContext } from 'modules/program-page/fractals/context/contex
 
 export const BreadcrumbsSection = ({
 	className,
-	program,
+	program = null,
 	...rest
 }: BreadcrumbsSectionProps) => {
 	return (

@@ -1,0 +1,67 @@
+@use '@/styles/utils/mixin' as m
+@use '@/styles/utils/funcs' as f
+@use '@/styles/themes/default/colors' as c
+
+.content
+  overflow: hidden
+
+.carousel
+  margin-bottom: 3rem
+
+  @include m.media(phone, tablet)
+    margin-bottom: 1rem
+  
+  & > div > div:first-of-type
+    display: inline-flex 
+    gap: 16px 
+
+  &__post 
+    max-width: 27rem 
+    cursor: grab
+    user-select: none
+
+    &:active
+      cursor: grabbing
+
+.titleWrapper
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 3rem
+  
+  @include m.media(phone, tablet)
+    margin-bottom: .5rem
+
+.title
+  font-family: Unbounded
+
+  @include m.media(phone, tablet)
+    font-size: 1.75rem
+
+.carousel__navigation
+  display: flex
+  justify-content: center
+  gap: 1.5rem
+
+  &.top
+    @include m.media(phone, tablet)
+      display: none
+
+  &.bottom
+    display: none
+
+    @include m.media(phone, tablet)
+      display: flex
+
+.prev
+  padding: 0
+  border: none
+  background-color: transparent
+  .svg
+    transform: rotate(180deg)
+
+.next
+  padding: 0
+  border: none
+  background-color: transparent
+

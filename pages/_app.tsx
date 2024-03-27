@@ -145,6 +145,11 @@ function MyApp({ Component, pageProps, router }) {
 					content='width=device-width, initial-scale=1, maximum-scale=1'
 				/>
 				{!dev && <Roistat />}
+				{/* videoreview */}
+				{/* <script
+					src='https://app.getreview.io/tags/WMWew6P5PDg6Urcg/sdk.js'
+					async
+				></script> */}
 			</Head>
 			<DefaultSeo {...SEO} />
 			<LogoJsonLd
@@ -178,7 +183,7 @@ function MyApp({ Component, pageProps, router }) {
 							<Main>
 								<Component {...pageProps} />
 							</Main>
-							{at.new ? <FooterNew /> : <Footer />}
+							{at.new || at.programs ? <FooterNew /> : <Footer />}
 						</WrapperPage>
 					</MenuState>
 				</OverlayState>
