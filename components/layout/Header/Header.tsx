@@ -63,4 +63,31 @@ const Header = () => {
 	)
 }
 
+// 	return (
+// 		<header>
+// 			{at.new ? (
+// 				<>
+// 					<HeaderProgram handleMenu={handleMenu} openMenu={menuIsOpen} />
+// 					{menuIsOpen && (
+// 						<div className={stls.menu}>
+// 							<HeaderMenuAlt programs={programs} handleMenu={handleMenu} />
+// 						</div>
+// 					)}
+// 				</>
+// 			) : (
+// 				<>
+// 					<div>
+// 						<HeaderTop handleMenu={handleMenu} openMenu={menuIsOpen} />
+// 					</div>
+// 					{menuIsOpen && (
+// 						<div className={stls.menu}>
+// 							<HeaderMenu programs={programs} handleMenu={handleMenu} />
+// 						</div>
+// 					)}
+// 				</>
+// 			)}
+// 		</header>
+// 	)
+// }
+
 export default Header

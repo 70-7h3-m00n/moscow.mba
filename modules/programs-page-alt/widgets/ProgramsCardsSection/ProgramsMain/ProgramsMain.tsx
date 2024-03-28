@@ -3,13 +3,14 @@ import cn from 'classnames'
 import { ProgramsMainProps } from './types'
 
 import { FilterTags } from '../FilterTags/FilterTags'
-import { CardsHeading } from '../CardsHeading/CardsHeading'
+import { CardsHeading } from '../../ProgramsFiltersSection/CardsHeading/CardsHeading'
 import { CardsList } from '../CardsList/CardsList'
 import { ProgramsPageContext } from 'modules/programs-page-alt/fractals/context/context'
 import { useContext, useState } from 'react'
 import { FormBeta } from '@/components/forms/FormBeta/FormBeta'
 import { LeadLoaderThankyouAlt } from '@/components/general/LoaderThankyou/LoaderThankyou'
 import { AnimatePresence, motion } from 'framer-motion'
+import { LIST_FILTER_TYPE_PROGRAM } from 'modules/programs-page-alt/fractals'
 
 export const ProgramsMain = ({ className, ...rest }: ProgramsMainProps) => {
 	const { state } = useContext(ProgramsPageContext)
@@ -24,12 +25,16 @@ export const ProgramsMain = ({ className, ...rest }: ProgramsMainProps) => {
 	const [open, setOpen] = useState(false)
 	const [openLoader, setOpenLoader] = useState(false)
 
+	const programsType = LIST_FILTER_TYPE_PROGRAM.find(
+		item => item.value === state.programsConfig.type
+	)
+
 	return (
 		<div className={cn(className, stls.content)} {...rest}>
 			<FilterTags className={stls.filterTags} />
 			{state.UIPrograms.length > 0 ? (
 				<>
-					<CardsHeading />
+					<p className={stls.description}>{programsType.description}</p>
 					<CardsList programs={programs} />
 				</>
 			) : (

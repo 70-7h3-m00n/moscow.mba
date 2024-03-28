@@ -23,7 +23,7 @@ export const FilterPriceAndSorting = ({
 
 	return (
 		<div className={cn(className, stls.list)} {...rest}>
-			<ul className={stls.list}>
+			{/* <ul className={stls.list}>
 				{LIST_FILTER_PRICE_PROGRAM.map(priceFilter => (
 					<li className={stls.item} key={priceFilter.value}>
 						<button
@@ -34,11 +34,10 @@ export const FilterPriceAndSorting = ({
 							onClick={() => handlerOnClick(priceFilter.value)}
 						>
 							<span className={stls.item__name}> {priceFilter.text} </span>
-							{/* <span className={stls.item__counter}>{164}</span> */}
 						</button>
 					</li>
 				))}
-			</ul>
+			</ul> */}
 			<SortingPopup />
 		</div>
 	)

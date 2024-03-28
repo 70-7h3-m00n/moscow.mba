@@ -9,6 +9,8 @@ import { FilterDirections } from './FilterDirections/FilterDirections'
 import { FilterCategories } from './FilterCategories/FilterCategories'
 import { FilterPriceAndSorting } from './FilterPriceAndSorting/FilterPriceAndSorting'
 import Image from 'next/image'
+import { CardsHeading } from './CardsHeading/CardsHeading'
+import { Ruble } from '@/components/costs/Ruble/Ruble'
 
 export type GroupedProgramsType = {
 	[fieldName: string]: TypeLibProgram[]
@@ -45,7 +47,7 @@ export const ProgramsFiltersSection = ({
 	return (
 		<section className={cn(className, stls.container)} {...rest}>
 			<Wrapper classNames={[stls.content]}>
-				<h1 className={stls.title}>Все программы обучения</h1>
+				<CardsHeading />
 				<FilterCategories />
 				<FilterDirections
 					className={stls.directions}

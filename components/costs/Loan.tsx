@@ -3,6 +3,7 @@ import cn from 'classnames'
 import { ui, currencyRates } from '@/config/index'
 import { toNumberWithSpaces } from '@/helpers/index'
 import { useAt, useSSLocale } from '@/hooks/index'
+import { Ruble } from './Ruble/Ruble'
 
 type TypeLoanProps = {
 	discount?: boolean
@@ -77,20 +78,6 @@ const Loan = ({
 		? programPrice * currencyRates.uzm
 		: programPrice
 
-	const currencySymbol = atKz
-		? `${ui.currentlySymbols.kzt}/мес`
-		: atUz
-		? `${ui.currentlySymbols.uzm}/мес`
-		: `${ui.currentlySymbols.rubAlt}/мес`
-
-	// const setPrice = (rub: number) => {
-	// 	return atKz
-	// 		? toNumberWithSpaces(rub * currencyRates.kzt)
-	// 		: atUz
-	// 		? toNumberWithSpaces(rub * currencyRates.uzm)
-	// 		: toNumberWithSpaces(rub)
-	// }
-
 	const regularOrDiscounted = discount ? 'loanDiscounted' : 'loanRegular'
 
 	const componentSpecificClasses = {
@@ -156,7 +143,8 @@ const Loan = ({
 								regularPriceUI?.toString()?.length > 5
 						})}
 					>
-						{currencySymbol}
+						<Ruble />
+						/мес
 					</span>
 				</span>
 			</i>
@@ -187,7 +175,8 @@ const Loan = ({
 									[stls.discountLabel]: variant === 'SectionStudyCost'
 								})}
 							>
-								{currencySymbol}
+								<Ruble />
+								/мес
 							</span>
 						</i>
 					</>

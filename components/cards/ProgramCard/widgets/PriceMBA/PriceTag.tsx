@@ -25,7 +25,7 @@ export const PriceTag = ({
 		>
 			{type === 'mba' || type === 'mini' ? (
 				<>
-					<Tag className={cn(stls.priceTag, stls.reverse)} variant={variant}>
+					<Tag className={cn(stls.priceTag)} variant={variant}>
 						<Price
 							discount
 							type={program?.category.type}
@@ -35,7 +35,7 @@ export const PriceTag = ({
 						/>
 					</Tag>
 					<p className={stls.price__description}>
-						{'Рассрочка от '}
+						{'Рассрочка от'}{' '}
 						<Loan
 							discount
 							type={program?.category.type}
@@ -58,14 +58,13 @@ export const PriceTag = ({
 						/>
 					</Tag>
 					<p className={stls.price__description}>
-						{'или сразу '}
-
+						{'или сразу'}{' '}
 						<Price
-							discount={false}
+							discount
+							fullPrice={false}
 							type={program?.category.type}
 							format={program?.studyFormat}
 							programPrice={program?.price}
-							renderedByComponent='CardProgram'
 						/>
 					</p>
 				</>

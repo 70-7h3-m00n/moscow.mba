@@ -34,7 +34,7 @@ export const ProgramsPageProvider: React.FC<ProgramsPageProviderProps> = ({
 		? FilterTypeProgramEnum.course
 		: FilterTypeProgramEnum.all
 
-	const initialEmployment = !profession || !course
+	const initialEmployment = profession || course ? null : true
 
 	const ProgramsReducerInitialState: TypeProgramsReducer = {
 		programs: initialPrograms,

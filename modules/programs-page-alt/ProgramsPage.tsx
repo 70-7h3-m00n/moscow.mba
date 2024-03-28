@@ -13,7 +13,6 @@ import { CtaForm } from '@/components/sections/general/CtaForm/CtaForm'
 import { WhatWillYouLearnNew } from '@/components/sections/general/WhatWillYouLearn/WhatWillYouLearn'
 import { Faq } from '@/components/sections/general/Faq/Faq'
 import { ReviewsAlt } from '@/components/sections/general/Reviews/Reviews'
-import { filterByEmployment } from './fractals/utils/filterPrograms'
 
 const helvetica = localFont({
 	src: [

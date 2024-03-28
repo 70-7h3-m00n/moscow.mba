@@ -1,11 +1,13 @@
 import stls from '@/styles/components/costs/Price.module.sass'
 import cn from 'classnames'
 
-import { currencyRates, price, ui } from '@/config/index'
+import { price } from '@/config/index'
 import { toNumberWithSpaces } from '@/helpers/index'
-import { useAt, useSSLocale } from '@/hooks/index'
+import { useAt } from '@/hooks/index'
+import { Ruble } from './Ruble/Ruble'
 
 const Price = ({
+	fullPrice = true,
 	discount = false,
 	type = null,
 	format = null,
@@ -13,67 +15,6 @@ const Price = ({
 	renderedByComponent = null
 }) => {
 	const at = useAt()
-
-	const SSLocale = useSSLocale()
-
-	const atKz =
-		at.kz || SSLocale === 'kz' || SSLocale === 'kk' || SSLocale === 'kk_KZ'
-
-	const atUz = at.uz || SSLocale === 'uz' || SSLocale === 'uz_UZ'
-
-	const programPriceKzUzConsidered = atKz
-		? programPrice * currencyRates.kzt
-		: atUz
-		? programPrice * currencyRates.uzm
-		: programPrice
-
-	const currencySymbol = atKz
-		? ui.currentlySymbols.kzt
-		: atUz
-		? ui.currentlySymbols.uzm
-		: ui.currentlySymbols.rubAlt
-
-	// const setPrice = (rub: number) => {
-	// 	return atKz
-	// 		? toNumberWithSpaces(rub * currencyRates.kzt)
-	// 		: atUz
-	// 		? toNumberWithSpaces(rub * currencyRates.uzm)
-	// 		: toNumberWithSpaces(rub)
-	// }
-
-	const componentSpecificClasses = {
-		simple: {
-			ProgramsColumn: stls.programsColumnSimplePrice
-		},
-		new: {
-			ProgramsColumn: stls.programsColumnNewPrice,
-			InfoRectangle: stls.infoRectangleNewPrice,
-			CardProgram: stls.cardProgramNewPrice,
-			CostOfStudy: stls.costOfStudyNewPrice
-		},
-		old: {
-			ProgramsColumn: stls.programsColumnOldPrice,
-			CostOfStudy: stls.costOfStudyOldPrice,
-			InfoRectangle: stls.infoRectangleOldPrice,
-			CardProgram: stls.cardProgramOldPrice
-		}
-	}
-
-	const generalClasses = {
-		simple: stls.simplePrice,
-		new: stls.newPrice,
-		old: stls.oldPrice
-	}
-
-	const getPriceClass = (typeOfPrice, renderedByComponent) => {
-		if (!renderedByComponent) return `${typeOfPrice}-price`
-
-		const componentSpecificClass =
-			componentSpecificClasses[typeOfPrice]?.[renderedByComponent]
-		const generalClass = generalClasses[typeOfPrice]
-
-		return componentSpecificClass ?? generalClass
-	}
 
 	const isDiscounted = discount ? 'discounted' : 'regular'
 
@@ -99,11 +40,14 @@ const Price = ({
 					).map((el, idx, array) => {
 						return (array.length - idx) % 3 === 0 ? ' ' + el : el
 					})}
-					<span className={stls.currency}>&#8381;/мес</span>
+					<span className={stls.currency}>
+						<Ruble />
+						/мес
+					</span>
 				</>
 			)
 		} else {
-			return price + ` ${currencySymbol}`
+			return <span>{toNumberWithSpaces(price)}</span>
 		}
 	}
 
@@ -114,39 +58,29 @@ const Price = ({
 					[stls.SectionStudyCost]: renderedByComponent === 'SectionStudyCost'
 				})}
 			>
-				{price[isDiscounted].executive} {currencySymbol}
+				{price[isDiscounted].executive}
 			</span>
 		)
 
 	return (
 		<>
-			{discount && (
-				<i
-					className={cn('price', getPriceClass('old', renderedByComponent), {
-						[stls.SectionStudyCost]: renderedByComponent === 'SectionStudyCost'
-					})}
-				>
-					{programPriceKzUzConsidered
-						? toNumberWithSpaces(
-								Math.ceil(((programPriceKzUzConsidered / 45) * 100) / 1000) *
-									1000
-						  ) + ` ${currencySymbol}`
-						: splitMonths(price?.regular?.[type]?.[format] || 0)}
-				</i>
+			<span className={stls.priceWrapper}>
+				<i>{splitMonths(price?.[isDiscounted]?.[type]?.[format])}</i>
+				<Ruble />
+			</span>
+			{discount && fullPrice && (
+				<span className={cn(stls.priceWrapper, stls.discount)}>
+					<i
+						className={cn({
+							[stls.SectionStudyCost]:
+								renderedByComponent === 'SectionStudyCost'
+						})}
+					>
+						{splitMonths(price?.regular?.[type]?.[format] || 0)}
+					</i>
+					<Ruble />
+				</span>
 			)}
-			<i
-				className={cn(
-					'price',
-					discount
-						? getPriceClass('new', renderedByComponent)
-						: getPriceClass('simple', renderedByComponent)
-				)}
-			>
-				{programPriceKzUzConsidered
-					? toNumberWithSpaces(programPriceKzUzConsidered) +
-					  ` ${currencySymbol}`
-					: splitMonths(price?.[isDiscounted]?.[type]?.[format])}
-			</i>
 		</>
 	)
 }

@@ -12,6 +12,7 @@ import { ProgramsPageContext } from 'modules/programs-page-alt/fractals/context/
 import { ACTION } from 'modules/programs-page-alt/fractals/context/reducer'
 import useDebounce from '@/hooks/useDebounce'
 import useDecodedInput from '@/hooks/useDecodedInput'
+import useAt from '@/hooks/useAt'
 
 export const ProgramsSidebar = ({
 	className,
@@ -45,10 +46,11 @@ export const ProgramsSidebar = ({
 				autoComplete='off'
 				handlerClearSearch={handlerClearSearch}
 			/>
-			<FilterEmployment />
+			{state.programsConfig.type !== 'course' &&
+				state.programsConfig.type !== 'profession' && <FilterEmployment />}
 			<FilterDuration />
 			<div>
-				{/* {' '}
+				{' '}
 				{JSON.stringify(state.programsConfig)
 					.replace(/[{}]/g, '')
 					.split(',')
@@ -61,7 +63,7 @@ export const ProgramsSidebar = ({
 					.split(',')
 					.map((el, idx) => (
 						<p key={idx}>{el}</p>
-					))} */}
+					))}
 			</div>
 		</div>
 	)

@@ -38,6 +38,8 @@ export const filterByEmployment = (
 	programs: TypeLibPrograms,
 	employment: boolean
 ) => {
+	if (employment === null) return programs
+
 	if (employment) {
 		return programs.filter(
 			program =>

@@ -19,11 +19,6 @@ export const FilterCategories = ({ className }: FilterCategoriesProps) => {
 	const { state, dispatch } = useContext(ProgramsPageContext)
 
 	const handlerOnClick = (value: FilterTypeProgramEnum) => {
-		// if (value === FilterTypeProgramEnum.executive) {
-		// 	router.push(routesFront.programsExecutive)
-		// 	return
-		// }
-
 		dispatch({ type: ACTION.SET_TYPE, payload: value })
 		dispatch({
 			type: ACTION.SET_EMPLOYMENT,
@@ -31,6 +26,8 @@ export const FilterCategories = ({ className }: FilterCategoriesProps) => {
 				value === FilterTypeProgramEnum.mba ||
 				value === FilterTypeProgramEnum.mini ||
 				value === FilterTypeProgramEnum.all
+					? true
+					: null
 		})
 	}
 
@@ -39,6 +36,17 @@ export const FilterCategories = ({ className }: FilterCategoriesProps) => {
 			{LIST_FILTER_TYPE_PROGRAM?.map((category, idx) => (
 				<>
 					<li className={stls.item} key={idx}>
+						<Link
+							href={category.src}
+							className={cn(stls.item__link, {
+								[stls.active]: category.value === state.programsConfig.type
+							})}
+							// onClick={() => handlerOnClick(category.value)}
+						>
+							<span className={cn(stls.item__name)}>{category.text}</span>
+						</Link>
+					</li>
+					{/* <li className={stls.item} key={idx}>
 						<button
 							className={cn(stls.item__link, {
 								[stls.active]: category.value === state.programsConfig.type
@@ -47,22 +55,11 @@ export const FilterCategories = ({ className }: FilterCategoriesProps) => {
 						>
 							<span className={cn(stls.item__name)}>{category.text}</span>
 						</button>
-						{category.tooltip && (
-							<InfoTooltip
-								className={stls.info}
-								color='#18191A'
-								textColor='#fff'
-								programsPageActive={
-									category.value === state.programsConfig.type
-								}
-							>
-								<p className={stls.infoDescription}>{category.tooltip}</p>
-							</InfoTooltip>
-						)}
-					</li>
+					
+					</li> */}
 				</>
 			))}
-			<li>
+			<li key={'Executive MBA '}>
 				<Link
 					href={`${routesFront.root}${routesFront.programsExecutive}`}
 					className={cn(stls.item__link)}
